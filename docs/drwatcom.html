@@ -1,0 +1,504 @@
+<head>
+<title> Dr. Watcom 1.9 </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- W -
+<dd><a href="#Win16__Customize_the_Log_File">Win16:&nbsp; Customize the Log File</a>
+<br><a href="#Win16__Debugging_a_Task">Win16:&nbsp; Debugging a Task</a>
+<br><a href="#Win16__Dr__Watcom_for_Windows_3_1">Win16:&nbsp; Dr.&nbsp; Watcom for Windows 3.1</a>
+<br><a href="#Win16__Dr__Watcom__Applying_Registers">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Applying Registers</a>
+<br><a href="#Win16__Dr__Watcom__Changing_the_Registers">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Changing the Registers</a>
+<br><a href="#Win16__Dr__Watcom__Clearing_the_Event_List">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Clearing the Event List</a>
+<br><a href="#Win16__Dr__Watcom__Exception_Handling">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Exception Handling</a>
+<br><a href="#Win16__Dr__Watcom__Marking_the_Event_List">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Marking the Event List</a>
+<br><a href="#Win16__Dr__Watcom__Naming_the_Log_File">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Naming the Log File</a>
+<br><a href="#Win16__Dr__Watcom__Other_Options">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Other Options</a>
+<br><a href="#Win16__Dr__Watcom__Saving_Event_List_Information_to_a_File">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Saving Event List Information to a File</a>
+<br><a href="#Win16__Dr__Watcom__Segment_Mapping">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Segment Mapping</a>
+<br><a href="#Win16__Dr__Watcom__Setting_the_Fonts">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Setting the Fonts</a>
+<br><a href="#Win16__Dr__Watcom__Specifying_the_Log_File_Data">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Specifying the Log File Data</a>
+<br><a href="#Win16__Dr__Watcom__Working_with_Log_Files">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Working with Log Files</a>
+<br><a href="#Win16__Erase_the_Log_File">Win16:&nbsp; Erase the Log File</a>
+<br><a href="#Win16__Examining_the_Task_Status">Win16:&nbsp; Examining the Task Status</a>
+<br><a href="#Win16__Log_the_Current_State">Win16:&nbsp; Log the Current State</a>
+<br><a href="#Win16__Performing_a_Stack_Trace">Win16:&nbsp; Performing a Stack Trace</a>
+<br><a href="#Win16__Performing_Task_Control">Win16:&nbsp; Performing Task Control</a>
+<br><a href="#Win16__Quitting_Dr__Watcom">Win16:&nbsp; Quitting Dr.&nbsp; Watcom</a>
+<br><a href="#Win16__Resetting_the_Fault_Handled_Flag">Win16:&nbsp; Resetting the Fault Handled Flag</a>
+<br><a href="#Win16__Setting_the_Alert_Feature">Win16:&nbsp; Setting the Alert Feature</a>
+<br><a href="#Win16__Showing_the_DIP_status">Win16:&nbsp; Showing the DIP status</a>
+<br><a href="#Win16__Starting_Dr__Watcom">Win16:&nbsp; Starting Dr.&nbsp; Watcom</a>
+<br><a href="#Win16__Terminating_a_Task">Win16:&nbsp; Terminating a Task</a>
+<br><a href="#Win16__The_Dr__Watcom_Menu_Bar">Win16:&nbsp; The Dr.&nbsp; Watcom Menu Bar</a>
+<br><a href="#Win16__Using_Dr__Watcom">Win16:&nbsp; Using Dr.&nbsp; Watcom</a>
+<br><a href="#Win16__Using_the_Clear_Alert_Function">Win16:&nbsp; Using the Clear Alert Function</a>
+<br><a href="#Win16__Using_the_Dr__Watcom_Window">Win16:&nbsp; Using the Dr.&nbsp; Watcom Window</a>
+</dl>
+<h1 id="Win16__Dr__Watcom_for_Windows_3_1"> Win16:&nbsp; Dr.&nbsp; Watcom for Windows 3.1 </h1>
+<br>The 16-bit version of Dr.&nbsp; Watcom is a post-mortem debugger for Windows 3.1.&nbsp; When an exception occurs in a
+ program, a post-mortem debugger allows you, after the fact, to examine the state of both the program and the system in order
+ to determine the cause of the exception.&nbsp; In addition to being a debugging tool, Dr.&nbsp; Watcom is a system utility
+ that enables you to examine task information.
+<br><br>Dr.&nbsp; Watcom can be a useful tool when performing in-house testing on your applications.&nbsp; By running Dr.
+&nbsp; Watcom while testing applications, all faults are logged.&nbsp; This gives you important information to recreate the
+ errors so you can fix the problems.
+<dl>
+<dt>Note:
+<dd>Use the 16-bit version of Dr.&nbsp; Watcom to monitor 16-bit Windows (Win16) applications running under Windows 3.1 or Win32
+ based operating systems.&nbsp; Use the 32-bit version of Dr.&nbsp; Watcom to monitor Win32 applications running under Win32
+ based operating systems.
+</dl>
+<h2 id="Win16__Using_Dr__Watcom"> Win16:&nbsp; Using Dr.&nbsp; Watcom </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting Dr.&nbsp; Watcom
+<li>Quitting Dr.&nbsp; Watcom
+<li>The Dr.&nbsp; Watcom Menu Bar
+</ul>
+<br>Dr.&nbsp; Watcom is designed to be used effectively while minimized.&nbsp; You only need to view the application window
+ when an error or warning occurs.&nbsp; When this happens the Dr.&nbsp; Watcom icon changes from stethoscope to an explosion
+ indicating that information is waiting for your attention in the main window.
+<br><br>Some of Dr.&nbsp; Watcom's main functionality can also be accessed using the system menu while the application is
+ minimized.&nbsp; This includes the log options, task control, and log current state functions.
+<br><br>Dr.&nbsp; Watcom is more useful with the Windows debug kernel.&nbsp; Under the debug kernel, Windows checks for many
+ common programming errors and generates debugging messages when it finds them.&nbsp; Dr.&nbsp; Watcom catches the debugging
+ messages and displays them on the event list.&nbsp; Viewing these messages helps you identify errors in your program that
+ you might not otherwise see.
+<h3 id="Win16__Starting_Dr__Watcom"> Win16:&nbsp; Starting Dr.&nbsp; Watcom </h3>
+<br>To start Dr.&nbsp; Watcom, double click on the Dr.&nbsp; Watcom icon.&nbsp; This opens the Dr.&nbsp; Watcom window.
+<h3 id="Win16__Quitting_Dr__Watcom"> Win16:&nbsp; Quitting Dr.&nbsp; Watcom </h3>
+<br>To exit Dr.&nbsp; Watcom, select Exit from the File menu.&nbsp; This is the only way to quit the application.&nbsp; Unlike
+ other applications, double clicking on the system menu box or selecting close from the system menu only minimizes the application.
+<h3 id="Win16__The_Dr__Watcom_Menu_Bar"> Win16:&nbsp; The Dr.&nbsp; Watcom Menu Bar </h3>
+<br>The menu bar consists of the following four menus:
+<dl>
+<dt>File
+<dd>Save to a file, work with the event list, and configure the session
+<dt><br>Log
+<dd>Work with the log file
+<dt><br>Task
+<dd>Work with tasks currently running under Windows
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<h2 id="Win16__Using_the_Dr__Watcom_Window"> Win16:&nbsp; Using the Dr.&nbsp; Watcom Window </h2>
+<br>When you open Dr.&nbsp; Watcom, a window appears which contains the event list.&nbsp; The event list records the various
+ events occurring under Windows.&nbsp; Some examples of events are errors, debugging messages (under the debug kernel of Windows
+ only), the starting and ending of programs, and the loading and unloading of DLLs.
+<br><br><tt><img src="drw1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Dr.&nbsp; Watcom window contains the event list which records and displays
+ events occurring under Windows.</b>
+<br><br>When a debug message is issued, the Dr.&nbsp; Watcom icon alerts you that an entry has been made on the event list.
+&nbsp; The Dr.&nbsp; Watcom icon changes from stethoscope to an explosion.&nbsp; To reset the icon you must acknowledge the
+ alert in one of two ways:
+<dl>
+<dt>(1)
+<dd><b> View the event list</b> by double clicking on the icon, or
+<dt><br>(2)
+<dd><b> Choose Clear Alert</b> from the system menu.
+</dl>
+<br>Dr.&nbsp; Watcom intercepts all exceptions that occur in the system.&nbsp; An exception is an error that causes your program
+ to terminate.&nbsp; Dr.&nbsp; Watcom prevents your program from terminating by halting the program's execution.&nbsp; The
+ state of the program remains intact.
+<br><br>As with non-fatal errors, Dr.&nbsp; Watcom makes an entry on the event list when an exception occurs.&nbsp; However,
+ instead of alerting you to the entry by changing the icon, Dr.&nbsp; Watcom reveals an exception dialog.&nbsp; This dialog
+ gives you several options.&nbsp; Refer to the section entitled <a href="#Win16__Dr__Watcom__Exception_Handling">Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Exception Handling</a>
+ for more information.
+<br><br>The following sections describe functions that allow you to manipulate the event list:
+<ul>
+<li>Saving the Event List
+<li>Clearing the Event List
+<li>Marking the Event List
+<li>Setting the Fonts
+</ul>
+<h3 id="Win16__Dr__Watcom__Saving_Event_List_Information_to_a_File"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Saving Event List Information to a File </h3>
+<br>The Save items in the File menu allow you to save the contents of the event list to a text file.&nbsp; Saving information
+ to a file enables you to print the output later or annotate the text file on-line.
+<br><br>Choose Save from the File menu to save the event list information into the current working directory.&nbsp; A message
+ box appears indicating the path to which Dr.&nbsp; Watcom saved the file.
+<br><br>Choose Save As from the File menu to specify the file to which you want to save the information currently in the window.
+&nbsp; This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.&nbsp; A message
+ box appears indicating the path to which Dr.&nbsp; Watcom saved the event list.
+<h3 id="Win16__Dr__Watcom__Clearing_the_Event_List"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Clearing the Event List </h3>
+<br>Choose Clear from the File menu to delete all information from the event list.
+<h3 id="Win16__Dr__Watcom__Marking_the_Event_List"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Marking the Event List </h3>
+<br>Use the Mark function to annotate the information in the event list by entering text into it.
+<dl>
+<dt>To mark the event list :
+<dd>
+<dt><br>(1)
+<dd><b> Choose Mark</b> from the File menu.
+<br>This opens the Set Mark dialog box.
+<br><br><tt><img src="drw2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> With the Set Mark dialog, you can annotate the event list by entering text and
+ choosing a mark style.</b>
+<dt><br>(2)
+<dd><b> Type the desired text</b> in the Enter Mark Text field.
+<br>The text you enter will appear at the end of the event list
+<dt><br>(3)
+<dd><b> Select the desired Mark Style option.</b>
+<br>These options determine how the entered text is formatted when it is added to the event list When the boxed option is
+ selected, the text is displayed bordered by asterisks.&nbsp; With this option the text is easier to find.&nbsp; When the
+ plain option is selected, the text is displayed as it is entered.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>The Set Mark dialog closes and the text in the dialog appears at the end of the event list.
+</dl>
+<br><tt><img src="drw3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> Text you enter in the Set Mark dialog appears in the event list in the selected
+ style.</b>
+<h3 id="Win16__Dr__Watcom__Setting_the_Fonts"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Setting the Fonts </h3>
+<br>The Set Font item in the File menu allows you to set the font, style, and size for the text in the Dr.&nbsp; Watcom window.
+&nbsp; Choosing this item opens the Font dialog box.&nbsp; Select the desired font details and click on OK to close the dialog
+ and apply the fonts.
+<h3 id="Win16__Setting_the_Alert_Feature"> Win16:&nbsp; Setting the Alert Feature </h3>
+<br>Each time Dr.&nbsp; Watcom logs a debug message, its icon changes from a stethoscope to an explosion .&nbsp; This indicates
+ that there is important information waiting for you in the event list.&nbsp; Some debug messages report only minor programming
+ anomalies that may not be errors at all.&nbsp; The text for these messages is prefixed by<b> wn,</b> for warning.&nbsp; Because
+ these messages are not urgent, you may not want the icon to signal the message.&nbsp; The Alert on Warnings menu item allows
+ you to configure Dr.&nbsp; Watcom so that its icon does not change for these minor warning messages.
+<br><br>When the Alert on Warnings item in the File menu is not checked, the icon does not change for minor warning messages.
+&nbsp; When this item is checked, the Dr.&nbsp; Watcom icon alerts you when a warning or serious error occurs.
+<h3 id="Win16__Showing_the_DIP_status"> Win16:&nbsp; Showing the DIP status </h3>
+<br>DIP's (Debugging Information Processors) are Dynamic Link Libraries that Dr.&nbsp; Watcom loads to read debugging information.
+&nbsp; Each DIP allows Dr.&nbsp; Watcom to read a different type of debugging information.&nbsp; Choosing the Show DIP Status
+ item from the File menu displays the Debugging Information Processor Status dialog.
+<br><br><tt><img src="drw4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Debugging Information Processor Status dialog shows the DIP's Dr.&nbsp; Watcom
+ has loaded.</b>
+<br><br>This dialog contains a list of all the DIP's that Dr.&nbsp; Watcom attempted to load at startup and the results of
+ those loads.&nbsp; If Dr.&nbsp; Watcom was unable to load a particular DIP then the dialog will show the reason for the failure.
+&nbsp; Dr.&nbsp; Watcom can only read a given type of debugging information if it has successfully loaded the appropriate
+ DIP.
+<h3 id="Win16__Using_the_Clear_Alert_Function"> Win16:&nbsp; Using the Clear Alert Function </h3>
+<br>If you are running Dr.&nbsp; Watcom minimized then each time an error or warning is logged, the icon changes from a stethoscope
+ to an explosion.&nbsp; Unless you reset the icon, you will not know when more events are added to the event list.
+<br><br>There are two ways to reset the Dr.&nbsp; Watcom icon:
+<dl>
+<dt>(1)
+<dd><b> Double click on the icon</b> to view the event list, or
+<dt><br>(2)
+<dd><b> Choose Clear Alert</b> from the system menu.
+</dl>
+<br>To clear the alert message, click on the Dr.&nbsp; Watcom icon to reveal the system menu.&nbsp; Choose Clear Alert from
+ the menu to change the icon back to the stethoscope.&nbsp; Dr.&nbsp; Watcom still logs the event, but you do not have to
+ look at it immediately.
+<h2 id="Win16__Dr__Watcom__Exception_Handling"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Exception Handling </h2>
+<br>The Dr.&nbsp; Watcom exception dialog box appears on your screen when an exception occurs in any program in the system.
+&nbsp; This indicates that a fatal error has occurred.
+<br><br><tt><img src="drw5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The exception dialog appears when a fatal error occurs in a program.</b>
+<br><br>Instead of terminating the program, Dr.&nbsp; Watcom suspends it and leaves its state intact.&nbsp; Because the state
+ is undisturbed you can view the program's state information from the exception dialog, including memory and register values.
+&nbsp; The exception dialog displays information about error and gives you several options.&nbsp; The information displayed
+ about the error includes:
+<dl>
+<dt>Task Name
+<dd>The name of the module in which the error occurred.
+<dt><br>Task Path
+<dd>The full path of the file from which the offending module was loaded.
+<dt><br>Fault Type
+<dd>The type of fault that occurred.
+<dt><br>Fault CS:EIP
+<dd>The address of the instruction being executed when the fault occurred.
+<dt><br>Source Info
+<dd>The source line on which the error occurred.&nbsp; This only appears if the program running contains debugging information.
+</dl>
+<br>There are four buttons on the exception dialog that you can use to proceed.
+<dl>
+<dt>Act
+<dd>When the act button is pressed, Dr.&nbsp; Watcom's action is determined by the option currently selected in the action to
+ take section of the dialog.&nbsp; The following describes the action taken for each option.
+<dl>
+<dt>Terminate Task
+<dd>When the Terminate Task radio button is selected choosing Act causes the faulting task to be terminated immediately.
+<dt><br>Restart Instruction
+<dd>When the Restart Instruction radio button is selected choosing Act causes the faulting task to restart execution starting
+ with the instruction pointed to by its CS:EIP.&nbsp; This option is primarily used to restart a task after you have changed
+ its register values using the Task Status dialog.
+<dt><br>Chain to Next Handler
+<dd>A handler is a piece of code, a program, or a routine that gets called when an exception occurs.&nbsp; The system can have
+ several exception handlers.&nbsp; When the Chain to Next Handler radio button is selected choosing Act passes the exception
+ on to the next handler in the sequence, or chain.
+</dl>
+<dt><br>Act and Log
+<dd>Choosing the Act and Log button first creates a log file entry recording information about this fault then takes the same
+ action that would result from choosing the Act button.
+<dt><br>Registers
+<dd>Select the Registers button to open the Task Status dialog.&nbsp; This dialog gives you additional information on the state
+ of the program when it crashed.&nbsp; From this window you can change the registers and flags, view segment mappings, and
+ do a stack trace.&nbsp; Refer to the section entitled <a href="#Win16__Examining_the_Task_Status">Win16:&nbsp; Examining the Task Status</a>
+ for further information.
+<dt><br>Options
+<dd>Select the Options button to choose the information you want to write to the log file.&nbsp; This opens the Log File Options
+ dialog explained in the section entitled <a href="#Win16__Customize_the_Log_File">Win16:&nbsp; Customize the Log File</a>.
+</dl>
+<h3 id="Win16__Examining_the_Task_Status"> Win16:&nbsp; Examining the Task Status </h3>
+<br>The Task Status dialog appears when you choose the Registers button on the exception dialog.
+<br><br><tt><img src="drw6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Task Status dialog provides additional information on the program state when
+ the exception occurred.</b>
+<br><br>This dialog displays information in four sections:
+<ul>
+<li>Source Information
+<li>Registers
+<li>Flags
+<li>Instructions Around Fault
+</ul>
+<br>The Source Information section indicates the source file where the error occurred and the line of that source file.&nbsp;
+ In order to get source information, your program must have debugging information.&nbsp; N/A appears in the Source Information
+ section if the program does not contain debugging information or the exception occurred on an assembly instruction that does
+ not correspond to a source file.
+<br><br>The Registers and Flags sections display information in the CPU at the time of the exception.
+<br><br>The Instructions Around Fault section displays the assembly instructions surrounding the instruction that was being
+ executed when the fault occurred.&nbsp; An asterisk marks the instruction to which the CS:EIP is currently pointing.
+<br><br>When the Show Symbols box is checked, Dr.&nbsp; Watcom tries to replace addresses in the assembly code with symbolic
+ names.&nbsp; Dr.&nbsp; Watcom can only replace addresses if the faulting module contained debugging information.&nbsp; If
+ this box is not checked, addresses are left as numeric values.
+<h4 id="Win16__Dr__Watcom__Changing_the_Registers"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Changing the Registers </h4>
+<br>In the Task Status dialog you can set up testing and debugging situations by changing the register and flag values.&nbsp;
+ To change a register value simply enter a new value in the edit field that contains the current register value.&nbsp; To
+ change the state of a flag register just check or uncheck the check box associated with that flag.&nbsp; A flag has a value
+ of 1 when its check box is checked.
+<br><br>The register and flag values will not take effect until you choose OK on the Task Status dialog.
+<h4 id="Win16__Dr__Watcom__Applying_Registers"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Applying Registers </h4>
+<br>Choosing Apply Registers updates the information in the Task Status dialog based on values of registers and flags to which
+ you have made changes.
+<h4 id="Win16__Dr__Watcom__Segment_Mapping"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Segment Mapping </h4>
+<br>Choosing Segment Map from the Task Status dialog opens a Segment Map dialog box which indicates the selectors to which
+ your map segments were mapped.&nbsp; There is one entry for every segment in the program.
+<br><br><tt><img src="drw7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> The Segment Map dialog lists the selectors to which the segments were mapped.</b>
+<br><br>This dialog allows you to view the data contained in each of your program's segments.&nbsp; To view this memory, double
+ click on the desired segment.&nbsp; This opens a Memory Display window for the selected segment.
+<br><br><tt><img src="drw8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> The Memory Display window displays the memory stored in the selected segment.</b>
+<br><br>The Memory Display window displays all of the data stored in the selected segment.&nbsp; This information appears
+ in hexadecimal form.&nbsp; This allows you to see if the data in memory is what you believe it should be.
+<br><br>There are a number of functions you can perform in the Memory Display window.&nbsp; Following is a description of
+ these functions.
+<br><br></tt><b>Dr. Watcom: Saving Window Information</b></tt>
+<br>The Save items in the File menu of the Memory Display window allow you to save the current window information to a text
+ file.&nbsp; Choosing Save from the File menu in the Memory Display window saves the data in the window into the current working
+ directory.&nbsp; A message box appears indicating the path to which Dr.&nbsp; Watcom saved the file.
+<br><br>Choosing Save As from the File menu allows you to specify the file to which you want to save the information currently
+ in the window.&nbsp; This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.
+&nbsp; A message box appears indicating the path to which Dr.&nbsp; Watcom saved the file.
+<br><br></tt><b>Dr. Watcom: Changing the Display</b></tt>
+<br>There are five ways to display the information on the Memory Display window.&nbsp; You can display the information as:
+<ul>
+<li>Bytes
+<li>Words
+<li>DWords
+<li>16 Bit Code
+<li>32 Bit Code
+</ul>
+<br>To change the form of the displayed data, select an item from the Display menu.&nbsp; When displaying data in bytes, the
+ data appears in the window as it physically appears in memory.&nbsp; When the data is displayed as words, the bytes in memory
+ are interpreted for you so that the values displayed are those that would be obtained by treating the memory as an array
+ of words.&nbsp; For example, if memory containing the values:
+<br><br>12 34 56 78 9A BC DE FF
+<br><br>was shown as words, the memory window would display:
+<br><br>3412 7856 BC9A FFDE
+<br><br>A similar interpretation is performed when the data is displayed as DWords.&nbsp; If the above memory was shown as
+ DWords, the memory window would display:
+<br><br>78563412 FFDEBC9A
+<br><br>This rearrangement of bytes does not affect the textual interpretation of the data shown on the right hand side of
+ the window.
+<br><br>Selecting 16 or 32 Bit Code from the Display menu presents the data in a disassembled form.&nbsp; Sometimes presenting
+ the data in disassembled form is not accurate.&nbsp; This is because when Dr.&nbsp; Watcom disassembles the data it begins
+ at the first byte of the memory block and disassembles it linearly.&nbsp; If a byte in this block, such as a padding byte,
+ throws off the sequence, the disassembly will be meaningless.
+<br><br></tt><b>Dr. Watcom: Setting the Offset</b></tt>
+<br>On the Memory Display window you can set the offset.&nbsp; This means that you can reposition the data so that the specified
+ line appears at the top of the window.&nbsp; The offset you enter appears on the first line.&nbsp; It will not necessarily
+ be the first piece of information because rounding often occurs to avoid breaking a line.
+<dl>
+<dt>(1)
+<dd><b> Choose Set Offset</b> from the menu bar on the Memory Display window.
+<br>This opens a Goto Offset dialog box.
+<br><br><tt><img src="drw9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> In the Goto Offset dialog, enter the offset you want to appears at the top of
+ the Memory Display window.</b>
+<dt><br>(2)
+<dd><b> Enter the desired offset</b> that you want to position at the top of the Memory Display window.&nbsp; You can enter the
+ offset in decimal or hexadecimal form.&nbsp; However, you must prefix hexadecimal values with 0x.
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>This closes the dialog and positions the data as requested.
+</dl>
+<br></tt><b>Dr. Watcom: The Handle Information Dialog Box</b></tt>
+<br>A Handle Information dialog box attached to the Memory Display window provides the following information:
+<ul>
+<li>Block Address
+<li>Block Handle
+<li>Block Size
+<li>Lock Count
+<li>Page Lock Count
+</ul>
+<br><tt><img src="drw10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> The Handle Information dialog box displays information about the memory object
+ displayed in the Memory Display Window.</b>
+<br><br>This box stays with the window when the Auto Position Info item under the File menu is checked.&nbsp; Deactivate this
+ function by selecting the item again from the File menu.
+<br><br>If the Handle Information dialog is not visible, reveal it by choosing Show Info from the File menu in the Memory
+ Display window.&nbsp; Close this dialog by double clicking on the system menu box in its upper left hand corner.
+<h4 id="Win16__Performing_a_Stack_Trace"> Win16:&nbsp; Performing a Stack Trace </h4>
+<br>A program is made up of a series of functions.&nbsp; A function executes when it is called by the operating system or
+ another function.&nbsp; When completed it returns to the point in the code from which it was called.
+<br><br>Whenever a function is called, a stack frame is pushed onto the stack.&nbsp; When the function returns, the stack
+ frame is popped from the stack.&nbsp; The stack frame contains information about the point from which the function was called
+ and to which it will return.&nbsp; The collection of stack frames currently on the stack is called a call chain.
+<br><br>The stack trace function lets you walk the call chain.&nbsp; This allows you to determine where each function in the
+ call chain was called from and where it will return to.&nbsp; To perform a stack trace, click on the Stack Trace button in
+ the Task Status dialog to reveal the Stack Trace dialog.
+<br><br><tt><img src="drw11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> The Stack Trace dialog allows you to walk the call chain.</b>
+<br><br>When the Stack Trace dialog opens, it contains information from the stack frame for the function that was executing
+ at the time of the fault.&nbsp; The Instructions Around Fault section displays the assembly instructions around the call
+ to the faulting function.&nbsp; The instruction directly after the call to the faulting function is marked with an asterisk.
+&nbsp; Other information includes the address of this instruction (CS:IP) and the base stack pointer (SS:BP) at the time of
+ the call.&nbsp; If the faulting module contained debugging information and the marked assembly instruction corresponds to
+ a source line, then source file information appears.
+<br><br>Selecting the Next button displays information from the next oldest stack frame.&nbsp; This is information about the
+ point from which the currently displayed function was called.&nbsp; If the currently displayed function was called by the
+ operating system, then the message &quot;No more stack frames!&quot; appears because there are no stack frames for calls
+ made from the operating system.
+<br><br>Selecting the Prev button displays information from the next most recent stack frame.&nbsp; This moves you in the
+ opposite direction along the call chain as pressing the Next button.
+<br><br>The Cancel button closes the window.
+<h3 id="Win16__Resetting_the_Fault_Handled_Flag"> Win16:&nbsp; Resetting the Fault Handled Flag </h3>
+<br>The Reset Fault Handled Flag menu item is only accessible when an exception occurs from which Dr.&nbsp; Watcom is unable
+ to recover.&nbsp; When such an error occurs, Dr.&nbsp; Watcom cannot log exceptions or be terminated until you choose Reset
+ Fault Handled Flag from the File menu.&nbsp; This will not happen frequently.
+<h2 id="Win16__Dr__Watcom__Working_with_Log_Files"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Working with Log Files </h2>
+<br>A log file is a text file created by Dr.&nbsp; Watcom.&nbsp; The log file consists of entries that describe the state
+ of the system at the time the entry was made.&nbsp; Dr.&nbsp; Watcom gives you the opportunity to create a log file entry
+ each time an exception occurs.&nbsp; Such entries include information about the state of the program that caused the exception,
+ as well as information about the state of the system.&nbsp; You can create a log file entry at any time using the Log Current
+ State menu item in the Log menu.
+<br><br>A log file is a permanent record of the state of the system and, possibly, your program.&nbsp; With a log file you
+ can make note of an error and return to it at a later time to examine and debug the problem.
+<h3 id="Win16__Log_the_Current_State"> Win16:&nbsp; Log the Current State </h3>
+<br>Choose Log Current State from the Log menu to write to the current log file.&nbsp; This tells Dr.&nbsp; Watcom to create
+ a log file entry with all of the log details except the Offending Task Information.&nbsp; The settings in the Log Options
+ dialog determine the information written to the log file.
+<br><br>The Log Current State item is also available on the system menu.
+<h3 id="Win16__Erase_the_Log_File"> Win16:&nbsp; Erase the Log File </h3>
+<br>To erase the current log file, choose Erase Log File from the Log menu.&nbsp; This erases the log file specified in the
+ Log File Options dialog.
+<br><br>Choosing this item reveals a message box which asks you to verify that you want to erase the specified log file.&nbsp;
+ Select yes to erase the log file or No to cancel the request.
+<h3 id="Win16__Customize_the_Log_File"> Win16:&nbsp; Customize the Log File </h3>
+<br>The Log Options item in the Log menu opens the Log Options dialog where you indicate to Dr.&nbsp; Watcom the information
+ you want to appear in log file entries.&nbsp; The Log Options item is also available from the system menu.
+<br><br><tt><img src="drw12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> In the Log Options dialog, you customize the log file to which you write information.</b>
+<br><br>The following sections describe the options that make up the Log Options dialog.
+<h4 id="Win16__Dr__Watcom__Naming_the_Log_File"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Naming the Log File </h4>
+<br>In the Log File Name field you can specify the file to which Dr.&nbsp; Watcom writes the log file entries.&nbsp; The Browse
+ button to the right of this field opens the Pick Log Filename dialog.&nbsp; This dialog lets you browse your file structure
+ and select the path to which Dr.&nbsp; Watcom writes the log file entries.
+<h4 id="Win16__Dr__Watcom__Specifying_the_Log_File_Data"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Specifying the Log File Data </h4>
+<br>In the Log File Data and Disassembly Options sections of the Log File Options dialog you select the information you want
+ to appear in the log file.&nbsp; The Log File Data section lists the various types of information that can be included in
+ a log file.&nbsp; If the check box for a piece of information is marked then that type of information will be written to
+ the log file.&nbsp; The options in this section are:
+<dl>
+<dt>Stack Trace
+<dd>When this option is selected stack trace information for the application that caused the exception is written when a log file
+ entry is made.&nbsp; This option only affects log entries made due to exceptions.
+<dt><br>Current Tasks
+<dd>When this option is selected a list of all tasks currently running in the system, including information about each task is
+ included in each log entry.
+<dt><br>All Modules
+<dd>When this option is selected a list of all modules currently loaded in the system, including information about each module
+ is included in each log entry.
+<dt><br>GDI Heap Info
+<dd>When this option is selected summary information about the state of the GDI local heap is included in each log entry.
+<dt><br>User Heap Info
+<dd>When this option is selected summary information about the state of the User local heap is included in each log entry.
+<dt><br>Mem Manager Info
+<dd>When this option is selected summary information about the state of the virtual memory manager is included in each log entry.
+<dt><br>Module Segments
+<dd>When this option is selected log file entries list the selectors for each module currently loaded in the system.&nbsp; The
+ All Modules option must also be selected to write this information.
+<dt><br>Query for Notes
+<dd>When the Query for Notes option is selected Dr.&nbsp; Watcom displays an Annotate Log dialog whenever a log file entry is
+ made.&nbsp; This dialog lets you enter some explanatory text that will be included in the log file entry.
+<br><tt><img src="drw13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> In the Annotate Log dialog box, enter text you want to include in the log file
+ entry.</b>
+<br><br>Enter any text you want to include in the space provided.&nbsp; Press the OK button to include this text in the log
+ file.&nbsp; If you press the Cancel button Dr.&nbsp; Watcom continues to create the log file entry but does not include any
+ information from the dialog.
+</dl>
+<br>The values in the Disassembly Options box only affect log entries made due to exceptions.&nbsp; These values relate to
+ the disassembly section appearing in the log file.&nbsp; The value in the Disasm Backup field tells Dr.&nbsp; Watcom the
+ number of instructions before the fault you want written to the log file.&nbsp; The value in the Disasm Lines field tells
+ Dr.&nbsp; Watcom the total number instructions you want it to show in the log file.&nbsp; This value includes the instructions
+ displayed before the fault.
+<h4 id="Win16__Dr__Watcom__Other_Options"> Win16:&nbsp; Dr.&nbsp; Watcom:&nbsp; Other Options </h4>
+<br>If the Auto Log option is selected, Dr.&nbsp; Watcom creates a log file when an exception occurs and then terminates the
+ application that caused the fault instead of revealing the exception dialog.&nbsp; The Auto Log option is useful when running
+ test streams.
+<br><br>The Max Log File Size field allows you to set the maximum size in bytes for a log file.&nbsp; When the log file exceeds
+ this size, Dr.&nbsp; Watcom prompts you with a message box when you start the application.
+<br><br><tt><img src="drw14.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> A message box prompts you to erase the log file when it becomes larger than
+ the maximum log file size specified on the Log File Options dialog.</b>
+<br><br>This message box offers you the opportunity to delete your log file before it becomes uncontrollably large.
+<h2 id="Win16__Performing_Task_Control"> Win16:&nbsp; Performing Task Control </h2>
+<br>Choosing Task Control from the Task menu or the System menu opens the Task Control dialog.&nbsp; This dialog displays
+ a Task List which consists of all programs currently running under Windows.&nbsp; The Task Control dialog lets you terminate
+ and debug tasks.
+<br><br>The task list in the Task Control dialog is different from the system Task List which appears when you double click
+ on the wallpaper.&nbsp; The system Task List list displays only applications that currently have a window open on the desktop.
+&nbsp; The task list in the Task Control dialog lists all tasks regardless of whether they have a window open.
+<h3 id="Win16__Terminating_a_Task"> Win16:&nbsp; Terminating a Task </h3>
+<br>The Kill Task button on the Task Control dialog terminates a task listed in the Task List.&nbsp; This function is extremely
+ powerful.&nbsp; It allows you to terminate programs immediately without giving them the opportunity to clean up by saving
+ data, unloading DLLs, and freeing allocated memory.
+<br><br>For this reason, you should exercise care when using this function.&nbsp; It is wise to only use the Kill Task function
+ for tasks that cannot be terminated in the usual way.
+<dl>
+<dt>To terminate a task:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Task Control</b> from the Task menu.
+<br>This opens the Task Control dialog containing a list of all tasks currently running in the system.
+<br><br><tt><img src="drw15.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 15.</i></b><b><i></i></b><b> In the Task Control dialog, you can terminate a task selected from the Task
+ List.</b>
+<dt><br>(2)
+<dd><b> Select the task you want to terminate</b> by clicking on its entry in the task list.
+<dt><br>(3)
+<dd><b> Select the Kill Task button.</b>
+<br>This terminates the selected task, removing it from the task list.&nbsp; Dr.&nbsp; Watcom enters this event in the event
+ list.
+</dl>
+<h3 id="Win16__Debugging_a_Task"> Win16:&nbsp; Debugging a Task </h3>
+<br>Use the Debug Task button on the Task Control dialog to attach the debugger to the selected task from the Task List.
+<dl>
+<dt>To debug a task:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Task Control from the Task menu.</b>
+<br>This opens the Task Control dialog containing a list of all tasks currently running in the system.
+<dt><br>(2)
+<dd><b> Select the task you want to debug</b> by clicking on its entry in the task list.
+<dt><br>(3)
+<dd><b> Select the Debug Task button.</b>
+<br>This opens the Debugger Options dialog box.
+<br><br><tt><img src="drw16.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 16.</i></b><b><i></i></b><b> In the Debugger Option dialog, you enter the command line options to pass to
+ the debugger.</b>
+<dt><br>(4)
+<dd><b> Enter the command line options</b> you want Dr.&nbsp; Watcom to pass to the debugger.
+<dt><br>(5)
+<dd><b> Click on OK.</b>
+<br>This starts the debugger.
+</dl>
+</body>

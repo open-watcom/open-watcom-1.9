@@ -1,0 +1,79 @@
+164_366-600_ref_man.pdf
+21064_64a_hrm.pdf
+21066_66a_hrm.pdf
+21164_hrm.pdf
+21264ev67_hrm.pdf
+21264ev68a_hrm.pdf
+21264ev68cb_ev68dc_hrm.pdf
+21264ev6_hrm.pdf
+231466.pdf
+29047504.pdf
+3dnow technology manual.pdf
+817-1984.pdf
+8259A.pdf
+82C54.pdf
+abi386-4.pdf
+alpha 21264 compiler writers guide.pdf
+alpha architecture handbook.pdf
+alpha calling standard.pdf
+alpha nt porting from x86.pdf
+alpha_arch_ref.pdf
+amd64 1 - application programming.pdf
+amd64 2 - system programming.pdf
+amd64 3 - general-purpose and system instructions.pdf
+amd64 4 - 128-bit media instructions.pdf
+amd64 5 - 64-bit media and x87 instructions.pdf
+cbook1_0b.pdf
+cgdoc.html
+CodeView.pdf
+comp_guide_v2.pdf
+dpmi10.pdf
+dpmi1_0.txt
+dwarf20.pdf
+dwarf3-draft7-011029.pdf
+elf-64-gen.pdf
+elf.pdf
+elf12.pdf
+exe-win.txt
+exefmt.txt
+floating_point_math.pdf
+ia64abi.pdf
+ibmhll.html
+ieee-754.pdf
+ieee-854.pdf
+intel 286 programmers reference manual.txt
+intel 287 programmers reference manual.txt
+intel 386 programmers reference manual.txt
+intel 387 programmers reference manual.txt
+intel optimisations manual - p4.pdf
+intel optimisations manual.pdf
+intel optimisations reference manual.pdf
+intel software developers guide volume 1.pdf
+intel software developers guide volume 2.pdf
+intel software developers guide volume 3.pdf
+intel_hex.txt
+itanium_asm_lang.pdf
+lst.txt
+lxomf.pdf
+MC146818.pdf
+MC6845.pdf
+mipsabi.pdf
+mipspro n32 abi handbook.pdf
+n1256.pdf
+omf.pdf
+pecoff.pdf
+pe_and_symbols.pdf
+PostScript Language Reference Manual.pdf
+PostScript Level 2 Reference Manual.pdf
+powerpc compiler writers guide.pdf
+powerpc programmers reference guide.pdf
+powerpc programming environments.pdf
+powerpc svr4 abi.pdf
+processor detection.pdf
+r10000 microprocessor users manual.pdf
+r4000 microprocessor users manual.pdf
+sparc svr4 abi.pdf
+sparcv8.pdf
+sparcv9.pdf
+System V ABI 4.1.pdf
+x86_64 svr4 abi.pdf

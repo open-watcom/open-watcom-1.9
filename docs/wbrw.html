@@ -1,0 +1,981 @@
+<head>
+<title> Open Watcom 1.9 Source Browser </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_a_Module_File">Adding a Module File</a>
+<br><a href="#AutoMarranging_of_Graph_Views">Auto-arranging of Graph Views</a>
+<br><a href="#Automatically_Saving_Options_on_Exit">Automatically Saving Options on Exit</a>
+<dt><br>- B -
+<dd><a href="#Browser_Files">Browser Files</a>
+<br><a href="#The_Browser_Menu_Bar">The Browser Menu Bar</a>
+<dt><br>- C -
+<dd><a href="#Changing_the_Graph_Orientation">Changing the Graph Orientation</a>
+<br><a href="#The_Class_Inheritance_View">The Class Inheritance View</a>
+<br><a href="#Collapsing_Nodes">Collapsing Nodes</a>
+<br><a href="#Configuring_the_Browser">Configuring the Browser</a>
+<br><a href="#Creating_a_Browser_Database_File_from_the_Command_Line">Creating a Browser Database File from the Command Line</a>
+<br><a href="#Creating_a_Browser_Database_File_within_the_Browser">Creating a Browser Database File within the Browser</a>
+<dt><br>- D -
+<dd><a href="#Defining_Graph_View_Legends">Defining Graph View Legends</a>
+<br><a href="#Disabling_a_Module_File">Disabling a Module File</a>
+<dt><br>- E -
+<dd><a href="#Enabling_a_Module_File">Enabling a Module File</a>
+<br><a href="#Enumerator_Styles">Enumerator Styles</a>
+<br><a href="#Expanding_Nodes">Expanding Nodes</a>
+<dt><br>- F -
+<dd><a href="#Find">Find</a>
+<br><a href="#Find_Filters">Find Filters</a>
+<br><a href="#Find_Pattern">Find Pattern</a>
+<br><a href="#Find_Selected">Find Selected</a>
+<br><a href="#The_Function_Call_Tree_View">The Function Call Tree View</a>
+<dt><br>- G -
+<dd><a href="#Global_Symbol_Queries">Global Symbol Queries</a>
+<br><a href="#Global_Views">Global Views</a>
+<br><a href="#Goto_Definition">Goto Definition</a>
+<dt><br>- L -
+<dd><a href="#Line_Drawing_Method_for_Graph_Views">Line Drawing Method for Graph Views</a>
+<br><a href="#The_List_View">The List View</a>
+<br><a href="#Loading_Options">Loading Options</a>
+<br><a href="#Locating_Symbols">Locating Symbols</a>
+<dt><br>- M -
+<dd><a href="#Manipulating_the_Tree_Views">Manipulating the Tree Views</a>
+<br><a href="#Member_Filters_for_Classes">Member Filters for Classes</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Browser">The Open Watcom Browser</a>
+<br><a href="#Opening_an_Existing_Browser_Database_File">Opening an Existing Browser Database File</a>
+<dt><br>- P -
+<dd><a href="#Performing_the_Find">Performing the Find</a>
+<dt><br>- Q -
+<dd><a href="#Query_Filters">Query Filters</a>
+<br><a href="#Query_Pattern">Query Pattern</a>
+<br><a href="#Quitting_the_Browser">Quitting the Browser</a>
+<dt><br>- R -
+<dd><a href="#Regular_Expressions_for_Find_and_Query">Regular Expressions for Find and Query</a>
+<br><a href="#Removing_a_Module_File">Removing a Module File</a>
+<dt><br>- S -
+<dd><a href="#Saving_Options">Saving Options</a>
+<br><a href="#Selecting_a_Text_Editor">Selecting a Text Editor</a>
+<br><a href="#Selecting_Root_Nodes">Selecting Root Nodes</a>
+<br><a href="#Setting_Source_Search_Paths">Setting Source Search Paths</a>
+<br><a href="#Source_References">Source References</a>
+<br><a href="#Starting_the_Browser">Starting the Browser</a>
+<br><a href="#Symbol_References">Symbol References</a>
+<dt><br>- U -
+<dd><a href="#Using_the_Browser">Using the Browser</a>
+<dt><br>- V -
+<dd><a href="#Viewing_Detail_Information">Viewing Detail Information</a>
+<dt><br>- W -
+<dd><a href="#Working_with_Browser_Module_Files">Working with Browser Module Files</a>
+</dl>
+<h1 id="The_Open_Watcom_Browser"> The Open Watcom Browser </h1>
+<br>Imagine being assigned to a project with thousands of lines of C++ source code.&nbsp; Learning the relationship between
+ the objects of such an application can be very difficult.&nbsp; The Browser was developed to solve this very problem - to
+ help developers better understand the source code they are working with.&nbsp; Information such as the class inheritance
+ hierarchy and the call tree for an application can be studied while using the Browser.&nbsp; Once you have located a symbol,
+ you can quickly view the source file that contains its definition or list all the files that reference it.&nbsp; Viewing
+ these relationships helps you understand how the program works.
+<br><br>This chapter describes the many tasks you can perform with the Browser, including creating and opening a Browser database
+ file, configuring the Browser session, and viewing the list of all symbols in your program, the class inheritance hierarchy,
+ and call structure.
+<h2 id="Using_the_Browser"> Using the Browser </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Browser
+<li>Starting the Browser through the Open Watcom Integrated Development Environment
+<li>Quitting the Browser
+<li>The Browser Menu Bar
+</ul>
+<h3 id="Starting_the_Browser"> Starting the Browser </h3>
+<br>To start the Browser, double click on the Browser icon.&nbsp; This opens the Browser window.&nbsp; The caption bar of
+ this window displays the current option file and Browser database file.&nbsp; The message<tt> no browser file</tt> appears
+ on this line if a database file is not currently selected.
+<br><br>The Browser is an integrated tool that you can open from the IDE so that you can browse the source code of the project
+ you are working on.&nbsp; Refer to the IDE guide for further information on the Integrated Development Environment.
+<h3 id="Quitting_the_Browser"> Quitting the Browser </h3>
+<br>To exit the Browser, choose<b> Exit</b> from the<b> File</b> menu of the Browser window.&nbsp; If you made changes to
+ the options during the Browser session, a message box appears prompting you to save the changes.
+<br><br>Choose<b> No</b> in the message box to close the Browser session without saving.&nbsp; Any options changed within
+ the session are lost.
+<br><br>Choose<b> Yes</b> in the message box to save the current options to the current option file, if one exists, and exit
+ the Browser session.&nbsp; If no option file exists, a<b> Save As</b> dialog appears that allows you to specify the option
+ file to which you want to save the new options.
+<dl>
+<dt>
+<dd><b> Select</b><b> Cancel</b> to return to the main Browser window without saving the options.
+<br>or
+<dt><br>
+<dd><b> Select</b><b> OK</b> to close the dialog and exit the Browser session.
+</dl>
+<h3 id="The_Browser_Menu_Bar"> The Browser Menu Bar </h3>
+<br>The Browser's menu bar consists of the following eight menus:
+<dl>
+<dt>File
+<dd>Create, open, and configure Browser files; save and load options
+<dt><br>View
+<dd>Choose a global view for the current database file
+<dt><br>Detail
+<dd>View detailed information for a symbol
+<dt><br>Tree
+<dd>Choose the nodes to display for a tree view
+<dt><br>Locate
+<dd>Find symbols within the current global view
+<dt><br>Options
+<dd>Configure the Browser session
+<dt><br>Windows
+<dd>Select from the list of Browser windows currently open
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<h2 id="Browser_Files"> Browser Files </h2>
+<br>To browse your source code, you must first create a Browser module file for each source file that you wish to browse.
+&nbsp; Currently, browsing is supported by the Open Watcom C/C++ compilers only (Open Watcom FORTRAN 77 does not support browsing).
+&nbsp; To create a Browser module file, specify the &quot;db&quot; option when you compile the source file.&nbsp; If you are
+ using the Open Watcom Integrated Development Environment, select<b> Emit Browser Information</b> from the<b> Debugging Switches</b>
+ panel of the<b> Compiler Switches</b> dialog.&nbsp; The Browser module file will have the same name as the source file and
+ an extension of &quot;.MBR&quot;.
+<br><br>Once the Browser module files have been created, these files are merged and a Browser database file is created.&nbsp;
+ This process eliminates redundant information such as duplicate definitions that occur when a header file is included by
+ many source files.&nbsp; Browser database files have the extension &quot;.DBR&quot;.
+<br><br>The Browser allows you to configure your session and saves this configuration to an options file.&nbsp; Options files
+ have the extension &quot;.OBR&quot;.&nbsp; The file name<tt> setup.obr</tt> is the default name of the options file.&nbsp;
+ The default options file is automatically loaded by the Browser when the Browser is started.
+<h3 id="Creating_a_Browser_Database_File_within_the_Browser"> Creating a Browser Database File within the Browser </h3>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> New</b> from the<b> File</b> menu.
+<br>This opens the<b> New Browser File</b> dialog where you enter the name of the Browser database file you are creating.
+<br><br><tt><img src="brow1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> Use the New Browser File dialog to create a new Browser database file.</b>
+<dt><br>(2)
+<dd><b> Type the name and path</b> of the new Browser database file.
+<br>or
+<dt><br>
+<dd><b> Click on the</b><b> Files</b> button to open a second dialog that allows you to browse the directory structure for an
+ existing Browser database file.&nbsp; Select an existing file and change its name.&nbsp; If you do not change its name, a
+ message box appears when you press<b> OK</b> asking if you want to overwrite the existing file.
+<dt><br>(3)
+<dd><b> Click on</b><b> OK.</b>
+<br>This opens a<b> Module</b> window that will eventually contain a list of the module files that will make up the database
+ file.
+<dt><br>(4)
+<dd><b> Click on the</b><b> Add</b> button in the<b> Module</b> window.
+<br>This opens the<b> Select Module File(s)</b> dialog where you choose the module files to add to the database file.
+<dt><br>(5)
+<dd><b> Select the module files</b> to add to the database file and click on<b> OK.</b>
+<br>or
+<dt><br>
+<dd><b> Double click</b> on the desired module file.
+<br>This closes the<b> Select Module File(s)</b> dialog and adds the selected module file to the Browser file component list.
+&nbsp; Each module file on the components list has a check box.&nbsp; When added, this check box is marked with an X, indicating
+ that the module file is enabled.
+<dt><br>(6)
+<dd><b> Continue with steps 4 and 5</b> until you have added all desired module files to the component list.
+<br><tt><img src="brow2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Modules dialog displays the selected module files.</b>
+<dt><br>(7)
+<dd><b> Click on</b><b> OK</b> on the<b> Module</b> window.
+<br>This closes the<b> Module</b> window and creates the database file.
+</dl>
+<h3 id="Creating_a_Browser_Database_File_from_the_Command_Line"> Creating a Browser Database File from the Command Line </h3>
+<br>It is also possible to create the Browser database file from the command line.&nbsp; This allows you to make Browser database
+ file creation part of your standard build procedure.&nbsp; When you do this, the batch build procedure will automatically
+ update your database file.&nbsp; Updating the Browser database file occurs only if changes have been made to a module file
+ within the database file.
+<br><br>A separate utility, called the merger, is used to create the database file.&nbsp; The name of the merger program is<tt>
+ wbrg.exe.</tt>&nbsp; Its command line consists of the name of the database file and a list of the module files (.MBR files)
+ to be merged.&nbsp; The name of the database file must be preceded by a<tt> database</tt> command.&nbsp; The default extension
+ given to the database file is &quot;.DBR&quot;.&nbsp; The list of module files must be preceded by a<tt> file</tt> command.
+&nbsp; The module file names must be separated by commas or enclosed by curly braces and separated by spaces.&nbsp; The list
+ of module file names can contain wild cards.&nbsp; The following are examples of valid merger commands.&nbsp; In each case,
+ the module files<tt> m1.mbr</tt> and<tt> m2.mbr</tt> will be processed and the database file<tt> db.dbr</tt> will be created.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wbrg database db file m1, m2</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wbrg database db file { m1 m2 }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wbrg file m1, m2 database db</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wbrg file { m1 m2 } database db</tt>
+<br><br>It is also possible to specify a command file that contains merger commands.&nbsp; Command files have the extension
+ &quot;.CBR&quot;.&nbsp; Consider a command file, called<tt> merge.cbr,</tt> containing the following merger commands.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; database db</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file m1</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file m2</tt>
+<br><br>The following example will achieve the same results as the previous example.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wbrg @merge</tt>
+<br><br>If you want to suppress the listing of file names that the merger produces as it is working, you can include the &quot;quiet&quot;
+ option on the command line or in the command file.
+<h3 id="Opening_an_Existing_Browser_Database_File"> Opening an Existing Browser Database File </h3>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Open</b> from the<b> File</b> menu.
+<br>This opens the<b> Open Browser Database File</b> dialog where you select the database file you want to open.
+<dt><br>(2)
+<dd><b> Select a database file to open and click on</b><b> OK.</b>
+<br>or
+<dt><br>
+<dd><b> Double click</b> on the desired database file.
+<br>This closes the<b> Open Browser Database File</b> dialog.
+<dl>
+<dt>Note:
+<dd>You can have only one database file open at a time.&nbsp; If you open a second database file, the Browser discards the first
+ and displays information for the second.
+</dl>
+</dl>
+<h3 id="Working_with_Browser_Module_Files"> Working with Browser Module Files </h3>
+<br>Once a Browser database file is loaded, you might want to edit the list of modules originally used to create the database
+ file.&nbsp; Editing the list of modules allows you to temporarily remove modules from the database or add modules to the
+ database.&nbsp; For example, you may decide that you only want to browse a particular module or set of modules or you may
+ have forgotten a module when the database was originally created.
+<br><br>The<b> Modules</b> menu item in the<b> File</b> menu allows you to view the list of module files that make up the
+ current database file.&nbsp; From this list you can perform the following functions on the module files:
+<ul>
+<li>Add
+<li>Remove
+<li>Disable
+<li>Enable
+</ul>
+<br><tt><img src="brow3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> On the Modules dialog, you can add, remove, disable, and enable module files.</b>
+<h4 id="Adding_a_Module_File"> Adding a Module File </h4>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Modules</b> from the<b> File</b> menu.
+<br>This opens the<b> Modules</b> dialog for the current database file.&nbsp; This dialog lists all module files that make
+ up the database file.&nbsp; Each module file has a check box.&nbsp; An X in this box indicates that the module file is enabled.
+&nbsp; The Browser browses only the enabled module files.
+<dt><br>(2)
+<dd><b> Click on the</b><b> Add</b> button in the<b> Modules</b> dialog.
+<br>This opens the<b> Select Module File(s)</b> dialog where you choose the module files to add to the current Browser file.
+<dt><br>(3)
+<dd><b> Select the module files</b> to add to the Browser file and click on<b> OK.</b>&nbsp; Select multiple module files by holding
+ the Shift key while you click on the desired files.
+<br>Clicking on OK closes the<b> Select Module File(s)</b> dialog and adds the selected module file to the database file.
+&nbsp; Each module file in the module list has a check box.&nbsp; When added, this check box is marked with an X, indicating
+ that the module file is enabled.
+<dt><br>(4)
+<dd><b> Continue with steps 2 and 3</b> until you have added all desired module files to the component list.
+<dt><br>(5)
+<dd><b> Click on</b><b> OK</b> in the<b> Module</b> dialog.
+<br>This closes the<b> Modules</b> dialog and updates the database file.
+</dl>
+<h4 id="Removing_a_Module_File"> Removing a Module File </h4>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Modules</b> from the<b> File</b> menu.
+<br>This opens the<b> Modules</b> dialog for the current database file.&nbsp; This dialog lists all module files that make
+ up the database file.&nbsp; Each module file has a check box.&nbsp; An X in this box indicates that the module file is enabled.
+&nbsp; The Browser browses only the enabled module files.
+<dt><br>(2)
+<dd><b> Click once on the module file</b> you want to remove from the database file.
+<br>This highlights the selected module file.
+<dt><br>(3)
+<dd><b> Click on the</b><b> Remove</b> button in the<b> Modules</b> dialog.
+<br>This removes the selected module file from the list.
+<dt><br>(4)
+<dd><b> Click on</b><b> OK</b> in the<b> Modules</b> dialog.
+<br>This closes the<b> Modules</b> dialog and updates the database file.
+</dl>
+<h4 id="Disabling_a_Module_File"> Disabling a Module File </h4>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Modules</b> from the<b> File</b> menu.
+<br>This opens the<b> Modules</b> dialog for the current database file.&nbsp; This dialog lists all module files that make
+ up the database file.&nbsp; Each module file has a check box.&nbsp; An X in this box indicates that the module file is enabled.
+&nbsp; The Browser browses only the enabled module files.
+<dt><br>(2)
+<dd><b> Click in the check box</b> of the module file you want to disable.&nbsp; Alternatively, use the up and down arrow keys
+ to select the module file you wish to disable.&nbsp; Press the space bar to disable the currently selected module file.
+<br>This removes the X.&nbsp; The blank box indicates that the module file is disabled and will not be browsed.
+<dt><br>(3)
+<dd><b> Repeat step 2</b> until you have disabled all desired module files.
+<dt><br>(4)
+<dd><b> Click on</b><b> OK</b> on the<b> Modules</b> dialog.
+<br>This closes the<b> Modules</b> dialog and updates the database file.
+</dl>
+<br>To disable all of the module files in the<b> Modules</b> dialog, click on the<b> Disable All</b> button.&nbsp; Click on<b>
+ OK</b> to update the database file and close the<b> Modules</b> dialog.
+<h4 id="Enabling_a_Module_File"> Enabling a Module File </h4>
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Modules</b> from the<b> File</b> menu.
+<br>This opens the<b> Modules</b> dialog for the current database file.&nbsp; This dialog lists all module files that make
+ up the database file.&nbsp; Each module file has a check box.&nbsp; An X in this box indicates that the module file is enabled.
+&nbsp; The Browser browses only the enabled module files.
+<dt><br>(2)
+<dd><b> Click in the check box</b> of the module file you want to enable.&nbsp; Alternatively, use the up and down arrow keys
+ to select the module file you wish to enable.&nbsp; Press the space bar to enable the currently selected module file.
+<br>This places an X in the box indicating that the module file is enabled and will be browsed.
+<dt><br>(3)
+<dd><b> Repeat step 2</b> until you have enabled all desired module files.
+<dt><br>(4)
+<dd><b> Click on</b><b> OK</b> on the<b> Module</b> dialog.
+<br>This closes the<b> Modules</b> dialog and updates the database file.
+</dl>
+<br>To enable all of the module files on the<b> Modules</b> window, click on the<b> Enable All</b> button.&nbsp; Click on<b>
+ OK</b> to update the database file and close the<b> Modules</b> window.
+<h2 id="Global_Views"> Global Views </h2>
+<br>The menu items under the View menu let you display a global view of your program.&nbsp; A global view is one that displays
+ relationships between all symbols in your program.&nbsp; The following are global views.
+<dl>
+<dt>List
+<dd>Displays a list of all symbols in your program
+<dt><br>Inheritance
+<dd>Displays the class inheritance graph for your program
+<dt><br>Call
+<dd>Displays the call graph for your program
+</dl>
+<br>Once a global view has been displayed, you can view detailed information for the symbols in the global view.&nbsp; Refer
+ to the section entitled <a href="#Viewing_Detail_Information">Viewing Detail Information</a> for a discussion on displaying
+ detail information.
+<br><br>It is possible to specify a query that restricts the symbols displayed in global views.&nbsp; See the section entitled
+ <a href="#Global_Symbol_Queries">Global Symbol Queries</a> for more information.
+<h3 id="The_List_View"> The List View </h3>
+<br>Using the Browser to view the symbols in your program is much faster than searching through your source code for symbol
+ information.&nbsp; From the symbols list you can quickly access detailed information on a symbol that tells you where the
+ symbol is used and where it is defined.
+<br><br>To view a list of all symbols in the current Browser database file, choose<b> List</b> from the<b> View</b> menu.
+&nbsp; This displays a window which can list all symbols in your program.&nbsp; The window has a vertical scroll bar that
+ allows you to scroll through the list of symbols in your program.&nbsp; Since your program may contain a very large number
+ of symbols, the Browser does not load all the symbols in your program from the database.&nbsp; Instead, only the number of
+ symbols that can be displayed in the window are loaded.&nbsp; As far as the Browser is concerned, this list is infinite.
+&nbsp; For this reason, the scroll thumb on the vertical scroll bar is positioned in the middle of the vertical scroll bar
+ and cannot be moved.&nbsp; Click below the vertical scroll thumb to view the next page of symbols and above the vertical
+ scroll thumb to view the previous page of symbols.
+<br><br><tt><img src="brow4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The List window displays all symbols in the current browser database file.</b>
+<br><br>Each symbol has a icon to its left.&nbsp; A letter marking each icon indicates the symbol type in the source code
+ as follows:
+<dl>
+<dt>F
+<dd>Function
+<dt><br>C
+<dd>Class
+<dt><br>T
+<dd>Typedef
+<dt><br>V
+<dd>Variable
+<dt><br>E
+<dd>Enum
+</dl>
+<br>There are several ways to display the detail view of symbols.&nbsp; When you reveal the detail view, the file folder icon
+ changes to an open file folder.&nbsp; To close the detail view dialog, click on the file folder.&nbsp; This changes the icon
+ back to a closed folder and closes the dialog.&nbsp; To reveal the detail view of a symbol you can perform any of the following
+ actions:
+<ul>
+<li>The file folder icons are hot spots that display the detail view of the selected symbol.&nbsp; To activate the hot spot,
+ click once on the symbol name to select it and press ENTER to reveal the detail view.
+<li>Click once on the file folder to reveal the detail view for that symbol.
+<li>Click once on the symbol name to select it and choose<b> Detail</b> from the<b> Detail</b> menu.
+<li>Double click on the symbol name.
+</ul>
+<h3 id="The_Class_Inheritance_View"> The Class Inheritance View </h3>
+<br>Selecting<b> Inheritance</b> from the<b> View</b> menu displays the inheritance hierarchy of all of the C++ classes in
+ your program using a tree.&nbsp; This allows you to see the relationships between base classes and derived classes.&nbsp;
+ In the inheritance hierarchy, each node represents a class.
+<br><br><tt><img src="brow5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The Inheritance view displays the hierarchy of all C++ classes in your program
+ (graph view shown).</b>
+<br><br>There are two different tree views you can choose from to display the class hierarchy:
+<dl>
+<dt>Graph view
+<dd>The graph view displays each class in a box.&nbsp; A box, or node, is connected to another node if one is a derived class
+ of the other.&nbsp; The root node of the tree is the base class for all nodes in the tree.&nbsp; The tree is initially fully
+ expanded.&nbsp; See the section entitled <a href="#Manipulating_the_Tree_Views">Manipulating the Tree Views</a> for more
+ information on removing and expanding nodes from the tree.
+<dt><br>Outline view
+<dd>The outline view displays the same information as the graph view but in a different way.&nbsp; The outline view is initially
+ fully collapsed.&nbsp; That is, only the base classes are displayed.&nbsp; In order to view the derived classes of a node,
+ you must single click on the node.&nbsp; This expands the node, displaying all its immediate derived classes.&nbsp; See the
+ section entitled <a href="#Manipulating_the_Tree_Views">Manipulating the Tree Views</a> for more information on removing
+ and expanding nodes from the tree.
+</dl>
+<h3 id="The_Function_Call_Tree_View"> The Function Call Tree View </h3>
+<br>Selecting<b> Call</b> from the<b> View</b> menu displays the function call tree for all functions in your program.&nbsp;
+ This allows you to see all the functions that a given function calls and conversely all functions that call a certain function.
+&nbsp; In the call tree, each node represents a function.
+<br><br><tt><img src="brow6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Call view displays a call tree for all functions in your program (outline
+ view shown).</b>
+<br><br>There are two different tree views you can choose from to display the function call tree:
+<dl>
+<dt>Graph view
+<dd>The graph view displays each function in a box.&nbsp; A box, or node, is connected to another node if one function calls the
+ other.&nbsp; The tree is initially fully expanded.&nbsp; See the section entitled <a href="#Manipulating_the_Tree_Views">Manipulating the Tree Views</a>
+ for more information on removing and expanding nodes from the tree.
+<dt><br>Outline view
+<dd>The outline view displays the same information as the graph view but in a different way.&nbsp; The outline view is initially
+ fully collapsed.&nbsp; In order to view the functions called by the function specified in the node, you must single click
+ on the node.&nbsp; This expands the node, displaying all functions it calls.&nbsp; See the section entitled <a href="#Manipulating_the_Tree_Views">Manipulating the Tree Views</a>
+ for more information on removing and expanding nodes from the tree.
+</dl>
+<h3 id="Manipulating_the_Tree_Views"> Manipulating the Tree Views </h3>
+<br>With both the graph view and the outline view you can change the information displayed in the following ways:
+<ul>
+<li>select the root nodes you want to view
+<li>expand any node in the view
+<li>collapse any node in the view
+</ul>
+<br>You expand and collapse nodes in the graph and outline views to hide and reveal descendant and ancestor nodes of the selected
+ node.&nbsp; There are two ways to expand and collapse nodes:
+<ul>
+<li>choose the desired function from the<b> Tree</b> menu
+<li>click on the node (applies only to the outline view)
+</ul>
+<br>In addition to these functions, you can force the graph to be redrawn when a node in the tree view is collapsed.&nbsp;
+ By default, collapsed nodes will leave a gap in the graph.&nbsp; Redrawing the graph removes these gaps.&nbsp; This feature
+ is controlled by an option.&nbsp; See the section entitled <a href="#Configuring_the_Browser">Configuring the Browser</a>
+ for more information.
+<br><br>Clicking on the right mouse button when the mouse cursor is in a tree view will automatically display the<b> Tree</b>
+ menu.&nbsp; This allows you to perform the actions in the<b> Tree</b> menu without actually going to the menu bar.
+<h4 id="Selecting_Root_Nodes"> Selecting Root Nodes </h4>
+<br>Select<b> Select Root Nodes</b> from the<b> Tree</b> menu to change the root nodes that are displayed.&nbsp; The root
+ nodes you select appear in the graph or outline view; all other root nodes are hidden.
+<br><br>Choosing<b> Select Root Nodes</b> from the<b> Tree</b> menu opens the<b> Select Root Nodes</b> dialog.&nbsp; This
+ dialog lists all of the symbols that appear as a root node.&nbsp; Each symbol in the<b> Select Root Nodes</b> dialog has
+ a check box.&nbsp; When enabled, this check box is marked with an X, indicating that the symbol will appear as a root node
+ in the display.
+<br><br><tt><img src="brow7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> On the Select Root Nodes dialog, choose the symbols you want to appear as root
+ nodes.</b>
+<br><br></tt><b>Disabling Root Nodes</b></tt>
+<dl>
+<dt>(1)
+<dd><b> Click in the check box</b> of the root node you want to disable.&nbsp; Alternatively, use the up and down arrow keys to
+ select the root node you wish to disable.&nbsp; Press the space bar to disable the currently selected root node.
+<br>The X disappears meaning that the root node is disabled and will not appear in the display.
+<dt><br>(2)
+<dd><b> Repeat step one</b> until you have disabled all desired root nodes.
+<dt><br>(3)
+<dd><b> Click on</b><b> OK</b> in the<b> Select Root Nodes</b> dialog.
+<br>The<b> Select Root Nodes</b> dialog closes and the display is updated.
+</dl>
+<br>To disable all of the root nodes in the<b> Select Root Nodes</b> dialog, click on the<b> Disable All</b> button.&nbsp;
+ This removes Xs from each box in the<b> Select Root Nodes</b> dialog.&nbsp; Click on<b> OK</b> to close the dialog and update
+ the display.
+<dl>
+<dt>Note:
+<dd>This disables the selected root nodes only for the active view window.
+</dl>
+<br></tt><b>Enabling Root Nodes</b></tt>
+<dl>
+<dt>(1)
+<dd><b> Click in the check box</b> of the root node you want to enable.&nbsp; Alternatively, use the up and down arrow keys to
+ select the root node you wish to enable.&nbsp; Press the space bar to enable the currently selected root node.
+<br>An X appears in the box indicating that the root node is enabled and will appear in the display.
+<dt><br>(2)
+<dd><b> Repeat step one</b> until you have enabled all desired root nodes.
+<dt><br>(3)
+<dd><b> Click on</b><b> OK</b> in the<b> Select Root Nodes</b> dialog.
+<br>The<b> Select Root Nodes</b> dialog closes and the display is updated.
+</dl>
+<br>To enable all of the root nodes in the<b> Select Root Nodes</b> dialog, click on the<b> Enable All</b> button.&nbsp; An
+ X appears in each box on the<b> Select Root Nodes</b> dialog.&nbsp; Click on<b> OK</b> to close the dialog and update the
+ display.
+<dl>
+<dt>Note:
+<dd>This enables the selected root nodes only for the active view window.
+</dl>
+<h4 id="Expanding_Nodes"> Expanding Nodes </h4>
+<br>You can expand the display all at once, one level at a time, or one branch at a time.&nbsp; To expand by levels and branches,
+ you must first select the node you want to expand.&nbsp; Do this by clicking once on the desired node.
+<dl>
+<dt>Expand One Level
+<dd>Choose<b> Expand One Level</b> from the<b> Tree</b> menu to display all of the immediate children for the selected node.
+<dt><br>Expand Branch
+<dd>Choose<b> Expand Branch</b> from the<b> Tree</b> menu to display all descendants of the selected node.
+<dt><br>Expand All
+<dd>Choose<b> Expand All</b> from the<b> Tree</b> menu to fully expand all of the enabled root nodes.&nbsp; Disabled root nodes
+ do not appear in the display.
+</dl>
+<h4 id="Collapsing_Nodes"> Collapsing Nodes </h4>
+<br>You can collapse the display all at once or one branch at a time.&nbsp; To collapse by branches, you must first select
+ the node you want to collapse.&nbsp; Do this by clicking once on the desired node.
+<dl>
+<dt>Collapse Branch
+<dd>Choose<b> Collapse Branch</b> from the<b> Tree</b> menu to hide all descendants of the selected node.
+<dt><br>Collapse All
+<dd>Choose<b> Collapse All</b> from the<b> Tree</b> menu to collapse all of the nodes and display only the root nodes.
+</dl>
+<br></tt><b>Using the Keyboard</b></tt>
+<br>You can expand and collapse the symbols using key sequences.&nbsp; Click once on the symbol name to highlight it and press
+ one of the following keys:
+<dl>
+<dt>+
+<dd>Expand the symbol one level
+<dt><br>-
+<dd>Collapse the symbol one level
+<dt><br>*
+<dd>Expand all descendants of the selected node.&nbsp; This is the same as choosing<b> Expand Branch</b> from the<b> Tree</b>
+ menu.
+<dt><br>CTRL *
+<dd>Expands all of the enabled root nodes.&nbsp; This is the same as choosing<b> Expand All</b> from the<b> Tree</b> menu.
+<dt><br>CTRL -
+<dd>Collapses all of the symbols and displays only the root nodes.&nbsp; This is the same as choosing<b> Collapse All</b> from
+ the<b> Tree</b> menu.
+</dl>
+<h2 id="Viewing_Detail_Information"> Viewing Detail Information </h2>
+<br>Once a global view is displayed, you can view detailed information for a symbol in the global view in several ways:
+<ul>
+<li>Double click on the desired symbol.
+<li>Click once on the desired symbol to select it; then choose<b> Detail</b> from the<b> Detail</b> menu.
+<li>Click once on the desired symbol to select it then press ENTER.
+</ul>
+<br>From the list view, you can reveal the detail view if you:
+<ul>
+<li>Click once on the icon to the left of the symbol.
+</ul>
+<br>Performing any of these actions reveals a detail view window for the selected symbol.&nbsp; The same information appears
+ in this window regardless of the method used to access it.
+<br><br><tt><img src="brow8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> The detail view displays detailed information for the selected symbol.</b>
+<br><br>The detail view window displays the source file where the symbol is defined or declared and it shows you what the
+ symbol looks like in your source code.
+<br><br>A list box appears in the detail view window when you select a symbol whose type is a function, class, or enum.&nbsp;
+ The list box contains information specific to the symbol type, as follows.
+<dl>
+<dt>Functions
+<dd>The list box displays, where applicable, local variables for the function.
+<dt><br>Classes
+<dd>The list box displays member variables and member functions for the selected class and any inherited classes.&nbsp; The Browser
+ divides this information into three categories:
+<ul>
+<li>Public
+<li>Private
+<li>Protected
+</ul>
+<dt><br>Enums
+<dd>The list box displays enumerator values for the selected enumerator.
+</dl>
+<br>You can view detailed information for symbols in the list box by double-clicking on the symbol.&nbsp; Other symbols in
+ the header information for the detail view are highlighted.&nbsp; Double-clicking on these symbols also displays a detail
+ view.
+<h3 id="Goto_Definition"> Goto Definition </h3>
+<br>From a detail view,<b> Goto Definition</b> in the<b> Detail</b> menu allows you to edit the file that contains the symbol's
+ definition.&nbsp; The editor is positioned on the line and column containing the symbols definition.&nbsp; This allows you
+ to make edits to your source code while you are browsing.&nbsp; When you are done, save any changes made and exit the editor
+ to return to the Browser session.
+<br><br>Note that any changes to your source code will make the Browser database out-of-date.
+<h3 id="Source_References"> Source References </h3>
+<br>Selecting<b> Source References</b> from the<b> Detail</b> menu displays all locations in the source code where a symbol
+ is referenced.&nbsp; This allows you to analyze all uses of a particular symbol.
+<br><br>When modifying a symbol, you can use this feature to locate all occurrences of the symbol in the source code so you
+ can update them.
+<dl>
+<dt>To view the source references for a symbol:
+<dd>
+<dt><br>(1)
+<dd><b> Position yourself at the detail view of the symbol</b> whose source references you want to view.
+<dt><br>(2)
+<dd><b> Choose</b><b> Source References</b> from the<b> Detail</b> menu.
+<br>This opens the<b> Source References</b> window for the selected symbol.&nbsp; This window displays the filename, line
+ number, and column number of each occurrence of the selected symbol in the source code.
+</dl>
+<br><tt><img src="brow9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> Use the Source References window to view all the occurrences of the selected
+ symbol in the source code.</b>
+<h3 id="Symbol_References"> Symbol References </h3>
+<br><b> Symbol References</b> allows you to view a list of all symbols that use a particular symbol.&nbsp; When modifying
+ a symbol you can use this feature to locate all symbols using the modified symbol.&nbsp; This allows you to determine if
+ all referencing symbols need to be updated.
+<dl>
+<dt>To view the symbol references for a symbol:
+<dd>
+<dt><br>(1)
+<dd><b> Position yourself at the detail view of the symbol</b> whose symbol references you want to view.
+<dt><br>(2)
+<dd><b> Choose</b><b> Symbol References</b> from the<b> Detail</b> menu.
+<br>This opens the<b> Symbol Referencing</b> window for the selected symbol.&nbsp; This window displays a list of all symbols
+ that use the selected symbol.&nbsp; The display is the same as the list view of symbols.&nbsp; Each symbol has a icon indicating
+ its symbol type.
+<br><br><tt><img src="brow10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> Use the Symbols window to view a list of all symbols that use the selected symbol.</b>
+<br><br>You can perform the same actions in this window as from the<b> List</b> window.&nbsp; Refer to the section entitled
+ <a href="#The_List_View">The List View</a> for more information.
+</dl>
+<br>From this window you can invoke the editor to make changes to the source code that contains the symbols that reference
+ a particular symbol.&nbsp; Select the reference you want to edit in one of two ways:
+<ul>
+<li>Double click on the desired reference.
+<li>Click once on the desired reference to select it and press ENTER.
+</ul>
+<br>This invokes the editor and positions the cursor at the line that contains the selected reference.
+<h2 id="Locating_Symbols"> Locating Symbols </h2>
+<br>When a global view is displayed and your program contains many symbols, it can be difficult to scroll through the global
+ view to locate a particular symbol.&nbsp; There are two functions that can help you locate a symbol in a global view:
+<ul>
+<li>Find
+<li>Find Selected
+</ul>
+<h3 id="Find"> Find </h3>
+<br>Choose<b> Find</b> from the<b> Locate</b> menu to open the<b> Find</b> dialog.&nbsp; Use this dialog to specify the criteria
+ to be used to locate a symbol.&nbsp; For example, you can search for a particular symbol or a set of symbols with common
+ characteristics.
+<br><br><tt><img src="brow11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> Use the Find dialog to locate one symbol or a set of symbols.</b>
+<h4 id="Find_Pattern"> Find Pattern </h4>
+<br>In the<b> Pattern</b> field of the<b> Find</b> dialog, enter a pattern for the symbol(s) you wish to locate.&nbsp; The
+ matching behaviour depends on the switches set in this dialog.
+<dl>
+<dt>Match Case
+<dd>When enabled, the Browser performs a case sensitive compare when attempting to find a match.
+<dt><br>Match Whole Symbols Only
+<dd>When enabled, the Browser locates symbols that exactly match the specified pattern.&nbsp; This switch only applies when the<b>
+ Use Regular Expressions</b> switch is disabled.
+<dt><br>Use Regular Expressions
+<dd>When enabled, the Browser interprets the pattern specified as a regular expression.&nbsp; The<b> Edit</b> button, when pressed,
+ displays the<b> Regular Expression Options</b> dialog.&nbsp; This dialog allows you to specify the regular expression.
+</dl>
+<br>Dropping the combo box of the<b> Pattern</b> field displays a list of previous patterns entered.&nbsp; You can select
+ a pattern from this list instead of entering a new one.
+<h4 id="Find_Filters"> Find Filters </h4>
+<br>Clicking on the<b> Filters</b> button on the<b> Find</b> dialog opens the<b> Find Filters</b> dialog.&nbsp; This dialog
+ allows you to specify the characteristics of the symbol(s) to be located.
+<br><br><tt><img src="brow12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> Use the Find Filters dialog to specify characteristics of the symbol(s) you
+ want to locate.</b>
+<br><br>In the<b> Symbol Type</b> section of the dialog click on the symbol types you want to view.&nbsp; To search for all
+ symbol types, select the<b> All</b> button.
+<br><br>In the<b> Symbol Scope</b> section, you can specify the scope for locating symbols.
+<dl>
+<dt>Member of Class:
+<dd>Specify the class that the symbol must be a member of in order to be located.
+<dt><br>Local Symbols of Function:
+<dd>Specify the function that the symbol must be local to in order to be located.
+</dl>
+<br></tt><b>Find File Filters</b></tt>
+<br>The<b> Source Files</b> button, when pressed, displays the<b> Source Files</b> dialog that allows you to specify the files
+ to be searched when attempting to locate a symbol.&nbsp; This dialog lists all source files that make up the database file.
+&nbsp; Each source file in the list has a check box.&nbsp; An X in this box indicates that the source file is searched when
+ trying to locate a symbol.&nbsp; Click in the check box of the source file you want to disable.&nbsp; This removes the X.
+&nbsp; The blank box indicates that the source file will not be searched when trying to locate a symbol.&nbsp; To re-enable
+ the source file, click in the check box again.&nbsp; This places an X in the box indicating that the source file will be
+ searched.
+<br><br><tt><img src="brow13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> Choose the source files to be searched using the Source Files dialog.</b>
+<br><br>The<b> Pattern</b> section of the dialog, allows you to specify wild card directory specifications for files that
+ are to be included or excluded in the search.&nbsp; For example, specifying &quot;d:\watcom\h\*.h&quot; and pressing the<b>
+ Exclude</b> button, will prevent any file in the &quot;d:\watcom\h&quot; directory with extension &quot;.h&quot; from being
+ searched.&nbsp; To include these files in the search again, specify the same pattern and press the<b> Include</b> button.
+<br><br>Pressing the<b> Set All</b> button includes all files in the search.
+<br><br>Pressing the<b> Clear All</b> button excludes all files in the search.&nbsp; This is useful, for example, if you wish
+ to only search files in the current directory.&nbsp; Simply press the<b> Clear All</b> button, specify &quot;*.*&quot; in
+ the Pattern section, and press the<b> Include</b> button.
+<h4 id="Performing_the_Find"> Performing the Find </h4>
+<br>Once the filter criteria are set, perform the find operation by clicking on the<b> OK</b> button on the<b> Find</b> dialog.
+&nbsp; This closes the dialog and performs the search.&nbsp; The Browser examines the symbols in the current global view and
+ selects the first symbol that matches the search criteria.
+<br><br>To find the next symbol that matches the search criteria, choose<b> Find Next</b> from the<b> Locate</b> menu.
+<h3 id="Find_Selected"> Find Selected </h3>
+<br>Because the symbols displayed in a global view are often many, only a portion of the display is visible in the window
+ at any time.&nbsp; When you temporarily scroll away from the selected symbol or node, a quick method of locating that symbol
+ is to select<b> Find Selected</b> from the<b> Locate</b> menu.&nbsp; This will immediately locate and display the currently
+ selected symbol in the global view.
+<h2 id="Configuring_the_Browser"> Configuring the Browser </h2>
+<br>There are several options in the Browser that you can configure:
+<ul>
+<li>Regular expression processing for find and query
+<li>Global Symbol Queries
+<li>Enumerator styles for detail views of enumeration constants
+<li>Member filters for detail views of classes
+<li>Auto-arranging of graph views
+<li>Line drawing method for graph views
+<li>Orientation of graph views
+<li>Line styles and colors for inheritance graphs
+<li>Line styles and colors for call graphs
+<li>Selection of text editor
+<li>Automatic saving of options on exit
+</ul>
+<br>This section describes each configuration option.
+<h3 id="Regular_Expressions_for_Find_and_Query"> Regular Expressions for Find and Query </h3>
+<br><b> Regular Expressions</b> in the<b> Options</b> menu allows you to configure the regular expression used to find a symbol
+ and specify a query.
+<br><br><tt><img src="brow14.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> Use the Regular Expressions Options dialog to configure a regular expression
+ for Find and Query.</b>
+<br><br>Choose<b> Regular Expressions</b> from the<b> Options</b> menu to open the<b> Regular Expressions Options</b> dialog.
+&nbsp; In the<b> Search String Meaning</b> section of the dialog you select the anchoring method used to find a match.
+<dl>
+<dt>Starts With
+<dd>Matches only if the pattern is found at the beginning of the symbol
+<dt><br>Contains
+<dd>Matches if it occurs anywhere in the symbol
+</dl>
+<br>In the<b> Regular Expression Characters</b> section of the dialog you select the characters you want the Browser to interpret
+ as meta-characters.
+<br><br>Select the desired characters by clicking once in the corresponding check box.&nbsp; An X in the check box indicates
+ that the character will be interpreted as a meta-character.&nbsp; Unchecked characters are matched as standard keyboard characters.
+&nbsp; To de-select a character, click again on its check box.
+<br><br>The other buttons on this dialog are:
+<dl>
+<dt>Set All
+<dd>Click on Set All to enable all of the characters.
+<dt><br>Clear All
+<dd>Click on Clear All to disable all of the characters.
+<dt><br>Defaults
+<dd>Click on Defaults to discard the current settings in this dialog and replace them with the settings configured at the start
+ of the Browser session.
+<dt><br>OK
+<dd>Click on<b> OK</b> to close this dialog.&nbsp; This changes the configuration for the current Browser session.
+</dl>
+<h3 id="Global_Symbol_Queries"> Global Symbol Queries </h3>
+<br>Choose<b> Query</b> from the<b> Options</b> menu to open the<b> Query</b> dialog.&nbsp; Use this dialog to specify the
+ criteria to be used to display symbols in a global view.
+<br><br><tt><img src="brow15.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 15.</i></b><b><i></i></b><b> Use the Query dialog to configure global view symbol queries.</b>
+<h4 id="Query_Pattern"> Query Pattern </h4>
+<br>In the<b> Pattern</b> field of the<b> Query</b> dialog, enter a pattern for the symbol(s) you wish to display in the global
+ views.&nbsp; The matching behaviour depends on the switches set in this dialog.
+<dl>
+<dt>Match Case
+<dd>When enabled, the Browser performs a case sensitive compare when attempting to find a match.
+<dt><br>Match Whole Symbols Only
+<dd>When enabled, the Browser includes symbols that exactly match the specified pattern.&nbsp; This switch only applies when the<b>
+ Use Regular Expressions</b> switch is disabled.
+<dt><br>Use Regular Expressions
+<dd>When enabled, the Browser interprets the pattern specified as a regular expression.&nbsp; The<b> Edit</b> button is enables
+ and, when pressed, displays the<b> Regular Expression Options</b> dialog.&nbsp; This dialog allows you to specify the regular
+ expression.
+</dl>
+<br>Dropping the combo box of the<b> Pattern</b> field displays a list of previous patterns entered.&nbsp; You can select
+ a pattern from this list instead of entering a new one.
+<h4 id="Query_Filters"> Query Filters </h4>
+<br>Clicking on the<b> Filters</b> button on the<b> Query</b> dialog opens the<b> Query Filters</b> dialog.&nbsp; This dialog
+ allows you to specify the characteristics of the symbol(s) to be displayed in the global views.
+<br><br>In the<b> Symbol Type</b> section of the dialog click on the symbol types you want to view.&nbsp; To display symbols
+ of all types, click on the<b> All</b> button.
+<br><br>In the<b> Symbol Scope</b> section, you can specify the scope of the symbols to be displayed.
+<dl>
+<dt>Member of Class:
+<dd>Specify the class that the symbol must be a member of in order to be displayed.
+<dt><br>Local Symbols of Function:
+<dd>Specify the function that the symbol must be local to in order to be displayed.
+</dl>
+<br>In the<b> Symbol Attributes</b> section, you can specify the attributes of the symbols to be displayed.&nbsp; Selecting<b>
+ Artificial</b> will cause compiler-generated symbols to be displayed.&nbsp; Selecting<b> Anonymous</b> will cause unnamed
+ types to be displayed.&nbsp; Unnamed types will be displayed as square brackets enclosing the symbols whose type they define.
+&nbsp; Selecting<b> Declared Only</b> will cause only symbols that have been defined to be displayed.&nbsp; For example, a
+ function prototype for an unreferenced function will not be displayed when<b> Declared Only</b> is selected.
+<br><br></tt><b>Query File Filters</b></tt>
+<br>The<b> Source Files</b> button, when pressed, displays the<b> Source Files</b> dialog that allows you to specify the files
+ that a symbol must be defined in in order to be displayed.&nbsp; This dialog lists all source files that make up the database
+ file.&nbsp; Each source file in the list has a check box.&nbsp; An X in this box indicates that all symbols defined in the
+ source file will be displayed.&nbsp; Click in the check box of the source file you want to disable.&nbsp; This removes the
+ X.&nbsp; The blank box indicates that any symbols defined in the source file will not be displayed.&nbsp; Alternatively,
+ use the up and down arrow keys to select the source file you wish to disable.&nbsp; Press the space bar to disable the currently
+ selected source file.&nbsp; To re-enable the source file, click in the check box again or press the space bar.&nbsp; This
+ places an X in the box again.
+<br><br>The<b> Pattern</b> section of the dialog, allows you to specify wild card directory specifications for files.&nbsp;
+ Any symbols defined in these files will be displayed in the global views.&nbsp; For example, specifying<tt> d:\watcom\h\*.h</tt>
+ and pressing the<b> Exclude</b> button, will prevent any symbol defined in any file in the<tt> d:\watcom\h</tt> directory
+ with extension &quot;.h&quot; from being displayed.&nbsp; To display symbols from these files again, specify the same pattern
+ and press the<b> Include</b> button.
+<br><br>Pressing the<b> Set All</b> button displays all symbols in all files.
+<br><br>Pressing the<b> Clear All</b> button causes no symbols to be displayed.&nbsp; This is useful, for example, if you
+ wish to only display symbols defined in files in the current directory.&nbsp; Simply press the<b> Clear All</b> button, specify<tt>
+ *.*</tt> in the Pattern section, and press the<b> Include</b> button.
+<h3 id="Enumerator_Styles"> Enumerator Styles </h3>
+<br>Selecting<b> Enumeration Styles</b> from the<b> Options</b> menu displays the<b> Enumeration Styles</b> dialog.&nbsp;
+ This dialog allows you to specify the format for displaying enumeration constants in the detail views for enumeration constants.
+<br><br><tt><img src="brow16.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 16.</i></b><b><i></i></b><b> Specify enumerator styles for detail views of enumerator constants using the
+ Enumeration Styles dialog.</b>
+<h3 id="Member_Filters_for_Classes"> Member Filters for Classes </h3>
+<br><b> Member Filters</b> in the<b> Options</b> menu allows you to specify the members you want to appear in the detail view
+ of a class.&nbsp; For example, you may not want the detail class to contain private members.&nbsp; Alternatively, you may
+ only wish to see function members and not data members.
+<dl>
+<dt>(1)
+<dd><b> Choose</b><b> Member Filters</b> from the<b> Options</b> menu.
+<br>This opens the<b> Member Filters</b> dialog where you specify the information you want to appear in detail views for classes.
+<br><br><tt><img src="brow17.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 17.</i></b><b><i></i></b><b> Use the Member Filters dialog to select the information to appear in detail
+ views for classes.</b>
+<dt><br>(2)
+<dd><b> Choose the inheritance level</b> from the<b> Inherited Members</b> section of the dialog.
+<br>The options are:
+<dl>
+<dt>None
+<dd>Do not show inherited members.
+<dt><br>Visible
+<dd>Show the local members of a class and visible members of inherited classes.
+<dt><br>All
+<dd>Show all local and inherited members of a class.
+</dl>
+<dt><br>(3)
+<dd><b> Click on the check boxes</b> in the<b> Access Level</b> section of the dialog to select the desired access levels.
+<br>The options are Public, Protected, and Private.&nbsp; Only members with the selected attributes will appear in the detail
+ view for a class.
+<dt><br>(4)
+<dd><b> Select the desired members</b> in the<b> Members</b> section of the dialog.
+<br>Show data members in a class by enabling the<b> variables</b> check box.&nbsp; When the<b> variables</b> check box is
+ enabled, you may also enable or disable static data members by clicking on the<b> static</b> check box.
+<br><br>Show function members in a class by enabling the<b> functions</b> check box.&nbsp; When the<b> functions</b> check
+ box is enabled, you may also enable or disable static and virtual function members by clicking on the<b> static</b> and<b>
+ virtual</b> check boxes.
+<dt><br>(5)
+<dd><b> Click on OK</b> to accept the member filter query.
+<br>This closes the dialog and returns you to the active window.
+</dl>
+<dl>
+<dt>Note:
+<dd>The Default button on the Member Filter dialog resets the query to the default settings.
+</dl>
+<h3 id="AutoMarranging_of_Graph_Views"> Auto-arranging of Graph Views </h3>
+<br>When collapsing a graph view, nodes that become hidden are replaced by gaps in the graph.<b>&nbsp; Arrange Graph</b> in
+ the<b> Tree</b> menu compacts the graph view to remove the spaces left vacant by hidden nodes.
+<br><br>When enabled,<b> Graph Auto-arrange</b> of the<b> Options</b> menu causes the Browser to automatically compact the
+ graph view each time you perform a collapse operation.&nbsp; To enable the automatic compaction of the graph view after a
+ collapse operation, select<b> Graph Auto-arrange</b> from the<b> Options</b> menu.&nbsp; A check mark appears beside the
+ menu item when it is enabled.&nbsp; Select the menu item again to disable it.
+<h3 id="Line_Drawing_Method_for_Graph_Views"> Line Drawing Method for Graph Views </h3>
+<br><b>Graph Square Lines</b> in the<b> Options</b> menu allows you to select the type of line that connects the nodes in
+ a graph view.&nbsp; The default is to connect nodes of the graph using diagonal lines.&nbsp; Choosing<b> Graph Square Lines</b>
+ from the<b> Options</b> menu causes nodes to be connected using square lines (combinations of vertical and horizontal lines).
+&nbsp; A check mark beside the menu item indicates this method of drawing lines is enabled.&nbsp; To disable this option,
+ select it again.
+<br><br><tt><img src="brow18.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 18.</i></b><b><i></i></b><b> The Graph Square Lines option changes the connecting lines from diagonal to
+ square.</b>
+<h3 id="Changing_the_Graph_Orientation"> Changing the Graph Orientation </h3>
+<br>In the<b> Options</b> menu you can select whether the trees on the graph view grow horizontally or vertically.&nbsp; A
+ graph view that grows horizontally is one where the root node is at the left and the leaf nodes at the right.&nbsp; A graph
+ view that grows vertically is one where the root node is at the top and the leaf nodes at the bottom.&nbsp; By default, graphs
+ grow vertically.
+<br><br>Select<b> Graph Horizontal</b> from the<b> Options</b> menu to change the graph orientation to horizontal.&nbsp; Selecting
+ this option changes the menu item name to<b> Graph Horizontal</b> in the<b> Options</b> menu.&nbsp; Select this menu item
+ to change the graph orientation back to vertical.
+<br><br><tt><img src="brow19.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 19.</i></b><b><i></i></b><b> The Graph Horizontal option displays the graph with the root node at the left.</b>
+<h3 id="Defining_Graph_View_Legends"> Defining Graph View Legends </h3>
+<br>The<b> Inheritance Legend</b> and<b> Call Legend</b> menu items in the<b> Options</b> menu allow you to change the colors,
+ line styles, and node styles used in the graph views.&nbsp; Changing the styles updates all open graph views in the current
+ session, as well as any new ones you open.&nbsp; Saving the session configuration to an option file saves changes made to
+ the colors and the lines and node styles.
+<br><br>The<b> Inheritance Legend</b> and<b> Call Legend</b> dialogs are designed differently, but the procedures for changing
+ the graph styles are identical.
+<br><br>To change the line and node styles for inheritance graphs, choose<b> Inheritance Legend</b> from the<b> Options</b>
+ menu.&nbsp; The<b> Inheritance Legend</b> dialog appears.
+<br><br>To change the line and node styles for call graphs, choose<b> Call Legend</b> from the<b> Options</b> menu.&nbsp;
+ The<b> Call Legend</b> dialog appears.
+<dl>
+<dt>(1)
+<dd><b> Click once on the line or node style</b> or use the up, down, right and left arrow keys to select the line or node style
+ you want to change.
+<br>A box appears around the selected line.
+<dt><br>(2)
+<dd><b> Click on the Modify button.</b>
+<br>This opens the<b> Draw Style</b> dialog for the selected line or node style.
+<dt><br>(3)
+<dd><b> Click once on the desired line or node style</b>
+<br>or
+<dt><br>
+<dd><b> use the up and down arrow keys</b> to select the desired line or node style.
+<br>The sample appearing in the<b> Example</b> field at the top of the dialog now reflects the currently selected line or
+ node style.
+<dt><br>(4)
+<dd><b> Click once on the desired color or use the up and down</b> arrow keys to select the desired color.
+<br>The sample appearing in the<b> Example</b> field at the top of the dialog now reflects the currently selected color.
+<dt><br>(5)
+<dd><b> Click on OK</b> to accept the new style and color setting.
+<br>The<b> Draw Style</b> dialog closes, returning you to the<b> Inheritance Legend</b> or<b> Call Legend</b> dialog.&nbsp;
+ Select another line or node style to change and repeat this procedure.
+<dt><br>(6)
+<dd><b> Click on OK in the</b><b> Inheritance Legend</b> or<b> Call Legend</b> dialog when you have changed all desired colors
+ and styles for lines and nodes.
+<br>Clicking<b> OK</b> closes the dialog and updates all open inheritance or call graph views with the selected colors and
+ line and node styles.
+</dl>
+<h3 id="Selecting_a_Text_Editor"> Selecting a Text Editor </h3>
+<br>You can use your own favourite text editor from within the Browser.
+<dl>
+<dt>To select your own text editor:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Set Text Editor</b> from the Options menu.
+<br>The Set Text Editor dialog appears.&nbsp; You can enter the name of the text editor in the first field.&nbsp; You must
+ also indicate whether the text editor is an executable file or a Dynamic Link Library (DLL).&nbsp; If the editor is an executable
+ file (rather than a DLL), then you can enter an argument line in the second field.&nbsp; The argument line will be supplied
+ to the editor whenever it is started by the Browser.&nbsp; The argument line can include any of three different macros which
+ will be filled in by the Browser.&nbsp; The macros are:
+<dl>
+<dt>%f
+<dd>The name of the file to be edited.
+<dt><br>%r
+<dd>The row in the file at which to position the cursor.&nbsp; If the editor is invoked from a diagnostic message which contains
+ a line number then the row value is extracted from the message; otherwise the row value is 1.
+<dt><br>%c
+<dd>The column in the file at which to position the cursor.&nbsp; If the editor is invoked from a diagnostic message which contains
+ a column number then the column value is extracted from the message; otherwise the column value is 1.
+</dl>
+<br>For example, if the editor argument line that you specified was:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file='%f' row='%r' col='%c'</tt>
+<br><br>and you double click on an error message in the Log window that names the file<tt> foobar.c</tt> with an error at
+ line 215 and column 31, then the argument line that is passed to your editor is:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file='foobar.c' row='215' col='31'</tt>
+<br><br>This flexibility allows you to specify the name of the file to edit and the row and/or column at which to position
+ the text cursor.&nbsp; If no row or column is available, then the Browser will supply the value of 1 as a default.
+<dt><br>(2)
+<dd><b> Select OK</b> when you wish to confirm the selection of a new editor.
+<br>or
+<dt><br>
+<dd><b> Select Cancel</b> when you wish to cancel the selection of a new editor.
+<br>or
+<dt><br>
+<dd><b> Select Default</b> when you wish to restore the default editor selection and then select OK or Cancel.
+</dl>
+<h3 id="Automatically_Saving_Options_on_Exit"> Automatically Saving Options on Exit </h3>
+<br><b> Save Options on Exit</b> in the<b> Options</b> menu instructs the Browser to automatically save the current options
+ to an options file.&nbsp; To enable the automatic saving of options, select<b> Save Options on Exit</b> from the<b> Options</b>
+ menu.&nbsp; A check mark beside the menu item indicates that it is enabled.&nbsp; To disable this option, select it again.
+<br><br>See the section entitled <a href="#Saving_Options">Saving Options</a> for more information on saving options to a
+ file.
+<h2 id="Loading_Options"> Loading Options </h2>
+<br>Use the<b> Load Options</b> menu to load an option file into your Browser session.
+<br><br>Choose<b> Load Options</b> from the<b> File menu.</b>&nbsp; The<b> Load Options File</b> dialog appears where you
+ select the option file you want to load for the current Browser session.
+<h2 id="Saving_Options"> Saving Options </h2>
+<br>There are three ways to save the current options to an option file:
+<ul>
+<li>Save Options
+<li>Save Options As
+<li>Save Options on Exit
+</ul>
+<br>An asterisk beside the option file name in the caption bar indicates that changes were made to the options during the
+ Browser session and should be saved.&nbsp; This section describes each method for saving options to a file.
+<dl>
+<dt>Note:
+<dd>If you have made option changes during the Browser session and you choose<b> Exit</b> from the<b> File</b> menu without first
+ saving the options, the Browser prompts you to save the options to a file.&nbsp; Refer to the section entitled <a href="#Quitting_the_Browser">Quitting the Browser</a>
+ for more information.
+</dl>
+<dl>
+<dt>Save Options
+<dd>Selecting<b> Save Options</b> from the<b> File</b> menu saves the updated options information to the current options file.
+&nbsp; To save options in this way, an options file must be specified in the caption bar.&nbsp; 
+<dt><br>Save Options As
+<dd><b> Save Options As</b> in the<b> File</b> menu opens the<b> Save Options As</b> dialog.&nbsp; Specify the filename of the
+ option file to which you want to save the current options.&nbsp; Click on<b> OK</b> to close the dialog and save the options.
+<dt><br>Save Options on Exit
+<dd><b> Save Options on Exit</b> in the<b> Options</b> menu allows you to specify that the Browser is to automatically save the
+ current options to an options file, if one exists.&nbsp; When enabled, a check mark appears beside this menu item.
+<br>When enabled and an option file exists, the Browser saves the changes without prompting when you close the session.
+<br><br>When enabled and no option file exists, the Browser displays a message box prompting you to save the new options.
+&nbsp; Choose<b> No</b> in this box to close the Browser session without saving.&nbsp; Choose<b> Yes</b> in this box to display
+ a<b> Save As</b> dialog where you specify the option file to which you want to save the new options.
+</dl>
+<h2 id="Setting_Source_Search_Paths"> Setting Source Search Paths </h2>
+<br>You can specify a command line option to the Browser that allows you to specify alternate source file search paths.&nbsp;
+ This option is useful when a database file is created on a system different from the one that is used to browse the application
+ source code.&nbsp; The syntax of the command line option is:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; path path_spec1;path_spec2;...</tt>
+<br><br>Since the database files record explicit paths to source files, it is likely that the path will no longer be valid
+ once the software is moved to another system.
+<br><br>When the Browser cannot locate the specified file using its explicit path, it will search the paths listed in the
+ path option.
+</body>

@@ -1,0 +1,436 @@
+<head>
+<title> Open Watcom 1.9 DDE Spy </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- D -
+<dd><a href="#DDE_Spy">DDE Spy</a>
+<br><a href="#The_DDE_Spy_Event_List">The DDE Spy Event List</a>
+<br><a href="#The_DDE_Spy_Menu_Bar">The DDE Spy Menu Bar</a>
+<br><a href="#The_DDE_Spy_Toolbar">The DDE Spy Toolbar</a>
+<br><a href="#DDE_Spy__Action_When_Log_File_Exists">DDE Spy:&nbsp; Action When Log File Exists</a>
+<br><a href="#DDE_Spy__Automatic_Scrolling">DDE Spy:&nbsp; Automatic Scrolling</a>
+<br><a href="#DDE_Spy__Clearing_the_Event_List">DDE Spy:&nbsp; Clearing the Event List</a>
+<br><a href="#DDE_Spy__Configuring_the_Log_File">DDE Spy:&nbsp; Configuring the Log File</a>
+<br><a href="#DDE_Spy__Default_Log_Name">DDE Spy:&nbsp; Default Log Name</a>
+<br><a href="#DDE_Spy__Log_Name">DDE Spy:&nbsp; Log Name</a>
+<br><a href="#DDE_Spy__Logging_Type">DDE Spy:&nbsp; Logging Type</a>
+<br><a href="#DDE_Spy__Marking_the_Event_List">DDE Spy:&nbsp; Marking the Event List</a>
+<br><a href="#DDE_Spy__Pause_Logging">DDE Spy:&nbsp; Pause Logging</a>
+<br><a href="#DDE_Spy__Pausing_the_Event_List_Output">DDE Spy:&nbsp; Pausing the Event List Output</a>
+<br><a href="#DDE_Spy__Saving_the_Event_List_to_a_File">DDE Spy:&nbsp; Saving the Event List to a File</a>
+<br><a href="#DDE_Spy__Setting_the_Font">DDE Spy:&nbsp; Setting the Font</a>
+<br><a href="#DDE_Spy__Start_Logging">DDE Spy:&nbsp; Start Logging</a>
+<br><a href="#DDE_Spy__Stop_Logging">DDE Spy:&nbsp; Stop Logging</a>
+<br><a href="#DDE_Spy__Working_with_Log_Files">DDE Spy:&nbsp; Working with Log Files</a>
+<br><a href="#Defining_Aliases">Defining Aliases</a>
+<br><a href="#Disabling_Aliases">Disabling Aliases</a>
+<dt><br>- P -
+<dd><a href="#Purging_Aliases">Purging Aliases</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_DDE_Spy">Quitting DDE Spy</a>
+<dt><br>- S -
+<dd><a href="#Selecting_Information_to_Monitor">Selecting Information to Monitor</a>
+<br><a href="#Setting_the_Callback_Filter">Setting the Callback Filter</a>
+<br><a href="#Setting_the_Message_Filter">Setting the Message Filter</a>
+<br><a href="#Starting_DDE_Spy">Starting DDE Spy</a>
+<dt><br>- T -
+<dd><a href="#Tracking_Conversations">Tracking Conversations</a>
+<br><a href="#Tracking_Links">Tracking Links</a>
+<br><a href="#Tracking_Servers">Tracking Servers</a>
+<br><a href="#Tracking_Strings">Tracking Strings</a>
+<br><a href="#Tracking_with_DDE_Spy">Tracking with DDE Spy</a>
+<dt><br>- U -
+<dd><a href="#Using_DDE_Spy">Using DDE Spy</a>
+<dt><br>- W -
+<dd><a href="#Working_with_Aliases">Working with Aliases</a>
+</dl>
+<h1 id="DDE_Spy"> DDE Spy </h1>
+<br>DDE Spy is a debugging tool that allows you to watch all DDE (Dynamic Data Exchange) activity occurring in the system.
+&nbsp; DDE Spy also allows you to monitor DDEML errors and registration of various DDE objects, such as strings, conversations,
+ links, and servers.&nbsp; DDE is one way for different applications running under Windows to communicate with each other.
+<br><br>By watching the communications between applications, you can determine if the information being sent is correct.&nbsp;
+ If it does not seem correct you can locate the cause of the error.
+<h2 id="Using_DDE_Spy"> Using DDE Spy </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting DDE Spy
+<li>Quitting DDE Spy
+<li>The DDE Spy Menu Bar
+<li>The DDE Spy Toolbar
+</ul>
+<h3 id="Starting_DDE_Spy"> Starting DDE Spy </h3>
+<br>To start DDE Spy, double click on the DDE Spy icon.&nbsp; This opens the DDE Spy window.&nbsp; When you start the application,
+ the Open Watcom DDE Spy window is always empty.&nbsp; This window displays the menu bar and a toolbar.
+<br><br><tt><img src="dde1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Open Watcom DDE Spy window contains the event list, menu bar, and toolbar.</b>
+<h3 id="Quitting_DDE_Spy"> Quitting DDE Spy </h3>
+<br>To exit DDE Spy, choose Exit from the File menu of the Open Watcom DDE Spy window.
+<h3 id="The_DDE_Spy_Menu_Bar"> The DDE Spy Menu Bar </h3>
+<br>The menu bar consists of the following six menus:
+<dl>
+<dt>File
+<dd>Save to a file, start and pause logging, and configure the session
+<dt><br>Output
+<dd>Work with the event list and control its output behaviour
+<dt><br>Monitor
+<dd>Select the information you want DDE Spy to write to the event list
+<dt><br>Track
+<dd>Display windows summarizing information for DDE objects tracked by DDE Spy
+<dt><br>Aliases
+<dd>Replace numeric values with meaningful text
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<br><tt><img src="dde1a.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Open Watcom DDE Spy menu bar.</b>
+<h3 id="The_DDE_Spy_Toolbar"> The DDE Spy Toolbar </h3>
+<br>In the Open Watcom DDE Spy window, the toolbar appears below the menu bar when the Show Toolbar item in the File menu
+ is checked.&nbsp; To disable this feature, choose the item again from the File menu and the Toolbar disappears.&nbsp; The
+ following explains the function each toolbar button performs, as well as the equivalent menu item.
+<dl>
+<dt>TRACK STRINGS
+<dd>Display or hide the strings tracking window.&nbsp; This window displays a list of all strings currently registered with the
+ operating system.&nbsp; This button is equivalent to the Strings item in the Track menu.
+<dt><br>TRACK CONVERSATIONS
+<dd>Display or hide the conversations tracking window.&nbsp; This window displays a list of all conversations currently active
+ in the system.&nbsp; This button is equivalent to the Conversations item in the Track menu.
+<dt><br>TRACK LINKS
+<dd>Display or hide the links tracking window.&nbsp; This window displays a list of all links currently active in the system.
+&nbsp; This button is equivalent to the Links item in the Track menu.
+<dt><br>TRACK SERVERS
+<dd>Display or hide the servers tracking window.&nbsp; This window displays a list of all servers currently registered with the
+ operating system.&nbsp; This button is equivalent to the Servers item in the Track menu.
+<dt><br>LOG
+<dd>Start Logging.&nbsp; This button is equivalent to the Log to File item in the File menu.
+<dt><br>MARK
+<dd>Record your own comments in the event list.&nbsp; This button is equivalent to the Mark item in the Output menu.
+<dt><br>CLEAR
+<dd>Clear the event list.&nbsp; This button is equivalent to the Clear item in the Output menu.
+<dt><br>ADD HWND ALIAS
+<dd>Replace window handle values with text.&nbsp; This is equivalent to the Add Hwnd Alias item in the Alias menu.
+<dt><br>ADD TASK ALIAS
+<dd>Replace task id values with text.&nbsp; This is equivalent to the Add Task Alias item in the Alias menu.
+<dt><br>ADD CONVERSATION ALIAS
+<dd>Replace conversation id values with text.&nbsp; This is equivalent to the Add Conversation Alias item in the Alias menu.
+</dl>
+<br><tt><img src="dde1a.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Open Watcom DDE Spy toolbar.</b>
+<h2 id="The_DDE_Spy_Event_List"> The DDE Spy Event List </h2>
+<br>Opening DDE Spy reveals an empty window.&nbsp; This is the event list where DDE Spy logs the information you define in
+ the Monitor menu.&nbsp; Some examples of events are strings being created or deleted and conversations and links being established
+ or terminated.
+<br><br><tt><img src="dde2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> Once you start spying, the event list displays the information selected for monitoring.</b>
+<br><br>This section describes the tasks you can perform in relation to the event list.
+<h3 id="DDE_Spy__Setting_the_Font"> DDE Spy:&nbsp; Setting the Font </h3>
+<br>The Font item in the File menu allows you to set the font, style, and size for the text in the DDE Spy window.&nbsp; Choosing
+ this item opens the Font dialog box.&nbsp; Select the desired font details and click on OK to close the dialog and apply
+ the fonts.
+<h3 id="DDE_Spy__Saving_the_Event_List_to_a_File"> DDE Spy:&nbsp; Saving the Event List to a File </h3>
+<br>The Save items in the File menu allow you to save the contents of the event list to a text file.&nbsp; Saving information
+ to a file enables you to print the output later or annotate the text file on-line.
+<br><br>Choose Save from the File menu in the Open Watcom DDE Spy window to save the event list information into the current
+ working directory.&nbsp; A message box appears indicating the path to which DDE Spy saved the file.
+<br><br>Choose Save As from the File menu to specify the file to which you want to save the event list information.&nbsp;
+ This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.&nbsp; A message box
+ appears indicating the path to which DDE Spy saved the file.
+<h3 id="DDE_Spy__Clearing_the_Event_List"> DDE Spy:&nbsp; Clearing the Event List </h3>
+<br>Choose Clear from the File menu to delete all information from the current event list.
+<h3 id="DDE_Spy__Marking_the_Event_List"> DDE Spy:&nbsp; Marking the Event List </h3>
+<br>Use the Mark function to annotate the information in the event list by entering text into it.
+<dl>
+<dt>To mark the event list :
+<dd>
+<dt><br>(1)
+<dd><b> Choose Mark</b> from the output menu.
+<br>This opens the Set Mark dialog box.
+<br><br><tt><img src="drw2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> With the Set Mark dialog, you can annotate the event list by entering text and
+ choosing a mark style.</b>
+<dt><br>(2)
+<dd><b> Type the desired text</b> in the Enter Mark Text field.
+<br>The text you enter will appear at the end of the event list
+<dt><br>(3)
+<dd><b> Select the desired Mark Style option.</b>
+<br>These options determine how the entered text is formatted when it is added to the event list When the boxed option is
+ selected, the text is displayed bordered by asterisks.&nbsp; With this option the text is easier to find.&nbsp; When the
+ plain option is selected, the text is displayed as it is entered.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>The Set Mark dialog closes and the text in the dialog appears at the end of the event list.
+</dl>
+<br><tt><img src="drw3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> Text you enter in the Set Mark dialog appears in the event list in the selected
+ style.</b>
+<h3 id="DDE_Spy__Pausing_the_Event_List_Output"> DDE Spy:&nbsp; Pausing the Event List Output </h3>
+<br>The Output to Screen item in the Output menu allows you to temporarily stop writing information to the event list.&nbsp;
+ When this menu item is unchecked output will not be written to the event list.&nbsp; Although DDE Spy stops writing information
+ to the event list, it still writes it to the log file if you are currently creating a log file.&nbsp; When DDE Spy is not
+ writing information to the event list applications will run sightly faster so when you are not interested in viewing the
+ event list you may want to stop writing to it.
+<dl>
+<dt>Note:
+<dd>If you mark the event list while the Output to Screen feature is deactivated, the text you enter does not appear in the event
+ list.
+</dl>
+<h3 id="DDE_Spy__Automatic_Scrolling"> DDE Spy:&nbsp; Automatic Scrolling </h3>
+<br>As DDE Spy writes new information to the event list, the information is added to the bottom of the list.&nbsp; Checking
+ the Auto Scroll item in the Output menu tells DDE Spy to automatically scroll the information in the event list so that the
+ most recent information written to the event list always appears on the screen.
+<br><br>When the Auto Scroll menu item not checked you must use the scroll bar to scroll down and view any new information
+ that is added to the event list.
+<h2 id="Selecting_Information_to_Monitor"> Selecting Information to Monitor </h2>
+<br>The monitor menu contains items that let you specify the types of DDE events that DDE Spy will report on by recording
+ them in the event list.&nbsp; Limiting the amount of information logged makes reading the event list more efficient.
+<br><br>When an item appears in the menu with a checkmark, DDE Spy reports on that type of activity.&nbsp; The following describes
+ various types of activity DDE Spy can monitor.
+<dl>
+<dt>Posted Messages
+<dd>When the Posted Messages item is checked, DDE Spy makes an entry in the event list whenever a DDE message that has been selected
+ using the Message Filter dialog is posted to an application's message queue.
+<dt><br>Sent Messages
+<dd>When the Sent Messages item is checked, DDE Spy makes an entry in the event list whenever a DDE message that has been selected
+ using the Message Filter dialog is sent to an application.
+<dt><br>String Handle Data
+<dd>DDE applications use strings to communicate with other applications.&nbsp; These strings are registered with the operating
+ system by the applications using them.&nbsp; When done with the strings, the applications tell the operating system they
+ are done and the system destroys the strings.&nbsp; DDE Spy reports on all string operations that occur within the system
+ when the String Handle Data menu item is checked.
+<dt><br>Callbacks
+<dd>Callbacks are special functions called by the operating system to process DDE messages.&nbsp; When the Callback item is checked
+ DDE Spy makes an entry in the event list each time the operating system calls a DDE Callback for a transaction type that
+ has been selected using the Callback Filter dialog.
+<dt><br>Errors
+<dd>A DDE error usually indicates that a DDE operation has failed.&nbsp; When the Errors item is checked, DDE Spy reports all
+ DDE errors that occur within the system.
+<dt><br>Conversations
+<dd>A conversation is the connection established between two applications that is necessary to perform DDE operations.&nbsp; When
+ the Conversations item is checked, DDE Spy makes an entry in the event list each time a conversation is established or terminated.
+<dt><br>Links
+<dd>A link is a relationship between two DDE applications:&nbsp; a server and a client.&nbsp; A link is established for a single
+ value maintained by the server.&nbsp; When this value changes the server notifies the client.&nbsp; When the Links item is
+ checked, DDE Spy logs notifications in the event list each time a link is established or terminated.
+</dl>
+<h3 id="Setting_the_Message_Filter"> Setting the Message Filter </h3>
+<br>The Set Message Filter item opens the Message Filter dialog which lists the various DDE messages that can be posted or
+ sent.&nbsp; This dialog allows you to select the specific messages you want DDE Spy to write to the event list.
+<br><br><tt><img src="dde5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> In the Set Message Filter dialog, select the messages on which you want DDE Spy
+ to report.</b>
+<br><br>Select the messages that you want DDE Spy to report on when posted or sent.&nbsp; A message is activated when its
+ check box contains a check.
+<ul>
+<li>Use the Set All button in this dialog to activate all of the messages.
+<li>Use the Clear All button in this dialog to deactivate all of the messages.
+</ul>
+<br>Click on OK when the desired messages are activated.
+<h3 id="Setting_the_Callback_Filter"> Setting the Callback Filter </h3>
+<br>The Set Callback Filter menu item opens the Callback Filter dialog which lists the various types of transactions for which
+ a DDE callback function may be called.&nbsp; This dialog allows you to specify the transaction types you want DDE Spy to
+ report in the event list.
+<br><br><tt><img src="dde6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> In the Set Callback Filter dialog, select the transaction types on which you
+ want DDE Spy to report.</b>
+<br><br>Select the transaction types on which you want DDE Spy to report.&nbsp; A transaction type will be reported on when
+ its check box contains a check.
+<ul>
+<li>Use the Set All button in this dialog to activate all of the transaction types.
+<li>Use the Clear All button in this dialog to deactivate all of the transaction types.
+</ul>
+<br>Click on OK when the desired transaction types are activated.
+<h2 id="DDE_Spy__Working_with_Log_Files"> DDE Spy:&nbsp; Working with Log Files </h2>
+<br>By writing the information in the event list to a log file, you have a file you can look at in case a program you are
+ running terminates your applications.&nbsp; In such a situation, your event list is lost so you have no information to refer
+ to when debugging.&nbsp; Writing to a log file also allows you to print the output later or annotate the text file on-line.
+<h3 id="DDE_Spy__Configuring_the_Log_File"> DDE Spy:&nbsp; Configuring the Log File </h3>
+<br>Choosing Configure Log from the File menu opens the Log Configuration dialog where you customize DDE Spy's behaviour when
+ it logs to a file.&nbsp; This dialog contains four sections where you specify information.
+<br><br><tt><img src="spy10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> In the Log Configuration dialog you set the desired behaviour for DDE Spy when
+ logging to a file.</b>
+<h4 id="DDE_Spy__Default_Log_Name"> DDE Spy:&nbsp; Default Log Name </h4>
+<br>In the Default Log Name field, specify the file to which DDE Spy writes when you begin logging.&nbsp; Clicking the Browse
+ button next to this field opens a Choose Log Name dialog that lets you browse your file structure while choosing the log
+ name.
+<h4 id="DDE_Spy__Log_Name"> DDE Spy:&nbsp; Log Name </h4>
+<br>The settings in the Log Name section of the dialog indicate to DDE Spy how the name of the log file should be determined
+ when the Log to File menu item is chosen.
+<br><br>When the Query for Log Name option is selected, DDE Spy presents a prompt each time you select Log to File from the
+ File menu or the toolbar.&nbsp; This reveals a Choose Log Name dialog where you specify the file to which DDE Spy writes
+ the log information.
+<br><br>When the Use Default Log Name option is selected, DDE Spy writes the log information to the file indicated in the
+ Default Log Name field in the Log Configuration dialog.&nbsp; No prompt appears.
+<h4 id="DDE_Spy__Action_When_Log_File_Exists"> DDE Spy:&nbsp; Action When Log File Exists </h4>
+<br>The options in the Action When Log File Exists section of the Log Configuration dialog dictate how DDE Spy behaves when
+ you choose Log to File and a log file already exists.
+<dl>
+<dt>Replace
+<dd>DDE Spy writes over the existing log file.&nbsp; All information in the existing file is lost.
+<dt><br>Append
+<dd>DDE Spy adds the new information to the end of the existing log file.
+<dt><br>Query
+<dd>DDE Spy prompts you with a message box that allows you to choose a course of action-Replace, Append, or Cancel.
+</dl>
+<br><tt><img src="spy11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> The Log Information message box appears when logging if the Query option is
+ selected on the Log Configuration dialog.</b>
+<h3 id="DDE_Spy__Start_Logging"> DDE Spy:&nbsp; Start Logging </h3>
+<br>Choosing Log to File from the File menu tells DDE Spy to write all new information added to the event list to the log
+ file.&nbsp; Depending on the options selected in the Log Configuration dialog, the following dialogs may appear when you
+ choose Log to File:
+<ul>
+<li>Choose Log Name dialog-On this dialog you specify the file to which DDE Spy writes the log information.
+<li>Log Information dialog-On this dialog you choose a course of action for logging when the specified log file already exists.
+</ul>
+<dl>
+<dt>Note:
+<dd>Choosing Cancel on either of these dialogs closes the dialog and prevents logging from starting.
+</dl>
+<h3 id="DDE_Spy__Logging_Type"> DDE Spy:&nbsp; Logging Type </h3>
+<br>There are two ways to write information to the log file:&nbsp; 
+<ul>
+<li>Continuous Logging
+<li>Periodic Logging
+</ul>
+<br>If the Continuous Logging option is activated, then as DDE Spy writes information to the event list, it simultaneously
+ writes to a log file.
+<br><br>When the Periodic Logging option is activated, DDE Spy writes information to the log file only after a reasonable
+ amount of information, as determined by the application, has been recorded in the event list
+<br><br>Periodic logging is more convenient because it is faster than continuous logging.&nbsp; However, if your system goes
+ down, some information will be lost.&nbsp; By simultaneously writing to the log file and the message list, continuous logging
+ allows you to store all information in a log file without the chance of losing information.
+<h3 id="DDE_Spy__Stop_Logging"> DDE Spy:&nbsp; Stop Logging </h3>
+<br>Once the log is started, DDE Spy continues writing to the log file until you stop logging.&nbsp; A check mark beside the
+ Log to File item in the File menu indicates that a log is being created.&nbsp; Choose this item again to stop logging.
+<h3 id="DDE_Spy__Pause_Logging"> DDE Spy:&nbsp; Pause Logging </h3>
+<br>To temporarily stop writing information to the log file you can choose the Pause Log item from the File menu.&nbsp; A
+ check mark appears beside the item indicating that the log is currently paused.&nbsp; To restart logging, choose this item
+ again from the File menu.
+<h2 id="Tracking_with_DDE_Spy"> Tracking with DDE Spy </h2>
+<br>In the process of DDE interactions programs register and unregister several types of DDE objects such as:
+<ul>
+<li>Strings
+<li>Conversations
+<li>Links
+<li>Servers
+</ul>
+<br>The tracking windows offer you an easy way to determine at any time which objects are currently registered with the system.
+<br><br>To open a tracking window choose Strings, Conversations, Links or Servers from the Track menu.&nbsp; This opens a
+ tracking window that displays all the objects of the selected type that have been registered but not unregistered since DDE
+ Spy started.&nbsp; The tracking windows are automatically updated whenever an event occurs that changes the displayed information.
+<br><br>Each tracking window lists its information in tabular form under several headings.&nbsp; You can sort the displayed
+ information based on any column by clicking on the column heading for that column.
+<h3 id="Tracking_Strings"> Tracking Strings </h3>
+<br>Choose Strings from the Track menu to open a Strings window which tracks all strings currently registered with the operating
+ system.&nbsp; As strings are destroyed, DDE Spy removes them from the list.
+<br><br><tt><img src="dde9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> The Strings window tracks all strings currently registered with the operating
+ system.</b>
+<br><br>The information in this window is:
+<dl>
+<dt>Handle
+<dd>The unique numeric identifier for the string
+<dt><br>Count
+<dd>The current usage count of the string.&nbsp; A string is deleted when its usage count is zero.
+<dt><br>String
+<dd>The text of the registered string
+</dl>
+<h3 id="Tracking_Conversations"> Tracking Conversations </h3>
+<br>Choose Conversations from the Track menu to open a Conversations window which tracks all conversations currently active
+ in the system.
+<br><br><tt><img src="dde10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> The Conversations window tracks all conversations currently active in the system.</b>
+<br><br>The information in this window is:
+<dl>
+<dt>Client
+<dd>The unique numeric identifier for the client
+<dt><br>Server
+<dd>The unique numeric identifier for the server
+<dt><br>Service
+<dd>The service name specified when the conversation was established
+<dt><br>Topic
+<dd>The topic specified by the client when the conversation was established
+</dl>
+<h3 id="Tracking_Links"> Tracking Links </h3>
+<br>Choose Links from the Track menu to open a Links window which tracks all links currently active in the system.
+<br><br><tt><img src="dde11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> The Links window tracks all links currently active in the system.</b>
+<br><br>The information in this window is:
+<dl>
+<dt>Client
+<dd>The unique numeric identifier for the client
+<dt><br>Server
+<dd>The unique numeric identifier for the server
+<dt><br>Type
+<dd>A value indicating if the link is Hot or Warm.&nbsp; When a link is established between a client and server, the server notifies
+ the client whenever the value of the item changes.&nbsp; When the link type is Warm, the only information sent to the client
+ is notification that the value of the item has changed.&nbsp; When the link type is Hot, then the notification that the value
+ has changed is sent to the client as well as the new value of the item.
+<dt><br>Service
+<dd>The service name specified when the conversation on which this link exists was established
+<dt><br>Topic
+<dd>The topic specified by the client when the conversation was established.
+<dt><br>Item
+<dd>The name of the item for which the link is established.
+<dt><br>Format
+<dd>The format of the information that is being communicated between applications.
+</dl>
+<h3 id="Tracking_Servers"> Tracking Servers </h3>
+<br>Choose Servers from the Track menu to open a Servers window which tracks all servers currently registered with the operating
+ system.
+<br><br><tt><img src="dde12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> The Servers window tracks all servers currently registered with the operating
+ system.</b>
+<br><br>The information in this dialog is:
+<dl>
+<dt>Server Name
+<dd>The name of each server that is registered with the operating system.&nbsp; This name is generally descriptive of the type
+ of server.
+<dt><br>Instance Name
+<dd>The server name with a numeric identifier added by the operating system.&nbsp; This name uniquely identifies the server in
+ the system.
+</dl>
+<h2 id="Working_with_Aliases"> Working with Aliases </h2>
+<br>The event list displays an overwhelming array of numeric identifiers.&nbsp; The alias functions allow you to replace these
+ numeric identifiers with meaningful text.&nbsp; This makes the event list easier for you to understand.&nbsp; For example,
+ if you are monitoring a server application and you know it's task id is 0x1234 then you can replace every occurrence of that
+ task id with the text &quot;server&quot;.
+<h3 id="Defining_Aliases"> Defining Aliases </h3>
+<br>Using the alias functions you can define aliases for window handles, task id's and conversation id's.
+<dl>
+<dt>(1)
+<dd><b> Choose Add hwnd alias, Add task alias or Add conversation alias</b> from the Alias menu
+<br>or
+<dt><br>
+<dd><b> Click on the appropriate icon on the toolbar.</b>
+<br>This opens the appropriate Add Alias dialog.&nbsp; The dialog contains a list box that lists all identifiers of the chosen
+ type that DDE Spy has encountered.
+<br><br><tt><img src="dde13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 15.</i></b><b><i></i></b><b> In the Add Alias dialog box, you replace the selected window handle, task, or
+ conversation id with descriptive text.</b>
+<dt><br>(2)
+<dd><b> Click once on the window handle, task, or conversation</b> for which you want to add an alias
+<br>or
+<dt><br>
+<dd><b> Enter a numeric value in the Value field.</b>
+<dt><br>(3)
+<dd><b> Position the cursor in the Current Text field.</b>
+<dt><br>(4)
+<dd><b> Enter the text</b> with which you want to replace this numeric identifier.
+<dt><br>(5)
+<dd><b> Click on OK</b> to register the alias and close the dialog
+<br>or
+<dt><br>
+<dd><b> Select the Do More button</b> to register the alias and leave the dialog open.
+<br>This allows you to create aliases for more numeric identifiers.
+</dl>
+<h3 id="Disabling_Aliases"> Disabling Aliases </h3>
+<br>Choosing Disable Aliases from the Aliases menu changes all aliased values back to their original numeric identifiers.
+&nbsp; The Disable Aliases menu item is checked when this option is active.&nbsp; Choosing the menu item again disables it.
+&nbsp; Numeric identifiers are then replaced by their text aliases again.
+<h3 id="Purging_Aliases"> Purging Aliases </h3>
+<br>Choosing Purge Aliases from the Aliases menu deletes all aliases set up in DDE Spy.&nbsp; Any values replaced by aliases
+ will revert to their original numeric values.
+</body>

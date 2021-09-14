@@ -1,0 +1,1131 @@
+<head>
+<title> Open Watcom 1.9 C Diagnostic Messages </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- E -
+<dd><a href="#E1000_BREAK_must_appear_in_while__do__for_or_switch_statement">E1000 BREAK must appear in while, do, for or switch statement</a>
+<br><a href="#E1001_CASE_must_appear_in_switch_statement">E1001 CASE must appear in switch statement</a>
+<br><a href="#E1002_CONTINUE_must_appear_in_while__do_or_for_statement">E1002 CONTINUE must appear in while, do or for statement</a>
+<br><a href="#E1003_DEFAULT_must_appear_in_switch_statement">E1003 DEFAULT must appear in switch statement</a>
+<br><a href="#E1004_Misplaced_____or_missing_earlier____">E1004 Misplaced '}' or missing earlier '{'</a>
+<br><a href="#E1005_Misplaced__elif_directive">E1005 Misplaced #elif directive</a>
+<br><a href="#E1006_Misplaced__else_directive">E1006 Misplaced #else directive</a>
+<br><a href="#E1007_Misplaced__endif_directive">E1007 Misplaced #endif directive</a>
+<br><a href="#E1008_Only_1_DEFAULT_per_switch_allowed">E1008 Only 1 DEFAULT per switch allowed</a>
+<br><a href="#E1009_Expecting___s__but_found___s_">E1009 Expecting '%s' but found '%s'</a>
+<br><a href="#E1010_Type_mismatch">E1010 Type mismatch</a>
+<br><a href="#E1011_Symbol___s__has_not_been_declared">E1011 Symbol '%s' has not been declared</a>
+<br><a href="#E1012_Expression_is_not_a_function">E1012 Expression is not a function</a>
+<br><a href="#E1013_Constant_variable_cannot_be_modified">E1013 Constant variable cannot be modified</a>
+<br><a href="#E1014_Left_operand_must_be_an__lvalue_">E1014 Left operand must be an 'lvalue'</a>
+<br><a href="#E1015___s__is_already_defined_as_a_variable">E1015 '%s' is already defined as a variable</a>
+<br><a href="#E1016_Expecting_identifier">E1016 Expecting identifier</a>
+<br><a href="#E1017_Label___s__already_defined">E1017 Label '%s' already defined</a>
+<br><a href="#E1018_Label___s__not_defined_in_function">E1018 Label '%s' not defined in function</a>
+<br><a href="#E1019_Tag___s__already_defined">E1019 Tag '%s' already defined</a>
+<br><a href="#E1020_Dimension_cannot_be_0_or_negative">E1020 Dimension cannot be 0 or negative</a>
+<br><a href="#E1021_Dimensions_of_multiMdimension_array_must_be_specified">E1021 Dimensions of multi-dimension array must be specified</a>
+<br><a href="#E1022_Missing_or_misspelled_data_type_near___s_">E1022 Missing or misspelled data type near '%s'</a>
+<br><a href="#E1023_Storage_class_of_parameter_must_be_register_or_unspecified">E1023 Storage class of parameter must be register or unspecified</a>
+<br><a href="#E1024_Declared_symbol___s__is_not_in_parameter_list">E1024 Declared symbol '%s' is not in parameter list</a>
+<br><a href="#E1025_Parameter___s__already_declared">E1025 Parameter '%s' already declared</a>
+<br><a href="#E1026_Invalid_declarator">E1026 Invalid declarator</a>
+<br><a href="#E1027_Invalid_storage_class_for_function">E1027 Invalid storage class for function</a>
+<br><a href="#E1028_Variable___s__cannot_be_void">E1028 Variable '%s' cannot be void</a>
+<br><a href="#E1029_Expression_must_be__pointer_to_____">E1029 Expression must be 'pointer to ...'</a>
+<br><a href="#E1030_Cannot_take_the_address_of_an_rvalue">E1030 Cannot take the address of an rvalue</a>
+<br><a href="#E1031_Name___s__not_found_in_structDunion__s">E1031 Name '%s' not found in struct/union %s</a>
+<br><a href="#E1032_Expression_for_____must_be_a__structure__or__union_">E1032 Expression for '.' must be a 'structure' or 'union'</a>
+<br><a href="#E1033_Expression_for__MY__must_be__pointer_to_struct_or_union_">E1033 Expression for '-&gt;' must be 'pointer to struct or union'</a>
+<br><a href="#E1034_Symbol___s__already_defined">E1034 Symbol '%s' already defined</a>
+<br><a href="#E1035_static_function___s__has_not_been_defined">E1035 static function '%s' has not been defined</a>
+<br><a href="#E1036_Right_operand_of___s__is_a_pointer">E1036 Right operand of '%s' is a pointer</a>
+<br><a href="#E1037_Type_cast_must_be_a_scalar_type">E1037 Type cast must be a scalar type</a>
+<br><a href="#E1038_Expecting_label_for_goto_statement">E1038 Expecting label for goto statement</a>
+<br><a href="#E1039_Duplicate_case_value___s__found">E1039 Duplicate case value '%s' found</a>
+<br><a href="#E1040_Field_width_too_large">E1040 Field width too large</a>
+<br><a href="#E1041_Field_width_of_0_with_symbol_not_allowed">E1041 Field width of 0 with symbol not allowed</a>
+<br><a href="#E1042_Field_width_must_be_positive">E1042 Field width must be positive</a>
+<br><a href="#E1043_Invalid_type_specified_for_bit_field">E1043 Invalid type specified for bit field</a>
+<br><a href="#E1044_Variable___s__has_incomplete_type">E1044 Variable '%s' has incomplete type</a>
+<br><a href="#E1045_Subscript_on_nonMarray">E1045 Subscript on non-array</a>
+<br><a href="#E1046_Incomplete_comment_started_on_line__u">E1046 Incomplete comment started on line %u</a>
+<br><a href="#E1047_Argument_for___must_be_a_macro_parm">E1047 Argument for # must be a macro parm</a>
+<br><a href="#E1048_Unknown_preprocessing_directive____s_">E1048 Unknown preprocessing directive '#%s'</a>
+<br><a href="#E1049_Invalid__include_directive">E1049 Invalid #include directive</a>
+<br><a href="#E1050_Not_enough_parameters_given_for_macro___s_">E1050 Not enough parameters given for macro '%s'</a>
+<br><a href="#E1051_Not_expecting_a_return_value_for_function___s_">E1051 Not expecting a return value for function '%s'</a>
+<br><a href="#E1052_Expression_has_void_type">E1052 Expression has void type</a>
+<br><a href="#E1053_Cannot_take_the_address_of_a_bit_field">E1053 Cannot take the address of a bit field</a>
+<br><a href="#E1054_Expression_must_be_constant">E1054 Expression must be constant</a>
+<br><a href="#E1055_Unable_to_open___s_">E1055 Unable to open '%s'</a>
+<br><a href="#E1056_Too_many_parameters_given_for_macro___s_">E1056 Too many parameters given for macro '%s'</a>
+<br><a href="#E1057_Modifiers_disagree_with_previous_definition_of___s_">E1057 Modifiers disagree with previous definition of '%s'</a>
+<br><a href="#E1058_Cannot_use_typedef___s__as_a_variable">E1058 Cannot use typedef '%s' as a variable</a>
+<br><a href="#E1059_Invalid_storage_class_for_nonMlocal_variable">E1059 Invalid storage class for non-local variable</a>
+<br><a href="#E1060_Invalid_type">E1060 Invalid type</a>
+<br><a href="#E1061_Expecting_data_or_function_declaration__but_found___s_">E1061 Expecting data or function declaration, but found '%s'</a>
+<br><a href="#E1062_Inconsistent_return_type_for_function___s_">E1062 Inconsistent return type for function '%s'</a>
+<br><a href="#E1063_Missing_operand">E1063 Missing operand</a>
+<br><a href="#E1064_Out_of_memory">E1064 Out of memory</a>
+<br><a href="#E1065_Invalid_character_constant">E1065 Invalid character constant</a>
+<br><a href="#E1066_Cannot_perform_operation_with_pointer_to_void">E1066 Cannot perform operation with pointer to void</a>
+<br><a href="#E1067_Cannot_take_address_of_variable_with_storage_class__register_">E1067 Cannot take address of variable with storage class 'register'</a>
+<br><a href="#E1068_Variable___s__already_initialized">E1068 Variable '%s' already initialized</a>
+<br><a href="#E1069_String_literal_not_terminated_before_end_of_line">E1069 String literal not terminated before end of line</a>
+<br><a href="#E1070_Data_for_aggregate_type_must_be_enclosed_in_curly_braces">E1070 Data for aggregate type must be enclosed in curly braces</a>
+<br><a href="#E1071_Type_of_parameter__d_does_not_agree_with_previous_definition">E1071 Type of parameter %d does not agree with previous definition</a>
+<br><a href="#E1072_Storage_class_disagrees_with_previous_definition_of___s_">E1072 Storage class disagrees with previous definition of '%s'</a>
+<br><a href="#E1073_Invalid_option___s_">E1073 Invalid option '%s'</a>
+<br><a href="#E1074_Invalid_optimization_option___s_">E1074 Invalid optimization option '%s'</a>
+<br><a href="#E1075_Invalid_memory_model___s_">E1075 Invalid memory model '%s'</a>
+<br><a href="#E1076_Missing_semicolon_at_end_of_declaration">E1076 Missing semicolon at end of declaration</a>
+<br><a href="#E1077_Missing____">E1077 Missing '}'</a>
+<br><a href="#E1078_Invalid_type_for_switch_expression">E1078 Invalid type for switch expression</a>
+<br><a href="#E1079_Expression_must_be_integral">E1079 Expression must be integral</a>
+<br><a href="#E1080_Expression_must_be_arithmetic">E1080 Expression must be arithmetic</a>
+<br><a href="#E1081_Expression_must_be_scalar_type">E1081 Expression must be scalar type</a>
+<br><a href="#E1082_Statement_required_after_label">E1082 Statement required after label</a>
+<br><a href="#E1083_Statement_required_after__do_">E1083 Statement required after 'do'</a>
+<br><a href="#E1084_Statement_required_after__case_">E1084 Statement required after 'case'</a>
+<br><a href="#E1085_Statement_required_after__default_">E1085 Statement required after 'default'</a>
+<br><a href="#E1086_Expression_too_complicated__split_it_up_and_try_again">E1086 Expression too complicated, split it up and try again</a>
+<br><a href="#E1087_Missing_matching__endif_directive">E1087 Missing matching #endif directive</a>
+<br><a href="#E1088_Invalid_macro_definition__missing_R">E1088 Invalid macro definition, missing )</a>
+<br><a href="#E1089_Missing_R_for_expansion_of___s__macro">E1089 Missing ) for expansion of '%s' macro</a>
+<br><a href="#E1090_Invalid_conversion">E1090 Invalid conversion</a>
+<br><a href="#E1091__s">E1091 %s</a>
+<br><a href="#E1092_Cannot_define_an_array_of_functions">E1092 Cannot define an array of functions</a>
+<br><a href="#E1093_Function_cannot_return_an_array">E1093 Function cannot return an array</a>
+<br><a href="#E1094_Function_cannot_return_a_function">E1094 Function cannot return a function</a>
+<br><a href="#E1095_Cannot_take_address_of_local_variable_in_static_initialization">E1095 Cannot take address of local variable in static initialization</a>
+<br><a href="#E1096_Inconsistent_use_of_return_statements">E1096 Inconsistent use of return statements</a>
+<br><a href="#E1097_Missing___or_misplaced__">E1097 Missing ?&nbsp; or misplaced :</a>
+<br><a href="#E1098_Maximum_struct_or_union_size_is_64K">E1098 Maximum struct or union size is 64K</a>
+<br><a href="#E1099_Statement_must_be_inside_function__Probable_cause__missing__">E1099 Statement must be inside function.&nbsp; Probable cause:&nbsp; missing {</a>
+<br><a href="#E1100_Definition_of_macro___s__not_identical_to_previous_definition">E1100 Definition of macro '%s' not identical to previous definition</a>
+<br><a href="#E1101_Cannot__undef___s_">E1101 Cannot #undef '%s'</a>
+<br><a href="#E1102_Cannot__define_the_name__defined_">E1102 Cannot #define the name 'defined'</a>
+<br><a href="#E1103____must_not_be_at_start_or_end_of_replacement_tokens">E1103 ## must not be at start or end of replacement tokens</a>
+<br><a href="#E1104_Type_cast_not_allowed_in__if_or__elif_expression">E1104 Type cast not allowed in #if or #elif expression</a>
+<br><a href="#E1105__sizeof__not_allowed_in__if_or__elif_expression">E1105 'sizeof' not allowed in #if or #elif expression</a>
+<br><a href="#E1106_Cannot_compare_a_struct_or_union">E1106 Cannot compare a struct or union</a>
+<br><a href="#E1107_Enumerator_list_cannot_be_empty">E1107 Enumerator list cannot be empty</a>
+<br><a href="#E1108_Invalid_floatingMpoint_constant">E1108 Invalid floating-point constant</a>
+<br><a href="#E1109_Cannot_take_sizeof_a_bit_field">E1109 Cannot take sizeof a bit field</a>
+<br><a href="#E1110_Cannot_initialize_variable_with_storage_class_of_extern">E1110 Cannot initialize variable with storage class of extern</a>
+<br><a href="#E1111_Invalid_storage_class_for_parameter">E1111 Invalid storage class for parameter</a>
+<br><a href="#E1112_Initializer_list_cannot_be_empty">E1112 Initializer list cannot be empty</a>
+<br><a href="#E1113_Expression_has_incomplete_type">E1113 Expression has incomplete type</a>
+<br><a href="#E1114_Struct_or_union_cannot_contain_itself">E1114 Struct or union cannot contain itself</a>
+<br><a href="#E1115_Incomplete_enum_declaration">E1115 Incomplete enum declaration</a>
+<br><a href="#E1116_An_id_list_not_allowed_except_for_function_definition">E1116 An id list not allowed except for function definition</a>
+<br><a href="#E1117_Must_use__va_start__macro_inside_function_with_variable_parameters">E1117 Must use 'va_start' macro inside function with variable parameters</a>
+<br><a href="#E1118_TTTFATALTTT__s">E1118 ***FATAL*** %s</a>
+<br><a href="#E1119_Internal_compiler_error__d">E1119 Internal compiler error %d</a>
+<br><a href="#E1120_Parameter_number__d_M_invalid_register_in__pragma">E1120 Parameter number %d - invalid register in #pragma</a>
+<br><a href="#E1121_Procedure___s__has_invalid_return_register_in__pragma">E1121 Procedure '%s' has invalid return register in #pragma</a>
+<br><a href="#E1122_Illegal_register_modified_by___s___pragma">E1122 Illegal register modified by '%s' #pragma</a>
+<br><a href="#E1123_File_must_contain_at_least_one_external_definition">E1123 File must contain at least one external definition</a>
+<br><a href="#E1124_Out_of_macro_space">E1124 Out of macro space</a>
+<br><a href="#E1125_Keyboard_interrupt_detected">E1125 Keyboard interrupt detected</a>
+<br><a href="#E1126_Array__struct_or_union_cannot_be_placed_in_a_register">E1126 Array, struct or union cannot be placed in a register</a>
+<br><a href="#E1127_Type_required_in_parameter_list">E1127 Type required in parameter list</a>
+<br><a href="#E1128_Enum_constant_is_out_of_range__s">E1128 Enum constant is out of range %s</a>
+<br><a href="#E1129_Type_does_not_agree_with_previous_definition_of___s_">E1129 Type does not agree with previous definition of '%s'</a>
+<br><a href="#E1130_Duplicate_name___s__not_allowed_in_struct_or_union">E1130 Duplicate name '%s' not allowed in struct or union</a>
+<br><a href="#E1131_Duplicate_macro_parameter___s_">E1131 Duplicate macro parameter '%s'</a>
+<br><a href="#E1132_Unable_to_open_work_file__error_code_E__d">E1132 Unable to open work file:&nbsp; error code = %d</a>
+<br><a href="#E1133_Write_error_on_work_file__error_code_E__d">E1133 Write error on work file:&nbsp; error code = %d</a>
+<br><a href="#E1134_Read_error_on_work_file__error_code_E__d">E1134 Read error on work file:&nbsp; error code = %d</a>
+<br><a href="#E1135_Seek_error_on_work_file__error_code_E__d">E1135 Seek error on work file:&nbsp; error code = %d</a>
+<br><a href="#E1136_not_used">E1136 not used</a>
+<br><a href="#E1137_Out_of_enum_space">E1137 Out of enum space</a>
+<br><a href="#E1138_Filename_required_on_command_line">E1138 Filename required on command line</a>
+<br><a href="#E1139_Command_line_contains_more_than_one_file_to_compile">E1139 Command line contains more than one file to compile</a>
+<br><a href="#E1140__leave_must_appear_in_a__try_statement">E1140 _leave must appear in a _try statement</a>
+<br><a href="#E1141_Expecting_end_of_line_but_found___s_">E1141 Expecting end of line but found '%s'</a>
+<br><a href="#E1142_Too_many_bytes_specified_in__pragma">E1142 Too many bytes specified in #pragma</a>
+<br><a href="#E1143_Cannot_resolve_linkage_conventions_for_routine___s___pragma">E1143 Cannot resolve linkage conventions for routine '%s' #pragma</a>
+<br><a href="#E1144_Symbol___s__in_pragma_must_be_global">E1144 Symbol '%s' in pragma must be global</a>
+<br><a href="#E1145_Internal_compiler_limit_exceeded__break_module_into_smaller_pieces">E1145 Internal compiler limit exceeded, break module into smaller pieces</a>
+<br><a href="#E1146_Invalid_initializer_for_integer_data_type">E1146 Invalid initializer for integer data type</a>
+<br><a href="#E1147_Too_many_errors__compilation_aborted">E1147 Too many errors:&nbsp; compilation aborted</a>
+<br><a href="#E1148_Expecting_identifier_but_found___s_">E1148 Expecting identifier but found '%s'</a>
+<br><a href="#E1149_Expecting_constant_but_found___s_">E1149 Expecting constant but found '%s'</a>
+<br><a href="#E1150_Expecting_B_filenameB__but_found___s_">E1150 Expecting \&quot;filename\&quot; but found '%s'</a>
+<br><a href="#E1151_Parameter_count_does_not_agree_with_previous_definition">E1151 Parameter count does not agree with previous definition</a>
+<br><a href="#E1152_Segment_name_required">E1152 Segment name required</a>
+<br><a href="#E1153_Invalid___based_declaration">E1153 Invalid __based declaration</a>
+<br><a href="#E1154_Variable_for___based_declaration_must_be_of_type___segment_or_pointer">E1154 Variable for __based declaration must be of type __segment or pointer</a>
+<br><a href="#E1155_Duplicate_external_symbol__s">E1155 Duplicate external symbol %s</a>
+<br><a href="#E1156_Assembler_error____s_">E1156 Assembler error:&nbsp; '%s'</a>
+<br><a href="#E1157_Variable_must_be__huge_">E1157 Variable must be 'huge'</a>
+<br><a href="#E1158_Too_many_parm_sets">E1158 Too many parm sets</a>
+<br><a href="#E1159_IDO_error_reading___s____s">E1159 I/O error reading '%s':&nbsp; %s</a>
+<br><a href="#E1160_Attempt_to_access_far_memory_with_all_segment_registers_disabled_in___s_">E1160 Attempt to access far memory with all segment registers disabled in '%s'</a>
+<br><a href="#E1161_No_identifier_provided_for__MD__option">E1161 No identifier provided for '-D' option</a>
+<br><a href="#E1162_Invalid_register_pegged_to_a_segment_in___s_">E1162 Invalid register pegged to a segment in '%s'</a>
+<br><a href="#E1163_Invalid_octal_constant">E1163 Invalid octal constant</a>
+<br><a href="#E1164_Invalid_hexadecimal_constant">E1164 Invalid hexadecimal constant</a>
+<br><a href="#E1165_Unexpected__R___Probable_cause__missing__L_">E1165 Unexpected ')'.&nbsp; Probable cause:&nbsp; missing '('</a>
+<br><a href="#E1166_Symbol___s__is_unreachable_from__pragma">E1166 Symbol '%s' is unreachable from #pragma</a>
+<br><a href="#E1167_Division_or_remainder_by_zero_in_a_constant_expression">E1167 Division or remainder by zero in a constant expression</a>
+<br><a href="#E1168_Cannot_end_string_literal_with_backslash">E1168 Cannot end string literal with backslash</a>
+<br><a href="#E1169_Invalid___declspec_declaration">E1169 Invalid __declspec declaration</a>
+<br><a href="#E1170_Too_many_storage_class_specifiers">E1170 Too many storage class specifiers</a>
+<br><a href="#E1171_Expecting___s__but_found_end_of_file">E1171 Expecting '%s' but found end of file</a>
+<br><a href="#E1172_Expecting_structDunion_tag_but_found___s_">E1172 Expecting struct/union tag but found '%s'</a>
+<br><a href="#E1173_Operand_of___builtin_isfloatLR_must_be_a_type">E1173 Operand of __builtin_isfloat() must be a type</a>
+<br><a href="#E1174_Invalid_constant">E1174 Invalid constant</a>
+<br><a href="#E1175_Too_many_initializers">E1175 Too many initializers</a>
+<br><a href="#E1176_Parameter__d__pointer_type_mismatch">E1176 Parameter %d, pointer type mismatch</a>
+<br><a href="#E1177_Modifier_repeated_in_declaration">E1177 Modifier repeated in declaration</a>
+<br><a href="#E1178_Type_qualifier_mismatch">E1178 Type qualifier mismatch</a>
+<br><a href="#E1179_Parameter__d__type_qualifier_mismatch">E1179 Parameter %d, type qualifier mismatch</a>
+<br><a href="#E1180_Sign_specifier_mismatch">E1180 Sign specifier mismatch</a>
+<br><a href="#E1181_Parameter__d__sign_specifier_mismatch">E1181 Parameter %d, sign specifier mismatch</a>
+<br><a href="#E1182_Missing_BB_for_string_literal">E1182 Missing \\ for string literal</a>
+<br><a href="#E1183_Expecting___s__after___s__but_found___s_">E1183 Expecting '%s' after '%s' but found '%s'</a>
+<br><a href="#E1184_Expecting___s__after___s__but_found_end_of_file">E1184 Expecting '%s' after '%s' but found end of file</a>
+<br><a href="#E1185_Invalid_register_name___s__in__pragma">E1185 Invalid register name '%s' in #pragma</a>
+<br><a href="#E1186_Storage_class_of__for__statement_declaration_not_register_or_auto">E1186 Storage class of 'for' statement declaration not register or auto</a>
+<br><a href="#E1187_No_type_specified_in_declaration">E1187 No type specified in declaration</a>
+<br><a href="#E1188_Symbol___s__declared_in__for__statement_must_be_object">E1188 Symbol '%s' declared in 'for' statement must be object</a>
+<br><a href="#E1189_Unexpected_declaration">E1189 Unexpected declaration</a>
+<dt><br>- H -
+<dd><a href="#H3000_Error_reading_PCH_file">H3000 Error reading PCH file</a>
+<br><a href="#H3001_PCH_file_header_is_out_of_date">H3001 PCH file header is out of date</a>
+<br><a href="#H3002_Compile_options_differ_with_PCH_file">H3002 Compile options differ with PCH file</a>
+<br><a href="#H3003_Current_working_directory_differs_with_PCH_file">H3003 Current working directory differs with PCH file</a>
+<br><a href="#H3004_Include_file___s__has_been_modified_since_PCH_file_was_made">H3004 Include file '%s' has been modified since PCH file was made</a>
+<br><a href="#H3005_PCH_file_was_made_from_a_different_include_file">H3005 PCH file was made from a different include file</a>
+<br><a href="#H3006_Include_path_differs_with_PCH_file">H3006 Include path differs with PCH file</a>
+<br><a href="#H3007_Preprocessor_macro_definition_differs_with_PCH_file">H3007 Preprocessor macro definition differs with PCH file</a>
+<br><a href="#H3008_PCH_cannot_have_data_or_code_definitions_">H3008 PCH cannot have data or code definitions.</a>
+<dt><br>- I -
+<dd><a href="#I2000_Not_enough_memory_to_fully_optimize_procedure___s_">I2000 Not enough memory to fully optimize procedure '%s'</a>
+<br><a href="#I2001_Not_enough_memory_to_maintain_full_peephole">I2001 Not enough memory to maintain full peephole</a>
+<br><a href="#I2002___s__defined_in___sL_uR">I2002 '%s' defined in:&nbsp; %s(%u)</a>
+<br><a href="#I2003_source_conversion_type_is___s_">I2003 source conversion type is '%s'</a>
+<br><a href="#I2004_target_conversion_type_is___s_">I2004 target conversion type is '%s'</a>
+<br><a href="#I2005_Including_file___s_">I2005 Including file '%s'</a>
+<dt><br>- M -
+<dd><a href="#M4000_Code_size">M4000 Code size</a>
+<br><a href="#M4001_Error_">M4001 Error!</a>
+<br><a href="#M4002_Warning_">M4002 Warning!</a>
+<br><a href="#M4003_Note_">M4003 Note!</a>
+<br><a href="#M4004_LPress_return_to_continueR">M4004 (Press return to continue)</a>
+<dt><br>- O -
+<dd><a href="#Open_Watcom_C_Diagnostic_Messages">Open Watcom C Diagnostic Messages</a>
+<dt><br>- W -
+<dd><a href="#W100_Parameter__d_contains_inconsistent_levels_of_indirection">W100 Parameter %d contains inconsistent levels of indirection</a>
+<br><a href="#W101_NonMportable_pointer_conversion">W101 Non-portable pointer conversion</a>
+<br><a href="#W102_Type_mismatch_LwarningR">W102 Type mismatch (warning)</a>
+<br><a href="#W103_Parameter_count_does_not_agree_with_previous_definition_LwarningR">W103 Parameter count does not agree with previous definition (warning)</a>
+<br><a href="#W104_Inconsistent_levels_of_indirection">W104 Inconsistent levels of indirection</a>
+<br><a href="#W105_Assignment_found_in_boolean_expression">W105 Assignment found in boolean expression</a>
+<br><a href="#W106_Constant_out_of_range_M_truncated">W106 Constant out of range - truncated</a>
+<br><a href="#W107_Missing_return_value_for_function___s_">W107 Missing return value for function '%s'</a>
+<br><a href="#W108_Duplicate_typedef_already_defined">W108 Duplicate typedef already defined</a>
+<br><a href="#W109_not_used">W109 not used</a>
+<br><a href="#W110__fortran__pragma_not_defined">W110 'fortran' pragma not defined</a>
+<br><a href="#W111_Meaningless_use_of_an_expression">W111 Meaningless use of an expression</a>
+<br><a href="#W112_Pointer_truncated">W112 Pointer truncated</a>
+<br><a href="#W113_Pointer_type_mismatch">W113 Pointer type mismatch</a>
+<br><a href="#W114_Missing_semicolon">W114 Missing semicolon</a>
+<br><a href="#W115__array_may_not_produce_intended_result">W115 &amp;array may not produce intended result</a>
+<br><a href="#W116_Attempt_to_return_address_of_auto_variable">W116 Attempt to return address of auto variable</a>
+<br><a href="#W117______tokens_did_not_generate_a_single_token_Lrest_discardedR">W117 '##' tokens did not generate a single token (rest discarded)</a>
+<br><a href="#W118_Label___s__has_been_defined_but_not_referenced">W118 Label '%s' has been defined but not referenced</a>
+<br><a href="#W119_Address_of_static_function___s__has_been_taken">W119 Address of static function '%s' has been taken</a>
+<br><a href="#W120_lvalue_cast_is_not_standard_C">W120 lvalue cast is not standard C</a>
+<br><a href="#W121_Text_following_preMprocessor_directives_is_not_standard_C">W121 Text following pre-processor directives is not standard C</a>
+<br><a href="#W122_Literal_string_too_long_for_array_M_truncated">W122 Literal string too long for array - truncated</a>
+<br><a href="#W123__DD__style_comment_continues_on_next_line">W123 '//' style comment continues on next line</a>
+<br><a href="#W124_Comparison_result_always__d">W124 Comparison result always %d</a>
+<br><a href="#W125_Nested_include_depth_of__d_exceeded">W125 Nested include depth of %d exceeded</a>
+<br><a href="#W126_Constant_must_be_zero_for_pointer_compare">W126 Constant must be zero for pointer compare</a>
+<br><a href="#W127_trigraph_found_in_string">W127 trigraph found in string</a>
+<br><a href="#W128__d_padding_byteLsR_added">W128 %d padding byte(s) added</a>
+<br><a href="#W129__endif_matches__if_in_different_source_file___s_">W129 #endif matches #if in different source file '%s'</a>
+<br><a href="#W130_Possible_loss_of_precision">W130 Possible loss of precision</a>
+<br><a href="#W131_No_prototype_found_for_function___s_">W131 No prototype found for function '%s'</a>
+<br><a href="#W132_No_storage_class_or_type_specified">W132 No storage class or type specified</a>
+<br><a href="#W133_Symbol_name_truncated_for___s_">W133 Symbol name truncated for '%s'</a>
+<br><a href="#W134_Shift_amount_negative">W134 Shift amount negative</a>
+<br><a href="#W135_Shift_amount_too_large">W135 Shift amount too large</a>
+<br><a href="#W136_Comparison_equivalent_to__unsigned_EE_0_">W136 Comparison equivalent to 'unsigned == 0'</a>
+<br><a href="#W137_Extern_function___s__redeclared_as_static">W137 Extern function '%s' redeclared as static</a>
+<br><a href="#W138_No_newline_at_end_of_file">W138 No newline at end of file</a>
+<br><a href="#W139_Divisor_for_modulo_or_division_operation_is_zero">W139 Divisor for modulo or division operation is zero</a>
+<br><a href="#W200___s__has_been_referenced_but_never_assigned_a_value">W200 '%s' has been referenced but never assigned a value</a>
+<br><a href="#W201_Unreachable_code">W201 Unreachable code</a>
+<br><a href="#W202_Symbol___s__has_been_defined__but_not_referenced">W202 Symbol '%s' has been defined, but not referenced</a>
+<br><a href="#W203_Preprocessing_symbol___s__has_not_been_declared">W203 Preprocessing symbol '%s' has not been declared</a>
+<br><a href="#W300_Nested_comment_found_in_comment_started_on_line__u">W300 Nested comment found in comment started on line %u</a>
+<br><a href="#W301_not_used">W301 not used</a>
+<br><a href="#W302_Expression_is_only_useful_for_its_side_effects">W302 Expression is only useful for its side effects</a>
+<br><a href="#W303_Parameter___s__has_been_defined__but_not_referenced">W303 Parameter '%s' has been defined, but not referenced</a>
+<br><a href="#W304_Return_type__int__assumed_for_function___s_">W304 Return type 'int' assumed for function '%s'</a>
+<br><a href="#W305_Type__int__assumed_in_declaration_of___s_">W305 Type 'int' assumed in declaration of '%s'</a>
+<br><a href="#W306_Assembler_warning____s_">W306 Assembler warning:&nbsp; '%s'</a>
+<br><a href="#W307_Obsolete_nonMprototype_declarator">W307 Obsolete non-prototype declarator</a>
+<br><a href="#W308_Unprototyped_function___s__called">W308 Unprototyped function '%s' called</a>
+<br><a href="#W309_Unprototyped_function_indirectly_called">W309 Unprototyped function indirectly called</a>
+<br><a href="#W310_Pointer_truncated_during_cast">W310 Pointer truncated during cast</a>
+<br><a href="#W400_Array_subscript_is_of_type_plain_char">W400 Array subscript is of type plain char</a>
+</dl>
+<h1 id="Open_Watcom_C_Diagnostic_Messages"> Open Watcom C Diagnostic Messages </h1>
+<br>The following is a list of all warning and error messages produced by the Open Watcom C compilers.&nbsp; Diagnostic messages
+ are issued during compilation and execution.
+<br><br>The messages listed in the following sections contain references to<tt> %s, %d</tt> and<tt> %u.</tt>&nbsp; They represent
+ strings that are substituted by the Open Watcom C compilers to make the error message more exact.<tt>&nbsp; %d</tt> and<tt>
+ %u</tt> represent a string of digits;<tt> %s</tt> a string, usually a symbolic name.
+<br><br>Consider the following program, named<tt> err.c</tt>, which contains errors.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #include &lt;stdio.h&gt;</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void main()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float i;</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i = 383;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = 13143.0;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf( &quot;Integer value is %d\n&quot;, i );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf( &quot;Floating-point value is %f\n&quot;, x );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><br>If we compile the above program, the following messages will appear on the screen.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; err.c(6): Error! E1034: Symbol 'i' already defined</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; err.c(9): Error! E1011: Symbol 'x' has not been declared</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; err.c: 12 lines, included 191, 0 warnings, 2 errors</tt>
+<br><br>The diagnostic messages consist of the following information:
+<ol>
+<li>the name of the file being compiled,
+<li>the line number of the line containing the error (in parentheses),
+<li>a message number, and
+<li>text explaining the nature of the error.
+</ol>
+<br>In the above example, the first error occurred on line 6 of the file<tt> err.c.</tt>&nbsp; Error number 1034 (with the
+ appropriate substitutions) was diagnosed.&nbsp; The second error occurred on line 9 of the file<tt> err.c.</tt>&nbsp; Error
+ number 1011 (with the appropriate substitutions) was diagnosed.
+<br><br>The following sections contain a complete list of the messages.&nbsp; Run-time messages (messages displayed during
+ execution) do not have message numbers associated with them.
+<h2 id="W100_Parameter__d_contains_inconsistent_levels_of_indirection"> W100 Parameter %d contains inconsistent levels of indirection </h2>
+<br>The function is expecting something like<tt> char **</tt> and it is being passed a<tt> char *</tt> for instance.
+<h2 id="W101_NonMportable_pointer_conversion"> W101 Non-portable pointer conversion </h2>
+<br>This message is issued whenever you convert a non-zero constant to a pointer.
+<h2 id="W102_Type_mismatch_LwarningR"> W102 Type mismatch (warning) </h2>
+<br>This message is issued for a function return value or an assignment where both types are pointers, but they are pointers
+ to different kinds of objects.
+<h2 id="W103_Parameter_count_does_not_agree_with_previous_definition_LwarningR"> W103 Parameter count does not agree with previous definition (warning) </h2>
+<br>You have either not enough parameters or too many parameters in a call to a function.&nbsp; If the function is supposed
+ to have a variable number of parameters, then you can ignore this warning, or you can change the function declaration and
+ prototypes to use the &quot;,...&quot; to indicate that the function indeed takes a variable number of parameters.
+<h2 id="W104_Inconsistent_levels_of_indirection"> W104 Inconsistent levels of indirection </h2>
+<br>This occurs in an assignment or return statement when one of the operands has more levels of indirection than the other
+ operand.&nbsp; For example, a<tt> char **</tt> is being assigned to a<tt> char *.</tt>
+<br><br>Solution:&nbsp; Correct the levels of indirection or use a<tt> void *.</tt>
+<h2 id="W105_Assignment_found_in_boolean_expression"> W105 Assignment found in boolean expression </h2>
+<br>An assignment of a constant has been detected in a boolean expression.&nbsp; For example:&nbsp; &quot;if( var = 0 )&quot;.
+&nbsp; It is most likely that you want to use &quot;==&quot; for testing for equality.
+<h2 id="W106_Constant_out_of_range_M_truncated"> W106 Constant out of range - truncated </h2>
+<br>This message is issued if a constant cannot be represented in 32 bits or if a constant is outside the range of valid values
+ that can be assigned to a variable.
+<h2 id="W107_Missing_return_value_for_function___s_"> W107 Missing return value for function '%s' </h2>
+<br>A function has been declared with a function return type, but no<b><i> return</i></b> statement was found in the function.
+&nbsp; Either add a<b><i> return</i></b> statement or change the function return type to<b><i> void.</i></b>&nbsp; 
+<h2 id="W108_Duplicate_typedef_already_defined"> W108 Duplicate typedef already defined </h2>
+<br>A duplicate typedef is not allowed in ISO C.&nbsp; This warning is issued when compiling with extensions enabled.&nbsp;
+ You should delete the duplicate typedef definition.
+<h2 id="W109_not_used"> W109 not used </h2>
+<br>unused message
+<h2 id="W110__fortran__pragma_not_defined"> W110 'fortran' pragma not defined </h2>
+<br>You have used the<b><i> fortran</i></b> keyword in your program, but have not defined a #pragma for<b><i> fortran.</i></b>
+&nbsp; 
+<h2 id="W111_Meaningless_use_of_an_expression"> W111 Meaningless use of an expression </h2>
+<br>The line contains an expression that does nothing useful.&nbsp; In the example &quot;i = (1,5);&quot;, the expression
+ &quot;1,&quot; is meaningless.
+<h2 id="W112_Pointer_truncated"> W112 Pointer truncated </h2>
+<br>A far pointer is being passed to a function that is expecting a near pointer, or a far pointer is being assigned to a
+ near pointer.
+<h2 id="W113_Pointer_type_mismatch"> W113 Pointer type mismatch </h2>
+<br>You have two pointers that either point to different objects, or the pointers are of different size, or they have different
+ modifiers.
+<h2 id="W114_Missing_semicolon"> W114 Missing semicolon </h2>
+<br>You are missing the semicolon &quot;;&quot; on the field definition just before the right curly brace &quot;}&quot;.
+<h2 id="W115__array_may_not_produce_intended_result"> W115 &amp;array may not produce intended result </h2>
+<br>The type of the expression &quot;&amp;array&quot; is different from the type of the expression &quot;array&quot;.&nbsp;
+ Suppose we have the declaration<tt> char buffer&#91;80&#93;</tt> Then the expression<tt> (&amp;buffer + 3)</tt> will be evaluated
+ as<tt> (buffer + 3 * sizeof(buffer))</tt> which is<tt> (buffer + 3 * 80)</tt> and not<tt> (buffer + 3 * 1)</tt> which is
+ what most people expect to happen.&nbsp; The address of operator &quot;&amp;&quot; is not required for getting the address
+ of an array.
+<h2 id="W116_Attempt_to_return_address_of_auto_variable"> W116 Attempt to return address of auto variable </h2>
+<br>This warning usually indicates a serious programming error.&nbsp; When a function exits, the storage allocated on the
+ stack for auto variables is released.&nbsp; This storage will be overwritten by further function calls and/or hardware interrupt
+ service routines.&nbsp; Therefore, the data pointed to by the return value may be destroyed before your program has a chance
+ to reference it or make a copy of it.
+<h2 id="W117______tokens_did_not_generate_a_single_token_Lrest_discardedR"> W117 '##' tokens did not generate a single token (rest discarded) </h2>
+<br>When two tokens are pasted together using ##, they must form a string that can be parsed as a single token.
+<h2 id="W118_Label___s__has_been_defined_but_not_referenced"> W118 Label '%s' has been defined but not referenced </h2>
+<br>You have defined a label that is not referenced in a<b><i> goto</i></b> statement.&nbsp; It is possible that you are missing
+ the<b><i> case</i></b> keyword when using an enumerated type name as a case in a<b><i> switch</i></b> statement.&nbsp; If
+ not, then the label can be deleted.
+<h2 id="W119_Address_of_static_function___s__has_been_taken"> W119 Address of static function '%s' has been taken </h2>
+<br>This warning may indicate a potential problem when the program is overlayed.
+<h2 id="W120_lvalue_cast_is_not_standard_C"> W120 lvalue cast is not standard C </h2>
+<br>A cast operation does not yield an lvalue in ISO C.&nbsp; However, to provide compatibility with code written prior to
+ the availability of ISO compliant C compilers, if an expression was an lvalue prior to the cast operation, and the cast operation
+ does not cause any conversions, the compiler treats the result as an lvalue and issues this warning.
+<h2 id="W121_Text_following_preMprocessor_directives_is_not_standard_C"> W121 Text following pre-processor directives is not standard C </h2>
+<br>Arbitrary text is not allowed following a pre-processor directive.&nbsp; Only comments are allowed following a pre-processor
+ directive.
+<h2 id="W122_Literal_string_too_long_for_array_M_truncated"> W122 Literal string too long for array - truncated </h2>
+<br>The supplied literal string contains more characters than the specified dimension of the array.&nbsp; Either shorten the
+ literal string, or increase the dimension of the array to hold all of the characters from the literal string.
+<h2 id="W123__DD__style_comment_continues_on_next_line"> W123 '//' style comment continues on next line </h2>
+<br>The compiler has detected a line continuation during the processing of a C++ style comment (&quot;//&quot;).&nbsp; The
+ warning can be removed by switching to a C style comment (&quot;/**/&quot;).&nbsp; If you require the comment to be terminated
+ at the end of the line, make sure that the backslash character is not the last character in the line.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #define XX 23 // comment start \</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; comment \</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; end</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int x = XX; // comment start ...\</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; comment end</tt>
+<h2 id="W124_Comparison_result_always__d"> W124 Comparison result always %d </h2>
+<br>The line contains a comparison that is always true (1) or false (0).&nbsp; For example comparing an unsigned expression
+ to see if it is &gt;= 0 or &lt; 0 is redundant.&nbsp; Check to see if the expression should be signed instead of unsigned.
+<h2 id="W125_Nested_include_depth_of__d_exceeded"> W125 Nested include depth of %d exceeded </h2>
+<br>The number of nested include files has reached a preset limit, check for recursive include statements.
+<h2 id="W126_Constant_must_be_zero_for_pointer_compare"> W126 Constant must be zero for pointer compare </h2>
+<br>A pointer is being compared using == or != to a non-zero constant.
+<h2 id="W127_trigraph_found_in_string"> W127 trigraph found in string </h2>
+<br>Trigraph expansion occurs inside a string literal.&nbsp; This warning can be disabled via the command line or<b><i> #pragma
+ warning</i></b> directive.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; // string expands to &quot;(?&#93;?????&quot;!</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; char *e = &quot;(???)???-????&quot;;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; // possible work-arounds</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; char *f = &quot;(&quot; &quot;???&quot; &quot;)&quot; &quot;???&quot; &quot;-&quot; &quot;????&quot;;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; char *g = &quot;(\?\?\?)\?\?\?-\?\?\?\?&quot;;</tt>
+<h2 id="W128__d_padding_byteLsR_added"> W128 %d padding byte(s) added </h2>
+<br>The compiler has added slack bytes to align a member to the correct offset.
+<h2 id="W129__endif_matches__if_in_different_source_file___s_"> W129 #endif matches #if in different source file '%s' </h2>
+<br>This warning may indicate a<b><i> #endif</i></b> nesting problem since the traditional usage of<b><i> #if</i></b> directives
+ is confined to the same source file.&nbsp; This warning may often come before an error and it is hoped will provide information
+ to solve a preprocessing directive problem.
+<h2 id="W130_Possible_loss_of_precision"> W130 Possible loss of precision </h2>
+<br>This warning indicates that you may be converting a argument of one size to another, different size.&nbsp; For instance,
+ you may be losing precision by passing a long argument to a function that takes a short.&nbsp; This warning is initially
+ disabled.&nbsp; It must be explicitly enabled with<b> #pragma enable_message(130)</b> or option &quot;-wce=130&quot;.&nbsp;
+ It can be disabled later by using<b> #pragma disable_message(130).</b>
+<h2 id="W131_No_prototype_found_for_function___s_"> W131 No prototype found for function '%s' </h2>
+<br>A reference for a function appears in your program, but you do not have a prototype for that function defined.&nbsp; Implicit
+ prototype will be used, but this will cause problems if the assumed prototype does not match actual function definition.
+<h2 id="W132_No_storage_class_or_type_specified"> W132 No storage class or type specified </h2>
+<br>When declaring a data object, either storage class or data type must be given.&nbsp; If no type is specified,<b><i> int</i></b>
+ is assumed.&nbsp; If no storage class is specified, the default depends on scope (see the<b> C Language Reference</b> for
+ details).&nbsp; For instance
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; auto i;</tt>
+<br><br>is a valid declaration, as is
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; short i;</tt>
+<br><br>However,
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; i;</tt>
+<br><br>is not a correctly formed declaration.
+<h2 id="W133_Symbol_name_truncated_for___s_"> W133 Symbol name truncated for '%s' </h2>
+<br>Symbol is longer than the object file format allows and has been truncated to fit.&nbsp; Maximum length is 255 characters
+ for OMF and 1024 characters for COFF or ELF object files.
+<h2 id="W134_Shift_amount_negative"> W134 Shift amount negative </h2>
+<br>The right operand of a left or right shift operator is a negative value.&nbsp; The result of the shift operation is undefined.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int a = 1 &lt;&lt; -2;</tt>
+<br><br>The value of 'a' in the above example is undefined.
+<h2 id="W135_Shift_amount_too_large"> W135 Shift amount too large </h2>
+<br>The right operand of a left or right shift operator is a value greater than or equal to the width in bits of the type
+ of the promoted left operand.&nbsp; The result of the shift operation is undefined.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int a = 1 &gt;&gt; 123;</tt>
+<br><br>The value of 'a' in the above example is undefined.
+<h2 id="W136_Comparison_equivalent_to__unsigned_EE_0_"> W136 Comparison equivalent to 'unsigned == 0' </h2>
+<br>Comparing an unsigned expression to see whether it is &lt;= 0 is equivalent to testing for == 0.&nbsp; Check to see if
+ the expression should be signed instead of unsigned.
+<h2 id="W137_Extern_function___s__redeclared_as_static"> W137 Extern function '%s' redeclared as static </h2>
+<br>The specified function was either explicitly or implicitly declared as<b><i> extern</i></b> and later redeclared as<b><i>
+ static.</i></b>&nbsp; This is not allowed in ISO C and may produce unexpected results with ISO compliant compilers.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int bar( void );</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void foo( void )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bar();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; static int bar( void )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( 0 );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="W138_No_newline_at_end_of_file"> W138 No newline at end of file </h2>
+<br>ISO C requires that a non-empty source file must include a newline character at the end of the last line.&nbsp; If no
+ newline was found, it will be automatically inserted.
+<h2 id="W139_Divisor_for_modulo_or_division_operation_is_zero"> W139 Divisor for modulo or division operation is zero </h2>
+<br>The right operand of a division or modulo operation is zero.&nbsp; The result of this operation is undefined and you should
+ rewrite the offending code to avoid divisions by zero.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int foo( void )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( 7 / 0 );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="W200___s__has_been_referenced_but_never_assigned_a_value"> W200 '%s' has been referenced but never assigned a value </h2>
+<br>You have used the variable in an expression without previously assigning a value to that variable.
+<h2 id="W201_Unreachable_code"> W201 Unreachable code </h2>
+<br>The statement will never be executed, because there is no path through the program that causes control to reach this statement.
+<h2 id="W202_Symbol___s__has_been_defined__but_not_referenced"> W202 Symbol '%s' has been defined, but not referenced </h2>
+<br>There are no references to the declared variable.&nbsp; The declaration for the variable can be deleted.
+<br><br>In some cases, there may be a valid reason for retaining the variable.&nbsp; You can prevent the message from being
+ issued through use of<b> #pragma off(unreferenced).</b>
+<h2 id="W203_Preprocessing_symbol___s__has_not_been_declared"> W203 Preprocessing symbol '%s' has not been declared </h2>
+<br>The symbol has been used in a preprocessor expression.&nbsp; The compiler assumes the symbol has a value of 0 and continues.
+&nbsp; A<tt> #define</tt> may be required for the symbol, or you may have forgotten to include the file which contains a<tt>
+ #define</tt> for the symbol.
+<h2 id="W300_Nested_comment_found_in_comment_started_on_line__u"> W300 Nested comment found in comment started on line %u </h2>
+<br>While scanning a comment for its end, the compiler detected<tt> /*</tt> for the start of another comment.&nbsp; Nested
+ comments are not allowed in ISO C.&nbsp; You may be missing the<tt> */</tt> for the previous comment.
+<h2 id="W301_not_used"> W301 not used </h2>
+<br>unused message
+<h2 id="W302_Expression_is_only_useful_for_its_side_effects"> W302 Expression is only useful for its side effects </h2>
+<br>You have an expression that would have generated the warning &quot;Meaningless use of an expression&quot;, except that
+ it also contains a side-effect, such as ++, --, or a function call.
+<h2 id="W303_Parameter___s__has_been_defined__but_not_referenced"> W303 Parameter '%s' has been defined, but not referenced </h2>
+<br>There are no references to the declared parameter.&nbsp; The declaration for the parameter can be deleted.&nbsp; Since
+ it is a parameter to a function, all calls to the function must also have the value for that parameter deleted.
+<br><br>In some cases, there may be a valid reason for retaining the parameter.&nbsp; You can prevent the message from being
+ issued through use of<b> #pragma off(unreferenced).</b>
+<br><br>This warning is initially disabled.&nbsp; It must be specifically enabled with<b> #pragma enable_message(303)</b>
+ or option &quot;-wce=303&quot;.&nbsp; It can be disabled later by using<b> #pragma disable_message(303).</b>
+<h2 id="W304_Return_type__int__assumed_for_function___s_"> W304 Return type 'int' assumed for function '%s' </h2>
+<br>If a function is declared without specifying return type, such as
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; foo( void );</tt>
+<br><br>then its return type will be assumed to be<b><i> int</i></b> 
+<h2 id="W305_Type__int__assumed_in_declaration_of___s_"> W305 Type 'int' assumed in declaration of '%s' </h2>
+<br>If an object is declared without specifying its type, such as
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; register count;</tt>
+<br><br>then its type will be assumed to be<b><i> int</i></b> 
+<h2 id="W306_Assembler_warning____s_"> W306 Assembler warning:&nbsp; '%s' </h2>
+<br>A problem has been detected by the in-line assembler.&nbsp; The message indicates the problem detected.
+<h2 id="W307_Obsolete_nonMprototype_declarator"> W307 Obsolete non-prototype declarator </h2>
+<br>Function parameter declarations containing only empty parentheses, that is, non-prototype declarations, are an obsolescent
+ language feature.&nbsp; Their use is dangerous and discouraged.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int func();</tt>
+<h2 id="W308_Unprototyped_function___s__called"> W308 Unprototyped function '%s' called </h2>
+<br>A call to an unprototyped function was made, preventing the compiler from checking the number of function arguments and
+ their types.&nbsp; Use of unprototyped functions is obsolescent, dangerous and discouraged.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int func();</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void bar( void )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; func( 4, &quot;s&quot; );&nbsp;&nbsp;&nbsp;&nbsp; /* possible argument
+ mismatch */</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="W309_Unprototyped_function_indirectly_called"> W309 Unprototyped function indirectly called </h2>
+<br>An indirect call to an unprototyped function was made, preventing the compiler from checking the number of function arguments
+ and their types.&nbsp; Use of unprototyped functions is obsolescent, dangerous and discouraged.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int (*func)();</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void bar( void )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; func( 4, &quot;s&quot; );&nbsp;&nbsp;&nbsp;&nbsp; /* possible argument
+ mismatch */</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="W310_Pointer_truncated_during_cast"> W310 Pointer truncated during cast </h2>
+<br>A far pointer is being cast to a near pointer, losing segment information in the process.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; char __near *foo( char __far *fs )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( (char __near *)fs );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="W400_Array_subscript_is_of_type_plain_char"> W400 Array subscript is of type plain char </h2>
+<br>Array subscript expression is of plain char type.&nbsp; Such expression may be interpreted as either signed or unsigned,
+ depending on compiler settings.&nbsp; A different type should be chosen instead of char.&nbsp; A cast may be used in cases
+ when the value of the expression is known to never fall outside the 0-127 range.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int foo( int arr&#91;&#93;, char c )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( arr&#91;c&#93; );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="E1000_BREAK_must_appear_in_while__do__for_or_switch_statement"> E1000 BREAK must appear in while, do, for or switch statement </h2>
+<br>A<b><i> break</i></b> statement has been found in an illegal place in the program.&nbsp; You may be missing an opening
+ brace<tt> {</tt> for a<b><i> while,</i></b> <b><i> do,</i></b> <b><i> for</i></b> or<b><i> switch</i></b> statement.
+<h2 id="E1001_CASE_must_appear_in_switch_statement"> E1001 CASE must appear in switch statement </h2>
+<br>A<b><i> case</i></b> label has been found that is not inside a<b><i> switch</i></b> statement.
+<h2 id="E1002_CONTINUE_must_appear_in_while__do_or_for_statement"> E1002 CONTINUE must appear in while, do or for statement </h2>
+<br>The<b><i> continue</i></b> statement must be inside a<b><i> while,</i></b> <b><i> do</i></b> or<b><i> for</i></b> statement.
+&nbsp; You may have too many<tt> }</tt> between the<b><i> while,</i></b> <b><i> do</i></b> or<b><i> for</i></b> statement
+ and the<b><i> continue</i></b> statement.
+<h2 id="E1003_DEFAULT_must_appear_in_switch_statement"> E1003 DEFAULT must appear in switch statement </h2>
+<br>A<b><i> default</i></b> label has been found that is not inside a<b><i> switch</i></b> statement.&nbsp; You may have too
+ many<tt> }</tt> between the start of the<b><i> switch</i></b> and the<b><i> default</i></b> label.
+<h2 id="E1004_Misplaced_____or_missing_earlier____"> E1004 Misplaced '}' or missing earlier '{' </h2>
+<br>An extra<tt> }</tt> has been found which cannot be matched up with an earlier<tt> {.</tt>
+<h2 id="E1005_Misplaced__elif_directive"> E1005 Misplaced #elif directive </h2>
+<br>The<tt> #elif</tt> directive must be inside an<tt> #if</tt> preprocessing group and before the<tt> #else</tt> directive
+ if present.
+<h2 id="E1006_Misplaced__else_directive"> E1006 Misplaced #else directive </h2>
+<br>The<tt> #else</tt> directive must be inside an<tt> #if</tt> preprocessing group and follow all<tt> #elif</tt> directives
+ if present.
+<h2 id="E1007_Misplaced__endif_directive"> E1007 Misplaced #endif directive </h2>
+<br>A preprocessing directive has been found without a matching<tt> #if</tt> directive.&nbsp; You either have an extra or
+ you are missing an<tt> #if</tt> directive earlier in the file.
+<h2 id="E1008_Only_1_DEFAULT_per_switch_allowed"> E1008 Only 1 DEFAULT per switch allowed </h2>
+<br>You cannot have more than one<b><i> default</i></b> label in a<b><i> switch</i></b> statement.
+<h2 id="E1009_Expecting___s__but_found___s_"> E1009 Expecting '%s' but found '%s' </h2>
+<br>A syntax error has been detected.&nbsp; The tokens displayed in the message should help you to determine the problem.
+<h2 id="E1010_Type_mismatch"> E1010 Type mismatch </h2>
+<br>For pointer subtraction, both pointers must point to the same type.&nbsp; For other operators, both expressions must be
+ assignment compatible.
+<h2 id="E1011_Symbol___s__has_not_been_declared"> E1011 Symbol '%s' has not been declared </h2>
+<br>The compiler has found a symbol which has not been previously declared.&nbsp; The symbol may be spelled differently than
+ the declaration, or you may need to<tt> #include</tt> a header file that contains the declaration.
+<h2 id="E1012_Expression_is_not_a_function"> E1012 Expression is not a function </h2>
+<br>The compiler has found an expression that looks like a function call, but it is not defined as a function.
+<h2 id="E1013_Constant_variable_cannot_be_modified"> E1013 Constant variable cannot be modified </h2>
+<br>An expression or statement has been found which modifies a variable which has been declared with the<b><i> const</i></b>
+ keyword.
+<h2 id="E1014_Left_operand_must_be_an__lvalue_"> E1014 Left operand must be an 'lvalue' </h2>
+<br>The operand on the left side of an &quot;=&quot; sign must be a variable or memory location which can have a value assigned
+ to it.
+<h2 id="E1015___s__is_already_defined_as_a_variable"> E1015 '%s' is already defined as a variable </h2>
+<br>You are trying to declare a function with the same name as a previously declared variable.
+<h2 id="E1016_Expecting_identifier"> E1016 Expecting identifier </h2>
+<br>The token following &quot;-&gt;&quot; and &quot;.&quot; operators must be the name of an identifier which appears in the
+ struct or union identified by the operand preceding the &quot;-&gt;&quot; and &quot;.&quot; operators.
+<h2 id="E1017_Label___s__already_defined"> E1017 Label '%s' already defined </h2>
+<br>All labels within a function must be unique.
+<h2 id="E1018_Label___s__not_defined_in_function"> E1018 Label '%s' not defined in function </h2>
+<br>A<b><i> goto</i></b> statement has referenced a label that is not defined in the function.&nbsp; Add the necessary label
+ or check the spelling of the label(s) in the function.
+<h2 id="E1019_Tag___s__already_defined"> E1019 Tag '%s' already defined </h2>
+<br>All<b><i> struct,</i></b> <b><i> union</i></b> and<b><i> enum</i></b> tag names must be unique.
+<h2 id="E1020_Dimension_cannot_be_0_or_negative"> E1020 Dimension cannot be 0 or negative </h2>
+<br>The dimension of an array must be positive and non-zero.
+<h2 id="E1021_Dimensions_of_multiMdimension_array_must_be_specified"> E1021 Dimensions of multi-dimension array must be specified </h2>
+<br>All dimensions of a multiple dimension array must be specified.&nbsp; The only exception is the first dimension which
+ can declared as &quot;&#91;&#93;&quot;.
+<h2 id="E1022_Missing_or_misspelled_data_type_near___s_"> E1022 Missing or misspelled data type near '%s' </h2>
+<br>The compiler has found an identifier that is not a predefined type or the name of a &quot;typedef&quot;.&nbsp; Check the
+ identifier for a spelling mistake.
+<h2 id="E1023_Storage_class_of_parameter_must_be_register_or_unspecified"> E1023 Storage class of parameter must be register or unspecified </h2>
+<br>The only storage class allowed for a parameter declaration is<b><i> register.</i></b>&nbsp; 
+<h2 id="E1024_Declared_symbol___s__is_not_in_parameter_list"> E1024 Declared symbol '%s' is not in parameter list </h2>
+<br>Make sure that all the identifiers in the parameter list match those provided in the declarations between the start of
+ the function and the opening brace &quot;{&quot;.
+<h2 id="E1025_Parameter___s__already_declared"> E1025 Parameter '%s' already declared </h2>
+<br>A declaration for the specified parameter has already been processed.
+<h2 id="E1026_Invalid_declarator"> E1026 Invalid declarator </h2>
+<br>A syntax error has occurred while parsing a declaration.
+<h2 id="E1027_Invalid_storage_class_for_function"> E1027 Invalid storage class for function </h2>
+<br>If a storage class is given for a function, it must be<b><i> static</i></b> or<b><i> extern.</i></b>&nbsp; 
+<h2 id="E1028_Variable___s__cannot_be_void"> E1028 Variable '%s' cannot be void </h2>
+<br>You cannot declare a<b><i> void</i></b> variable.
+<h2 id="E1029_Expression_must_be__pointer_to_____"> E1029 Expression must be 'pointer to ...' </h2>
+<br>An attempt has been made to de-reference (*) a variable or expression which is not declared to be a pointer.
+<h2 id="E1030_Cannot_take_the_address_of_an_rvalue"> E1030 Cannot take the address of an rvalue </h2>
+<br>You can only take the address of a variable or memory location.
+<h2 id="E1031_Name___s__not_found_in_structDunion__s"> E1031 Name '%s' not found in struct/union %s </h2>
+<br>The specified identifier is not one of the fields declared in the<b><i> struct</i></b> or<b><i> union.</i></b>&nbsp; Check
+ that the field name is spelled correctly, or that you are pointing to the correct<b><i> struct</i></b> or<b><i> union.</i></b>
+&nbsp; 
+<h2 id="E1032_Expression_for_____must_be_a__structure__or__union_"> E1032 Expression for '.' must be a 'structure' or 'union' </h2>
+<br>The compiler has encountered the pattern &quot;expression&quot; &quot;.&quot; &quot;field_name&quot; where the expression
+ is not a<b><i> struct</i></b> or<b><i> union</i></b> type.
+<h2 id="E1033_Expression_for__MY__must_be__pointer_to_struct_or_union_"> E1033 Expression for '-&gt;' must be 'pointer to struct or union' </h2>
+<br>The compiler has encountered the pattern &quot;expression&quot; &quot;-&gt;&quot; &quot;field_name&quot; where the expression
+ is not a pointer to<b><i> struct</i></b> or<b><i> union</i></b> type.
+<h2 id="E1034_Symbol___s__already_defined"> E1034 Symbol '%s' already defined </h2>
+<br>The specified symbol has already been defined.
+<h2 id="E1035_static_function___s__has_not_been_defined"> E1035 static function '%s' has not been defined </h2>
+<br>A prototype has been found for a<b><i> static</i></b> function, but a definition for the<b><i> static</i></b> function
+ has not been found in the file.
+<h2 id="E1036_Right_operand_of___s__is_a_pointer"> E1036 Right operand of '%s' is a pointer </h2>
+<br>The right operand of &quot;+=&quot; and &quot;-=&quot; cannot be a pointer.&nbsp; The right operand of &quot;-&quot; cannot
+ be a pointer unless the left operand is also a pointer.
+<h2 id="E1037_Type_cast_must_be_a_scalar_type"> E1037 Type cast must be a scalar type </h2>
+<br>You cannot type cast an expression to be a<b><i> struct,</i></b> <b><i> union,</i></b> array or function.
+<h2 id="E1038_Expecting_label_for_goto_statement"> E1038 Expecting label for goto statement </h2>
+<br>The<b><i> goto</i></b> statement requires the name of a label.
+<h2 id="E1039_Duplicate_case_value___s__found"> E1039 Duplicate case value '%s' found </h2>
+<br>Every case value in a<b><i> switch</i></b> statement must be unique.
+<h2 id="E1040_Field_width_too_large"> E1040 Field width too large </h2>
+<br>The maximum field width allowed is 16 bits.
+<h2 id="E1041_Field_width_of_0_with_symbol_not_allowed"> E1041 Field width of 0 with symbol not allowed </h2>
+<br>A bit field must be at least one bit in size.
+<h2 id="E1042_Field_width_must_be_positive"> E1042 Field width must be positive </h2>
+<br>You cannot have a negative field width.
+<h2 id="E1043_Invalid_type_specified_for_bit_field"> E1043 Invalid type specified for bit field </h2>
+<br>The types allowed for bit fields are<b><i> signed</i></b> or<b><i> unsigned</i></b> varieties of<b><i> char,</i></b> <b><i>
+ short</i></b> and<b><i> int.</i></b>&nbsp; 
+<h2 id="E1044_Variable___s__has_incomplete_type"> E1044 Variable '%s' has incomplete type </h2>
+<br>A full definition of a<b><i> struct</i></b> or<b><i> union</i></b> has not been given.
+<h2 id="E1045_Subscript_on_nonMarray"> E1045 Subscript on non-array </h2>
+<br>One of the operands of &quot;&#91;&#93;&quot; must be an array.
+<h2 id="E1046_Incomplete_comment_started_on_line__u"> E1046 Incomplete comment started on line %u </h2>
+<br>The compiler did not find<tt> */</tt> to mark the end of a comment.
+<h2 id="E1047_Argument_for___must_be_a_macro_parm"> E1047 Argument for # must be a macro parm </h2>
+<br>The argument for the stringize operator &quot;#&quot; must be a macro parameter.
+<h2 id="E1048_Unknown_preprocessing_directive____s_"> E1048 Unknown preprocessing directive '#%s' </h2>
+<br>An unrecognized preprocessing directive has been encountered.&nbsp; Check for correct spelling.
+<h2 id="E1049_Invalid__include_directive"> E1049 Invalid #include directive </h2>
+<br>A syntax error has been encountered in a<tt> #include</tt> directive.
+<h2 id="E1050_Not_enough_parameters_given_for_macro___s_"> E1050 Not enough parameters given for macro '%s' </h2>
+<br>You have not supplied enough parameters to the specified macro.
+<h2 id="E1051_Not_expecting_a_return_value_for_function___s_"> E1051 Not expecting a return value for function '%s' </h2>
+<br>The specified function is declared as a<b><i> void</i></b> function.&nbsp; Delete the<b><i> return</i></b> statement,
+ or change the type of the function.
+<h2 id="E1052_Expression_has_void_type"> E1052 Expression has void type </h2>
+<br>You tried to use the value of a<b><i> void</i></b> expression inside another expression.
+<h2 id="E1053_Cannot_take_the_address_of_a_bit_field"> E1053 Cannot take the address of a bit field </h2>
+<br>The smallest addressable unit is a byte.&nbsp; You cannot take the address of a bit field.
+<h2 id="E1054_Expression_must_be_constant"> E1054 Expression must be constant </h2>
+<br>The compiler expects a constant expression.&nbsp; This message can occur during static initialization if you are trying
+ to initialize a non-pointer type with an address expression.
+<h2 id="E1055_Unable_to_open___s_"> E1055 Unable to open '%s' </h2>
+<br>The file specified in an<tt> #include</tt> directive could not be located.&nbsp; Make sure that the file name is spelled
+ correctly, or that the appropriate path for the file is included in the list of paths specified in the<tt> INCLUDE</tt> environment
+ variable or the &quot;-I&quot; option on the command line.
+<h2 id="E1056_Too_many_parameters_given_for_macro___s_"> E1056 Too many parameters given for macro '%s' </h2>
+<br>You have supplied too many parameters for the specified macro.
+<h2 id="E1057_Modifiers_disagree_with_previous_definition_of___s_"> E1057 Modifiers disagree with previous definition of '%s' </h2>
+<br>You have more than one definition or prototype for the variable or function which have different type modifiers.
+<h2 id="E1058_Cannot_use_typedef___s__as_a_variable"> E1058 Cannot use typedef '%s' as a variable </h2>
+<br>The name of a typedef has been found when an operand or operator is expected.&nbsp; If you are trying to use a type cast,
+ make sure there are parentheses around the type, otherwise check for a spelling mistake.
+<h2 id="E1059_Invalid_storage_class_for_nonMlocal_variable"> E1059 Invalid storage class for non-local variable </h2>
+<br>A variable with module scope cannot be defined with the storage class of<b><i> auto</i></b> or<b><i> register.</i></b>
+&nbsp; 
+<h2 id="E1060_Invalid_type"> E1060 Invalid type </h2>
+<br>An invalid combination of the following keywords has been specified in a type declaration:<b><i>&nbsp; const,</i></b>
+ <b><i> volatile,</i></b> <b><i> signed,</i></b> <b><i> unsigned,</i></b> <b><i> char,</i></b> <b><i> int,</i></b> <b><i>
+ short,</i></b> <b><i> long,</i></b> <b><i> float</i></b> and<b><i> double.</i></b>&nbsp; 
+<h2 id="E1061_Expecting_data_or_function_declaration__but_found___s_"> E1061 Expecting data or function declaration, but found '%s' </h2>
+<br>The compiler is expecting the start of a data or function declaration.&nbsp; If you are only part way through a function,
+ then you have too many closing braces &quot;}&quot;.
+<h2 id="E1062_Inconsistent_return_type_for_function___s_"> E1062 Inconsistent return type for function '%s' </h2>
+<br>Two prototypes for the same function disagree.
+<h2 id="E1063_Missing_operand"> E1063 Missing operand </h2>
+<br>An operand is required in the expression being parsed.
+<h2 id="E1064_Out_of_memory"> E1064 Out of memory </h2>
+<br>The compiler has run out of memory to store information about the file being compiled.&nbsp; Try reducing the number of
+ data declarations and or the size of the file being compiled.&nbsp; Do not<tt> #include</tt> header files that are not required.
+<br><br>For the 16-bit C compiler, the &quot;-d2&quot; option causes the compiler to use more memory.&nbsp; Try compiling
+ with the &quot;-d1&quot; option instead.
+<h2 id="E1065_Invalid_character_constant"> E1065 Invalid character constant </h2>
+<br>This message is issued for an improperly formed character constant.
+<h2 id="E1066_Cannot_perform_operation_with_pointer_to_void"> E1066 Cannot perform operation with pointer to void </h2>
+<br>You cannot use a &quot;pointer to void&quot; with the operators +, -, ++, --, += and -=.
+<h2 id="E1067_Cannot_take_address_of_variable_with_storage_class__register_"> E1067 Cannot take address of variable with storage class 'register' </h2>
+<br>If you want to take the address of a local variable, change the storage class from<b><i> register</i></b> to<b><i> auto.</i></b>
+&nbsp; 
+<h2 id="E1068_Variable___s__already_initialized"> E1068 Variable '%s' already initialized </h2>
+<br>The specified variable has already been statically initialized.
+<h2 id="E1069_String_literal_not_terminated_before_end_of_line"> E1069 String literal not terminated before end of line </h2>
+<br>A string literal is enclosed by double quote &quot; characters.
+<br><br>The compiler did not find a closing double quote &quot; or line continuation character \ before the end of a line
+ or before the end of the source file.
+<h2 id="E1070_Data_for_aggregate_type_must_be_enclosed_in_curly_braces"> E1070 Data for aggregate type must be enclosed in curly braces </h2>
+<br>When an array, struct or union is statically initialized, the data must be enclosed in curly braces {}.
+<h2 id="E1071_Type_of_parameter__d_does_not_agree_with_previous_definition"> E1071 Type of parameter %d does not agree with previous definition </h2>
+<br>The type of the specified parameter is incompatible with the prototype for that function.&nbsp; The following example
+ illustrates a problem that can arise when the sequence of declarations is in the wrong order.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; /* Uncommenting the following line will</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eliminate the error */</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; /* struct foo; */</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void fn1( struct foo * );</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; struct foo {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; a,b;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; };</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void fn1( struct foo *bar )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fn2( bar );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><br>The problem can be corrected by reordering the sequence in which items are declared (by moving the description of
+ the structure<tt> foo</tt> ahead of its first reference or by adding the indicated statement).&nbsp; This will assure that
+ the first instance of structure<tt> foo</tt> is defined at the proper outer scope.
+<h2 id="E1072_Storage_class_disagrees_with_previous_definition_of___s_"> E1072 Storage class disagrees with previous definition of '%s' </h2>
+<br>The previous definition of the specified variable has a storage class of<b><i> static.</i></b>&nbsp; The current definition
+ must have a storage class of<b><i> static</i></b> or<b><i> extern.</i></b>&nbsp; 
+<br><br>Alternatively, a variable was previously declared as<b><i> extern</i></b> and later defined as<b><i> static.</i></b>
+&nbsp; 
+<h2 id="E1073_Invalid_option___s_"> E1073 Invalid option '%s' </h2>
+<br>The specified option is not recognized by the compiler.
+<h2 id="E1074_Invalid_optimization_option___s_"> E1074 Invalid optimization option '%s' </h2>
+<br>The specified option is an unrecognized optimization option.
+<h2 id="E1075_Invalid_memory_model___s_"> E1075 Invalid memory model '%s' </h2>
+<br>Memory model option must be one of &quot;ms&quot;, &quot;mm&quot;, &quot;mc&quot;, &quot;ml&quot;, &quot;mh&quot; or &quot;mf&quot;
+ which selects the Small, Medium, Compact, Large, Huge or Flat memory model.
+<h2 id="E1076_Missing_semicolon_at_end_of_declaration"> E1076 Missing semicolon at end of declaration </h2>
+<br>You are missing a semicolon &quot;;&quot; on the declaration just before the left curly brace &quot;{&quot;.
+<h2 id="E1077_Missing____"> E1077 Missing '}' </h2>
+<br>The compiler detected end of file before finding a right curly brace &quot;}&quot; to end the current function.
+<h2 id="E1078_Invalid_type_for_switch_expression"> E1078 Invalid type for switch expression </h2>
+<br>The type of a switch expression must be integral.
+<h2 id="E1079_Expression_must_be_integral"> E1079 Expression must be integral </h2>
+<br>An integral expression is required.
+<h2 id="E1080_Expression_must_be_arithmetic"> E1080 Expression must be arithmetic </h2>
+<br>Both operands of the &quot;*&quot;, &quot;/&quot; and &quot;%&quot; operators must be arithmetic.&nbsp; The operand of
+ the unary minus must also be arithmetic.
+<h2 id="E1081_Expression_must_be_scalar_type"> E1081 Expression must be scalar type </h2>
+<br>A scalar expression is required.
+<h2 id="E1082_Statement_required_after_label"> E1082 Statement required after label </h2>
+<br>The C language definition requires a statement following a label.&nbsp; You can use a null statement which consists of
+ just a semicolon (&quot;;&quot;).
+<h2 id="E1083_Statement_required_after__do_"> E1083 Statement required after 'do' </h2>
+<br>A statement is required between the<b><i> do</i></b> and<b><i> while</i></b> keywords.
+<h2 id="E1084_Statement_required_after__case_"> E1084 Statement required after 'case' </h2>
+<br>The C language definition requires a statement following a<b><i> case</i></b> label.&nbsp; You can use a null statement
+ which consists of just a semicolon (&quot;;&quot;).
+<h2 id="E1085_Statement_required_after__default_"> E1085 Statement required after 'default' </h2>
+<br>The C language definition requires a statement following a<b><i> default</i></b> label.&nbsp; You can use a null statement
+ which consists of just a semicolon (&quot;;&quot;).
+<h2 id="E1086_Expression_too_complicated__split_it_up_and_try_again"> E1086 Expression too complicated, split it up and try again </h2>
+<br>The expression contains too many levels of nested parentheses.&nbsp; Divide the expression up into two or more sub-expressions.
+<h2 id="E1087_Missing_matching__endif_directive"> E1087 Missing matching #endif directive </h2>
+<br>You are missing a to terminate a<tt> #if, #ifdef</tt> or<tt> #ifndef</tt> preprocessing directive.
+<h2 id="E1088_Invalid_macro_definition__missing_R"> E1088 Invalid macro definition, missing ) </h2>
+<br>The right parenthesis &quot;)&quot; is required for a function-like macro definition.
+<h2 id="E1089_Missing_R_for_expansion_of___s__macro"> E1089 Missing ) for expansion of '%s' macro </h2>
+<br>The compiler encountered end-of-file while collecting up the argument for a function-like macro.&nbsp; A right parenthesis
+ &quot;)&quot; is required to mark the end of the argument(s) for a function-like macro.
+<h2 id="E1090_Invalid_conversion"> E1090 Invalid conversion </h2>
+<br>A<b><i> struct</i></b> or<b><i> union</i></b> cannot be converted to anything.&nbsp; A<b><i> float</i></b> or<b><i> double</i></b>
+ cannot be converted to a pointer and a pointer cannot be converted to a<b><i> float</i></b> or<b><i> double.</i></b>&nbsp;
+ 
+<h2 id="E1091__s"> E1091 %s </h2>
+<br>This is a user message generated with the<tt> #error</tt> preprocessing directive.
+<h2 id="E1092_Cannot_define_an_array_of_functions"> E1092 Cannot define an array of functions </h2>
+<br>You can have an array of pointers to functions, but not an array of functions.
+<h2 id="E1093_Function_cannot_return_an_array"> E1093 Function cannot return an array </h2>
+<br>A function cannot return an array.&nbsp; You can return a pointer to an array.
+<h2 id="E1094_Function_cannot_return_a_function"> E1094 Function cannot return a function </h2>
+<br>You cannot return a function.&nbsp; You can return a pointer to a function.
+<h2 id="E1095_Cannot_take_address_of_local_variable_in_static_initialization"> E1095 Cannot take address of local variable in static initialization </h2>
+<br>You cannot take the address of an<b><i> auto</i></b> variable at compile time.
+<h2 id="E1096_Inconsistent_use_of_return_statements"> E1096 Inconsistent use of return statements </h2>
+<br>The compiler has found a<b><i> return</i></b> statement which returns a value and a<b><i> return</i></b> statement that
+ does not return a value both in the same function.&nbsp; The<b><i> return</i></b> statement which does not return a value
+ needs to have a value specified to be consistent with the other<b><i> return</i></b> statement in the function.
+<h2 id="E1097_Missing___or_misplaced__"> E1097 Missing ?&nbsp; or misplaced : </h2>
+<br>The compiler has detected a syntax error related to the &quot;?&quot; and &quot;:&quot; operators.&nbsp; You may need
+ parenthesis around the expressions involved so that it can be parsed correctly.
+<h2 id="E1098_Maximum_struct_or_union_size_is_64K"> E1098 Maximum struct or union size is 64K </h2>
+<br>The size of a<b><i> struct</i></b> or<b><i> union</i></b> is limited to 64K so that the compiler can represent the offset
+ of a member in a 16-bit register.
+<h2 id="E1099_Statement_must_be_inside_function__Probable_cause__missing__"> E1099 Statement must be inside function.&nbsp; Probable cause:&nbsp; missing { </h2>
+<br>The compiler has detected a statement such as<b><i> for,</i></b> <b><i> while,</i></b> <b><i> switch,</i></b> etc., which
+ must be inside a function.&nbsp; You either have too many closing braces &quot;}&quot; or you are missing an opening brace
+ &quot;{&quot; earlier in the function.
+<h2 id="E1100_Definition_of_macro___s__not_identical_to_previous_definition"> E1100 Definition of macro '%s' not identical to previous definition </h2>
+<br>If a macro is defined more than once, the definitions must be identical.&nbsp; If you want to redefine a macro to have
+ a different definition, you must<tt> #undef</tt> it before you can define it with a new definition.
+<h2 id="E1101_Cannot__undef___s_"> E1101 Cannot #undef '%s' </h2>
+<br>The special macros<tt> __LINE__, __FILE__, __DATE__, __TIME__, __STDC__, __FUNCTION__</tt> and<tt> __func__,</tt> and
+ the identifier &quot;defined&quot;, cannot be deleted by the<tt> #undef</tt> directive.
+<h2 id="E1102_Cannot__define_the_name__defined_"> E1102 Cannot #define the name 'defined' </h2>
+<br>You cannot define a macro called<tt> defined.</tt>
+<h2 id="E1103____must_not_be_at_start_or_end_of_replacement_tokens"> E1103 ## must not be at start or end of replacement tokens </h2>
+<br>There must be a token on each side of the &quot;##&quot; (token pasting) operator.
+<h2 id="E1104_Type_cast_not_allowed_in__if_or__elif_expression"> E1104 Type cast not allowed in #if or #elif expression </h2>
+<br>A type cast is not allowed in a preprocessor expression.
+<h2 id="E1105__sizeof__not_allowed_in__if_or__elif_expression"> E1105 'sizeof' not allowed in #if or #elif expression </h2>
+<br>The<b><i> sizeof</i></b> operator is not allowed in a preprocessor expression.
+<h2 id="E1106_Cannot_compare_a_struct_or_union"> E1106 Cannot compare a struct or union </h2>
+<br>A<b><i> struct</i></b> or<b><i> union</i></b> cannot be compared with &quot;==&quot; or &quot;!=&quot;.&nbsp; You must
+ compare each member of a<b><i> struct</i></b> or<b><i> union</i></b> to determine equality or inequality.&nbsp; If the<b><i>
+ struct</i></b> or<b><i> union</i></b> is packed (has no holes in it for alignment purposes) then you can compare two structs
+ using<tt> memcmp.</tt>
+<h2 id="E1107_Enumerator_list_cannot_be_empty"> E1107 Enumerator list cannot be empty </h2>
+<br>You must have at least one identifier in an<b><i> enum</i></b> list.
+<h2 id="E1108_Invalid_floatingMpoint_constant"> E1108 Invalid floating-point constant </h2>
+<br>The exponent part of the floating-point constant is not formed correctly.
+<h2 id="E1109_Cannot_take_sizeof_a_bit_field"> E1109 Cannot take sizeof a bit field </h2>
+<br>The smallest object that you can ask for the size of is a char.
+<h2 id="E1110_Cannot_initialize_variable_with_storage_class_of_extern"> E1110 Cannot initialize variable with storage class of extern </h2>
+<br>A storage class of<b><i> extern</i></b> is used to associate the variable with its actual definition somewhere else in
+ the program.
+<h2 id="E1111_Invalid_storage_class_for_parameter"> E1111 Invalid storage class for parameter </h2>
+<br>The only storage class allowed for a parameter is<b><i> register.</i></b>&nbsp; 
+<h2 id="E1112_Initializer_list_cannot_be_empty"> E1112 Initializer list cannot be empty </h2>
+<br>An initializer list must have at least one item specified.
+<h2 id="E1113_Expression_has_incomplete_type"> E1113 Expression has incomplete type </h2>
+<br>An attempt has been made to access a struct or union whose definition is not known, or an array whose dimensions are not
+ known.
+<h2 id="E1114_Struct_or_union_cannot_contain_itself"> E1114 Struct or union cannot contain itself </h2>
+<br>You cannot have a<b><i> struct</i></b> or<b><i> union</i></b> contain itself.&nbsp; You can have a pointer in the<b><i>
+ struct</i></b> which points to an instance of itself.&nbsp; Check for a missing &quot;*&quot; in the declaration.
+<h2 id="E1115_Incomplete_enum_declaration"> E1115 Incomplete enum declaration </h2>
+<br>The enumeration tag has not been previously defined.
+<h2 id="E1116_An_id_list_not_allowed_except_for_function_definition"> E1116 An id list not allowed except for function definition </h2>
+<br>A function prototype must contain type information.
+<h2 id="E1117_Must_use__va_start__macro_inside_function_with_variable_parameters"> E1117 Must use 'va_start' macro inside function with variable parameters </h2>
+<br>The<tt> va_start</tt> macro is used to setup access to the parameters in a function that takes a variable number of parameters.
+&nbsp; A function is defined with a variable number of parameters by declaring the last parameter in the function as &quot;...&quot;.
+<h2 id="E1118_TTTFATALTTT__s"> E1118 ***FATAL*** %s </h2>
+<br>A fatal error has been detected during code generation time.&nbsp; The type of error is displayed in the message.
+<h2 id="E1119_Internal_compiler_error__d"> E1119 Internal compiler error %d </h2>
+<br>A bug has been encountered in the C compiler.&nbsp; Please report the specified internal compiler error number and any
+ other helpful details about the program being compiled to compiler developers so that we can fix the problem.
+<h2 id="E1120_Parameter_number__d_M_invalid_register_in__pragma"> E1120 Parameter number %d - invalid register in #pragma </h2>
+<br>The designated registers cannot hold the value for the parameter.
+<h2 id="E1121_Procedure___s__has_invalid_return_register_in__pragma"> E1121 Procedure '%s' has invalid return register in #pragma </h2>
+<br>The size of the return register does not match the size of the result returned by the function.
+<h2 id="E1122_Illegal_register_modified_by___s___pragma"> E1122 Illegal register modified by '%s' #pragma </h2>
+<br><b>For the 16-bit C compiler:</b>&nbsp; The BP, CS, DS, and SS registers cannot be modified in small data models.&nbsp;
+ The BP, CS, and SS registers cannot be modified in large data models.
+<br><br><b>For the 32-bit C compiler:</b>&nbsp; The EBP, CS, DS, ES, and SS registers cannot be modified in flat memory models.
+&nbsp; The EBP, CS, DS, and SS registers cannot be modified in small data models.&nbsp; The EBP, CS, and SS registers cannot
+ be modified in large data models.
+<h2 id="E1123_File_must_contain_at_least_one_external_definition"> E1123 File must contain at least one external definition </h2>
+<br>Every file must contain at least one global object, (either a data variable or a function).&nbsp; This message is only
+ issued in strict ANSI mode (-za).
+<h2 id="E1124_Out_of_macro_space"> E1124 Out of macro space </h2>
+<br>The compiler ran out of memory for storing macro definitions.
+<h2 id="E1125_Keyboard_interrupt_detected"> E1125 Keyboard interrupt detected </h2>
+<br>The compile has been aborted with Ctrl/C or Ctrl/Break.
+<h2 id="E1126_Array__struct_or_union_cannot_be_placed_in_a_register"> E1126 Array, struct or union cannot be placed in a register </h2>
+<br>Only scalar objects can be specified with the<b><i> register</i></b> class.
+<h2 id="E1127_Type_required_in_parameter_list"> E1127 Type required in parameter list </h2>
+<br>If the first parameter in a function definition or prototype is defined with a type, then all of the parameters must have
+ a type specified.
+<h2 id="E1128_Enum_constant_is_out_of_range__s"> E1128 Enum constant is out of range %s </h2>
+<br>All of the constants must fit into appropriate value range.
+<h2 id="E1129_Type_does_not_agree_with_previous_definition_of___s_"> E1129 Type does not agree with previous definition of '%s' </h2>
+<br>You have more than one definition of a variable or function that do not agree.
+<h2 id="E1130_Duplicate_name___s__not_allowed_in_struct_or_union"> E1130 Duplicate name '%s' not allowed in struct or union </h2>
+<br>All the field names in a<b><i> struct</i></b> or<b><i> union</i></b> must be unique.
+<h2 id="E1131_Duplicate_macro_parameter___s_"> E1131 Duplicate macro parameter '%s' </h2>
+<br>The parameters specified in a macro definition must be unique.
+<h2 id="E1132_Unable_to_open_work_file__error_code_E__d"> E1132 Unable to open work file:&nbsp; error code = %d </h2>
+<br>The compiler tries to open a new work file by the name &quot;__wrkN__.tmp&quot; where N is the digit 0 to 9.&nbsp; This
+ message will be issued if all of those files already exist.
+<h2 id="E1133_Write_error_on_work_file__error_code_E__d"> E1133 Write error on work file:&nbsp; error code = %d </h2>
+<br>An error was encountered trying to write information to the work file.&nbsp; The disk could be full.
+<h2 id="E1134_Read_error_on_work_file__error_code_E__d"> E1134 Read error on work file:&nbsp; error code = %d </h2>
+<br>An error was encountered trying to read information from the work file.
+<h2 id="E1135_Seek_error_on_work_file__error_code_E__d"> E1135 Seek error on work file:&nbsp; error code = %d </h2>
+<br>An error was encountered trying to seek to a position in the work file.
+<h2 id="E1136_not_used"> E1136 not used </h2>
+<br>unused message
+<h2 id="E1137_Out_of_enum_space"> E1137 Out of enum space </h2>
+<br>The compiler has run out of space allocated to store information on all of the<b><i> enum</i></b> constants defined in
+ your program.
+<h2 id="E1138_Filename_required_on_command_line"> E1138 Filename required on command line </h2>
+<br>The name of a file to be compiled must be specified on the command line.
+<h2 id="E1139_Command_line_contains_more_than_one_file_to_compile"> E1139 Command line contains more than one file to compile </h2>
+<br>You have more than one file name specified on the command line to be compiled.&nbsp; The compiler can only compile one
+ file at a time.&nbsp; You can use the Open Watcom Compile and Link utility to compile multiple files with a single command.
+<h2 id="E1140__leave_must_appear_in_a__try_statement"> E1140 _leave must appear in a _try statement </h2>
+<br>The<b><i> _leave</i></b> keyword must be inside a<b><i> _try</i></b> statement.&nbsp; The<b><i> _leave</i></b> keyword
+ causes the program to jump to the start of the<b><i> _finally</i></b> block.
+<h2 id="E1141_Expecting_end_of_line_but_found___s_"> E1141 Expecting end of line but found '%s' </h2>
+<br>A syntax error has been detected.&nbsp; The token displayed in the message should help you determine the problem.
+<h2 id="E1142_Too_many_bytes_specified_in__pragma"> E1142 Too many bytes specified in #pragma </h2>
+<br>There is an internal limit on the number of bytes for in-line code that can be specified with a pragma.&nbsp; Try splitting
+ the function into two or more smaller functions.
+<h2 id="E1143_Cannot_resolve_linkage_conventions_for_routine___s___pragma"> E1143 Cannot resolve linkage conventions for routine '%s' #pragma </h2>
+<br>The compiler cannot generate correct code for the specified routine because of register conflicts.&nbsp; Change the registers
+ used by the parameters of the pragma.
+<h2 id="E1144_Symbol___s__in_pragma_must_be_global"> E1144 Symbol '%s' in pragma must be global </h2>
+<br>The in-line code for a pragma can only reference a global variable or function.&nbsp; You can only reference a parameter
+ or local variable by passing it as a parameter to the in-line code pragma.
+<h2 id="E1145_Internal_compiler_limit_exceeded__break_module_into_smaller_pieces"> E1145 Internal compiler limit exceeded, break module into smaller pieces </h2>
+<br>The compiler can handle 65535 quadruples, 65535 leaves, and 65535 symbol table entries and literal strings.&nbsp; If you
+ exceed one of these limits, the program must be broken into smaller pieces until it is capable of being processed by the
+ compiler.
+<h2 id="E1146_Invalid_initializer_for_integer_data_type"> E1146 Invalid initializer for integer data type </h2>
+<br>Integer data types (int and long) can be initialized with numeric expressions or address expressions that are the same
+ size as the integer data type being initialized.
+<h2 id="E1147_Too_many_errors__compilation_aborted"> E1147 Too many errors:&nbsp; compilation aborted </h2>
+<br>The compiler stops compiling when the number of errors generated exceeds the error limit.&nbsp; The error limit can be
+ set with the &quot;-e&quot; option.&nbsp; The default error limit is 20.
+<h2 id="E1148_Expecting_identifier_but_found___s_"> E1148 Expecting identifier but found '%s' </h2>
+<br>A syntax error has been detected.&nbsp; The token displayed in the message should help you determine the problem.
+<h2 id="E1149_Expecting_constant_but_found___s_"> E1149 Expecting constant but found '%s' </h2>
+<br>The #line directive must be followed by a constant indicating the desired line number.
+<h2 id="E1150_Expecting_B_filenameB__but_found___s_"> E1150 Expecting \&quot;filename\&quot; but found '%s' </h2>
+<br>The second argument of the #line directive must be a filename enclosed in quotes.
+<h2 id="E1151_Parameter_count_does_not_agree_with_previous_definition"> E1151 Parameter count does not agree with previous definition </h2>
+<br>You have either not enough parameters or too many parameters in a call to a function.&nbsp; If the function is supposed
+ to have a variable number of parameters, then you are missing the &quot;, ...&quot; in the function prototype.
+<h2 id="E1152_Segment_name_required"> E1152 Segment name required </h2>
+<br>A segment name must be supplied in the form of a literal string to the __segname() directive.
+<h2 id="E1153_Invalid___based_declaration"> E1153 Invalid __based declaration </h2>
+<br>The compiler could not recognize one of the allowable forms of __based declarations.&nbsp; See the<b> C Language Reference</b>
+ document for description of all the allowable forms of __based declarations.
+<h2 id="E1154_Variable_for___based_declaration_must_be_of_type___segment_or_pointer"> E1154 Variable for __based declaration must be of type __segment or pointer </h2>
+<br>A based pointer declaration must be based on a simple variable of type __segment or pointer.
+<h2 id="E1155_Duplicate_external_symbol__s"> E1155 Duplicate external symbol %s </h2>
+<br>Duplicate external symbols will exist when the specified symbol name is truncated to 8 characters.
+<h2 id="E1156_Assembler_error____s_"> E1156 Assembler error:&nbsp; '%s' </h2>
+<br>An error has been detected by the in-line assembler.&nbsp; The message indicates the error detected.
+<h2 id="E1157_Variable_must_be__huge_"> E1157 Variable must be 'huge' </h2>
+<br>A variable or an array that requires more than 64K of storage in the 16-bit compiler must be declared as<b><i> huge.</i></b>
+&nbsp; 
+<h2 id="E1158_Too_many_parm_sets"> E1158 Too many parm sets </h2>
+<br>Too many parameter register sets have been specified in the pragma.
+<h2 id="E1159_IDO_error_reading___s____s"> E1159 I/O error reading '%s':&nbsp; %s </h2>
+<br>An I/O error has been detected by the compiler while reading the source file.&nbsp; The system dependent reason is also
+ displayed in the message.
+<h2 id="E1160_Attempt_to_access_far_memory_with_all_segment_registers_disabled_in___s_"> E1160 Attempt to access far memory with all segment registers disabled in '%s' </h2>
+<br>The compiler does not have any segment registers available to access the desired far memory location.
+<h2 id="E1161_No_identifier_provided_for__MD__option"> E1161 No identifier provided for '-D' option </h2>
+<br>The command line option &quot;-D&quot; must be followed by the name of the macro to be defined.
+<h2 id="E1162_Invalid_register_pegged_to_a_segment_in___s_"> E1162 Invalid register pegged to a segment in '%s' </h2>
+<br>The register specified in a #pragma data_seg, or a<b><i> __segname</i></b> expression must be a valid segment register.
+<h2 id="E1163_Invalid_octal_constant"> E1163 Invalid octal constant </h2>
+<br>An octal constant cannot contain the digits 8 or 9.
+<h2 id="E1164_Invalid_hexadecimal_constant"> E1164 Invalid hexadecimal constant </h2>
+<br>The token sequence &quot;0x&quot; must be followed by a hexadecimal character (0-9, a-f, or A-F).
+<h2 id="E1165_Unexpected__R___Probable_cause__missing__L_"> E1165 Unexpected ')'.&nbsp; Probable cause:&nbsp; missing '(' </h2>
+<br>A closing parenthesis was found in an expression without a corresponding opening parenthesis.
+<h2 id="E1166_Symbol___s__is_unreachable_from__pragma"> E1166 Symbol '%s' is unreachable from #pragma </h2>
+<br>The in-line assembler found a jump instruction to a label that is too far away.
+<h2 id="E1167_Division_or_remainder_by_zero_in_a_constant_expression"> E1167 Division or remainder by zero in a constant expression </h2>
+<br>The compiler found a constant expression containing a division or remainder by zero.
+<h2 id="E1168_Cannot_end_string_literal_with_backslash"> E1168 Cannot end string literal with backslash </h2>
+<br>The argument to a macro that uses the stringize operator '#' on that argument must not end in a backslash character.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #define str(x) #x</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; str(@#\)</tt>
+<h2 id="E1169_Invalid___declspec_declaration"> E1169 Invalid __declspec declaration </h2>
+<br>The only valid __declspec declarations are &quot;__declspec(thread)&quot;, &quot;__declspec(dllexport)&quot;, and &quot;__declspec(dllimport)&quot;.
+<h2 id="E1170_Too_many_storage_class_specifiers"> E1170 Too many storage class specifiers </h2>
+<br>You can only specify one storage class specifier in a declaration.
+<h2 id="E1171_Expecting___s__but_found_end_of_file"> E1171 Expecting '%s' but found end of file </h2>
+<br>A syntax error has been detected.&nbsp; The compiler is still expecting more input when it reached the end of the source
+ program.
+<h2 id="E1172_Expecting_structDunion_tag_but_found___s_"> E1172 Expecting struct/union tag but found '%s' </h2>
+<br>The compiler expected to find an identifier following the<b><i> struct</i></b> or<b><i> union</i></b> keyword.
+<h2 id="E1173_Operand_of___builtin_isfloatLR_must_be_a_type"> E1173 Operand of __builtin_isfloat() must be a type </h2>
+<br>The __builtin_isfloat() function is used by the<b><i> va_arg</i></b> macro to determine if a type is a floating-point
+ type.
+<h2 id="E1174_Invalid_constant"> E1174 Invalid constant </h2>
+<br>The token sequence does not represent a valid numeric constant.
+<h2 id="E1175_Too_many_initializers"> E1175 Too many initializers </h2>
+<br>There are more initializers than objects to initialize.&nbsp; For example int X&#91;2&#93; = { 0, 1, 2 }; The variable
+ &quot;X&quot; requires two initializers not three.
+<h2 id="E1176_Parameter__d__pointer_type_mismatch"> E1176 Parameter %d, pointer type mismatch </h2>
+<br>You have two pointers that either point to different objects, or the pointers are of different size, or they have different
+ modifiers.
+<h2 id="E1177_Modifier_repeated_in_declaration"> E1177 Modifier repeated in declaration </h2>
+<br>You have repeated the use of a modifier like &quot;const&quot; (an error) or &quot;far&quot; (a warning) in a declaration.
+<h2 id="E1178_Type_qualifier_mismatch"> E1178 Type qualifier mismatch </h2>
+<br>You have two pointers that have different &quot;const&quot; or &quot;volatile&quot; qualifiers.
+<h2 id="E1179_Parameter__d__type_qualifier_mismatch"> E1179 Parameter %d, type qualifier mismatch </h2>
+<br>You have two pointers that have different const or &quot;volatile&quot; qualifiers.
+<h2 id="E1180_Sign_specifier_mismatch"> E1180 Sign specifier mismatch </h2>
+<br>You have two pointers that point to types that have different sign specifiers.
+<h2 id="E1181_Parameter__d__sign_specifier_mismatch"> E1181 Parameter %d, sign specifier mismatch </h2>
+<br>You have two pointers that point to types that have different sign specifiers.
+<h2 id="E1182_Missing_BB_for_string_literal"> E1182 Missing \\ for string literal </h2>
+<br>You need a '\' to continue a string literal across a line.
+<h2 id="E1183_Expecting___s__after___s__but_found___s_"> E1183 Expecting '%s' after '%s' but found '%s' </h2>
+<br>A syntax error has been detected.&nbsp; The tokens displayed in the message should help you to determine the problem.
+<h2 id="E1184_Expecting___s__after___s__but_found_end_of_file"> E1184 Expecting '%s' after '%s' but found end of file </h2>
+<br>A syntax error has been detected.&nbsp; The compiler is still expecting more input when it reached the end of the source
+ program.
+<h2 id="E1185_Invalid_register_name___s__in__pragma"> E1185 Invalid register name '%s' in #pragma </h2>
+<br>The register name is invalid/unknown.
+<h2 id="E1186_Storage_class_of__for__statement_declaration_not_register_or_auto"> E1186 Storage class of 'for' statement declaration not register or auto </h2>
+<br>The only storage class allowed for the optional declaration part of a<b><i> for</i></b> statement is<b><i> auto</i></b>
+ or<b><i> register.</i></b>&nbsp; 
+<h2 id="E1187_No_type_specified_in_declaration"> E1187 No type specified in declaration </h2>
+<br>A declaration specifier must include a type specifier.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; auto i;</tt>
+<h2 id="E1188_Symbol___s__declared_in__for__statement_must_be_object"> E1188 Symbol '%s' declared in 'for' statement must be object </h2>
+<br>Any identifier declared in the optional declaration part of a<b><i> for</i></b> statement must denote an object.&nbsp;
+ Functions, structures, or enumerations may not be declared in this context.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; for( int i = 0, j( void ); i &lt; 5; ++i ) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="E1189_Unexpected_declaration"> E1189 Unexpected declaration </h2>
+<br>Within a function body, in C99 mode a declaration is only allowed in a compound statement and in the opening clause of
+ a<b><i> for</i></b> loop.&nbsp; Declarations are not allowed after<b><i> if,</i></b> <b><i> while,</i></b> or<b><i> switch</i></b>
+ statement, etc.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void foo( int a )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( a &gt; 0 )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int j = 3;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><br>In C89 mode, declarations within a function body are only allowed at the beginning of a compound statement.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void foo( int a )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ++a;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int j = 3;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<h2 id="I2000_Not_enough_memory_to_fully_optimize_procedure___s_"> I2000 Not enough memory to fully optimize procedure '%s' </h2>
+<br>The compiler did not have enough memory to fully optimize the specified procedure.&nbsp; The code generated will still
+ be correct and execute properly.&nbsp; This message is purely informational.
+<h2 id="I2001_Not_enough_memory_to_maintain_full_peephole"> I2001 Not enough memory to maintain full peephole </h2>
+<br>Certain optimizations benefit from being able to store the entire module in memory during optimization.&nbsp; All functions
+ will be individually optimized but the optimizer will not be able to share code between functions if this message appears.
+&nbsp; The code generated will still be correct and execute properly.&nbsp; This message is purely informational.&nbsp; It
+ is only printed if the warning level is greater than or equal to 4.
+<br><br>The main reason for this message is for those people who are concerned about reproducing the exact same object code
+ when the same source file is compiled on a different machine.&nbsp; You may not be able to reproduce the exact same object
+ code from one compile to the next unless the available memory is exactly the same.
+<h2 id="I2002___s__defined_in___sL_uR"> I2002 '%s' defined in:&nbsp; %s(%u) </h2>
+<br>This informational message indicates where the symbol in question was defined.&nbsp; The message is displayed following
+ an error or warning diagnostic for the symbol in question.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; static int a = 9;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; int b = 89;</tt>
+<br><br>The variable 'a' is not referenced in the preceding example and so will cause a warning to be generated.&nbsp; Following
+ the warning, the informational message indicates the line at which 'a' was declared.
+<h2 id="I2003_source_conversion_type_is___s_"> I2003 source conversion type is '%s' </h2>
+<br>This informational message indicates the type of the source operand, for the preceding conversion diagnostic.
+<h2 id="I2004_target_conversion_type_is___s_"> I2004 target conversion type is '%s' </h2>
+<br>This informational message indicates the target type of the conversion, for the preceding conversion diagnostic.
+<h2 id="I2005_Including_file___s_"> I2005 Including file '%s' </h2>
+<br>This informational message indicates that the specified file was opened as a result of<tt> #include</tt> directive processing.
+<h2 id="H3000_Error_reading_PCH_file"> H3000 Error reading PCH file </h2>
+<br>The pre-compiled header file does not follow the correct format.
+<h2 id="H3001_PCH_file_header_is_out_of_date"> H3001 PCH file header is out of date </h2>
+<br>The pre-compiled header file is out of date with the compiler.&nbsp; The current version of the compiler is expecting
+ a different format.
+<h2 id="H3002_Compile_options_differ_with_PCH_file"> H3002 Compile options differ with PCH file </h2>
+<br>The command line options are not the same as used when making the pre-compiled header file.&nbsp; This can effect the
+ values of the pre-compiled information.
+<h2 id="H3003_Current_working_directory_differs_with_PCH_file"> H3003 Current working directory differs with PCH file </h2>
+<br>The pre-compiled header file was compiled in a different directory.
+<h2 id="H3004_Include_file___s__has_been_modified_since_PCH_file_was_made"> H3004 Include file '%s' has been modified since PCH file was made </h2>
+<br>The include files have been modified since the pre-compiled header file was made.
+<h2 id="H3005_PCH_file_was_made_from_a_different_include_file"> H3005 PCH file was made from a different include file </h2>
+<br>The pre-compiled header file was made using a different include file.
+<h2 id="H3006_Include_path_differs_with_PCH_file"> H3006 Include path differs with PCH file </h2>
+<br>The include paths have changed.
+<h2 id="H3007_Preprocessor_macro_definition_differs_with_PCH_file"> H3007 Preprocessor macro definition differs with PCH file </h2>
+<br>The definition of a preprocessor macro has changed.
+<h2 id="H3008_PCH_cannot_have_data_or_code_definitions_"> H3008 PCH cannot have data or code definitions. </h2>
+<br>The include files used to build the pre-compiled header contain function or data definitions.&nbsp; This is not currently
+ supported.
+<h2 id="M4000_Code_size"> M4000 Code size </h2>
+<br>String used in message construction.
+<h2 id="M4001_Error_"> M4001 Error! </h2>
+<br>String used in message construction.
+<h2 id="M4002_Warning_"> M4002 Warning! </h2>
+<br>String used in message construction.
+<h2 id="M4003_Note_"> M4003 Note! </h2>
+<br>String used in message construction.
+<h2 id="M4004_LPress_return_to_continueR"> M4004 (Press return to continue) </h2>
+<br>String used in message construction.
+</body>

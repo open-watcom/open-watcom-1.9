@@ -1,0 +1,372 @@
+<head>
+<title> Open Watcom 1.9 String Table Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_a_New_String_Item">Adding a New String Item</a>
+<dt><br>- C -
+<dd><a href="#Changing_an_Existing_String_Item">Changing an Existing String Item</a>
+<br><a href="#Creating_a_New_String_Table">Creating a New String Table</a>
+<dt><br>- D -
+<dd><a href="#Deleting_a_String_Item">Deleting a String Item</a>
+<br><a href="#Deleting_All_String_Items">Deleting All String Items</a>
+<br><a href="#Deleting_String_Items">Deleting String Items</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_String_Editor">The Open Watcom String Editor</a>
+<br><a href="#Opening_an_Existing_String_Table">Opening an Existing String Table</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_String_Editor">Quitting the String Editor</a>
+<dt><br>- S -
+<dd><a href="#Saving_String_Items">Saving String Items</a>
+<br><a href="#Starting_the_String_Editor">Starting the String Editor</a>
+<br><a href="#The_String_Editor_Menu_Bar">The String Editor Menu Bar</a>
+<br><a href="#The_String_Editor_Toolbar">The String Editor Toolbar</a>
+<br><a href="#String_Editor__Action_Buttons">String Editor:&nbsp; Action Buttons</a>
+<br><a href="#String_Editor__Changing_Memory_Options">String Editor:&nbsp; Changing Memory Options</a>
+<br><a href="#String_Editor__Copy_To">String Editor:&nbsp; Copy To</a>
+<br><a href="#String_Editor__Save_As">String Editor:&nbsp; Save As</a>
+<br><a href="#String_Editor__Update">String Editor:&nbsp; Update</a>
+<br><a href="#String_Functions">String Functions</a>
+<br><a href="#String_ID_Field">String ID Field</a>
+<br><a href="#String_Text_Field">String Text Field</a>
+<br><a href="#Strings_List">Strings List</a>
+<dt><br>- U -
+<dd><a href="#Using_Shortcuts_to_Create_String_Tables">Using Shortcuts to Create String Tables</a>
+<br><a href="#Using_the_String_Editor">Using the String Editor</a>
+<br><a href="#Using_the_String_Editor_Window">Using the String Editor Window</a>
+</dl>
+<h1 id="The_Open_Watcom_String_Editor"> The Open Watcom String Editor </h1>
+<br>To group together text strings in your application, you can use string tables.&nbsp; A string table is a list of strings
+ such as error messages, prompts, and other text you want your application to display.&nbsp; Each string in the string table
+ has a unique number, called an identifier, associated with it.&nbsp; When the application presents the user with a message,
+ it searches for the appropriate identifier and displays the associated string, regardless of the textual content of the string.
+<br><br>The Open Watcom String Editor enables you to create string tables for your application.&nbsp; The String Editor stores
+ these tables in the resource file.&nbsp; You can have multiple string tables in a resource file, which allows you to logically
+ group the text strings for your application.&nbsp; Since a string table is simply another Windows resource that is separate
+ from the source code, you can use the String Editor to do such things as translate your strings into another language or
+ make your strings more concise without having to change the source code.
+<h2 id="Using_the_String_Editor"> Using the String Editor </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the String Editor
+<li>Quitting the String Editor
+<li>The String Editor Menu Bar
+<li>The String Editor Toolbar
+</ul>
+<h3 id="Starting_the_String_Editor"> Starting the String Editor </h3>
+<br>The String Editor may be invoked in one of two ways.&nbsp; The first involves first starting the Resource Editor then
+ starting the String Editor.&nbsp; The second way the editor may be started is from the Open Watcom IDE.
+<br><br>To start the String Editor from the Resource Editor, you must first open the Resource Editor.&nbsp; How you proceed
+ depends on whether you are opening a new (empty) string table or an existing string table.&nbsp; The String Editor works
+ on resources found in resource files.
+<br><br><tt><img src="str1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The String Editor window</b>
+<h4 id="Creating_a_New_String_Table"> Creating a New String Table </h4>
+<dl>
+<dt>To create a new string table:
+<dd>
+<dt><br>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open a new or existing resource file.</b>
+<dt><br>(3)
+<dd><b> Choose New</b> from the Resource menu.
+<br>A cascading menu appears from the New menu item.
+<dt><br>(4)
+<dd><b> Choose String</b> from the New cascading menu.
+<br>The Open Watcom String Editor window opens which contains an empty Strings list.
+</dl>
+<h4 id="Opening_an_Existing_String_Table"> Opening an Existing String Table </h4>
+<dl>
+<dt>To edit the contents of an existing string table:
+<dd>
+<dt><br>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open an existing resource file.</b>
+<br>The Resource window for the existing resource file displays buttons representing each existing resource type.
+<dt><br>(3)
+<dd><b> Select the string table button</b> to view all existing string tables.
+<br>or
+<dt><br>
+<dd><b> Choose Menu</b> from the cascading menu that appears when you choose View from the Resource menu.
+<br>The String Tables list appears revealing all string tables in this resource file.
+<dt><br>(4)
+<dd><b> Double click on the existing string table you want to open.</b>
+<br>or
+<dt><br>
+<dd><b> Click on the desired string table</b> to select it, then<b> choose Edit from the Resource menu</b> on the Open Watcom
+ Resource Editor window.
+<br>The Open Watcom String Editor window opens and displays the existing string items for the selected string table.
+</dl>
+<h3 id="Quitting_the_String_Editor"> Quitting the String Editor </h3>
+<br>To exit the String Editor, choose Exit from the File menu of the Open Watcom String Editor window.
+<br><br>If you made changes to strings but did not save the information, a message box prompts you to save before exiting.
+&nbsp; Choose Yes to save the changes and exit the String Editor, No to exit the String Editor without saving the changes,
+ or Cancel to return to the String Editor.
+<br><br>When you exit the String Editor, the application remembers the directory in which you last opened or saved a string
+ table (not the resource file).&nbsp; The next time you open a string table, the last directory accessed appears in the File
+ Selection dialog so you do not have to reenter its path.&nbsp; This feature makes the String Editor more convenient and efficient
+ to use.
+<h3 id="The_String_Editor_Menu_Bar"> The String Editor Menu Bar </h3>
+<br><tt><img src="str2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The String Editor menu bar</b>
+<br><br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Clear and save the string table, and exit the String Editor
+<dt><br>Edit
+<dd>Access the clipboard functions, hide or show the toolbar, and delete a string item
+<dt><br>Resource
+<dd>Change the string table memory flags and copy it into another resource file
+<dt><br>String
+<dd>Insert a new string item
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<br>To see the function of an item in the menu bar, position your cursor over the item and hold down the mouse button.&nbsp;
+ A description of the item appears in the status line at the bottom of the screen.&nbsp; If you do not want to select the
+ menu item, drag the cursor off of the menu item before releasing the mouse button.
+<h3 id="The_String_Editor_Toolbar"> The String Editor Toolbar </h3>
+<br>In the Open Watcom String Editor window, the toolbar appears below the menu bar.&nbsp; When the toolbar is shown choose
+ Hide Toolbar from the Edit menu to hide it.&nbsp; When the toolbar is hidden you can display it by choosing Show Toolbar
+ from the Edit menu.
+<br><br><tt><img src="str3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> You can access seven String Editor functions from the toolbar.</b>
+<br><br>The following explains the function each toolbar button performs, as well as the equivalent menu item.
+<dl>
+<dt>Clear
+<dd>Clear the string table.&nbsp; This is equivalent to the item Clear in the File menu.
+<dt><br>Update
+<dd>Update the resource file with this string table.&nbsp; This is equivalent to the item Update in the File menu.
+<dt><br>Cut
+<dd>Cut the current string table to the clipboard.&nbsp; This is equivalent to the item Cut in the Edit menu.
+<dt><br>Copy
+<dd>Copy the current string table to the clipboard.&nbsp; This is equivalent to the item Copy in the Edit menu.
+<dt><br>Paste
+<dd>Paste the string table from the clipboard to the current string table.&nbsp; This is equivalent to the item Paste in the Edit
+ menu.
+<dt><br>Insert
+<dd>Insert the new string item into the string table.&nbsp; This is equivalent to the item Insert New Item in the Strings menu.
+<dt><br>Delete
+<dd>Delete the selected string item from the string table.&nbsp; This is equivalent to the item Delete in the Edit menu.
+</dl>
+<br>To see the function of an item in the toolbar, position your cursor over the desired button.&nbsp; A description of the
+ button's function appears in the status line at the bottom of the window.
+<h2 id="Using_the_String_Editor_Window"> Using the String Editor Window </h2>
+<br>The Open Watcom String Editor window contains a menu bar, toolbar, and status line to help you create and edit string
+ items.&nbsp; The rest of the window, the workspace, is divided into four sections:
+<ul>
+<li>String Text Field
+<li>String ID Field
+<li>Action Buttons
+<li>Strings List
+</ul>
+<br><tt><img src="str4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The String Editor window contains a menu bar, toolbar, workspace, and status
+ line.</b>
+<h3 id="String_Text_Field"> String Text Field </h3>
+<br>The String Text field in the Open Watcom String Editor window contains the text for the string item you are defining.
+&nbsp; Whatever appears in this field will appear in your application.
+<h3 id="String_ID_Field"> String ID Field </h3>
+<br>The two String ID fields contains:
+<ul>
+<li>the identifier associated with the string item
+<li>the symbol information for the specified string
+</ul>
+<br>Creating a string item automatically creates a relationship between the string item and its identifier, the String ID.
+&nbsp; In your source code you reference the string item by its String ID.
+<dl>
+<dt>Note:
+<dd>Both String ID fields currently contain the same numerical information because the String Editor does not yet support symbols.
+</dl>
+<h3 id="String_Editor__Action_Buttons"> String Editor:&nbsp; Action Buttons </h3>
+<br>The action buttons control how the information in the attributes area is handled by the editor.&nbsp; The Insert button
+ will use the contents of the attributes area to create a new entry in the string table.&nbsp; The Change button will use
+ the contents of the attributes area to modify the current entry in the string table.&nbsp; The Reset button will discard
+ the contents of the attributes area and reset them to those of the current entry in the string table.&nbsp; The Insert button
+ is the default button when the ENTER key is pressed and no other button has the focus.
+<h3 id="Strings_List"> Strings List </h3>
+<br>The Strings list displays all of the string items in the current string table.&nbsp; The string items appear in ascending
+ numerical order by String ID.
+<h2 id="String_Functions"> String Functions </h2>
+<br>You can perform several functions with the String Editor.&nbsp; This section describes the following tasks:
+<ul>
+<li>Adding a New String Item
+<li>Changing an Existing String Item
+<li>Deleting String Items
+<li>Saving String Items
+<li>Using Shortcuts to Create String Tables 
+<li>Changing Memory Options
+</ul>
+<h3 id="Adding_a_New_String_Item"> Adding a New String Item </h3>
+<br>The steps for adding a new string item to the Strings list are the same, regardless of whether the Strings list is empty
+ or already contains string items.
+<dl>
+<dt>To add a new string item:
+<dd>
+<dt><br>(1)
+<dd><b> Enter the text</b> that you want to appear in the application in the String Text Field of the Open Watcom String Editor
+ window.
+<br>The text that will be displayed in your application appears exactly as you enter it in this field.
+<dt><br>(2)
+<dd><b> Enter symbol or numeric identifier</b> fo the string.
+<br>The identifier you enter here is associated with the string item.&nbsp; This is the identifier by which your source code
+ references the string.
+<dt><br>(3)
+<dd><b> Press the Insert action button</b> 
+<br>or
+<dt><br>
+<dd><b> Choose Insert New Item</b> from the Strings menu.
+<br>or
+<dt><br>
+<dd><b> Select the Insert New Item button on the toolbar.</b>
+<br>The String Editor adds the new string item to the Strings list.&nbsp; The editor automatically arranges the strings in
+ order by String ID.
+</dl>
+<h3 id="Changing_an_Existing_String_Item"> Changing an Existing String Item </h3>
+<br>You may want to change the text or identifier for a string item in the Strings list.
+<dl>
+<dt>To modify an existing sting table item:
+<dd>
+<dt><br>(1)
+<dd><b> Choose the string table you want to work with</b> from the Resource window on the Open Watcom Resource Editor window.
+<br>The String Editor window appears displaying all of the string items for the selected string table.
+<dt><br>(2)
+<dd><b> Click on the string item</b> from the Strings list that you want to modify.
+<br>The selected string item appears highlighted in the Strings list.
+<dt><br>(3)
+<dd><b> Change the String Item or String ID field.</b>
+<dt><br>(4)
+<dd><b> Press the Change action button</b>
+<br>These actions update the selected string item with the modified string item details.
+</dl>
+<h3 id="Deleting_String_Items"> Deleting String Items </h3>
+<br>These are two functions you can use to delete string items from the Strings list:
+<ul>
+<li>Delete
+<li>Clear
+</ul>
+<br>The Delete item in the Edit menu deletes the selected string item.&nbsp; You can delete only one string item at a time
+ with this function.
+<br><br>The Clear item in the File menu deletes all string items in the current string table.&nbsp; This is a powerful function
+ and must be used carefully to avoid accidentally deleting an entire String list.
+<h4 id="Deleting_a_String_Item"> Deleting a String Item </h4>
+<br>To delete string items from the current string table one at a time:
+<dl>
+<dt>(1)
+<dd><b> Select the string item you want to delete</b> from the Strings table by clicking on it.
+<br>The selected string item is highlighted.
+<dt><br>(2)
+<dd><b> Choose Delete</b> from the Edit menu
+<br>or
+<dt><br>
+<dd><b> Select the Delete button from the toolbar.</b>
+<br>The String Editor removes the selected string item from the Strings list.
+<dt><br>(3)
+<dd><b> Choose Update</b> from the File menu to save the string table changes.
+</dl>
+<h4 id="Deleting_All_String_Items"> Deleting All String Items </h4>
+<br>To delete all string items in the current string table:
+<dl>
+<dt>(1)
+<dd><b> Choose Clear</b> from the File menu
+<br>or
+<dt><br>
+<dd><b> Select the Clear button on the toolbar.</b>
+<br>A message box appears prompting you to verify that you want to clear all of the string items from the current string table.
+<dt><br>(2)
+<dd><b> Choose Yes, No, or Cancel</b> to continue.
+<br>Choosing Yes removes all string items from the current string table.&nbsp; The Strings list is left empty.
+</dl>
+<br><tt><img src="str5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> As a safety feature, a message box appears when you choose the Clear function.</b>
+<h3 id="Saving_String_Items"> Saving String Items </h3>
+<br>There are three functions you can use to save string tables with the String Editor:
+<ul>
+<li>Update
+<li>Save As
+<li>Copy To
+</ul>
+<br>Each of these options performs a different type of save function.&nbsp; This section describes how to use each function.
+<h4 id="String_Editor__Update"> String Editor:&nbsp; Update </h4>
+<br>After modifying a string item in a string table, choose Update from the File menu on the String Editor window to save
+ the updated string table to the current resource file.&nbsp; This prevents the changes from being lost when you exit the
+ String Editor.
+<br><br>The Update function updates the resource file only at the resource level.&nbsp; The resource file is not saved until
+ you perform a save at the Resource Editor level as well.&nbsp; Exiting the Resource Editor without saving causes you to lose
+ the string table changes made.
+<h4 id="String_Editor__Save_As"> String Editor:&nbsp; Save As </h4>
+<br>Choose Save As from the File menu on the String Editor window to save the current string table to another resource file.
+&nbsp; A Save Menu dialog appears where you specify the resource file to which you want to save the current string table.
+<br><br><tt><img src="str6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> On the Save Menu dialog, specify the resource file to which you want to save
+ the string table.</b>
+<dl>
+<dt>Important:
+<dd>If the resource file to which you are saving the string table already contains resources, the existing resources will be discarded
+ and replaced with the string table you are saving.
+</dl>
+<h4 id="String_Editor__Copy_To"> String Editor:&nbsp; Copy To </h4>
+<br>Choose Copy To from the Resource menu on the String Editor window to copy the current string table into an existing resource
+ file.&nbsp; A Copy To dialog appears where you specify the resource file to which you want to copy the current string table.
+&nbsp; Unlike the Save As function, copying a string table to a resource file adds an entry to the list of resources rather
+ than replacing the existing resources with the new entry.
+<br><br><tt><img src="str7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> On the Copy To dialog, specify the resource file to which you want to copy the
+ String list.</b>
+<h3 id="Using_Shortcuts_to_Create_String_Tables"> Using Shortcuts to Create String Tables </h3>
+<br>The Edit menu on the Open Watcom String Editor window contains some standard Windows options that you can use to quickly
+ create string tables.&nbsp; The options are:
+<ul>
+<li>Cut
+<li>Copy
+<li>Paste
+</ul>
+<br>These options allow you to perform functions on a string table but not on individual string items.
+<dl>
+<dt>Cut
+<dd>Choose Cut from the Edit menu of the String Editor window to cut the Strings list from the current string table and paste
+ it to the clipboard.
+<dt><br>Copy
+<dd>Choose Copy from the Edit menu of the String Editor window to copy the String list in the current string table to the clipboard.
+<dt><br>Paste
+<dd>Choose Paste from the Edit menu of the String Editor window to copy the string table on the clipboard into the current String
+ list.
+</dl>
+<h3 id="String_Editor__Changing_Memory_Options"> String Editor:&nbsp; Changing Memory Options </h3>
+<br>The Memory Flags option allows you to change the selected memory options for the current string table.&nbsp; These options
+ indicate the memory type and loading instructions.
+<br><br><tt><img src="str8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> Changing memory options</b>
+<dl>
+<dt>To set the memory flags for a string table:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Memory Flags</b> from the Resource menu of the Open Watcom String Editor window.
+<br>The Memory Options dialog opens displaying either the current or default memory options.
+<dt><br>(2)
+<dd><b> Select the required flags</b> in the Memory Options and Load Options sections of the dialog by clicking on the check box
+ beside the field.
+<br>Following is a description of each option.
+<dl>
+<dt>Moveable
+<dd>Selecting this option marks this string table to be stored in moveable memory when it is loaded by an application.
+<dt><br>Discardable
+<dd>Selecting this option marks this string table to be stored in discardable memory when it is loaded by an application.
+<dt><br>Pure
+<dd>When marked as Pure, Windows will not allow the memory that the string table is loaded into to be modified.
+<dt><br>Preload
+<dd>All string tables marked as Preload will be loaded when the application for which you are creating the string table is loaded.
+<dt><br>LoadOnCall
+<dd>String tables marked as LoadOnCall will be loaded only when an application issues a call to load them.
+</dl>
+<dt><br>(3)
+<dd><b> Click on OK</b> when all memory option selects are made.
+<br>The Memory Options dialog closes returning you to the String Editor window.
+</dl>
+</body>

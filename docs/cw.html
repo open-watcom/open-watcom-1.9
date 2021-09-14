@@ -1,0 +1,1955 @@
+<head>
+<title> CauseWay User's Guide </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- 0 -
+<dd><a href="#01_Unable_to_resize_program_memory_block_">01 Unable to resize program memory block.</a>
+<br><a href="#02_386_or_better_required_">02 386 or better required.</a>
+<br><a href="#03_NonMstandard_protected_mode_program_already_active_">03 Non-standard protected mode program already active.</a>
+<br><a href="#04_DOS_3_1_or_better_required_">04 DOS 3.1 or better required.</a>
+<br><a href="#05_Not_enough_memory_for_CauseWay_">05 Not enough memory for CauseWay.</a>
+<br><a href="#06_VCPI_failed_to_switch_into_protected_mode_">06 VCPI failed to switch into protected mode.</a>
+<br><a href="#07_Unable_to_control_A20_">07 Unable to control A20.</a>
+<br><a href="#08_Selector_allocation_error_">08 Selector allocation error.</a>
+<br><a href="#09_Unrecoverable_exception__Program_terminated_">09 Unrecoverable exception.&nbsp; Program terminated.</a>
+<dt><br>- 1 -
+<dd><a href="#10_Unable_to_find_application_to_load_">10 Unable to find application to load.</a>
+<br><a href="#11_DOS_reported_error_while_accessing_application_">11 DOS reported error while accessing application.</a>
+<br><a href="#12_Not_enough_memory_to_load_application_">12 Not enough memory to load application.</a>
+<br><a href="#13_DPMI_failed_to_switch_to_protected_mode_">13 DPMI failed to switch to protected mode.</a>
+<br><a href="#14_Memory_structures_destroyed__Program_terminated_">14 Memory structures destroyed.&nbsp; Program terminated.</a>
+<br><a href="#15_DOS_reported_an_error_while_accessing_swap_file__Program_terminated_">15 DOS reported an error while accessing swap file.&nbsp; Program terminated.</a>
+<br><a href="#16_Unsupported_DOS_function_call__Program_terminated_">16 Unsupported DOS function call.&nbsp; Program terminated.</a>
+<dt><br>- A -
+<dd><a href="#API_functions_Lalphabetical_orderR">API functions (alphabetical order)</a>
+<br><a href="#API_functions_Lnumerical_indexR">API functions (numerical index)</a>
+<br><a href="#API_Memory_Allocation">API Memory Allocation</a>
+<br><a href="#API_Notes">API Notes</a>
+<dt><br>- C -
+<dd><a href="#CauseWay_API">CauseWay API</a>
+<br><a href="#CAUSEWAY_Environment_Variable">CAUSEWAY Environment Variable</a>
+<br><a href="#CauseWay_Memory_Requirements">CauseWay Memory Requirements</a>
+<br><a href="#CauseWay_Services">CauseWay Services</a>
+<br><a href="#CW_ERR_File_Information_Format">CW.ERR File Information Format</a>
+<dt><br>- D -
+<dd><a href="#Debugging_Using_WD">Debugging Using WD</a>
+<br><a href="#Default_API">Default API</a>
+<br><a href="#DOS_API_Buffer_Size">DOS API Buffer Size</a>
+<br><a href="#DOS_Extender_Error_Messages_and_Return_Values">DOS Extender Error Messages and Return Values</a>
+<dt><br>- E -
+<dd><a href="#Environment_Variables">Environment Variables</a>
+<br><a href="#Extended_or_Altered_Interrupt_Services">Extended or Altered Interrupt Services</a>
+<dt><br>- F -
+<dd><a href="#First_Steps">First Steps</a>
+<br><a href="#Functions">Functions</a>
+<dt><br>- I -
+<dd><a href="#Internal_Operation">Internal Operation</a>
+<br><a href="#Introduction">Introduction</a>
+<dt><br>- M -
+<dd><a href="#Memory_Size">Memory Size</a>
+<br><a href="#Minimum_System_Requirements">Minimum System Requirements</a>
+<dt><br>- O -
+<dd><a href="#Open_Watcom_CDCPP_kbhitLR_replacement">Open Watcom C/C++ kbhit() replacement</a>
+<br><a href="#Operating_CauseWay">Operating CauseWay</a>
+<br><a href="#Operational_Considerations_When_Using_CauseWay">Operational Considerations When Using CauseWay</a>
+<br><a href="#Overview">Overview</a>
+<dt><br>- P -
+<dd><a href="#Performance_Considerations">Performance Considerations</a>
+<dt><br>- Q -
+<dd><a href="#Quick_Reference_Guide">Quick Reference Guide</a>
+<dt><br>- R -
+<dd><a href="#Rules_For_Protected_Mode_Operation">Rules For Protected Mode Operation</a>
+<dt><br>- S -
+<dd><a href="#Sequence">Sequence</a>
+<br><a href="#Stack_Frames">Stack Frames</a>
+<dt><br>- T -
+<dd><a href="#TEMP_and_TMP_Environment_Variables">TEMP and TMP Environment Variables</a>
+<dt><br>- U -
+<dd><a href="#Using_DLLs_with_Open_Watcom_CDCPP">Using DLLs with Open Watcom C/C++</a>
+<br><a href="#Using_the_flat_memory_model">Using the flat memory model</a>
+</dl>
+<h1 id="Overview"> Overview </h1>
+<br>CauseWay is a 386 DOS extender package for use with Open Watcom C/C++ programs.&nbsp; It is provided as a stub executable
+ for which can be easily linked into DOS extended applications.
+<h2 id="Introduction"> Introduction </h2>
+<br>Within the standard DOS, Windows and OS/2 DOS box environments, CauseWay supports 32-bit memory models for applications
+ on PC compatibles with an 80386SX processor or above without the need to use overlays or crude stopgap measures such as EMS/XMS
+ swapping.&nbsp; To do this, the DOS extender runs applications in protected mode, rather than the real mode normally used
+ in the DOS environments.&nbsp; CauseWay supports both 16-bit and 32-bit protected mode applications operating under a DOS
+ environment.&nbsp; It makes full use of 386-level chip capabilities including demand paging of code and data, variable-sized
+ segments up to 4GB in length, mixing 16- and 32-bit segments as well as support for flat (non-segmented) memory addressing
+ models.&nbsp; The CauseWay implementation of these powerful capabilities provides all their benefits while being transparent
+ to the application user.
+<br><br>Applications created using CauseWay are compatible with the VCPI and DPMI standards and run equally well on systems
+ with no protected mode drivers or programs.&nbsp; CauseWay applications work with such diverse environments as normal DOS,
+ DesqView, Windows 3.0 and above in both standard and enhanced modes, as well as DOS windows within OS/2 2.0 and above, Windows
+ 95 and above and Windows NT and later.&nbsp; CauseWay allocates memory from DPMI, VCPI, XMS, and INT 15H services, in addition
+ to conventional DOS memory.&nbsp; This allows CauseWay applications to allocate memory through the CauseWay DOS extender
+ without the need to detect or manipulate the various memory handling schemes.
+<br><br>A primary objective of CauseWay development was to ensure minimal effort would be needed by programmers to adapt their
+ code to work with the CauseWay DOS e tender.&nbsp; As a result, most Open Watcom C/C++ and many realmode assembly language
+ programs need no or minor changes to produce a fully operational CauseWay protected mode application.
+<h2 id="Minimum_System_Requirements"> Minimum System Requirements </h2>
+<br>CauseWay for Open Watcom C/C++ requires a 386SX based computer or better.&nbsp; The required operating environment is
+ MS-DOS or PC-DOS 3.3 or higher, Windows 3.0 or higher, OS/2 2.0 and above, Windows 95 and above, Windows NT or higher or
+ a compatible operating system that provides a DPMI or VCPI DOS environment.
+<br><br>CauseWay is to a large extent compatible with Tenberry Software's DOS/4GW.&nbsp; Most applications built for DOS/4GW
+ will run with CauseWay without any changes.
+<h2 id="CauseWay_Memory_Requirements"> CauseWay Memory Requirements </h2>
+<br>The recommended minimum amount of total free physical memory for CauseWay applications is 500KB total.&nbsp; 100-150KB
+ of this memory must be conventional DOS memory, the remainder may be extended memory.&nbsp; CauseWay applications can run
+ in less memory, down to the 300KB range, provided sufficient virtual (disk-based) memory is available, but application performance
+ will decline significantly.&nbsp; More physical memory improves a program's performance, reducing virtual memory disk access
+ overhead.
+<h2 id="Operating_CauseWay"> Operating CauseWay </h2>
+<br>When using CauseWay, simply follow the standard edit-compile/assemble-link programming cycle familiar to C and assembly
+ language programmers.
+<br><br>Users compiling with WCL386 need to add the switch /l=CauseWay to the command line.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WCL386 /l=CauseWay myprog.c</tt>
+<br><br>This switch can be automated by adding /l#CauseWay to the<b> WCL386</b> environment variable, making CauseWay the
+ default when compiling via WCL386.
+<br><br>Open Watcom users linking with WLINK should add the statement<tt> system CauseWay</tt> to the link command.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WLINK system CauseWay file myprog.obj</tt>
+<br><br>When running the DOS-extended application, DOS first loads the CauseWay DOS extender in conventional memory.&nbsp;
+ CauseWay establishes the protected mode environment, retrieves the application from the executable file - loading it first
+ into extended memory, then conventional memory if extended is exhausted, then virtual (disk-based) memory if conventional
+ is exhausted - sets up the application for execution, and finally passes control to the application to begin operation.&nbsp;
+ No additional files are required to make your application run in 386 protected mode using the CauseWay DOS extender.
+<br><br><tt>CWSTUB.EXE</tt> will execute stand-alone LE-format files in the same way as<tt> DOS4GW.EXE</tt> does if the full
+ file name, including extension, is listed after CWSTUB, e.g.<tt>&nbsp; CWSTUB RUNME.EXE.</tt>&nbsp; CWSTUB will override
+ the extender bound to the application EXE, if any, with the CauseWay DOS extender version in<tt> CWSTUB.EXE.</tt>
+<h2 id="Debugging_Using_WD"> Debugging Using WD </h2>
+<br>To debug CauseWay programs with the Open Watcom debugger after installing the CauseWay files, simply use the /tr=cw command
+ line option.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WD /tr=cw myprog</tt>
+<br><br>This process can be automated by adding<tt> /tr#cw</tt> to your<b> WD</b> environment variable.&nbsp; Use the<tt>
+ set WD=tr#cw</tt> command.
+<br><br>By default, CauseWay uses a Ctrl-Alt keypress to interrupt the WD debugger, rather than the Print-Screen key.&nbsp;
+ This can be changed to any two, three, or four keypress value by modifying the ASCII file<tt> CWHELP.CFG</tt> at the BreakKeys
+ line.&nbsp; See comments in this file for further detail.&nbsp; Note that a single keypress value will not work properly.
+<h2 id="Operational_Considerations_When_Using_CauseWay"> Operational Considerations When Using CauseWay </h2>
+<br>The<b> TEMP</b> ,<b> TMP</b> and<b> CAUSEWAY=SWAP</b> environment variables are used by CauseWay to determine where to
+ build its virtual memory swap file when an application is not operating under Windows or OS/2 (Windows and OS/2 provide their
+ own virtual memory management).&nbsp; Since CauseWay has integrated virtual memory, disk space is considered part of total
+ memory.&nbsp; If you use the<b> TEMP</b> ,<b> TMP</b> or<b> SWAP</b> environment variable to point to a small RAM sk or almost
+ full disk, free memory will be affected accordingly.&nbsp; If virtual (disk-based) memory is less than physical (installed
+ on machine) memory, Cause Way turns off virtual memory.&nbsp; On the other hand, if you have a disk 300MB free, CauseWay
+ will have no problem reporting 300MB free memory to your program, provided that virtual memory is not inhibited or limited
+ by the<b> CAUSEWAY</b> environment variable memory settings.
+<br><br>Memory operates differently under Windows and OS/2.&nbsp; With OS/2, the DPMI setting for the session determines available
+ memory.&nbsp; With Windows, available memory is the total of physical memory plus the swap file size less any memory already
+ in use by Windows or another Windows application.
+<br><br>When creating a VMM swap file at application startup under DOS, CauseWay builds a list of possible paths in order
+ of priority.&nbsp; CauseWay then works through the list until one of the entries provides both a valid drive and path specification
+ and sufficient free space to being operation.&nbsp; The first entry to succeed becomes the swap file drive with no further
+ processing of the list.&nbsp; If CauseWay reaches the end of the list without finding a valid drive, it disables the virtual
+ memory manager.&nbsp; The order of priority is<b> CAUSEWAY=SWAP</b> ,<b> TEMP</b> ,<b> TMP</b> and application execution
+ path.
+<br><br>If end users reboot the system or turn off power while executing a CauseWay application under DOS, a temporary file
+ will be left on the system by CauseWay.&nbsp; This will usually be a zero length file unless the application was large enough
+ to exceed physical memory and CauseWay had started using its virtual memory manager.&nbsp; The temporary file name is requested
+ using standard DOS functions, meaning the name will vary with different versions of DOS.&nbsp; It typically is a mixture
+ of letters and numbers with no extension, although .$$$ extension may be presented when operating under a network.&nbsp;
+ Make sure you do not delete this temporary file while the CauseWay application is still active, as improper or erratic program
+ operation, including lock-ups, may occur.
+<br><br>Application startup times may increase significantly if the free physical memory is less than the executable size.
+&nbsp; In such cases, not only must the executable be loaded into physical memory, but a virtual memory file of the executable
+ file size must also be built.&nbsp; This file holds the portions of the executable that do not fit into physical memory and
+ which have not been recently requested.&nbsp; After startup is complete, the program will operate normally, paging to and
+ from virtual memory as necessary.
+<br><br>CauseWay automatically sets aside 32KB of low DOS memory for allocation and use by developer routines via the GetMemDOS
+ API function.&nbsp; The 32K memory block is available even if CauseWay needs to use virtual memory just to load an application.
+&nbsp; The set-aside amount can be increased by using the<b> CAUSEWAY</b> environment variable LOWMEM option, although the
+ additional set-aside goal is not guaranteed to be reached if too little conventional memory is left for CauseWay's operating
+ requirements.
+<h2 id="Environment_Variables"> Environment Variables </h2>
+<br>CauseWay can make use of three environment variables at runtime:<b>&nbsp; TEMP</b> ,<b> TMP</b> and<b> CAUSEWAY</b> 
+<h3 id="TEMP_and_TMP_Environment_Variables"> TEMP and TMP Environment Variables </h3>
+<br>The<b> TEMP</b> and<b> TMP</b> environment variables specify the directory and drive where a swap file is built by CauseWay's
+ virtual memory manager (VMM) when operating under DOS.&nbsp; Windows and OS/2 provide their own memory management functions
+ which override CauseWay's use of the<b> TEMP</b> and<b> TMP</b> environment variables.&nbsp; The path indicated by<b> TEMP</b>
+ will be used under DOS if both<b> TEMP</b> and<b> TMP</b> environment variables exist.&nbsp; Both settings are superseded
+ by the<b> CAUSEWAY=SWAP</b> environment variable setting.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; SET TMP=C:\SWAP</tt>
+<br><br>The example above directs the CauseWay DOS extender to create its swap file, if any, in the C:\SWAP directory.
+<br><br>If no<b> TEMP</b> ,<b> TMP</b> and<b> CAUSEWAY=SWAP</b> settings are present or are invalid, the current drive is
+ used when creating a swap file.&nbsp; If free drive space is less than physical memory (extended and conventional) available
+ at startup, then the DOS extender VMM is disabled, no swap file is created, and virtual memory is not available to the application.
+<h3 id="CAUSEWAY_Environment_Variable"> CAUSEWAY Environment Variable </h3>
+<br>The<b> CAUSEWAY</b> environment variable controls operation of the DOS extender at application runtime.&nbsp; Eleven (11)
+ options are supported, although they are ignored in a Windows or OS/2 DPMI environment.&nbsp; Use any combination of the
+ options in the following format:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; SET CAUSEWAY=&#91;&lt;setting_1&gt;;&#93;&#91;&lt;setting_2&gt;;&#93;&#91;&lt;setting_n&gt;;&#93;</tt>
+<br><br>Items in square brackets (&#91; &#93;) are optional.&nbsp; Do not actually type the brackets if you use the optional
+ items.&nbsp; Items in brackets (&lt; &gt;) should be replaced with actual values, separated by semicolons.&nbsp; Following
+ is a description of the valid settings:
+<dl>
+<dt>BIG1
+<dd>
+<br>Force CauseWay to use an alternate method to determine available extended memory under RAW memory environments (no DPMI
+ host, no HIMEM.SYS loaded), allowing CauseWay to see more than 64MB of memory on machines which do not support more than
+ 64MB under original INT 15h method.&nbsp; This method uses INT 15h function 0e801h to determine available extended memory,
+ falling back to the original function if 0e801h fails.&nbsp; Note that old machines may not support this function and there
+ is a slight chance that some older machines may not work if this setting is used.
+<dt><br>DPMI
+<dd>
+<br>Force DPMI rather than default VCPI usage whenever possible (recommended for 386Max and BlueMax users).&nbsp; The memory
+ manager must support DPMI or else this setting is ignored.
+<dt><br>EXTALL
+<dd>
+<br>Force CauseWay to use all extended memory and sub-allocate memory from the bottom up instead of the default top-down approach.
+&nbsp; This setting is most useful for processor intensive environments which have a small hardware cache that does not cover
+ the entire physical address range.&nbsp; Use of this setting means that no extended memory will be available for other programs
+ while the application is loaded (including shelling to DOS).
+<dt><br>HIMEM:&lt;nnn&gt;
+<dd>
+<br>Set maximum physical (conventional plus extended) memory that can be consumed by CauseWay where<tt> &lt;nnn&gt;</tt> is
+ the decimal number of kilobytes that can be consumed.&nbsp; If memory allocation requests exceed this figure, CauseWay will
+ use virtual memory, even if additional physical memory is present.&nbsp; If the HIMEM memory value exceeds available physical
+ memory, then memory allocations operate normally.&nbsp; For example, HIMEM:2048 on a 4MB machine would force virtual memory
+ use after 2MB of memory allocations (including loading the executable file).&nbsp; The remaining 2MB of memory could be used
+ by other applications while the CauseWay application is active.
+<dt><br>LOWMEM:&lt;nnn&gt;
+<dd>
+<br>Set DOS (conventional) memory to restrict it from use by CauseWay.&nbsp; This memory is in addition to the default 32KB
+ low DOS memory block reserved by CauseWay for use by any applications which need to allocate DOS memory.<tt>&nbsp; &lt;nnn&gt;</tt>
+ is the decimal number of kilobytes to reserve.&nbsp; If there is not enough conventional memory to satisfy the<tt> &lt;nnn&gt;</tt>
+ request value, then CauseWay will leave all conventional memory free that is not required by the extender to operate.&nbsp;
+ Note that this option does not guarantee the amount of free DOS memory, just how much needs to be free before CauseWay will
+ consume DOS memory after exhausting all extended memory.&nbsp; For example, LOWMEM:200 will attempt to reserve 200KB of DOS
+ memory, even if CauseWay has exhausted all extended memory and is using conventional memory to fill memory allocation requests.
+<dt><br>MAXMEM:&lt;nn&gt;
+<dd>
+<br>Set maximum linear address space provided by CauseWay where<tt> &lt;nn&gt;</tt> is the decimal number of megabytes of
+ linear address space.&nbsp; This setting is similar to HIMEM except that it includes any virtual memory.&nbsp; For example,
+ MAXMEM:32 on a 16MB memory system restricts VMM disk space usage to 32MB, even if more disk space is present.&nbsp; MAXMEM:8
+ on the same system would restrict the application to 8MB of memory (all physical).&nbsp; Note that the setting is in megabytes,
+ rather than kilobytes used in the LOWMEM and HIMEM options.
+<dt><br>NAME:&lt;filename&gt;
+<dd>
+<br>Set a name, without a pathspec, to use the virtual memory temporary swap file.&nbsp; To set a path for the swap file,
+ use the<b> CAUSEWAY=SWAP</b> ,<b> TEMP</b> , or<b> TMP</b> environment variable.&nbsp; The filename must be valid, 12 characters
+ or less.&nbsp; Additional characters are truncated or invalidate the filename, depending upon how DOS handles it (e.g., multiple
+ periods make an invalid file name whereas a five-character extension is truncated to three).&nbsp; If the filename specified
+ is invalid, CauseWay shuts off virtual memory.&nbsp; It makes no further attempts for a temporary file name.&nbsp; If a pre-existing
+ file name is specified, CauseWay overwrites the file.
+<br>In conjunction with the PRE setting, the NAME setting can be a very powerful tool.&nbsp; Not only can no clusters be lost
+ due to reset/reboot, but the leftover temporary file can be forced to a known name and location.&nbsp; Erase the swap file
+ prior to running the application or leave it as a &quot;permanent&quot; swap file for CauseWay.
+<br><br>Note:&nbsp; In a multi-user or muti-CauseWay application situation, do not use the NAME setting unless it generates
+ a unique file for each user and application.&nbsp; Otherwise, applications will be stepping on others' temporary files.
+<dt><br>NOEX
+<dd>
+<br>Force CauseWay to not patch the INT 21h, function 4bh (EXEC) vector to turn off CauseWay's INT 31h extensions when the
+ EXEC function is called.&nbsp; CauseWay normally turns off support of its INT 31h extensions with an EXEC call to be well
+ behaved and avoid conflicts with other extenders or programs which may add their own extensions to INT 31h.&nbsp; However,
+ if your CauseWay extended application shells out to DOS and passes the shelled-to application a callback address pointing
+ to a routine within the parent CauseWay application, the callback will not work properly if the protected mode code uses
+ the CauseWay extensions.&nbsp; With the NOEX setting present, CauseWay still supports its INT 31h extensions for those users
+ who need to operate with callbacks in this fashion.&nbsp; Be aware that when the NOEX setting is present, CauseWay is less
+ &quot;well-behaved&quot; about other programs which might add their own INT 31h extensions.
+<dt><br>NOVM
+<dd>
+<br>Disable all virtual memory use by CauseWay.&nbsp; If physical memory is exhausted, CauseWay will fail further memory allocation
+ requests.
+<dt><br>PRE:&lt;nnn&gt;
+<dd>
+<br>Pre-allocates a swap file size, under non-DPMI environments, at start-up, where<tt> &lt;nnn&gt;</tt> is file size in megabytes,
+ not kilobytes (same as MAXMEM).
+<br>There are at least two uses for this feature.&nbsp; First, to pre-allocate a virtual memory file size for applications
+ with a total memory allocation (including EXE image) that does not exceed the set size.&nbsp; For example:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; SET CAUSEWAY=PRE:4</tt>
+<br><br>pre-allocates a virtual memory file of 4MB.&nbsp; If an enduser resets or powers off the computer while the application
+ is running and virtual memory is in use, the enduser's machine will not have lost clusters.&nbsp; There is only a 4MB temporary
+ file to find and erase.&nbsp; If virtual memory usage exceeds 4MB, then SCANDISK must be used to recover lost clusters above
+ and beyond what was pre-allocated.
+<br><br>Secondly, PRE can be used to allow your application to stake a claim to disk space before it needs it.
+<br><br>PRE may be used in conjunction with MAXMEM to ensure that virtual memory does not exceed the pre-allocation setting.
+<dt><br>SWAP:&lt;path&gt;
+<dd>
+<br>Set CauseWay's virtual memory manager swap file path.&nbsp; This path takes precedence for choosing the location of a
+ swap file over the<b> TEMP</b> and<b> TMP</b> environment variables.
+</dl>
+<h1 id="Using_the_flat_memory_model"> Using the flat memory model </h1>
+<br>Flat model is a non-segmented memory model that allows accessing data and executing code anywhere within the 4GB linear
+ address region via a 32-bit offset without the need to use segment registers to point to the memory.&nbsp; In many respects,
+ the memory model is identical to the tiny memory model well-known to DOS C and assembly language programmers, but supporting
+ a memory region of 4GB rather than 64KB.
+<br><br>When using flat model, all linear addresses directly map to the physical address specified when an application is
+ running in pure DOS environment.&nbsp; For example, writing to memory location 0B8000h will address video memory.&nbsp; Reading
+ from memory locations in the 0FFF00h range will access ROM code.&nbsp; Under DPMI there is usually no direct relationship
+ between linear and physical addresses, the DPMI host will however emulate access to memory below 1MB as appropriate without
+ requiring any special considerations on the part of the application writer.
+<br><br>Generally speaking, flat is an improved version of the older near memory model supported in previous versions of CauseWay.
+&nbsp; Unlike near, flat model supports multiple segments, mixing 16- and 32-bit segments, and direct linear memory addresses
+ without translation.&nbsp; Flat model supports all near memory model code without translation, including automatic handling
+ of near-specific API functions.
+<h1 id="Using_DLLs_with_Open_Watcom_CDCPP"> Using DLLs with Open Watcom C/C++ </h1>
+<br>It is recommended that you understand and familiarize yourself with the basic operation of DLLs (Dynamic Link Libraries)
+ under Windows or OS/2 before using them with CauseWay under DOS.&nbsp; No attempt is made here to explain the fundamentals
+ of DLL architecture and operation.&nbsp; You should also study the provided DLL example code.
+<br><br>DLL code should be compiled with the /s option to disable stack checking and the /bd option to generate DLL-suitable
+ code.&nbsp; Specify a system type of<tt> CWDLLR</tt> for register-based parameter passing or<tt> CWDLLS</tt> for stack-based
+ parameter passing.
+<br><br>A DLL file is a standard EXE file with the following requirement:&nbsp; The program start address should be an initialization
+ and termination function, rather than a main program entry point.&nbsp; The entry address will be called twice:&nbsp; Once
+ after loading to allow the DLL to perform initialization and once just prior to the DLL being unloaded from memory to allow
+ it to clean up for termination.&nbsp; Entry conditions are:&nbsp; register EAX=0 for initialization and register EAX=1 for
+ termination.&nbsp; An initialization code return value of EAX=0 indicates no errors.&nbsp; A code of any other value indicates
+ an error has occurred and loading should be terminated.&nbsp; If an error condition is returned, it is up to the DLL to display
+ an error message, CauseWay will simply report a load error.&nbsp; The entry address is a FAR call, so the initialization
+ code should use a RETF to return control to the calling program.
+<br><br>A minimal DLL startup system is provided in the<tt> DLLSTRTR.OBJ</tt> (register-based) and the<tt> DLLSTRTS.OBJ</tt>
+ (stack-based) files.
+<br><br>CauseWay loads DLLs when the program being loaded has references to external modules in the DLL.&nbsp; CauseWay searches
+ the execution path for any DLL or EXE file (in that order) which has the proper internal module name.&nbsp; The module name
+ is not used when searching.&nbsp; For example, a file named<tt> USEME.DLL</tt> contains a module named Spelling_Checker.
+&nbsp; The name of the module (Spelling_Checker) is set by the NAME option in your link file.&nbsp; If no NAME is specified,
+ then the module's name will default to its file name without an extension.&nbsp; In this example, the module name would become
+ USEME if no NAME is specified.
+<br><br>Following is an overview of the standard link file commands used to create DLLs.&nbsp; You may also refer to the Open
+ Watcom Linker documentation for a description of these commands.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; EXPORT function_name</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>function_name
+<dd>allows you to make a symbol (function name) available to other modules.&nbsp; It must be declared as a public symbol so that
+ the linker can export it.
+</dl>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; IMPORT &#91;local_name&#93; module_name.function_name</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; IMPORT &#91;local_name&#93; module_name.ordinal</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>local_name
+<dd>is an optional parameter.&nbsp; It is the symbol which the importing program references the function by, i.e.&nbsp; the symbol
+ declared as external.&nbsp; If no local name is specified, then<b> function_name</b> is used.
+<dt><br>module_name
+<dd>is the name of the module that contains the function.&nbsp; It is not the file name.&nbsp; IMPORT module names are resolved
+ by searching DLL and EXE files for the correct module name.
+<dt><br>function_name
+<dd>is the symbol by which the function is known in the EXPORTing module, i.e.&nbsp; the symbol that is declared as public.
+<dt><br>ordinal_number
+<dd>functions can also be imported by number.&nbsp; This is the entry number in decimal, starting at 1, in the EXPORTing module's
+ export table to link to.<b>&nbsp; local_name</b> must be specified when using ordinals, otherwise there is no symbolic reference
+ to internally resolve.
+<br>In the DLL calling code,<b> local_name</b> and<b> function_name</b> need to be declared as external.
+</dl>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; NAME&nbsp;&nbsp; module_name</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>module_name
+<dd>is a symbol by which the module should be identified when resolving IMPORT records in a calling program.
+<br>IMPORTed module names can contain a partial path.&nbsp; For example, DLL\spelling_checker would instruct the loader to
+ look in &lt;execution path&gt;\DLL for a module with a name of spelling_checker.
+<br><br>Notes:
+<br><br>You must take the responsibility to make sure that the IMPORTed function or module calling conventions match the calling
+ code.&nbsp; For example, the loader will load a 16-bit module to resolve an IMPORT in a 32-bit program without complaint.
+&nbsp; In this case, if the IMPORTing program does a 16-bit far call, then everything will work correctly, but a 32-bit call
+ will fail unless the 16-bit DLL module ends with a 32-bit RET instruction.
+<br><br>Importing by function name may slow program performance if the symbols are frequently referenced.&nbsp; In such cases,
+ consider using the ordinal command to speed up the access times because module name references are automatically converted
+ to ordinals in an internal list which will only be processed once at load time.
+</dl>
+<h1 id="Performance_Considerations"> Performance Considerations </h1>
+<br>There are a few ways to increase the operational efficiency of your CauseWay applications.
+<h2 id="Memory_Size"> Memory Size </h2>
+<br>Almost without exception, the best way to increase runtime performance of all CauseWay applications is to ensure that
+ physical memory is large enough to meet all of the program's needs.&nbsp; Performance suffers considerably when CauseWay
+ creates a temporary file for virtual memory, swapping 4KB blocks of the program's code and data to and from disk.&nbsp; Naturally
+ this may not be possible in all cases, but it is a worthy goal.&nbsp; Generally the more physical memory, even when virtual
+ memory is being used, the better an application's performance.
+<br><br>When using a disk cache program, be sure not to use too much extended memory.&nbsp; Although a disk cache program
+ is beneficial, allocating it too much memory can deprive CauseWay of required extended memory and can degrade application
+ performance.&nbsp; However completely disabling disk cache will usually noticeably decrease performance as well.&nbsp; The
+ optimal cache size depends on the particular application and computer system (amount of physical memory, disk I/O speed etc.)
+ and there are no generally applicable &quot;best&quot; settings.
+<br><br>If your program uses virtual memory, CauseWay's VMM creates a temporary swap file.&nbsp; If you have more than one
+ disk drive, then you may wish to direct creation of the swap file to the faster disk drive on your system using the<b> CAUSEWAY=SWAP</b>
+ ,<b> TEMP</b> or<b> TMP</b> environment variables.&nbsp; Do not create a RAM disk if this will lower your physical memory
+ because this is less efficient than allowing CauseWay to use physical memory itself.
+<br><br>Remember that virtual memory is part of total memory when using CauseWay.&nbsp; If your default drive, or the drive
+ pointed to by the<b> TEMP</b> or<b> TMP</b> environment variables has little free space, this will be reflected in total
+ memory available to the CauseWay application.&nbsp; If disk free space is less than physical memory, then CauseWay shuts
+ off all use of virtual memory.&nbsp; Windows and OS/2 handle virtual memory internally and supply it through the swap file
+ and DPMI settings for the application.
+<h2 id="Open_Watcom_CDCPP_kbhitLR_replacement"> Open Watcom C/C++ kbhit() replacement </h2>
+<br>Two optimized replacement versions of the Open Watcom C++ runtime library kbhit() function are provided.&nbsp; The files
+ are KBHITR.OBJ and KBHITS.OBJ for, respectively, register-based and stack-based calling conventions.&nbsp; Simply link in
+ the kbhit() replacement file appropriate for your compile options.&nbsp; These replacement routines bypass the normal INT
+ checking of the keyboard and directly inspect the keyboard buffer to see if a keypress is pending.&nbsp; These routines significantly
+ reduce the overhead in tight processing loops, which perform many kbhit()'s per second, by avoiding the interrupt call associated
+ with checking for keystrokes.
+<br><br>Be aware that linking in the kbhitr or kbhits module means that the INT 28h idle call will not be made on kbhit()
+ as normally occurs with the standard runtime library kbhit().&nbsp; This may impact background processing in applications
+ which depend on INT 28h idle calls, such as the DOS PRINT utility which performs printing in the background, as well as operation
+ under multitatsking environments.
+<h2 id="DOS_API_Buffer_Size"> DOS API Buffer Size </h2>
+<br>If your CauseWay application reads and writes files using large amounts of data on one read or write pass, you may wish
+ to consider increasing the size of the internal DOS memory transfer buffer used by CauseWay.&nbsp; Refer to the SetDOSTrans
+ and GetDOSTrans functions in the CauseWay API chapter for more information.
+<br><br>Note that the internal 8KB buffer is optimized for file transfers.&nbsp; Average file transfers of greater than 8KB
+ will not necessarily improve performance with an increase in the buffer size.&nbsp; Generally speaking, the average file
+ transfer must be 32KB or larger to gain any efficiency with an increased buffer size.&nbsp; Also, if you are using virtual
+ memory, increasing the buffer size may actually slow down performance due to the decreased available physical memory.&nbsp;
+ Test your application with both the default buffer and the desired new buffer size before permanently increasing the buffer
+ size beyond the default.
+<h2 id="API_Memory_Allocation"> API Memory Allocation </h2>
+<br>Inveterate tweakers may try out the SetMCBMax and GetMCBSize functions in the CauseWay API.&nbsp; These functions allow
+ fine-tuning of the threshold used by CauseWay to allocate memory via a memory pool using memory control blocks (MCBs) rather
+ than via normal DPMI functions.&nbsp; Since DPMI allocates memory in multiples of 4KB, setting the MCB threshold too low
+ may result in a good deal of wasted memory and subsequent performance degradation.
+<h1 id="Rules_For_Protected_Mode_Operation"> Rules For Protected Mode Operation </h1>
+<br>The following information covers additional restrictions for protected mode compatible code that are not present when
+ writing real mode compatible code.
+<br><br>Using protected mode rather than real mode requires following a few new programming rules to prevent processor faults
+ from being generated, terminating the CauseWay application.&nbsp; These processor faults occur when an application breaks
+ a protected mode programming rule.
+<br><br>Use the following rules for programming in protected mode:
+<ol>
+<li>A selector value (referred to as a segment value in real mode) loaded into a segment register references an area of memory
+ that may occur anywhere within the machine's physical address space.&nbsp; The operating system can dynamically move this
+ area of memory.&nbsp; Therefore, when dealing with selector values:
+<ul>
+<li>Never use segment registers as general purpose registers that can be loaded with arbitrary values.&nbsp; Every time a
+ segment register is loaded with a value the processor checks the validity of the selector value and generates a fault if
+ it is invalid.
+<li>Never perform segment arithmetic on a selector value.&nbsp; Segment arithmetic is usually performed in real mode code
+ to either normalize a pointer, access a new paragraph of memory without changing an offset, or to access a single area of
+ memory that is greater than 64KB in size.&nbsp; Since a selector value is an index into a table which contains the actual
+ memory addresses, addition or subtraction of different selector values is meaningless and gives no useful results.&nbsp;
+ (There exist special cases where contiguous selector values can be added or subtracted from for useful effect, but detailing
+ these cases exceed the scope of this manual.)
+<li>Do not access data at an offset greater than the size of the associated selector.&nbsp; Attempts to do so result in a
+ fault.&nbsp; This is one of the greatest strengths of protected mode because most obscure bugs in real mode code occur when
+ a bad pointer value accesses the wrong area of memory, or when a buffer overflows and memory beyond the buffer is overwritten.
+<li>Do not attempt to write to or read from the NULL (zero value) segment.&nbsp; Attempts to do so results in a fault.&nbsp;
+ In addition to valid selector values, segment registers can be safely loaded with a value of 0 but this selector value cannot
+ be used to access memory or execute code.
+</ul>
+<li>Do not execute code in a data segment and do not write to data in the code segment.&nbsp; Use the CauseWay AliasSel function
+ to map a data selector to the same physical memory area shared by a code selector when necessary.&nbsp; Even in this case,
+ however, never write to memory using a CS:&nbsp; code segment override because it always causes a processor fault.
+<li>CauseWay handles most of the standard DOS interrupts transparently.&nbsp; When passing pointers to buffers for software
+ interrupt calls not handled by CauseWay, create the buffers in low (conventional) DOS memory using the GetMemDOS function
+ of the CauseWay API.&nbsp; In addition, convert the pointers from protected mode selector:offset pairs to real mode segment:offset
+ pairs prior to the interrupt, and back upon your return from the interrupt.
+</ol>
+<h1 id="CW_ERR_File_Information_Format"> CW.ERR File Information Format </h1>
+<br>The following information describes the format of the CW.ERR file that CauseWay creates if an exception occurs in a CauseWay
+ application.&nbsp; This information can be very useful in tracking down exactly where and why an exception occurred.
+<h2 id="Quick_Reference_Guide"> Quick Reference Guide </h2>
+<br>If you do not know how to interpret assembly language or CPU instructions, and you want better detail on the location
+ of an exception, you can frequently identify which routine caused the exception by cross-referencing the MAP file with the
+ CW.ERR file.&nbsp; Following is a short guide to determine the offending routine.
+<br><br>Look at the value after the dash (-) listed for the CS segment register at the beginning of the ninth line in CW.ERR.
+&nbsp; This should be an eight digit number starting with several zeros.&nbsp; Now look at the MAP file of your application.
+&nbsp; Following the program, creation date and time lines in the MAP file is a listing of program segments showing their
+ start, stop, length, name, class and count.&nbsp; Find the segment which has a start address equal to the eight digit number
+ listed above.&nbsp; This is the entry for the program segment where the exception occurred.
+<br><br>Locate the public symbols listed by address in the MAP file.&nbsp; Each symbol in the program is listed in ascending
+ address order.&nbsp; The address is composed of two values separated by a colon (:).&nbsp; Find the address group which begins
+ with the eight digit number given above for CS segment register without the last digit.&nbsp; For example, if the CS eight
+ digit number was 000205E0, look for an address beginning with 0000205E.&nbsp; If you cannot find any addresses beginning
+ with the number, either no routines in the segment were declared public or else you have a version of the MAP file that was
+ created at a different time than the application EXE file which generated the CW.ERR file.
+<br><br>If there is only one address beginning with the number, you have located the offending routine.&nbsp; If there is
+ more than one address, examine the EIP value in CW.ERR.&nbsp; The EIP value is located in the middle of the seventh line
+ immediately following the &quot;EIP=&quot; text.&nbsp; This value is the offset in the segment where the exception occurred.
+&nbsp; Find the symbol in the address group which has an address value following the &quot;:&quot; that is closest to the
+ EIP but does not exceed the EIP value.&nbsp; This name of the symbol is the name of the routine which generated the exception.
+&nbsp; To continue our example, if you have the following four symbols of address 0000205E in the first half of the address
+ line in the map file :
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0000205E:000008DC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __DBFGOHOT</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0000205E:00000944&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __DBFGOCOLD</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0000205E:00000986&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __DBFGOTOID</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0000205E:00000AEE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __DBFGOTOP</tt>
+<br><br>and the EIP value is 00000953, the closest routine name that does not exceed the EIP value in the second half of the
+ address line is<tt> __DBFGOCOLD.</tt>&nbsp; Therefore, the exception occurred in the<tt> __DBFGOCOLD</tt> routine.
+<br><br>This method of locating the exception is not foolproof since it requires that the routine creating the exception in
+ the program segment be declared public, but it should work for the majority of cases.
+<h2 id="Sequence"> Sequence </h2>
+<br>The first line in CW.ERR is the CauseWay copyright message including the version of CauseWay used in the program.&nbsp;
+ The version number may prove useful in tracking down problems that have been addressed in later versions of CauseWay.
+<br><br>The version is followed by the exception number and error code.&nbsp; These numbers, as well as all others in the
+ CW.ERR file, are in hexadecimal.&nbsp; The values listed are those reported by the processor when the exception occurred.
+&nbsp; Detailed information about the significance of the values can be obtained in most 386 and above reference books.&nbsp;
+ Typically the exception value will be 0DH, a General Protection Fault; 0CH, a stack fault usually due to stack overflow or
+ underflow; or 0EH, a page fault due to improper memory reference.&nbsp; The error code is generally of little use for debugging
+ purposes.
+<br><br>Next comes the general register values which indicate the state of the program when the exception occurred.&nbsp;
+ The significance of register values is entirely dependent on the program being run at the time.&nbsp; CS:EIP register values
+ can help track down the problem area by pinpointing exactly where in the code the exception occurred.&nbsp; Other register
+ values may help determine why the exception occurred.&nbsp; In particular, look for use of registers as memory indices with
+ values beyond the limit of the associated selector.
+<br><br>Next, the segment register values are displayed as a real selector value followed by the program relative value in
+ bytes.&nbsp; If the second value is non-numeric (xxxxxxxx) then the segment register didn't contain a selector value allocated
+ to the program at load time, although the value may be valid if it was dynamically allocated by the operating program.&nbsp;
+ If there is a second value, it also appears in the program's .MAP file as the segment start address.&nbsp; This shows which
+ segment a segment register is pointing to at the time of the exception.&nbsp; The CS (Code Segment) register points to the
+ segment containing the code which is executing.&nbsp; The EIP register value indicates the offset within the CS segment where
+ the exception occurred.&nbsp; With these two values, you can not only determine the segment, but the routine within the segment
+ closest to where the exception occurred.
+<br><br>Segment register values are also useful in determining why an exception occurred.&nbsp; One common error is using
+ an invalid selector value in DS, ES, FS, or GS.&nbsp; A segment register value of zero does not automatically indicate problem,
+ but will cause a GPF if used to read or write to memory.&nbsp; In particular, be highly suspicious of DS and ES segment register
+ values of 0000-xxxxxxxx since they are almost constantly used to to access memory.&nbsp; A zero value in DS or ES usually
+ indicates a bad (NULL) memory pointer passed to a routine.
+<br><br>Next, the processor control register values are listed.&nbsp; These registers are unlikely to be of much use for debugging
+ and will only be filled in when not running under a true DPMI host.&nbsp; For an exception 0Eh (page fault), CR2 is the linear
+ address that was accessed for which no memory was mapped in.&nbsp; This may help track down the problem area.
+<br><br>Info Flags comes next.&nbsp; This value is returned by CauseWay's Info API function.&nbsp; Check it against the documentation
+ for Info in the CauseWay API chapter to determine some aspects of the environment in which the program was running when the
+ exception occurred, e.g.&nbsp; whether a DPMI host was being used.
+<br><br>Program Linear Load Address follows Info Flags.&nbsp; This value is th executable's load address in linear memory.
+&nbsp; It corresponds to one of the linear memory block entries described later.
+<br><br>In flat models, the EIP value minus the program linear load address is the address offset of the faulting location
+ relative to the start of the program.
+<br><br>Following Program Linear Load Address is a display of the next 128 byte values at the CS:EIP location when the exception
+ occurred.&nbsp; These are the hexadecimal byte values of the CPU instructions at the time of the exception.&nbsp; 386 reference
+ books or some debuggers can be used to reconstruct the instruction operation codes that correspond to these hexadecimal byte
+ values.
+<br><br>The SS:ESP displays follows CS:EIP.&nbsp; This display shows the last 128 bytes values stored on the CPU stack.
+<br><br>SS:EBP is next.&nbsp; It shows 128 byte values of the current stack frame negatively and positively offset from the
+ current EBP value.&nbsp; C and other high level language routines use the EBP register to reference parameters passed on
+ the stack and this display can show which parameters were passed.
+<br><br>The resource tracking details come next.&nbsp; Selectors are listed with the following headings:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; sel&nbsp; base&nbsp; limit&nbsp; type&nbsp; D&nbsp; mem&nbsp; count</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>sel
+<dd>Selector value.
+<dt><br>base
+<dd>Linear base address of selector.
+<dt><br>limit
+<dd>Limit of selector.
+<dt><br>type
+<dd>CODE or DATA.
+<dt><br>D
+<dd>16 or 32 to signify segment D bit.
+<dt><br>mem
+<dd>Y or N to indicate if the selector has a memory block associated with it.
+<dt><br>count
+<dd>segment count in MAP file, xxxx if dynamically allocated.
+</dl>
+<br>The selector list is finished off with a display of the total number of selectors allocated to the program.&nbsp; For
+ example:
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Total selectors: 0107</tt>
+<br><br>Linear memory blocks are listed following the selector list, and contain the following headings:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; handle&nbsp; base&nbsp; length</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>handle
+<dd>Linear memory &#91;de&#93;allocation uses handles to control the blocks.&nbsp; This field is the block's handle.
+<dt><br>base
+<dd>Linear base address of the memory block.
+<dt><br>length
+<dd>Length of the block in bytes.
+</dl>
+<br>The linear memory list ends with a display of the total linear memory allocated to the program, the real (rounded to 4KB
+ pages) memory allocated in parentheses, and finally the total number of memory blocks.&nbsp; For example:
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Total Linear memory: 000FEAC9 (001AA000) in 00000103 blocks</tt>
+<br><br>Entries in the selector list that have Y under &quot;mem&quot; should have a corresponding entry in the linear memory
+ list.
+<br><br>Linear memory locks are listed after the linear memory block list and contain the following headings:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; base&nbsp; length</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>base
+<dd>Linear base of the locked region.
+<dt><br>limit
+<dd>Length of the locked region.
+</dl>
+<br>Note:&nbsp; These values are passed by the program but the actual values have the base rounded down a page and the length
+ rounded up a page to match 4KB boundary restrictions on locking.&nbsp; The values are reported in CW.ERR without using a
+ rounded format to make it easier to cross reference this list to the other lists in CW.ERR.
+<br>Next, protected mode interrupt vectors are listed with the following headings:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; No&nbsp; sel&nbsp; offset</tt>
+<dl>
+<dt>where
+<dd><b>description</b>
+<dt><br>No
+<dd>Vector number.
+<dt><br>sel
+<dd>Selector value for handler.
+<dt><br>offset
+<dd>Offset value for handler.
+</dl>
+<br>This information allows a cross-reference with the other lists to ensure CauseWay application installed handlers have
+ been properly made.
+<br>Next, protected mode exception vectors are listed using the same format as protected mode interrupts.
+<br><br>After the protected mode exception vector list, real mode interrupt vectors are listed.&nbsp; They are shown in the
+ same format as protected mode interrupts although the selector values are real mode segment values.
+<br><br>Only those interrupt and exception vectors altered by the program will be listed.
+<br><br>Lastly, Callbacks are listed in the CW.ERR file.&nbsp; They list all active Callbacks for the active application at
+ the time of its termination.
+<h1 id="CauseWay_Services"> CauseWay Services </h1>
+<br><br>The following information describes the services available through CauseWay for low-level protected mode compatible
+ functions and interrupt servicing.
+<br><br>The CauseWay services support both 16- and 32-bit selectors.&nbsp; Use of 32-bit selectors allows developers to directly
+ access many megabytes of memory in a CauseWay program using only one selector value.&nbsp; In addition to the normal segment
+ registers used in real mode programs, the additional segment registers FS and GS are always available for use by developers
+ to access memory.&nbsp; Refer to a 386, 486, Pentium or compatible CPU reference book or manual for more information on 386+
+ level registers and instructions.
+<h2 id="Internal_Operation"> Internal Operation </h2>
+<br>A valid protected mode selector:offset is placed in the PSP at offset 34h for the file handle list pointer.&nbsp; Note
+ that the default value in the program's PSP will point to the real mode PSP, not the protected mode PSP, even if the handle
+ count is less than or equal to twenty.&nbsp; Code that makes use of the handle list should use the address at PSP+34h rather
+ than assuming the list's position within the PSP.&nbsp; Also, when an application is operating in non-DPMI conditions the
+ handle table will have an entry for CauseWay's VMM swap file.
+<br><br>The GetMem and GetMem32 calls with CX:DX and ECX set to -1 will report the largest free memory block, rather than
+ total free memory.&nbsp; This value may be substantially lower than total free memory due to fragmentation of the linear
+ memory blocks.&nbsp; Set CX to -1 (0FFFFH) and DX to -2 (0FFFEH) or ECX to -2 (0FFFFFFFEH) for GetMem and GetMem32, respectively,
+ for the total free memory value.
+<h2 id="Functions"> Functions </h2>
+<br>The CauseWay functions are based on the DPMI specification and offer additional enhancements.&nbsp; This means that several
+ of the DPMI 1.0 functions are available to the CauseWay programmer in all systems providing access to lower level functions
+ should you need them.&nbsp; All DPMI 0.9 functions are always available.
+<h2 id="CauseWay_API"> CauseWay API </h2>
+<br>CauseWay provides an API for C and assembly language programmers as an extension of the DPMI API via INT 31h.&nbsp; Including
+ the file CW.INC allows easy access to this API through appropriately named functions.&nbsp; You may also call the CauseWay
+ API directly with appropriate register setup.
+<br><br>CauseWay also provides all of the DPMI 0.9 API services on systems without a true DPMI server (thus CauseWay itself
+ is the DPMI host in such situations).
+<br><br>Some of the API services require pointers to a real mode register list.&nbsp; The format of this list follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; EDI</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; ESI</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; EBP</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; Reserved</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; EBX</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; EDX</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; ECX</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp; EAX</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flags</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ES</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SP</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS</tt>
+<br><br>The values are passed to the target routine without any interpretation of their contents.&nbsp; There is no need to
+ set the high words of the extended register entries unless the target routine requires them.
+<h2 id="Stack_Frames"> Stack Frames </h2>
+<br>Stack frames for 16-bit interrupts are the same as for real mode.
+<br><br>The stack frame for 16-bit exceptions follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word SS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word SP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Original stack address</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word Flags</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word CS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Original Flags:CS:IP values</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word Err Code - Processor supplied exception error code</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word CS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Return address, returns to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; interrupt/exception dispatch code</tt>
+<h2 id="Default_API"> Default API </h2>
+<br>The default CauseWay API follows.&nbsp; Functions that include the text<tt> near</tt> are intended only for backwards
+ compatibility with CauseWay's near memory model.&nbsp; This model is now obsolete.&nbsp; The assembly language include file
+ *CW.INC* also contains this list.
+<h3 id="API_functions_Lnumerical_indexR"> API functions (numerical index) </h3>
+<dl>
+<dt>FF00 Info
+<dd>Get system selectors/flags
+<dt><br>FF01 IntXX
+<dd>Simulate real mode interrupt
+<dt><br>FF02 FarCallReal
+<dd>Simulate real mode far call
+<dt><br>FF03 GetSel
+<dd>Allocate a new selector
+<dt><br>FF04 RelSel
+<dd>Release a selector
+<dt><br>FF05 CodeSel
+<dd>Make a selector execute/read type
+<dt><br>FF06 AliasSel
+<dd>Create a read/write data selector from source selector
+<dt><br>FF07 GetSelDet
+<dd>Get selector linear base and limit
+<dt><br>FF08 GetSelDet32
+<dd>Get selector linear base and limit
+<dt><br>FF09 SetSelDet
+<dd>Set selector linear base and limit
+<dt><br>FF0A SetSelDet32
+<dd>Set selector linear base and limit
+<dt><br>FF0B GetMem
+<dd>Allocate a block of memory
+<dt><br>FF0C GetMem32
+<dd>Allocate a block of memory
+<dt><br>FF0D ResMem
+<dd>Resize a previously allocated block of memory
+<dt><br>FF0E ResMem32
+<dd>Resize a previously allocated block of memory
+<dt><br>FF0F RelMem
+<dd>Release memory allocated by either GetMem or GetMem32
+<dt><br>FF10 GetMemLinear
+<dd>Allocate a block of memory without a selector
+<dt><br>FF11 GetMemLinear32
+<dd>Allocate a block of memory without a selector
+<dt><br>FF12 ResMemLinear
+<dd>Resize a previously allocated block of memory without a selector
+<dt><br>FF13 ResMemLinear32
+<dd>Resize a previously allocated block of memory without a selector
+<dt><br>FF14 RelMemLinear
+<dd>Release previously allocated block of memory (linear address)
+<dt><br>FF15 RelMemLinear32
+<dd>Release previously allocated block of memory (linear address)
+<dt><br>FF16 GetMemNear
+<dd>Deprecated - Allocate an application relative block of memory
+<dt><br>FF17 ResMemNear
+<dd>Deprecated - Resize a previously allocated application relative block of memory
+<dt><br>FF18 RelMemNear
+<dd>Deprecated - Release previously allocated application relative block of memory
+<dt><br>FF19 Linear2Near
+<dd>Deprecated - Convert linear address to application relative address
+<dt><br>FF1A Near2Linear
+<dd>Deprecated - Convert application relative address to linear address
+<dt><br>FF1B LockMem
+<dd>Lock a region of memory
+<dt><br>FF1C LockMem32
+<dd>Lock a region of memory
+<dt><br>FF1D UnLockMem
+<dd>Unlock a region of memory
+<dt><br>FF1E UnLockMem32
+<dd>Unlock a region of memory
+<dt><br>FF1F LockMemNear
+<dd>Deprecated - Lock a region of memory using application relative address
+<dt><br>FF20 UnLockMemNear
+<dd>Deprecated - Unlock a region of memory using application relative address
+<dt><br>FF21 GetMemDOS
+<dd>Allocate a region of DOS (conventional) memory
+<dt><br>FF22 ResMemDOS
+<dd>Resize a block of DOS (conventional) memory allocated with GetMemDOS
+<dt><br>FF23 RelMemDOS
+<dd>Release a block of DOS (conventional) memory allocated by GetMemDOS
+<dt><br>FF24 Exec
+<dd>Run another CauseWay program directly
+<dt><br>FF25 GetDOSTrans
+<dd>Get current address and size of the buffer used for DOS memory transfers
+<dt><br>FF26 SetDOSTrans
+<dd>Set new address and size of the buffer used for DOS memory transfers
+<dt><br>FF27 GetMCBSize
+<dd>Get current memory control block (MCB) memory allocation block size
+<dt><br>FF28 SetMCBSize
+<dd>Set new MCB memory allocation block size
+<dt><br>FF29 GetSels
+<dd>Allocate multiple selectors
+<dt><br>FF2A cwLoad
+<dd>Load another CauseWay program as an overlay
+<dt><br>FF2B cwcInfo
+<dd>Validate and get expanded length of a CWC'ed file
+<dt><br>FF2C GetMemSO
+<dd>Allocate a block of memory with selector:offset
+<dt><br>FF2D ResMemSO
+<dd>Resize a block of memory allocated via GetMemSO
+<dt><br>FF2E RelMemSO
+<dd>Release a block of memory allocated via GetMemSO
+<dt><br>FF2F UserDump
+<dd>Setup user-defined error buffer dump in CW.ERR
+<dt><br>FF30 SetDump
+<dd>Disable/enable error display and CW.ERR creation
+<dt><br>FF31 UserErrTerm
+<dd>Call user error termination routine
+<dt><br>FF32 CWErrName
+<dd>Change error file name, with optional drive/pathspec
+<dt><br>FFF9 ID
+<dd>Get CauseWay identifier, PageDIRLinear and Page1stLinear info
+<dt><br>FFFA GetPatch
+<dd>Get patch table address
+<dt><br>FFFB cwcLoad
+<dd>Load/Expand a CWC'ed data file into memory
+<dt><br>FFFC LinearCheck
+<dd>Check linear address of memory
+<dt><br>FFFD ExecDebug
+<dd>Load CauseWay program for debug
+<dt><br>FFFE CleanUp
+<dd>Close all open file handles
+</dl>
+<h3 id="API_functions_Lalphabetical_orderR"> API functions (alphabetical order) </h3>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; AliasSel</b><tt> </tt>Create a read/write data selector from source selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff06h
+<br>BX= Source selector
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>AX= New data selector
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+<dt><br>Notes:
+<dd>This function always creates a read/write data selector regardless of the source selector type.&nbsp; It can be used to provide
+ write access to variables in a code segment.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; CleanUp</b><tt> </tt>Close all open file handles.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fffeh
+<dt><br>Outputs:
+<dd>None.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; CodeSel</b><tt> </tt>Make a selector execute/read type.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff05h
+<br>BX= Selector
+<br>CL= Default operation size.&nbsp; (0=16-bit,1=32-bit)
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+<dt><br>Notes:
+<dd>This functions allows a selector to be converted to a type suitable for execution.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; cwcInfo</b><tt> </tt>Validate and get expanded length of a CWC'd file.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff2bh
+<br>BX= File handle.
+<dt><br>Outputs:
+<dd>Carry set if not a CWC'd file, else
+<br>ECX= Expanded data size.
+<dt><br>Errors:
+<dd>None.
+<dt><br>Notes:
+<dd>The file pointer is not altered by this function.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; cwcLoad</b><tt> </tt>Load/Expand a CWC'ed data file into memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fffbh
+<br>BX= Source file handle.&nbsp; ES:EDI= Destination memory.
+<dt><br>Outputs:
+<dd>Carry set on error and EAX is error code, else
+<br>ECX= Expanded data length.
+<dt><br>Errors:
+<dd>1 - Error during file access.
+<br>2 - Bad data.
+<br>3 - Not a CWC'ed file.
+<dt><br>Notes:
+<dd>The source file's file pointer doesn't have to be at zero.&nbsp; A single file might be several CWC'ed files lumped together,
+ as long as the file pointer is moved to the right place before calling this function.
+<br>If error codes 1 or 2 are reported then the file pointer will be wherever it was last moved to by this function.&nbsp;
+ For error code 3 the file pointer will be back at its original position on entry to this function.&nbsp; If no error occurs
+ then the file pointer will be moved to whatever comes after the compressed data.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; CWErrName</b><tt> </tt>Change error file name, with optional drive/pathspec.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff32h
+<br>CX:&#91;E&#93;DX = selector:offset of ASCIIZ error file name
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>If the error file name is invalid when a fault occurs, CauseWay defaults to using the standard CW.ERR file name in the current
+ directory.&nbsp; The file name including any path and drive must not exceed 80 characters or it will be truncated.&nbsp;
+ CX:EDX are not checked for validity and passing invalid values may cause a fault within the DOS extender.&nbsp; The ASCIIZ
+ name pointed to by CX:EDX is copied to an internal DOS extender location and may be safely modified after calling the CWErrName
+ function.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; cwLoad</b><tt> </tt>Load another CauseWay program as an overlay.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff2ah
+<br>DS:EDX= File name.
+<dt><br>Outputs:
+<dd>Carry set on error and AX = error code, else
+<br>CX:EDX= Entry CS:EIP
+<br>BX:EAX= Entry SS:ESP
+<br>SI= PSP.
+<dt><br>Errors:
+<dd>1 - DOS file access error.
+<br>2 - Not recognisable file format.
+<br>3 - Not enough memory.
+<dt><br>Notes:
+<dd>Program is loaded into memory, but not executed.
+<br>The PSP returned in SI can be passed to RelMem to release the loaded programs memory and selectors.&nbsp; Only the memory
+ and selectors allocated during loading will be released, it is the programs responsability to release any additional memory
+ etc allocated while the program is running.&nbsp; Alternatively, if you pass the PSP value to INT 21h, AH=50h before makeing
+ additional memory requests and then reset to the origional PSP the memory allocated will be released when the PSP is released.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; Exec</b><tt> </tt>Run another CauseWay program directly.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff24h
+<br>DS:&#91;E&#93;DX= File name.
+<br>ES:&#91;E&#93;SI= Command line.&nbsp; First byte is length, then real data.
+<br>CX= Environment selector, 0 to use existing copy.
+<dt><br>Outputs:
+<dd>Carry set on error and AX = error code, else
+<br>AL=ErrorLevel.
+<dt><br>Errors:
+<dd>1 - DOS file access error.
+<br>2 - Not recognisable file format.
+<br>3 - Not enough memory.
+<dt><br>Notes:
+<dd>Only the first byte of the command line (length) has any significance to CauseWay so you are not restricted to ASCII values.
+&nbsp; It is still stored in the PSP at 80h though so the length is still limited to 127 bytes.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ExecDebug</b><tt> </tt>Load CauseWay program for debug.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fffdh
+<br>DS:EDX= File name.
+<br>ES:ESI= Command line.&nbsp; First byte is length, then real data.
+<br>CX= Environment selector, 0 to use existing copy.
+<dt><br>Outputs:
+<dd>Carry set on error and AX = error code, else
+<br>CX:EDX= Entry CS:EIP
+<br>BX:EAX= Entry SS:ESP
+<br>SI= PSP.
+<br>DI= Auto DS.
+<br>EBP= Segment definition memory.
+<dt><br>Errors:
+<dd>1 - DOS file access error.
+<br>2 - Not recognisable file format.
+<br>3 - Not enough memory.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; FarCallReal</b><tt> </tt>Simulate real mode far call.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff02h
+<br>ES:&#91;E&#93;DI= Real mode register list.
+<dt><br>Outputs:
+<dd>Register list updated.
+<dt><br>Errors:
+<dd>None.
+<dt><br>Notes:
+<dd>This function works much the same as IntXX but provides a 16 bit FAR stack frame and the CS:IP values are used to pass control
+ to the real mode code.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetCallBack</b><tt> </tt>Allocate real mode callback address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0303h
+<br>DS:&#91;E&#93;SI= Call address.
+<br>ES:&#91;E&#93;DI= Real mode register structure.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>CX:DX= Real mode address to trigger mode switch.
+<dt><br>Errors:
+<dd>Callbacks are a limited resource.&nbsp; Normally only 16 are available per virtual machine.&nbsp; Use them carefully and release
+ them as soon as they are no longer required.
+<dt><br>Callback:
+<dd>Interrupts disabled.
+<br>DS:&#91;E&#93;SI = Selector:Offset of real mode SS:SP.
+<br>ES:&#91;E&#93;DI = Selector:Offset of real mode call structure.
+<br>SS:&#91;E&#93;SP = Locked protected mode stack.
+<br>All other registers undefined.
+<br>To return from callback procedure, execute an IRET to return.
+<br>ES:&#91;E&#93;DI = Selector:Offset of real mode call structure to restore.
+<dt><br>Notes:
+<dd>Real mode callbacks provide a means of switching from real mode to protected mode.&nbsp; This function returns a unique real
+ mode address that when given control in real mode, switches to protected mode and passes control to the protected mode routine
+ supplied at entry to this function.&nbsp; On entry to the protected mode code the real mode register structure contains all
+ the real mode register values.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetDOSTrans</b><tt> </tt>Get current address and size of the buffer used for DOS memory transfers.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff25h
+<dt><br>Outputs:
+<dd>BX = Real mode segment of buffer.
+<br>DX = Protected mode selector for buffer.
+<br>ECX = Buffer size
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>This buffer is used by the INT API translation services, e.g., INT 21h, AH=40h (write to file).&nbsp; The default buffer is
+ 8K and uses memory that would otherwise be wasted.&nbsp; This default is sufficient for most file I/O but if you are writing
+ a program that reads/writes large amounts of data you should consider allocating your own larger buffer and pass the buffer's
+ address to CauseWay to speed file I/O.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetEVect</b><tt> </tt>Get Protected mode exception handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0202h
+<br>BL= Exception vector number.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>CX:&#91;E&#93;DX= selector:offset of handler.
+<dt><br>Errors:
+<dd>The number in BL must be in the range 0-1Fh.&nbsp; Anything outside this range returns carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMCBSize</b><tt> </tt>Get current memory control block (MCB) memory allocation block size.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff27h
+<dt><br>Outputs:
+<dd>ECX = Current threshold
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>See SetMCBMax
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMem</b><tt> </tt>Allocate a block of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0bh
+<br>CX:DX= Size of block required in bytes.&nbsp; (use -1:-1 to get maximum memory size)
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>BX= Selector to access the block with or if CX:DX was -1,
+<br>CX:DX= size of largest block available.
+<dt><br>Errors:
+<dd>The amount of memory available is limited by physical memory present and free disk space of the drive being used by the VMM.
+&nbsp; If CauseWay is unable to find a large enough block this function returns carry set.
+<dt><br>Notes:
+<dd>This function allocates a block of extended (application) memory and allocates a selector with a suitable base and limit.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMem32</b><tt> </tt>Allocate a block of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0ch
+<br>ECX= Size of block required in bytes.&nbsp; (-1 to get maximum memory size)
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>BX= Selector to access the block with or if ECX was -1,
+<br>ECX= size of largest block available.
+<dt><br>Errors:
+<dd>See GetMem
+<dt><br>Notes:
+<dd>This function allocates a block of extended (application) memory and allocates a selector with a suitable base and limit.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMemDOS</b><tt> </tt>Allocate a region of DOS (conventional) memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff21h
+<br>BX= Number of paragraphs (16 byte blocks) required.
+<dt><br>Outputs:
+<dd>Carry set on error and BX= largest block size,
+<br>AX=DOS error, else
+<br>AX= Initial real mode segment of allocated block
+<br>DX= Initial selector for allocated block
+<dt><br>Errors:
+<dd>If there are not enough selectors or memory available then this function returns carry set.
+<dt><br>Notes:
+<dd>If the size of the block requested is greater than 64KB bytes (BX &gt;1000h) then contiguous descriptors are allocated.&nbsp;
+ If more than one descriptor is allowed under 32-bit applications, the limit of the first descriptor is set to the size of
+ the entire block.&nbsp; All subsequent descriptors have a limit of 64KB except for the final descriptor which has a limit
+ of block size modulo 64KB.&nbsp; For 16-bit applications, always set the limit of the first descriptor to 64KB.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMemLinear</b><tt> </tt>Allocate a block of memory without a selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff10h
+<br>CX:DX= Size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>SI:DI= Linear address of block allocated.
+<dt><br>Errors:
+<dd>If not enough memory is available to satisfy the request then this function returns carry set.
+<dt><br>Notes:
+<dd>Addresses returned by this function may be above 16MB.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMemLinear32</b><tt> </tt>Allocate a block of memory without a selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff11h
+<br>ECX= Size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>ESI= Linear address of block allocated.
+<dt><br>Errors:
+<dd>See GetMemLinear
+<dt><br>Notes:
+<dd>Addresses returned by this function may be above 16MB.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetMemSO</b><tt> </tt>Allocate a block of memory with selector:offset.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff2ch
+<br>CX:DX = Size of block required in bytes
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>SI:DI = selector:offset of allocated memory
+<dt><br>Errors:
+<dd>See GetMem
+<dt><br>Notes:
+<dd>This function allocates a block of memory with an associated selector:offset.&nbsp; The allocation does not consume a selector
+ on each call as does GetMem because a non-zero offset from an existing selector for this allocation type is returned.&nbsp;
+ GetMemSO is useful for applications which make a large number of allocations where running out of selectors with GetMem could
+ be a problem.&nbsp; A potential drawback is that memory accesses beyond the allocation boundary may go undetected since the
+ selector is shared among several allocations.&nbsp; Also, resizing the block can change the selector:offset of the block.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetPatch</b><tt> </tt>Get patch table address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fffah
+<dt><br>Outputs:
+<dd>EDX= Linear address of patch table.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetRVect</b><tt> </tt>Get real mode interrupt handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0200h
+<br>BL= Interrupt vector number.
+<dt><br>Outputs:
+<dd>CX:DX= selector:offset of handler.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetSel</b><tt> </tt>Allocate a new selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff03h
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>BX= Selector.
+<dt><br>Errors:
+<dd>Approximately 8192 selectors are available initially.&nbsp; While this is a relatively large quantity, it is obviously possible
+ to run out if the system is heavily loaded or selectors are being wasted.
+<dt><br>Notes:
+<dd>A selector is allocated and initialized with a base of 0, a limit of 0 and as read/write expand up data.&nbsp; Use SetSelDet
+ to make the selector useful, setting an appropriate base and limit.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetSelDet</b><tt> </tt>Get selector linear base and limit.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff07h
+<br>BX= Selector
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>CX:DX= Linear base.
+<br>SI:DI= Byte granular limit.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetSelDet32</b><tt> </tt>Get selector linear base and limit.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff08h
+<br>BX= Selector
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>EDX= Linear base.
+<br>ECX= Byte granular limit.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetSels</b><tt> </tt>Allocate multiple selectors.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff29h
+<br>CX= Number of selectors.
+<dt><br>Outputs:
+<dd>BX= Base selector.
+<dt><br>Errors:
+<dd>None.
+<dt><br>Notes:
+<dd>The selectors are allocated and initialised with a base of 0, a limit of 0 and as read/write expand up data.&nbsp; Use SetSelDet
+ to make the selectors useful.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; GetVect</b><tt> </tt>Get Protected mode interrupt handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0204h
+<br>BL= Interrupt vector number.
+<dt><br>Outputs:
+<dd>CX:&#91;E&#93;DX= selector:offset of handler.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ID</b><tt> </tt>Get CauseWay identifier, PageDIRLinear and Page1stLinear info.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fff9h
+<dt><br>Outputs:
+<dd>ECX:EDX= CauseWay identifies.
+<br>ESI= Linear address (PageDIRLinear)
+<br>EDI= Linear address (Page1stLinear)
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; Info</b><tt> </tt>Get system selectors/flags.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff00h
+<dt><br>Outputs:
+<dd>AX= Selector for real mode segment address of 00000h, 4GB limit.
+<br>BX= Selector for current PSP segment.&nbsp; 100h limit.
+<br>&#91;E&#93;CX= DOS transfer buffer size.&nbsp; Always &lt;64KB.
+<br>DX= DOS transfer buffer real mode segment address.
+<br>ES:&#91;E&#93;SI= DOS transfer buffer address.
+<br>ESI+ECX always &lt;64KB
+<br>EDI= System flags.&nbsp; Bits significant if set.
+<br>0 - 32 bit code default.
+<br>1 - Virtual memory manager functional.
+<br>2-3 - Mode, 0 - raw, 1 - VCPI, 2 - DPMI.
+<br>4 - DPMI available.
+<br>5 - VCPI available.
+<br>6 - No memory managers.
+<br>7 - Descriptor table type.&nbsp; 0 - GDT, 1 - LDT.
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>Bits 1-2 of DI indicate the interface type being used by CauseWay.
+<br>Bits 4-5 indicate the interface types that are available.&nbsp; Bit 7 indicates the descriptor table being used to allocate
+ selectors to the application when on a raw/VCPI system.&nbsp; The DOS transfer buffer is the area CauseWay uses to transfer
+ data between conventional and extended memory during DOS interrupts.&nbsp; This memory can be used as temporary work space
+ to access real mode code as long as you remember it may be overwritten the next time you issue an INT in protected mode that
+ requires segment pointers.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; IntXX</b><tt> </tt>Simulate real mode interrupt.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff01h
+<br>BL= Interrupt number.
+<br>ES:&#91;E&#93;DI= Real mode register list.
+<dt><br>Outputs:
+<dd>Register list updated.
+<dt><br>Errors:
+<dd>None.
+<dt><br>Notes:
+<dd>The real mode register list referenced by ES:&#91;E&#93;DI should contain the register values you want passed to the real
+ mode interrupt handler.&nbsp; CauseWay fills in the SS:SP and Flags values to ensure that legal values are used and the CS:IP
+ entries are ignored.&nbsp; This function bypasses protected mode interrupt handlers and provides access to INT APIs that
+ require segment pointers.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LinearCheck</b><tt> </tt>Check linear address of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0fffch
+<br>ESI= Linear address of memory.
+<dt><br>Outputs:
+<dd>Carry set on invalid memory address.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LockMem</b><tt> </tt>Lock a region of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff1bh
+<br>BX:CX= Starting linear address of memory to lock.
+<br>SI:DI= Size of region to lock in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If any of the region specified is invalid or if not enough physical memory is available to fill the region specified, then
+ none of the memory is locked and this function returns carry set.
+<dt><br>Notes:
+<dd>Memory that is locked cannot be swapped to disk by the VMM.&nbsp; Locking applies to memory on page (4KB) boundaries.&nbsp;
+ Therefore, areas of memory below and above the memory being locked are locked if the specified region is not aligned to a
+ page boundary.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; LockMem32</b><tt> </tt>Lock a region of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff1ch
+<br>ESI= Starting linear address of memory to lock.
+<br>ECX= Size of region to lock in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>See LockMem.
+<dt><br>Notes:
+<dd>Memory that is locked cannot be swapped to disk by the VMM.&nbsp; Locking applies to memory on page (4KB) boundaries.&nbsp;
+ Therefore, areas of memory below and above the memory being locked are locked if the specified region is not aligned to a
+ page boundary.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelCallBack</b><tt> </tt>Release a real mode callback entry.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0304h
+<br>CX:DX= Real mode address returned by GetCallBack
+<dt><br>Outputs:
+<dd>None.
+<dt><br>Errors:
+<dd>None.
+<dt><br>Notes:
+<dd>Uspe this function to release callback addresses once they are no longer needed.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelMem</b><tt> </tt>Release memory allocated by either GetMem or GetMem32.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0fh
+<br>BX= Selector for block to release.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX or the memory was not allocated via GetMem or GetMem32, this function returns carry
+ set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelMemDOS</b><tt> </tt>Release a block of DOS (conventional) memory allocated by GetMemDOS.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff23h
+<br>DX= Selector of block to free.
+<dt><br>Outputs:
+<dd>Carry set on error and AX= DOS error code.
+<dt><br>Errors:
+<dd>If an invalid block is passed, this function returns carry set.
+<dt><br>Notes:
+<dd>All descriptors allocated for the memory block are automatically freed and therefore should not be accessed once the block
+ is freed by this function.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelMemLinear</b><tt> </tt>Release previously allocated block of memory (linear address).
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff14h
+<br>SI:DI= Linear address of block to release.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If the address passed in SI:DI is not a valid memory block, this function returns carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelMemLinear32</b><tt> </tt>Release previously allocated block of memory (linear address).
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff15h
+<br>ESI= Linear address of block to release.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>See RelMemLinear
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelMemSO</b><tt> </tt>Release a block of memory allocated via GetMemSO.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff2eh
+<br>SI:DI = Selector:offset of block to release
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector:offset is passed in SI:DI or the memory was not allocated via GetMemSO, then this function returns
+ carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; RelSel</b><tt> </tt>Release a selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff04h
+<br>BX= Selector.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+<dt><br>Notes:
+<dd>Use this function to release selectors allocated by GetSel or AliasSel.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMem</b><tt> </tt>Resize a previously allocated block of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0dh
+<br>BX= Selector for block.
+<br>CX:DX= New size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX or not enough memory is available when increasing the block size, then this function
+ returns carry set.
+<dt><br>Notes:
+<dd>If the memory block cannot be resized in its current location, but a free block of memory of the new size exists, the memory
+ is copied to a new block and the old one is released.&nbsp; The application is not affected as long as only the selector
+ originally allocated with GetMem accesses the memory.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMemSO</b><tt> </tt>Resize a block of memory allocated via GetMemSO.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff2dh
+<br>SI:DI = Selector:offset of block to resize
+<br>CX:DX = New size of block required in bytes
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>SI:DI = selector:offset of new memory block address.
+<dt><br>Errors:
+<dd>If an invalid selector:offset is passed in SI:DI or not enough memory is available when increasing the block size, then this
+ function returns carry set.
+<dt><br>Notes:
+<dd>If the memory block cannot be resized in its current location, but a free block of memory of the new size exists, the memory
+ is copied to a new block and the old one is released.&nbsp; The selector:offset will change if this occurs, so the SI:DI
+ return value should be used to update all references and pointers to the memory block when this function is called.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMem32</b><tt> </tt>Resize a previously allocated block of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0eh
+<br>BX= Selector for block.
+<br>ECX= New size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>See ResMem
+<dt><br>Notes:
+<dd>If the memory block cannot be resized in its current location, but a free block of memory of the new size exists, the memory
+ is copied to a new block and the old one released.&nbsp; This is transparent to the application as long as only the selector
+ originally allocated with GetMem is used to access the memory.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMemDOS</b><tt> </tt>Resize a block of DOS (conventional) memory allocated with GetMemDOS.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff22h
+<br>BX= New block size in paragraphs
+<br>DX= Selector of block to modify
+<dt><br>Outputs:
+<dd>Carry set on error, AX= DOS error code, BX= Maximum block size in paragraphs.
+<dt><br>Errors:
+<dd>If an invalid block is passed or if not enough selectors or memory are available when expanding the block this function returns
+ carry set.
+<dt><br>Notes:
+<dd>Growing a memory block is often likely to fail since other DOS block allocations prevent increasing the size of the block.
+&nbsp; Also, if the size of a block grows past a 64KB boundary then the allocation fails if the next descriptor in the LDT
+ is not free.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMemLinear</b><tt> </tt>Resize a previously allocated block of memory without a selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff12h
+<br>SI:DI= Linear address of block to resize.
+<br>CX:DX= Size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>SI:DI= New linear address of block.
+<dt><br>Errors:
+<dd>If not enough memory is available when extending the block size this function returns carry set.
+<dt><br>Notes:
+<dd>If the memory block cannot be expanded to the desired size, and a free block of sufficient size exists, the existing memory
+ is copied to the free block and released.&nbsp; The new block is allocated in place of the old.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; ResMemLinear32</b><tt> </tt>Resize a previously allocated block of memory without a selector.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff13h
+<br>ESI= Linear address of block to resize.
+<br>ECX= Size of block required in bytes.
+<dt><br>Outputs:
+<dd>Carry set on error, else
+<br>ESI= New linear address of block.
+<dt><br>Errors:
+<dd>See ResMemLinear
+<dt><br>Notes:
+<dd>If the memory block cannot be expanded to the desired size, and a free block of sufficient size exists, the existing memory
+ is copied to the free block and released.&nbsp; The new block is allocated in place of the old.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetDOSTrans</b><tt> </tt>Set new address and size of the buffer used for DOS memory transfers.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff26h
+<br>BX = Real mode segment of buffer.
+<br>DX = Protected mode selector for buffer.
+<br>ECX = Buffer size (should be &lt;=64KB)
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>The buffer must be in conventional memory and only the first 64KB will be used even if a bigger buffer is specified.&nbsp;
+ CauseWay will automatically restore the previous buffer setting when the application terminates but GetDOSTrans can be used
+ to get the current buffer's settings if you only want the change to be temporary.
+<br>You can still use the default buffer for your own purposes even after setting a new address.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetDump</b><tt> </tt>Disable/enable error display and CW.ERR creation.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff30h
+<br>CL = 0 if disable error display and CW.ERR file
+<br>CL = nonzero if enable error display and CW.ERR file
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>By default, register dump display to screen and CW.ERR file creation are enabled on CPU faults.&nbsp; This option may be used
+ to turn on and off CauseWay error processing output any number of times within an application.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetEVect</b><tt> </tt>Set Protected mode exception handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0203h
+<br>BL= Exception vector number.
+<br>CX:&#91;E&#93;DX= selector:offset of new handler.
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>The number in BL must be in the range 0-1Fh.&nbsp; Anything outside this range returns carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetMCBMax</b><tt> </tt>Set new memory control block (MCB) memory allocation block size.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff28h
+<br>ECX = New value to set (&lt;=64KB)
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>Carry set on error
+<dt><br>Notes:
+<dd>The maximum block size that will be allocated from MCB memory is 16 bytes less than the value set by this function.&nbsp;
+ The default value is 16384.&nbsp; The maximum value is 65536.
+<br>The CauseWay API memory allocation functions allocate memory from two sources.&nbsp; Allocation requests below the value
+ returned by this function are allocated from a memory pool controlled via conventional style MCB's.&nbsp; Requests above
+ this value are allocated via the normal DPMI functions.&nbsp; Because DPMI memory is always allocated in multiples of pages
+ (4KB) it can become very inefficient for any program that needs to allocate small blocks of memory.&nbsp; The value set by
+ this function controls the size of memory chunks that will be allocated to and managed by the MCB system.
+<br><br>A value of zero can be passed to this function to disable the MCB allocation system.
+<br><br>The value passed will be rounded up to the nearest page (4KB) boundary.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetRVect</b><tt> </tt>Set real mode interrupt handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0201h
+<br>BL= Interrupt vector number.
+<br>CX:DX= selector:offset of new handler.
+<dt><br>Outputs:
+<dd>None.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetSelDet</b><tt> </tt>Set selector linear base and limit.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff09h
+<br>BX= Selector.
+<br>CX:DX= Linear base.
+<br>SI:DI= Byte granular limit.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetSelDet32</b><tt> </tt>Set selector linear base and limit.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff0ah
+<br>BX= Selector.
+<br>EDX= Linear base.
+<br>ECX= Byte granular limit.
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If an invalid selector is passed in BX, this function returns with carry set.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; SetVect</b><tt> </tt>Set Protected mode interrupt handler address.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0205h
+<br>BL= Interrupt vector number.
+<br>CX:&#91;E&#93;DX= selector:offset of new handler.
+<dt><br>Outputs:
+<dd>None.
+<dt><br>Errors:
+<dd>None.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; UnLockMem</b><tt> </tt>Unlock a region of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff1dh
+<br>BX:CX= Starting linear address of memory to unlock
+<br>SI:DI= Size of region to unlock in bytes
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>If any of the memory region specified is invalid this function returns carry set.
+<dt><br>Notes:
+<dd>This function allows the unlocked memory to be swapped to disk by the VMM if necessary.&nbsp; Areas below and above the specified
+ memory to the nearest page (4KB) boundary are unlocked if the specified region is not aligned to a page boundary.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; UnLockMem32</b><tt> </tt>Unlock a region of memory.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX= 0ff1eh
+<br>ESI= Starting linear address of memory to unlock
+<br>ECX= Size of region to unlock in bytes
+<dt><br>Outputs:
+<dd>Carry set on error.
+<dt><br>Errors:
+<dd>See UnLockMem
+<dt><br>Notes:
+<dd>This function allows the memory to be swapped to disk by the VMM if necessary.&nbsp; Areas below and above the specified memory
+ to the nearest page (4KB) boundary are unlocked if the specified region is not aligned to a page boundary.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; UserDump</b><tt> </tt>Setup user-defined error buffer dump in CW.ERR.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff2fh
+<br>ES:&#91;E&#93;DI - user buffer to display in CW.ERR
+<br>CX = count of bytes to display from buffer in CW.ERR
+<br>BL = 'A' if ASCII dump (non-binary display of bytes, control characters display as periods)
+<br>BH = nonzero if preset ASCII buffer to word value, ignored for non-ASCII
+<br>DX = word value to fill ASCII dump buffer if BH is nonzero, ignored for non-ASCII
+<dt><br>Outputs:
+<dd>Carry set on ASCII dump invalid buffer address.
+<dt><br>Errors:
+<dd>The user buffer must be a valid readable selector and offset value when this function is called or else the request is ignored
+ and a carry flag condition is returned.&nbsp; If BH is set to nonzero to flag presetting the buffer bytes, the selector must
+ be writable.&nbsp; Specifying a larger CX count than available buffer size will also return an error.
+<dt><br>Notes:
+<dd>If the fill ASCII buffer condition is specified, any values previously in the buffer will be overwritten when this call is
+ made.
+</dl>
+<hr>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; UserErrTerm</b><tt> </tt>Call user error termination routine.
+<hr>
+<dl>
+<dt>Inputs:
+<dd>AX = 0ff31h
+<br>CL = 0 if 16-bit termination routine
+<br>CL = nonzero if 32-bit termination routine
+<br>DS:&#91;E&#93;SI = user termination routine address.&nbsp; If DS is zero, the user termination routine call is removed.
+<br>ES:&#91;E&#93;DI = Information dump buffer address, 104 bytes.&nbsp; If ES is zero, no information dump is performed.
+<dt><br>Outputs:
+<dd>None
+<dt><br>Errors:
+<dd>None
+<dt><br>Notes:
+<dd>The user termination routine is responsible for returning to the CauseWay termination routines to allow proper shutdown of
+ the application.&nbsp; The instruction must be the proper 16- or 32-bit return to match the CL register setting.&nbsp; For
+ ease of use with high-level languages (specifically Watcom C and setting SS back to DGROUP), &#91;E&#93;SI equals the internal
+ DOS extender stack ESP immediately prior to the 32- or 16-bit call to the termination routine.&nbsp; If an information dump
+ buffer address is provided, register and other termination values are placed into it using the following format:
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EBP;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EDI;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ESI;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EDX;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ECX;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EBX;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EAX;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ES;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EIP;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reserved1;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EFLAGS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ESP;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SS;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reserved2;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TR;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CR0;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CR1;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CR2;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CR3;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; csAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fsAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gsAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ssAddress;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptionNumber;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; dword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorCode;</tt>
+</dl>
+<h2 id="API_Notes"> API Notes </h2>
+<br>A fixed segment selector at 40h is always available to the application.&nbsp; This selector maps the real mode memory
+ at 400h where most of the BIOS variables can be found.&nbsp; CauseWay also provides selectors at standard video addresses
+ 0B000h, 0B800h and 0A000h in non-DPMI environments to ease conversion of real mode code.
+<br><br>The environment variable block address in the Program Segment Prefix (PSP) is a valid protected mode selector.&nbsp;
+ A valid protected mode selector:offset is also placed in the PSP at offset 34h for the file handle list pointer.&nbsp; Note
+ that the default value in the program's PSP will point to the real mode PSP, not the protected mode PSP, even if the handle
+ count is less than or equal to twenty.&nbsp; Code that makes use of the handle list should use the address at PSP+34h rather
+ than assuming the list's position within the PSP.&nbsp; Also, when an application is operating non-DPMI conditions the handle
+ table will have an entry for CauseWay's VMM swap file.
+<br><br>DOS functions which use the obsolete file control blocks (FCBs) are not supported by CauseWay, although such support
+ may be added by the developer.
+<br><br>CauseWay applications should terminate using INT 21H function 4Ch.&nbsp; As with real mode operation, the error level
+ passed to this function in the AL register is returned to the parent program or DOS.
+<br><br>If a CauseWay application needs to terminate and stay resident (TSR), then INT 21H function 31h may be used.&nbsp;
+ Unlike real mode operation, no memory value is required for this function.&nbsp; All memory owned by the application when
+ the TSR function is issued remains the program's property.&nbsp; There is currently no way of removing the CauseWay application
+ from memory once it becomes a TSR without rebooting the machine or using a third party TSR manager.&nbsp; However, a TSR
+ manager will not automatically release extended memory allocated for the CauseWay TSR.
+<br><br>Unhandled exceptions terminate the program with a register display dump to screen and a text file called CW.ERR.&nbsp;
+ CW.ERR contains other potentially useful information about the state of the application when it terminated.&nbsp; Refer to
+ the appendices for more information on the CW.ERR file information format.
+<br><br>CauseWay runs applications at privilege level 3.&nbsp; Privilege level 0 reserved instructions will cause a general
+ protection fault (GPF).&nbsp; CauseWay emulates the four instructions MOV EAX,CR0; MOV CR0,EAX; MOV EAX,CR3; and MOV CR3,EAX
+ in the GPF handler so that they may be used by an application.
+<br><br>CauseWay will match a DPMI 0A00h function call with target string RATIONAL/4G.&nbsp; This in conjunction with CR0
+ emulation allows support of floating point emulation by an exception handler.&nbsp; Watcom uses this approach under DOS/4GW
+ operation if the floating point emulation library is not linked in.&nbsp; Note that this routine does not work for either
+ CauseWay or DOS/4GW under a DPMI host such as Windows or OS/2.
+<h1 id="Interrupt_Services"> Interrupt Services </h1>
+<h2 id="Extended_or_Altered_Interrupt_Services"> Extended or Altered Interrupt Services </h2>
+<br>The size of registers used by CauseWay's extended or modified interrupt services depends on the limit of the selector.
+&nbsp; Extended 32-bit registers are used for 32-bit sized selectors and 16-bit registers are used for selectors within 16-bits.
+&nbsp; To reflect this, the convention of an &#91;E&#93; in brackets is used before a listed register when it must be a 32-bit
+ value with a 32-bit selector and a 16-bit value with a 16-bit selector.
+<br><br>Required registers that are not specified in this list should be set up in the same way as required for normal DOS
+ real mode operation.&nbsp; For INT APIs that are not listed and require segemnt pointers, either handle them using the CauseWay
+ IntXX function or create your own interrupt translation code.
+<br><br>INT 10h
+<br><br>10h sub function 02h, &#91;E&#93;DX instead of DX.
+<br><br>10h sub function 09h, &#91;E&#93;DX instead of DX.
+<br>10h sub function 12h, &#91;E&#93;DX instead of DX.
+<br>10h sub function 17h, &#91;E&#93;DX instead of DX.
+<br>13h &#91;E&#93;BP instead of BP.
+<br>1Ch sub function 01h, &#91;E&#93;BX instead of BX.
+<br>1Ch sub function 02h, &#91;E&#93;BX instead of BX.
+<br>INT 21h
+<br><br>09h &#91;E&#93;DX instead of DX
+<br><br>0Ah &#91;E&#93;DX instead of DX
+<br>0FH - 17H not supported; use corresponding file handle function.
+<br>1Ah &#91;E&#93;DX instead of DX
+<br>21h - 24h not supported; use corresponding file handle function.
+<br>25h &#91;E&#93;DX instead of DX.&nbsp; Protected mode vector will be set.
+<br>26h - 29h not supported; use corresponding file handle function.
+<br>2Fh &#91;E&#93;BX instead of BX
+<br>31h No value is required in DX
+<br>35h &#91;E&#93;DX instead of BX.&nbsp; Protected mode vector will be returned.
+<br>39h &#91;E&#93;DX instead of DX
+<br>3Ah &#91;E&#93;DX instead of DX
+<br>3Bh &#91;E&#93;DX instead of DX
+<br>3Ch &#91;E&#93;DX instead of DX
+<br>3Dh &#91;E&#93;DX instead of DX
+<br>3Fh &#91;E&#93;DX instead of DX
+<br>40h &#91;E&#93;DX instead of DX
+<br>41h &#91;E&#93;DX instead of DX
+<br>43h &#91;E&#93;DX instead of DX
+<br>44h subfunction 02h, use &#91;E&#93;DX instead
+<br>44h subfunction 03h, use &#91;E&#93;DX instead
+<br>44h subfunction 04h, use &#91;E&#93;DX instead
+<br>44h subfunction 05h, use &#91;E&#93;DX instead
+<br>47h &#91;E&#93;SI instead of SI
+<br>48h Protected mode memory will be allocated
+<br>49h Protected mode memory will be released
+<br>4Ah Protected mode memory will be resized
+<br>4Bh &#91;E&#93;DX &amp; &#91;E&#93;BX instead of DX &amp; BX
+<br>Parameter block offset entries are &#91;d&#93;word
+<br>4Eh &#91;E&#93;DX instead of DX
+<br>56h &#91;E&#93;DX &amp; &#91;E&#93;DI instead of DX &amp; DI
+<br>5Ah &#91;E&#93;DX instead of DX
+<br>5Bh &#91;E&#93;DX instead of DX
+<br>62h Protected mode selector will be returned
+<br>6Ch &#91;E&#93;SI instead of SI
+<br>INT 23h Control-C Handler Address
+<br><br>This interrupt is always reflected back to the protected mode handler to ensure the CauseWay application can handle
+ it correctly.&nbsp; The default handler aborts the application in the same manner as DOS.&nbsp; If you need to terminate
+ your application in your own handler, perform an INT 21h AH=4ch as normal.
+<br><br>INT 24h Critical Error Handler Address
+<br><br>This interrupt is always reflected back to the protected mode handler to ensure the CauseWay application can handle
+ it correctly.&nbsp; The default handler behaves in the same way as the DOS handler and it aborts your application, if appropriate.
+&nbsp; If you install your own handler, all memory accessed by this interrupt as code or data must be locked.
+<br><br>The register values normally placed on the stack by DOS before entry to the interrupt handler are not present in protected
+ mode.&nbsp; Only the register values are valid.&nbsp; You may terminate your application from within this interrupt with
+ INT 21h, AH=4ch as normal.
+<br><br>INT 33h
+<br><br>09h &#91;E&#93;DX instead of DX
+<br><br>0Ch &#91;E&#93;DX instead of DX
+<br>16h &#91;E&#93;DX instead of DX
+<br>17h &#91;E&#93;DX instead of DX
+<br>Notes:
+<br><br>With the exception of software interrupts that require segment pointers as parameters, all interrupts can be issued
+ as normal.&nbsp; The most common interrupt APIs that require segment pointers are intercepted by CauseWay to provide normal
+ access to these services.&nbsp; Any other real mode interrupt services that require segment pointers can be accessed using
+ CauseWay's simulated real mode interrupt/far call services.
+<br><br>Hardware interrupts are always reflected to protected mode handlers even when signaled during real mode operations.
+&nbsp; This ensures that protected mode applications always retain control without requiring you to patch real mode interrupt
+ vectors.&nbsp; The remaining interrupts are serviced via the vector table appropriate to the mode.&nbsp; Use the real to
+ protected mode callback services to provide real mode code with access to protected mode code, and allow any interrupt to
+ be re-signaled in protected mode.
+<br><br>If you add your own hardware interrupt handlers, suchas the timer tick at vector 08h, any memory that the handler
+ reads or writes, including its code, must reside in locked memory.&nbsp; (CauseWay provides a locked stack.) This limitation
+ is required because DOS is not re-entrant and hardware interrupts can occur at any time.&nbsp; Interrupts occurring during
+ DOS activity prevent CauseWay's virtual memory manager from accessing its swap file.&nbsp; Lock memory will not move to the
+ swap file.
+<h1 id="Troubleshooting"> Troubleshooting </h1>
+<h2 id="First_Steps"> First Steps </h2>
+<br>If you have problems using CauseWay, first try linking and running a one-line program that simply prints &quot;Hello&quot;
+ on your computer screen.&nbsp; This will help establish if the problem is a basic incompatibility with CauseWay and your
+ system setup, or if the error may lie elsewhere (e.g.&nbsp; a third party library).
+<br><br>The remainder of this chapter provides a description of error and warning messages that you may encounter when using
+ CauseWay.&nbsp; Suggested solutions to correct the errors are included where possible.
+<h2 id="DOS_Extender_Error_Messages_and_Return_Values"> DOS Extender Error Messages and Return Values </h2>
+<br>DOS extender error messages are displayed by the CauseWay DOS extender when a CauseWay application is running and encounters
+ a serious problem that it cannot recover from.&nbsp; The DOS extender then terminates the application with the appropriate
+ return code, displaying a dump of register values, and writing system information to the file CW.ERR.
+<h2 id="01_Unable_to_resize_program_memory_block_"> 01 Unable to resize program memory block. </h2>
+<br>Generated if DOS reports an error when CauseWay tries to resize its real mode memory block.&nbsp; As the block is always
+ shrunk, the only possible cause of this is corrupted memory control blocks (MCBs).&nbsp; Reboot the system to correct this
+ error.
+<h2 id="02_386_or_better_required_"> 02 386 or better required. </h2>
+<br>Generated if CauseWay is run on any machine with a processor below a 386SX.&nbsp; To correct this error, run the application
+ on another machine or upgrade the machine's processor.
+<h2 id="03_NonMstandard_protected_mode_program_already_active_"> 03 Non-standard protected mode program already active. </h2>
+<br>Generated if the system is already operating under the control of another protected mode program which doesn't conform
+ to either VCPI or DPMI standards.&nbsp; Identify and remove the other application before running the CauseWay application.
+<h2 id="04_DOS_3_1_or_better_required_"> 04 DOS 3.1 or better required. </h2>
+<br>Generated if DOS version is less than 3.1.&nbsp; You need to upgrade the machine's DOS version or use another machine
+ to operate the CauseWay application.
+<h2 id="05_Not_enough_memory_for_CauseWay_"> 05 Not enough memory for CauseWay. </h2>
+<br>Generated if the system doesn't have enough free physical memory to initialize the CauseWay kernel code and data.&nbsp;
+ Free additional memory before running the CauseWay application.&nbsp; The memory can be any of the extended or conventional
+ types supported by CauseWay.
+<h2 id="06_VCPI_failed_to_switch_into_protected_mode_"> 06 VCPI failed to switch into protected mode. </h2>
+<br>Generated if a VCPI server is detected and the server fails to switch into protected mode when requested.&nbsp; The only
+ likely cause of this error is a corrupted system.&nbsp; Reboot the system and try again.
+<h2 id="07_Unable_to_control_A20_"> 07 Unable to control A20. </h2>
+<br>Generated if CauseWay detects an A20 line that doesn't respond to the normal control methods.&nbsp; This may indicate
+ either a hardware fault or a nonstandard system.&nbsp; There is no software solution for these hardware problems.&nbsp; Installing
+ an XMS driver such as HIMEM.SYS should address nonstandard systems.
+<h2 id="08_Selector_allocation_error_"> 08 Selector allocation error. </h2>
+<br>Generated if DPMI refuses to allocate enough selectors for CauseWay to function.&nbsp; Remove one or more programs that
+ are also using DPMI.
+<h2 id="09_Unrecoverable_exception__Program_terminated_"> 09 Unrecoverable exception.&nbsp; Program terminated. </h2>
+<br>This is the standard General Protection Fault, or GPF, message.&nbsp; It is generated if a nonrecoverable exception occurs
+ which suggests a bug in the application.&nbsp; Use the register dump displayed with this message along with the information
+ in CW.ERR and the program's .MAP file to help track down the location and cause of the problem.
+<h2 id="10_Unable_to_find_application_to_load_"> 10 Unable to find application to load. </h2>
+<br>Generated if CauseWay is unable to find the application within the executable .EXE file.&nbsp; This situation indicates
+ a corrupted file.&nbsp; Rebuild or obtain another copy of the application.
+<h2 id="11_DOS_reported_error_while_accessing_application_"> 11 DOS reported error while accessing application. </h2>
+<br>Generated if any kind of error is detected while accessing the CauseWay application executable file.&nbsp; This situation
+ indicates a corrupted or missing file.&nbsp; Rebuild or obtain another copy of the application.
+<h2 id="12_Not_enough_memory_to_load_application_"> 12 Not enough memory to load application. </h2>
+<br>Generated if CauseWay is unable to provide enough memory to load the application.&nbsp; Free additional memory and/or
+ disk space before running the application.&nbsp; Check for CAUSEWAY=SWAP, TEMP and TMP environment variables that point to
+ a disk with little free space.&nbsp; If running under an operating system that provides DPMI per application, increase the
+ application's DPMI allocation.
+<h2 id="13_DPMI_failed_to_switch_to_protected_mode_"> 13 DPMI failed to switch to protected mode. </h2>
+<br>Generated if the machine is using a DPMI server and it fails to switch to protected mode.&nbsp; If the DPMI server only
+ supports multiple clients of the same type (either 16- or 32-bit) then the problem is probably that different types of applications
+ are already being run.&nbsp; Remove the other type of DPMI application(s) before running the CauseWay application.
+<h2 id="14_Memory_structures_destroyed__Program_terminated_"> 14 Memory structures destroyed.&nbsp; Program terminated. </h2>
+<br>Generated if internal memory management structures become corrupted.&nbsp; This is caused by the CauseWay application
+ writing to memory regions that have not been allocated to it and is a bug in the application.&nbsp; Obtain a corrected version
+ of the application to fix this error.
+<h2 id="15_DOS_reported_an_error_while_accessing_swap_file__Program_terminated_"> 15 DOS reported an error while accessing swap file.&nbsp; Program terminated. </h2>
+<br>Generated if any level of error is detected while accessing the swap file.&nbsp; The swap file has probably been deleted
+ inadvertently by the application or perhaps marked as read-only.
+<h2 id="16_Unsupported_DOS_function_call__Program_terminated_"> 16 Unsupported DOS function call.&nbsp; Program terminated. </h2>
+<br>The CauseWay application attempted to use an obsolete DOS function which used file control blocks (FCBs).&nbsp; Use the
+ file handle DOS functions in the application instead.
+</body>

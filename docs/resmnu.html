@@ -1,0 +1,516 @@
+<head>
+<title> Open Watcom 1.9 Menu Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_a_New_Menu_Item">Adding a New Menu Item</a>
+<dt><br>- C -
+<dd><a href="#Changing_an_Existing_Menu_Item">Changing an Existing Menu Item</a>
+<br><a href="#Creating_a_New_Menu">Creating a New Menu</a>
+<dt><br>- D -
+<dd><a href="#Deleting_a_Menu_Item">Deleting a Menu Item</a>
+<br><a href="#Deleting_All_Menu_Items">Deleting All Menu Items</a>
+<br><a href="#Deleting_Menu_Items">Deleting Menu Items</a>
+<dt><br>- M -
+<dd><a href="#The_Menu_Editor_Menu_Bar">The Menu Editor Menu Bar</a>
+<br><a href="#The_Menu_Editor_Toolbar">The Menu Editor Toolbar</a>
+<br><a href="#Menu_Editor__Action_Buttons">Menu Editor:&nbsp; Action Buttons</a>
+<br><a href="#Menu_Editor__Attributes_Area">Menu Editor:&nbsp; Attributes Area</a>
+<br><a href="#Menu_Editor__Changing_Memory_Options">Menu Editor:&nbsp; Changing Memory Options</a>
+<br><a href="#Menu_Editor__Copy_To">Menu Editor:&nbsp; Copy To</a>
+<br><a href="#Menu_Editor__Menu_Item_List">Menu Editor:&nbsp; Menu Item List</a>
+<br><a href="#Menu_Editor__Resource_Name_Field">Menu Editor:&nbsp; Resource Name Field</a>
+<br><a href="#Menu_Editor__Save_As">Menu Editor:&nbsp; Save As</a>
+<br><a href="#Menu_Editor__The_Preview_Window">Menu Editor:&nbsp; The Preview Window</a>
+<br><a href="#Menu_Editor__Update">Menu Editor:&nbsp; Update</a>
+<br><a href="#Menu_Functions">Menu Functions</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Menu_Editor">The Open Watcom Menu Editor</a>
+<br><a href="#Opening_an_Existing_Menu">Opening an Existing Menu</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_Menu_Editor">Quitting the Menu Editor</a>
+<dt><br>- R -
+<dd><a href="#Renaming_a_Menu">Renaming a Menu</a>
+<dt><br>- S -
+<dd><a href="#Saving_Menu_Items">Saving Menu Items</a>
+<br><a href="#Starting_the_Menu_Editor">Starting the Menu Editor</a>
+<dt><br>- U -
+<dd><a href="#Using_Shortcuts_to_Create_menus">Using Shortcuts to Create menus</a>
+<br><a href="#Using_the_Menu_Editor">Using the Menu Editor</a>
+<br><a href="#Using_the_Menu_Editor_Window">Using the Menu Editor Window</a>
+</dl>
+<h1 id="The_Open_Watcom_Menu_Editor"> The Open Watcom Menu Editor </h1>
+<br>Windows applications typically contain menus that enable users to initiate actions.&nbsp; When users see familiar menus
+ in the menu bar, such as the File or Edit menu, they may feel less intimidated by a new application and be more apt to explore
+ its capabilities.
+<br><br>In an application you can have three types of menu items:
+<ul>
+<li>Standard
+<li>Popup
+<li>Separator
+</ul>
+<br>A standard menu item performs a function when selected.&nbsp; A popup menu item is a menu item with a sub-menu.&nbsp;
+ Selecting a popup menu reveals another menu list, rather than performing a function.&nbsp; A separator is a horizontal line
+ that separates groups of menu items within a popup menu.&nbsp; A resource file can have multiple menus.
+<br><br>The Open Watcom Menu Editor enables you to create new menus and edit existing menus found in resource files.&nbsp;
+ A resource file may contain multiple menus.
+<br><br>With the Menu Editor you can create all of the menus needed for your application visually, without having to create
+ a resource script or use a resource compiler.
+<h2 id="Using_the_Menu_Editor"> Using the Menu Editor </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Menu Editor
+<li>Quitting the Menu Editor
+<li>The Menu Editor Menu Bar
+<li>The Menu Editor Toolbar
+</ul>
+<h3 id="Starting_the_Menu_Editor"> Starting the Menu Editor </h3>
+<br>The Menu Editor may be invoked in one of two ways.&nbsp; The first involves first starting the Resource Editor then starting
+ the Menu Editor.&nbsp; The second way the editor may be started is from the Open Watcom IDE.
+<br><br>To start the Menu Editor from the Resource Editor, you must first open the Resource Editor.&nbsp; How you proceed
+ depends on whether you are opening a new (empty) menu table or an existing menu table.
+<br><br><tt><img src="mnu1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Menu Editor window</b>
+<h4 id="Creating_a_New_Menu"> Creating a New Menu </h4>
+<dl>
+<dt>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open a new or existing resource file.</b>
+<dt><br>(3)
+<dd><b> Choose New</b> from the Resource menu.
+<br>A cascading menu appears from the New menu item.
+<dt><br>(4)
+<dd><b> Select Menu</b> from the New cascading menu.
+<br>The Open Watcom Menu Editor window opens and displays an empty menu.
+</dl>
+<h4 id="Opening_an_Existing_Menu"> Opening an Existing Menu </h4>
+<dl>
+<dt>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open an existing Resource File.</b>
+<br>The Resource window for the existing resource file displays buttons representing each existing resource type.
+<dt><br>(3)
+<dd><b> Select the menu button</b> to view the existing menus.
+<br>or
+<dt><br>
+<dd><b> Choose Menu</b> from the cascading menu that appears when you choose View from the Resource menu.
+<br>The Menu list appears revealing all menus in this resource file.
+<dt><br>(4)
+<dd><b> Double click on the existing menu you want to open</b>
+<br>or
+<dt><br>
+<dd><b> Click on the desired menu</b> to select it, then<b> press ENTER</b> or<b> choose Edit from the Resource menu</b> on the
+ Open Watcom Resource Editor window.
+<br>The Open Watcom Menu Editor window opens and displays the selected menu.
+</dl>
+<h3 id="Quitting_the_Menu_Editor"> Quitting the Menu Editor </h3>
+<br>To exit the Menu Editor, choose Exit from the File menu of the Open Watcom Menu Editor window.
+<br><br>If you made changes to menu items but did not save the information, a message box prompts you to save before exiting.
+&nbsp; Choose Yes to save the changes and exit the Menu Editor, No to exit the Menu Editor without saving the changes, or
+ Cancel to return to the Menu Editor.
+<br><br>When you exit the Menu Editor, the application remembers the directory in which you last opened or saved a menu (not
+ the resource file).&nbsp; The next time you open a menu, the last directory accessed appears in the File Selection dialog
+ so you do not have to reenter its path.&nbsp; This feature makes the Menu Editor more convenient and efficient to use.
+<h3 id="The_Menu_Editor_Menu_Bar"> The Menu Editor Menu Bar </h3>
+<br><tt><img src="mnu2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Menu Editor menu bar.</b>
+<br><br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Clear and save the menu, and exit the Menu Editor
+<dt><br>Edit
+<dd>Access the clipboard functions, hide or show the toolbar, and delete a menu
+<dt><br>Resource
+<dd>Rename the menu and change its memory flags
+<dt><br>Menu
+<dd>Insert menu entries
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<br>To see the function of an item in the menu bar or submenus, hold the mouse button and drag the cursor over the desired
+ menu item.&nbsp; A description of the item appears in the status line at the bottom of the screen.&nbsp; If you do not want
+ to select the menu item, drag the cursor off of the menu item before releasing the mouse button.
+<h3 id="The_Menu_Editor_Toolbar"> The Menu Editor Toolbar </h3>
+<br>In the Open Watcom Menu Editor window, the toolbar appears below the menu bar.&nbsp; When the toolbar is shown choose
+ Hide Toolbar from the Edit menu to hide it.&nbsp; When the toolbar is hidden you can display it by choosing Show Toolbar
+ from the Edit menu.
+<br><br><tt><img src="mnu3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Menu Editor toolbar.</b>
+<br><br>The following explains the function each icon performs, as well as the equivalent function in the menu bar.
+<dl>
+<dt>Clear
+<dd>Clear the menu workspace.&nbsp; This is equivalent to Clear in the File menu.
+<dt><br>Save
+<dd>Save the current menu.&nbsp; This is equivalent to Update in the File menu.
+<dt><br>Cut
+<dd>Cut the current menu item to the clipboard.&nbsp; This is equivalent to Cut in the Edit menu.
+<dt><br>Copy
+<dd>Copy the current menu item to the clipboard.&nbsp; This is equivalent to Copy in the Edit menu.
+<dt><br>Paste
+<dd>Paste the menu item that is on the clipboard to the current menu workspace.&nbsp; This is equivalent to Paste in the Edit
+ menu.
+<dt><br>Delete
+<dd>Delete the selected menu item from the menu workspace.&nbsp; This is equivalent to Delete in the Edit menu.
+</dl>
+<br>Only one of the following two buttons appears at a time.&nbsp; The displayed button indicates where new menu items will
+ be inserted.&nbsp; When one is selected the other one replaces it on the toolbar.
+<dl>
+<dt>Insert Before
+<dd>When this button is displayed, new menu items will be inserted before the currently selected menu item.&nbsp; Selecting this
+ button is equivalent to selecting Insert After from the Menu menu.
+<dt><br>Insert After
+<dd>When this button is displayed, new menu items will be inserted after the currently selected menu item.&nbsp; Selecting this
+ button is equivalent to selecting Insert Before from the Menu menu.
+</dl>
+<dl>
+<dt>Insert
+<dd>This button will insert a new menu item into the menu.&nbsp; This is equivalent to Insert New Item in the Menu menu.
+</dl>
+<br>To see the function of an item in the toolbar, position your cursor over the desired button.&nbsp; A description of the
+ button's function appears in the status line at the bottom of the window.
+<h2 id="Using_the_Menu_Editor_Window"> Using the Menu Editor Window </h2>
+<br>The Open Watcom Menu Editor window contains a menu bar, toolbar, and status line to help you create and edit menus.&nbsp;
+ The rest of the window is divided into five sections:
+<ul>
+<li>Resource Name Field
+<li>Preview Window
+<li>Attributes Area
+<li>Menu Item List
+<li>Action Buttons
+</ul>
+<br><tt><img src="mnu4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> On the Open Watcom Menu Editor window, you create menus for your application.</b>
+<h3 id="Menu_Editor__Resource_Name_Field"> Menu Editor:&nbsp; Resource Name Field </h3>
+<br>The Resource Name field in the Open Watcom Menu Editor window contains the name of the menu currently being edited.&nbsp;
+ A resource file can contain more than one menu, so it is important that the resource names for the menu resources be unique.
+&nbsp; The Resource Name field is not case sensitive and can hold up to 255 characters.&nbsp; You can enter a textual name,
+ a number or a symbol in this field.
+<br><br>When you create a new menu, the Resource Editor assigns the default name MENU_# to it.&nbsp; You can rename the menu
+ using the Rename item in the Resource menu.
+<h3 id="Menu_Editor__The_Preview_Window"> Menu Editor:&nbsp; The Preview Window </h3>
+<br>The Preview window appears on the Menu Editor window above the menu item list.&nbsp; This window allows you to see how
+ the menu you are creating will look in the application.&nbsp; The popup menu items in the preview window are functional so
+ you can test your menu as you create it.
+<br><br><tt><img src="mnu5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The preview window allows you to see how the menu will look and work in the application.</b>
+<br><br>You can use the sample menu that appears in the preview window to test the behaviour of your menu items.&nbsp; For
+ example, by selecting top-level menu items in the preview window you can check the positions and breaks of your menu items
+ and separators.&nbsp; The preview window allows you to verify that your menus cascade properly and that other attributes
+ function properly, including inactive, grayed, and check marked menu items.
+<h3 id="Menu_Editor__Attributes_Area"> Menu Editor:&nbsp; Attributes Area </h3>
+<br>The attributes area provides information about the currently selected menu item.&nbsp; You can edit menu items using only
+ the fields in this area.
+<br><br>The attributes area displays menu item details in five sections.&nbsp; Following is an explanation of each section.
+<dl>
+<dt>Item Text
+<dd>The Item Text field contains the name of the menu item.&nbsp; Whatever appears in this field will appear in the menu.
+<br>An ampersand (&amp;) in front of a letter in this field tells the editor to underscore that letter in the menu.&nbsp;
+ This automatically creates a hot key for that menu item.&nbsp; When using the menu, pressing ALT plus the underscored letter
+ activates that menu item.
+<br><br>To specify a tab character, enter \t in this field.&nbsp; All text after \t in the Item Text field will be right justified
+ in the menu.
+<dt><br>Item ID
+<dd>The Item ID is the unique numeric identifier for the menu item.&nbsp; In the source code, you match the identifier to the
+ function the menu item is to perform.&nbsp; The Item ID applies only to normal menu items.&nbsp; Popups and separators do
+ not perform functions, so do not need an identifier.
+<br>You can enter any number in the range 0 to 65535 in the Item ID field.&nbsp; Hexadecimal values can be entered by prefixing
+ them with 0x.&nbsp; Octal values can be entered by prefixing them with zero.
+<br><br>The two Item ID fields contain:
+<ul>
+<li>the numeric identifier of the selected menu item
+<li>the symbol information for the selected menu item.
+</ul>
+<dl>
+<dt>Note:
+<dd>Both Menu Item fields currently contain the same numerical information because the Menu Editor does not yet support symbols.
+</dl>
+<dt><br>Item Type
+<dd>The Item Type section of the window indicates whether the selected menu item is a popup, normal, or separator menu item.&nbsp;
+ Following is a description of each menu item type.
+<dl>
+<dt>Popup
+<dd>A popup menu is a menu item that has a sub-menu.&nbsp; When you select a popup menu, another menu appears.
+<dt><br>Normal
+<dd>A normal menu item is an item that performs a function when selected.
+<dt><br>Separator
+<dd>A separator menu item is a horizontal line that separates menu items to logically group menu items with similar functions.
+&nbsp; When a separator is selected from the menu item list, the Item Text and Item ID fields are always empty because they
+ do not apply to separators.
+</dl>
+<dt><br>Attributes
+<dd>The options in the Attributes section allow you to specify how the selected menu item will appear in the menu.&nbsp; Use the
+ check boxes to select the desired menu item characteristic.&nbsp; Following is a description of each option.
+<dl>
+<dt>Checked
+<dd>When the Checked option is selected, the menu item appears in the menu with a check mark beside it.&nbsp; This is a graphic
+ only and does not affect the functionality of the menu item.
+<dl>
+<dt>Note:
+<dd>Top level menu items cannot be checked.
+</dl>
+<dt><br>Grayed
+<dd>When the Grayed option is selected, the menu item text appears in gray instead of black.&nbsp; This option also makes the
+ menu item inactive.
+<dt><br>Inactive
+<dd>When the Inactive option is selected, the menu item appears unchanged in the menu.&nbsp; However, this option prevents the
+ menu item from being selected.
+</dl>
+<dt><br>Break Styles
+<dd>The options in the Break Styles section control the positioning of the menu items.&nbsp; The break styles you choose affects
+ the selected menu item and all menu items that follow that item.&nbsp; Following is a description of the available options.
+<dl>
+<dt>Help
+<dd>The Help break option positions the selected menu to the far right of the menu bar.&nbsp; This option is available only for
+ top-level menus.
+<dt><br>Menu
+<dd>For top-level menu items, the Menu break option begins a new line in the menu bar, positioning the selected menu item on the
+ far left.&nbsp; In a popup menu, this break option creates a new column, positioning the selected menu item at the beginning
+ of the new column.
+<dl>
+<dt>Note
+<dd>The Menu option overrides the Menu Bar option.
+</dl>
+<dt><br>Menu Bar
+<dd>For top-level menu items, the Menu Bar break option performs the same function as the Menu break option.&nbsp; In a popup
+ menu, the Menu Bar break option creates a new column, beginning with the selected menu item and places a vertical line between
+ the columns.
+</dl>
+</dl>
+<h3 id="Menu_Editor__Menu_Item_List"> Menu Editor:&nbsp; Menu Item List </h3>
+<br>The menu item list displays the menu items in the current menu.&nbsp; Use this list to view the attributes of the menu
+ items listed.&nbsp; Select a menu item from the table by clicking on it.&nbsp; Details of the selected menu item appear in
+ the attributes area of the window.
+<h3 id="Menu_Editor__Action_Buttons"> Menu Editor:&nbsp; Action Buttons </h3>
+<br>The action buttons control how the information in the attributes area is handled by the editor.&nbsp; The Insert button
+ will use the contents of the attributes area to create a new entry in the menu.&nbsp; The Change button will use the contents
+ of the attributes area to modify the current entry in the menu.&nbsp; The &lt;&lt; (shift left) button will cause the current
+ menu item to become a subitem of its parent.&nbsp; This button is enabled only when the current item is the last item in
+ its parent menu.&nbsp; The current item will visually appear to shift left.&nbsp; The &gt;&gt; (shift right) button will
+ cause the current menu item to become the last subitem of the popup menu preceding it.&nbsp; This button is enabled only
+ when the item preceding the current item is a popup menu.&nbsp; The current item will visually appear to shift right.&nbsp;
+ The Reset button will discard the contents of the attributes area and reset them to those of the current entry in the menu.
+&nbsp; The Insert button is the default button when the ENTER key is pressed and no other button has the focus.
+<h2 id="Menu_Functions"> Menu Functions </h2>
+<br>You can perform several functions with the Menu Editor.&nbsp; This section describes the following tasks:
+<ul>
+<li>Adding a New Menu Item
+<li>Changing an Existing Menu Item
+<li>Deleting Menu Items
+<li>Renaming a Menu
+<li>Saving Menu Items
+<li>Using Shortcuts to Create Menus
+<li>Changing Memory Options
+</ul>
+<h3 id="Adding_a_New_Menu_Item"> Adding a New Menu Item </h3>
+<br>The steps for adding a new menu item to a menu are the same, regardless of whether the menu item list is empty or already
+ contains menu items.&nbsp; Follow these steps to add a new menu item.
+<dl>
+<dt>(1)
+<dd><b> Enter the text for the menu item</b> in the Item Text field.
+<br>To set one of the letters as a hot key, insert an ampersand (&amp;) directly in front of that letter.&nbsp; The letter
+ marked as the hot key key appears underlined in the menu item text.&nbsp; For example, to add the menu item<tt> Cut</tt>
+ with the letter<tt> t</tt> as its hot key, enter<tt> Cu&amp;t</tt> in the Item Text field.
+<br><br>To have text in the menu item appear right justified, enter the code \t in the Item Text field.&nbsp; For example,
+ to add the entry<tt> Open</tt> with the accelerator<tt> Ctrl+O</tt> right justified, enter<tt> Open\tCtrl+O</tt> in the Item
+ Text field.
+<dt><br>(2)
+<dd><b> Enter a symbol or numeric identifier</b> for the menu item.
+<br>The identifier in this field is the unique identifier associated with the menu item.&nbsp; You define the relationship
+ between the menu item function and this identifier in the source code for your application.
+<br><br>You must enter a value between 0 and 65535 in this field.&nbsp; Hexadecimal values can be entered by prefixing them
+ with 0x.&nbsp; Octal values can be entered by prefixing the with zero.
+<dt><br>(3)
+<dd><b> Select the type of menu item</b> you wish to create
+<br>Use separators in your menus to logically group menu items with similar functions.&nbsp; When adding a separator to your
+ menu you do not need to complete the fields in the Attributes Area of the Menu Editor window.
+<dt><br>(4)
+<dd><b> Select the desired attributes</b> for the menu item in the Attributes section of the workspace.
+<br>Refer to the section entitled <a href="#Using_the_Menu_Editor_Window">Using the Menu Editor Window</a> for a description
+ of each attribute.
+<dt><br>(5)
+<dd><b> Select the desired break styles</b> for the menu item in the Break Styles section of the workspace
+<br>Refer to the section entitled <a href="#Using_the_Menu_Editor_Window">Using the Menu Editor Window</a> for a description
+ of each break style.
+<dt><br>(6)
+<dd><b> Select Insert Before or Insert After</b> from the Menu menu or the toolbar.
+<br>The toggle button on the toolbar indicates if the new menu item is to be inserted into the menu item list before or after
+ the currently selected menu item.&nbsp; In the Menu menu, the Insert After item is checked if new menu items will be added
+ after the current item.&nbsp; The Insert Before item is checked if new items will be added before the current item.
+<dt><br>(7)
+<dd><b> Press the Insert action button</b>
+<br>or
+<dt><br>
+<dd><b> Choose Insert New Item</b> from the Accelerator menu.
+<br>or
+<dt><br>
+<dd><b> Select the Insert New Item button on the toolbar.</b>
+<br>The new menu item appears in the menu item list and the Preview Menu window.
+</dl>
+<h3 id="Changing_an_Existing_Menu_Item"> Changing an Existing Menu Item </h3>
+<br>You may want to change the attributes of a menu item in a menu.
+<dl>
+<dt>To change an existing menu item:
+<dd>
+<dt><br>(1)
+<dd><b> Choose the menu you want to work with</b> from the Resource window on the Open Watcom Resource Editor window.
+<br>The Menu Editor window appears displaying all of the menu items for the selected menu.
+<dt><br>(2)
+<dd><b> Click the menu item you want to modify.</b>
+<br>The selected menu appears highlighted in the menu item list and the menu item details appear in the attributes area of
+ the window.
+<dt><br>(3)
+<dd><b> Select the field you want to change</b> using the Tab key or the mouse.
+<dt><br>(4)
+<dd><b> Make the desired menu item changes.</b>
+<dt><br>(5)
+<dd><b> Press the Change action button</b>
+<br>This updates the selected menu item with the modified menu item details.
+</dl>
+<h3 id="Deleting_Menu_Items"> Deleting Menu Items </h3>
+<br>There are two functions you can use to delete menu items from the menu item list:
+<ul>
+<li>Delete
+<li>Clear
+</ul>
+<br>The Delete function in the Edit menu deletes the selected menu item.&nbsp; You can delete only one menu item at a time
+ with this function.&nbsp; Deleting a popup menu item also deletes all of the submenus for that item.
+<br><br>The Clear function in the File menu deletes all menu items in the current menu.&nbsp; This is a powerful function
+ and must be used carefully to avoid accidentally deleting an entire menu item list.
+<h4 id="Deleting_a_Menu_Item"> Deleting a Menu Item </h4>
+<br>To delete menu items from the current menu one at a time:
+<dl>
+<dt>(1)
+<dd><b> Select the menu item you want to delete</b> from the menu item list by clicking on it.
+<br>The selected menu item is highlighted.
+<dt><br>(2)
+<dd><b> Choose Delete</b> from the Edit menu
+<br>or
+<dt><br>
+<dd><b> Select the Delete button from the toolbar.</b>
+<br>The Menu Editor removes the selected menu item from the menu item list.
+<dt><br>(3)
+<dd><b> Choose Update</b> from the File menu to save the menu changes.
+</dl>
+<h4 id="Deleting_All_Menu_Items"> Deleting All Menu Items </h4>
+<br>To delete all menu items in the current menu:
+<dl>
+<dt>(1)
+<dd><b> Choose Clear</b> from the File menu
+<br>or
+<dt><br>
+<dd><b> Select the Clear button from the toolbar.</b>
+<br>A message box appears prompting you to verify that you want to clear all of the menu items from the current menu.
+<dt><br>(2)
+<dd><b> Choose Yes or No</b> to continue.
+<br>Choosing Yes removes all menu items from the current menu.&nbsp; The menu item left list is empty.
+</dl>
+<br><tt><img src="mnu6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> As a safety feature, a message box appears when you choose the Clear function.</b>
+<h3 id="Renaming_a_Menu"> Renaming a Menu </h3>
+<br>When you create a menu, the Resource Editor assigns a default name to it.&nbsp; Assign a new name to the menu using the
+ Rename menu item.
+<dl>
+<dt>(1)
+<dd><b> Choose Rename</b> from the Resource menu on the Open Watcom Menu Editor window.
+<br>or
+<dt><br>
+<dd><b> Double click or right click on the Resource Name field.</b>
+<br>A Rename Resource dialog box appears containing two fields:
+<ul>
+<li>Old Name
+<li>New Name
+</ul>
+<br><tt><img src="mnu7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> In the Rename Resource dialog, you enter the new name of the menu.</b>
+<dt><br>(2)
+<dd><b> Enter the desired menu name in the New Name field.</b>
+<dt><br>(3)
+<dd><b> Click on OK</b> to close the Rename Resource dialog.
+<br>The dialog closes and the new menu name appears in the Resource Name field.
+</dl>
+<h3 id="Saving_Menu_Items"> Saving Menu Items </h3>
+<br>There are three functions you can use to save menus with the Menu Editor:
+<ul>
+<li>Update
+<li>Save As
+<li>Copy To
+</ul>
+<br>Each of these options performs a different type of save function.&nbsp; This section describes how to use each function.
+<h4 id="Menu_Editor__Update"> Menu Editor:&nbsp; Update </h4>
+<br>After modifying a menu item in a menu, choose Update from the File menu on the Menu Editor window to save the updated
+ menu to the current resource file.&nbsp; This prevents the changes from being lost when you exit the Menu Editor.
+<br><br>The Update function updates the resource file only at the resource level.&nbsp; The resource file is not saved until
+ you perform a save at the Resource Editor level as well.&nbsp; Exiting the Resource Editor without saving causes you to lose
+ any the menu changes made.
+<h4 id="Menu_Editor__Save_As"> Menu Editor:&nbsp; Save As </h4>
+<br>Choose Save As from the File menu on the Menu Editor window to save the current menu to another resource file.&nbsp; A
+ Save Menu dialog appears where you specify the resource file to which you want to save the current menu.
+<br><br><tt><img src="mnu8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> On the Save Menu dialog, specify the resource file to which you want to save
+ the menu.</b>
+<dl>
+<dt>Important:
+<dd>If the resource file to which you are saving the menu already contains resources, the existing resources will be discarded
+ and replaced with the menu you are saving.
+</dl>
+<h4 id="Menu_Editor__Copy_To"> Menu Editor:&nbsp; Copy To </h4>
+<br>Choose Copy To from the Resource menu on the Menu Editor window to copy the current menu item list into an existing resource
+ file.&nbsp; A Copy To dialog appears where you specify the resource file to which you want to copy the current menu item
+ list.&nbsp; Unlike the Save As function, copying a menu item list to a resource file adds an entry to the list of resources
+ rather than replacing the existing resources with the new entry.
+<br><br><tt><img src="mnu9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> On the Copy To dialog, specify the resource file to which you want to copy the
+ menu item list.</b>
+<h3 id="Using_Shortcuts_to_Create_menus"> Using Shortcuts to Create menus </h3>
+<br>The Edit menu on the Open Watcom Menu Editor window contains some standard Windows options that you can use to quickly
+ create menu resources.&nbsp; The options are:
+<ul>
+<li>Cut
+<li>Copy
+<li>Paste
+</ul>
+<br>These options allow you to perform functions on menus but not on individual menu items.
+<dl>
+<dt>Cut
+<dd>Choose Cut from the Edit menu of the Menu Editor window to cut the menu item list from the current menu and paste it to the
+ clipboard.
+<dt><br>Copy
+<dd>Choose Copy from the Edit menu of the Menu Editor window to copy the menu item list from the current menu to the clipboard.
+<dt><br>Paste
+<dd>Choose Paste from the Edit menu of the Menu Editor window to copy the menu on the clipboard into the current menu item list.
+</dl>
+<h3 id="Menu_Editor__Changing_Memory_Options"> Menu Editor:&nbsp; Changing Memory Options </h3>
+<br>The Memory Flags option allows you to change the selected memory options for the current menu.&nbsp; These options indicate
+ the memory type and loading instructions.
+<dl>
+<dt>To set the flags for a menu resource:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Memory Flags</b> from the Resource menu of the Open Watcom Menu Editor window.
+<br>The Memory Options dialog opens displaying either the current or default memory options.
+<dt><br>(2)
+<dd><b> Select the required flags</b> in the Memory Options and Load Options sections of the dialog by clicking on the check box
+ beside the field.&nbsp; Following is a description of each option.
+<dl>
+<dt>Moveable
+<dd>Selecting this option marks this menu to be stored in moveable memory when it is loaded by an application.
+<dt><br>Discardable
+<dd>Selecting this option marks this menu to be stored in discardable memory when it is loaded by an application.
+<dt><br>Pure
+<dd>When marked as Pure, Windows will not allow the memory that the menu is loaded into to be modified.
+<dt><br>Preload
+<dd>All menus marked as Preload will be loaded when the application for which you are creating the menu is loaded.
+<dt><br>LoadOnCall
+<dd>Menus marked as LoadOnCall will be loaded when an application issues a call to load them.
+</dl>
+<dt><br>(3)
+<dd><b> Click on OK</b> when all memory option selections are made.
+<br>The Memory Options dialog closes returning you to the Menu Editor window.
+</dl>
+</body>

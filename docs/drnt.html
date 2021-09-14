@@ -1,0 +1,615 @@
+<head>
+<title> Dr. Watcom 1.9 NT </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- W -
+<dd><a href="#Win32__Add_New_Process">Win32:&nbsp; Add New Process</a>
+<br><a href="#Win32__Attaching_Processes_to_Dr__Watcom">Win32:&nbsp; Attaching Processes to Dr.&nbsp; Watcom</a>
+<br><a href="#Win32__Auto_Add_Processes">Win32:&nbsp; Auto Add Processes</a>
+<br><a href="#Win32__Command_Line">Win32:&nbsp; Command Line</a>
+<br><a href="#Win32__Creating_A_Log_File_Entry">Win32:&nbsp; Creating A Log File Entry</a>
+<br><a href="#Win32__Customizing_the_Log_File">Win32:&nbsp; Customizing the Log File</a>
+<br><a href="#Win32__Debugging_Information_Processors">Win32:&nbsp; Debugging Information Processors</a>
+<br><a href="#Win32__Dr__Watcom_for_Win32">Win32:&nbsp; Dr.&nbsp; Watcom for Win32</a>
+<br><a href="#Win32__Dr__Watcom__Applying_Registers">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Applying Registers</a>
+<br><a href="#Win32__Dr__Watcom__Changing_the_Registers">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Changing the Registers</a>
+<br><a href="#Win32__Dr__Watcom__Choosing_the_Log_Viewer">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Choosing the Log Viewer</a>
+<br><a href="#Win32__Dr__Watcom__Clearing_the_Event_List">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Clearing the Event List</a>
+<br><a href="#Win32__Dr__Watcom__Exception_Handling">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Exception Handling</a>
+<br><a href="#Win32__Dr__Watcom__Marking_the_Event_List">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Marking the Event List</a>
+<br><a href="#Win32__Dr__Watcom__Naming_the_Log_File">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Naming the Log File</a>
+<br><a href="#Win32__Dr__Watcom__Other_Options">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Other Options</a>
+<br><a href="#Win32__Dr__Watcom__Saving_Event_List_Information_to_a_File">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Saving Event List Information to a File</a>
+<br><a href="#Win32__Dr__Watcom__Setting_the_Fonts">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Setting the Fonts</a>
+<br><a href="#Win32__Dr__Watcom__Specifying_the_Log_File_Data">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Specifying the Log File Data</a>
+<br><a href="#Win32__Dr__Watcom__Viewing_Memory">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Viewing Memory</a>
+<br><a href="#Win32__Dr__Watcom__Working_with_Log_Files">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Working with Log Files</a>
+<br><a href="#Win32__Erasing_the_Log_File">Win32:&nbsp; Erasing the Log File</a>
+<br><a href="#Win32__Examining_the_Process_Status">Win32:&nbsp; Examining the Process Status</a>
+<br><a href="#Win32__Performing_Process_Control">Win32:&nbsp; Performing Process Control</a>
+<br><a href="#Win32__Process_Control">Win32:&nbsp; Process Control</a>
+<br><a href="#Win32__Quitting_Dr__Watcom">Win32:&nbsp; Quitting Dr.&nbsp; Watcom</a>
+<br><a href="#Win32__Resuming_a_Thread">Win32:&nbsp; Resuming a Thread</a>
+<br><a href="#Win32__Setting_the_Process_Priority">Win32:&nbsp; Setting the Process Priority</a>
+<br><a href="#Win32__Starting_Dr__Watcom">Win32:&nbsp; Starting Dr.&nbsp; Watcom</a>
+<br><a href="#Win32__Summarizing_Process_Memory_Usage">Win32:&nbsp; Summarizing Process Memory Usage</a>
+<br><a href="#Win32__Suspending_a_Thread">Win32:&nbsp; Suspending a Thread</a>
+<br><a href="#Win32__Terminating_a_Process">Win32:&nbsp; Terminating a Process</a>
+<br><a href="#Win32__Terminating_a_Thread">Win32:&nbsp; Terminating a Thread</a>
+<br><a href="#Win32__The_Dr__Watcom_Menu_Bar">Win32:&nbsp; The Dr.&nbsp; Watcom Menu Bar</a>
+<br><a href="#Win32__Using_Dr__Watcom">Win32:&nbsp; Using Dr.&nbsp; Watcom</a>
+<br><a href="#Win32__Using_External_Exception_Handlers">Win32:&nbsp; Using External Exception Handlers</a>
+<br><a href="#Win32__Using_the_Annotate_Log_Dialog">Win32:&nbsp; Using the Annotate Log Dialog</a>
+<br><a href="#Win32__Using_the_Debugging_Information_Processor_Status_dialog">Win32:&nbsp; Using the Debugging Information Processor Status dialog</a>
+<br><a href="#Win32__Using_the_Dr__Watcom_Window">Win32:&nbsp; Using the Dr.&nbsp; Watcom Window</a>
+<br><a href="#Win32__Using_the_Memory_Dump_Dialog">Win32:&nbsp; Using the Memory Dump Dialog</a>
+<br><a href="#Win32__Viewing_the_Current_Log_File">Win32:&nbsp; Viewing the Current Log File</a>
+<br><a href="#Win32__Viewing_the_Memory_for_a_Process">Win32:&nbsp; Viewing the Memory for a Process</a>
+<br><a href="#Win32__Viewing_the_Threads_for_a_Process">Win32:&nbsp; Viewing the Threads for a Process</a>
+</dl>
+<h1 id="Win32__Dr__Watcom_for_Win32"> Win32:&nbsp; Dr.&nbsp; Watcom for Win32 </h1>
+<br>The 32-bit version of Dr.&nbsp; Watcom is a post-mortem debugger for Win32 applications.&nbsp; When an exception occurs
+ in a program, a post-mortem debugger allows you, after the fact, to examine the state of both the program and the system
+ in order to determine the cause of the exception.&nbsp; In addition to being a debugging tool, Dr.&nbsp; Watcom is a system
+ utility that enables you to examine and modify process information.
+<dl>
+<dt>Note:
+<dd>Use the 32-bit version of Dr.&nbsp; Watcom to monitor native (Win32) applications running under Windows 9x and NT based operating
+ systems.&nbsp; Use the 16-bit version of Dr.&nbsp; Watcom to monitor 16-bit Windows (Win16) applications.
+</dl>
+<h2 id="Win32__Using_Dr__Watcom"> Win32:&nbsp; Using Dr.&nbsp; Watcom </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting Dr.&nbsp; Watcom
+<li>Quitting Dr.&nbsp; Watcom
+<li>The Dr.&nbsp; Watcom Menu Bar
+</ul>
+<br>Dr.&nbsp; Watcom is designed to be used effectively while minimized.&nbsp; You can access some of Dr.&nbsp; Watcom's main
+ functionality using the system menu while the application is minimized.&nbsp; This includes the Log Current State, Log Options,
+ and Process Control menu items.
+<h3 id="Win32__Starting_Dr__Watcom"> Win32:&nbsp; Starting Dr.&nbsp; Watcom </h3>
+<br>To start Dr.&nbsp; Watcom double click on the Dr.&nbsp; Watcom icon.&nbsp; This opens the Dr.&nbsp; Watcom window.
+<dl>
+<dt>Note:
+<dd>You can run only one instance of Dr.&nbsp; Watcom at a time.
+</dl>
+<h3 id="Win32__Quitting_Dr__Watcom"> Win32:&nbsp; Quitting Dr.&nbsp; Watcom </h3>
+<br>To exit Dr.&nbsp; Watcom, choose Exit from the File menu of the Dr.&nbsp; Watcom window.
+<h3 id="Win32__The_Dr__Watcom_Menu_Bar"> Win32:&nbsp; The Dr.&nbsp; Watcom Menu Bar </h3>
+<br>The Menu bar consists of the following four menus:
+<dl>
+<dt>File
+<dd>Save to a file and work with the event list a file
+<dt><br>Log
+<dd>Work with the log file
+<dt><br>Process
+<dd>Work with processes currently running under Windows
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<h2 id="Win32__Using_the_Dr__Watcom_Window"> Win32:&nbsp; Using the Dr.&nbsp; Watcom Window </h2>
+<br>When you open Dr.&nbsp; Watcom, a window appears which contains the event list.&nbsp; The event list records events generated
+ by processes to which Dr.&nbsp; Watcom is attached.&nbsp; To record these events you must first attach Dr.&nbsp; Watcom to
+ the desired processes.&nbsp; To perform this function, refer to the section entitled <a href="#Win32__Attaching_Processes_to_Dr__Watcom">Win32:&nbsp; Attaching Processes to Dr.&nbsp; Watcom</a>.
+&nbsp; Some examples of events are errors, the starting and ending of threads, and the loading and unloading of DLLs.
+<br><br><tt><img src="drw1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Dr.&nbsp; Watcom window contains the event list where occurring events are
+ recorded.</b>
+<br><br>The following sections describe functions that allow you to manipulate the event list:
+<ul>
+<li>Saving the Event List
+<li>Clearing the Event List
+<li>Marking the Event List
+<li>Setting the Fonts
+</ul>
+<h3 id="Win32__Dr__Watcom__Saving_Event_List_Information_to_a_File"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Saving Event List Information to a File </h3>
+<br>The Save items in the File menu allow you to save the contents of the event list to a text file.&nbsp; Saving information
+ to a file enables you to print the output later or annotate the text file on-line.
+<br><br>Choose Save from the File menu to save the event list information into the current working directory.&nbsp; A message
+ box appears indicating the path to which Dr.&nbsp; Watcom saved the file.
+<br><br>Choose Save As from the File menu to specify the file to which you want to save the information currently in the window.
+&nbsp; This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.&nbsp; A message
+ box appears indicating the path to which Dr.&nbsp; Watcom saved the event list.
+<h3 id="Win32__Dr__Watcom__Clearing_the_Event_List"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Clearing the Event List </h3>
+<br>Choose Clear List from the File menu to delete all information from the event list.
+<h3 id="Win32__Dr__Watcom__Marking_the_Event_List"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Marking the Event List </h3>
+<br>Use the Mark function to annotate the information in the event list by entering text into it.
+<dl>
+<dt>To mark the event list :
+<dd>
+<dt><br>(1)
+<dd><b> Choose Mark</b> from the File menu.
+<br>This opens the Set Mark dialog box.
+<br><br><tt><img src="drw2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> With the Set Mark dialog, you can annotate the event list by entering text and
+ choosing a mark style.</b>
+<dt><br>(2)
+<dd><b> Type the desired text</b> in the Enter Mark Text field.
+<br>The text you enter will appear at the end of the event list
+<dt><br>(3)
+<dd><b> Select the desired Mark Style option.</b>
+<br>These options determine how the entered text is formatted when it is added to the event list When the boxed option is
+ selected, the text is displayed bordered by asterisks.&nbsp; With this option the text is easier to find.&nbsp; When the
+ plain option is selected, the text is displayed as it is entered.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>The Set Mark dialog closes and the text in the dialog appears at the end of the event list.
+</dl>
+<br><tt><img src="drw3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> Text you enter in the Set Mark dialog appears in the event list in the selected
+ style.</b>
+<h3 id="Win32__Dr__Watcom__Setting_the_Fonts"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Setting the Fonts </h3>
+<br>The Set Font item in the File menu allows you to set the font, style, and size for the text in the Dr.&nbsp; Watcom window.
+&nbsp; Choosing this item opens the Font dialog box.&nbsp; Select the desired font details and click on OK to close the dialog
+ and apply the fonts.
+<h2 id="Win32__Debugging_Information_Processors"> Win32:&nbsp; Debugging Information Processors </h2>
+<br>Debugging Information Processors (DIP's) are Dynamic Link Libraries that Dr.&nbsp; Watcom loads to read debugging information.
+&nbsp; Each DIP allows Dr.&nbsp; Watcom to read a different type of debugging information.
+<h3 id="Win32__Using_the_Debugging_Information_Processor_Status_dialog"> Win32:&nbsp; Using the Debugging Information Processor Status dialog </h3>
+<br>Choosing the Show DIP Status item from the File menu displays the Debugging Information Processor Status dialog.
+<br><br><tt><img src="drw4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Debugging Information Processor Status dialog shows the DIP's Dr.&nbsp; Watcom
+ has loaded.</b>
+<br><br>This dialog contains a list of all the DIP's that Dr.&nbsp; Watcom attempted to load at startup and the results of
+ those loads.&nbsp; If Dr.&nbsp; Watcom was unable to load a particular DIP then the dialog will show the reason for the failure.
+&nbsp; Dr.&nbsp; Watcom can only read a given type of debugging information if it has successfully loaded the appropriate
+ DIP.
+<h2 id="Win32__Dr__Watcom__Exception_Handling"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Exception Handling </h2>
+<br>When a fatal error, or exception, occurs in a process to which Dr.&nbsp; Watcom is attached, Dr.&nbsp; Watcom intercepts
+ the exception.&nbsp; By intercepting the exception, Dr.&nbsp; Watcom halts the program's execution to prevent it from terminating.
+&nbsp; When an exception occurs, a Dr.&nbsp; Watcom exception dialog box appears on the screen indicating that a fatal error
+ has occurred.&nbsp; This dialog displays information about the error and gives you several options.
+<br><br><tt><img src="drw5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The exception dialog appears when a fatal error occurs in a program.</b>
+<br><br>The information displayed about the error includes:
+<dl>
+<dt>Process Name
+<dd>The name of the process in which the error occurred.
+<dt><br>Process ID
+<dd>The unique identifier associated with the process.
+<dt><br>Fault Type
+<dd>The type of fault that occurred.
+<dt><br>Fault CS:EIP
+<dd>The address of the instruction being executed when the fault occurred.
+<dt><br>Source Info
+<dd>The source line on which the error occurred.&nbsp; This only appears if the program running contains debugging information
+ and the exception occurred on an assembly instruction that corresponds to a source line.
+</dl>
+<br>There are four buttons on the exception dialog that you can use to proceed.
+<dl>
+<dt>Act
+<dd>When the Act button is pressed Dr.&nbsp; Watcom's action is determined by the option currently selected in the &quot;action
+ to take&quot; section of the dialog.&nbsp; The following describes the action taken for each option.
+<dl>
+<dt>Terminate Task
+<dd>When the Terminate Task radio button is selected choosing Act causes the faulting process to be terminated immediately.
+<dt><br>Restart Instruction
+<dd>When the Restart Instruction radio button is selected choosing Act causes the faulting process to restart execution starting
+ with the instruction pointed to by its CS:EIP.&nbsp; This option is primarily used to restart a process after you have changed
+ its register values using the Process Status dialog.
+<dt><br>Chain to Next Handler
+<dd>A handler is a piece of code, a program, or a routine that gets called when an exception occurs.&nbsp; A process can have
+ several exception handlers.&nbsp; When the Chain to Next Handler radio button is selected choosing Act tells the operating
+ system to continue searching for a handler to deal with this exception.&nbsp; If no handler is found for the exception then
+ Dr.&nbsp; Watcom will redisplay the exception dialog to give you a second chance to deal with the exception.&nbsp; During
+ this second chance notification the chain to next handler option is not available.&nbsp; This option is useful for testing
+ your own exception handling code.
+</dl>
+<dt><br>Act and Log
+<dd>Choosing the Act and Log button first creates a log file entry recording information about this exception then takes the same
+ action that would result from choosing the Act button.
+<dt><br>Registers
+<dd>Select the Registers button to open the Process Status dialog.&nbsp; This dialog gives you additional information on the state
+ of the process when the exception occurred.&nbsp; From this window you can change the registers and flags and view the process's
+ address space.&nbsp; Refer to the section entitled <a href="#Win32__Examining_the_Process_Status">Win32:&nbsp; Examining the Process Status</a>
+ for further information.
+<dt><br>Options
+<dd>Select the Options button to choose the information you want to write to the log file.&nbsp; This opens the Log Options dialog
+ explained in the section entitled <a href="#Win32__Customizing_the_Log_File">Win32:&nbsp; Customizing the Log File</a>.
+</dl>
+<h3 id="Win32__Using_External_Exception_Handlers"> Win32:&nbsp; Using External Exception Handlers </h3>
+<br>You can use the Continue Exceptions item in the file menu to tell Dr.&nbsp; Watcom to only report on exceptions that are
+ not handled by another exception handler.&nbsp; When this item is checked Dr.&nbsp; Watcom only displays an exception dialog
+ if the system is unable to find a handler for an exception.&nbsp; This behavior is the same as when Continue Exceptions is
+ not checked and chain to next handler is selected on the exception dialog.
+<h3 id="Win32__Examining_the_Process_Status"> Win32:&nbsp; Examining the Process Status </h3>
+<br>The Process Status dialog appears when you choose the Registers button in the exception dialog.
+<br><br>This dialog displays information in four sections:
+<ul>
+<li>Source Information
+<li>Registers
+<li>Flags
+<li>Instructions Around Fault
+</ul>
+<br>The Source Information section indicates the source file where the error occurred and the line of that source file.&nbsp;
+ In order to get source information, your program must contain debugging information.&nbsp; N/A appears in the Source Information
+ section if the program does not contain debugging information or the exception occurred on an assembly instruction that does
+ not correspond to a source file.
+<br><br>The Registers and Flags sections display information in the CPU at the time of the exception.
+<br><br>The Instructions Around Fault section displays the assembly instructions surrounding the instruction that was being
+ executed when the fault occurred.&nbsp; An asterisk marks the instruction to which the CS:EIP is currently pointing.
+<br><br>When the Show Symbols box is checked, Dr.&nbsp; Watcom tries to replace addresses in the assembly code with symbolic
+ names.&nbsp; Dr.&nbsp; Watcom can only replace addresses if the faulting module contained debugging information.&nbsp; If
+ this box is not checked, addresses appear as numeric values.
+<h4 id="Win32__Dr__Watcom__Changing_the_Registers"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Changing the Registers </h4>
+<br>In the Process Status dialog you can set up testing and debugging situations by changing the values of the registers and
+ flags.&nbsp; To change a register value simply enter a new value in the edit field that contains the current register value.
+&nbsp; To change the state of a flag register just check or uncheck the check box associated with that flag.&nbsp; A flag
+ has a value of 1 when its check box is checked.
+<br><br>The register and flag values will not take effect until you choose OK on the Process Status dialog.
+<h4 id="Win32__Dr__Watcom__Applying_Registers"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Applying Registers </h4>
+<br>Selecting the Apply Registers button on the Process Status dialog after making changes to the registers and flags updates
+ the displayed information based on your changes.
+<h4 id="Win32__Dr__Watcom__Viewing_Memory"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Viewing Memory </h4>
+<br>Selecting the View Memory button in the Process Status dialog opens a Memory Walk window which allows you to view the
+ address space of the process that caused the exception.
+<br><br>The information in this window appears under the following headings:
+<dl>
+<dt>Base
+<dd>This is the address where this memory object begins.
+<dt><br>AllocBase
+<dd>The is the address where the allocation object begins.&nbsp; This tells you which allocation object a memory object belongs
+ to.
+<dt><br>Size
+<dd>This is the size of the memory object.
+<dt><br>Prot
+<dd>Codes indicating what you can do with the memory.&nbsp; The codes are:
+<ul>
+<li>RO-Read Only
+<li>NA-Not applicable
+<li>ExRO-Executable and Read Only
+<li>RW-Read, Write
+<li>WC-Write, Copy
+<li>Ex-Executable
+<li>ExRW-Executable, Read, Write
+<li>ExWC-Executable, Write, Copy
+</ul>
+<dt><br>State
+<dd>The state of the memory.&nbsp; Values are:
+<ul>
+<li>Free-range of addresses not being used
+<li>Committed-range of addresses refers to memory that exists
+<li>Reserved-this range of addresses has been set aside for future use but no memory exists for the addresses
+</ul>
+<dt><br>Object
+<dd>Information indicating what the memory is being used for.&nbsp; This field is only completed if Dr.&nbsp; Watcom can provide
+ useful information.
+<dt><br>Image
+<dd>The name of the module that owns the memory object.&nbsp; This field is only completed if Dr.&nbsp; Watcom can provide useful
+ information.
+</dl>
+<br>From this window you can select a memory object and view its contents.&nbsp; To view this information, double click on
+ the desired object.&nbsp; This opens a Memory Range window for the selected object.&nbsp; This window displays all of the
+ data stored in the selected object.&nbsp; The data appears in hexadecimal form.&nbsp; This window allows you to see if the
+ data in memory is what you believe it should be.
+<dl>
+<dt>Note:
+<dd>You can only view memory for an object whose state is Committed since there is no memory associated with other objects.
+</dl>
+<br>There are a number of functions you can perform in the Memory Range window.&nbsp; Following is a description of these
+ functions.
+<br><br></tt><b>Dr. Watcom: Saving Window Information</b></tt>
+<br>The Save items in the File menu on the Memory Range window allows you to save the currently displayed information to a
+ text file.&nbsp; Choosing Save from the File menu on the Memory Range window saves the data in the window into the current
+ working directory.&nbsp; A message box appears indicating the path to which Dr.&nbsp; Watcom saved the file.&nbsp; 
+<br><br>Choosing Save As from the File menu allows you to specify the file to which you want to save the data currently in
+ the window.&nbsp; This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.&nbsp;
+ A message box appears indicating the path to which Dr.&nbsp; Watcom saved the file.
+<br><br></tt><b>Dr. Watcom: Changing the Display</b></tt>
+<br>There are three ways to display the information in the Memory Range window.&nbsp; You can display the information as:
+<ul>
+<li>Bytes
+<li>Words
+<li>DWords
+</ul>
+<br>To change the form of the displayed data, select an item from the Display menu.&nbsp; When displaying data in bytes, the
+ data appears in the window as it physically appears in memory.&nbsp; When the data is displayed as words, the bytes in memory
+ are interpreted for you so that the values displayed are those that would be obtained by treating the memory as an array
+ of words.&nbsp; For example, if memory containing the values:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 12 34 56 78 9A BC DE FF</tt>
+<br><br>was shown as words, the memory window would display:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 3412 7856 BC9A FFDE</tt>
+<br><br>A similar interpretation is performed when the data is displayed as DWords.&nbsp; If the above memory was shown as
+ DWords, the memory window would display:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 78563412 FFDEBC9A</tt>
+<br><br>This rearrangement of bytes does not affect the textual interpretation of the data shown on the right hand side of
+ the window.
+<br><br></tt><b>Dr. Watcom: Setting the Offset</b></tt>
+<br>In the Memory Range window you can set the offset.&nbsp; This means that you can reposition the data so that specific
+ information appears at the top of the window.&nbsp; The offset you enter appears on the first line.&nbsp; It will not necessarily
+ be the first piece of information because rounding often occurs to avoid breaking a line.&nbsp; 
+<dl>
+<dt>(1)
+<dd><b> Choose Set Offset</b> from the menu bar on the Memory Display window.
+<br>This opens a Goto Offset dialog box.
+<dt><br>(2)
+<dd><b> Enter the desired offset</b> that you want to position at the top of the Memory Range window.&nbsp; You can enter the
+ offset in decimal or hexadecimal form.&nbsp; However, you must prefix hexadecimal values with 0x.
+<dt><br>(3)
+<dd><b> Click on OK.</b>&nbsp; This closes the dialog and positions the data as requested.
+</dl>
+<br><tt><img src="drw9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> In the Goto Offset dialog, enter the offset you want to appear at the top of
+ the Memory Display window.</b>
+<h2 id="Win32__Dr__Watcom__Working_with_Log_Files"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Working with Log Files </h2>
+<br>A log file is a text file created by Dr.&nbsp; Watcom.&nbsp; The log file consists of entries that describe the state
+ of the system at the time the entry was made.&nbsp; Dr.&nbsp; Watcom gives you the opportunity to create a log file entry
+ each time an exception occurs.&nbsp; Such entries include information about the state of the program that caused the exception,
+ as well as information about the state of the system.&nbsp; You can create a log file entry at any time using the Log Current
+ State menu item.&nbsp; Log entries made in this way only contain information about the state of the system.&nbsp; 
+<br><br>A log file is a permanent record of the state of the system and, possibly, your program.&nbsp; With a log file you
+ can make note of an error and return to it at a later time to examine and debug it.
+<h3 id="Win32__Creating_A_Log_File_Entry"> Win32:&nbsp; Creating A Log File Entry </h3>
+<br>You can create a log file entry at any time by selecting Log Current state from the Log menu or the system menu.&nbsp;
+ You can also create a log file entry when an exception occurs by choosing the Act and Log button on the Exception dialog.
+<br><br>When a log entry is created the following dialogs may be displayed:
+<ul>
+<li>Annotate Log
+<li>Memory Dump
+</ul>
+<h4 id="Win32__Using_the_Annotate_Log_Dialog"> Win32:&nbsp; Using the Annotate Log Dialog </h4>
+<br>When the Query for notes option in the Log Options dialog is selected, an Annotate Log dialog box appears whenever a log
+ entry is created.
+<br><br>In the space provided, enter any explanatory text that you want to include in the log file.&nbsp; Press OK when completed.
+&nbsp; This information appears under the heading &quot;User Notes&quot; at the beginning of the log file.
+<h4 id="Win32__Using_the_Memory_Dump_Dialog"> Win32:&nbsp; Using the Memory Dump Dialog </h4>
+<br>When the Memory Dump option in the Log Options dialog is selected, Dr.&nbsp; Watcom displays the Log Memory Dump dialog
+ whenever a log entry is created because of an exception.&nbsp; This dialog displays a list of all committed pages of memory
+ owned by the process that caused the exception.
+<br><br>This dialog allows you to select the memory objects you want to include in the log file entry.&nbsp; The data contained
+ in any memory object highlighted in the list box will be written to the log file.&nbsp; Clicking on an object in the list
+ box toggles it between selected and unselected.
+<br><br>The following buttons are available on the dialog:
+<dl>
+<dt>Select All
+<dd>Selects all memory for dumping to the log file
+<dt><br>Clear All
+<dd>De-selects all memory currently selected in the dialog
+<dt><br>Cancel
+<dd>Closes the dialog and continues writing to the log file but does not include information on any of the memory objects in the
+ dialog
+<dt><br>OK
+<dd>Closes the dialog and writes selected objects to the log file
+</dl>
+<h3 id="Win32__Viewing_the_Current_Log_File"> Win32:&nbsp; Viewing the Current Log File </h3>
+<br>Choosing View Log from the Log menu invokes an editor which allows you to view the current log file.&nbsp; You can select
+ this editor in the Log Viewer section of the Log Options dialog.
+<h3 id="Win32__Erasing_the_Log_File"> Win32:&nbsp; Erasing the Log File </h3>
+<br>To erase the current log file, choose Erase Log File from the Log menu.&nbsp; This erases the log file specified in the
+ Log Options dialog.
+<br><br>Choosing this item reveals a message box which asks you to verify that you want to erase the specified log file.&nbsp;
+ Select Yes to erase the log file or No to cancel the request.
+<h3 id="Win32__Customizing_the_Log_File"> Win32:&nbsp; Customizing the Log File </h3>
+<br>The Log Options item in the Log menu opens the Log Options dialog where you indicate to Dr.&nbsp; Watcom the information
+ you want to appear in log file entries.&nbsp; The Log Options item also appears in the system menu.
+<br><br><tt><img src="drw12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> In the Log Options dialog, you customize the log file to which you write information.</b>
+<br><br>The following sections describe the options that make up the Log Options dialog.
+<h4 id="Win32__Dr__Watcom__Naming_the_Log_File"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Naming the Log File </h4>
+<br>In the Log File field, you specify the file to which Dr.&nbsp; Watcom writes the log file entries.&nbsp; The Browse button
+ to the right of this field opens the Pick log file name dialog.&nbsp; This dialog lets you browse your file structure and
+ select the path to which Dr.&nbsp; Watcom writes the log file entries.
+<h4 id="Win32__Dr__Watcom__Choosing_the_Log_Viewer"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Choosing the Log Viewer </h4>
+<br>In the Log Viewer field, you specify the editor you want to invoke when you select View Log from the Log menu.&nbsp; The
+ Browse button to the right of this field opens the Pick log viewer dialog.&nbsp; This dialog lets you browse your file structure
+ and select the desired editor.
+<br><br>When View Log is selected from the Log menu, this editor will be invoked with the name of the log file passed as a
+ command line parameter.
+<h4 id="Win32__Dr__Watcom__Specifying_the_Log_File_Data"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Specifying the Log File Data </h4>
+<br>In the Log File Data and Disassembly Options sections of the Log Options dialog, you select the information you want to
+ appear in the log file.&nbsp; The Log File Data section lists the various types of information that can be included in a
+ log file.&nbsp; If the check box for a piece of information is marked then that type of information will be written to the
+ log file.&nbsp; The options in this section are:
+<dl>
+<dt>Memory Dump
+<dd>When this box is checked, a Memory Dump dialog is displayed whenever a log file entry is made.&nbsp; This dialog allows you
+ to select the regions of memory you want to dump into the log file and is discussed in the section entitled <a href="#Win32__Creating_A_Log_File_Entry">Win32:&nbsp; Creating A Log File Entry</a>.
+<br>This option only affects log file entries created because of an exception.
+<dt><br>Query for notes
+<dd>When this box is checked, an Annotate Log dialog is displayed whenever a log file entry is made.&nbsp; This dialog lets you
+ enter text to be included in the log file entry.&nbsp; The Annotate Log dialog is discussed in the section entitled <a href="#Win32__Creating_A_Log_File_Entry">Win32:&nbsp; Creating A Log File Entry</a>.
+<dt><br>Loaded modules
+<dd>When this box is checked, each log file entry includes a list of all modules loaded for each process running in the system.
+<dt><br>Current Processes
+<dd>When this box is checked, each log file entry includes a list of all processes currently running in the system, including
+ information about each process.
+<dt><br>Mem Manager Info
+<dd>When this box is checked, log file entries will include summary information on the memory usage of the process that caused
+ the exception.&nbsp; This option affects only log file entries created because of an exception.
+</dl>
+<br>The fields in the Disassembly Options section relate to the disassembly section appearing in the log file.&nbsp; These
+ fields affect only log file entries made because of exceptions.
+<ul>
+<li>The value in the Disasm Backup field tells Dr.&nbsp; Watcom the number of instructions before the fault you want written
+ to the log file.
+<li>The value in the Disasm Lines field tells Dr.&nbsp; Watcom the total number of instructions you want it to show in the
+ log file.&nbsp; This value includes the instructions displayed before the fault.
+</ul>
+<h4 id="Win32__Dr__Watcom__Other_Options"> Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Other Options </h4>
+<br>When the Auto Log option is selected, Dr.&nbsp; Watcom creates a log file when an exception occurs and then terminates
+ the application instead of revealing the exception dialog.
+<br><br>The Max Log File Size option allows you to set the maximum size in bytes for a log file.&nbsp; When the log file exceeds
+ this size, Dr.&nbsp; Watcom prompts you with a message box when you start the application.
+<br><br><tt><img src="drw14.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> A message box prompts you to erase the log file when it becomes larger than the
+ maximum log file size specified on the Log File Options dialog.</b>
+<br><br>This message box offers you the opportunity to delete your log file before it becomes uncontrollably large.
+<h2 id="Win32__Attaching_Processes_to_Dr__Watcom"> Win32:&nbsp; Attaching Processes to Dr.&nbsp; Watcom </h2>
+<br>Attaching processes to Dr.&nbsp; Watcom enables it to monitor events that occur within the processes.&nbsp; When processes
+ are attached, Dr.&nbsp; Watcom reports on events that occur within your process, such as DLL loads, thread creations, and
+ thread terminations.&nbsp; Attaching also allows Dr.&nbsp; Watcom to detect exceptions in your process.
+<br><br>There are four ways to attach processes to Dr.&nbsp; Watcom:
+<ul>
+<li>Command line
+<li>Add New process menu item
+<li>Auto Add Process feature
+<li>Process Control dialog
+</ul>
+<br>Dr.&nbsp; Watcom cannot detach from processes to which it is attached.&nbsp; The attachment exists until the process terminates.
+&nbsp; If you try to close Dr.&nbsp; Watcom while it is attached to processes, a warning box appears listing the processes
+ to which Dr.&nbsp; Watcom is still attached.
+<br><br>Select Yes or No to continue.
+<h3 id="Win32__Command_Line"> Win32:&nbsp; Command Line </h3>
+<br>You can run a program and attach Dr.&nbsp; Watcom to it at start-up by passing the path of the executable to Dr.&nbsp;
+ Watcom as a command line parameter.&nbsp; For example, to run the program<tt> foo.exe</tt> and attach Dr.&nbsp; Watcom to
+ it, type:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; drwatcom foo.exe</tt>
+<br><br>If you often want to run a certain program with Dr.&nbsp; Watcom attached to it then you can create a Program Manager
+ icon that runs Dr.&nbsp; Watcom with the name of the program as a command line parameter.
+<br><br>Double clicking on the icon when Dr.&nbsp; Watcom is not running causes Dr.&nbsp; Watcom to start-up.&nbsp; Dr.&nbsp;
+ Watcom then starts the specified process and attaches to it immediately.
+<br><br>Double clicking on the icon when there is already an instance of Dr.&nbsp; Watcom running causes the existing instance
+ of Dr.&nbsp; Watcom to run the specified process and attach to it.&nbsp; The second Dr.&nbsp; Watcom terminates immediately
+ so that only one instance of Dr.&nbsp; Watcom is left running.
+<h3 id="Win32__Add_New_Process"> Win32:&nbsp; Add New Process </h3>
+<br>The Add New Process item in the Process menu is another way to start a new process and attach to it immediately.
+<dl>
+<dt>To start a new process using this item:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Add New Process</b> from the Process menu.
+<br>This opens the Load Process dialog where you browse the file structure.
+<dt><br>(2)
+<dd><b> Select the program</b> you want to start with Dr.&nbsp; Watcom attached.
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>This runs the selected program and attaches to it immediately.
+</dl>
+<h3 id="Win32__Auto_Add_Processes"> Win32:&nbsp; Auto Add Processes </h3>
+<br>Checking the Auto Add Process item in the Process menu tells Dr.&nbsp; Watcom to attach to all new processes that start
+ in the system.&nbsp; When you activate this feature, Dr.&nbsp; Watcom checks the system every few seconds for new processes.
+&nbsp; When it finds them, it attaches to them.&nbsp; Dr.&nbsp; Watcom will not automatically attach to processes that began
+ before the Auto Add Process item was checked.
+<br><br>The disadvantage of this feature is that in the few seconds between Dr.&nbsp; Watcom's process checks, your process
+ can start-up, run, and possibly cause an exception.&nbsp; When this occurs, a system dialog box appears reporting the error.
+&nbsp; Selecting OK on this dialog immediately may not allow Dr.&nbsp; Watcom sufficient time to attach to the faulting process.
+&nbsp; Wait for a few seconds and select the OK button on this dialog.&nbsp; The dialog closes and Dr.&nbsp; Watcom attaches
+ to the faulting process.&nbsp; The Dr.&nbsp; Watcom exception dialog then appears and you can proceed as usual.
+<dl>
+<dt>Note:
+<dd>Occasionally, when this feature is active a message box may appear saying, &quot;An unexpected failure occurred while processing
+ a DebugActiveProcess API request.&nbsp; You may choose OK to terminate the process or Cancel to ignore the error&quot;.&nbsp;
+ This message results from a known limitation in Win32.&nbsp; If it appears simply choose Cancel.
+</dl>
+<h3 id="Win32__Process_Control"> Win32:&nbsp; Process Control </h3>
+<br>Using the Add Process button on the Process Control dialog, you can attach Dr.&nbsp; Watcom to any process that is currently
+ running in the system.
+<dl>
+<dt>To do this follow these instructions:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Process Control</b> from the Process menu or the system menu.
+<br>This opens the Process Control dialog which lists all processes currently running under Windows.
+<dt><br>(2)
+<dd><b> Click on the process</b> to which you want Dr.&nbsp; Watcom to attach.&nbsp; You can only select one process at a time.
+<dt><br>(3)
+<dd><b> Select the Add Process</b> button.
+<br>This attaches Dr.&nbsp; Watcom to the selected process.&nbsp; An asterisk appears to the left of this process indicating
+ that Dr.&nbsp; Watcom is currently attached to it.
+</dl>
+<h2 id="Win32__Performing_Process_Control"> Win32:&nbsp; Performing Process Control </h2>
+<br>Selecting Process Control from the process menu or the system menu opens the Process Control dialog.&nbsp; This dialog
+ lists all processes currently running under Windows.&nbsp; Any process to which Dr.&nbsp; Watcom is attached is marked with
+ an asterisk.&nbsp; When you select a process by clicking on it, the Selected Process section of the dialog displays its Process
+ ID, Name, and Priority.
+<br><br>The Refresh button on this dialog updates the displayed process information.
+<br><br>From this dialog you can perform several functions.&nbsp; This section describes each function.
+<dl>
+<dt>Important:
+<dd>The Process Control functions are extremely powerful and give you the ability to perform functions that can make the operating
+ system unstable.&nbsp; Because of this, it is wise to save information before you attempt to use the Process Control functions.
+</dl>
+<h3 id="Win32__Setting_the_Process_Priority"> Win32:&nbsp; Setting the Process Priority </h3>
+<br>Each process in the system has an assigned priority class.&nbsp; This priority class establishes the schedule for running
+ processes.&nbsp; The Set Priority button on the process Control dialog allows you to assign a priority to the selected process.
+<dl>
+<dt>To set a process's priority:
+<dd>
+<dt><br>(1)
+<dd><b> Select the process</b> from the Process List to which you want to assign a priority.
+<dt><br>(2)
+<dd><b> Select the Set Priority</b> button.&nbsp; 
+<br>This opens the Set Process Priority dialog which displays the priority classes:&nbsp; idle, normal, high, and real time.
+<dt><br>(3)
+<dd><b> Select the desired priority</b> for the selected process.
+<dt><br>(4)
+<dd><b> Click on OK</b> to assign the priority and close the Set Process Priority dialog.
+</dl>
+<h3 id="Win32__Terminating_a_Process"> Win32:&nbsp; Terminating a Process </h3>
+<br>The Kill Process button on the Process Control dialog terminates a process selected from the Process List in the Process
+ Control dialog.
+<dl>
+<dt>To terminate a process:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Process Control</b> from the Process menu.
+<br>This opens the Process Control dialog containing a list of all processes currently running in the system.
+<dt><br>(2)
+<dd><b> Click once on the process</b> you want to terminate to select it.
+<dt><br>(3)
+<dd><b> Select the Kill Process</b> button.
+<br>This terminates the selected process.&nbsp; The process's entry in the list may not be removed until you select the Refresh
+ button.
+</dl>
+<h3 id="Win32__Viewing_the_Threads_for_a_Process"> Win32:&nbsp; Viewing the Threads for a Process </h3>
+<br>A process is made up of one or more threads.&nbsp; The View Threads button in the Process Control dialog opens a Thread
+ Control dialog that lets you view and manipulate the threads for the selected process.&nbsp; With this dialog, you can terminate,
+ suspend, and resume threads.
+<dl>
+<dt>To view the threads for a process:
+<dd>
+<dt><br>(1)
+<dd><b> Select the process</b> from the Process List whose threads you want to view.
+<dt><br>(2)
+<dd><b> Select the View Threads</b> button from the Process Control dialog.
+<br>This opens the Thread Control dialog which displays the threads that make up the selected process.
+</dl>
+<br>Selecting a thread from the Threads list displays information for that thread in the Selected Thread section of the dialog.
+&nbsp; This information is:
+<dl>
+<dt>tid (Thread Id)
+<dd>A unique identifier assigned by the operating system to each thread in the system.
+<dt><br>State
+<dd>Indicates the current state of the thread.&nbsp; This tells you if the thread is currently ready for execution or if it is
+ waiting for some event.
+<dt><br>Priority
+<dd>The thread's current priority class
+</dl>
+<br>Use the Refresh button to update the information displayed in the Thread Control dialog.
+<h4 id="Win32__Terminating_a_Thread"> Win32:&nbsp; Terminating a Thread </h4>
+<br>Use the Kill Thread button to terminate a thread.
+<br><br>To terminate a thread, select the desired thread from the Threads list and select the Kill Thread button.
+<h4 id="Win32__Suspending_a_Thread"> Win32:&nbsp; Suspending a Thread </h4>
+<br>Each thread has a suspend count.&nbsp; A thread can only be scheduled for execution when its suspend count is zero.&nbsp;
+ To increment a thread's suspend count, select the thread on the list in the Thread Control dialog and press the Suspend button.
+<h4 id="Win32__Resuming_a_Thread"> Win32:&nbsp; Resuming a Thread </h4>
+<br>Each thread has a suspend count.&nbsp; A thread can only be scheduled for execution when its suspend count is zero.&nbsp;
+ To decrement a thread's suspend count, select the thread on the list in the Thread Control dialog and press the Resume button.
+<h3 id="Win32__Viewing_the_Memory_for_a_Process"> Win32:&nbsp; Viewing the Memory for a Process </h3>
+<br>Selecting the View Memory button on the Process Control dialog opens a Memory Walk window for the currently selected process.
+&nbsp; For information on this window, see the section entitled <a href="#Win32__Dr__Watcom__Viewing_Memory">Win32:&nbsp; Dr.&nbsp; Watcom:&nbsp; Viewing Memory</a>.
+<h3 id="Win32__Summarizing_Process_Memory_Usage"> Win32:&nbsp; Summarizing Process Memory Usage </h3>
+<br>Selecting the Memory Info button on the Process Control dialog opens a Memory Information dialog box.&nbsp; This dialog
+ provides a breakdown of the memory usage for the process selected from the Process List.
+<br><br>To view this memory information, select the desired process from the Process List and select the Memory Info button.
+<br><br>The Memory Information dialog displays information in the following sections:
+<ul>
+<li>Mapped and Committed memory
+<li>Reserved Memory
+<li>Memory Usage by Module (Address Space)
+</ul>
+<br>The Mapped and Committed section displays the amount of committed memory the application is using broken down by its protection.
+<br><br>The Reserved section displays the amount a memory reserved but not yet committed.&nbsp; This information is broken
+ down by its protection.
+<br><br>In the Address Space section of this dialog, you can view the memory usage of each module that the selected process
+ currently has loaded.&nbsp; The combo box in this section lists all modules the process has loaded.&nbsp; Selecting a module
+ from the combo box displays a summary of its memory usage.&nbsp; Selecting the All Images item in the combo box displays
+ the total memory usage by all loaded modules listed in the combo box.
+<br><br>Use the Refresh button to update the information displayed in the Memory Information dialog box.
+</body>

@@ -1,0 +1,470 @@
+<head>
+<title> Open Watcom 1.9 Resource Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- C -
+<dd><a href="#Copying_Into_an_Existing_Resource_File">Copying Into an Existing Resource File</a>
+<br><a href="#Creating_a_New_Resource">Creating a New Resource</a>
+<br><a href="#Creating_a_New_Resource_File_with_the_Resource_Editor">Creating a New Resource File with the Resource Editor</a>
+<dt><br>- D -
+<dd><a href="#Deleting_a_Resource">Deleting a Resource</a>
+<dt><br>- E -
+<dd><a href="#Editing_an_Existing_Resource">Editing an Existing Resource</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Resource_Editor">The Open Watcom Resource Editor</a>
+<br><a href="#Opening_an_Existing_Resource_File_with_the_Resource_Editor">Opening an Existing Resource File with the Resource Editor</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_Resource_Editor">Quitting the Resource Editor</a>
+<dt><br>- R -
+<dd><a href="#Renaming_a_Resource">Renaming a Resource</a>
+<br><a href="#The_Resource_Editor_Menu_Bar">The Resource Editor Menu Bar</a>
+<br><a href="#The_Resource_Editor_Toolbar">The Resource Editor Toolbar</a>
+<br><a href="#Resource_Editor__Changing_Memory_Options">Resource Editor:&nbsp; Changing Memory Options</a>
+<br><a href="#Resource_Editor__Save">Resource Editor:&nbsp; Save</a>
+<br><a href="#Resource_Editor__Save_As">Resource Editor:&nbsp; Save As</a>
+<dt><br>- S -
+<dd><a href="#Saving_a_Resource">Saving a Resource</a>
+<br><a href="#Saving_a_Resource_File_with_the_Resource_Editor">Saving a Resource File with the Resource Editor</a>
+<br><a href="#Saving_to_a_New_Resource_File">Saving to a New Resource File</a>
+<br><a href="#Saving_to_an_Existing_Resource_File">Saving to an Existing Resource File</a>
+<br><a href="#Starting_the_Resource_Editor">Starting the Resource Editor</a>
+<dt><br>- U -
+<dd><a href="#Using_Shortcuts_to_Create_a_Resource">Using Shortcuts to Create a Resource</a>
+<br><a href="#Using_the_Open_Watcom_Resource_Editor">Using the Open Watcom Resource Editor</a>
+<dt><br>- W -
+<dd><a href="#Working_with_Resource_Files">Working with Resource Files</a>
+<br><a href="#Working_with_Resources">Working with Resources</a>
+</dl>
+<h1 id="The_Open_Watcom_Resource_Editor"> The Open Watcom Resource Editor </h1>
+<br>The Open Watcom Resource Editor is a full-featured editor that enables you to easily create and edit resources and the
+ files that contain them.&nbsp; A file containing one or more resources will generally be referred to as a resource file.
+&nbsp; A resource file may be an executable (.EXE), resource file (.RES), dynamic link library (.DLL), bitmap file (.BMP),
+ cursor file (.CUR), or icon file (.ICO).&nbsp; The editor also supports a variety of resource scripts.&nbsp; They include
+ dialog (.DLG), accelerator (.ACC), menu (.MNU), and string (.STR) scripts.&nbsp; This support is accomplished by maintaining
+ a synchronized resource file (.RES) in the same directory as the resource script.&nbsp; Opening a resource file reveals a
+ Resource window in the Resource Editor window.&nbsp; This window is a visual representation of the resource file.
+<br><br>A resource is a piece of data with a specific format that Windows uses to create the visual and interactive elements
+ of your application.&nbsp; Most of the visual aspects of Windows applications are the result of the application having resources,
+ all of which can be created using the Open Watcom Resource Editor.&nbsp; Use the Resource Editor to create and edit the following
+ resource types:
+<ul>
+<li>Accelerators
+<li>Bitmaps
+<li>Cursors
+<li>Dialogs
+<li>Icons
+<li>Menus
+<li>Strings
+</ul>
+<br>When designing your application's user interface, the resources are separate from the application's source code.&nbsp;
+ This makes changing the user interface a simple task.&nbsp; Instead of accessing the application's source code, you can make
+ the changes directly to the resources.&nbsp; You can manipulate some aspects of the resources, such as the memory flags and
+ resource names, without invoking the resource's associated editor.&nbsp; Invoking the desired editor from the Resource Editor
+ enables you to change all aspects of the selected resource.
+<br><br>Different applications often use the same or similar resources, such as bitmaps, icons, dialogs, and menus.&nbsp;
+ The Resource Editor enables you to create resource files for a new application by reusing existing resources.&nbsp; Copying
+ a resource from existing applications into the new resource file makes the task of creating your user interface quick and
+ simple.
+<h2 id="Using_the_Open_Watcom_Resource_Editor"> Using the Open Watcom Resource Editor </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Resource Editor
+<li>Quitting the Resource Editor
+<li>The Resource Editor Menu Bar
+<li>The Resource Editor Toolbar
+</ul>
+<h3 id="Starting_the_Resource_Editor"> Starting the Resource Editor </h3>
+<br>To start the Resource Editor, double click on the Resource Editor icon in your Windows Program Manager.&nbsp; The Open
+ Watcom Resource Editor window opens.
+<br><br><tt><img src="res1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Open Watcom Resource Editor window acts as a workspace where you work with
+ resources.</b>
+<h3 id="Quitting_the_Resource_Editor"> Quitting the Resource Editor </h3>
+<br>To exit the Resource Editor, choose Exit from the File menu of the Open Watcom Resource Editor window.&nbsp; If you made
+ changes to the current file, a message box appears prompting you to save the changes.&nbsp; Select Yes to save the file and
+ exit the Resource Editor, No to exit the Resource editor without saving the file, or Cancel to return to the Resource editor.
+<br><br><tt><img src="res2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> As a safety feature, a message box appears when you select Exit from the File
+ menu without saving a modified resource file.</b>
+<h3 id="The_Resource_Editor_Menu_Bar"> The Resource Editor Menu Bar </h3>
+<br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Open a new or existing resource file, save the current resource file, and exit the Resource Editor
+<dt><br>Edit
+<dd>Access the clipboard functions, delete the selected resource, and set the Resource Editor options
+<dt><br>Resource
+<dd>Open a new resource and work with existing resources
+<dt><br>Window
+<dd>Customize the Resource Editor workspace
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<br>To see the function of a menu item, hold the mouse button and drag the cursor over the desired menu item.&nbsp; A description
+ of the item appears in the status line at the bottom of the screen.&nbsp; If you do not want to select the menu item, drag
+ the cursor off of the menu item before releasing the mouse button.
+<h3 id="The_Resource_Editor_Toolbar"> The Resource Editor Toolbar </h3>
+<br>In the Open Watcom Resource Editor window, the toolbar appears below the menu bar.&nbsp; When the toolbar is shown, choose
+ Hide Toolbar from the Window menu to hide it.&nbsp; When the toolbar is hidden, you can display it by choosing Show Toolbar
+ from the Window menu.
+<br><br><tt><img src="res3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> You can access six Resource Editor functions from the toolbar.</b>
+<br><br>The following explains the function each toolbar button performs, as well as the equivalent menu item.
+<dl>
+<dt>CREATE
+<dd>Create a new resource file.&nbsp; This is equivalent to the New item in the File menu.
+<dt><br>OPEN
+<dd>Open an existing resource file.&nbsp; This is equivalent to the Open item in the File menu.
+<dt><br>SAVE
+<dd>Save the resource file.&nbsp; This is equivalent to the Save item in the File menu.
+<dt><br>CUT
+<dd>Cut the selected resource to the clipboard.&nbsp; This is equivalent to the Cut item in the Edit menu.
+<dt><br>COPY
+<dd>Copy the selected resource to the clipboard.&nbsp; This is equivalent to the Copy item in the Edit menu.
+<dt><br>PASTE
+<dd>Paste the resource on the clipboard to the specified resource file.&nbsp; This is equivalent to the Paste item in the Edit
+ menu.
+</dl>
+<br>To see the function of an item in the toolbar, position your cursor over the desired button.&nbsp; A description of the
+ button's function appears in the status line at the bottom of the window.
+<h2 id="Working_with_Resource_Files"> Working with Resource Files </h2>
+<br>In the Open Watcom Resource Editor, the items in the File menu apply to resource file.&nbsp; These items enable you to
+ perform the following functions:
+<ul>
+<li>Creating a New Resource File
+<li>Opening an Existing Resource File
+<li>Saving a Resource File
+</ul>
+<h3 id="Creating_a_New_Resource_File_with_the_Resource_Editor"> Creating a New Resource File with the Resource Editor </h3>
+<br>Create a new resource file each time you need a file to hold a collection of resources.&nbsp; You can create the resources
+ and add them to the new file or you can copy existing resources from another file and place them in the new file.
+<br><br><tt><img src="res4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> Choosing New opens an untitled and empty Resource window into which you can store
+ resources.</b>
+<br><br>To create a new resource file, choose New from the File menu in the Open Watcom Resource Editor window.&nbsp; An untitled
+ and empty Resource dialog appears on the screen.&nbsp; From here, you can begin adding resources to the resource file.&nbsp;
+ You can also open an existing resource file and copy selected resources to the new file.&nbsp; The file remains untitled
+ until you save it and assign it a file name.
+<h3 id="Opening_an_Existing_Resource_File_with_the_Resource_Editor"> Opening an Existing Resource File with the Resource Editor </h3>
+<br>Open an existing resource file to view the resources for that file or perform functions on the file's resources.
+<br><br><tt><img src="res5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> Choosing Open permits you to access resources in an existing file.</b>
+<dl>
+<dt>To open an existing resource file:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Open from the File menu</b> in the Open Watcom Resource Editor window.
+<br>An Open File dialog appears where you select the file you want to open.
+<dt><br>(2)
+<dd><b> Double click on the desired file</b>
+<br>or
+<dt><br>
+<dd><b> Click on the desired file</b> to select it, then<b> click on OK</b>.
+<br>The Open File dialog closes and a Resource dialog for the selected resource file appears in the Resource Editor window.
+&nbsp; This dialog displays a button representing each type of resource that exists in the resource file.&nbsp; Clicking on
+ the resource buttons displays a list of the resources of that type in the resource file.
+<br><br>From here, you can perform any of the functions in the section entitled <a href="#Working_with_Resources">Working with Resources</a>.
+</dl>
+<h3 id="Saving_a_Resource_File_with_the_Resource_Editor"> Saving a Resource File with the Resource Editor </h3>
+<br>There are two menu items that you can use to save resource files with the Resource Editor:
+<ul>
+<li>Save
+<li>Save As
+</ul>
+<dl>
+<dt>Important:
+<dd>You can have several resource files open in the Resource Editor window at one time.&nbsp; The caption bar of the currently
+ selected resource file appears highlighted.&nbsp; Only this window is affected when you choose Save or Save As from the File
+ menu.
+</dl>
+<h4 id="Resource_Editor__Save"> Resource Editor:&nbsp; Save </h4>
+<br><b>Choose Save</b> from the File menu in the Open Watcom Resource Editor window to save any changes made to the resource
+ file.
+<br><br>If the file is new and previously unsaved, refer to the section entitled <a href="#Resource_Editor__Save_As">Resource Editor:&nbsp; Save As</a>.
+<br><br>After modifying individual resources, you perform an update at the resource level.&nbsp; The resource file and its
+ resources are not saved until you select Save from File menu of the Resource Editor.&nbsp; The Resource Editor prompts you
+ if you attempt to exit the editor without saving changes.&nbsp; Choose Yes to save the file and exit the Resource Editor,
+ No to exit the Resource Editor without saving the file, or Cancel to return to the Resource Editor.
+<h4 id="Resource_Editor__Save_As"> Resource Editor:&nbsp; Save As </h4>
+<dl>
+<dt>To save a resource file to another file:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Save As</b> from the File menu in the Open Watcom Resource Editor window to save any changes made to the resource
+ file.
+<br>A Save File dialog appears where you specify the file to which you want to save the current resource file.
+<dt><br>(2)
+<dd><b> Specify the file</b> to which you are saving by selecting an existing file or entering the name of a new file.
+<dt><br>(3)
+<dd><b> Click on OK</b> when completed.
+<br><tt><img src="res6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> A Save File message box appears when you attempt to save the current resource
+ file to an existing file.</b>
+<br><br>The dialog closes and the Resource Editor saves the resource file, returning you to the Resource Editor window.
+<dl>
+<dt>Note:
+<dd>If you attempt to save the current resource file to an existing file, a Save File window appears informing you that the selected
+ file already exists.&nbsp; Choosing Yes on this dialog overwrites the selected existing file with the contents of the current
+ resource file.
+</dl>
+<br>The dialog closes and the Resource Editor saves the resource file, returning you to the Resource Editor window.
+<br><br>The dialog closes and the Resource Editor saves the resource file, returning you to the Resource Editor window.
+</dl>
+<h2 id="Working_with_Resources"> Working with Resources </h2>
+<br>The items in the Edit and Resource menus in the Open Watcom Resource Editor window enables you to perform functions on
+ resources within a resource file.&nbsp; To use these functions, a resource file must be open in the workspace.&nbsp; This
+ resource file can be empty or can contain existing resources.&nbsp; The functions you can perform are:
+<ul>
+<li>Creating a New Resource
+<li>Editing an Existing Resource
+<li>Saving a Resource
+<li>Using Shortcuts to Create a Resource
+<li>Deleting a Resource
+<li>Renaming a Resource
+<li>Changing Memory and Load Options
+</ul>
+<h3 id="Creating_a_New_Resource"> Creating a New Resource </h3>
+<br>From the Open Watcom Resource Editor window, you can create any of the following resources:
+<ul>
+<li>Accelerator
+<li>Bitmap
+<li>Cursor
+<li>Dialog
+<li>Icon
+<li>Menu
+<li>String
+</ul>
+<br>To create a new resource, choose the type of resource from the cascading menu that appears when you choose New from the
+ Resource Menu.&nbsp; The editor for the selected resource type appears on the screen on top of the Resource Editor window.
+&nbsp; From here, create the desired resource, referring to the appropriate editor section in this guide for more information.
+<h3 id="Editing_an_Existing_Resource"> Editing an Existing Resource </h3>
+<br>From the Resource Editor window, you can select any resource within a resource file and edit it by opening the editor
+ with which the resource was created.&nbsp; This makes editing resources efficient as you have access to every resource in
+ a resource file and you can invoke the appropriate editor quickly.
+<dl>
+<dt>To edit an existing resource:
+<dd>
+<dt><br>(1)
+<dd><b> Select the desired resource file</b> on the Resource Editor window by selecting the appropriate Resource window.
+<br>This is the resource file whose resource you want to edit.
+<dt><br>(2)
+<dd><b> Select the resource type</b> by selecting on the appropriate line in the type listbox.
+<br>A list of all resources of the selected type for this resource file appears in the Resource listbox.
+<br><br><tt><img src="res7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> Each resource type contained in the resource file appears in the Types listbox.</b>
+<dt><br>(3)
+<dd><b> Double click on the resource you want to edit</b>
+<br>or
+<dt><br>
+<dd><b> Select the desired resource,</b> then<b> choose Edit from the Resource menu</b>
+<br>or
+<dt><br>
+<dd><b> Select the desired resource,</b> then<b> press ENTER</b>.
+<br>The appropriate editor for the selected resource opens on top of the Resource Editor window.&nbsp; Use this editor to
+ make changes to the selected resource.
+<dt><br>(4)
+<dd>Refer to the appropriate editor section in this guide for information on using the editor to edit the selected resource.
+</dl>
+<h3 id="Saving_a_Resource"> Saving a Resource </h3>
+<br>The Save As menu item in the Resource menu enables you to save a resource to a new or existing resource file.&nbsp; Saving
+ a resource to an existing resource file replaces the existing resources for that resource file with the resource you are
+ saving.&nbsp; You can save only one resource at a time with this function.
+<dl>
+<dt>(1)
+<dd><b> Select the desired resource.</b>
+<br>You can select only one resource at a time and the selected resource appears highlighted.&nbsp; This is the resource you
+ want to save to another resource file.
+<dt><br>(2)
+<dd><b> Choose Save As</b> from the Resource menu.
+<br>A Save Resource dialog appears where you specify the resource file to which you are saving the selected resource.
+<dt><br>(3)
+<dd><b> Specify the file to which you are saving</b> by selecting an existing file or entering the name of a new file.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>How you proceed from here depends on whether you are saving the resource to a new or existing resource file.
+</dl>
+<h4 id="Saving_to_a_New_Resource_File"> Saving to a New Resource File </h4>
+<br>Once you enter the name of the new resource file to which you are saving the selected resource and click on OK in the
+ Save Resource dialog, the dialog closes.
+<h4 id="Saving_to_an_Existing_Resource_File"> Saving to an Existing Resource File </h4>
+<br>When you choose an existing file from the Save Resource dialog, a Save Resource message box appears on the screen.&nbsp;
+ This message box informs you that the selected file already exists and asks if you want to replace the existing file.
+<br><br><tt><img src="res8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> A Save File As message box appears when you attempt to save the current resource
+ file to an existing file.</b>
+<dl>
+<dt>To cancel the save:
+<dd>
+<dt><br>(1)
+<dd><b> Choose No</b>
+<br>The Save Resource dialog reappears.
+<dt><br>(2)
+<dd><b> Select another file</b> to which you can save the selected resource
+<br>or
+<dt><br>
+<dd><b> Cancel the save function</b>
+<br>The dialog closes and the Resource Editor returns you to the Resource Editor window.
+</dl>
+<dl>
+<dt>To replace the existing file:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Yes</b> to replace the contents of the existing resource file with the selected resource.
+<br>The dialog closes and the Resource Editor saves the resource file, returning you to the Resource Editor window.
+</dl>
+<h4 id="Copying_Into_an_Existing_Resource_File"> Copying Into an Existing Resource File </h4>
+<br>The Copy To function enables you to copy the selected resource into an existing resource file.&nbsp; This does not remove
+ the resource from its current resource file and it does not delete the resources in the existing resource file, as in the
+ Save As function.
+<dl>
+<dt>To copy a resource to another resource file:
+<dd>
+<dt><br>(1)
+<dd><b> Select the desired resource.</b>
+<br>The selected resource appears highlighted in the Resource window.&nbsp; This is the resource you want to copy to another
+ resource file.&nbsp; Copying a resource does not remove it from its current resource file.
+<dt><br>(2)
+<dd><b> Choose Copy To from the Resource menu.</b>
+<br>A Copy Resource Into File dialog appears where you select an existing resource file to which you want to copy the selected
+ resource.
+<br><br><tt><img src="res9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> In the Copy Resource Into File dialog, select the resource file to which you
+ want to copy the selected resource.</b>
+<dt><br>(3)
+<dd><b> Double click on the desired resource file</b>
+<br>or
+<dt><br>
+<dd><b> Click on the desired resource file</b> to select it, then<b> click on OK</b>.
+<br>The Resource Editor copies the resource to the selected resource file.&nbsp; The dialog closes and you return to the Open
+ Watcom Resource Editor window.
+<dl>
+<dt>Note:
+<dd>If the resource file to which you copied the selected resource is open on the Resource Editor window, the copied resource
+ will not appear.&nbsp; To view the updated resource file, simply open that resource file again.&nbsp; The copied resource
+ now appears in the Resource window for the resource file.
+</dl>
+</dl>
+<h3 id="Using_Shortcuts_to_Create_a_Resource"> Using Shortcuts to Create a Resource </h3>
+<br>The Edit menu on the Open Watcom Resource Editor window contains some standard Windows items that you can use to quickly
+ create resources.&nbsp; The items are:
+<ul>
+<li>Cut
+<li>Copy
+<li>Paste
+</ul>
+<br>These items allow you to cut or copy selected resources from one resource file, then open a second resource file and paste
+ them into it.&nbsp; You can also paste them directly into the appropriate editor.
+<dl>
+<dt>Cut
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource</b> you want to cut to the clipboard.
+<br>The selected resource appears highlighted in the Resource window.
+<dt><br>(2)
+<dd><b> Choose Cut</b> from the Edit menu of the Resource Editor window.
+<br>The Resource Editor removes the selected resource from the Resource window and places it on the clipboard.
+</dl>
+<br>Refer to<b> Paste</b> in this section for details on pasting information from the clipboard.
+<dl>
+<dt>Copy
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource</b> you want to copy to the clipboard.
+<br>The selected resource appears highlighted in the Resource window.
+<dt><br>(2)
+<dd><b> Choose Copy</b> from the Edit menu of the Resource Editor window.
+<br>The Resource Editor copies the selected resource to the clipboard.
+</dl>
+<br>Refer to<b> Paste</b> in this section for details on pasting information from the clipboard.
+<dl>
+<dt>Paste
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource file in which you want to paste the resource</b> that is currently on the clipboard.
+<dt><br>(2)
+<dd><b> Choose Paste</b> from the Edit menu of the Resource Editor window.
+<br>The Resource Editor places the resource from the clipboard into the current resource file in the Resource Editor window.
+</dl>
+<h3 id="Deleting_a_Resource"> Deleting a Resource </h3>
+<br>The Delete item in the Edit menu enables you to quickly delete resources from a resource file.
+<dl>
+<dt>To delete an object from a resource file:
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource you want to delete</b> from a resource file on the Resource Editor window.
+<br>The selected resource appears highlighted in the Resource window.
+<dt><br>(2)
+<dd><b> Choose Delete</b> from the Edit menu.
+<br>or
+<dt><br>
+<dd><b> Press the Delete key</b> on the keyboard.
+<br>A Delete Resource dialog box appears displaying the name of the resource chosen to delete.
+<br><br><tt><img src="res10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> The Delete Resource dialog prompts you to verify that you want to delete the
+ resource indicated.</b>
+<dt><br>(3)
+<dd><b> Click on OK</b> to delete the selected resource.
+<br>The Delete Resource dialog closes and the Resource Editor removes the selected dialog from the Resource window.
+</dl>
+<dl>
+<dt>Note:
+<dd>Choosing Cancel on the Delete Resource dialog cancels the deletion and returns you to the Resource Editor window.
+</dl>
+<h3 id="Renaming_a_Resource"> Renaming a Resource </h3>
+<br>You can change the name of a resource from either the Resource Editor or from the editor in which the resource was created.
+<dl>
+<dt>To rename a resource:
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource you want to rename.</b>
+<dt><br>(2)
+<dd><b> Choose Rename</b> from the Resource menu in the Open Watcom Resource Editor window.
+<br>A Rename Resource dialog appears containing two fields:
+<ul>
+<li>Old Name
+<li>New Name
+</ul>
+<br><tt><img src="res11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> In the Rename Resource dialog, you enter the new name of the selected resource.</b>
+<dt><br>(3)
+<dd><b> Enter the new name for the resource</b> in the New Name field.
+<dt><br>(4)
+<dd><b> Click on OK</b> to close the Rename Resource dialog.
+<br>The dialog closes and the new resource name appears in the Resource window.&nbsp; The Resource Editor automatically reorders
+ the resources into alphabetical order.
+</dl>
+<h3 id="Resource_Editor__Changing_Memory_Options"> Resource Editor:&nbsp; Changing Memory Options </h3>
+<br>The Memory Flags item in the Resource menu of the Resource Editor window enables you to change the memory options for
+ the selected resource without opening the editor for that resource.&nbsp; These options indicate the memory type and loading
+ instructions for the resource.
+<dl>
+<dt>To set the memory options for a resource:
+<dd>
+<dt><br>(1)
+<dd><b> Select the resource</b> whose memory options you want to change.
+<dt><br>(2)
+<dd><b> Choose Memory Flags</b> from the Resource menu in the Open Watcom Resource Editor window.
+<br>The Memory Options dialog opens displaying the current memory options for the selected resource.
+<br><br><tt><img src="res12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> In the Memory Options dialog, you change the memory options for the selected
+ resource.</b>
+<dt><br>(3)
+<dd><b> Select the required flags</b> in the Memory Options and Load Options sections of the dialog by clicking on the check box
+ or radio button beside the appropriate field.
+<br>Following is a description of each option.
+<dl>
+<dt>Moveable
+<dd>Selecting this option marks this resource to be stored in moveable memory when it is loaded by an application.
+<dt><br>Discardable
+<dd>Selecting this option marks this resource to be stored in discardable memory when it is loaded by an application.
+<dt><br>Pure
+<dd>When marked as Pure, Windows does not allow the memory into which the resource is loaded to be modified.
+<dt><br>Preload
+<dd>All resources marked as Preload are loaded when the application for which the resource is created is loaded.
+<dt><br>LoadOnCall
+<dd>Resources marked as LoadOnCall are loaded only when an application issues a call to load them.
+</dl>
+</dl>
+</body>

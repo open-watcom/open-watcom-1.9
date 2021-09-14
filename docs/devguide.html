@@ -1,0 +1,994 @@
+<head>
+<title> Open Watcom 1.9 Developer's Guide </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- 3 -
+<dd><a href="#32Mbit_Windows_runMtime_DLLs">32-bit Windows run-time DLLs</a>
+<dt><br>- B -
+<dd><a href="#The_bld_directory">The bld directory</a>
+<br><a href="#Build_Architecture">Build Architecture</a>
+<br><a href="#Build_Process">Build Process</a>
+<br><a href="#Builder">Builder</a>
+<br><a href="#Building_Online_Help_Documentation">Building Online Help Documentation</a>
+<br><a href="#Building_PostScript_Documentation">Building PostScript Documentation</a>
+<dt><br>- C -
+<dd><a href="#The_Clean_Target">The Clean Target</a>
+<br><a href="#Connecting_up">Connecting up</a>
+<dt><br>- D -
+<dd><a href="#Diagnostic_Messages">Diagnostic Messages</a>
+<br><a href="#DLLs_and_Windowed_Apps">DLLs and Windowed Apps</a>
+<dt><br>- E -
+<dd><a href="#Editing_the_Documentation">Editing the Documentation</a>
+<br><a href="#Executive_Summary">Executive Summary</a>
+<dt><br>- F -
+<dd><a href="#First_Steps">First Steps</a>
+<dt><br>- G -
+<dd><a href="#Gearing_up_for_Building">Gearing up for Building</a>
+<br><a href="#Guided_Tour">Guided Tour</a>
+<dt><br>- H -
+<dd><a href="#Help_the_compiler_and_it_will_help_you">Help the compiler and it will help you</a>
+<br><a href="#History">History</a>
+<dt><br>- I -
+<dd><a href="#Include_Paths">Include Paths</a>
+<dt><br>- M -
+<dd><a href="#Makefiles">Makefiles</a>
+<br><a href="#Makeinit">Makeinit</a>
+<br><a href="#Memory_Trackers">Memory Trackers</a>
+<br><a href="#Misc_Conventions">Misc Conventions</a>
+<dt><br>- P -
+<dd><a href="#Pmake">Pmake</a>
+<br><a href="#Pmake_Support">Pmake Support</a>
+<br><a href="#Producing_Documentation">Producing Documentation</a>
+<br><a href="#Programming_Style">Programming Style</a>
+<br><a href="#Project_Names">Project Names</a>
+<br><a href="#Project_Overview">Project Overview</a>
+<dt><br>- R -
+<dd><a href="#Requirements_To_Build">Requirements To Build</a>
+<br><a href="#Running_the_tests">Running the tests</a>
+<br><a href="#The_Runtime_DLL_Libraries">The Runtime DLL Libraries</a>
+<dt><br>- S -
+<dd><a href="#Setting_up">Setting up</a>
+<br><a href="#Source_file_structure">Source file structure</a>
+<dt><br>- T -
+<dd><a href="#Testing">Testing</a>
+</dl>
+<h1 id="Project_Overview"> Project Overview </h1>
+<br>This document serves as an introduction and a guide for developers of the Open Watcom compilers and tools.&nbsp; It is
+ not particularly useful for the users (who are also developers) of Open Watcom compilers - they are encouraged to read the
+ User's Guide, Programmer's Guide, C Language Reference and other user oriented books.
+<br>It should not be assumed that this book is in any way final or the ultimate reference.&nbsp; Readers are encouraged to
+ add, change and modify this document to better reflect evolution of the Open Watcom project.
+<h2 id="History"> History </h2>
+<br>The history of the Open Watcom project is rather long, in terms of Interned years it would probably span millennia.&nbsp;
+ The origins can be traced back to 1965.&nbsp; That summer a team of undergraduate students at the University of Waterloo
+ develped a FORTRAN compiler (called WATFOR) that ran on the University's IBM 7040 systems.&nbsp; The compiler was soon ported
+ to IBM 360 and later to the famous DEC PDP-11.
+<br><br>In early 1980s a brand new version of the compiler was created that supported the FORTRAN 77 language.&nbsp; It ran
+ on two platforms, the IBM 370 and the emerging IBM PC.&nbsp; The PC version of WATFOR-77 was finished in 1985 and in the
+ same year support for Japanese was added.&nbsp; In 1986, WATFOR-77 was ported to the QNX operating system.
+<br><br>The early compilers were written in a portable language called WSL or Watcom Systems Language.&nbsp; In late 1980s
+ the developers rewrote the existing code in C and from then on all new developments were done on C, later with traces of
+ C++ here and there.
+<br><br>In parallel to the FORTRAN compilers Watcom developed optimizing C compilers.&nbsp; When the first PC version (Watcom
+ C 6.0) was introduced in 1987, it immediately attracted attention by producing faster code than other compilers available
+ at that time.
+<br><br>In 1988 work started on an advanced highly optimizing code generator that supported both the C language and FORTRAN
+ and was portable across multiple platforms.&nbsp; Generation of tight code, availability on multiple platforms (DOS, Windows,
+ OS/2 and Windows NT in one package) and the ability to cross-compile made Watcom C and C++ compilers quite popular in mid-1990s.
+&nbsp; Around 1993-1996, nearly all DOS games were developed with Watcom C, including famous titles such as DOOM, Descent
+ or Duke Nukem 3D.
+<br><br>Watcom International, Inc.&nbsp; had other successful products besides its highly acclaimed compilers.&nbsp; VX-REXX
+ was a popular GUI RAD tool for OS/2 and Watcom SQL was a cross-platform &quot;embeddable&quot; SQL database.
+<br><br>In mid-1990s, Watcom International, Inc.&nbsp; was acquired by PowerSoft, the maker of Power++, PowerDesigner and
+ other GUI RAD tools for the Windows platform.&nbsp; PowerSoft used Watcom compiler technology as a back-end for their GUI
+ tools besides continuing to market and develop existing Watcom tools.
+<br><br>PowerSoft itself had merged with Sybase, Inc.&nbsp; in 1994.&nbsp; PowerSoft's development tools nicely complemented
+ Sybase's database servers.&nbsp; Sybase was also interested in Watcom SQL which was enhanced and turned into Sybase SQL Anywhere.
+<br><br>Sybase continued to sell Watcom C/C++ and FORTRAN compilers version 11 but it was obvious that Sybase couldn't compete
+ with Microsoft in the languages market.&nbsp; Sybase decided to end-of-life the Watcom compilers effective 2000.
+<br><br>But that's not the end of the story.&nbsp; Many customers did not want to give up the Watcom compilers because there
+ was no suitable replacement in many areas.&nbsp; One of these customers was Kendall Bennett of SciTech Software, Inc.&nbsp;
+ SciTech entered into negotiations with Sybase and in an unprecedented move, Sybase agreed upon open sourcing the Watcom compilers
+ and tools.&nbsp; One of the reasons why this was possible at all was the fact that Watcom had very little reliance on third-party
+ tools and source code and had developed practically everything in-house, from YACC to IDE.
+<br><br>The process of opening the source was longer than originally anticipated (all software related projects tend to work
+ out this way for some inexplicable reason) but in the first half of 2002, the source was finally made available under the
+ Sybase Open Watcom Public License version 1.0.
+<h2 id="Guided_Tour"> Guided Tour </h2>
+<br>This section will take you on a guided tour of the Open Watcom source tree, presenting an overview of its structure and
+ highlighting some of the more memorable sights.
+<br><br>The Open Watcom directory structure mostly mirrors the layout used by the Watcom/Sybase build server but it has been
+ cleaned up, straightened out and unified, although there still may be some warts.
+<br><br>The root of the Open Watcom directory tree can be in the root of any drive (if your OS uses drive letters) or in any
+ directory, for instance<tt> e:\ow.</tt>&nbsp; Long filenames are not recommended if compatibility with DOS tools is desired.
+&nbsp; Directory names which include spaces are highly discouraged in any case.
+<br><br>The main subdirectories in the Open Watcom root are the following:
+<dl>
+<dt>bat
+<dd>currently contains mostly useless batch files and several useful ones.&nbsp; One extremely important file lives here:<b>&nbsp;
+ makeinit.</b>&nbsp; This file controls the operation of wmake and is the key to understanding of the build process.&nbsp;
+ Since wmake looks for<b> makeinit</b> along the<tt> PATH,</tt> the<b> bat</b> directory should be placed at or near the start
+ of your<tt> PATH</tt> environment variable.
+<dt><br>bin, binp
+<dd>contains miscellaneous binaries used in the build process.&nbsp; The binp directory contains OS/2 executables, bin contains
+ DOS or Win32 executables.
+<dt><br>bld
+<dd>is<b> the</b> directory where it's at.&nbsp; It contains all the Open Watcom source code.&nbsp; It is so important (and huge)
+ that it deserves its own section.
+<dt><br>docs
+<dd>contains source files for the Open Watcom documentation as well as binaries needed to translate the sources into PostScript,
+ HTML or various online help formats.&nbsp; The source files of this document are stored under this directory.&nbsp; For more
+ information please refer the the chapter entitled Documentation later in this manual.
+<dt><br>rel2
+<dd>is the &quot;release&quot; directory is where the binaries and other files produced in the course of the build process end
+ up.&nbsp; The structure of this directory mirrors the<b> WATCOM</b> directory of a typical Open Watcom installation.
+</dl>
+<h2 id="The_bld_directory"> The bld directory </h2>
+<br>Following is a brief description of all subdirectories of bld.&nbsp; Each subdirectory roughly corresponds to one &quot;project&quot;.
+&nbsp; There's a lot of projects!
+<dl>
+<dt>as
+<dd>the Alpha AXP and PowerPC assembler.&nbsp; The x86 assembler lives separately.
+<dt><br>aui
+<dd>user interface library employed by the debugger and profiler.
+<dt><br>bdiff
+<dd>binary diff and patch utilities.
+<dt><br>bmp2eps
+<dd>a utility for converting Windows bitmap files into EPS format, used for building documentation.
+<dt><br>brinfo
+<dd>part of the C++ source browser.
+<dt><br>browser
+<dd>the GUI C++ source browser.
+<dt><br>build
+<dd>directory holding build related files such as binaries used internally during build process and several master make include
+ files which lie at the heart of the build system.&nbsp; Worth visiting!
+<dt><br>builder
+<dd>builder tool controlled by those<b> lang.ctl</b> files that are all over the place.
+<dt><br>causeway
+<dd>the popular CauseWay DOS extender, in a form buildable with Open Watcom tools.
+<dt><br>cc
+<dd>the C compiler front end.
+<dt><br>cfloat
+<dd>utility function for conversion between various floating point binary formats.
+<dt><br>cg
+<dd>Open Watcom code generators, the heart of the compilers.&nbsp; These are shared by all languages (C, C++, FORTRAN).&nbsp;
+ Currently supported targets are 16-bit and 32-bit x86 as well as Alpha AXP.
+<dt><br>clib
+<dd>the C runtime library.&nbsp; Pretty big project in itself.
+<dt><br>cmdedit
+<dd>command line editing utilities, pretty much obsolete.
+<dt><br>comp_cfg
+<dd>compiler configuration header files for various targets.
+<dt><br>cpp
+<dd>a simple C style preprocessor used by several other projects.
+<dt><br>ctest
+<dd>C compiler regression tests.&nbsp; Run them often.
+<dt><br>cvpack
+<dd>the CV pack utility (for CodeView style debugging information).
+<dt><br>diff
+<dd>Open Watcom version of the popular utility.
+<dt><br>dig
+<dd>files used primarily by the debugger - this directory contains files that are shared between debugger, profiler, trap files
+ and Dr.&nbsp; Watcom.
+<dt><br>dip
+<dd>Debug Information Processors, used by debugger.&nbsp; The DIPs provide an interface between the debugger and various debug
+ information formats.
+<dt><br>dmpobj
+<dd>a simple OMF dump utility.
+<dt><br>dwarf
+<dd>library for reading and writing DWARF style debugging information.
+<dt><br>editdll
+<dd>interface modules between the IDE and external editors.
+<dt><br>emu
+<dd>80387 emulator library.
+<dt><br>emu86
+<dd>8087 emulator library.
+<dt><br>f77
+<dd>FORTRAN 77 compiler front end, runtime library, regression tests and samples.&nbsp; All the FORTRAN stuff is crowded in there.
+<dt><br>fe_misc
+<dd>miscellaneous compiler front-end stuff shared between projects.
+<dt><br>fmedit
+<dd>form edit library, part of the SDK tools.
+<dt><br>graphlib
+<dd>Open Watcom graphics library for DOS.
+<dt><br>gui
+<dd>GUI library used by IDE, debugger, source browser and other tools.
+<dt><br>hdr
+<dd>source files of header files distributed with the compilers.
+<dt><br>help
+<dd>character mode help viewer (WHELP).
+<dt><br>idebatch
+<dd>batch processor for the IDE.
+<dt><br>lib_misc
+<dd>miscellaneous files shared between clib and other tools.
+<dt><br>mad
+<dd>Machine Architecture Description used by debugger.
+<dt><br>mathlib
+<dd>the math library.
+<dt><br>misc
+<dd>stuff that didn't fit anywhere else.&nbsp; Not much really.
+<dt><br>mstools
+<dd>Microsoft clone tools, front ends for compilers and utilities.
+<dt><br>ncurses
+<dd>a version of the ncurses library used by Linux console tools.
+<dt><br>ndisasm
+<dd>the &quot;new&quot; disassembler supporting variety of file format and instruction sets.&nbsp; Very handy.
+<dt><br>nwlib
+<dd>the &quot;new&quot; library manager.
+<dt><br>online
+<dd>place for finished online help files and associated header files.
+<dt><br>orl
+<dd>Object Reader Library, reads OMF, COFF and ELF object files.
+<dt><br>os2api
+<dd>headers and libraries for the OS/2 API (both 16-bit and 32-bit).
+<dt><br>owl
+<dd>Object Writer Library, brother of ORL.
+<dt><br>pgchart
+<dd>presentation graphics and chart library for DOS (part of the graph library).
+<dt><br>plusplus
+<dd>another huge directory containing all C++ stuff.&nbsp; Compiler, runtime libraries, all that.
+<dt><br>plustest
+<dd>C++ regression test utilities.&nbsp; Extremely worthy of the attention of compiler developers.
+<dt><br>pmake
+<dd>parallel make, tool used in the build process to roughly control what gets built.
+<dt><br>posix
+<dd>a bunch of POSIX utilites like cp, rm and so on.&nbsp; Not suffering from creeping featuritis but they do the job and they're
+ portable.
+<dt><br>rcsdll
+<dd>interface to various revision control systems, used by IDE and editor.
+<dt><br>re2c
+<dd>regular expression to C converter, used in C++ compiler build.
+<dt><br>redist
+<dd>miscellaneous redistributable files.
+<dt><br>rtdll
+<dd>C, C++ and math runtime DLLs.
+<dt><br>sdk
+<dd>SDK tools like resource editor, resource compiler or dialog editor.&nbsp; Also the home of wres library which is used by many
+ other projects.
+<dt><br>setupgui
+<dd>source for the Open Watcom installer.
+<dt><br>src
+<dd>sample source code distributed with the compiler, some of it is used in the documentation.
+<dt><br>ssl
+<dd>internal tool used for debugger builds.
+<dt><br>techinfo
+<dd>ancient system information utility.
+<dt><br>trap
+<dd>trap files (both local and remote), the heart of the debugger containing platform specific debugging code.&nbsp; Heavy stuff.
+<dt><br>trmem
+<dd>memory tracker library (good for discovering and plugging memory leaks).
+<dt><br>ui
+<dd>user interface library.
+<dt><br>vi
+<dd>Open Watcom vi editor, clone of the popular (or not) Unix editor.
+<dt><br>viper
+<dd>the Open Watcom IDE.
+<dt><br>viprdemo
+<dd>IDE demo program.
+<dt><br>w16api
+<dd>headers and libraries for the Windows 3.x API.
+<dt><br>w32api
+<dd>headers and libraries for the Win32 API.
+<dt><br>w32loadr
+<dd>loaders for OS independent (OSI) binaries.
+<dt><br>wasm
+<dd>the x86 assembler.&nbsp; Large parts of the source are shared between standalone wasm and inline assembler support for compilers
+ targeting x86 platforms.
+<dt><br>watcom
+<dd>contains internal headers and libraries shared by many projects.
+<dt><br>wclass
+<dd>an Open Watcom C++ class library.
+<dt><br>wdisasm
+<dd>old x86 disassembler, nearly obsolete.
+<dt><br>whpcvt
+<dd>Watcom Help Converter used for producing online documentation.
+<dt><br>wic
+<dd>utility for converting include files between various languages.
+<dt><br>win386
+<dd>the Windows 386 extender.
+<dt><br>wl
+<dd>the Open Watcom linker, also contains the overlay manager library.
+<dt><br>wmake
+<dd>the make utility.
+<dt><br>womp
+<dd>Watcom Object Module Processor, primarily for conversion between debug info formats.&nbsp; Some source files are shared with
+ other projects.
+<dt><br>wpack
+<dd>simple file compression/decompression utility.
+<dt><br>wpi
+<dd>macros and helper functions for facilitating development of Windows and OS/2 GUI programs from single source code.
+<dt><br>wprof
+<dd>the Open Watcom profiler.
+<dt><br>wsample
+<dd>the execution sampler, companion tool to the profiler.
+<dt><br>wstrip
+<dd>strip utility for detaching or attaching debug information and/or resources.
+<dt><br>wstub
+<dd>stub program for DOS/4GW.
+<dt><br>wtouch
+<dd>a touch utility.
+<dt><br>wv
+<dd>the debugger (used to be called WVIDEO, hence the name).
+<dt><br>yacc
+<dd>Watcom's version of YACC used for building compilers/assemblers.
+</dl>
+<br>As you can see, there's a lot of stuff!&nbsp; Some of these projects contain specific documentation pertaining to them,
+ usually located in a directory called 'doc' or somesuch.&nbsp; For the most part, the truly uptodate and comprehensive documentation
+ is the source code.
+<h1 id="First_Steps"> First Steps </h1>
+<br>This chapter briefly describes the prerequisite steps necessary to build and/or contribute to the Open Watcom project
+ - how to get the source code and how to set up the build environment.
+<h2 id="Connecting_up"> Connecting up </h2>
+<br>The most uptodate version of the Open Watcom source code lives on the Open Watcom Perforce server.&nbsp; It is possible
+ to go straight to the Perforce repository but most people will find it much easier to get a source archive first.&nbsp; The
+ source archives can be found at the Open Watcom web site,<tt> http://www.openwatcom.org/</tt> along with latest information
+ on Perforce setup.&nbsp; You will generally need a working installation of the previous release of Open Watcom C/C++ and
+ some free disk space to burn (one gigabyte should do).
+<br><br>The Open Watcom source tree can be located in any directory on any drive.&nbsp; After extracting the source archive
+ you will find a very important batch file called<b> setvars</b> in your Open Watcom root directory.&nbsp; This will set up
+ a bunch of necessary environment variables but first you'll have to edit it to reflect your directory structure etc.&nbsp;
+ It also contains the necessary Perforce settings.
+<br><br>Now is the time to connect to Perforce.&nbsp; Again, most uptodate information can be found on the Open Watcom web
+ site.&nbsp; If you followed the instructions correctly, no servers are down and no other unpredictable (or maybe predictable)
+ things happened, you will have brought your source tree to the latest revision (aka tip or head revision).
+<h2 id="Gearing_up_for_Building"> Gearing up for Building </h2>
+<br>Before you start building the Open Watcom tools proper, you will need to build several helper tools:<b>&nbsp; builder,
+ pmake, cdsay</b> and a few others.&nbsp; These tools have to be built manually because the build process won't work without
+ them.
+<br><br>The tools can be found in appropriately named subdirectory of the<b> bld</b> directory, which is named<b> builder</b>
+ (showing complete lack of imagination).
+<br><br>To build the required executables, go to a subdirectory of the project<b> builder</b> directory which sounds like
+ it would be appropriate for your host platform and run<b> wmake.</b>&nbsp; If you set up everything correctly, you will end
+ up with working binaries that were automatically copied into the right subdirectory of the<b> build</b> directory, and that
+ directory is already on the<tt> PATH.</tt>&nbsp; If not, it's back to square one - the most likely source of problems is
+ incorrectly set up<b> setvars</b> batch file.
+<br><br>If you've got this far - congratulations, you've finished the one-time steps.&nbsp; You shouldn't need to redo them
+ unless you decide to start from scratch, your harddrive decides to die or some similarly catastrophic event occurs.
+<br><br>You should now read the next chapter that describes the build architecture and also lists the magic incantations necessary
+ to invoke builds.
+<h1 id="Build_Architecture"> Build Architecture </h1>
+<br>In an effort to clean up the build process, make it easier for projects to compile on various people's machines and allow
+ for easier ports to other architectures, every project which is developed under the Open Watcom Project should follow certain
+ conventions as far as makefile layout is concerned.&nbsp; This section describes the conventions and requirements for these
+ makefiles, as well as the steps needed to get projects to compile.
+<br>For those who do not desire a lecture on the preparation and maintenance of makefiles, feel free to skip straight to the
+ Executive Summary at the end.
+<br><br>Every development and build machine must have the mif project (<b> bld\build\mif</b> ) installed.&nbsp; That is taken
+ care of by uncompressing the Open Watcom source archive and/or syncing up with Perforce.
+<h2 id="Makeinit"> Makeinit </h2>
+<br>All the magic starts with<b> makeinit.</b>&nbsp; Every development machine must have a<b> makeinit</b> file with the following
+ defined therein:
+<dl>
+<dt>mif_dir:
+<dd>must point to the directory in which the mif project has been installed
+<dt><br>lang_root:
+<dd>the location of the installed (Open) Watcom compiler
+</dl>
+<br>For each project with name X you wish to have on the build machine,<tt> X_dir</tt> must be set to the directory containing
+ the project.&nbsp; That is, if you want the code generator on your machine (and who wouldn't?), it is officially named cg
+ (see Project Names below) and so you would define<tt> cg_dir.</tt>
+<br>Alternatively, if all of your projects are in directories which correspond to their project names under a common directory,
+ you can set dev_dir and<b> !include cdirs.mif</b> in your<b> makeinit.</b>&nbsp; This is the recommended setup and default
+ for Open Watcom.&nbsp; You do not have to take any extra action to use it.
+<br><br>Alternatively, you can do the above and then redefine<tt> X_dir</tt> for any projects which are not under the<tt>
+ dev_dir.</tt>
+<h2 id="Project_Names"> Project Names </h2>
+<br>Each project must be given a unique name, which should also be a valid directory name under FAT file systems (8.3 convention).
+<h2 id="Makefiles"> Makefiles </h2>
+<br>Each makefile should be located in the object file directory - ie.&nbsp; no more of this silly cd'ing into the object
+ directory based on crystal-balls and what not.&nbsp; The makefile must define the following:
+<dl>
+<dt>host_os:
+<dd>os which the resulting executable code will run on
+<dt><br>host_cpu:
+<dd>architecture which the resulting executable code will run on.
+<dt><br>proj_name:
+<dd>the project name
+</dl>
+<br>Valid values for<tt> host_cpu</tt> are 386, i86, axp, ppc.&nbsp; These should be self-explanatory.&nbsp; Valid values
+ for<tt> host_os</tt> are dos, nt, os2, nov, qnx, win, osi, linux.&nbsp; These should be self-explanatory for the most part,
+ with one possible exception:&nbsp; osi stands for OS Independent, the executables can run on multiple OSes if appropriate
+ loader stub is provided.
+<br><br>The makefile must then include<b> cproj.mif.</b>&nbsp; This will define all sorts of make variables, which can then
+ be used to build the project.&nbsp; A list of the most important of these variables and what they can be used for is included
+ below.
+<br><br>A makefile should also include<b> deftarg.mif,</b> for definition of the required clean target, and<b> defrule.mif,</b>
+ which has the default build rules for C, C++ and assembly sources.&nbsp; A makefile is free to override these defaults as
+ long as it follows the following conventions:
+<ol>
+<li>Tools which have macros defined for them must be referred to by the macros - these are currently (any additions should
+ be brought to my attention):
+<dl>
+<dt>$(CC):
+<dd>The C compiler
+<dt><br>$(CPP):
+<dd>The C++ compiler
+<dt><br>$(LINKER):
+<dd>The linker
+<dt><br>$(LIBRARIAN):
+<dd>The librarian
+<dt><br>$(AS):
+<dd>The assembler, if applicable
+<dt><br>$(RC):
+<dd>The resource compiler
+<dt><br>$(EDIT):
+<dd>Our VI editor
+<dt><br>$(YACC):
+<dd>Our version of yacc
+<dt><br>$(RE2C):
+<dd>The regular-expression to C compiler
+</dl>
+<li>When referring to other projects, a makefile should use the<tt> X_dir</tt> macro, where X is the name of the project.
+</ol>
+<h2 id="Requirements_To_Build"> Requirements To Build </h2>
+<br>A project should be able to build either a -d2 (if<tt> release_$(proj_name)</tt> != 1) or releaseable (if<tt> release_$(proj_name)</tt>
+ == 1 ) executable providing the following are done:
+<ul>
+<li>the project is uptodate and<tt> $(proj_name)_dir</tt> is set correctly
+<li>the mif project is uptodate and make knows to look for .mif files in there
+<li>lang_root is set
+<li>all depended upon projects are uptodate and have<tt> $(proj_name)_dir</tt> set correctly
+<li>all depended upon projects have been built
+<li>any required executables from under<b> bld\build</b> are in the path
+</ul>
+<br>Note that there are no other requirements here - it is very annoying when a project requires you to define handles for
+ tools, create directories in which it can deposit stuff, scrounge up obscure tools from who knows where or pretend to be
+ Jim Welch in order to get a debuggable version of the executable.
+<br><br>There is more than one way to switch between development and release build.&nbsp; A<tt> DEBUG_BUILD</tt> environment
+ variable provides global control.&nbsp; When set to 1, debug builds are produced, otherwise release builds are created.&nbsp;
+ When building individual projects with wmake, it is also possible to give the<b> release</b> macro on the wmake command line
+ (0 means debug build, 1 means release build).
+<br><br>Perhaps it should be noted that &quot;releasable&quot; build still contains debugging information, but only at the
+ -d1 level and in a separate .sym file.&nbsp; In case of crashes or other highly unusual behaviour, release build should be
+ enough to point you in the right direction but usually not sufficient to fully diagnose and rectify the problem.
+<br><br>Now, if you wish to allow certain abberant behaviours based upon cryptic make variables, that is fine, as long as
+ the project can build both a debuggable (ie full -d2) version as well as a release (ie no -d2, -d1 only and no memory tracker)
+ version without these things being set.&nbsp; That is, if you want stupid stuff in your<b> makeinit</b> - fine, but don't
+ require others to do this in order to build the project.
+<br><br>Any non-standard makefile variables which you do use should be prepended by the name of your project and an underscore,
+ to prevent namespace clutter and clashes.
+<br><br>Tools required to build are an issue that will have to be handled on a case-by-case basis.&nbsp; For example, stuff
+ to bind up DOS protected mode apps will likely be added to the standard suite of tools available, and macros made for them.
+&nbsp; Before we do this, we should standardize on one extender and use it wherever possible.&nbsp; Any small special purpose
+ tools should be checked in along with the project and built as part of the build process (so that we don't have to check
+ in zillions of binaries for all supported platforms).&nbsp; An important future consideration will be the ability to build
+ on a different architecture.&nbsp; Please try and avoid weirdo tools that have no hope of running on an Alpha or PPC running
+ NT or on Linux.&nbsp; More general tools (yacc, re2c, w32bind) that are likely to be used by several projects should be copied
+ up into the bin directories under<b> bld\build</b> - bin for DOS, binp for OS/2, binl for Linux and binnt for some other
+ OS, forget which.&nbsp; These tools should be referenced from the makefile as<tt> $(bld_dir)\tool.</tt>&nbsp; If your tool
+ cannot run under a particular OS, you should at least put a batchfile in that bin which echoes a message to that effect (to
+ alert people to the fact that you've just made their life difficult).
+<h2 id="The_Runtime_DLL_Libraries"> The Runtime DLL Libraries </h2>
+<br>If you set<tt> $(proj_name)_rtdll</tt> = 1, the -br switch should be thrown for you automatically, providing the target
+ os supports it.
+<h2 id="Memory_Trackers"> Memory Trackers </h2>
+<br>The memory tracker is an useful development aid - it tracks all dynamic memory allocations and deallocations, making it
+ easy to spot memory leaks and helping to pinpoint heap corruption or other unsociable behaviour that so rarely happens in
+ our code.
+<br><br>If the memory tracker is an optional part of your project, and independant of the release mode, it is suggested that
+ you enable it if<tt> $(proj_name)_trmem</tt> is set to 1, and disable it otherwise.
+<br><br>The source to the memory tracker can be found in<b> bld\trmem.</b>
+<h2 id="The_Clean_Target"> The Clean Target </h2>
+<br>Each makefile should support a clean target.&nbsp; This should not be part of the default target list, and should delete
+ every makefile generated file.&nbsp; Which means that after running &quot;wmake clean&quot;, the directory should look exactly
+ like a new installation of the project on a bare drive.&nbsp; !including<b> deftarg.mif</b> should do for most people who
+ do not get creative with file extensions or generated source files.&nbsp; If you do get creative, you may still use the default
+ clean rule if you define the<tt> additional_cleanup</tt> macro that will identify your fancy file names and/or extensions.
+<br><br>Do not underestimate the importance of proper cleanup.&nbsp; It guarantees that every part of a project can be built
+ from scratch, ensuring that there will be no nasty surprises when stuff breaks for people after a clean install just because
+ you had a generated file hanging around and never discovered that it can no longer be made.
+<h2 id="Pmake_Support"> Pmake Support </h2>
+<br>Every makefile should contain a pmake line at the top.&nbsp; Pmake is a tool which was invented in order to make life
+ easier with the clib project - most people are not interested in building all 40+ versions of the clib when they're working
+ on just one version.&nbsp; Pmake, when run from a root directory, crawls down all subdirectories looking for files called<b>
+ makefile.</b>&nbsp; When it finds one, it checks to see if there is a wmake comment which looks like:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #pmake: &lt;some identifiers&gt;</tt>
+<br><br>If there is such a comment, and any identifiers in the list given to pmake appear in the list after the colon, then
+ wmake is invoked in that directory.&nbsp; This provides a handy way to control selective builds and destroys.&nbsp; Some
+ tokens which should be used by the appropriate makefiles are:
+<dl>
+<dt>all
+<dd>is implicit in every makefile and does not need to be listed explicitly
+<dt><br>build
+<dd>indicates that wmake should be run in this directory as part of the build process
+<dt><br>os_x
+<dd>for each x in the list of the valid host_os tokens (os_nt, os_dos, etc)
+<dt><br>cpu_x
+<dd>for each x in the list of the valid host_cpu tokens (cpu_386, cpu_ppc, etc)
+<dt><br>target_x
+<dd>for each x in the list of valid host_cpu tokens (for compilers and targetted apps)
+<dt><br>tiny, small, compact, medium, large, huge, flat, nomodel
+<dd>the memory model
+<dt><br>inline, calls
+<dd>whether an app uses inline 8087 stuff or fp calls
+</dl>
+<br>For example, an executable which is going to run on the PPC version of NT should have a pmake line which contains, at
+ a minimum:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #pmake: build os_nt cpu_ppc</tt>
+<br><br>Pmake also supports the concept of priority.&nbsp; The priority is specified as /nnn after the #pmake but before the
+ colon (:) like so:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #pmake/50: build os_nt cpu_ppc</tt>
+<br><br>Makefiles with lower priority are visited first.&nbsp; The default priority if not explicitly specified is 100.&nbsp;
+ Pmake will visit subdirectories in depth first traversal order unless changed by the<b> -r</b> option or the<b> priority</b>
+ value.
+<br><br>You are free to add as many mnemonic identifiers as you want, of course, but anything which you feel is an abstract
+ classification that would apply to other projects, please bring to our collective attention and if deemed useful, it will
+ get added to the appropriate places (and the list above).
+<br><br>For an example of where this is useful, if we suddenly found out that our NT headers were bogus and everything including
+ them needed a recompile, we could do the following on the build machine:&nbsp; &quot;pmake os_nt -h clean &amp; pmake os_nt
+ -h&quot;.
+<br><br>Another very useful property of this setup is that it allows people to build libraries/binaries only for their host
+ platform.&nbsp; This is especially convenient if they don't have all the necessary SDKs, Toolkits and whatnot installed and/or
+ cannot run some or all of the platform specific tools required during builds.&nbsp; And this situation is the norm rather
+ than exception - only dedicated build servers usually have all necessary files in place.
+<h2 id="Misc_Conventions"> Misc Conventions </h2>
+<br>To make it easy to see what projects are required to make a given project, all needed projects should be listed in a makefile
+ comment in the main makefile of the dependant project.&nbsp; Hopefully, this main makefile should be called<b> master.mif</b>
+ and be in the root directory, or a mif subdirectory thereof, of the project.
+<br><br>Also, it is suggested that the object file directory name be a combination of the<tt> host_os</tt> followed by the<tt>
+ host_cpu,</tt> if convenient.&nbsp; For example, NT versions for the PPC should be genned into a ntppc directory.&nbsp; If
+ a directory structure which is different than this is used for some reason, then comments explaining exactly what is built
+ where would be nice in the<b> master.mif</b> file.
+<br><br>Things get more interesting if cross compilers are thrown into the mix.&nbsp; In that case three components are required
+ in the name:&nbsp; for instance a<b> ntaxp.386</b> directory can hold the Alpha AXP NT compiler producing 386 code.
+<br><br>This is also why the macro names are somewhat counterintuitive - most people would think of the<tt> host_os</tt> and<tt>
+ host_cpu,</tt> as target OS and CPU.&nbsp; However, the 'target' designation is reserved for the target architecture of the
+ generated binary.&nbsp; In the above case of a compiler that runs on Alpha AXP NT and produces 386 code, the makefile contains:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; host_os&nbsp;&nbsp;&nbsp; = nt</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; host_cpu&nbsp;&nbsp; = axp</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; target_cpu = 386</tt>
+<h2 id="DLLs_and_Windowed_Apps"> DLLs and Windowed Apps </h2>
+<br>Set<tt> host_os</tt> and<tt> host_cpu</tt> as normal, and then, if creating a windowed app, set<tt> sys_windowed</tt>
+ = 1.&nbsp; If creating a DLL, set<tt> sys_dll</tt> = 1.&nbsp; Delightfully simple.
+<h2 id="Include_Paths"> Include Paths </h2>
+<br>The<tt> inc_path</tt> macro is composed of several other variables.&nbsp; Projects are able to hook any of these variables
+ by redefining them after<b> cproj.mif</b> is included.&nbsp; The current structure looks like this:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; inc_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = inc_dirs | inc_dirs_$(host_os) | inc_dirs_sys</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; inc_dirs_sys&nbsp; = inc_dirs_lang | inc_dirs_sys_$(host_os)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; inc_dirs_lang = $(lang_root)\h</tt>
+<br><br>So, a project should put any include directories it needs into<b> inc_dirs</b> - note that this does not include<tt>
+ $(watcom_dir)\h</tt> which is part of the default include directory set.
+<br><br>If it needs to, a project can override any and all of these - for instance, the clib needs to be built with the next
+ release header files, and so would redefine<tt> inc_dirs_lang.</tt>
+<br><br>Any OS-specific header files needed by the project can be set in<tt> inc_dirs_$(host_os)</tt> - again, this should
+ not include the standard system header files, which will be defined in<tt> inc_dirs_sys_$(host_os).</tt>
+<br><br>Note that the build system previously used to set the<tt> INCLUDE</tt> environment variable to hold the contents of<b>
+ inc_dirs</b> macro.&nbsp; This mechanism is now considered obsolete and should no longer used.&nbsp; Instead, include paths
+ are passed directly on the command line.&nbsp; This also means that all include paths must be prepended with a -I switch,
+ for example:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; inc_dirs_sys_nt&nbsp;&nbsp;&nbsp; = -I$(lang_root)\h\nt</tt>
+<h2 id="Executive_Summary"> Executive Summary </h2>
+<br>In order to convert a project to this new structure or create a new (and conforming) project, do the following:
+<ol>
+<li>Create an object file directory for each combination of host_os/host_cpu under your project.
+<li>Give your project a name, for instance Foo.
+<li>Create a<b> master.mif</b> in the root of your project.
+<li>Put all the normal makefile gear in this<b> master.mif.</b>
+<li>Add<tt> proj_name</tt> = Foo to the top of master.mif
+<li>Include the following files (in this order)<b> cproj.mif, defrule.mif, deftarg.mif</b> in<b> master.mif</b>
+<li>Add<tt> inc_dirs</tt> = {list of directories, separated by spaces and each prepended with -I, which your project needs
+ in include path - this does not include OS-specific includes (ie<b> \lang\h\win</b> )}
+<li>Add<tt> extra_c_flags</tt> = {list of c flags, not including optimization, -w4, -zq.&nbsp; -we and memory model info,
+ needed to compile your application} These should be host_os/host_cpu independent.
+<li>Add<tt> extra_l_flags</tt> = {list of linker directives, not incuding system or debug directives} Should be host_os/host_cpu
+ independent.
+<li>Use following to compile:<tt>&nbsp; $(cc) $(cflags)</tt> filename etc...
+<li>Use following to link:<tt>&nbsp; $(linker) $(lflags)</tt> file { list of obj files }
+<li>Use following to create libraries:<tt>&nbsp; $(librarian)</tt>
+<li>In each object file directory, create a makefile which looks like the following:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #pmake: build os_X cpu_Y</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; host_os&nbsp; = X</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; host_cpu = Y</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; !include ..\master.mif</tt>
+</ol>
+<br>That's it!&nbsp; The only downside is that sticking to these guidelines will make everyone's life less exciting.
+<h1 id="Technical_Notes"> Technical Notes </h1>
+<h2 id="32Mbit_Windows_runMtime_DLLs"> 32-bit Windows run-time DLLs </h2>
+<br>Most of Open Watcom run-time Windows DLLs have predefined loading address.&nbsp; Bellow is table with address for each
+ DLL.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x69000000&nbsp; wppdxxxx.dll&nbsp; (C++ compiler)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x69400000&nbsp; wccdxxxx.dll&nbsp; (C compiler)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x69800000&nbsp; wrc.dll&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Resource compiler)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x69900000&nbsp; wr.dll&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Resource library)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x69c00000&nbsp; wlinkd.dll&nbsp;&nbsp;&nbsp; (Linker)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6a000000&nbsp; wlibd.dll&nbsp;&nbsp;&nbsp;&nbsp; (Librarian)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6e800000&nbsp; javavm.dll&nbsp;&nbsp;&nbsp; (Debugger DIP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6e900000&nbsp; all trap dlls (Debugger TRAP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6eb00000&nbsp; madx86.dll&nbsp;&nbsp;&nbsp; (Debugger MAD)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6ec00000&nbsp; export.dll&nbsp;&nbsp;&nbsp; (Debugger DIP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6ed00000&nbsp; codeview.dll&nbsp; (Debugger DIP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6ee00000&nbsp; watcom.dll&nbsp;&nbsp;&nbsp; (Debugger DIP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6ef00000&nbsp; dwarf.dll&nbsp;&nbsp;&nbsp;&nbsp; (Debugger DIP)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6fa00000&nbsp; wrtxxxx.dll&nbsp;&nbsp; (run-time DLL combined C, math and C++ library)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6fd00000&nbsp; plbxxxx.dll&nbsp;&nbsp; (run-time DLL C++ library)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6fe00000&nbsp; clbxxxx.dll&nbsp;&nbsp; (run-time DLL C library)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0x6ff00000&nbsp; mtxxxx.dll&nbsp;&nbsp;&nbsp; (run-time DLL math library)</tt>
+<br><br>You shouldn't use these addresses for your own DLLs.
+<h1 id="Build_Process"> Build Process </h1>
+<br>We use the (Open) Watcom C/C++ compilers and Watcom<b> wmake</b> to build our tools, but at the top level we have a custom
+ tool which oversees traversing the build tree, deciding which projects to build for what platforms, logging the results to
+ a file, and copying the finished software into the release tree (rel2), making fully automated builds a possibility.&nbsp;
+ If nothing goes wrong that is.
+<h2 id="Builder"> Builder </h2>
+<br>This wondrous tool is called<b> builder.</b>&nbsp; You can see<b> bld\builder\builder.doc</b> for detailed info on the
+ tool and/or look at the source if the documentation doesn't satisfy you.
+<br><br>So how does builder work?&nbsp; Each project has a<b> lang.ctl</b> builder script file.&nbsp; If you go to a project
+ directory and run builder, it will make only that project; if you go to<b> bld</b> and run builder, it will build everything
+ under the sun.&nbsp; The overall build uses<b> bat\lang.ctl</b> which includes all of the individual project<b> lang.ctl</b>
+ files that we use.&nbsp; Note that if you run builder, it will traverse directories upwards until it finds a<b> lang.ctl</b>
+ (or it hits the root and still doesn't find anything, but then you must have surely done something wrong).&nbsp; Results
+ are logged to<b> build.log</b> in the current project directory and the previous<b> build.log</b> file is copied to<b> build.lo1.</b>
+&nbsp; The log file contains captured console output (both stdout and stderr).
+<br><br>Common commands:
+<dl>
+<dt>builder build
+<dd>- build the software
+<dt><br>builder rel2
+<dd>- build the software, and copy it into the &quot;rel2&quot; release tree
+<dt><br>builder clean
+<dd>- erase object files, executables, etc.&nbsp; so you can build from scratch
+</dl>
+<h2 id="Pmake"> Pmake </h2>
+<br>Many of the projects use the &quot;pmake&quot; features of builder (see<b> builder.doc</b> ) or standalone pmake tool.
+&nbsp; If you want to see its guts, the<b> pmake</b> source is in<b> bld\pmake.</b>
+<br><br>Each makefile has a comment line at the top of the file which is read by<b> pmake.</b>&nbsp; Most of our<b> lang.ctl</b>
+ files will have a line similar to this:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; pmake -d build -h ...</tt>
+<br><br>this will cause<b> wmake</b> to be run in every subdirectory where the makefile contains<tt> &quot;build&quot;</tt>
+ on the<tt> #pmake</tt> line.&nbsp; See for instance the C compiler makefiles (in<b> bld\cc)</b> for an example.
+<br><br>You can also specify more parmeters to build a smaller subset of files.&nbsp; This is especially useful if you do
+ not have all required tools/headers/libraries for all target platforms.
+<br><br>For example:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; builder rel2 os_nt</tt>
+<br><br>will (generally) build only the NT version of the tools.
+<br><br>A word of warning:&nbsp; running a full build may take upwards of two hours on a 1GHz machine.&nbsp; There is a LOT
+ to build!&nbsp; This is not your ol' OS kernel or a single-host, single-target C/C++ compiler.
+<br><br>It is generally possible to build specific binaries/libraries by going to their directory and running<b> wmake.</b>
+&nbsp; For instance to build the OS/2 version of<b> wlink</b> you can go to<b> bld\wl\os2386</b> and run<b> wmake</b> there
+ (note that the process won't successfully finish unless several required libraries had been built).&nbsp; Builder is useful
+ for making full &quot;release&quot; builds while running<b> wmake</b> in the right spot is the thing to do during development.
+<br><br>Happy Building!
+<h1 id="Testing"> Testing </h1>
+<br>There is undoubtedly a question on your mind:&nbsp; Now that I have the Open Watcom compilers, libraries and tools built,
+ what do I do next?&nbsp; The answer is simpler than you may have expected:&nbsp; Ensure that what you built actually works.
+<br>Fortunately there is a number of more or less automated test available in the source tree.&nbsp; Currently these tests
+ are not part of the build process per se, although that might (and perhaps should) change in future.
+<br><br>There are two major classes of situations when the tests should be run:
+<ul>
+<li>After building on a fresh system for the first time, running (and passing) the tests verifies that what was built behaves
+ at least somewhat as expected.&nbsp; In this case it might be prudent to run as many tests as possible, especially when building
+ on a new, not yet widely tested platform.
+<li>After making modifications to a particular tool or library, run the appropriate tests exercising the component (if available)
+ to ensure that the changes didn't cause any serious regressions.
+</ul>
+<br>If a bug is discovered and fixed, it is a good practice to code up a simple test verifying the fix.&nbsp; That way we
+ can prevent (or at least expediently discover) regressions in future builds.&nbsp; In other words, we won't be embarrassed
+ by the same bug cropping up again.&nbsp; Just because commercial compiler vendors occasionally have this problem doesn't
+ mean we have to as well!
+<br><br>Passing the automated tests can never completely guarantee that everything works perfectly as designed, but it does
+ let you sleep easier at night, comfortable in the knowledge that there aren't any really major problems.
+<h2 id="Running_the_tests"> Running the tests </h2>
+<br>This section maps the major test nests and gives brief description on how to run the tests and how they're constructed.
+&nbsp; There is often a single batch file or script that will build and run all the tests for a given project, the end result
+ being either &quot;all set to go&quot; or &quot;we have a bug infestation problem at location xyz, send out bug swat team
+ immediately&quot;.
+<br><br>To make automated testing feasible, the test programs do not require user input (unless they were testing user input
+ of course).&nbsp; Some test programs do their work and then decide whether everything worked as expected or not and output
+ a message to that effect.&nbsp; Other test programs ouput messages mapping their progress as they go and the output is then
+ compared with a file containing the 'good' output.&nbsp; Which method exactly is used depends mostly on what is being tested.
+&nbsp; When testing error and warning messages printed by the compilers and tools, it is natural to compare the captured output
+ to the expected text.&nbsp; When testing the runtime library for instance, it makes sense for the test program itself to
+ decide whether the function call results are what was expected.
+<br><br>Now we'll go through the projects alphabetically and make a stop whenever there's something interesting to see.&nbsp;
+ Note that not all of the tests are automated, the really extensive tests are however.&nbsp; Being a lazy folk, programmers
+ are likely to bang together an automated test suite if that helps them avoid babysitting the tests.
+<dl>
+<dt>as
+<dd>In<b> bld\as\alpha\test</b> there are several tests exercising the Alpha AXP assembler, using C wrappers for infrastructure.
+<dt><br>aui
+<dd>Not a real test, nevertheless the sample programs in<b> bld\aui\sample</b> are useful in demonstrating and informally testing
+ the user interface library.
+<dt><br>brinfo
+<dd>In<b> bld\brinfo\test</b> there is a simple browser information test program.
+<dt><br>browser
+<dd>Tests exercising the class browser are located in<b> bld\browser\test.</b>
+<dt><br>cg
+<dd>In<b> cg\test\far16</b> there is a test exercising the<tt> __far16</tt> keyword.&nbsp; Real code generator tests are found
+ elsewhere.
+<dt><br>clib
+<dd>The C runtime library tests are located in<b> bld\clib\qa.</b>&nbsp; These tests are not terribly comprehensive but they do
+ verify the basic C runtime functionality.
+<dt><br>gui
+<dd>Again not a real test, there is a GUI library sample in<b> bld\gui\sample.</b>
+<dt><br>ndisasm
+<dd>Tests for the 'new' disassembler (not many at this point) are located in<b> bld\ndisasm\test.</b>
+<dt><br>orl
+<dd>The Object Reader Library tests are in<b> bld\orl\test.</b>
+<dt><br>plustest
+<dd>This project holds<b> the</b> test suite.&nbsp; Ostensibly designed to exercise the C++ compiler, the tests also verify the
+ functionality of the code generator and some are designed for the C compiler.&nbsp; Running these tests can take a while
+ as there are over a thousand test cases.&nbsp; Highly recommended.
+<dt><br>ssl
+<dd>In<b> bld\ssl\test</b> there are several simple test scripts for SSL.
+<dt><br>trmem
+<dd>While the memory tracker is not a test, it bears mentioning here.&nbsp; This can be used for testing many other projects for
+ memory leaks, memory overwrites and other cases of rude behaviour.
+<dt><br>viprdemo
+<dd>Again not a test per se, the 'Viper demo' is a good way to verify basic IDE functionality.
+<dt><br>wasm
+<dd>Extensive assembler test can be found (rather predictably) in<b> bld\wasm\test.</b>
+<dt><br>wdisasm
+<dd>Tests for the 'old' disassembler are located in<b> bld\wdisasm\test.</b>
+<dt><br>wmake
+<dd>Extensive make utility tests can be found in<b> bld\wmake\reg</b> and<b> bld\wmake\regress.</b>
+<dt><br>wprof
+<dd>A profiler test program is located in<b> bld\wprof\test.</b>
+<dt><br>yacc
+<dd>Several sample/test YACC input files are in<b> bld\yacc\y.</b>
+</dl>
+<h1 id="Programming_Style"> Programming Style </h1>
+<br>Programming style is, unfortunately, a religious matter.&nbsp; Many holy wars have been fought over it with no clear result
+ (because the losing side usually survives).&nbsp; Still, with a project the size of Open Watcom (that is, a very big project)
+ there is a clear need for common programming style.
+<br>Conformance of all projects to a common style has several benefits.&nbsp; Programmers who know this style will be easily
+ able to find their way around any of the multitude of projects.&nbsp; Various projects will easily fit together.&nbsp; And
+ last but not least, consistent style looks good.
+<br><br>Note:&nbsp; the fact that certain Open Watcom projects do not adhere to the common programming style should not be
+ construed as an endorsement of non-conformance.&nbsp; It is simply a result of the long and varied history of the project.
+<br><br>The following sections examine various aspects of programming practice and give specific guidelines where applicable.
+&nbsp; Note that these are guidelines, not rules or laws.&nbsp; Violating them is not a crime and not even a mortal sin.&nbsp;
+ In fact, you might have a very good reason not to stick to the guidelines, and we always prefer common sense to fixed rules.
+&nbsp; However breaking the guidelines with no good reason is bad for your karma.&nbsp; Don't do it!
+<h2 id="Source_file_structure"> Source file structure </h2>
+<br>First a few words on source file structure.&nbsp; Every source file should start with a copyright header.&nbsp; This only
+ applies to source and include files (regardless of programming language used).&nbsp; Other types of files such as makefiles,
+ scripts, etc.&nbsp; do not need a copyright header.&nbsp; The header should also contain a short description of the source
+ file, one or two lines is usually enough.&nbsp; Longer comments explaining specifics of the implementation should be placed
+ after the header.
+<br><br>The rest of the source file structure depends on the language used.&nbsp; Here we will only examine the most common
+ kind, which is a C source file.&nbsp; The overall structure is as follows:
+<ul>
+<li>copyright header
+<li><b><i> #include</i></b> directives
+<li>function declarations and global variable definitions
+<li>function implementation
+</ul>
+<br>As you can see, nothing fancy.&nbsp; Many programmers prefer to order functions so as to minimize forward declarations,
+ ie.&nbsp; a<tt> main()</tt> function would be located at the end and every function fully defined before it is first used.
+<br><br>You can use<b><i> extern</i></b> declarations but you should be very careful.&nbsp; It is strongly encouraged that
+ all declarations of external functions and variable be located in header files which are included in modules that use them
+ as well as modules that define them.&nbsp; The reason is simple - this way the compiler will tell you if you change the definition
+ but not the header file.&nbsp; If you use ad-hoc<b><i> extern</i></b> declarations, you better make sure they're in sync
+ with the actual definitions.
+<h2 id="Help_the_compiler_and_it_will_help_you"> Help the compiler and it will help you </h2>
+<br>While the compiler is a rather sophisticated piece of software, it cannot divine your intentions.&nbsp; Hence you have
+ to help it a bit by giving hints here and there.&nbsp; And if you help the compiler in this way, it will be better able to
+ help you.
+<br><br>First of all, always compile with maximum warning level.&nbsp; Just because a message is called a warning and not
+ error doesn't mean you can ignore it.&nbsp; In fact many projects treat warnings as errors and will not build if any warnings
+ are present.&nbsp; That is a Good Thing.
+<br><br>Use the<b><i> static</i></b> keyword often because it is good.&nbsp; This is a multi-faceted keyword and its exact
+ semantics depend on where it is applied:
+<dl>
+<dt>globals
+<dd>here the<b><i> static</i></b> modifier does not change the storage class but makes the variables local to the module where
+ they are defined, that is they won't be visible from other modules.&nbsp; If a variable needs to be global but doesn't have
+ to be accessed from other modules, you should definitely make it static.&nbsp; That way you will not needlessly pollute the
+ global namespace (reducing the chance of name clashes) and if you stop using the variable, the compiler will warn you.&nbsp;
+ If you have a non-static global variable that is unused, the compiler cannot warn you as it has to assume that it is used
+ from other modules.
+<dt><br>locals
+<dd>in this case the<b><i> static</i></b> keyword changes the storage class and the variable will be stored in data segment instead
+ of on stack.&nbsp; If you need a variable that has global lifetime but only needs to be accessible from one function, making
+ it local and static is a good choice.
+<dt><br>functions
+<dd>the effect of the<b><i> static</i></b> keyword here is similar to the global variables.&nbsp; The function will not be visible
+ from other modules.&nbsp; Again, the compiler will warn you if you stop using such a function.&nbsp; But declaring a function
+ static also helps the optimizer.&nbsp; For instance if the optimizer inlines a static function, it can completely remove
+ the non-inlined version.&nbsp; If the function weren't static, the non-inlined version always has to be present for potential
+ external callers.
+</dl>
+<br>Similar in vein to the<b><i> static</i></b> keyword is the<b><i> const</i></b> keyword.&nbsp; Again it can be applied
+ in various ways and it helps the compiler and optimizer by giving it hints about how you intend to use a particular variable
+ or argument.&nbsp; Saying that a variable is constant is essentially the same as saying that it's read-only.&nbsp; The compiler/linker
+ might place such variable in a read-only segment.&nbsp; While it is possible to circumvent the<b><i> const</i></b> modifier
+ by taking the address of a constant variable and modifying it through a pointer, this is a bad thing to do and it may not
+ work at all because the variable might be not be physically writable.&nbsp; It is perhaps worthwhile to remark that there
+ are three possible outomes of applying the<b><i> const</i></b> modifier to a pointer:
+<ul>
+<li>a constant pointer, that is the value of the pointer is constant but the data it points to isn't
+<li>a pointer to a constant, that is the pointer itself is not constant but the value it points to cannot be modified through
+ it
+<li>a constant pointer to a constant, that is both the pointer itself and the value it points to are constant.
+</ul>
+<br>The<b><i> const</i></b> keyword is especially useful when used in function declarations.&nbsp; Consider the following
+ typical declaration:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; char *strcpy( char *s1, const char *s2 );</tt>
+<br><br>Here we have a function which takes two arguments that are both pointers to char but one of them is a pointer to a
+ constant.&nbsp; In the function body the compiler will not let you modify the contents of<tt> *s2</tt> but the declaration
+ is also important for the caller.&nbsp; In the calling funtion, the optimizer now knows that the data the<tt> s2</tt> argument
+ points to will not be modified by<tt> strcpy()</tt> and it can take advantage of this knowledge.
+<h1 id="Producing_Documentation"> Producing Documentation </h1>
+<br><br>The purpose of this document is twofold:&nbsp; to provide an overview of the Open Watcom documentation system togehter
+ with the steps necessary for editing and producing online or printed documents, and at the same time serve as an example
+ of the documentation system usage.
+<br>It is useful to note that the online documentation is almost, but not quite, independent of the rest of the Open Watcom
+ compilers and tools.&nbsp; One important exception is online help files for Open Watcom GUI tools.&nbsp; Formatting online
+ documentation generates include files containing symbolic constants designating help entries.&nbsp; These are used during
+ building of the tools binaries.&nbsp; If the binaries are not built with the right header files, the online help will be
+ out of sync and not all that helpful.
+<br><br>There's one other link going in the other direction:&nbsp; certain documentation files live with their respective
+ projects and not in the documents tree.&nbsp; This is especially true for error message documentation for the compilers and
+ tools.
+<h2 id="Setting_up"> Setting up </h2>
+<br>A Win32 or OS/2 system can be used to produce most of the documentation.&nbsp; OS/2 Warp is required for the final step
+ in producing the OS/2 online help files and Win32 system is needed for producing Windows help files (unless you can run the
+ required help compilers on your host platform).&nbsp; DOS may work for producing some of the documentation but is untested
+ at this time.
+<br><br>The environment variable<tt> doc_root</tt> must point to the root of the docunmentation tree.&nbsp; Add<tt> %doc_root%\cmds</tt>
+ to your<tt> PATH.</tt>&nbsp; Your<tt> PATH</tt> must also contain the Open Watcom C/C++ binary directories appropriate for
+ your host platform (for wmake).&nbsp; This is taken care of automatically by using<tt> setvars.cmd/setvars.bat.</tt>
+<br><br>Note that to produce Windows and/or OS/2 online documentation, you will need the appropriate SDKs and Toolkits containing
+ the platform specific online help compilers.
+<h2 id="Building_PostScript_Documentation"> Building PostScript Documentation </h2>
+<br>Here are the steps to formatting a book for printing on a PostScript printer.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cd %doc_root%\ps</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wmake hbook=&lt;bn&gt;</tt>
+<br><br>where<tt> &lt;bn&gt;</tt> is one of
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; devguide&nbsp;&nbsp;&nbsp; Developer's Guide (this document)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; c_readme&nbsp;&nbsp;&nbsp; C/C++ Read Me First</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cguide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C/C++ User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cguideq&nbsp;&nbsp;&nbsp;&nbsp; C/C++ User's Guide for QNX</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; clib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C Library Reference (for all systems except
+ QNX)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; clibqnx&nbsp;&nbsp;&nbsp;&nbsp; C Library Reference for QNX (stale)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cpplib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C++ Class Library Reference</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ctools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C/C++ Tools User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CauseWay User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; f77graph&nbsp;&nbsp;&nbsp; F77 Graphics Library Reference</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; f_readme&nbsp;&nbsp;&nbsp; F77 Read Me First</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; fpguide&nbsp;&nbsp;&nbsp;&nbsp; F77 Programmer's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ftools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F77 Tools User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; fuguide&nbsp;&nbsp;&nbsp;&nbsp; F77 User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; guitool&nbsp;&nbsp;&nbsp;&nbsp; Graphical Tools User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IDE User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; lguide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linker User's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; pguide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C/C++ Programmer's Guide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Debugger User's Guide</tt>
+<br><br>The output file is of type<tt> .ps.</tt>&nbsp; You should be able to send this file to any PostScript printer or view
+ it in GhostScript or convert it to PDF or do whatever it is you do with PostScript files.
+<h2 id="Building_Online_Help_Documentation"> Building Online Help Documentation </h2>
+<br>For Microsoft Help format (old Windows 3.x help format):
+<ul>
+<li>Switch to the appropriate directory:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cd %doc_root%\win</tt>
+<li>Run<tt> wmake</tt> to create all online help.
+<li>Note that you must have the Microsoft Help Compiler (HC) installed.
+</ul>
+<br>For Microsoft Help format (&quot;new&quot; Windows NT/95 help format):
+<ul>
+<li>Switch to the appropriate directory:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cd %doc_root%\nt</tt>
+<li>Run<tt> wmake</tt> to create all online help.
+<li>Note that you must have the Microsoft Help Compiler (HCRTF) installed.
+</ul>
+<br>For Watcom Help format (for the WHELP command):
+<ul>
+<li>Switch to the appropriate directory:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cd %doc_root%\dos</tt>
+<li>Run<tt> wmake</tt> to create all online help.
+</ul>
+<br>For OS/2 Help format:
+<ul>
+<li>Switch to the appropriate directory:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; cd %doc_root%\os2</tt>
+<li>Run<tt> wmake</tt> to create all OS/2 online help.
+<li>Note that this will only work on an OS/2 system with the IBM IPF Compiler (IPFC) installed.
+</ul>
+<br>To format one document at a time, go to the appropriate directory (for instance<tt> docs\os2</tt> ) and run wmake with
+ argument<tt> hbook=&lt;book_name&gt;</tt> where<tt> &lt;book_name&gt;</tt> is one of the online books listed above.
+<h2 id="Editing_the_Documentation"> Editing the Documentation </h2>
+<br>All the documentation is stored in ASCII text files with the file extension &quot;GML&quot;.&nbsp; The files are annotated
+ with a combination of Script and GML (Generalized Markup Language) tags.
+<br><br>The Script tags are of the form &quot;.tag&quot; (i.e., they begin with a period and are followed by two or more letters
+ or digits).&nbsp; Script tags will be most familiar to anyone who has ever used Waterloo Script or IBM Script.&nbsp; The
+ tagged format is also similar in idea to other tagged formatting systems like RUNOFF or ROFF.
+<br><br>The GML tags are of the form &quot;:TAG.&quot; (i.e., they begin with a colon, followed by some letters and digits
+ and end with a period).&nbsp; GML tags will be most familiar to anyone who has ever used IBM GML or Waterloo GML.&nbsp; This
+ tag set is a variant of SGML.&nbsp; The most familiar SGML tag format is<tt> &lt;TAG&gt;.</tt>&nbsp; In Watcom GML, the &quot;&lt;&quot;
+ and &quot;&gt;&quot; are replaced by the &quot;:&quot; and &quot;.&quot;.&nbsp; If you know HTML, you know how tags work
+ - HTML is just another variant of SGML.
+<br><br>The tag set includes a base set of predefined tags.&nbsp; In addition to this base set, you can define an extended
+ tag set using the built-in macro language.&nbsp; The base Script tag set employs two letters (e.g., two, three, four or more
+ letters (e.g.&nbsp; .chapter, .section, .beglevel).&nbsp; For a good example of user-defined Script tags, see<tt> %doc_root%\doc\gml\fmtmacro.gml.</tt>
+&nbsp; GML tags can also be defined.&nbsp; For a good example of user-defined GML tags, see<tt> %doc_root%\doc\gml\cppextra.gml.</tt>
+<br><br>These tags are described here for you, not so that you can begin defining your own tags, but so that you will recognize
+ them in the ASCII text that comprises the documentation.&nbsp; But of course no-one's stopping you from defining your own
+ tags should you feel so inclined.
+<br><br>Here's a snippet from one of the doc files.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .np</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The recommended options for generating the fastest 16-bit Intel code</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; are:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .ix 'fastest 16-bit code'</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .begnote</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note Pentium Pro</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /6 /fpi87 /fp6</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note Pentium</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /5 /fpi87 /fp5</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note 486</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /4 /fpi87 /fp3</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note 386</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /3 /fpi87 /fp3</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note 286</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /2 /fpi87 /fp2</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note 186</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /1 /fpi87</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .note 8086</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /oneatx /oh /oi+ /ei /zp8 /0 /fpi87</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .endnote</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .np</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The recommended options for generating the fastest 32-bit Intel code</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; are:</tt>
+<br><br>The &quot;.np&quot; is a user-defined tag for &quot;start a new paragraph&quot;.&nbsp; The &quot;.ix&quot; creates
+ an index entry in the index.&nbsp; It doesn't appear with the text.&nbsp; In on-line help, this index entry becomes a searchable
+ item.&nbsp; The &quot;.begnote&quot;, &quot;.note&quot;, and &quot;.endnote&quot; user-defined tags are used to create an
+ unordered list.&nbsp; Every piece of text entered into the source file is identified by tags like these.
+<br><br>The best way to understand what the tags do is to look at a printed copy of the document and see what it looks like.
+&nbsp; Luckily for you, you don't have to look very far:
+<br><br>The recommended options for generating the fastest 16-bit Intel code are:&nbsp; 
+<dl>
+<dt>Pentium Pro
+<dd>/oneatx /oh /oi+ /ei /zp8 /6 /fpi87 /fp6
+<dt><br>Pentium
+<dd>/oneatx /oh /oi+ /ei /zp8 /5 /fpi87 /fp5
+<dt><br>486
+<dd>/oneatx /oh /oi+ /ei /zp8 /4 /fpi87 /fp3
+<dt><br>386
+<dd>/oneatx /oh /oi+ /ei /zp8 /3 /fpi87 /fp3
+<dt><br>286
+<dd>/oneatx /oh /oi+ /ei /zp8 /2 /fpi87 /fp2
+<dt><br>186
+<dd>/oneatx /oh /oi+ /ei /zp8 /1 /fpi87
+<dt><br>8086
+<dd>/oneatx /oh /oi+ /ei /zp8 /0 /fpi87
+</dl>
+<br>The recommended options for generating the fastest 32-bit Intel code are:
+<br><br>The WATCOM GML program (WGML) is a compiler/interpreter that reads the document's source files to produce an output
+ file.&nbsp; In our case, we want PostScript for printing and we want another form for generation of online help.&nbsp; This
+ second form is a non-printable form that is suitable for post-processing to turn it into IPF for the OS/2 IPF compiler, RTF
+ for the WinHelp tools, special Watcom-defined format for use with a DOS-based help tool (WHELP) or the ever-popular HTML.
+<br><br>If you are a programmer, and that is likely, you'll be somewhat comfortable with the whole process of turning ASCII
+ text into documentation.&nbsp; WGML is a text processor (compiler) that reads a source file (GML) which, in turn, imbeds
+ other source files, and produces an output file (the object file).&nbsp; WGML is very fast.&nbsp; It was very fast in the
+ old 20MHz 386 days and is, of course, much faster with today's processors.&nbsp; The C Library Reference comprising 1,241
+ pages takes one minute to format into PostScript on a 600 MHz Pentium-III.
+<br><br>If you ever used TeX or LaTeX you will be comfortable with the concept of nonvisual content-driven formatting.&nbsp;
+ If you only know so-called WYSIWYG word processors heavily relying on visual formatting, you might be surprised to find that
+ it is possible to let the computer do lot of the hard work.&nbsp; Just give up the idea of controlling every pixel - it never
+ works right anyway.&nbsp; Instead of saying &quot;this is Arial 10pt Bold&quot; you will say &quot;this is a keyword&quot;
+ or &quot;this is a code example&quot; and let the machine worry about formatting.
+<h2 id="Diagnostic_Messages"> Diagnostic Messages </h2>
+<br>If you see<tt> ***WARNING***</tt> messages issued by WGML, you can ignore them.&nbsp; Of course it is better if you don't
+ and correct whatever is causing the warnings.&nbsp; If you see<tt> ***ERROR***</tt> messages, you cannot ignore them and
+ have to fix them before any output is produced.
+</body>

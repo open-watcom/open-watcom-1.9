@@ -1,0 +1,2098 @@
+<head>
+<title> OS/2 Help Compiler Reference Manual </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#acviewport">acviewport</a>
+<br><a href="#artlink">artlink</a>
+<br><a href="#artwork">artwork</a>
+<dt><br>- B -
+<dd><a href="#br">br</a>
+<dt><br>- C -
+<dd><a href="#c">c</a>
+<br><a href="#caution">caution</a>
+<br><a href="#ce">ce</a>
+<br><a href="#cgraphic">cgraphic</a>
+<br><a href="#color">color</a>
+<br><a href="#Command_Line_Flags">Command Line Flags</a>
+<br><a href="#Comment">Comment</a>
+<br><a href="#ctrl">ctrl</a>
+<br><a href="#ctrldef">ctrldef</a>
+<dt><br>- D -
+<dd><a href="#dd">dd</a>
+<br><a href="#ddf">ddf</a>
+<br><a href="#ddhd">ddhd</a>
+<br><a href="#dl">dl</a>
+<br><a href="#docprof">docprof</a>
+<br><a href="#dt">dt</a>
+<br><a href="#dthd">dthd</a>
+<dt><br>- E -
+<dd><a href="#End_Tags">End Tags</a>
+<br><a href="#Entity_References_LSymbolsR">Entity References (Symbols)</a>
+<br><a href="#Environment_Variables">Environment Variables</a>
+<br><a href="#Error_Messages">Error Messages</a>
+<br><a href="#Errors">Errors</a>
+<dt><br>- F -
+<dd><a href="#fig">fig</a>
+<br><a href="#figcap">figcap</a>
+<br><a href="#fn">fn</a>
+<br><a href="#font">font</a>
+<dt><br>- H -
+<dd><a href="#h1_M_h6">h1 - h6</a>
+<br><a href="#hdref">hdref</a>
+<br><a href="#hide">hide</a>
+<br><a href="#hp1_M_hp9">hp1 - hp9</a>
+<dt><br>- I -
+<dd><a href="#i1">i1</a>
+<br><a href="#i2">i2</a>
+<br><a href="#icmd">icmd</a>
+<br><a href="#imbed">imbed</a>
+<br><a href="#Introduction">Introduction</a>
+<br><a href="#IPF_Symbols">IPF Symbols</a>
+<br><a href="#IPF_Tag_Reference">IPF Tag Reference</a>
+<br><a href="#isyn">isyn</a>
+<dt><br>- L -
+<dd><a href="#Level_1_Warnings">Level 1 Warnings</a>
+<br><a href="#Level_2_Warnings">Level 2 Warnings</a>
+<br><a href="#Level_3_Warnings">Level 3 Warnings</a>
+<br><a href="#li">li</a>
+<br><a href="#lines">lines</a>
+<br><a href="#link">link</a>
+<br><a href="#lm">lm</a>
+<br><a href="#localization">localization</a>
+<br><a href="#lp">lp</a>
+<dt><br>- N -
+<dd><a href="#nameit">nameit</a>
+<br><a href="#Nesting_Tags">Nesting Tags</a>
+<br><a href="#note">note</a>
+<br><a href="#nt">nt</a>
+<dt><br>- O -
+<dd><a href="#ol">ol</a>
+<br><a href="#Options">Options</a>
+<br><a href="#outputMname">output-name</a>
+<br><a href="#Overview">Overview</a>
+<dt><br>- P -
+<dd><a href="#p">p</a>
+<br><a href="#parml">parml</a>
+<br><a href="#pbutton">pbutton</a>
+<br><a href="#pd">pd</a>
+<br><a href="#pt">pt</a>
+<br><a href="#Punctuation">Punctuation</a>
+<dt><br>- R -
+<dd><a href="#Reference">Reference</a>
+<br><a href="#rm">rm</a>
+<br><a href="#row">row</a>
+<dt><br>- S -
+<dd><a href="#sl">sl</a>
+<br><a href="#Switches">Switches</a>
+<dt><br>- T -
+<dd><a href="#table">table</a>
+<br><a href="#Tag_Attributes">Tag Attributes</a>
+<br><a href="#Tag_Syntax">Tag Syntax</a>
+<br><a href="#Tags_Requiring_Text">Tags Requiring Text</a>
+<br><a href="#Text">Text</a>
+<br><a href="#title">title</a>
+<dt><br>- U -
+<dd><a href="#ul">ul</a>
+<br><a href="#Units_of_Measure">Units of Measure</a>
+<br><a href="#userdoc">userdoc</a>
+<br><a href="#Using_IPF_Commands">Using IPF Commands</a>
+<br><a href="#Using_IPF_Tags">Using IPF Tags</a>
+<br><a href="#Using_the_Open_Watcom_OSD2_Help_Compiler">Using the Open Watcom OS/2 Help Compiler</a>
+<dt><br>- W -
+<dd><a href="#warning">warning</a>
+<br><a href="#warningMlevel">warning-level</a>
+<br><a href="#Whitespace">Whitespace</a>
+<br><a href="#Words">Words</a>
+<dt><br>- X -
+<dd><a href="#xmp">xmp</a>
+</dl>
+<h1 id="Introduction"> Introduction </h1>
+<br>Documentation for programs in the form of help files can make the user's life much easier.&nbsp; The Open Watcom OS/2
+ Help Compiler produces such documentation for the OS/2 operating system's Information Presentation Facility (IPF).&nbsp;
+ It consumes text documents containing special IPF tags, commands, and (optionally) bit-mapped graphics, and outputs help
+ files in the .inf or .hlp formats.
+<br><br>The IPF tags are similar to other SGML tags, the most familiar of which is likely HTML.&nbsp; The IPF tags allow you,
+ the documentation author, to:
+<ul>
+<li>Specify the source (highlighted text or regions of an image) and destination of hyper-link jumps
+<li>Set right and left text margins
+<li>Create lists, footnotes, notes, and various other kinds of notices
+<li>Create tables
+<li>Add illustrations in the form of examples, text figures, and bit-mapped graphics
+<li>Change the size, style, and color of displayed text
+<li>Change whether text spacing and new lines in the source are significant or not
+<li>Customize the behavior of windows in the help viewer
+<li>Create communication links to other applications
+</ul>
+<br>This document provides a basic description of how tags are used ( <a href="#Using_IPF_Tags">Using IPF Tags</a>) as well
+ as a complete reference for each tag ( <a href="#IPF_Tag_Reference">IPF Tag Reference</a>).&nbsp; For more advanced topics,
+ please refer to IBM's &quot;IPF Programming Guide and Reference&quot; (ipfref.inf) which is available on the internet.
+<h1 id="Using_the_Open_Watcom_OSD2_Help_Compiler"> Using the Open Watcom OS/2 Help Compiler </h1>
+<br>The Open Watcom OS/2 Help Compiler is a command line utility.&nbsp; It may be invoked as follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; wipfc &#91;options&#93; input.ipf</tt>
+<h2 id="Environment_Variables"> Environment Variables </h2>
+<br>The Open Watcom OS/2 Help Compiler depends upon several environment variables that must be set correctly before wipfc
+ is run.
+<dl>
+<dt>WIPFC
+<dd>This must be set to %watcom%\wipfc, which is the location of the files defining the local language encoding.
+<dt><br>IPFCARTWORK
+<dd>Must point to your source of bit-mapped graphic images if your source file uses any.
+<dt><br>IPFCIMBED
+<dd>Must point to your source of input files if your main source file includes other source files.
+<dt><br>TMP
+<dd>Must point to a directory where temporary files that are generated by Open Watcom OS/2 Help Compiler can be stored.
+</dl>
+<h2 id="Command_Line_Flags"> Command Line Flags </h2>
+<br>The behavior of the Open Watcom OS/2 Help Compiler can be altered using command line options.&nbsp; Each flag begins with
+ a delimiter.&nbsp; Either '-' or '/' can be used.&nbsp; Each flag is given a longer descriptive name here, but only the first
+ character after the delimiter is actually significant.&nbsp; Flag names are not case-sensitive.
+<h3 id="Switches"> Switches </h3>
+<br>The switches change the state of the Open Watcom OS/2 Help Compiler in a yes/no fashion.
+<dl>
+<dt>Name
+<dd>Description
+<dt><br>inf
+<dd>Generate an 'inf' file.&nbsp; Otherwise a 'hlp' file is created by default.
+<dt><br>quiet
+<dd>Operate quietly, suppressing the usual copyright information display.
+<dt><br>suppress-search
+<dd>Suppress the generation of the full-text search table in the output file.&nbsp; This makes the help file smaller, but the
+ user can't search for individual words.
+<dt><br>xref
+<dd>Generate additional output information, including a cross-reference of identifiers.&nbsp; This is saved in a file 'output-name.log'
+ where 'output-name' is the base name of the help file being created.
+</dl>
+<h3 id="Options"> Options </h3>
+<br>The options give additional information to the Open Watcom OS/2 Help Compiler Each option is immediately followed by the
+ information to be passed into wipfc.
+<h4 id="localization"> localization </h4>
+<br>Help files can be created for different locales.&nbsp; This is done by using the<b> localization</b> option in the form
+ of
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; -l xx_YY</tt>
+<br><br>where xx_YY is the name of the locale (for example, en_US).&nbsp; The localization information is store in a text
+ file (en_US.nls in this case).&nbsp; You can create your own locales from the sample file xx_YY.nls, but you may also need
+ to create a corresponding entity file containing the definitions of <a href="#IPF_Symbols">IPF Symbols</a>.
+<h4 id="outputMname"> output-name </h4>
+<br>You can specify the name of the help file that wipfc generates by using the<b> output-name</b> option.&nbsp; For example,
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; -o MyHelp</tt>
+<br><br>will cause wipfc to generate an output file (either inf or hlp depending on the -inf switch) with a base name of 'MyHelp'
+<h4 id="warningMlevel"> warning-level </h4>
+<br>The Open Watcom OS/2 Help Compiler generates three different levels of warnings (1, 2, and 3).&nbsp; By default, all levels
+ of warnings are displayed.&nbsp; You can suppress the display of warnings higher than level<b> n</b> by using the<b> warning-level</b>
+ option.&nbsp; For example,
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; -w1</tt>
+<br><br>suppresses all warnings higher than level 1.
+<h1 id="Using_IPF_Tags"> Using IPF Tags </h1>
+<br>Source files for the Open Watcom OS/2 Help Compiler consist of text (words, whitespace, punctuation, and entity references),
+ markup tags, and commands.&nbsp; Each markup tags is described in detail elsewhere ( <a href="#IPF_Tag_Reference">IPF Tag Reference</a>),
+ as are the commands ( <a href="#Using_IPF_Commands">Using IPF Commands</a>).
+<br><br>Tags come in four flavors:
+<ol>
+<li>Tags that appear in the document header and control how the document behaves.
+<li>Tags that establish blocks.&nbsp; These tags can contain other tags as well as text.
+<li>Tags that are in-line and contain text or other in-line tags.
+<li>Formatting tags that can appear anywhere, but are usually in-line.
+</ol>
+<h2 id="Text"> Text </h2>
+<br>Text consists of words, whitespace, punctuation, and entity references (symbols).
+<h3 id="Words"> Words </h3>
+<br>Words consist of letters and/or numbers (ABC123 is a single word, for example).&nbsp; Which letters are valid depends
+ upon the current locale.&nbsp; For the default locale (en_US, code page 850), the upper and lower case ASCII letters are
+ allowed (A-Z, a-z).&nbsp; Other letters can be included via entity references.
+<h3 id="Whitespace"> Whitespace </h3>
+<br>Whitespace consists of spaces, tabs, and new-line characters.&nbsp; Usually, single whitespace characters are not significant,
+ but multiple whitespace characters are.&nbsp; Tab characters are not expanded, so count as a single whitespace character.
+&nbsp; New-lines are generally ignored.
+<br><br>Some tags create blocks where some or all forms of whitespace become significant.&nbsp; In these cases, new-line characters
+ will cause line breaks and the text will be shown as you have formatted it.&nbsp; If the block is monospaced, spaces as well
+ as new-lines will be significant.
+<h3 id="Punctuation"> Punctuation </h3>
+<br>Punctuation is not part of a word.&nbsp; 'ABC123' is a single word, but 'ABC-123' is actually two words ('ABC' and '123')
+ and a punctuation ('-').
+<br><br>Some forms of punctuation are used to delimit tags or entity references.&nbsp; When a colon (':') or ampersand ('&amp;')
+ begin a word, that word is treated as a tag or entity reference, respectively.&nbsp; Likewise, a period ('.') ends both tags
+ and entity references.&nbsp; If you need to use such constructs, replace the punctuation character with an entity reference
+ ('&amp;colon.', '&amp;amp.', and '&amp;per.').
+<h3 id="Entity_References_LSymbolsR"> Entity References (Symbols) </h3>
+<br>Entities are symbolic references to single characters.&nbsp; During processing of the source file, valid entity references
+ are removed and the matching single character is substituted.&nbsp; This allows you to include special characters that are
+ outside the normal character set (for example, characters with diacriticals) in words.
+<br><br>Unless the entity reference is a punctuation symbol, a string of ...-word-entity-word-...&nbsp; (in any order) is
+ considered to be a single word.
+<br><br>Unrecognized entity references will cause wipfc to generate a warning.&nbsp; Note that all entity references are case
+ sensitive:&nbsp; &amp;Alpha.&nbsp; and &amp;alpha.&nbsp; are two different things.
+<h2 id="Tag_Syntax"> Tag Syntax </h2>
+<br>All tags begin with a colon (':') and end with a period ('.').&nbsp; In addition, many tags have flags or attribute=value
+ pairs that appear inside the tag between the tag name and the end-of-tag delimiter ('.').&nbsp; If you forget the end-of-tag
+ delimiter, the numerous warnings that wipfc generates will be sure to let you know.
+<h2 id="Tag_Attributes"> Tag Attributes </h2>
+<br>A tag may have one or more<b> attributes.</b>&nbsp; An attribute contains additional information that a tag needs.&nbsp;
+ The attribute has a name, and may also have a value or keyword assigned to it.
+<br><br>For example, heading tags have a 'res' attribute that specifies a window identifier (a target for hyper-linked jumps).
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; :h1 res=001.How to make Popcorn</tt>
+<br><br>In this case, res is assigned the value 001.
+<br><br>Notice that attributes are part of the tag, and the end-of-tag delimiter always follows the last attribute.
+<br><br>Many tags have multiple attributes.&nbsp; If you like, you can place them on different lines or all on a single line.
+&nbsp; If you place them on different lines, however, the attribute and its assigned value must be on the same line.&nbsp;
+ Spaces are allowed between the attribute, '=', and the value.&nbsp; If spaces are required within the value, the value must
+ be enclosed in matching quotation marks ('', or &quot;&quot;, but not '&quot; or &quot;').
+<br><br>Optional attributes all have default values and do not need to be specified unless you need to change the default.
+&nbsp; Other attributes are required, and wipfc will issue a warning if they are not specified.
+<br><br>Attributes may be specified in any order within a tag.
+<br><br>Some attributes may not have a value, in which case the presence of the attribute simply acts as a boolean flag.&nbsp;
+ For those attributes that do have values, values can be numeric, text strings (with spaces, if quoted), or keywords.&nbsp;
+ For example, the color tag specifies the foreground and/or background color for text.&nbsp; Only certain colors are supported,
+ and each has a keyword:
+<ul style="list-style-type:none;">
+<li>default
+<li>blue
+<li>red
+<li>pink
+<li>green
+<li>cyan
+<li>yellow
+<li>neutral
+<li>brown
+<li>darkgray
+<li>darkblue
+<li>darkred
+<li>darkpink
+<li>darkgreen
+<li>darkcyan
+<li>black
+<li>palegray
+</ul>
+<h2 id="End_Tags"> End Tags </h2>
+<br>Some tags require matching end tags to form an enclosing block of code.&nbsp; The end tag has the same name as the tag
+ prefixed with the letter 'e'.&nbsp; For example, if &quot;tag&quot; had an end tag, it would be &quot;etag&quot;.
+<h2 id="Nesting_Tags"> Nesting Tags </h2>
+<br>Most tags can be arbitrarily nested within other tags.&nbsp; However, some tags can<b> only</b> be nested inside other
+ tags.&nbsp; For example, the list-item tag (li) can only appear between opening and closing list tags.
+<br><br>In addition, there are a few tags that restrict the kinds of elements that they can contain.&nbsp; If you try to include
+ a tag where it doesn't belong, wipfc will issue a warning, the tag will be ignored, and the result will not be what you hoped
+ for!
+<h2 id="Tags_Requiring_Text"> Tags Requiring Text </h2>
+<br>Some tags (for example, heading tags) have text associated with them.&nbsp; This text can appear either immediately after
+ the end-of-tag delimiter ('.') or on the next line.&nbsp; Note, however, that in this case the end-of-tag delimiter must
+ be immediately followed by a new-line character.&nbsp; No other form of whitespace is allowed.
+<h2 id="Units_of_Measure"> Units of Measure </h2>
+<br>Several tags have attributes that are measurements of one sort or another (window origin and extent, for example).&nbsp;
+ Dimensional measurements can be one of three types:<b>&nbsp; absolute, relative,</b> or<b> dynamic.</b>
+<br><br><b>Absolute</b> measurements consist of a number followed by a letter that indicates the unit of measurement.&nbsp;
+ The units are:
+<ul>
+<li>c:&nbsp; the average character width of the default system font.
+<li>x:&nbsp; pixels.
+<li>p:&nbsp; typographical points (about 1/72 inch).
+</ul>
+<br><b>Relative</b> measurements consists of a number followed by the percent sign (%).&nbsp; The values is a percentage of
+ the parent window width or height.
+<br><br><b>Dynamic</b> measurements consist of a keyword.&nbsp; The actual value is computed at run-time based on the current
+ size and position of the parent window.&nbsp; The keywords for x-axis values are:
+<ul>
+<li>left:&nbsp; flush left in the parent window
+<li>center:&nbsp; centered in the parent window
+<li>right:&nbsp; flush right in the parent window
+</ul>
+<br>The keywords for y-axis values are:
+<ul>
+<li>top:&nbsp; at the top of the parent window
+<li>center:&nbsp; centered in the parent window
+<li>bottom:&nbsp; at the bottom of the parent window
+</ul>
+<br>Note that the coordinate system for all window measurements has its origin at the lower left corner.&nbsp; Increasingly
+ positive values represent movement upward and rightward.
+<h1 id="Using_IPF_Commands"> Using IPF Commands </h1>
+<br>In addition to tags, the Open Watcom OS/2 Help Compiler recognizes 5 commands (or control words) that invoke special processing
+ procedures.&nbsp; Each command must start with a period ('.') in the first column of a line, followed by the name of the
+ command.&nbsp; Commands that start anywhere except the first column of a line will be treated as regular text.
+<br><br>The Open Watcom OS/2 Help Compiler recognizes these commands:
+<dl>
+<dt>Command
+<dd>Description
+<dt><br>.*
+<dd>Begin a comment.
+<dt><br>.br
+<dd>Add a line break (start a new line).
+<dt><br>.ce
+<dd>Center a single line of text.
+<dt><br>.im filename
+<dd>Imbed (include)<b> filename</b> as if it were text in the current file.
+<dt><br>.nameit
+<dd>Define a macro for text substitution.
+</dl>
+<h2 id="Comment"> Comment </h2>
+<br>Comments are always useful.&nbsp; They allow you to document your documentation!&nbsp; Any text on a line beginning with
+ the comment command (.*) is passed over without further processing.
+<br><br>Don't put a comment within a tag, or between a tag and text that must immediately follow it.
+<h2 id="br"> br </h2>
+<br>There are times when you want to interrupt the normal flow of text and begin a new line.&nbsp; The .br command does just
+ that.&nbsp; It must be the only thing on the line.
+<br>Any text following a .br command on the same line will be ignored.
+<h2 id="ce"> ce </h2>
+<br>The ce command (.ce) centers the line of text that follows it.
+<br>The single line of text may not contain any other tags, but may contain nameit and entity references.
+<h2 id="imbed"> imbed </h2>
+<br>The Open Watcom OS/2 Help Compiler allows source files to be embedded in other source files.&nbsp; The top-most file is
+ the master file.&nbsp; The imbed command (.im) is followed by the name of the file to include.&nbsp; This file is then processed
+ as if it were in-line with the document including it.
+<br><br>The ability to include other files makes it possible to break large documents into smaller, more manageable logical
+ chunks.
+<dl>
+<dt>Note:
+<dd>The embedded files cannot contain the userdoc and euserdoc tags (see <a href="#userdoc">userdoc</a>).&nbsp; Only the master
+ document may contain these tags.
+</dl>
+<br>The embedded files must be in the current directory or in a directory listed in the IPFCIMBED environment variable (see
+ <a href="#Environment_Variables">Environment Variables</a>).&nbsp; Otherwise, a full path name must be used.
+<h2 id="nameit"> nameit </h2>
+<br>The nameit command creates a text-substitution macro.&nbsp; The nameit command takes two parameters (<b> symbol</b> =name
+ and<b> text</b> ='string') that can appear in any order.
+<br><br>The<b> symbol</b> parameter is the name of the macro.&nbsp; Symbol names were limited to 10 characters (0-9A-Za-z)
+ for the original OS/2 help compiler, but Open Watcom OS/2 Help Compiler does not have this restriction.&nbsp; Note that the
+ '&amp;' character is not part of the symbol name, but is used when referencing the symbol.
+<br><br>The<b> text</b> parameter defines 'string' as the text to be substituted on each occurrence of &amp;name.&nbsp; in
+ the text.
+<br><br>A .nameit symbol is used in the same way as an entity reference.
+<h1 id="IPF_Tag_Reference"> IPF Tag Reference </h1>
+<br>This section acts as a reference, describing how wipfc implements each tag.
+<h2 id="Overview"> Overview </h2>
+<br>Tags are the heart of IPF markup and come in four flavors:
+<ol>
+<li>Tags that appear in the document header.&nbsp; These tags control how the document behaves.
+<li>Tags that establish blocks.&nbsp; These tags can contain other tags as well as text.&nbsp; List-blocks and tables are
+ special cases in that they can only contain other tags and cannot directly contain text.
+<li>Tags that are in-line.&nbsp; These tags can contain text or other in-line tags.
+<li>Formatting tags that can appear anywhere, but are usually in-line.
+</ol>
+<br>This diagram classifies each tag and shows which tags can contain which other tags.&nbsp; Tags that are marked as containing
+ 'in-line' can also contain formatting and text.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Tag Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Classification</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; userdoc</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docprof&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctrldef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pbutton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctrl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ectrldef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (doc header)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; efn</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h2</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h3</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h4</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h5</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h6</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; acviewport&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; artlink&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (in-line)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eartlink</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; artwork&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (in-line)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; caution&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ecaution</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cgraphic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ecgraphic</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ddf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (list-block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dthd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ddhd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list-block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edl</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; figcap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; efig</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hdref&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (in-line)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ehide</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hp1 - hp9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ehp1 - ehp9</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; icmd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isyn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elines</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (in-line)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elink</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; note&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ent</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (list-block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; li&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list-block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eol</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parml&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (list-block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list-block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eparml</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (format)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (list-block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; li&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list-block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esl</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; row&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lines&nbsp;&nbsp;&nbsp;&nbsp;
+ (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elines</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; etable</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (list-block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; li&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list-block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eul</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; warning&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ewarning</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; (block)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in-line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exmp</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; euserdoc</tt>
+<h2 id="Reference"> Reference </h2>
+<br>The Open Watcom OS/2 Help Compiler follows the behavior of the IBM OS/2 Help Compiler as documented in the &quot;ipfref.inf&quot;
+ help file.&nbsp; This means that the behavior of the two compilers is very similar but not identical, since the IBM compiler
+ allows certain things that the documentation says it should not.&nbsp; The entry for each tag that follows describes how
+ the Open Watcom OS/2 Help Compiler treats each tag.
+<h3 id="acviewport"> acviewport </h3>
+<dl>
+<dt>Description:
+<dd>This tag creates a child window within the current window (page).&nbsp; The contents of this child window is controlled by
+ an application via a dynamic link library.
+<dt><br>Attributes
+<dd>
+<dt><br>dll='text'
+<dd>The name of the dynamic link library containing the code that controls the current viewer window.
+<dt><br>objectname='text'
+<dd>The entry point (function name) in the dll to be called.&nbsp; Case sensitive.
+<dt><br>objectinfo='text'
+<dd>Parameters to be passed to the dll function.
+<dt><br>objectid='text'
+<dd>An identifier to associate the window with the object.
+<dt><br>vpx=measurement
+<dd>The x origin of the child window.&nbsp; May be absolute, relative, or dynamic.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>vpy=measurement
+<dd>The y origin of the child window.&nbsp; May be absolute, relative, or dynamic.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>vpcx=measurement
+<dd>The width of the child window.&nbsp; May be absolute, relative, or dynamic.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>vpcy=measurement
+<dd>The height of the child window.&nbsp; May be absolute, relative, or dynamic.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#ddf">ddf</a>
+</dl>
+<h3 id="artlink"> artlink </h3>
+<dl>
+<dt>Description:
+<dd>The artlink tag is used in conjunction with the artwork tag to define rectangular regions of a bitmap that each act as a hypergraphic
+ link.
+<dt><br>Note
+<dd>The artlink tag must immediately follow the artwork tag that declares the bit-mapped image, or be included in a file referenced
+ from the artwork tag.
+<dt><br>Classification:
+<dd>In-line
+<dt><br>May contain:
+<dd>link
+<dt><br>Closing tag:
+<dd>The closing eartlink is required.
+<dt><br>See also:
+<dd><a href="#artwork">artwork</a>
+</dl>
+<h3 id="artwork"> artwork </h3>
+<dl>
+<dt>Description:
+<dd>The artwork tag declares a bit-mapped image to be included in the help file.&nbsp; Windows and OS/2 BMP files are supported.
+&nbsp; wipfc looks for images in the directories pointed to by the IPFCARTWORK environment variable (see <a href="#Environment_Variables">Environment Variables</a>).
+<dt><br>Attributes
+<dd>
+<dt><br>name='filename.ext'
+<dd>The name of the bitmap image file.&nbsp; This attribute is required.
+<dt><br>align=left | center | right
+<dd>Specifies how the image is to be aligned in the current window.&nbsp; Can be one of left, center, or right.
+<dt><br>linkfile='filename.ext'
+<dd>A direct reference to a file containing artlink/eartlink tags and its associated link tags.&nbsp; This allows the image to
+ act as a hyper-graphic link.
+<dt><br>runin
+<dd>This flag places the image within the line of text surrounding it.&nbsp; Otherwise, it acts as a block with the text appearing
+ above and below.
+<dt><br>fit
+<dd>This flag causes the image to be scaled to fill the window.&nbsp; Note that this may distort the image if the aspect ratio
+ of the window and image differ.
+<dt><br>Classification:
+<dd>In-line
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#artlink">artlink</a>
+</dl>
+<h3 id="caution"> caution </h3>
+<dl>
+<dt>Description:
+<dd>Displays a locale-specific cautionary message (&quot;Caution:&nbsp; &quot; in the en_US locale) followed on the next line
+ by the contents enclosed by the caution tag block.
+<dt><br>Closing tag:
+<dd>The closing ecaution is required.
+<dt><br>Attributes
+<dd>
+<dt><br>text='message'
+<dd>Use 'message' instead of 'CAUTION:&nbsp; ' as the introductory text.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block (except acviewport, fn, h1-h6), List-block
+<dt><br>See also:
+<dd><a href="#note">note</a>, <a href="#nt">nt</a>, <a href="#warning">warning</a>
+</dl>
+<h3 id="cgraphic"> cgraphic </h3>
+<dl>
+<dt>Description:
+<dd>Creates a &quot;text graphic.&quot; Any text in the cgraphic block will be rendered mono-spaced, and spaces and new-lines
+ will be honored.&nbsp; If the text does not fit within the window, it will be clipped.&nbsp; Although in-line formatting
+ is allowed, mixing bold and normal fonts will throw the spacing off.
+<dt><br>Closing tag:
+<dd>The closing ecgraphic is required.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#artwork">artwork</a>, <a href="#fig">fig</a>, <a href="#lines">lines</a>
+</dl>
+<h3 id="color"> color </h3>
+<dl>
+<dt>Description:
+<dd>Changes the fore- and background color of the text.&nbsp; The color change remains in effect until another color is specified
+ or the next heading tag (h1 - h6) is reached.
+<dt><br>Attributes
+<dd>
+<dt><br>fc=default | black | blue | red | pink | green | cyan | yellow | neutral | brown (a synonym for neutral) | darkgray
+ | darkblue | darkred | darkpink | darkgreen | darkcyan | palegray
+<dd>This sets the foreground color of the text.
+<dt><br>bc=default | black | blue | red | pink | green | cyan | yellow | neutral | brown (a synonym for neutral) | darkgray
+ | darkblue | darkred | darkpink | darkgreen | darkcyan | palegray
+<dd>This sets the background color of the text.
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+</dl>
+<h3 id="ctrl"> ctrl </h3>
+<dl>
+<dt>Description:
+<dd>Defines which push-buttons are displayed in the control area, and where.&nbsp; For on-line documents, the default push-buttons
+ are:&nbsp; Previous, Search, Print, Index, Contents, Back, Forward, Tutorial (if a tutorial is present).&nbsp; These are
+ displayed in the control area of the cover window.&nbsp; For help windows, the default buttons are:&nbsp; Previous, Search,
+ Print, Index, Tutorial (if a tutorial is present).
+<dt><br>Attributes
+<dd>
+<dt><br>ctrlid=text
+<dd>Specifies the id by which this control group can be referenced.&nbsp; Alphanumeric.&nbsp; Duplicate ids are not allowed.
+<dt><br>controls='search print index contents esc back forward custom-id'
+<dd>A space-separated list of the ids of the buttons you want to display, in the order to be displayed.&nbsp; If you define your
+ own button (using the pbutton tag), use the id from that tag as the custom-id.
+<dt><br>page
+<dd>Put the buttons in the control area of a page.
+<dt><br>coverpage
+<dd>Put the buttons in the control area of the cover (main) page.
+<dt><br>Conditions
+<dd>The ctrl tag must be enclosed in a ctrldef block, and must follow all pbutton tags
+<dt><br>Classification:
+<dd>Document Header
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#ctrldef">ctrldef</a>, <a href="#pbutton">pbutton</a>
+</dl>
+<h3 id="ctrldef"> ctrldef </h3>
+<dl>
+<dt>Description:
+<dd>Defines a control area and its contents.&nbsp; It must follow the docprof tag and precede the first h1 tag.
+<dt><br>Closing tag:
+<dd>The closing ectrldef is required.
+<dt><br>Classification:
+<dd>Document Header
+<dt><br>May contain:
+<dd>pbutton, ctrl
+<dt><br>See also:
+<dd><a href="#docprof">docprof</a>, <a href="#ctrl">ctrl</a>, <a href="#pbutton">pbutton</a>
+</dl>
+<h3 id="ddf"> ddf </h3>
+<dl>
+<dt>Description:
+<dd>Display dynamically formatted text in an application-controlled window.
+<dt><br>Attributes
+<dd>
+<dt><br>res=number
+<dd>The resource id number.&nbsp; Must be between 1 and 64000.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#acviewport">acviewport</a>
+</dl>
+<h3 id="dl"> dl </h3>
+<dl>
+<dt>Description:
+<dd>Begin a definition list (a sequence of terms and their definitions).
+<dt><br>Closing tag:
+<dd>The closing edl is required.
+<dt><br>Attributes
+<dd>
+<dt><br>compact
+<dd>Omit inserting a blank line between each term-description pair.
+<dt><br>tsize=number
+<dd>Sets the width of the &quot;term &quot; column (the default is 10).
+<dt><br>break=none | fit | all
+<dd>Controls how a description follows a term.&nbsp; If break is set to &quot;none&quot;, descriptions are on the same line as
+ the term, even if the length of the term exceeds &quot;tsize&quot; characters.&nbsp; If break is set to &quot;fit&quot;,
+ descriptions are placed on the next line only if the length of the term exceeds &quot;tsize&quot; characters.&nbsp; If break
+ is set to &quot;all&quot; descriptions are always placed on the next line.
+<dt><br>Conditions:
+<dd>The dthd and ddhd tags must occur before any dt and dd tags.&nbsp; Multiple consecutive dt tags are allowed (synonyms), but
+ only one dd tag is allowed for each set of dt tags.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd><a href="#dthd">dthd</a>, <a href="#ddhd">ddhd</a>, <a href="#dt">dt</a>, <a href="#dd">dd</a>, Block, List-block
+<dt><br>See also:
+<dd><a href="#ol">ol</a>, <a href="#parml">parml</a>, <a href="#ul">ul</a>, <a href="#sl">sl</a>
+</dl>
+<h4 id="dthd"> dthd </h4>
+<dl>
+<dt>Description:
+<dd>The term header for a definition list.&nbsp; It acts as a column title for all term elements.
+<dt><br>Conditions:
+<dd>Must appear before the first ddhd, dt, or dd tag.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#ddhd">ddhd</a>
+</dl>
+<h4 id="ddhd"> ddhd </h4>
+<dl>
+<dt>Description:
+<dd>The definition header for a definition list.&nbsp; It acts as a column title for all definition elements.
+<dt><br>Conditions:
+<dd>Must appear after a dthd tag and before the first dt or dd tag.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#dthd">dthd</a>
+</dl>
+<h4 id="dt"> dt </h4>
+<dl>
+<dt>Description:
+<dd>A term to be defined.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#dd">dd</a>
+</dl>
+<h4 id="dd"> dd </h4>
+<dl>
+<dt>Description:
+<dd>A definition of a term.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#dt">dt</a>
+</dl>
+<h3 id="docprof"> docprof </h3>
+<dl>
+<dt>Description:
+<dd>Describes the document profile, which includes which (if any) dynamic link librarys to load, what level headers trigger new
+ pages, where controls are displayed.&nbsp; The tag must follow the userdoc tag and (if present) the title tag.
+<dt><br>Attributes
+<dd>
+<dt><br>toc=numbers
+<dd>Controls which heading levels are included in the table of contents.&nbsp; For example, '123' (the default) places headings
+ defined by the h1, h2, and h3 tags in the table of contents.&nbsp; The numbers must be consecutive, beginning with 1.
+<dt><br>dll='text'
+<dd>Specifies a dll to load.&nbsp; This dll can act as a communication object and alter the behavior of the viewer.
+<dt><br>objectname='text'
+<dd>The dll entry point.
+<dt><br>objectinfo='text'
+<dd>Parameters to pass to the dll.
+<dt><br>ctrlarea=none | coverpage | page | both
+<dd>Specifies where the control area that contains push buttons is located.&nbsp; If 'page' is specified, place the control area
+ on the text window.&nbsp; If 'coverpage' is specified, place the control area on the cover page.&nbsp; If 'both' is specified,
+ place the control are in both locations.&nbsp; If 'none' is specified, suppress the control area.
+<dt><br>Classification:
+<dd>Document Header
+<dt><br>May contain:
+<dd>None
+</dl>
+<h3 id="fig"> fig </h3>
+<dl>
+<dt>Description:
+<dd>A block of text representing a figure.&nbsp; A proportional font is used, but spaces and line breaks are honored so that the
+ text is layed out as entered.&nbsp; If the text exceeds the current window dimensions, it will be clipped.
+<dt><br>Closing tag:
+<dd>The closing efig is required.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, figcap
+<dt><br>See also:
+<dd><a href="#cgraphic">cgraphic</a>, <a href="#figcap">figcap</a>, <a href="#lines">lines</a>
+</dl>
+<h3 id="figcap"> figcap </h3>
+<dl>
+<dt>Description:
+<dd>Specifies the title for a figure.&nbsp; This tag must occur in a fig/efig block, either at the beginning or end of the figure.
+&nbsp; The caption text must be on the same line as the tag, or on the next line.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text
+<dt><br>See also:
+<dd><a href="#fig">fig</a>
+</dl>
+<h3 id="font"> font </h3>
+<dl>
+<dt>Description:
+<dd>Change the font face, size, or encoding for the text in the page (fonts reset at the next header defining a new page).
+<dt><br>Attributes
+<dd>
+<dt><br>facename='text'
+<dd>Sets the name of the font to use.&nbsp; If set to 'default', resets the font to the default face and size.&nbsp; This attribute
+ is required.
+<dt><br>size=HxW
+<dd>Sets the height and width of the font.&nbsp; If either value is 0, resets the font to the default face and size.&nbsp; This
+ attribute is required.&nbsp; The 'x' separating the numbers is required.
+<dt><br>codepage=number
+<dd>Sets the encoding of the displayed text.&nbsp; The value is a 3 digit number.
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+</dl>
+<h3 id="fn"> fn </h3>
+<dl>
+<dt>Description:
+<dd>Defines a pop-up window that acts as a footnote.&nbsp; The window is activated when the user clicks a link.
+<dt><br>Closing tag:
+<dd>The closing efn is required.
+<dt><br>Attributes
+<dd>
+<dt><br>id=text
+<dd>Specifies a unique alphanumeric identifier used as the target of a link tag.&nbsp; This attribute is required.
+<dt><br>Conditions:
+<dd>The index tags (i1, i2, icmd, isyn) are not allowed.&nbsp; Footnotes cannot be nested within other footnotes, nor can they
+ contain headings (h1 - h6).&nbsp; The link to a footnote cannot appear in a child window.&nbsp; The text of footnotes is
+ not searchable.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, Block (except fn, h1 - h6), List-block
+<dt><br>See also:
+<dd><a href="#link">link</a>
+</dl>
+<h3 id="h1_M_h6"> h1 - h6 </h3>
+<dl>
+<dt>Description:
+<dd>A heading tag defines a new page (window), provided the heading level is less than the maximum value set using the docprof
+ tag.&nbsp; The text of the header immediately follows the close of the tag, either on the same or the next line.&nbsp; The
+ attributes of the heading tag can be used to set the properties of the window that displays the page of information.&nbsp;
+ Heading tags must appear in consecutive ascending (but not descending) order.&nbsp; That is, you cannot go from h1 to h3
+ without an intervening h2, but you can go from h3 to h1.
+<dt><br>Attributes
+<dd>
+<dt><br>res=number
+<dd>Specify the resource id of the header.&nbsp; It must be in the range of 1 to 64000.&nbsp; This attribute is required for HLP
+ files.
+<dt><br>id=text
+<dd>The id of the header.&nbsp; Alphanumeric.
+<dt><br>name=text
+<dd>The name of the header.&nbsp; Alphanumeric.
+<dt><br>global
+<dd>If set, this page can be linked to by an external HLP or INF file.
+<dt><br>tutorial=text
+<dd>Specifies the file name of the tutorial, and adds the tutorial button to the control area.
+<dt><br>x=measurement
+<dd>The x origin of the window in the parent window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>y=measurement
+<dd>The y origin of the window in the parent window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>width=measurement
+<dd>The width of the window in the parent window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>height=measurement
+<dd>The height of the window in the parent window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+<dt><br>Note:
+<dd>You cannot mix absolute units with dynamic or relative units when specifying x and width, or y and height.
+<dt><br>group=number
+<dd>The group number of the window (1 to 64000).&nbsp; All pages in the same group are displayed in the same window, one replacing
+ the other.
+<dt><br>viewport
+<dd>Force the opening of a new window for this page.
+<dt><br>clear
+<dd>Close any open windows before opening a new one to display this page.
+<dt><br>titlebar=yes | sysmenu | minmax | both | none
+<dd>Set what contents appear in the title bar.&nbsp; The default is 'both'.&nbsp; Useful for secondary windows.
+<dt><br>scroll=horizontal | vertical | both | none (default:&nbsp; both)
+<dd>Set which scroll bars appear.&nbsp; The default is 'both'.&nbsp; Useful for secondary windows.
+<dt><br>rules=border | sizeborder | none
+<dd>Set the type of border on the window.&nbsp; The default is 'sizeborder'.&nbsp; Useful for secondary windows.
+<dt><br>nosearch
+<dd>When searching, do not jump to this secondary window.&nbsp; Instead, jump to the parent window that contains it.
+<dt><br>noprint
+<dd>Do not print the contents of a secondary window separately.&nbsp; Print it as part of the parent window contents.
+<dt><br>hide
+<dd>Do not include this header in the table of contents.
+<dt><br>toc=numbers
+<dd>Controls which heading levels are included in the table of contents.&nbsp; For example, '123' (the default) places headings
+ defined by the h1, h2, and h3 tags in the table of contents.&nbsp; The numbers must be consecutive, beginning with 1.&nbsp;
+ Valid until the end of the file or until the next header with a toc attribute.
+<dt><br>ctrlarea=page|none
+<dd>Specifies where the control area that contains push buttons is located.&nbsp; If 'page' is specified, place the control area
+ on the text window.&nbsp; If 'none' is specified, suppress the control area on this page.&nbsp; This overrides the value
+ set in the docprof tag.
+<dt><br>ctrlrefid=text
+<dd>An alphanumeric identifier of the set of controls you wish to display.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#fn">fn</a>
+</dl>
+<h3 id="hdref"> hdref </h3>
+<dl>
+<dt>Description:
+<dd>Link to a heading.&nbsp; The text of the link is &quot;Reference&quot;.
+<dt><br>Attributes
+<dd>
+<dt><br>res=number
+<dd>The resource id of the header tag.
+<dt><br>refid=text
+<dd>The id of the header tag.&nbsp; Alphanumeric.
+<dt><br>Classification:
+<dd>In-line
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#link">link</a>
+</dl>
+<h3 id="hide"> hide </h3>
+<dl>
+<dt>Description:
+<dd>Hide a section of information unless the IPF_KEYS environment variable contains the correct key.
+<dt><br>Closing tag:
+<dd>The closing ehide is required.
+<dt><br>Attributes
+<dd>
+<dt><br>key='text'
+<dd>The key that will unhide the enclosed information.&nbsp; Multiple keys can be specified by enclosing each key in single quotes
+ then concatenating them with the plus sign.&nbsp; So, 'key1'+'key2'+...&nbsp; wipfc will also accept 'key1+key2+...'
+<dt><br>Conditions:
+<dd>You cannot nest hide tags within each other.&nbsp; You cannot include a header tag with the 'res' attribute set (in other
+ words, you cannot jump to hidden material).&nbsp; Note that the Open Watcom OS/2 Help Compiler does not check for this error.
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+</dl>
+<h3 id="hp1_M_hp9"> hp1 - hp9 </h3>
+<dl>
+<dt>Description:
+<dd>Change the style of the text.&nbsp; The style can be a combination of bold, italic, or underlined, or a color change.&nbsp;
+ hp1 is italic.&nbsp; hp2 is bold.&nbsp; hp3 is bold italic.&nbsp; hp4 is blue.&nbsp; hp5 is underlined.&nbsp; hp6 is underlined
+ italic.&nbsp; hp7 is underlined bold.&nbsp; hp8 is red.&nbsp; hp9 is pink.
+<dt><br>Closing tag:
+<dd>The closing matching tag is required.
+<dt><br>Conditions
+<dd>Highlighting tags cannot nest.&nbsp; Note that the Open Watcom OS/2 Help Compiler allows this as an extension, but still issues
+ a warning.&nbsp; In this case the opening and closing tags must match at each nesting level.&nbsp; Also note that nested
+ highlighting tags are not additive:&nbsp; an hp1 (italic) inside hp2 (bold) does not make an hp3 (bold italic).
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+</dl>
+<h3 id="i1"> i1 </h3>
+<dl>
+<dt>Description:
+<dd>Add a primary entry to the index.&nbsp; The text for the entry must be on the same line as the tag and cannot contain other
+ tags.
+<dt><br>Attributes
+<dd>
+<dt><br>id=text
+<dd>A cross-reference for use by a secondary index (i2) tag.
+<dt><br>global
+<dd>For HLP files, allows this entry to also appear in the global index.
+<dt><br>roots='text'
+<dd>Specifies a space separated list of root words (as defined by isyn) that act as index entries to specific topics.
+<dt><br>sortkey='key-text'.index-text
+<dd>Specify a string used to sort this entry in the index, and a string to use in its place.&nbsp; In other words, place index-text
+ where key-text would sort in index.
+<dt><br>Conditions
+<dd>Cannot appear in a footnote (fn/efn block).
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text
+<dt><br>See also:
+<dd><a href="#i2">i2</a>, <a href="#icmd">icmd</a>, <a href="#isyn">isyn</a>
+</dl>
+<h3 id="i2"> i2 </h3>
+<dl>
+<dt>Description:
+<dd>Add a secondary entry to the index.&nbsp; The text for the entry must be on the same line as the tag and cannot contain other
+ tags.
+<dt><br>Attributes
+<dd>
+<dt><br>refid=text
+<dd>The id of the primary index entry to which this belongs.
+<dt><br>global
+<dd>For HLP files, allows this entry to also appear in the global index.
+<dt><br>sortkey='key-text'.index-text
+<dd>Specify a string used to sort this entry in the index, and a string to use in its place.&nbsp; In other words, place index-text
+ where key-text would sort in index.
+<dt><br>Conditions
+<dd>Cannot appear in a fn/efn footnote.&nbsp; If the global flag is set for the i1 tag, it must be set for the i2 tag.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text
+<dt><br>See also:
+<dd><a href="#i1">i1</a>
+</dl>
+<h3 id="icmd"> icmd </h3>
+<dl>
+<dt>Description:
+<dd>Show that this page describes a command.&nbsp; The text for the command must be on the same line as the tag and cannot contain
+ other tags.&nbsp; If the page contains information on more than one command, there should be one icmd tag for each documented
+ command.
+<dt><br>Conditions
+<dd>The icmd tag must directly follow a heading tag, or other index tags (i1, i2 or isyn).
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text
+<dt><br>See also:
+<dd><a href="#i1">i1</a>, <a href="#i2">i2</a>
+</dl>
+<h3 id="isyn"> isyn </h3>
+<dl>
+<dt>Description:
+<dd>Create a list of synonyms or variations of a word in a primary index tag (i1).&nbsp; If the user enters one of the words in
+ the isyn list, the corresponding i1 index referencing the root word is returned.&nbsp; The synonyms themselves do not appear
+ in the index.&nbsp; The isyn tag can be placed on any page that contains related i1 tags.&nbsp; The list of synonyms must
+ be on the same line as the tag and cannot contain other tags.
+<dt><br>Attributes
+<dd>
+<dt><br>root=text
+<dd>The root word for which the synonyms apply.&nbsp; This word will also appear in the 'roots' attribute of the i1 tag.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text
+<dt><br>See also:
+<dd><a href="#i1">i1</a>
+</dl>
+<h3 id="li"> li </h3>
+<dl>
+<dt>Description:
+<dd>Begins a list item.&nbsp; This tag is only valid inside a simple, ordered, or unordered lists.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#ol">ol</a>, <a href="#sl">sl</a>, <a href="#ul">ul</a>
+</dl>
+<h3 id="lines"> lines </h3>
+<dl>
+<dt>Description:
+<dd>Renders the enclosed block in a proportional font, but honoring white space and line breaks to preserve the formatting of
+ the text as it was entered.&nbsp; The text can be left or right aligned, or centered.
+<dt><br>Closing tag:
+<dd>The closing elines is required.
+<dt><br>Attributes
+<dd>
+<dt><br>align=left | center | right
+<dd>Left, center, or right align the block of text in the window.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#ce">ce</a>, <a href="#fig">fig</a>, <a href="#xmp">xmp</a>
+</dl>
+<h3 id="link"> link </h3>
+<dl>
+<dt>Description:
+<dd>A link to additional information.&nbsp; Activating the link may jump to a different location in the same or a different document,
+ open a footnote, launch an application, or send a notification to another running process.
+<dt><br>Closing tag:
+<dd>The closing elink is required.&nbsp; Unless the link is contained in an artlink tag, or if reftype is 'inform'.
+<dt><br>Attributes
+<dd>
+<dt><br>reftype=hd | fn | launch | inform
+<dd>If reftype is 'hd', then it links to a heading and the refid attribute must be specified.&nbsp; If the heading is in an external
+ file, the database must also be set and the heading must have its 'global' attribute set.&nbsp; If reftype is 'fn', the link
+ is to a footnote and the 'refid' attribute must be set.&nbsp; Note that a split window cannot contain a link to a footnote.
+&nbsp; If reftype is 'launch', the link starts the external program specified by the 'object' attribute with parameters specified
+ in the 'data' attribute.&nbsp; If reftype is 'inform', the value of the 'res' attribute is sent to the application.
+<dt><br>res=number
+<dd>The resource id of the header tag.
+<dt><br>refid=text
+<dd>The id of the header.&nbsp; Alphanumeric.
+<dt><br>database='text'
+<dd>The name of the external INF or HLP file.
+<dt><br>object='text'
+<dd>The name of a program to execute.
+<dt><br>data='text'
+<dd>The parameters to pass to program being started.
+<dt><br>auto
+<dd>Automatically trigger this link when the page that contains it is displayed.&nbsp; Footnotes cannot be opened automatically.
+&nbsp; The link tag must follow a heading tag before other tags and text.
+<dt><br>viewport
+<dd>Open a secondary window when the link that refers to it is opened.
+<dt><br>dependent
+<dd>Make the automatically opened window close when the secondary window that opened it is closed.
+<dt><br>split
+<dd>Open a secondary window when the link is activated.&nbsp; Note that the primary window can only contain links to secondary
+ windows.&nbsp; Each of the secondary windows must have a different group number if they are to be displayed at the same time.
+<dt><br>child
+<dd>Open the page being linked to as a child of the current page, clipped to fit within the current page.&nbsp; The child is always
+ on top, is closed when the parent is closed, resized when the parent's size is changed.&nbsp; If only the child is minimized,
+ its icon appears within the parent's border.
+<dt><br>group=number
+<dd>The group number of the window (1 to 64000).&nbsp; All pages in the same group are displayed in the same window, one replacing
+ the other.
+<dt><br>vpx=measurement
+<dd>The x origin of the window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.&nbsp; Not valid for footnotes.
+<dt><br>vpy=measurement
+<dd>The y origin of the window.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.&nbsp; Not valid for footnotes.
+<dt><br>vpcx=measurement
+<dd>The width of the window.&nbsp; Absolute or dynamic units only.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+&nbsp; Not valid for footnotes.
+<dt><br>vpcy=measurement
+<dd>The height of the window.&nbsp; Absolute or dynamic units only.&nbsp; See <a href="#Units_of_Measure">Units of Measure</a>.
+&nbsp; Not valid for footnotes.
+<dt><br>titlebar=yes|sysmenu|minmax|both|none
+<dd>Set what contents appear in the title bar.&nbsp; The default is 'both'.&nbsp; Useful for secondary windows.
+<dt><br>scroll=horizontal|vertical|both|none
+<dd>Set which scroll bars appear.&nbsp; The default is 'both'.&nbsp; Useful for secondary windows.
+<dt><br>rules=border|sizeborder|none
+<dd>Set the type of border on the window.&nbsp; The default is 'sizeborder'.&nbsp; Useful for secondary windows.
+<dt><br>x=number
+<dd>The x origin of the active area of the graphic.&nbsp; Valid only if the link is in an artlink.
+<dt><br>y=number
+<dd>The y origin of the active area of the graphic.&nbsp; Valid only if the link is in an artlink.
+<dt><br>cx=number
+<dd>The width of the active area of the graphic.&nbsp; Valid only if the link is in an artlink.
+<dt><br>cy=number
+<dd>The height of the active area of the graphic.&nbsp; Valid only if the link is in an artlink.
+<dt><br>Note:
+<dd>If the link is to contain an image, the link must be enclosed in an artlink tag block.
+<dt><br>Classification:
+<dd>In-line
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#artlink">artlink</a>, <a href="#hdref">hdref</a>
+</dl>
+<h3 id="lm"> lm </h3>
+<dl>
+<dt>Description:
+<dd>Sets the left margin.&nbsp; The margin remains in effect until it is reset or until the end of the current page.
+<dt><br>Attributes
+<dd>
+<dt><br>margin=number
+<dd>The number of character spaces.&nbsp; If the tag appears more than 'margin' character spaces into a line of text, the margin
+ becomes effective on the next line.
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#rm">rm</a>
+</dl>
+<h3 id="lp"> lp </h3>
+<dl>
+<dt>Description:
+<dd>Add a paragraph to a list.&nbsp; The resulting block of text is indented to the same level as the list text, but is not numbered
+ or bulleted.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#p">p</a>
+</dl>
+<h3 id="note"> note </h3>
+<dl>
+<dt>Description:
+<dd>Begins a note.&nbsp; The text that follows the tag (up to the next block-class tag) is used as the text of the note.&nbsp;
+ This text appears after the local-specific phrase (&quot;Note:&nbsp; &quot; in the en_US locale) and on the same line.
+<dt><br>Attributes
+<dd>
+<dt><br>text='text'
+<dd>Substitute 'text' for the default &quot;Note:&nbsp; &quot; phrase.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#caution">caution</a>, <a href="#nt">nt</a>, <a href="#warning">warning</a>
+</dl>
+<h3 id="nt"> nt </h3>
+<dl>
+<dt>Description:
+<dd>Begins a multi-paragraph note.&nbsp; All of the text in the note left aligns with the first word after the message text.&nbsp;
+ The text begins with a local-specific phrase (&quot;Note:&nbsp; &quot; in the en_US locale).
+<dt><br>Closing tag:
+<dd>The closing ent is required.
+<dt><br>Attributes
+<dd>
+<dt><br>text='text'
+<dd>Substitute 'text' for the default &quot;Note:&nbsp; &quot; phrase.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#caution">caution</a>, <a href="#note">note</a>, <a href="#warning">warning</a>
+</dl>
+<h3 id="ol"> ol </h3>
+<dl>
+<dt>Description:
+<dd>An ordered list (numbers precede each list item).&nbsp; List items begin with the li tag and can be continued in another paragraph
+ (without numbering) by using the lp tag.
+<dt><br>Closing tag:
+<dd>The closing eol is required.
+<dt><br>Attributes
+<dd>
+<dt><br>compact
+<dd>Do not put blank lines between each list item.
+<dt><br>verycompact
+<dd>Do not put blank lines between each list item, and do not put blank lines before or after the list.&nbsp; An Open Watcom OS/2
+ Help Compiler extension.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#li">li</a>, <a href="#lp">lp</a>, <a href="#sl">sl</a>, <a href="#ul">ul</a>
+</dl>
+<h3 id="p"> p </h3>
+<dl>
+<dt>Description:
+<dd>A paragraph.&nbsp; Each paragraph is preceded by a blank line, and is terminated by the next block-level tag.&nbsp; Text doesn't
+ have to be in a paragraph, but it helps.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+</dl>
+<h3 id="parml"> parml </h3>
+<dl>
+<dt>Description:
+<dd>A two-column list of parameters and their definitions, similar to a definition list (dl tag).&nbsp; A pt tag defines the term,
+ and a pd tag defines a definition of the term.&nbsp; Each pt tag must have a pd tag.&nbsp; Multiple consecutive pt tags are
+ allowed (synonyms), but only one pd tag is allowed for each set of pt tags.&nbsp; Other lists and blocks may be nested in
+ a parameter table.
+<dt><br>Attributes
+<dd>
+<dt><br>tsize=number
+<dd>The width of the term column.&nbsp; The default is 10.
+<dt><br>break=all | fit | none
+<dd>If break is 'all' then each description is on a line below the term.&nbsp; This is the default.&nbsp; If break is 'fit' then
+ the description is on the same line as the term provided that the width of the term is less than tsize characters.&nbsp;
+ If break is 'none' then the description is on the same line as the term.
+<dt><br>compact
+<dd>Do not add blank lines between each term/description pair.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd><a href="#pt">pt</a>, <a href="#pd">pd</a>
+<dt><br>See also:
+<dd><a href="#dl">dl</a>
+</dl>
+<h4 id="pt"> pt </h4>
+<dl>
+<dt>Description:
+<dd>The parameter to be described.&nbsp; Multiple pt tags (synonyms) may described by a single pd tag.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, <a href="#pd">pd</a>, pt
+</dl>
+<h4 id="pd"> pd </h4>
+<dl>
+<dt>Description:
+<dd>The description of the parameter.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#pt">pt</a>
+</dl>
+<h3 id="pbutton"> pbutton </h3>
+<dl>
+<dt>Description:
+<dd>Defines a custom (author-defined) push button.
+<dt><br>Attributes
+<dd>
+<dt><br>id=text
+<dd>An alphanumeric identifier that will be referenced by the ctrl tag when using the button.
+<dt><br>res=number
+<dd>The resource identifier for the button (returned by window messages).&nbsp; Must be greater 256; values of 256 or less are
+ reserved.
+<dt><br>text='text'
+<dd>The button text.&nbsp; May include spaces.&nbsp; May not include entity references.&nbsp; Must not conflict with any pre-defined
+ buttons.
+<dt><br>Note:
+<dd>All pbutton tags must appear inside a ctrldef block and before any ctrl tags.
+<dt><br>Classification:
+<dd>Document Header
+<dt><br>May contain:
+<dd>None
+<dt><br>See also:
+<dd><a href="#ctrl">ctrl</a>, <a href="#ctrldef">ctrldef</a>
+</dl>
+<h3 id="rm"> rm </h3>
+<dl>
+<dt>Description:
+<dd>Sets the right margin.&nbsp; The margin remains in effect until it is reset or until the end of the current page.
+<dt><br>Attributes
+<dd>
+<dt><br>margin=number
+<dd>The number of character spaces.&nbsp; If the tag appears more than 'margin' character spaces into a line of text, the margin
+ becomes effective on the next line.
+<dt><br>Classification:
+<dd>Formatting
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#lm">lm</a>
+</dl>
+<h3 id="sl"> sl </h3>
+<dl>
+<dt>Description:
+<dd>A simple list (neither numbered, nor bulleted).&nbsp; List items begin with the li tag and can be continued in another paragraph
+ (without numbering) by using the lp tag.
+<dt><br>Closing tag:
+<dd>The closing esl is required.
+<dt><br>Attributes
+<dd>
+<dt><br>compact
+<dd>Do not put blank lines between each list item.
+<dt><br>verycompact
+<dd>Do not put blank lines between each list item, and do not put blank lines before or after the list.&nbsp; An Open Watcom OS/2
+ Help Compiler extension.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#li">li</a>, <a href="#lp">lp</a>, <a href="#ol">ol</a>, <a href="#ul">ul</a>
+</dl>
+<h3 id="table"> table </h3>
+<dl>
+<dt>Description:
+<dd>Begins a table.&nbsp; Tables use a mono-spaced font to ensure that the column width are respected.&nbsp; If you change the
+ font (using the font tag) or change make the font bold, the spacing will be thrown off.
+<dt><br>Attributes
+<dd>
+<dt><br>cols='number number...'
+<dd>Specifies both the width of each column ('number') and the number of columns (the number of 'number's).
+<dt><br>rules=both | horiz | vert | none
+<dd>Specify whether the table will have horizontal or vertical rules.&nbsp; If the rule is not drawn, blank space appears in it
+ place.&nbsp; The default is 'both'.
+<dt><br>frame=rule|box|none
+<dd>Specifies the frame around the table.&nbsp; If no frame is drawn, blank space appears in its place.&nbsp; The default is 'box'.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd><a href="#row">row</a>
+</dl>
+<h4 id="row"> row </h4>
+<dl>
+<dt>Description:
+<dd>A table row.&nbsp; If the number of cells supplied for a row is greater or less than the number specified in the table tag,
+ a warning is generated.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd><a href="#c">c</a>
+</dl>
+<h4 id="c"> c </h4>
+<dl>
+<dt>Description:
+<dd>A table cell.&nbsp; If the width of the text exceeds the width of the cell, the text is wrapped.&nbsp; If the length of a
+ single word exceeds the width of the cell, that word will be truncated to the width of the cell.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, <a href="#color">color</a>, <a href="#font">font</a>, <a href="#hp1_M_hp9">hp1 - hp9</a>, <a href="#lines">lines</a>,
+ <a href="#link">link</a>
+<dt><br>Note:
+<dd>Using the lines tag does not change the font to a proportional spaced font.&nbsp; It simply makes the whitespace and new lines
+ significant so that the cell is formatted as entered.&nbsp; All attributes for the lines tag are ignored.
+</dl>
+<h3 id="title"> title </h3>
+<dl>
+<dt>Description:
+<dd>Sets the title of the help document.&nbsp; The maximum length of the title is 47 characters (including spaces and blanks)
+ and is displayed in a single line.&nbsp; Other than text, the title may contain entity references and nameit expansions.
+<dt><br>Note:
+<dd>The title tag may only appear in the document header.&nbsp; It cannot appear on individual pages because it applies to the
+ document as a whole.
+<dt><br>Classification:
+<dd>Document Header
+<dt><br>May contain:
+<dd>Text
+</dl>
+<h3 id="ul"> ul </h3>
+<dl>
+<dt>Description:
+<dd>An unordered list (bullets precede each list item).&nbsp; List items begin with the li tag and can be continued in another
+ paragraph (without numbering) by using the lp tag.
+<dt><br>Closing tag:
+<dd>The closing eul is required.
+<dt><br>Attributes
+<dd>
+<dt><br>compact
+<dd>Do not put blank lines between each list item.
+<dt><br>verycompact
+<dd>Do not put blank lines between each list item, and do not put blank lines before or after the list.&nbsp; An Open Watcom OS/2
+ Help Compiler extension.
+<dt><br>Classification:
+<dd>List-block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block, List-block
+<dt><br>See also:
+<dd><a href="#li">li</a>, <a href="#lp">lp</a>, <a href="#ol">ol</a>, <a href="#sl">sl</a>
+</dl>
+<h3 id="userdoc"> userdoc </h3>
+<dl>
+<dt>Description:
+<dd>Delimit the compilable source text.&nbsp; userdoc must be the first tag in the file.&nbsp; Only comments may precede the userdoc
+ tag.&nbsp; Only comments may follow the terminating euserdoc tag.
+<dt><br>Closing tag:
+<dd>The closing euserdoc is required.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Everything
+</dl>
+<h3 id="warning"> warning </h3>
+<dl>
+<dt>Description:
+<dd>Displays a locale-specific warning message (&quot;Warning:&nbsp; &quot; in the en_US locale) followed immediately by the contents
+ enclosed by the warning tag block.
+<dt><br>Closing tag:
+<dd>The closing ewarning is required.
+<dt><br>Attributes
+<dd>
+<dt><br>text='message'
+<dd>Use 'message' instead of 'Warning:&nbsp; ' as the introductory text.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line, Block (except acviewport, fn, h1-h6), List-block
+<dt><br>See also:
+<dd><a href="#caution">caution</a>, <a href="#note">note</a>, <a href="#nt">nt</a>
+</dl>
+<h3 id="xmp"> xmp </h3>
+<dl>
+<dt>Description:
+<dd>Renders the enclosed text in a monospaced font, honoring whitespace and line breaks.&nbsp; In other words, exactly as it is
+ entered.&nbsp; If the width of the text exceeds the width of the window, the text is clipped, not wrapped.
+<dt><br>Closing tag:
+<dd>The closing exmp is required.
+<dt><br>Classification:
+<dd>Block
+<dt><br>May contain:
+<dd>Text, Formatting, In-line
+<dt><br>See also:
+<dd><a href="#cgraphic">cgraphic</a>, <a href="#lines">lines</a>
+</dl>
+<h1 id="Error_Messages"> Error Messages </h1>
+<br>The Open Watcom OS/2 Help Compiler generates four kinds of diagnostic messages:&nbsp; Errors and three levels of warnings.
+&nbsp; Despite their name, warnings are really errors and indicate that wipfc has produced a file that is probably not exactly
+ the way you wanted.
+<h2 id="Errors"> Errors </h2>
+<br>Errors are always fatal and cause Open Watcom OS/2 Help Compiler to stop immediately.
+<dl>
+<dt>&quot;The length of the file path is too long&quot;
+<dd>The maximum length of the file path depends on the operating system.&nbsp; You may need to re-arrange the project's layout
+ on disk.
+<dt><br>&quot;Cannot open file&quot;
+<dd>A source file cannot be opened, usually because it doesn't exist.&nbsp; Check the spelling of the file name.
+<dt><br>&quot;Cannot open image file&quot;
+<dd>A image file cannot be opened, usually because it doesn't exist.&nbsp; Check the spelling of the file name.
+<dt><br>&quot;Cannot read from file&quot;
+<dd>For some reason, reading the file has failed.
+<dt><br>&quot;Cannot write to file&quot;
+<dd>For some reason, writing to the file has failed.&nbsp; The disk might be full.
+<dt><br>&quot;Unexpected end of file&quot;
+<dd>The source file has unexpectedly ended.&nbsp; This can occur if you have forgotten the euserdoc tag.
+<dt><br>&quot;Text conversion error&quot;
+<dd>wipfc uses wide characters internally.&nbsp; All text is converted from multi-byte characters to wide characters when read,
+ and back to multi-byte characters when written.&nbsp; If a character cannot be converted successfully, this error is generated.
+<dt><br>&quot;Syntax error&quot;
+<dd>A syntax error has occurred.&nbsp; Usually, this is because an end-of-tag delimiter is missing.
+<dt><br>&quot;Invalid country code or codepage&quot;
+<dd>The appropriate file of entity references cannot be found or cannot be read.&nbsp; Usually, this is because the WIPFC environment
+ variable is pointing to the wrong place.
+<dt><br>&quot;Invalid language code&quot;
+<dd>The appropriate nls file cannot be found or cannot be read.&nbsp; Usually, this is because the WIPFC environment variable
+ is pointing to the wrong place.
+<dt><br>&quot;Missing userdoc or euserdoc&quot;
+<dd>The document is not correctly formed.&nbsp; The userdoc and euserdoc tags are required.
+<dt><br>&quot;Too many unique words--the document is too big&quot;
+<dd>A document can contain a maximum of 64000 unique words.
+<dt><br>&quot;The document has no words&quot;
+<dd>A document cannot be empty.&nbsp; Add some text.
+<dt><br>&quot;The document has too many pages&quot;
+<dd>A document cannot have more than 65535 pages.
+<dt><br>&quot;The document has too many index or icmd entries&quot;
+<dd>The document cannot have more than 65535 index entries.
+<dt><br>&quot;The document has no visible table of contents entries&quot;
+<dd>At least one of the pages must be visible.&nbsp; Don't hide them all.
+</dl>
+<h2 id="Level_1_Warnings"> Level 1 Warnings </h2>
+<br>Level 1 warnings are the most serious.&nbsp; Unless they are corrected, your help file is not likely to contain information
+ presented as you intended.
+<dl>
+<dt>&quot;This command is not defined&quot;
+<dd>Commands begin with a '.' in the first column of a row of text.&nbsp; You probably have a line beginning with a period.
+<dt><br>&quot;This tag is not defined&quot;
+<dd>You are trying to use a tag that wipfc does not recognize.&nbsp; Try replacing the ':' character with an entity reference.
+<dt><br>&quot;This attribute is not defined for this tag&quot;
+<dd>Check the spelling of the attribute, or delete it.
+<dt><br>&quot;Attributes are not allowed for this tag--probably missing .&nbsp; to end the tag&quot;
+<dd>This tag has no attributes.
+<dt><br>&quot;The tag, word, or command is not allowed in this context&quot;
+<dd>This is usually because the enclosing tag can only contain specific tags or no tags at all.
+<dt><br>&quot;Syntax error in tag&quot;
+<dd>There is something wrong within the tag.
+<dt><br>&quot;Ignoring text before the h1 tag&quot;
+<dd>Text and most tags cannot appear before the first heading tag.
+<dt><br>&quot;Ignoring text after the euserdoc tag&quot;
+<dd>Text and tags cannot appear after the terminating document tag.
+<dt><br>&quot;Heading levels are not in consecutive order&quot;
+<dd>The offending heading tag is more than one level greater than the heading that contains it.
+<dt><br>&quot;The required refid attribute is missing&quot;
+<dd>A refid or res attribute is required to specify the target of a link or secondary index, but not present.
+<dt><br>&quot;Unable to find the resource identifier for this reference&quot;
+<dd>A non-existent resource id is being referenced.
+<dt><br>&quot;The required resource identifier is missing&quot;
+<dd>A ddf tag is missing a valid resource identifier.
+<dt><br>&quot;Unable to find the id or name for this reference&quot;
+<dd>The referenced id or name does not exist.
+<dt><br>&quot;The required id for this footnote is missing&quot;
+<dd>A footnote tag is missing a required id.
+<dt><br>&quot;Ignoring a list item tag that is not part of a list&quot;
+<dd>List elements can only appear within a list.
+<dt><br>&quot;The required end the list is missing&quot;
+<dd>The list has not been closed.
+<dt><br>&quot;A ddhd tag must be preceded by a dthd tag&quot;
+<dd>Definition list header tags must appear in the correct order.
+<dt><br>&quot;A dd tag must be preceded by a dt tag&quot;
+<dd>Definition list elements must appear in the correct order.
+<dt><br>&quot;Too many external files have been linked to&quot;
+<dd>A maximum of 256 external files can be linked.
+<dt><br>&quot;The required graphics file name is not present&quot;
+<dd>You have to specify the name of the bit-mapped graphics file if you expect wipfc to find it.
+<dt><br>&quot;wipfc does not support this graphics file format&quot;
+<dd>Only Windows and OS/2 bmp files are supported by wipfc.
+<dt><br>&quot;Cannot hide a header with the res attribute set&quot;
+<dd>Either don't hide the header, or remove the res attribute so it can't be a link target.
+<dt><br>&quot;No valid cols have been specified&quot;
+<dd>A table needs its column widths specified in advance.
+<dt><br>&quot;The total width of the table is &gt;250 characters&quot;
+<dd>The total width of a table (including borders) cannot exceed 250 characters.
+<dt><br>&quot;Ignoring text before c tag&quot;
+<dd>Text in a table must be inside of a cell.&nbsp; Put it after the c tag.
+<dt><br>&quot;Ignoring invalid tag in table cell&quot;
+<dd>Table cells cannot contain other block-level tags.
+<dt><br>&quot;Text in this table column is too long, truncating&quot;
+<dd>If a single word is longer than the table cell is wide, it is truncated.
+<dt><br>&quot;Ignoring extra table columns in this row&quot;
+<dd>You have more c tags in the row than you have columns specified in the table tag.
+<dt><br>&quot;Not enough columns have been specified for this row&quot;
+<dd>You have fewer c tags in the row than you have columns specified in the table tag.
+<dt><br>&quot;The required elink tag is missing, but has been appended to this column&quot;
+<dd>You forgot to close the link, so wipfc has added an elink tag at the end of the cell.
+<dt><br>&quot;This page has too many elements (words, punctuation, etc.)&quot;
+<dd>The maximum number of text elements in a single page is 64000.
+</dl>
+<h2 id="Level_2_Warnings"> Level 2 Warnings </h2>
+<br>Level 2 warnings are less serious.
+<dl>
+<dt>&quot;Invalid or missing attribute value&quot;
+<dd>A required attribute is either missing, or has an invalid value.
+<dt><br>&quot;Invalid symbol (entity reference or .nameit expansion)&quot;
+<dd>The entity reference or nameit macro is not defined.&nbsp; Check the spelling.
+<dt><br>&quot;Invalid tag nesting&quot;
+<dd>Text hiding tags and highlighting tags cannot nest with themselves.
+<dt><br>&quot;Footnote cannot be indexed&quot;
+<dd>Footnotes cannot have in1, in2, or icmd tags.
+<dt><br>&quot;Too many (&gt; 14) fonts have been used&quot;
+<dd>You need to user fewer fonts.
+<dt><br>&quot;Title or index text is too long&quot;
+<dd>The length of title text is limited to 47 characters; index text, to 255 characters.
+<dt><br>&quot;Subindexes of a global index must be global, too&quot;
+<dd>If an index is global, all of its subindexes must be global, too.&nbsp; Set the 'global' flag.
+<dt><br>&quot;An index entry requires text&quot;
+<dd>Text must follow an in1, in2, or icmd tag.
+</dl>
+<h2 id="Level_3_Warnings"> Level 3 Warnings </h2>
+<br>Level 3 warnings are less serious still.
+<dl>
+<dt>&quot;This id or name is already in use&quot;
+<dd>If the id or name is the target of a link tag, you're not likely to get to the right place.
+<dt><br>&quot;This res number is already in use&quot;
+<dd>If the resource id is the target of a link tag, you're not likely to get to the right place.
+<dt><br>&quot;Redefinition of .nameit symbol&quot;
+<dd>A nameit symbol can only be defined once.&nbsp; It cannot be redefined.
+<dt><br>&quot;This synonym set is already defined&quot;
+<dd>A synonym set can only be defined once.
+<dt><br>&quot;This synonym set is not defined&quot;
+<dd>A synonym set must be defined before it can be used.
+<dt><br>&quot;Control group references an undefined button&quot;
+<dd>A push button definition is missing.
+<dt><br>&quot;Cannot mix dynamic and absolute units&quot;
+<dd>Absolute and relative units cannot be used at the same time.
+<dt><br>&quot;Footnotes cannot be opened automatically&quot;
+<dd>Footnotes are special.
+<dt><br>&quot;Footnote cannot be opened from a split window&quot;
+<dd>Footnotes are special.
+<dt><br>&quot;Missing res number in a .HLP file&quot;
+<dd>HLP files headers are required have res numbers.&nbsp; INF files are not unless they are being concatenated.&nbsp; HLP files
+ appear to work fine without them as long as they aren't concatenated and don't use global links.
+</dl>
+<h1 id="IPF_Symbols"> IPF Symbols </h1>
+<br>Special symbols can be incorporated into OS/2 help file by using entity references in the form of &amp;symbol-name.&nbsp;
+ Each entity reference begins with the '&amp;' character and ends with the '.' character.&nbsp; New symbols can be created
+ by using the nameit command (see <a href="#nameit">nameit</a>), but each language encoding has a pre-defined set of symbols
+ associated with it.&nbsp; For the en_US locale (and other locales using the IBM 850 code page), the predefined symbols are
+ as follows (symbols that cannot appear in this document are left blank):
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hex&nbsp;&nbsp;&nbsp;&nbsp; Unicode&nbsp;
+&nbsp;&nbsp;&nbsp; Entity</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Char&nbsp;&nbsp;&nbsp; value&nbsp;&nbsp; code point&nbsp; name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; Description</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; -----------------------------------------------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x10&nbsp;&nbsp;&nbsp; \u25BA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rarrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black right-pointing pointer</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x10&nbsp;&nbsp;&nbsp; \u25BA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rahead&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black right-pointing pointer</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x11&nbsp;&nbsp;&nbsp; \u25C4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lahead&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black left-pointing pointer</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x11&nbsp;&nbsp;&nbsp; \u25C4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; larrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black left-pointing pointer</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x18&nbsp;&nbsp;&nbsp; \u25B2&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; uarrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black up-pointing triangle</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x19&nbsp;&nbsp;&nbsp; \u25BC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; darrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black down-pointing triangle</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x20&nbsp;&nbsp;&nbsp; \u0020&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; rbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Required blank</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x21&nbsp;&nbsp;&nbsp; \u0021&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; xclm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exclamation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x21&nbsp;&nbsp;&nbsp; \u0021&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; xclam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exclamation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x22&nbsp;&nbsp;&nbsp; \u201D&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; odq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left double quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x22&nbsp;&nbsp;&nbsp; \u201C&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; cdq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right double quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x23&nbsp;&nbsp;&nbsp; \u0023&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; numsign&nbsp;&nbsp;&nbsp;&nbsp; Number sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x24&nbsp;&nbsp;&nbsp; \u0024&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; dollar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dollar sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x25&nbsp;&nbsp;&nbsp; \u0025&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; percent&nbsp;&nbsp;&nbsp;&nbsp; Percent sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x26&nbsp;&nbsp;&nbsp; \u0026&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; amp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ampersand</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x27&nbsp;&nbsp;&nbsp; \u0027&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; apos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apostrophe</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x60&nbsp;&nbsp;&nbsp; \u2018&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; osq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left single quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x27&nbsp;&nbsp;&nbsp; \u2019&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; csq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right single quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x60&nbsp;&nbsp;&nbsp; \u0060&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; grave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grave accent</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x28&nbsp;&nbsp;&nbsp; \u0028&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lpar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left parenthesis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x28&nbsp;&nbsp;&nbsp; \u0028&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lparen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left parenthesis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x29&nbsp;&nbsp;&nbsp; \u0029&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rpar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right parenthesis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x29&nbsp;&nbsp;&nbsp; \u0029&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rparen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right parenthesis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2A&nbsp;&nbsp;&nbsp; \u002A&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; asterisk&nbsp;&nbsp;&nbsp; Asterisk</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2B&nbsp;&nbsp;&nbsp; \u002B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; plus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plus sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2C&nbsp;&nbsp;&nbsp; \u002C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; comma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comma</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; dash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; emdash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; mdash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; endash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ndash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; hyphen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2D&nbsp;&nbsp;&nbsp; \u002D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; minus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyphen-minus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2E&nbsp;&nbsp;&nbsp; \u002E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Full stop</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2E&nbsp;&nbsp;&nbsp; \u002E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; per&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Full stop</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2F&nbsp;&nbsp;&nbsp; \u002F&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; slash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solidus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2F&nbsp;&nbsp;&nbsp; \u002F&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; slr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solidus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3A&nbsp;&nbsp;&nbsp; \u003A&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; colon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colon</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3B&nbsp;&nbsp;&nbsp; \u003B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; semi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Semicolon</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3C&nbsp;&nbsp;&nbsp; \u003C&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; lt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Less-than sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3C&nbsp;&nbsp;&nbsp; \u003C&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; ltsym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Less-than sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3D&nbsp;&nbsp;&nbsp; \u003D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; eq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Equals sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3D&nbsp;&nbsp;&nbsp; \u003D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; equals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Equals sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3D&nbsp;&nbsp;&nbsp; \u003D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; eqsym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Equals sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3E&nbsp;&nbsp;&nbsp; \u003E&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; gt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greater-than sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3E&nbsp;&nbsp;&nbsp; \u003E&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; gtsym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greater-than sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x40&nbsp;&nbsp;&nbsp; \u0040&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; atsign&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Commercial at</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#91;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5B&nbsp;&nbsp;&nbsp; \u005B&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; lbracket&nbsp;&nbsp;&nbsp; Left square bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#91;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5B&nbsp;&nbsp;&nbsp; \u005B&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; lbrk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left square bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5C&nbsp;&nbsp;&nbsp; \u005C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bslash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reverse solidus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5C&nbsp;&nbsp;&nbsp; \u005C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bsl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reverse solidus</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5D&nbsp;&nbsp;&nbsp; \u005D&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; rbracket&nbsp;&nbsp;&nbsp; Right square bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5D&nbsp;&nbsp;&nbsp; \u005D&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; rbrk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right square bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5E&nbsp;&nbsp;&nbsp; \u005E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; caret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Circumflex accent</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5E&nbsp;&nbsp;&nbsp; \u005E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Circumflex accent</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x5F&nbsp;&nbsp;&nbsp; \u005F&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Low line</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7B&nbsp;&nbsp;&nbsp; \u007B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lbrace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left curly bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7B&nbsp;&nbsp;&nbsp; \u007B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lbrc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left curly bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7C&nbsp;&nbsp;&nbsp; \u00A6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; splitvbar&nbsp;&nbsp; Split vertical bar</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7C&nbsp;&nbsp;&nbsp; \u007C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; vbar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical bar</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7C&nbsp;&nbsp;&nbsp; \u007C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical bar</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7D&nbsp;&nbsp;&nbsp; \u007D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rbrace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right curly bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7D&nbsp;&nbsp;&nbsp; \u007D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; rbrc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right curly bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7E&nbsp;&nbsp;&nbsp; \u007E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; tilde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tilde</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7E&nbsp;&nbsp;&nbsp; \u007E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; similar&nbsp;&nbsp;&nbsp;&nbsp; Tilde</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x7F&nbsp;&nbsp;&nbsp; \u2302&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; house&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; House</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ä&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x80&nbsp;&nbsp;&nbsp; \u00C7&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter C with cedilla</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Å&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x81&nbsp;&nbsp;&nbsp; \u00FC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter U with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ç&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x82&nbsp;&nbsp;&nbsp; \u00E9&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter E with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; É&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x83&nbsp;&nbsp;&nbsp; \u00E2&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter A with circumflex</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ñ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x84&nbsp;&nbsp;&nbsp; \u00E4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ae&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter A with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ö&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x85&nbsp;&nbsp;&nbsp; \u00E0&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter A with grave</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ü&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x86&nbsp;&nbsp;&nbsp; \u00E5&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ao&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter A with ring above</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; á&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x87&nbsp;&nbsp;&nbsp; \u00E7&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter C with cedilla</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; à&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x88&nbsp;&nbsp;&nbsp; \u00EA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter E with circumflex</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; â&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x89&nbsp;&nbsp;&nbsp; \u00EB&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter E with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ä&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8A&nbsp;&nbsp;&nbsp; \u00E8&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; eg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter E with grave</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8B&nbsp;&nbsp;&nbsp; \u00EF&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter I with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; å&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8C&nbsp;&nbsp;&nbsp; \u00EE&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter I with circumflex</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ç&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8D&nbsp;&nbsp;&nbsp; \u00EC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter I with grave</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; é&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8E&nbsp;&nbsp;&nbsp; \u00C4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Ae&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter A with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; è&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8F&nbsp;&nbsp;&nbsp; \u00C5&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Ao&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter A with ring above</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; è&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x8F&nbsp;&nbsp;&nbsp; \u00C5&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; angstrom&nbsp;&nbsp;&nbsp; Latin capital letter A with ring above</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ê&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x90&nbsp;&nbsp;&nbsp; \u00C9&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Ea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter E with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ë&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x91&nbsp;&nbsp;&nbsp; \u00E6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; aelig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter Ae</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; í&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x92&nbsp;&nbsp;&nbsp; \u00C6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; AElig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter Ae</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ì&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x93&nbsp;&nbsp;&nbsp; \u00F4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; oc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter O with circumflex</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; î&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x94&nbsp;&nbsp;&nbsp; \u00F6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; oe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter O with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ï&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x95&nbsp;&nbsp;&nbsp; \u00F2&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; og&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter O with grave</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ñ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x96&nbsp;&nbsp;&nbsp; \u00FB&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; uc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter U with circumflex</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ó&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x97&nbsp;&nbsp;&nbsp; \u00F9&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ug&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter U with grave</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ò&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x98&nbsp;&nbsp;&nbsp; \u00FF&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter Y with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ô&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x99&nbsp;&nbsp;&nbsp; \u00D6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Oe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter O with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ö&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x9A&nbsp;&nbsp;&nbsp; \u00DC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Ue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter U with diaeresis</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; õ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x9B&nbsp;&nbsp;&nbsp; \u00A2&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; cent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cent sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ú&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x9C&nbsp;&nbsp;&nbsp; \u00A3&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Lsterling&nbsp;&nbsp; Pound sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x9D&nbsp;&nbsp;&nbsp; \u00A5&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; yen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yen sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ü&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x9F&nbsp;&nbsp;&nbsp; \u0192&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; fnof&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter F with hook</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; †&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA0&nbsp;&nbsp;&nbsp; \u00E1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; aa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter A with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; °&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA1&nbsp;&nbsp;&nbsp; \u00ED&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter I with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¢&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA2&nbsp;&nbsp;&nbsp; \u00F3&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; oa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter O with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; £&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA3&nbsp;&nbsp;&nbsp; \u00FA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ua&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter U with acute</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; §&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA4&nbsp;&nbsp;&nbsp; \u00F1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; nt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter N with tilde</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA5&nbsp;&nbsp;&nbsp; \u00D1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Nt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin capital letter N with tilde</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¶&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA6&nbsp;&nbsp;&nbsp; \u00AA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; aus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feminine ordinal indicator</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ß&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA7&nbsp;&nbsp;&nbsp; \u00BA&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ous&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masculine ordinal indicator</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ®&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA8&nbsp;&nbsp;&nbsp; \u00BF&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; invq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inverted question mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ©&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xA9&nbsp;&nbsp;&nbsp; \u2310&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lnotrev&nbsp;&nbsp;&nbsp;&nbsp; Reversed not sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ™&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAA&nbsp;&nbsp;&nbsp; \u00AC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lnot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ™&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAA&nbsp;&nbsp;&nbsp; \u00AC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; notsym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ´&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAB&nbsp;&nbsp;&nbsp; \u00BD&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; frac12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vulgar fraction one half</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAC&nbsp;&nbsp;&nbsp; \u00BC&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; frac14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vulgar fraction one quarter</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ≠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAD&nbsp;&nbsp;&nbsp; \u00A1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; inve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inverted exclamation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Æ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAE&nbsp;&nbsp;&nbsp; \u00AB&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; odqf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left-pointing double angle quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ø&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xAF&nbsp;&nbsp;&nbsp; \u00BB&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; cdqf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right-pointing double angle quotation mark</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB0&nbsp;&nbsp;&nbsp; \u2591&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; box14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light shade</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ±&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB1&nbsp;&nbsp;&nbsp; \u2592&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; box12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medium shade</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ≤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB2&nbsp;&nbsp;&nbsp; \u2593&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; box34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dark shade</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ≥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB3&nbsp;&nbsp;&nbsp; \u2502&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB4&nbsp;&nbsp;&nbsp; \u2524&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB4&nbsp;&nbsp;&nbsp; \u2524&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxrj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; µ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB5&nbsp;&nbsp;&nbsp; \u2561&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical single and left double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ∂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB6&nbsp;&nbsp;&nbsp; \u2562&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical double and left single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ∑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB7&nbsp;&nbsp;&nbsp; \u2556&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down double and left single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ∏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB8&nbsp;&nbsp;&nbsp; \u2555&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down single and left double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xB9&nbsp;&nbsp;&nbsp; \u2563&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; bx2022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double vertical and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ∫&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBA&nbsp;&nbsp;&nbsp; \u2551&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double vertical</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ª&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBB&nbsp;&nbsp;&nbsp; \u2557&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double down and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBC&nbsp;&nbsp;&nbsp; \u255D&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double up and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ω&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBD&nbsp;&nbsp;&nbsp; \u255C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up double and left single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; æ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBE&nbsp;&nbsp;&nbsp; \u255B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up single and left double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ø&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xBF&nbsp;&nbsp;&nbsp; \u2510&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light down and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC0&nbsp;&nbsp;&nbsp; \u2514&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxll&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light up and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC1&nbsp;&nbsp;&nbsp; \u2534&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light up and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC1&nbsp;&nbsp;&nbsp; \u2534&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxbj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light up and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC2&nbsp;&nbsp;&nbsp; \u252C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light down and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC2&nbsp;&nbsp;&nbsp; \u252C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxtj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light down and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; √&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC3&nbsp;&nbsp;&nbsp; \u251C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; √&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC3&nbsp;&nbsp;&nbsp; \u251C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxlj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ƒ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC4&nbsp;&nbsp;&nbsp; \u2500&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ≈&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC5&nbsp;&nbsp;&nbsp; \u253C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxcr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ≈&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC5&nbsp;&nbsp;&nbsp; \u253C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxcj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light vertical and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ∆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC6&nbsp;&nbsp;&nbsp; \u255E&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1210&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical single and right double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; «&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC7&nbsp;&nbsp;&nbsp; \u255F&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical double and right single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; »&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC8&nbsp;&nbsp;&nbsp; \u255A&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double up and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xC9&nbsp;&nbsp;&nbsp; \u2554&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0220&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double down and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCA&nbsp;&nbsp;&nbsp; \u2569&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double up and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; À&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCB&nbsp;&nbsp;&nbsp; \u2566&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0222&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double down and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCC&nbsp;&nbsp;&nbsp; \u2560&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; bx2220&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double vertical and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Õ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCD&nbsp;&nbsp;&nbsp; \u2550&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Œ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCE&nbsp;&nbsp;&nbsp; \u256C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2222&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings double vertical and horizontal</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; œ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xCF&nbsp;&nbsp;&nbsp; \u2567&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up single and horizontal double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; –&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD0&nbsp;&nbsp;&nbsp; \u2568&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1201&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up double and horizontal single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; —&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD1&nbsp;&nbsp;&nbsp; \u2564&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down single and horizontal double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD2&nbsp;&nbsp;&nbsp; \u2565&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down double and horizontal single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD3&nbsp;&nbsp;&nbsp; \u2559&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; bx2100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up double and right single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ‘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD4&nbsp;&nbsp;&nbsp; \u2558&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings up single and right double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ’&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD5&nbsp;&nbsp;&nbsp; \u2552&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0210&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down single and right double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD6&nbsp;&nbsp;&nbsp; \u2553&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx0120&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings down double and right single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ◊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD7&nbsp;&nbsp;&nbsp; \u256B&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx2121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical double and horizontal single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÿ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD8&nbsp;&nbsp;&nbsp; \u256A&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bx1212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings vertical single and horizontal double</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ÿ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xD9&nbsp;&nbsp;&nbsp; \u2518&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxlr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light up and left</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ⁄&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDA&nbsp;&nbsp;&nbsp; \u250C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bxul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings light down and right</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDB&nbsp;&nbsp;&nbsp; \u2588&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; BOX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings Full block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ‹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDC&nbsp;&nbsp;&nbsp; \u2584&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; BOXBOT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings Lower half block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ›&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDD&nbsp;&nbsp;&nbsp; \u258C&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; BOXLEFT&nbsp;&nbsp;&nbsp;&nbsp; Box drawings Left half block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ﬁ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDE&nbsp;&nbsp;&nbsp; \u2590&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; BOXRIGHT&nbsp;&nbsp;&nbsp; Box drawings Right half block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ﬂ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xDF&nbsp;&nbsp;&nbsp; \u2580&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; BOXTOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box drawings Upper half block</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ‡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE0&nbsp;&nbsp;&nbsp; \u03B1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter alpha</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x41&nbsp;&nbsp;&nbsp; \u0391&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter alpha</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE1&nbsp;&nbsp;&nbsp; \u00DF&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Latin small letter sharp s</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ‚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE2&nbsp;&nbsp;&nbsp; \u0393&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Gamma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter gamma</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; „&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE3&nbsp;&nbsp;&nbsp; \u03C0&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; pi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter pi</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ‰&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE4&nbsp;&nbsp;&nbsp; \u03A3&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Sigma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter sigma</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Â&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE5&nbsp;&nbsp;&nbsp; \u03C3&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; sigma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter sigma</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ê&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE6&nbsp;&nbsp;&nbsp; \u00B4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; mu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Micro sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Á&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE7&nbsp;&nbsp;&nbsp; \u03C4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; tau&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter tau</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE8&nbsp;&nbsp;&nbsp; \u03A6&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Phi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter phi</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; È&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xE9&nbsp;&nbsp;&nbsp; \u0398&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Theta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter theta</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xEA&nbsp;&nbsp;&nbsp; \u03A9&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Omega&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek capital letter omega</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Î&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xEB&nbsp;&nbsp;&nbsp; \u03B4&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; delta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter delta</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xEC&nbsp;&nbsp;&nbsp; \u221E&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; infinity&nbsp;&nbsp;&nbsp; Infinity</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ì&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xED&nbsp;&nbsp;&nbsp; \u03C6&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; phi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter phi</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ó&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xEE&nbsp;&nbsp;&nbsp; \u03B5&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; epsilon&nbsp;&nbsp;&nbsp;&nbsp; Greek small letter epsilon</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xEF&nbsp;&nbsp;&nbsp; \u2229&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; intersect&nbsp;&nbsp; Intersection</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF0&nbsp;&nbsp;&nbsp; \u2261&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; identical&nbsp;&nbsp; Identical to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ò&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF1&nbsp;&nbsp;&nbsp; \u00B1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; plusmin&nbsp;&nbsp;&nbsp;&nbsp; Plus-minus sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ò&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF1&nbsp;&nbsp;&nbsp; \u00B1&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; pm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plus-minus sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ú&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF2&nbsp;&nbsp;&nbsp; \u2265&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; ge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greater-than or equal to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ú&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF2&nbsp;&nbsp;&nbsp; \u2265&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; gesym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Greater-than or equal to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Û&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF3&nbsp;&nbsp;&nbsp; \u2264&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; le&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Less-than or equal to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Û&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF3&nbsp;&nbsp;&nbsp; \u2264&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; lesym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Less-than or equal to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ù&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF4&nbsp;&nbsp;&nbsp; \u2320&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; inttop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top half integral</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ı&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF5&nbsp;&nbsp;&nbsp; \u2321&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; intbot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom half integral</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF6&nbsp;&nbsp;&nbsp; \u00F7&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; divide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Division sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF7&nbsp;&nbsp;&nbsp; \u2248&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; nearly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Almost equal to</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF8&nbsp;&nbsp;&nbsp; \u00B0&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; degree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Degree sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF8&nbsp;&nbsp;&nbsp; \u00B0&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; deg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Degree sign</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xF9&nbsp;&nbsp;&nbsp; \u2219&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; bullet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bullet operator</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xFA&nbsp;&nbsp;&nbsp; \u00B7&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; dot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Middle dot</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xFB&nbsp;&nbsp;&nbsp; \u221A&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; sqrt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Square root</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ¸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xFC&nbsp;&nbsp;&nbsp; \u207F&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; supn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Superscript Latin small letter n</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xFD&nbsp;&nbsp;&nbsp; \u00B2&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; sup2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Superscript 2</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ˛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0xFE&nbsp;&nbsp;&nbsp; \u25A0&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; sqbul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black square</tt>
+</body>

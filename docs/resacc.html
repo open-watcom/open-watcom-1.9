@@ -1,0 +1,502 @@
+<head>
+<title> Open Watcom 1.9 Accelerator Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#The_Accelerator_Editor_Menu_Bar">The Accelerator Editor Menu Bar</a>
+<br><a href="#The_Accelerator_Editor_Toolbar">The Accelerator Editor Toolbar</a>
+<br><a href="#Accelerator_Editor__Accelerator_Item_List">Accelerator Editor:&nbsp; Accelerator Item List</a>
+<br><a href="#Accelerator_Editor__Action_Buttons">Accelerator Editor:&nbsp; Action Buttons</a>
+<br><a href="#Accelerator_Editor__Attributes_Area">Accelerator Editor:&nbsp; Attributes Area</a>
+<br><a href="#Accelerator_Editor__Changing_Memory_Options">Accelerator Editor:&nbsp; Changing Memory Options</a>
+<br><a href="#Accelerator_Editor__Copy_To">Accelerator Editor:&nbsp; Copy To</a>
+<br><a href="#Accelerator_Editor__Resource_Name_Field">Accelerator Editor:&nbsp; Resource Name Field</a>
+<br><a href="#Accelerator_Editor__Save_As">Accelerator Editor:&nbsp; Save As</a>
+<br><a href="#Accelerator_Editor__Update">Accelerator Editor:&nbsp; Update</a>
+<br><a href="#Accelerator_Functions">Accelerator Functions</a>
+<br><a href="#Adding_a_New_Accelerator_Item">Adding a New Accelerator Item</a>
+<dt><br>- C -
+<dd><a href="#Changing_an_Existing_Accelerator_Item">Changing an Existing Accelerator Item</a>
+<br><a href="#Creating_a_New_Accelerator_Table">Creating a New Accelerator Table</a>
+<dt><br>- D -
+<dd><a href="#Deleting_Accelerator_Items">Deleting Accelerator Items</a>
+<br><a href="#Deleting_All_Accelerator_Items">Deleting All Accelerator Items</a>
+<br><a href="#Deleting_an_Accelerator_Item">Deleting an Accelerator Item</a>
+<dt><br>- E -
+<dd><a href="#Editing_the_Key_Value">Editing the Key Value</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Accelerator_Editor">The Open Watcom Accelerator Editor</a>
+<br><a href="#Opening_an_Existing_Accelerator_Table">Opening an Existing Accelerator Table</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_Accelerator_Editor">Quitting the Accelerator Editor</a>
+<dt><br>- R -
+<dd><a href="#Renaming_an_Accelerator_Table">Renaming an Accelerator Table</a>
+<dt><br>- S -
+<dd><a href="#Saving_Accelerator_Items">Saving Accelerator Items</a>
+<br><a href="#Starting_the_Accelerator_Editor">Starting the Accelerator Editor</a>
+<dt><br>- U -
+<dd><a href="#Using_Shortcuts_to_Create_Accelerator_Tables">Using Shortcuts to Create Accelerator Tables</a>
+<br><a href="#Using_the_Accelerator_Editor">Using the Accelerator Editor</a>
+<br><a href="#Using_the_Accelerator_Editor_Window">Using the Accelerator Editor Window</a>
+</dl>
+<h1 id="The_Open_Watcom_Accelerator_Editor"> The Open Watcom Accelerator Editor </h1>
+<br>The Accelerator Editor enables you to create and edit accelerator items so you can invoke menu items without using a mouse.
+&nbsp; Accelerators define hot keys for menu items in your application.&nbsp; These enhance the user interface for more advanced
+ users of the application.
+<br><br>Accelerators are keyboard equivalents for menu items, such as Ctrl+S or F2.&nbsp; For example, many applications associate
+ the accelerator Ctrl+C with the Copy item in the Edit menu.<b><i>&nbsp; The Windows Interface:&nbsp; An Application Design
+ Guide</i></b> suggests some standard accelerators.
+<br><br>An accelerator item is made up of a key value, menu item identifier, and flags.&nbsp; These components define the
+ key combination the user presses to access the specified menu item.&nbsp; The Accelerator Editor stores the accelerator items
+ in an accelerator table.&nbsp; You can have multiple accelerator tables for a resource file.
+<br><br>The accelerator editor allows you to create new accelerators and edit existing accelerators without having to create
+ a resource script or use a resource compiler.&nbsp; Without the accelerator editor, you would have to use the resource compiler
+ to add accelerators to your applications.
+<h2 id="Using_the_Accelerator_Editor"> Using the Accelerator Editor </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Accelerator Editor
+<li>Quitting the Accelerator Editor
+<li>The Accelerator Editor Menu Bar
+<li>The Accelerator Toolbar
+</ul>
+<h3 id="Starting_the_Accelerator_Editor"> Starting the Accelerator Editor </h3>
+<br>The Accelerator Editor may be invoked in one of two ways.&nbsp; The first involves first starting the Resource Editor
+ then starting the Accelerator Editor.&nbsp; The second way the editor may be started is from the Open Watcom IDE.
+<br><br>To start the Accelerator Editor from the Resource Editor, you must first open the Resource Editor.&nbsp; How you proceed
+ depends on whether you are opening a new (empty) accelerator table or an existing accelerator table.
+<br><br><tt><img src="acc1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Accelerator Editor window</b>
+<h4 id="Creating_a_New_Accelerator_Table"> Creating a New Accelerator Table </h4>
+<dl>
+<dt>To create a new accelerator table:
+<dd>
+<dt><br>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open a new or existing resource file.</b>
+<dt><br>(3)
+<dd><b> Choose Accelerator</b> from the cascading menu that appears when you choose New from the Resouce menu.
+<br>The Open Watcom Accelerator Editor window opens and displays an empty accelerator item list.
+</dl>
+<h4 id="Opening_an_Existing_Accelerator_Table"> Opening an Existing Accelerator Table </h4>
+<dl>
+<dt>To open an existing accelerator table:
+<dd>
+<dt><br>(1)
+<dd><b> Double click on the Resource Editor icon</b> in your Windows Program Manager.
+<br>The Open Watcom Resource Editor window opens.
+<dt><br>(2)
+<dd><b> Open an existing resource file.</b>
+<br>The Resource window for the existing resource file displays buttons representing each existing resource type.
+<dt><br>(3)
+<dd><b> Select the accelerator table button</b> to view the existing accelerator tables.
+<br>or
+<dt><br>
+<dd><b> Choose Accelerator</b> from the cascading menu that appears when you choose View from the Resource menu.
+<br>The Accelerator Resources list appears revealing all accelerator tables in this resource file.
+<dt><br>(4)
+<dd><b> Double click on the existing accelerator table</b> you want to open.
+<br>or
+<dt><br>
+<dd><b> Click on the desired accelerator table</b> to select it, then<b> press ENTER</b>
+<br>or
+<dt><br>
+<dd><b> Click on the desired accelerator table to select it and choose Edit from the Resource menu</b> on the Open Watcom Resource
+ Editor window.
+<br>The Open Watcom Accelerator Editor window opens and displays the existing accelerator items for the selected accelerator
+ table.
+</dl>
+<h3 id="Quitting_the_Accelerator_Editor"> Quitting the Accelerator Editor </h3>
+<br>To exit the Accelerator Editor, choose Exit from the File menu of the Open Watcom Accelerator Editor window.
+<br><br>If you made changes to accelerator items but did not save the information, a message box prompts you to save before
+ exiting.&nbsp; Choose Yes to save the changes and exit, No to exit without saving the changes, or Cancel to return to the
+ Open Watcom Resource Editor window.
+<br><br>When you exit the Accelerator Editor, the application remembers the directory in which you last opened or saved an
+ accelerator table (not the resource file).&nbsp; The next time you open an accelerator table, the last directory accessed
+ appears in the File Selection dialog so you do not have to reenter its path.&nbsp; This feature makes the Accelerator Editor
+ more convenient and efficient to use.
+<h3 id="The_Accelerator_Editor_Menu_Bar"> The Accelerator Editor Menu Bar </h3>
+<br><tt><img src="acc2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Accelerator Editor menu bar</b>
+<br><br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Clear and save the accelerator table, and exit the Accelerator Editor
+<dt><br>Edit
+<dd>Access the clipboard functions, hide or show the toolbar, and delete an accelerator item
+<dt><br>Resource
+<dd>Rename the accelerator table and change its memory flags
+<dt><br>Accelerator
+<dd>Insert and edit accelerator items
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<br>To see the function of an item on the menu bar or submenus, hold the mouse button and drag the cursor over the desired
+ menu item.&nbsp; A description of the item appears in the status line at the bottom of the screen.&nbsp; If you do not want
+ to select the menu item, drag the cursor off of the menu item before releasing the mouse button.
+<h3 id="The_Accelerator_Editor_Toolbar"> The Accelerator Editor Toolbar </h3>
+<br>In the Open Watcom Accelerator Editor window, the toolbar appears below the menu bar.&nbsp; When the toolbar is shown
+ choose Hide Toolbar from the Edit menu to hide it.&nbsp; When the toolbar is hidden you can display it by choosing Show Toolbar
+ from the Edit menu.
+<br><br><tt><img src="acc3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Accelerator Editor toolbar</b>
+<br><br>The following explains the function each toolbar button performs, as well as the equivalent menu item.
+<dl>
+<dt>CLEAR
+<dd>Clear the accelerator table.&nbsp; This is equivalent to the Clear item in the File menu.
+<dt><br>UPDATE
+<dd>Update the resource file with this accelerator table.&nbsp; This is equivalent to the Update item in the File menu.
+<dt><br>CUT
+<dd>Cut the current accelerator table to the clipboard.&nbsp; This is equivalent to the Cut item in the Edit menu.
+<dt><br>COPY
+<dd>Copy the current accelerator table to the clipboard.&nbsp; This is equivalent to the Copy item in the Edit menu.
+<dt><br>PASTE
+<dd>Paste the accelerator table from the clipboard to the current accelerator table.&nbsp; This is equivalent to the Paste item
+ in the Edit menu.
+<dt><br>INSERT
+<dd>Insert the new accelerator item into the accelerator table.&nbsp; This is equivalent to the Insert New Item item in the Accelerator
+ menu.
+<dt><br>DELETE
+<dd>Delete the selected accelerator item from the accelerator table.&nbsp; This is equivalent to the Delete item in the Edit menu.
+<dt><br>KEY VALUE
+<dd>Set the accelerator item's key value using the keyboard.&nbsp; This is equivalent to the Key Value item in the Accelerator
+ menu.
+</dl>
+<br>To see the function of a button on the toolbar, position your cursor over the desired icon.&nbsp; A description of the
+ button's function appears in the status line at the bottom of the window.
+<h2 id="Using_the_Accelerator_Editor_Window"> Using the Accelerator Editor Window </h2>
+<br>The Open Watcom Accelerator Editor window contains a menu bar, toolbar, and status line to help you create and edit accelerators.
+&nbsp; The rest of the window, the workspace, is divided into four sections:
+<ul>
+<li>Resource Name Field
+<li>Attributes Area
+<li>Accelerator Item List
+<li>Action Buttons
+</ul>
+<br><tt><img src="acc4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Accelerator Editor window contains a menu bar, toolbar, status line, and
+ workspace.</b>
+<h3 id="Accelerator_Editor__Resource_Name_Field"> Accelerator Editor:&nbsp; Resource Name Field </h3>
+<br>The Resource Name field in the Open Watcom Accelerator Editor window contains the name of the accelerator table currently
+ being edited.&nbsp; A resource file can contain more than one accelerator table, so it is important that the resource names
+ for the accelerator tables be unique.&nbsp; The Resource Name field is not case sensitive and can hold up to 255 characters.
+&nbsp; You can enter a textual name, a number or a symbol in this field.
+<br><br>When you create a new accelerator table, the Resource Editor assigns the default name ACCELERATOR_# to it, where #
+ is a decimal number starting at one and increasing for each new resource of that type opened.&nbsp; You can rename the accelerator
+ table using the Rename item in the Resource menu.
+<h3 id="Accelerator_Editor__Attributes_Area"> Accelerator Editor:&nbsp; Attributes Area </h3>
+<br>The attributes area provides information about the currently selected accelerator item.&nbsp; You can edit accelerator
+ items using only the fields in this area.
+<br><br><tt><img src="acc5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The Accelerator Editor attributes area</b>
+<br><br>Accelerator item attributes are displayed in four sections.&nbsp; Following is an explanation of each section.
+<dl>
+<dt>Key
+<dd>The Key field contains the key value used to activate the menu item.
+<dt><br>Menu Item ID
+<dd>The two Menu Item ID fields contain:
+<ul>
+<li>the number of the menu item that is activated by the entry in the Key field.
+<li>the symbol information for the selected menu item.
+</ul>
+<dt><br>Key Type
+<dd>This section indicates if the key value is in ASCII or virtual key.
+<dt><br>Modifiers
+<dd>An X appears in the check box for the modifiers that are part of the accelerator key value.&nbsp; The available modifier keys
+ are:
+<ul>
+<li>Alt
+<li>Control
+<li>Shift
+</ul>
+</dl>
+<br>The option Flash Top-level Menu Item indicates that when the specified key value is used, the Accelerator Editor briefly
+ highlights the corresponding menu bar item.
+<h3 id="Accelerator_Editor__Accelerator_Item_List"> Accelerator Editor:&nbsp; Accelerator Item List </h3>
+<br>The accelerator item list displays all of the accelerator items in the current accelerator table.&nbsp; Use this list
+ to view the attributes of the accelerator items.&nbsp; Select an accelerator item from the list by clicking on it.&nbsp;
+ Details of the selected accelerator item appear in the attributes area of the window.
+<br><br><tt><img src="acc6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Accelerator Editor item list</b>
+<h3 id="Accelerator_Editor__Action_Buttons"> Accelerator Editor:&nbsp; Action Buttons </h3>
+<br>The action buttons control how the information in the attributes area is handled by the editor.&nbsp; The Insert button
+ will use the contents of the attributes area to create a new entry in the table.&nbsp; The Change button will use the contents
+ of the attributes area to modify the current entry in the table.&nbsp; The Reset button will discard the contents of the
+ attributes area and reset them to those of the current entry in the table.&nbsp; The Insert button is the default button
+ when the ENTER key is pressed and no other button has the focus.
+<br><br><tt><img src="acc7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> The Accelerator Editor action buttons</b>
+<h2 id="Accelerator_Functions"> Accelerator Functions </h2>
+<br>You can perform several functions with the Accelerator Editor.&nbsp; This section describes the following tasks:
+<ul>
+<li>Adding a New Accelerator Item
+<li>Changing an Existing Accelerator Item
+<li>Deleting Accelerator Items
+<li>Renaming an Accelerator Table
+<li>Saving Accelerator Items
+<li>Using Shortcuts to Create Accelerator Tables
+<li>Changing Memory Options
+</ul>
+<h3 id="Adding_a_New_Accelerator_Item"> Adding a New Accelerator Item </h3>
+<br>The steps for adding a new accelerator item to the accelerator table are the same, regardless of whether the accelerator
+ table is empty or already contains accelerator items.
+<dl>
+<dt>To add a new accelerator item:
+<dd>
+<dt><br>(1)
+<dd><b> Position the cursor in the Key field.</b>
+<dt><br>(2)
+<dd><b> Enter the desired key value</b> that will activate the menu item.
+<br>You can enter a single key, such as a letter or number, or a key sequence.&nbsp; A key sequence may be made up of a modifier
+ and a key, such as ^k for Ctrl+k.
+<dt><br>(3)
+<dd><b> Enter a symbol or numeric identifier</b> for the menu item that is activated by the entry in the Key field.
+<br>The symbol or numeric identifier you enter here is the identifier associated with the menu item.&nbsp; This relationship
+ is defined in the Menu Editor.&nbsp; If you do not know the desired menu item identifier, open the appropriate menu and look
+ up the identifier.&nbsp; It is not possible for the Accelerator Editor to get this information for you.
+<dt><br>(4)
+<dd><b> Specify ASCII or Virtual Key</b> in the Key Type section of the window.
+<dl>
+<dt>ASCII Keys
+<dd>When the Key Type specified is ASCII, keys you press appear as characters, such as<b> a, B, 2,</b> or<b> $.</b>&nbsp; In the
+ Key field, the ASCII characters are surrounded by quotation marks.&nbsp; For example,<b> c</b> appears as<b> &quot;c&quot;</b>
+ and<b> Ctrl+C</b> appears as<b> &quot;^C&quot;.</b>&nbsp; When using ASCII characters as accelerators, you may combine them
+ with the Ctrl key to form key sequences, such as Ctrl+X or Ctrl+P.&nbsp; There is no symbol to represent the Shift key in
+ ASCII.&nbsp; Applying the Shift key with an ASCII character results in an upper case character in the Key field.&nbsp; For
+ example,<b> Shift+d</b> appears as<b> &quot;D&quot;.</b>
+<dt><br>Virtual Keys
+<dd>When the Key Type specified is Virtual Key, you enter the standard Windows identifier for the desired key.&nbsp; For example,
+ the Windows identifier for the Home key is<b> VK_HOME.</b>&nbsp; The header file WINDOWS.H defines these identifiers.&nbsp;
+ To avoid looking up these identifiers yourself, use the Key Value function explained in the section<b> Editing the Key Value.</b>
+&nbsp; To specify whether the Alt, Ctrl, or Shift keys must be pressed with another key to form a key sequence, mark the appropriate
+ check box in the Modifiers section of the attributes area.
+</dl>
+<dt><br>(5)
+<dd><b> Select the desired modifiers</b> in the Modifiers section.
+<br>Modifiers are flags indicating keys that you must press in addition to the specified key value to activate the menu item.
+&nbsp; When the ASCII option is selected, the Control and Shift modifiers are not available.
+<dt><br>(6)
+<dd><b> Press the Insert action button</b>
+<br>or
+<dt><br>
+<dd><b> Choose Insert New Item</b> from the Accelerator menu.
+<br>or
+<dt><br>
+<dd><b> Select the Insert New Item button on the toolbar.</b>
+<br>The Accelerator Editor adds the new accelerator item to the accelerator table.&nbsp; When accelerator items exist in the
+ accelerator table, one item is always selected.&nbsp; Choosing the Insert New Item menu item or button positions the new
+ accelerator item directly after the selected accelerator item in the list.
+</dl>
+<h3 id="Changing_an_Existing_Accelerator_Item"> Changing an Existing Accelerator Item </h3>
+<br>You may want to change the key value or the menu item identifier associated with an accelerator item.
+<dl>
+<dt>To modify an existing accelerator item:
+<dd>
+<dt><br>(1)
+<dd><b> Click the accelerator item you want to modify.</b>
+<br>The selected accelerator item appears highlighted in the accelerator item list and the accelerator item details appear
+ in the attributes area of the window.
+<dt><br>(2)
+<dd><b> Enter the new accelerator item details</b> in the attributes area.
+<dt><br>(3)
+<dd><b> Press the Change action button</b>
+<br>These actions update the selected accelerator item with the modified accelerator item attributes.
+</dl>
+<h4 id="Editing_the_Key_Value"> Editing the Key Value </h4>
+<br>When editing only the key value of an accelerator item, use the Key Value function.&nbsp; With this function, the Accelerator
+ Editor looks up the correct virtual key value for the selected key and inserts it into the accelerator item list for you.
+&nbsp; This is a quick way to make accelerator item changes, but it only applies to accelerator items whose key type is Virtual
+ Key.
+<dl>
+<dt>To use the Key Value function:
+<dd>
+<dt><br>(1)
+<dd><b> Choose the accelerator table you want to work with</b> from the Resource window on the Open Watcom Resource Editor window.
+<br>The Accelerator Editor window appears displaying all of the accelerator items for the selected accelerator table.
+<dt><br>(2)
+<dd><b> Click on the accelerator item you want to modify.</b>
+<br>The selected accelerator item appears highlighted in the accelerator table and the accelerator item details appear in
+ the attributes area of the window.
+<dt><br>(3)
+<dd><b> Choose Select Key Value</b> from the Accelerator menu
+<br>or
+<dt><br>
+<dd><b> Select the Key Value button on the toolbar.</b>
+<br>The accelerator table disappears and instructions for using the Key Value function appear in its place.
+<dt><br>(4)
+<dd><b> Press the desired key on the keyboard.</b>
+<br>This is the key that you want to activate the menu item specified in the Menu Item field.&nbsp; The instructions disappear
+ from the window revealing the modified accelerator table.&nbsp; The updated accelerator item is still selected.
+<dt><br>(5)
+<dd><b> Change modifiers,</b> if required.
+</dl>
+<h3 id="Deleting_Accelerator_Items"> Deleting Accelerator Items </h3>
+<br>There are two functions you can use to delete accelerator items from the accelerator table:
+<ul>
+<li>Delete
+<li>Clear
+</ul>
+<br>The Delete item in the Edit menu deletes the selected accelerator item from the accelerator item list.&nbsp; You can delete
+ only one accelerator item at a time with this function.
+<br><br>The Clear item in the File menu deletes all accelerator items in the current accelerator table.&nbsp; This is a powerful
+ function and must be used carefully to avoid accidentally deleting all accelerator items.
+<h4 id="Deleting_an_Accelerator_Item"> Deleting an Accelerator Item </h4>
+<br>To delete accelerator items from the current accelerator table one at a time:
+<dl>
+<dt>(1)
+<dd><b> Select the accelerator item you want to delete</b> from the accelerator item list by clicking on it.
+<br>The selected accelerator item is highlighted.
+<dt><br>(2)
+<dd><b> Choose Delete</b> from the Edit menu
+<br>or
+<dt><br>
+<dd><b> Select the Delete button from the toolbar.</b>
+<br>The Accelerator Editor removes the selected item from the accelerator item list.
+<dt><br>(3)
+<dd><b> Choose Update</b> from the File menu to save the accelerator table changes.
+</dl>
+<h4 id="Deleting_All_Accelerator_Items"> Deleting All Accelerator Items </h4>
+<br>To delete all accelerator items in the current accelerator table:
+<dl>
+<dt>(1)
+<dd><b> Choose Clear</b> from the File menu
+<br>or
+<dt><br>
+<dd><b> Select the Clear button from the toolbar.</b>
+<br>A message box appears prompting you to verify that you want to clear all accelerator items from the current accelerator
+ table.
+<dt><br>(2)
+<dd><b> Choose Yes or No</b> to continue.
+<br>Choosing Yes removes all accelerator items from the current accelerator table.&nbsp; The accelerator item list is empty.
+&nbsp; Choosing No cancels the operation.
+</dl>
+<br><tt><img src="acc8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> As a safety feature, a message box appears when you choose the Clear function.</b>
+<h3 id="Renaming_an_Accelerator_Table"> Renaming an Accelerator Table </h3>
+<br>When you create an Accelerator Table, the Resource Editor assigns a default name to it.&nbsp; Assign a new name to the
+ accelerator table using the Rename function.
+<dl>
+<dt>To rename an accelerator table:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Rename</b> from the Resource menu on the Open Watcom Accelerator Editor window.
+<br>or
+<dt><br>
+<dd><b> Double click or right click on the Resource Name field.</b>
+<br>A Rename Resource dialog box appears containing two fields:
+<ul>
+<li>Old Name
+<li>New Name
+</ul>
+<br><tt><img src="acc9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> In the Rename Resource dialog, you enter the new name of the accelerator table.</b>
+<dt><br>(2)
+<dd><b> Enter the desired accelerator table name</b> in the New Name field.
+<dt><br>(3)
+<dd><b> Click on OK</b> to close the Rename Resource dialog.
+<br>The dialog closes and the new accelerator table name appears in the Resource Name field.
+</dl>
+<h3 id="Saving_Accelerator_Items"> Saving Accelerator Items </h3>
+<br>There are two functions you can use to save accelerator tables with the Accelerator Editor:
+<ul>
+<li>Update 
+<li>Save As
+<li>Copy To
+</ul>
+<br>Each of these options performs a different type of save function.&nbsp; This section describes how to use each function.
+<h4 id="Accelerator_Editor__Update"> Accelerator Editor:&nbsp; Update </h4>
+<br>After modifying an accelerator item in an accelerator table, choose Update from the File menu on the Accelerator Editor
+ window to save the updated accelerator table to the current resource file.&nbsp; This prevents the changes from being lost
+ when you exit the Accelerator Editor.
+<br><br>The Update function updates the resource file only at the resource level.&nbsp; The resource file is not saved until
+ you perform a save at the Resource Editor level as well.&nbsp; Exiting the Resource Editor without saving causes you to lose
+ the accelerator table changes made.
+<h4 id="Accelerator_Editor__Save_As"> Accelerator Editor:&nbsp; Save As </h4>
+<br>Choose Save As from the File menu on the Accelerator Editor window to save the current accelerator table to another resource
+ file.
+<br><br>If you added any new symbol names (Item ID's), a Save Symbol Header File dialog appears which allows you to create
+ a new header file which includes the newly added symbol names.
+<br><br><tt><img src="acc10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> On the Save Symbol Header File dialog, specify the header file to which you
+ want to save symbol ID's.</b>
+<br><br>Afterwards, a Save Accelerator Table dialog appears where you specify the resource file to which you want to save
+ the current accelerator table.
+<br><br><tt><img src="acc11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> On the Save Accelerator Table dialog, specify the resource file to which you
+ want to save the accelerator table.</b>
+<dl>
+<dt>Important:
+<dd>If the resource file to which you are saving the accelerator table already contains resources, the existing resources will
+ be discarded and replaced with the accelerator table you are saving.
+</dl>
+<h4 id="Accelerator_Editor__Copy_To"> Accelerator Editor:&nbsp; Copy To </h4>
+<br>Choose Copy To from the Resource menu of the Accelerator Editor window to copy the current accelerator table into an existing
+ resource file.
+<br><br>If you added any new symbol names (Item ID's), a Save Symbol Header File dialog appears which allows you to create
+ a new header file which includes the newly added symbol names.
+<br><br><tt><img src="acc10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> On the Save Symbol Header File dialog, specify the header file to which you
+ want to save symbol ID's.</b>
+<br><br>Afterwards, a Copy To dialog appears where you specify the resource file to which you want to copy the current accelerator
+ table.&nbsp; Unlike the Save As function, copying an accelerator table to a resource file adds an entry to the list of resources
+ rather than replacing the existing resources with the new entry.
+<br><br><tt><img src="acc12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> On the Copy To dialog, specify the resource file to which you want to copy the
+ accelerator table.</b>
+<h3 id="Using_Shortcuts_to_Create_Accelerator_Tables"> Using Shortcuts to Create Accelerator Tables </h3>
+<br>The Edit menu on the Open Watcom Accelerator Editor window contains some standard Windows options that you can use to
+ quickly create accelerator resources.&nbsp; The options are:
+<ul>
+<li>Cut
+<li>Copy
+<li>Paste
+</ul>
+<br>These options allow you to perform functions on accelerator tables but not on individual accelerators items.
+<dl>
+<dt>Cut
+<dd>Choose Cut from the Edit menu of the Accelerator Editor window to cut the accelerator item list from the current accelerator
+ table and place it on the clipboard.
+<dt><br>Copy
+<dd>Choose Copy from the Edit menu of the Accelerator Editor window to copy the accelerator item list in the current accelerator
+ table to the clipboard.
+<dt><br>Paste
+<dd>Choose Paste from the Edit menu of the Accelerator Editor window to copy the accelerator item list on the clipboard into the
+ current accelerator table.
+</dl>
+<h3 id="Accelerator_Editor__Changing_Memory_Options"> Accelerator Editor:&nbsp; Changing Memory Options </h3>
+<br>The Memory Flags option allows you to change the selected memory options for the current accelerator table.&nbsp; These
+ options indicate the memory type and loading instructions.
+<dl>
+<dt>To set the flags for an accelerator table resource:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Memory Flags</b> from the Resource menu of the Open Watcom Accelerator Editor window.
+<br>The Memory Options dialog opens displaying either the current or default memory options.
+<br><br><tt><img src="acc13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> On the Memory Options dialog, you change the memory options for the accelerator
+ table.</b>
+<dt><br>(2)
+<dd><b> Select the required flags</b> in the Memory Options and Load Options sections of the dialog by clicking on the check box
+ beside the field.&nbsp; Following is a description of each option.
+<dl>
+<dt>Moveable
+<dd>Selecting this option marks this accelerator table to be stored in moveable memory when it is loaded by an application.
+<dt><br>Discardable
+<dd>Selecting this option marks this accelerator table to be stored in discardable memory when it is loaded by an application.
+<dt><br>Pure
+<dd>When marked as Pure, Windows will not allow the memory that the accelerator table is loaded into to be modified.
+<dt><br>Preload
+<dd>All accelerator tables marked as Preload will be loaded when the application for which you are creating the accelerator table
+ is loaded.
+<dt><br>LoadOnCall
+<dd>Accelerator tables marked as LoadOnCall will only be loaded when an application issues a call to load them.
+</dl>
+<dt><br>(3)
+<dd><b> Click on OK</b> when all memory option selections are made.
+<br>The Memory Options dialog closes returning you to the Accelerator Editor window.
+</dl>
+</body>

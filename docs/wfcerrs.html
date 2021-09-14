@@ -1,0 +1,1860 @@
+<head>
+<title> Open Watcom 1.9 FORTRAN 77 Diagnostic Messages </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#ARM01_invalid_number_of_arguments_to_intrinsic_function__s1">AR-01 invalid number of arguments to intrinsic function %s1</a>
+<br><a href="#ARM02_dummy_argument__s1_appears_more_than_once">AR-02 dummy argument %s1 appears more than once</a>
+<br><a href="#ARM12_dummy_argument__s1_must_not_appear_before_definition_of_ENTRY__s2">AR-12 dummy argument %s1 must not appear before definition of ENTRY %s2</a>
+<dt><br>- B -
+<dd><a href="#BDM01__s1_was_initialized_in_a_block_data_subprogram_but_is_not_in_COMMON">BD-01 %s1 was initialized in a block data subprogram but is not in COMMON</a>
+<br><a href="#BDM02__s1_statement_is_not_permitted_in_a_BLOCK_DATA_subprogram">BD-02 %s1 statement is not permitted in a BLOCK DATA subprogram</a>
+<dt><br>- C -
+<dd><a href="#CCM01_invalid_character_encountered_in_source_input">CC-01 invalid character encountered in source input</a>
+<br><a href="#CCM02_invalid_character_in_statement_number_columns">CC-02 invalid character in statement number columns</a>
+<br><a href="#CCM03_character_in_continuation_column__but_no_statement_to_continue">CC-03 character in continuation column, but no statement to continue</a>
+<br><a href="#CCM04_character_encountered_is_not_FORTRAN_77_standard">CC-04 character encountered is not FORTRAN 77 standard</a>
+<br><a href="#CCM05_columns_1M5_in_a_continuation_line_must_be_blank">CC-05 columns 1-5 in a continuation line must be blank</a>
+<br><a href="#CCM06_more_than_19_continuation_lines_is_not_FORTRAN_77_standard">CC-06 more than 19 continuation lines is not FORTRAN 77 standard</a>
+<br><a href="#CCM07_endMofMline_comment_is_not_FORTRAN_77_standard">CC-07 end-of-line comment is not FORTRAN 77 standard</a>
+<br><a href="#CCM08_D_in_column_1_is_not_FORTRAN_77_standard">CC-08 D in column 1 is not FORTRAN 77 standard</a>
+<br><a href="#CCM09_too_many_continuation_lines">CC-09 too many continuation lines</a>
+<br><a href="#CMM01__s1_already_in_COMMON">CM-01 %s1 already in COMMON</a>
+<br><a href="#CMM02_initializing__s1_in_COMMON_outside_of_block_data_subprogram_is_not_FORTRAN_77_standard">CM-02 initializing %s1 in COMMON outside of block data subprogram is not FORTRAN 77 standard</a>
+<br><a href="#CMM03_character_and_nonMcharacter_data_in_COMMON_is_not_FORTRAN_77_standard">CM-03 character and non-character data in COMMON is not FORTRAN 77 standard</a>
+<br><a href="#CMM04_COMMON_block__s1_has_been_defined_with_a_different_size">CM-04 COMMON block %s1 has been defined with a different size</a>
+<br><a href="#CMM05_named_COMMON_block__s1_appears_in_more_than_one_BLOCK_DATA_subprogram">CM-05 named COMMON block %s1 appears in more than one BLOCK DATA subprogram</a>
+<br><a href="#CMM06_blank_COMMON_block_has_been_defined_with_a_different_size">CM-06 blank COMMON block has been defined with a different size</a>
+<br><a href="#CNM01_DOUBLE_PRECISION_COMPLEX_constants_are_not_FORTRAN_77_standard">CN-01 DOUBLE PRECISION COMPLEX constants are not FORTRAN 77 standard</a>
+<br><a href="#CNM02_invalid_floatingMpoint_constant__s1">CN-02 invalid floating-point constant %s1</a>
+<br><a href="#CNM03_zero_length_character_constants_are_not_allowed">CN-03 zero length character constants are not allowed</a>
+<br><a href="#CNM04_invalid_hexadecimalDoctal_constant">CN-04 invalid hexadecimal/octal constant</a>
+<br><a href="#CNM05_hexadecimalDoctal_constant_is_not_FORTRAN_77_standard">CN-05 hexadecimal/octal constant is not FORTRAN 77 standard</a>
+<br><a href="#COM01__s1_is_already_being_included">CO-01 %s1 is already being included</a>
+<br><a href="#COM02___s1__option_cannot_take_a_NO_prefix">CO-02 '%s1' option cannot take a NO prefix</a>
+<br><a href="#COM03_expecting_an_equals_sign_following_the__s1_option">CO-03 expecting an equals sign following the %s1 option</a>
+<br><a href="#COM04_the___s1__option_requires_a_number">CO-04 the '%s1' option requires a number</a>
+<br><a href="#COM05_option___s1__not_recognized_M_ignored">CO-05 option '%s1' not recognized - ignored</a>
+<br><a href="#COM06___s1__option_not_allowed_in_source_input_stream">CO-06 '%s1' option not allowed in source input stream</a>
+<br><a href="#COM07_nesting_level_exceeded_for_compiler_directives">CO-07 nesting level exceeded for compiler directives</a>
+<br><a href="#COM08_mismatching_compiler_directives">CO-08 mismatching compiler directives</a>
+<br><a href="#CPM01_program_abnormally_terminated">CP-01 program abnormally terminated</a>
+<br><a href="#CPM02_argument__d1_incompatible_with_register">CP-02 argument %d1 incompatible with register</a>
+<br><a href="#CPM03_subprogram__s1_has_invalid_return_register">CP-03 subprogram %s1 has invalid return register</a>
+<br><a href="#CPM04_low_on_memory_M_unable_to_fully_optimize__s1">CP-04 low on memory - unable to fully optimize %s1</a>
+<br><a href="#CPM05_internal_compiler_error__d1">CP-05 internal compiler error %d1</a>
+<br><a href="#CPM06_illegal_register_modified_by__s1">CP-06 illegal register modified by %s1</a>
+<br><a href="#CPM07__s1">CP-07 %s1</a>
+<br><a href="#CPM08_fatal___s1">CP-08 fatal:&nbsp; %s1</a>
+<br><a href="#CPM09_dynamic_memory_not_freed">CP-09 dynamic memory not freed</a>
+<br><a href="#CPM10_freeing_unowned_dynamic_memory">CP-10 freeing unowned dynamic memory</a>
+<br><a href="#CPM11_The_automatic_equivalence_containing__s1_exceeds_32K_limit">CP-11 The automatic equivalence containing %s1 exceeds 32K limit</a>
+<br><a href="#CPM12_The_return_value_of__s1_exceeds_32K_limit">CP-12 The return value of %s1 exceeds 32K limit</a>
+<br><a href="#CPM13_The_automatic_variable__s1_exceeds_32K_limit">CP-13 The automatic variable %s1 exceeds 32K limit</a>
+<br><a href="#CVM01_CHARACTER_variable__s1_with_length_LTR_not_allowed_in_this_expression">CV-01 CHARACTER variable %s1 with length (*) not allowed in this expression</a>
+<br><a href="#CVM02_character_variable__s1_with_length_LTR_must_be_a_subprogram_argument">CV-02 character variable %s1 with length (*) must be a subprogram argument</a>
+<dt><br>- D -
+<dd><a href="#DAM01_implied_DO_variable__s1_must_be_an_integer_variable">DA-01 implied DO variable %s1 must be an integer variable</a>
+<br><a href="#DAM02_repeat_specification_must_be_a_positive_integer">DA-02 repeat specification must be a positive integer</a>
+<br><a href="#DAM03__s1_appears_in_an_expression_but_is_not_an_implied_DO_variable">DA-03 %s1 appears in an expression but is not an implied DO variable</a>
+<br><a href="#DAM04__s1_in_blank_COMMON_block_cannot_be_initialized">DA-04 %s1 in blank COMMON block cannot be initialized</a>
+<br><a href="#DAM05_data_initialization_with_hexadecimal_constant_is_not_FORTRAN_77_standard">DA-05 data initialization with hexadecimal constant is not FORTRAN 77 standard</a>
+<br><a href="#DAM06_cannot_initialize__s1__s2">DA-06 cannot initialize %s1 %s2</a>
+<br><a href="#DAM07_data_initialization_in__s1_statement_is_not_FORTRAN_77_standard">DA-07 data initialization in %s1 statement is not FORTRAN 77 standard</a>
+<br><a href="#DAM08_not_enough_constants_for_list_of_variables">DA-08 not enough constants for list of variables</a>
+<br><a href="#DAM10_too_many_constants_for_list_of_variables">DA-10 too many constants for list of variables</a>
+<br><a href="#DAM12_cannot_initialize__s1_variable__s2_with__s3_constant">DA-12 cannot initialize %s1 variable %s2 with %s3 constant</a>
+<br><a href="#DMM01_using__s1_incorrectly_in_dimension_expression">DM-01 using %s1 incorrectly in dimension expression</a>
+<br><a href="#DOM01_statement_number__d1_already_defined_in_line__d2_M_DO_loop_is_backwards">DO-01 statement number %d1 already defined in line %d2 - DO loop is backwards</a>
+<br><a href="#DOM02__s1_statement_not_allowed_at_termination_of_DO_range">DO-02 %s1 statement not allowed at termination of DO range</a>
+<br><a href="#DOM03_improper_nesting_of_DO_loop">DO-03 improper nesting of DO loop</a>
+<br><a href="#DOM04_ENDDO_cannot_terminate_DO_loop_with_statement_label">DO-04 ENDDO cannot terminate DO loop with statement label</a>
+<br><a href="#DOM05_this_DO_loop_form_is_not_FORTRAN_77_standard">DO-05 this DO loop form is not FORTRAN 77 standard</a>
+<br><a href="#DOM06_expecting_comma_or_DO_variable">DO-06 expecting comma or DO variable</a>
+<br><a href="#DOM07_DO_variable_cannot_be_redefined_while_DO_loop_is_active">DO-07 DO variable cannot be redefined while DO loop is active</a>
+<dt><br>- E -
+<dd><a href="#ECM01_equivalencing__s1_has_caused_extension_of_COMMON_block__s2_to_the_left">EC-01 equivalencing %s1 has caused extension of COMMON block %s2 to the left</a>
+<br><a href="#ECM02__s1_and__s2_in_COMMON_are_equivalenced_to_each_other">EC-02 %s1 and %s2 in COMMON are equivalenced to each other</a>
+<br><a href="#ENM01_missing_END_statement">EN-01 missing END statement</a>
+<br><a href="#EQM01_target_of_assignment_is_illegal">EQ-01 target of assignment is illegal</a>
+<br><a href="#EQM02_cannot_assign_value_to__s1">EQ-02 cannot assign value to %s1</a>
+<br><a href="#EQM03_illegal_use_of_equal_sign">EQ-03 illegal use of equal sign</a>
+<br><a href="#EQM04_multiple_assignment_is_not_FORTRAN_77_standard">EQ-04 multiple assignment is not FORTRAN 77 standard</a>
+<br><a href="#EQM05_expecting_equals_sign">EQ-05 expecting equals sign</a>
+<br><a href="#EVM01__s1_has_been_equivalenced_to_2_different_relative_positions">EV-01 %s1 has been equivalenced to 2 different relative positions</a>
+<br><a href="#EVM02_EQUIVALENCE_list_must_contain_at_least_2_names">EV-02 EQUIVALENCE list must contain at least 2 names</a>
+<br><a href="#EVM03__s1_incorrectly_subscripted_in__s2_statement">EV-03 %s1 incorrectly subscripted in %s2 statement</a>
+<br><a href="#EVM04_incorrect_substring_of__s1_in__s2_statement">EV-04 incorrect substring of %s1 in %s2 statement</a>
+<br><a href="#EVM05_equivalencing_CHARACTER_and_nonMCHARACTER_data_is_not_FORTRAN_77_standard">EV-05 equivalencing CHARACTER and non-CHARACTER data is not FORTRAN 77 standard</a>
+<br><a href="#EVM06_attempt_to_substring__s1_in_EQUIVALENCE_statement_but_type_is__s2">EV-06 attempt to substring %s1 in EQUIVALENCE statement but type is %s2</a>
+<br><a href="#EXM01_zeroTTJ_where_J_XE_0_is_not_allowed">EX-01 zero**J where J &lt;= 0 is not allowed</a>
+<br><a href="#EXM02_XTTY_where_X_X_0_0__Y_is_not_of_type_INTEGER__is_not_allowed">EX-02 X**Y where X &lt; 0.0, Y is not of type INTEGER, is not allowed</a>
+<br><a href="#EXM03_L0_0RTTY_where_Y_is_not_real_is_not_allowed">EX-03 (0,0)**Y where Y is not real is not allowed</a>
+<br><a href="#EYM01_type_of_entry__s1_does_not_match_type_of_function__s2">EY-01 type of entry %s1 does not match type of function %s2</a>
+<br><a href="#EYM02_ENTRY_statement_not_allowed_within_structured_control_blocks">EY-02 ENTRY statement not allowed within structured control blocks</a>
+<br><a href="#EYM03_size_of_entry__s1_does_not_match_size_of_function__s2">EY-03 size of entry %s1 does not match size of function %s2</a>
+<dt><br>- F -
+<dd><a href="#FMM01_missing_delimiter_in_format_string__comma_assumed">FM-01 missing delimiter in format string, comma assumed</a>
+<br><a href="#FMM02_missing_or_invalid_constant">FM-02 missing or invalid constant</a>
+<br><a href="#FMM03_Ew_dDe_format_code_is_not_FORTRAN_77_standard">FM-03 Ew.dDe format code is not FORTRAN 77 standard</a>
+<br><a href="#FMM04_missing_decimal_point">FM-04 missing decimal point</a>
+<br><a href="#FMM05_missing_or_invalid_edit_descriptor_in_format_string">FM-05 missing or invalid edit descriptor in format string</a>
+<br><a href="#FMM06_unrecognizable_edit_descriptor_in_format_string">FM-06 unrecognizable edit descriptor in format string</a>
+<br><a href="#FMM07_invalid_repeat_specification">FM-07 invalid repeat specification</a>
+<br><a href="#FMM08___or_B_format_code_is_not_FORTRAN_77_standard">FM-08 $ or \ format code is not FORTRAN 77 standard</a>
+<br><a href="#FMM09_invalid_field_modifier">FM-09 invalid field modifier</a>
+<br><a href="#FMM10_expecting_end_of_FORMAT_statement_but_found_more_text">FM-10 expecting end of FORMAT statement but found more text</a>
+<br><a href="#FMM11_repeat_specification_not_allowed_for_this_format_code">FM-11 repeat specification not allowed for this format code</a>
+<br><a href="#FMM12_no_statement_number_on_FORMAT_statement">FM-12 no statement number on FORMAT statement</a>
+<br><a href="#FMM13_no_closing_quote_on_apostrophe_edit_descriptor">FM-13 no closing quote on apostrophe edit descriptor</a>
+<br><a href="#FMM14_field_count_greater_than_256_is_invalid">FM-14 field count greater than 256 is invalid</a>
+<br><a href="#FMM15_invalid_field_width_specification">FM-15 invalid field width specification</a>
+<br><a href="#FMM16_Z_format_code_is_not_FORTRAN_77_standard">FM-16 Z format code is not FORTRAN 77 standard</a>
+<br><a href="#FMM17_FORMAT_statement_exceeds_allotted_storage_size">FM-17 FORMAT statement exceeds allotted storage size</a>
+<br><a href="#FMM18_format_specification_not_allowed_on_input">FM-18 format specification not allowed on input</a>
+<br><a href="#FMM19_FORMAT_missing_repeatable_edit_descriptor">FM-19 FORMAT missing repeatable edit descriptor</a>
+<br><a href="#FMM20_missing_constant_before_X_edit_descriptor__1_assumed">FM-20 missing constant before X edit descriptor, 1 assumed</a>
+<br><a href="#FMM21_Ew_dQe_format_code_is_not_FORTRAN_77_standard">FM-21 Ew.dQe format code is not FORTRAN 77 standard</a>
+<br><a href="#FMM22_Qw_d_format_code_is_not_FORTRAN_77_standard">FM-22 Qw.d format code is not FORTRAN 77 standard</a>
+<dt><br>- G -
+<dd><a href="#GOM01__s1_statement_label_may_not_appear_in_ASSIGN_statement_but_did_in_line__d2">GO-01 %s1 statement label may not appear in ASSIGN statement but did in line %d2</a>
+<br><a href="#GOM02_ASSIGN_of_statement_number__d1_in_line__d2_not_allowed">GO-02 ASSIGN of statement number %d1 in line %d2 not allowed</a>
+<br><a href="#GOM03_expecting_TO">GO-03 expecting TO</a>
+<dt><br>- H -
+<dd><a href="#HOM01_hollerith_constant_is_not_FORTRAN_77_standard">HO-01 hollerith constant is not FORTRAN 77 standard</a>
+<br><a href="#HOM02_not_enough_characters_for_hollerith_constant">HO-02 not enough characters for hollerith constant</a>
+<dt><br>- I -
+<dd><a href="#IFM01_ELSE_block_must_be_the_last_block_in_block_IF">IF-01 ELSE block must be the last block in block IF</a>
+<br><a href="#IFM02_expecting_THEN">IF-02 expecting THEN</a>
+<br><a href="#ILM01_missing_or_invalid_formatDFMT_specification">IL-01 missing or invalid format/FMT specification</a>
+<br><a href="#ILM02_the_UNIT_may_not_be_an_internal_file_for_this_statement">IL-02 the UNIT may not be an internal file for this statement</a>
+<br><a href="#ILM03__s1_statement_cannot_have__s2_specification">IL-03 %s1 statement cannot have %s2 specification</a>
+<br><a href="#ILM04_variable_must_have_a_size_of_4">IL-04 variable must have a size of 4</a>
+<br><a href="#ILM05_missing_or_unrecognizable_control_list_item__s1">IL-05 missing or unrecognizable control list item %s1</a>
+<br><a href="#ILM06_attempt_to_specify_control_list_item__s1_more_than_once">IL-06 attempt to specify control list item %s1 more than once</a>
+<br><a href="#ILM07_implied_DO_loop_has_no_inputDoutput_list">IL-07 implied DO loop has no input/output list</a>
+<br><a href="#ILM08_listMdirected_inputDoutput_with_internal_files_is_not_FORTRAN_77_standard">IL-08 list-directed input/output with internal files is not FORTRAN 77 standard</a>
+<br><a href="#ILM09_FORTRAN_77_standard_requires_an_asterisk_for_listMdirected_formatting">IL-09 FORTRAN 77 standard requires an asterisk for list-directed formatting</a>
+<br><a href="#ILM10_missing_or_improper_unit_identification">IL-10 missing or improper unit identification</a>
+<br><a href="#ILM11_missing_unit_identification_or_file_specification">IL-11 missing unit identification or file specification</a>
+<br><a href="#ILM12_asterisk_unit_identifier_not_allowed_in__s1_statement">IL-12 asterisk unit identifier not allowed in %s1 statement</a>
+<br><a href="#ILM13_cannot_have_both_UNIT_and_FILE_specifier">IL-13 cannot have both UNIT and FILE specifier</a>
+<br><a href="#ILM14_internal_files_require_sequential_access">IL-14 internal files require sequential access</a>
+<br><a href="#ILM15_END_specifier_with_REC_specifier_is_not_FORTRAN_77_standard">IL-15 END specifier with REC specifier is not FORTRAN 77 standard</a>
+<br><a href="#ILM16__s1_specifier_in_iDo_list_is_not_FORTRAN_77_standard">IL-16 %s1 specifier in i/o list is not FORTRAN 77 standard</a>
+<br><a href="#ILM17_iDo_list_is_not_allowed_with_NAMELISTMdirected_format">IL-17 i/o list is not allowed with NAMELIST-directed format</a>
+<br><a href="#ILM18_nonMcharacter_array_as_format_specifier_is_not_FORTRAN_77_standard">IL-18 non-character array as format specifier is not FORTRAN 77 standard</a>
+<br><a href="#IMM01_illegal_range_of_characters">IM-01 illegal range of characters</a>
+<br><a href="#IMM02_letter_can_only_be_implicitly_declared_once">IM-02 letter can only be implicitly declared once</a>
+<br><a href="#IMM03_unrecognizable_type">IM-03 unrecognizable type</a>
+<br><a href="#IMM04_LTR_length_specifier_in_an_IMPLICIT_statement_is_not_FORTRAN_77_standard">IM-04 (*) length specifier in an IMPLICIT statement is not FORTRAN 77 standard</a>
+<br><a href="#IMM05_IMPLICIT_NONE_allowed_once_or_not_allowed_with_other_IMPLICIT_statements">IM-05 IMPLICIT NONE allowed once or not allowed with other IMPLICIT statements</a>
+<br><a href="#IOM01_BACKSPACE_statement_requires_sequential_access_mode">IO-01 BACKSPACE statement requires sequential access mode</a>
+<br><a href="#IOM02_inputDoutput_is_already_active">IO-02 input/output is already active</a>
+<br><a href="#IOM03_ENDFILE_statement_requires_sequential_access_mode">IO-03 ENDFILE statement requires sequential access mode</a>
+<br><a href="#IOM04_formatted_connection_requires_formatted_inputDoutput_statements">IO-04 formatted connection requires formatted input/output statements</a>
+<br><a href="#IOM05_unformatted_connection_requires_unformatted_inputDoutput_statements">IO-05 unformatted connection requires unformatted input/output statements</a>
+<br><a href="#IOM06_REWIND_statement_requires_sequential_access">IO-06 REWIND statement requires sequential access</a>
+<br><a href="#IOM07_bad_character_in_input_field">IO-07 bad character in input field</a>
+<br><a href="#IOM08_BLANK_specifier_requires_FORM_specifier_to_be__FORMATTED_">IO-08 BLANK specifier requires FORM specifier to be 'FORMATTED'</a>
+<br><a href="#IOM09_system_file_error_M__s1">IO-09 system file error - %s1</a>
+<br><a href="#IOM10_format_specification_does_not_match_data_type">IO-10 format specification does not match data type</a>
+<br><a href="#IOM11_input_item_does_not_match_the_data_type_of_list_variable">IO-11 input item does not match the data type of list variable</a>
+<br><a href="#IOM12_internal_file_is_full">IO-12 internal file is full</a>
+<br><a href="#IOM13_RECL_specifier_is_invalid">IO-13 RECL specifier is invalid</a>
+<br><a href="#IOM14_invalid_STATUS_specifier_in_CLOSE_statement">IO-14 invalid STATUS specifier in CLOSE statement</a>
+<br><a href="#IOM15_unit_specified_is_not_connected">IO-15 unit specified is not connected</a>
+<br><a href="#IOM16_attempt_to_perform_data_transfer_past_end_of_file">IO-16 attempt to perform data transfer past end of file</a>
+<br><a href="#IOM17_invalid_RECL_specifierDACCESS_specifier_combination">IO-17 invalid RECL specifier/ACCESS specifier combination</a>
+<br><a href="#IOM18_REC_specifier_required_in_direct_access_inputDoutput_statements">IO-18 REC specifier required in direct access input/output statements</a>
+<br><a href="#IOM19_REC_specifier_not_allowed_in_sequential_access_inputDoutput_statements">IO-19 REC specifier not allowed in sequential access input/output statements</a>
+<br><a href="#IOM20__s1_specifier_may_not_change_in_a_subsequent_OPEN_statement">IO-20 %s1 specifier may not change in a subsequent OPEN statement</a>
+<br><a href="#IOM21_invalid_STATUS_specifier_for_given_file">IO-21 invalid STATUS specifier for given file</a>
+<br><a href="#IOM22_invalid_STATUS_specifierDFILE_specifier_combination">IO-22 invalid STATUS specifier/FILE specifier combination</a>
+<br><a href="#IOM23_record_size_exceeded_during_unformatted_inputDoutput">IO-23 record size exceeded during unformatted input/output</a>
+<br><a href="#IOM24_unit_specified_does_not_exist">IO-24 unit specified does not exist</a>
+<br><a href="#IOM25_REC_specifier_is_invalid">IO-25 REC specifier is invalid</a>
+<br><a href="#IOM26_UNIT_specifier_is_invalid">IO-26 UNIT specifier is invalid</a>
+<br><a href="#IOM27_formatted_record_or_format_edit_descriptor_is_too_large_for_record_size">IO-27 formatted record or format edit descriptor is too large for record size</a>
+<br><a href="#IOM28_illegal___s1E__specifier">IO-28 illegal '%s1=' specifier</a>
+<br><a href="#IOM29_invalid_CARRIAGECONTROL_specifierDFORM_specifier_combination">IO-29 invalid CARRIAGECONTROL specifier/FORM specifier combination</a>
+<br><a href="#IOM30_iDo_operation_not_consistent_with_file_attributes">IO-30 i/o operation not consistent with file attributes</a>
+<br><a href="#IOM31_symbol__s1_not_found_in_NAMELIST">IO-31 symbol %s1 not found in NAMELIST</a>
+<br><a href="#IOM32_syntax_error_during_NAMELISTMdirected_input">IO-32 syntax error during NAMELIST-directed input</a>
+<br><a href="#IOM33_subscripting_error_during_NAMELISTMdirected_iDo">IO-33 subscripting error during NAMELIST-directed i/o</a>
+<br><a href="#IOM34_substring_error_during_NAMELISTMdirected_iDo">IO-34 substring error during NAMELIST-directed i/o</a>
+<br><a href="#IOM35_BLOCKSIZE_specifier_is_invalid">IO-35 BLOCKSIZE specifier is invalid</a>
+<br><a href="#IOM36_invalid_operation_for_files_with_no_record_structure">IO-36 invalid operation for files with no record structure</a>
+<br><a href="#IOM37_integer_overflow_converting_character_data_to_integer">IO-37 integer overflow converting character data to integer</a>
+<br><a href="#IOM38_range_exceeded_converting_character_data_to_floatingMpoint">IO-38 range exceeded converting character data to floating-point</a>
+<dt><br>- K -
+<dd><a href="#KOM01_floatingMpoint_divide_by_zero">KO-01 floating-point divide by zero</a>
+<br><a href="#KOM02_floatingMpoint_overflow">KO-02 floating-point overflow</a>
+<br><a href="#KOM03_floatingMpoint_underflow">KO-03 floating-point underflow</a>
+<br><a href="#KOM04_integer_divide_by_zero">KO-04 integer divide by zero</a>
+<br><a href="#KOM05_program_interrupted_from_keyboard">KO-05 program interrupted from keyboard</a>
+<br><a href="#KOM06_integer_overflow">KO-06 integer overflow</a>
+<dt><br>- L -
+<dd><a href="#LIM01_argument_must_be_greater_than_zero">LI-01 argument must be greater than zero</a>
+<br><a href="#LIM02_absolute_value_of_argument_to_arcsine__arccosine_must_not_exceed_one">LI-02 absolute value of argument to arcsine, arccosine must not exceed one</a>
+<br><a href="#LIM03_argument_must_not_be_negative">LI-03 argument must not be negative</a>
+<br><a href="#LIM04_argumentLsR_must_not_be_zero">LI-04 argument(s) must not be zero</a>
+<br><a href="#LIM05_argument_of_CHAR_must_be_in_the_range_zero_to_255">LI-05 argument of CHAR must be in the range zero to 255</a>
+<br><a href="#LIM06__s1_intrinsic_function_cannot_be_passed_2_complex_arguments">LI-06 %s1 intrinsic function cannot be passed 2 complex arguments</a>
+<br><a href="#LIM07_argument_types_must_be_the_same_for_the__s1_intrinsic_function">LI-07 argument types must be the same for the %s1 intrinsic function</a>
+<br><a href="#LIM08_expecting_numeric_argument__but__s1_argument_was_found">LI-08 expecting numeric argument, but %s1 argument was found</a>
+<br><a href="#LIM09_length_of_ICHAR_argument_greater_than_one">LI-09 length of ICHAR argument greater than one</a>
+<br><a href="#LIM10_cannot_pass__s1_as_argument_to_intrinsic_function">LI-10 cannot pass %s1 as argument to intrinsic function</a>
+<br><a href="#LIM11_intrinsic_function_requires_argumentLsR">LI-11 intrinsic function requires argument(s)</a>
+<br><a href="#LIM12__s1_argument_type_is_invalid_for_this_generic_function">LI-12 %s1 argument type is invalid for this generic function</a>
+<br><a href="#LIM13_this_intrinsic_function_cannot_be_passed_as_an_argument">LI-13 this intrinsic function cannot be passed as an argument</a>
+<br><a href="#LIM14_expecting__s1_argument__but__s2_argument_was_found">LI-14 expecting %s1 argument, but %s2 argument was found</a>
+<br><a href="#LIM15_intrinsic_function_was_assigned_wrong_type">LI-15 intrinsic function was assigned wrong type</a>
+<br><a href="#LIM16_intrinsic_function__s1_is_not_FORTRAN_77_standard">LI-16 intrinsic function %s1 is not FORTRAN 77 standard</a>
+<br><a href="#LIM17_argument_to_ALLOCATED_intrinsic_function_must_be_an_allocatable_array_or_characterTLTR_variable">LI-17 argument to ALLOCATED intrinsic function must be an allocatable array or character*(*) variable</a>
+<br><a href="#LIM18_invalid_argument_to_ISIZEOF_intrinsic_function">LI-18 invalid argument to ISIZEOF intrinsic function</a>
+<dt><br>- M -
+<dd><a href="#MDM01_relational_operator_has_a_logical_operand">MD-01 relational operator has a logical operand</a>
+<br><a href="#MDM02_mixing_DOUBLE_PRECISION_and_COMPLEX_types_is_not_FORTRAN_77_standard">MD-02 mixing DOUBLE PRECISION and COMPLEX types is not FORTRAN 77 standard</a>
+<br><a href="#MDM03_operator_not_expecting__s1_operands">MD-03 operator not expecting %s1 operands</a>
+<br><a href="#MDM04_operator_not_expecting__s1_and__s2_operands">MD-04 operator not expecting %s1 and %s2 operands</a>
+<br><a href="#MDM05_complex_quantities_can_only_be_compared_using__EQ__or__NE_">MD-05 complex quantities can only be compared using .EQ.&nbsp; or .NE.</a>
+<br><a href="#MDM06_unary_operator_not_expecting__s1_type">MD-06 unary operator not expecting %s1 type</a>
+<br><a href="#MDM07_logical_operator_with_integer_operands_is_not_FORTRAN_77_standard">MD-07 logical operator with integer operands is not FORTRAN 77 standard</a>
+<br><a href="#MDM08_logical_operator__s1_is_not_FORTRAN_77_standard">MD-08 logical operator %s1 is not FORTRAN 77 standard</a>
+<br><a href="#MOM01__s1_exceeds_compiler_limit_of__d2_bytes">MO-01 %s1 exceeds compiler limit of %d2 bytes</a>
+<br><a href="#MOM02_out_of_memory">MO-02 out of memory</a>
+<br><a href="#MOM03_dynamic_memory_exhausted_due_to_length_of_this_statement_M_statement_ignored">MO-03 dynamic memory exhausted due to length of this statement - statement ignored</a>
+<br><a href="#MOM04_attempt_to_deallocate_an_unallocated_array_or_characterTLTR_variable">MO-04 attempt to deallocate an unallocated array or character*(*) variable</a>
+<br><a href="#MOM05_attempt_to_allocate_an_already_allocated_array_or_characterTLTR_variable">MO-05 attempt to allocate an already allocated array or character*(*) variable</a>
+<dt><br>- O -
+<dd><a href="#Open_Watcom_F77_Diagnostic_Messages">Open Watcom F77 Diagnostic Messages</a>
+<dt><br>- P -
+<dd><a href="#PCM01_missing_or_misplaced_closing_parenthesis">PC-01 missing or misplaced closing parenthesis</a>
+<br><a href="#PCM02_missing_or_misplaced_opening_parenthesis">PC-02 missing or misplaced opening parenthesis</a>
+<br><a href="#PCM03_unexpected_parenthesis">PC-03 unexpected parenthesis</a>
+<br><a href="#PCM04_unmatched_parentheses">PC-04 unmatched parentheses</a>
+<br><a href="#PRM01_expecting_symbolic_name">PR-01 expecting symbolic name</a>
+<br><a href="#PRM02_illegal_size_specified_for_VALUE_attribute">PR-02 illegal size specified for VALUE attribute</a>
+<br><a href="#PRM03_illegal_argument_attribute">PR-03 illegal argument attribute</a>
+<br><a href="#PRM04_continuation_line_must_contain_a_comment_character_in_column_1">PR-04 continuation line must contain a comment character in column 1</a>
+<br><a href="#PRM05_expecting___s1__near___s2_">PR-05 expecting '%s1' near '%s2'</a>
+<br><a href="#PRM06_inMline_byte_sequence_limit_exceeded">PR-06 in-line byte sequence limit exceeded</a>
+<br><a href="#PRM07_illegal_hexadecimal_data_in_byte_sequence">PR-07 illegal hexadecimal data in byte sequence</a>
+<br><a href="#PRM08_symbol___s1__in_inMline_assembly_code_cannot_be_resolved">PR-08 symbol '%s1' in in-line assembly code cannot be resolved</a>
+<dt><br>- R -
+<dd><a href="#REM01_alternate_return_specifier_only_allowed_in_subroutine">RE-01 alternate return specifier only allowed in subroutine</a>
+<br><a href="#REM02_RETURN_statement_in_main_program_is_not_FORTRAN_77_standard">RE-02 RETURN statement in main program is not FORTRAN 77 standard</a>
+<dt><br>- S -
+<dd><a href="#SAM01_COMMON_block__s1_saved_but_not_properly_defined">SA-01 COMMON block %s1 saved but not properly defined</a>
+<br><a href="#SAM02_COMMON_block__s1_must_be_saved_in_every_subprogram_in_which_it_appears">SA-02 COMMON block %s1 must be saved in every subprogram in which it appears</a>
+<br><a href="#SAM03_name_already_appeared_in_a_previous_SAVE_statement">SA-03 name already appeared in a previous SAVE statement</a>
+<br><a href="#SFM01_statement_function_definition_contains_duplicate_dummy_arguments">SF-01 statement function definition contains duplicate dummy arguments</a>
+<br><a href="#SFM02_character_length_of_statement_function_name_must_not_be_LTR">SF-02 character length of statement function name must not be (*)</a>
+<br><a href="#SFM03_statement_function_definition_contains_illegal_dummy_argument">SF-03 statement function definition contains illegal dummy argument</a>
+<br><a href="#SFM04_cannot_pass__s1__s2_to_statement_function">SF-04 cannot pass %s1 %s2 to statement function</a>
+<br><a href="#SFM05__s1_actual_argument_was_passed_to__s2_dummy_argument">SF-05 %s1 actual argument was passed to %s2 dummy argument</a>
+<br><a href="#SFM06_incorrect_number_of_arguments_passed_to_statement_function__s1">SF-06 incorrect number of arguments passed to statement function %s1</a>
+<br><a href="#SFM07_type_of_statement_function_name_must_not_be_a_userMdefined_structure">SF-07 type of statement function name must not be a user-defined structure</a>
+<br><a href="#SMM01_system_file_error_reading__s1_M__s2">SM-01 system file error reading %s1 - %s2</a>
+<br><a href="#SMM02_error_opening_file__s1_M__s2">SM-02 error opening file %s1 - %s2</a>
+<br><a href="#SMM03_system_file_error_writing__s1_M__s2">SM-03 system file error writing %s1 - %s2</a>
+<br><a href="#SMM06_error_opening__s1_M_too_many_temporary_files_exist">SM-06 error opening %s1 - too many temporary files exist</a>
+<br><a href="#SMM07_generation_of_browsing_information_failed">SM-07 generation of browsing information failed</a>
+<br><a href="#SPM01_cannot_have_both_ATEND_and_the_ENDE_specifier">SP-01 cannot have both ATEND and the END= specifier</a>
+<br><a href="#SPM02_ATEND_must_immediately_follow_a_READ_statement">SP-02 ATEND must immediately follow a READ statement</a>
+<br><a href="#SPM03_block_label_must_be_a_symbolic_name">SP-03 block label must be a symbolic name</a>
+<br><a href="#SPM04_could_not_find_a_structure_to__s1_from">SP-04 could not find a structure to %s1 from</a>
+<br><a href="#SPM05_REMOTE_BLOCK_is_not_allowed_in_the_range_of_any_control_structure">SP-05 REMOTE BLOCK is not allowed in the range of any control structure</a>
+<br><a href="#SPM06_the_SELECT_statement_must_be_followed_immediately_by_a_CASE_statement">SP-06 the SELECT statement must be followed immediately by a CASE statement</a>
+<br><a href="#SPM07_cases_are_overlapping">SP-07 cases are overlapping</a>
+<br><a href="#SPM08_select_structure_requires_at_least_one_CASE_statement">SP-08 select structure requires at least one CASE statement</a>
+<br><a href="#SPM09_cannot_branch_to__d1_from_outside_control_structure_in_line__d2">SP-09 cannot branch to %d1 from outside control structure in line %d2</a>
+<br><a href="#SPM10_cannot_branch_to__d1_inside_structure_on_line__d2">SP-10 cannot branch to %d1 inside structure on line %d2</a>
+<br><a href="#SPM11_low_end_of_range_exceeds_the_high_end">SP-11 low end of range exceeds the high end</a>
+<br><a href="#SPM12_default_case_block_must_follow_all_case_blocks">SP-12 default case block must follow all case blocks</a>
+<br><a href="#SPM13_attempt_to_branch_out_of_a_REMOTE_BLOCK">SP-13 attempt to branch out of a REMOTE BLOCK</a>
+<br><a href="#SPM14_attempt_to_EXECUTE_undefined_REMOTE_BLOCK__s1">SP-14 attempt to EXECUTE undefined REMOTE BLOCK %s1</a>
+<br><a href="#SPM15_attempted_to_use_REMOTE_BLOCK_recursively">SP-15 attempted to use REMOTE BLOCK recursively</a>
+<br><a href="#SPM16_cannot_RETURN_from_subprogram_within_a_REMOTE_BLOCK">SP-16 cannot RETURN from subprogram within a REMOTE BLOCK</a>
+<br><a href="#SPM17__s1_statement_is_not_FORTRAN_77_standard">SP-17 %s1 statement is not FORTRAN 77 standard</a>
+<br><a href="#SPM18__s1_block_is_unfinished">SP-18 %s1 block is unfinished</a>
+<br><a href="#SPM19__s1_statement_does_not_match_with__s2_statement">SP-19 %s1 statement does not match with %s2 statement</a>
+<br><a href="#SPM20_incomplete_control_structure_found_at__s1_statement">SP-20 incomplete control structure found at %s1 statement</a>
+<br><a href="#SPM21__s1_statement_is_not_allowed_in__s2_definition">SP-21 %s1 statement is not allowed in %s2 definition</a>
+<br><a href="#SPM22_no_such_field_name_found_in_structure__s1">SP-22 no such field name found in structure %s1</a>
+<br><a href="#SPM23_multiple_definition_of_field_name__s1">SP-23 multiple definition of field name %s1</a>
+<br><a href="#SPM24_structure__s1_has_not_been_defined">SP-24 structure %s1 has not been defined</a>
+<br><a href="#SPM25_structure__s1_has_already_been_defined">SP-25 structure %s1 has already been defined</a>
+<br><a href="#SPM26_structure__s1_must_contain_at_least_one_field">SP-26 structure %s1 must contain at least one field</a>
+<br><a href="#SPM27_recursion_detected_in_definition_of_structure__s1">SP-27 recursion detected in definition of structure %s1</a>
+<br><a href="#SPM28_illegal_use_of_structure__s1_containing_union">SP-28 illegal use of structure %s1 containing union</a>
+<br><a href="#SPM29_allocatable_arrays_cannot_be_fields_within_structures">SP-29 allocatable arrays cannot be fields within structures</a>
+<br><a href="#SPM30_an_integer_conditional_expression_is_not_FORTRAN_77_standard">SP-30 an integer conditional expression is not FORTRAN 77 standard</a>
+<br><a href="#SPM31__s1_statement_must_be_used_within__s2_definition">SP-31 %s1 statement must be used within %s2 definition</a>
+<br><a href="#SRM01_name_can_only_appear_in_an_EXTERNAL_statement_once">SR-01 name can only appear in an EXTERNAL statement once</a>
+<br><a href="#SRM02_character_function__s1_may_not_be_called_since_size_was_declared_as_LTR">SR-02 character function %s1 may not be called since size was declared as (*)</a>
+<br><a href="#SRM03__s1_can_only_be_used_an_an_argument_to_a_subroutine">SR-03 %s1 can only be used an an argument to a subroutine</a>
+<br><a href="#SRM04_name_cannot_appear_in_both_an_INTRINSIC_and_EXTERNAL_statement">SR-04 name cannot appear in both an INTRINSIC and EXTERNAL statement</a>
+<br><a href="#SRM05_expecting_a_subroutine_name">SR-05 expecting a subroutine name</a>
+<br><a href="#SRM06__s1_statement_not_allowed_in_main_program">SR-06 %s1 statement not allowed in main program</a>
+<br><a href="#SRM07_not_an_intrinsic_FUNCTION_name">SR-07 not an intrinsic FUNCTION name</a>
+<br><a href="#SRM08_name_can_only_appear_in_an_INTRINSIC_statement_once">SR-08 name can only appear in an INTRINSIC statement once</a>
+<br><a href="#SRM09_subprogram_recursion_detected">SR-09 subprogram recursion detected</a>
+<br><a href="#SRM10_two_main_program_units_in_the_same_file">SR-10 two main program units in the same file</a>
+<br><a href="#SRM11_only_one_unnamed__s1_is_allowed_in_an_executable_program">SR-11 only one unnamed %s1 is allowed in an executable program</a>
+<br><a href="#SRM12_function_referenced_as_a_subroutine">SR-12 function referenced as a subroutine</a>
+<br><a href="#SSM01_substringing_of_function_or_statement_function_return_value_is_not_FORTRAN_77_standard">SS-01 substringing of function or statement function return value is not FORTRAN 77 standard</a>
+<br><a href="#SSM02_substringing_valid_only_for_character_variables_and_array_elements">SS-02 substringing valid only for character variables and array elements</a>
+<br><a href="#SSM03_subscript_expression_out_of_range">SS-03 subscript expression out of range</a>
+<br><a href="#SSM04_substring_expression_L_d1__d2R_is_out_of_range">SS-04 substring expression (%d1:%d2) is out of range</a>
+<br><a href="#STM01_statement_number__d1_has_already_been_defined_in_line__d2">ST-01 statement number %d1 has already been defined in line %d2</a>
+<br><a href="#STM02_statement_function_definition_appears_after_first_executable_statement">ST-02 statement function definition appears after first executable statement</a>
+<br><a href="#STM03__s1_statement_must_not_be_branched_to_but_was_in_line__d2">ST-03 %s1 statement must not be branched to but was in line %d2</a>
+<br><a href="#STM04_branch_to_statement__d1_in_line__d2_not_allowed">ST-04 branch to statement %d1 in line %d2 not allowed</a>
+<br><a href="#STM05_specification_statement_must_appear_before__s1_is_initialized">ST-05 specification statement must appear before %s1 is initialized</a>
+<br><a href="#STM06_statement__d1_was_referenced_as_a_FORMAT_statement_in_line__d2">ST-06 statement %d1 was referenced as a FORMAT statement in line %d2</a>
+<br><a href="#STM07_IMPLICIT_statement_appears_too_late">ST-07 IMPLICIT statement appears too late</a>
+<br><a href="#STM08_this_statement_will_never_be_executed_due_to_the_preceding_branch">ST-08 this statement will never be executed due to the preceding branch</a>
+<br><a href="#STM09_expecting_statement_number">ST-09 expecting statement number</a>
+<br><a href="#STM10_statement_number__d1_was_not_used_as_a_FORMAT_statement_in_line__d2">ST-10 statement number %d1 was not used as a FORMAT statement in line %d2</a>
+<br><a href="#STM11_specification_statement_appears_too_late">ST-11 specification statement appears too late</a>
+<br><a href="#STM12__s1_statement_not_allowed_after__s2_statement">ST-12 %s1 statement not allowed after %s2 statement</a>
+<br><a href="#STM13_statement_number_must_be_99999_or_less">ST-13 statement number must be 99999 or less</a>
+<br><a href="#STM14_statement_number_cannot_be_zero">ST-14 statement number cannot be zero</a>
+<br><a href="#STM15_this_statement_could_branch_to_itself">ST-15 this statement could branch to itself</a>
+<br><a href="#STM16_missing_statement_number__d1_M_used_in_line__d2">ST-16 missing statement number %d1 - used in line %d2</a>
+<br><a href="#STM17_undecodeable_statement_or_misspelled_word__s1">ST-17 undecodeable statement or misspelled word %s1</a>
+<br><a href="#STM18_statement__d1_will_never_be_executed_due_to_the_preceding_branch">ST-18 statement %d1 will never be executed due to the preceding branch</a>
+<br><a href="#STM19_expecting_keyword_or_symbolic_name">ST-19 expecting keyword or symbolic name</a>
+<br><a href="#STM20_number_in__s1_statement_is_longer_than_5_digits">ST-20 number in %s1 statement is longer than 5 digits</a>
+<br><a href="#STM21_position_of_DATA_statement_is_not_FORTRAN_77_standard">ST-21 position of DATA statement is not FORTRAN 77 standard</a>
+<br><a href="#SVM01_variable__s1_in_array_declarator_must_be_in_COMMON_or_a_dummy_argument">SV-01 variable %s1 in array declarator must be in COMMON or a dummy argument</a>
+<br><a href="#SVM02_adjustableDassumed_size_array__s1_must_be_a_dummy_argument">SV-02 adjustable/assumed size array %s1 must be a dummy argument</a>
+<br><a href="#SVM03_invalid_subscript_expression">SV-03 invalid subscript expression</a>
+<br><a href="#SVM04_invalid_number_of_subscripts">SV-04 invalid number of subscripts</a>
+<br><a href="#SVM05_using__s1_name_incorrectly_without_list">SV-05 using %s1 name incorrectly without list</a>
+<br><a href="#SVM06_cannot_substring_array_name__s1">SV-06 cannot substring array name %s1</a>
+<br><a href="#SVM07__s1_treated_as_an_assumed_size_array">SV-07 %s1 treated as an assumed size array</a>
+<br><a href="#SVM08_assumed_size_array__s1_cannot_be_used_as_an_iDo_list_item_or_a_formatDunit_identifier">SV-08 assumed size array %s1 cannot be used as an i/o list item or a format/unit identifier</a>
+<br><a href="#SVM09_limit_of_65535_elements_per_dimension_has_been_exceeded">SV-09 limit of 65535 elements per dimension has been exceeded</a>
+<br><a href="#SXM01_unexpected_number_or_name__s1">SX-01 unexpected number or name %s1</a>
+<br><a href="#SXM02_bad_sequence_of_operators">SX-02 bad sequence of operators</a>
+<br><a href="#SXM03_invalid_operator">SX-03 invalid operator</a>
+<br><a href="#SXM04_expecting_end_of_statement_after_right_parenthesis">SX-04 expecting end of statement after right parenthesis</a>
+<br><a href="#SXM05_expecting_an_asterisk">SX-05 expecting an asterisk</a>
+<br><a href="#SXM06_expecting_colon">SX-06 expecting colon</a>
+<br><a href="#SXM07_expecting_colon_or_end_of_statement">SX-07 expecting colon or end of statement</a>
+<br><a href="#SXM08_missing_comma">SX-08 missing comma</a>
+<br><a href="#SXM09_expecting_end_of_statement">SX-09 expecting end of statement</a>
+<br><a href="#SXM10_expecting_integer_variable">SX-10 expecting integer variable</a>
+<br><a href="#SXM11_expecting__s1_name">SX-11 expecting %s1 name</a>
+<br><a href="#SXM12_expecting_an_integer">SX-12 expecting an integer</a>
+<br><a href="#SXM13_expecting_INTEGER__REAL__or_DOUBLE_PRECISION_variable">SX-13 expecting INTEGER, REAL, or DOUBLE PRECISION variable</a>
+<br><a href="#SXM14_missing_operator">SX-14 missing operator</a>
+<br><a href="#SXM15_expecting_a_slash">SX-15 expecting a slash</a>
+<br><a href="#SXM16_expecting__s1_expression">SX-16 expecting %s1 expression</a>
+<br><a href="#SXM17_expecting_a_constant_expression">SX-17 expecting a constant expression</a>
+<br><a href="#SXM18_expecting_INTEGER__REAL__or_DOUBLE_PRECISION_expression">SX-18 expecting INTEGER, REAL, or DOUBLE PRECISION expression</a>
+<br><a href="#SXM19_expecting_INTEGER_or_CHARACTER_constant">SX-19 expecting INTEGER or CHARACTER constant</a>
+<br><a href="#SXM20_unexpected_operator">SX-20 unexpected operator</a>
+<br><a href="#SXM21_no_closing_quote_on_literal_string">SX-21 no closing quote on literal string</a>
+<br><a href="#SXM22_missing_or_invalid_constant">SX-22 missing or invalid constant</a>
+<br><a href="#SXM23_expecting_character_constant">SX-23 expecting character constant</a>
+<dt><br>- T -
+<dd><a href="#TYM01_length_specification_before_array_declarator_is_not_FORTRAN_77_standard">TY-01 length specification before array declarator is not FORTRAN 77 standard</a>
+<br><a href="#TYM02__d1_is_an_illegal_length_for__s2_type">TY-02 %d1 is an illegal length for %s2 type</a>
+<br><a href="#TYM03_length_specifier_in__s1_statement_is_not_FORTRAN_77_standard">TY-03 length specifier in %s1 statement is not FORTRAN 77 standard</a>
+<br><a href="#TYM04_length_specification_not_allowed_with_type__s1">TY-04 length specification not allowed with type %s1</a>
+<br><a href="#TYM05_type_of__s1_has_already_been_established_as__s2">TY-05 type of %s1 has already been established as %s2</a>
+<br><a href="#TYM06_type_of__s1_has_not_been_declared">TY-06 type of %s1 has not been declared</a>
+<br><a href="#TYM07__s1_of_type__s2_is_illegal_in__s3_statement">TY-07 %s1 of type %s2 is illegal in %s3 statement</a>
+<dt><br>- V -
+<dd><a href="#VAM01_illegal_use_of__s1_name__s2_in__s3_statement">VA-01 illegal use of %s1 name %s2 in %s3 statement</a>
+<br><a href="#VAM02_symbolic_name__s1_is_longer_than_6_characters">VA-02 symbolic name %s1 is longer than 6 characters</a>
+<br><a href="#VAM03__s1_has_already_been_defined_as_a__s2">VA-03 %s1 has already been defined as a %s2</a>
+<br><a href="#VAM04__s1__s2_has_not_been_defined">VA-04 %s1 %s2 has not been defined</a>
+<br><a href="#VAM05__s1_is_an_unreferenced_symbol">VA-05 %s1 is an unreferenced symbol</a>
+<br><a href="#VAM06__s1_already_belongs_to_this_NAMELIST_group">VA-06 %s1 already belongs to this NAMELIST group</a>
+<br><a href="#VAM07__s1_has_been_used_but_not_defined">VA-07 %s1 has been used but not defined</a>
+<br><a href="#VAM08_dynamically_allocating__s1_is_not_FORTRAN_77_standard">VA-08 dynamically allocating %s1 is not FORTRAN 77 standard</a>
+<br><a href="#VAM09__s1_in_NAMELIST__s2_is_illegal">VA-09 %s1 in NAMELIST %s2 is illegal</a>
+</dl>
+<h1 id="Open_Watcom_F77_Diagnostic_Messages"> Open Watcom F77 Diagnostic Messages </h1>
+<br>The Open Watcom FORTRAN 77 compiler checks for errors both at compile time and execution time.
+<br><br>Compile time errors may result from incorrect program syntax, violations of the rules of the language, underflow and
+ overflow as a result of evaluation of expressions, etc.&nbsp; Three types of messages are issued:
+<dl>
+<dt>EXTENSION
+<dd>*EXT* - This indicates that the programmer has used a feature which is strictly an extension of the FORTRAN 77 language definition.
+&nbsp; Such extensions may not be accepted by other FORTRAN 77 compilers.
+<dt><br>WARNING
+<dd>*WRN* - This indicates that a possible problem has been detected by the compiler.&nbsp; For example, an unlabelled executable
+ statement which follows an unconditional transfer of control can never be executed and so the compiler will issue a message
+ about this condition.
+<dt><br>ERROR
+<dd>*ERR* - This indicates that some error was detected which must be corrected by the programmer.
+</dl>
+<br>An object file will be created as long as no ERROR type messages are issued.
+<br><br>Execution or run time errors may result from arithmetic underflow or overflow, input/output errors, etc.&nbsp; An
+ execution time error causes the program to cease execution.
+<br><br>Consider the following program, named &quot;DEMO1.FOR&quot;, which contains errors.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; * This program demonstrates the following features of</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; * Open Watcom's FORTRAN 77 compiler:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp; 1. Extensions to the FORTRAN 77 standard are flagged.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp; 2. Compile time error diagnostics are extensive.&nbsp; As many</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errors as possible are diagnosed.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp; 3. Warning messages are displayed where potential problems</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; can arise.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; *</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGRAM MAIN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIMENSION A(10)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO I=1,10</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A(I) = I</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I = I + 1</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENDLOOP</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GO TO 30</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J = J + 1</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END</tt>
+<br><br>If we compile this program with the &quot;extensions&quot; option, the following output appears on the screen.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wfc demo1 /exten</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WATCOM FORTRAN 77/16 Optimizing Compiler Version 1.9 1997/07/16 09:22:47</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) 2010 the Open Watcom Contributors. All Rights Reserved.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Portions Copyright (c) 1984, 2002 Sybase, Inc. All Rights Reserved.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Source code is available under the Sybase Open Watcom Public License.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; See http://www.openwatcom.org/ for details.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; demo1.for(14): *EXT* DO-05 this DO loop form is not FORTRAN 77 standard</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; demo1.for(16): *ERR* DO-07 column 13, DO variable cannot be redefined</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while DO loop is active</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; demo1.for(17): *ERR* SP-19 ENDLOOP statement does not match with DO</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; statement</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; demo1.for(19): *WRN* ST-08 this statement will never be executed due</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to the preceding branch</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; demo1.for: 9 statements, 0 bytes, 1 extensions, 1 warnings, 2 errors</tt>
+<br><br>The diagnostic messages consist of the following information:
+<ol>
+<li>the name of the file being compiled,
+<li>the line number of the line containing the error (in parentheses),
+<li>a message type of either extension (*EXT*), error (*ERR*) or warning (*WRN*),
+<li>a message class and number (e.g., ST-08), and
+<li>text explaining the nature of the error.
+</ol>
+<br>In the above example, the first error occurred on line 16 of the file &quot;DEMO1.FOR&quot;.&nbsp; Error number DO-07
+ was diagnosed.&nbsp; The second error occurred on line 17 of the file &quot;DEMO1.FOR&quot;.&nbsp; Error number SP-20 was
+ diagnosed.&nbsp; The other errors are informational messages that do not prevent the successful compilation of the source
+ file.
+<br><br>The following is a list of all messages produced by Open Watcom F77 followed by a brief description.&nbsp; Run-time
+ messages (messages displayed during execution) are also presented.&nbsp; The messages contain references to<tt> %s</tt> and<tt>
+ %d.</tt>&nbsp; They represent strings that are substituted by Open Watcom F77 to make the error message more exact.<tt>&nbsp;
+ %d</tt> represents a string of digits;<tt> %s</tt> any string, usually a symbolic name such as<tt> AMOUNT,</tt> a type such
+ as<tt> INTEGER,</tt> or a symbol class such as<tt> SUBROUTINE.</tt>&nbsp; An error message may contain more than one reference
+ to %d.&nbsp; In such a case, the description will reference them as %dn where n is the occurrence of %d in the error message.
+&nbsp; The same is true for references to %s.
+<h2 id="ARM01_invalid_number_of_arguments_to_intrinsic_function__s1"> AR-01 invalid number of arguments to intrinsic function %s1 </h2>
+<br><b>AR-01 invalid number of arguments to intrinsic function %s1</b>
+<br><br>The number of actual arguments specified in the argument list for the intrinsic function %s1 does not agree with the
+ dummy argument list.&nbsp; Consult the Language Reference for information on intrinsic functions and their arguments.
+<h2 id="ARM02_dummy_argument__s1_appears_more_than_once"> AR-02 dummy argument %s1 appears more than once </h2>
+<br><b>AR-02 dummy argument %s1 appears more than once</b>
+<br><br>The same dummy argument %s1 is named more than once in the dummy argument list.
+<h2 id="ARM12_dummy_argument__s1_must_not_appear_before_definition_of_ENTRY__s2"> AR-12 dummy argument %s1 must not appear before definition of ENTRY %s2 </h2>
+<br><b>AR-12 dummy argument %s1 must not appear before definition of ENTRY %s2</b>
+<br><br>The dummy argument %s1 has appeared in an executable statement before its appearance in the definition of %s2 in an
+ ENTRY statement.&nbsp; This is illegal.
+<h2 id="BDM01__s1_was_initialized_in_a_block_data_subprogram_but_is_not_in_COMMON"> BD-01 %s1 was initialized in a block data subprogram but is not in COMMON </h2>
+<br><b>BD-01 %s1 was initialized in a block data subprogram but is not in COMMON</b>
+<br><br>The variable or array element, %s1, was initialized in a BLOCK DATA subprogram but was not specified in a named COMMON
+ block.
+<h2 id="BDM02__s1_statement_is_not_permitted_in_a_BLOCK_DATA_subprogram"> BD-02 %s1 statement is not permitted in a BLOCK DATA subprogram </h2>
+<br><b>BD-02 %s1 statement is not permitted in a BLOCK DATA subprogram</b>
+<br><br>The statement, %s1, is not allowed in a BLOCK DATA subprogram.&nbsp; The only statements which are allowed to appear
+ are:&nbsp; IMPLICIT, PARAMETER, DIMENSION, COMMON, SAVE, EQUIVALENCE, DATA, END, and type statements.
+<h2 id="CCM01_invalid_character_encountered_in_source_input"> CC-01 invalid character encountered in source input </h2>
+<br><b>CC-01 invalid character encountered in source input</b>
+<br><br>The indicated statement contains an invalid character.&nbsp; Valid characters are:&nbsp; letters, digits, $, *, .,
+ +, -, /, :, =, (, ), !, %, ', and ,(comma).&nbsp; Any character may be used inside a character or hollerith string.
+<h2 id="CCM02_invalid_character_in_statement_number_columns"> CC-02 invalid character in statement number columns </h2>
+<br><b>CC-02 invalid character in statement number columns</b>
+<br><br>A column in columns 1 to 5 of the indicated statement contains a non-digit character.&nbsp; Columns 1 to 5 contain
+ the statement number label.&nbsp; It is made up of digits from 0 to 9 and is greater than 0 and less than or equal to 99999.
+<h2 id="CCM03_character_in_continuation_column__but_no_statement_to_continue"> CC-03 character in continuation column, but no statement to continue </h2>
+<br><b>CC-03 character in continuation column, but no statement to continue</b>
+<br><br>The character in column 6 indicates that this line is a continuation of the previous statement but there is no previous
+ statement to continue.
+<h2 id="CCM04_character_encountered_is_not_FORTRAN_77_standard"> CC-04 character encountered is not FORTRAN 77 standard </h2>
+<br><b>CC-04 character encountered is not FORTRAN 77 standard</b>
+<br><br>A non-standard character was encountered in the source input stream.&nbsp; This is most likely caused by the use of
+ lower case letters.
+<h2 id="CCM05_columns_1M5_in_a_continuation_line_must_be_blank"> CC-05 columns 1-5 in a continuation line must be blank </h2>
+<br><b>CC-05 columns 1-5 in a continuation line must be blank</b>
+<br><br>When column 6 is marked as a continuation statement to the previous line, columns 1 to 5 must be left blank.
+<h2 id="CCM06_more_than_19_continuation_lines_is_not_FORTRAN_77_standard"> CC-06 more than 19 continuation lines is not FORTRAN 77 standard </h2>
+<br><b>CC-06 more than 19 continuation lines is not FORTRAN 77 standard</b>
+<br><br>More than 19 continuation lines is an extension to the FORTRAN 77 language.
+<h2 id="CCM07_endMofMline_comment_is_not_FORTRAN_77_standard"> CC-07 end-of-line comment is not FORTRAN 77 standard </h2>
+<br><b>CC-07 end-of-line comment is not FORTRAN 77 standard</b>
+<br><br>End-of-line comments are an extension to the FORTRAN 77 language.&nbsp; End-of-line comments start with the exclamation
+ mark (!) character.
+<h2 id="CCM08_D_in_column_1_is_not_FORTRAN_77_standard"> CC-08 D in column 1 is not FORTRAN 77 standard </h2>
+<br><b>CC-08 D in column 1 is not FORTRAN 77 standard</b>
+<br><br>A &quot;D&quot; in column 1 signifies a debug statement that is compiled when the &quot;__debug__&quot; macro symbol
+ is defined.&nbsp; If the &quot;__debug__&quot; macro symbol is not defined, the statement is ignored.&nbsp; The &quot;c$define&quot;
+ compiler directive or the &quot;define&quot; compiler option can be used to define the &quot;__debug__&quot; macro symbol.
+<h2 id="CCM09_too_many_continuation_lines"> CC-09 too many continuation lines </h2>
+<br><b>CC-09 too many continuation lines</b>
+<br><br>The limit on the number of continuation lines has been reached.&nbsp; This limit depends on the size of each continuation
+ line.&nbsp; A minimum of 61 continuation lines is permitted.&nbsp; If the &quot;xline&quot; option is used, a minimum of
+ 31 continuation lines is permitted.
+<h2 id="CMM01__s1_already_in_COMMON"> CM-01 %s1 already in COMMON </h2>
+<br><b>CM-01 %s1 already in COMMON</b>
+<br><br>The variable or array name, %s1, has already been specified in this or another COMMON block.
+<h2 id="CMM02_initializing__s1_in_COMMON_outside_of_block_data_subprogram_is_not_FORTRAN_77_standard"> CM-02 initializing %s1 in COMMON outside of block data subprogram is not FORTRAN 77 standard </h2>
+<br><b>CM-02 initializing %s1 in COMMON outside of block data subprogram is not FORTRAN 77 standard</b>
+<br><br>The symbol %s1, in a named COMMON block, has been initialized outside of a block data subprogram.&nbsp; This is an
+ extension to the FORTRAN 77 language.
+<h2 id="CMM03_character_and_nonMcharacter_data_in_COMMON_is_not_FORTRAN_77_standard"> CM-03 character and non-character data in COMMON is not FORTRAN 77 standard </h2>
+<br><b>CM-03 character and non-character data in COMMON is not FORTRAN 77 standard</b>
+<br><br>The FORTRAN 77 standard specifies that a COMMON block cannot contain both numeric and character data.&nbsp; Allowing
+ COMMON blocks to contain both numeric and character data is an extension to the FORTRAN 77 standard.
+<h2 id="CMM04_COMMON_block__s1_has_been_defined_with_a_different_size"> CM-04 COMMON block %s1 has been defined with a different size </h2>
+<br><b>CM-04 COMMON block %s1 has been defined with a different size</b>
+<br><br>The COMMON block %s1 has been defined with a different size in another subprogram.&nbsp; A named COMMON block must
+ define the same amount of storage units where ever named.
+<h2 id="CMM05_named_COMMON_block__s1_appears_in_more_than_one_BLOCK_DATA_subprogram"> CM-05 named COMMON block %s1 appears in more than one BLOCK DATA subprogram </h2>
+<br><b>CM-05 named COMMON block %s1 appears in more than one BLOCK DATA subprogram</b>
+<br><br>The named COMMON block, %s1, may not appear in more than one BLOCK DATA subprogram.
+<h2 id="CMM06_blank_COMMON_block_has_been_defined_with_a_different_size"> CM-06 blank COMMON block has been defined with a different size </h2>
+<br><b>CM-06 blank COMMON block has been defined with a different size</b>
+<br><br>The blank COMMON block has been defined with a different size in another subprogram.&nbsp; This is legal but a warning
+ message is issued.
+<h2 id="CNM01_DOUBLE_PRECISION_COMPLEX_constants_are_not_FORTRAN_77_standard"> CN-01 DOUBLE PRECISION COMPLEX constants are not FORTRAN 77 standard </h2>
+<br><b>CN-01 DOUBLE PRECISION COMPLEX constants are not FORTRAN 77 standard</b>
+<br><br>Double precision complex numbers are an extension to the FORTRAN 77 language.&nbsp; The indicated number is a complex
+ number and at least one of the parts, real or imaginary, is a double precision constant.&nbsp; Both real and imaginary parts
+ will be double precision.
+<h2 id="CNM02_invalid_floatingMpoint_constant__s1"> CN-02 invalid floating-point constant %s1 </h2>
+<br><b>CN-02 invalid floating-point constant %s1</b>
+<br><br>The floating-point constant %s1 is invalid.&nbsp; Refer to the chapter entitled &quot;Names, Data Types and Constants&quot;
+ in the Language Reference.
+<h2 id="CNM03_zero_length_character_constants_are_not_allowed"> CN-03 zero length character constants are not allowed </h2>
+<br><b>CN-03 zero length character constants are not allowed</b>
+<br><br>FORTRAN 77 does not allow character constants of length 0 (i.e., an empty string).
+<h2 id="CNM04_invalid_hexadecimalDoctal_constant"> CN-04 invalid hexadecimal/octal constant </h2>
+<br><b>CN-04 invalid hexadecimal/octal constant</b>
+<br><br>An invalid hexadecimal or octal constant was specified.&nbsp; Hexadecimal constants can only contain digits or the
+ letters 'a' through 'f' and 'A' through 'F'.&nbsp; Octal constants can only contain the digits '0' through '7'.
+<h2 id="CNM05_hexadecimalDoctal_constant_is_not_FORTRAN_77_standard"> CN-05 hexadecimal/octal constant is not FORTRAN 77 standard </h2>
+<br><b>CN-05 hexadecimal/octal constant is not FORTRAN 77 standard</b>
+<br><br>Hexadecimal and octal constants are extensions to the FORTRAN 77 standard.
+<h2 id="COM01__s1_is_already_being_included"> CO-01 %s1 is already being included </h2>
+<br><b>CO-01 %s1 is already being included</b>
+<br><br>An attempt has been made to include a file that is currently being included in the program.
+<h2 id="COM02___s1__option_cannot_take_a_NO_prefix"> CO-02 '%s1' option cannot take a NO prefix </h2>
+<br><b>CO-02 '%s1' option cannot take a NO prefix</b>
+<br><br>The compiler option %s1, cannot have the NO prefix specified.&nbsp; The NO prefix is used to negate an option.&nbsp;
+ Certain options, including all options that require a value cannot have a NO prefix.
+<h2 id="COM03_expecting_an_equals_sign_following_the__s1_option"> CO-03 expecting an equals sign following the %s1 option </h2>
+<br><b>CO-03 expecting an equals sign following the %s1 option</b>
+<br><br>The compiler option %s1, requires an equal sign to be between the option keyword and its associated value.
+<h2 id="COM04_the___s1__option_requires_a_number"> CO-04 the '%s1' option requires a number </h2>
+<br><b>CO-04 the '%s1' option requires a number</b>
+<br><br>The compiler option %s1 and an equal sign has been detected but the required associated value is missing.
+<h2 id="COM05_option___s1__not_recognized_M_ignored"> CO-05 option '%s1' not recognized - ignored </h2>
+<br><b>CO-05 option '%s1' not recognized - ignored</b>
+<br><br>The option %s1 is not a recognized compiler option and has been ignored.&nbsp; Consult the User's Guide for a complete
+ list of compiler options.
+<h2 id="COM06___s1__option_not_allowed_in_source_input_stream"> CO-06 '%s1' option not allowed in source input stream </h2>
+<br><b>CO-06 '%s1' option not allowed in source input stream</b>
+<br><br>The option %s1 can only be specified on the command line.&nbsp; Consult the User's Guide for a description of which
+ options are allowed in the source input stream.
+<h2 id="COM07_nesting_level_exceeded_for_compiler_directives"> CO-07 nesting level exceeded for compiler directives </h2>
+<br><b>CO-07 nesting level exceeded for compiler directives</b>
+<br><br>Use of the C$IFDEF or C$IFNDEF compiler directives has caused the maximum nesting level to be exceeded.&nbsp; The
+ maximum nesting level is 16.
+<h2 id="COM08_mismatching_compiler_directives"> CO-08 mismatching compiler directives </h2>
+<br><b>CO-08 mismatching compiler directives</b>
+<br><br>This error message is issued if, for example, a C$ENDIF directive is used and no matching C$IFDEF or C$IFNDEF precedes
+ it.&nbsp; Incorrect nesting of C$IFDEF, C$IFNDEF, C$ELSE and C$ENDIF directives will also cause this message to be issued.
+<h2 id="CPM01_program_abnormally_terminated"> CP-01 program abnormally terminated </h2>
+<br><b>CP-01 program abnormally terminated</b>
+<br><br>This message is issued during the execution of the program.&nbsp; If you are running WATFOR-77, this message indicates
+ that an internal error has occurred in the compiler.&nbsp; Please report this error and any other helpful information about
+ the program being compiled to Watcom so that the problem can be fixed.
+<br><br>If you are running an application compiled by the Watcom FORTRAN 77 optimizing compiler, this message may indicate
+ a problem with the compiler or a problem with your program.&nbsp; Try compiling your application with the &quot;debug&quot;
+ option.&nbsp; This causes the generation of run-time checking code to validate, for example, array subscripts and will help
+ ensure that your program is not in error.
+<h2 id="CPM02_argument__d1_incompatible_with_register"> CP-02 argument %d1 incompatible with register </h2>
+<br><b>CP-02 argument %d1 incompatible with register</b>
+<br><br>The register specified in an auxiliary pragma for argument number %d1 is invalid.
+<h2 id="CPM03_subprogram__s1_has_invalid_return_register"> CP-03 subprogram %s1 has invalid return register </h2>
+<br><b>CP-03 subprogram %s1 has invalid return register</b>
+<br><br>The register specified in an auxiliary pragma for the return value of function %s1 is invalid.&nbsp; This error is
+ issued when, for example, an auxiliary pragma is used to specify EAX as the return register for a double precision function.
+<h2 id="CPM04_low_on_memory_M_unable_to_fully_optimize__s1"> CP-04 low on memory - unable to fully optimize %s1 </h2>
+<br><b>CP-04 low on memory - unable to fully optimize %s1</b>
+<br><br>There is not enough memory for the code generator to fully optimize subprogram %s1.
+<h2 id="CPM05_internal_compiler_error__d1"> CP-05 internal compiler error %d1 </h2>
+<br><b>CP-05 internal compiler error %d1</b>
+<br><br>This error is an internal code generation error.&nbsp; Please report the specified internal compiler error number
+ and any other helpful information about the program being compiled to Watcom so that the problem can be fixed.
+<h2 id="CPM06_illegal_register_modified_by__s1"> CP-06 illegal register modified by %s1 </h2>
+<br><b>CP-06 illegal register modified by %s1</b>
+<br><br>An illegal register was said to be modified by %s1 in the auxiliary pragma for %s1.&nbsp; In a 32-bit flat memory
+ model, the base pointer register EBP and segment registers CS, DS, ES, and SS cannot be modified.&nbsp; In small data models,
+ the base pointer register (32-bit EBP or 16-bit BP) and segment registers CS, DS, and SS cannot be modified.&nbsp; In large
+ data models, the base pointer register (32-bit EBP or 16-bit BP) and segment registers CS, and SS cannot be modified.
+<h2 id="CPM07__s1"> CP-07 %s1 </h2>
+<br><b>CP-07 %s1</b>
+<br><br>The message specified by %s1 indicates an error during the code generation phase.&nbsp; The most probable cause is
+ an invalid instruction in the in-line assembly code specified in an auxiliary pragma.
+<h2 id="CPM08_fatal___s1"> CP-08 fatal:&nbsp; %s1 </h2>
+<br><b>CP-08 fatal:&nbsp; %s1</b>
+<br><br>The specified error indicates that the code generator has been abnormally terminated.&nbsp; This message will be issued
+ if any internal limit is reached or a keyboard interrupt sequence is pressed during the code generation phase.
+<h2 id="CPM09_dynamic_memory_not_freed"> CP-09 dynamic memory not freed </h2>
+<br><b>CP-09 dynamic memory not freed</b>
+<br><br>This message indicates an internal compiler error.&nbsp; Please report this error and any other helpful information
+ about the program being compiled to Watcom so that the problem can be fixed.
+<h2 id="CPM10_freeing_unowned_dynamic_memory"> CP-10 freeing unowned dynamic memory </h2>
+<br><b>CP-10 freeing unowned dynamic memory</b>
+<br><br>This message indicates an internal compiler error.&nbsp; Please report this error and any other helpful information
+ about the program being compiled to Watcom so that the problem can be fixed.
+<h2 id="CPM11_The_automatic_equivalence_containing__s1_exceeds_32K_limit"> CP-11 The automatic equivalence containing %s1 exceeds 32K limit </h2>
+<br><b>CP-11 The automatic equivalence containing %s1 exceeds 32K limit</b>
+<br><br>In 16-bit environments, the size of an equivalence on the stack must not exceed 32767 bytes.
+<h2 id="CPM12_The_return_value_of__s1_exceeds_32K_limit"> CP-12 The return value of %s1 exceeds 32K limit </h2>
+<br><b>CP-12 The return value of %s1 exceeds 32K limit</b>
+<br><br>In 16-bit environments, the size of the return value of a function must not exceed 32767 bytes.
+<h2 id="CPM13_The_automatic_variable__s1_exceeds_32K_limit"> CP-13 The automatic variable %s1 exceeds 32K limit </h2>
+<br><b>CP-13 The automatic variable %s1 exceeds 32K limit</b>
+<br><br>In 16-bit environments, the size of any variable on the stack must not exceed 32767 bytes.
+<h2 id="CVM01_CHARACTER_variable__s1_with_length_LTR_not_allowed_in_this_expression"> CV-01 CHARACTER variable %s1 with length (*) not allowed in this expression </h2>
+<br><b>CV-01 CHARACTER variable %s1 with length (*) not allowed in this expression</b>
+<br><br>The length of the result of evaluating the expression is indeterminate.&nbsp; One of the operands has an indeterminate
+ length and the result is being assigned to a temporary.
+<h2 id="CVM02_character_variable__s1_with_length_LTR_must_be_a_subprogram_argument"> CV-02 character variable %s1 with length (*) must be a subprogram argument </h2>
+<br><b>CV-02 character variable %s1 with length (*) must be a subprogram argument</b>
+<br><br>The character variable %s1 with a length specification (*) can only be used to declare dummy arguments in the subprogram.
+&nbsp; The length of a dummy argument assumes the length of the corresponding actual argument.
+<h2 id="DAM01_implied_DO_variable__s1_must_be_an_integer_variable"> DA-01 implied DO variable %s1 must be an integer variable </h2>
+<br><b>DA-01 implied DO variable %s1 must be an integer variable</b>
+<br><br>The implied DO variable %s1 must be declared as a variable of type INTEGER or must have an implicit INTEGER type.
+<h2 id="DAM02_repeat_specification_must_be_a_positive_integer"> DA-02 repeat specification must be a positive integer </h2>
+<br><b>DA-02 repeat specification must be a positive integer</b>
+<br><br>The repeat specification in the constant list of the DATA statement must be an unsigned positive integer.
+<h2 id="DAM03__s1_appears_in_an_expression_but_is_not_an_implied_DO_variable"> DA-03 %s1 appears in an expression but is not an implied DO variable </h2>
+<br><b>DA-03 %s1 appears in an expression but is not an implied DO variable</b>
+<br><br>The variable %s1 is used to express the array elements in the DATA statement but the variable is not used as an implied
+ DO variable.
+<h2 id="DAM04__s1_in_blank_COMMON_block_cannot_be_initialized"> DA-04 %s1 in blank COMMON block cannot be initialized </h2>
+<br><b>DA-04 %s1 in blank COMMON block cannot be initialized</b>
+<br><br>A blank or unnamed COMMON block is a COMMON statement with the block name omitted.&nbsp; The entries in blank COMMON
+ blocks cannot be initialized using DATA statements.
+<h2 id="DAM05_data_initialization_with_hexadecimal_constant_is_not_FORTRAN_77_standard"> DA-05 data initialization with hexadecimal constant is not FORTRAN 77 standard </h2>
+<br><b>DA-05 data initialization with hexadecimal constant is not FORTRAN 77 standard</b>
+<br><br>Data initialization with hexadecimal constants is an extension to the FORTRAN 77 language.
+<h2 id="DAM06_cannot_initialize__s1__s2"> DA-06 cannot initialize %s1 %s2 </h2>
+<br><b>DA-06 cannot initialize %s1 %s2</b>
+<br><br>Symbol %s2 was used as a %s1.&nbsp; It is illegal for such a symbol to be initialized in a DATA statement.&nbsp; The
+ DATA statement can only be used to initialize variables, arrays, array elements, and substrings.
+<h2 id="DAM07_data_initialization_in__s1_statement_is_not_FORTRAN_77_standard"> DA-07 data initialization in %s1 statement is not FORTRAN 77 standard </h2>
+<br><b>DA-07 data initialization in %s1 statement is not FORTRAN 77 standard</b>
+<br><br>Data initialization in type specification statements is an extension to the FORTRAN 77 language.&nbsp; These include:
+&nbsp; CHARACTER, COMPLEX, DOUBLE PRECISION, INTEGER, LOGICAL, and REAL.
+<h2 id="DAM08_not_enough_constants_for_list_of_variables"> DA-08 not enough constants for list of variables </h2>
+<br><b>DA-08 not enough constants for list of variables</b>
+<br><br>There are not enough constants specified to initialize all of the names listed in the DATA statement.
+<h2 id="DAM10_too_many_constants_for_list_of_variables"> DA-10 too many constants for list of variables </h2>
+<br><b>DA-10 too many constants for list of variables</b>
+<br><br>There are too many constants specified to initialize the names listed in the DATA statement.
+<h2 id="DAM12_cannot_initialize__s1_variable__s2_with__s3_constant"> DA-12 cannot initialize %s1 variable %s2 with %s3 constant </h2>
+<br><b>DA-12 cannot initialize %s1 variable %s2 with %s3 constant</b>
+<br><br>The constant of type %s3 cannot be used to initialize the variable %s2 of type %s1.
+<h2 id="DMM01_using__s1_incorrectly_in_dimension_expression"> DM-01 using %s1 incorrectly in dimension expression </h2>
+<br><b>DM-01 using %s1 incorrectly in dimension expression</b>
+<br><br>The name used as a dimension declarator has been previously declared as type %s1 and cannot be used as a dimension
+ declarator.&nbsp; A dimension declarator must be an integer expression.
+<h2 id="DOM01_statement_number__d1_already_defined_in_line__d2_M_DO_loop_is_backwards"> DO-01 statement number %d1 already defined in line %d2 - DO loop is backwards </h2>
+<br><b>DO-01 statement number %d1 already defined in line %d2 - DO loop is backwards</b>
+<br><br>The statement number to indicate the end of the DO control structure has been used previously in the program unit
+ and cannot be used to terminate the DO loop.&nbsp; The terminal statement named in the DO statement must follow the DO statement.
+<h2 id="DOM02__s1_statement_not_allowed_at_termination_of_DO_range"> DO-02 %s1 statement not allowed at termination of DO range </h2>
+<br><b>DO-02 %s1 statement not allowed at termination of DO range</b>
+<br><br>A non-executable statement cannot be used as the terminal statement of a DO loop.&nbsp; These statements include:
+&nbsp; all declarative statements, ADMIT, AT END, BLOCK DATA, CASE, DO, ELSE, ELSE IF, END, END AT END, END BLOCK, END GUESS,
+ END IF, END LOOP, END SELECT, END WHILE, ENTRY, FORMAT, FUNCTION, assigned GO TO, unconditional GO TO, GUESS, arithmetic
+ and block IF, LOOP, OTHERWISE, PROGRAM, RETURN, SAVE, SELECT, STOP, SUBROUTINE, UNTIL, and WHILE.
+<h2 id="DOM03_improper_nesting_of_DO_loop"> DO-03 improper nesting of DO loop </h2>
+<br><b>DO-03 improper nesting of DO loop</b>
+<br><br>A nested DO loop has not been properly terminated before the termination of the outer DO loop.
+<h2 id="DOM04_ENDDO_cannot_terminate_DO_loop_with_statement_label"> DO-04 ENDDO cannot terminate DO loop with statement label </h2>
+<br><b>DO-04 ENDDO cannot terminate DO loop with statement label</b>
+<br><br>The ENDDO statement can only terminate a DO loop in which no statement label was specified in the defining DO statement.
+<h2 id="DOM05_this_DO_loop_form_is_not_FORTRAN_77_standard"> DO-05 this DO loop form is not FORTRAN 77 standard </h2>
+<br><b>DO-05 this DO loop form is not FORTRAN 77 standard</b>
+<br><br>As an extension to FORTRAN 77, the following forms of the DO loop are also supported.
+<ol>
+<li>A DO loop with no statement label specified in the defining DO statement.
+<li>The DO WHILE form of the DO statement.
+</ol>
+<h2 id="DOM06_expecting_comma_or_DO_variable"> DO-06 expecting comma or DO variable </h2>
+<br><b>DO-06 expecting comma or DO variable</b>
+<br><br>The item following the DO keyword and the terminal statement-label (if present) must be either a comma or a DO variable.
+&nbsp; A DO variable is an integer, real or double precision variable name.&nbsp; The DO statement syntax is as follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; DO &lt;tsl&gt; &lt;,&gt; DO-var = ex, ex &lt;, ex&gt;</tt>
+<h2 id="DOM07_DO_variable_cannot_be_redefined_while_DO_loop_is_active"> DO-07 DO variable cannot be redefined while DO loop is active </h2>
+<br><b>DO-07 DO variable cannot be redefined while DO loop is active</b>
+<br><br>The DO variable named in the DO statement cannot have its value altered by a statement in the DO loop structure.
+<h2 id="ECM01_equivalencing__s1_has_caused_extension_of_COMMON_block__s2_to_the_left"> EC-01 equivalencing %s1 has caused extension of COMMON block %s2 to the left </h2>
+<br><b>EC-01 equivalencing %s1 has caused extension of COMMON block %s2 to the left</b>
+<br><br>The name %s1 has been equivalenced to a name in the COMMON block %s2.&nbsp; This relationship has caused the storage
+ of the COMMON block to be extended to the left.&nbsp; FORTRAN 77 does not allow a COMMON block to be extended in this way.
+<h2 id="ECM02__s1_and__s2_in_COMMON_are_equivalenced_to_each_other"> EC-02 %s1 and %s2 in COMMON are equivalenced to each other </h2>
+<br><b>EC-02 %s1 and %s2 in COMMON are equivalenced to each other</b>
+<br><br>The names %s1 and %s2 appear in different COMMON blocks and each occupies its own piece of storage and therefore cannot
+ be equivalenced.
+<h2 id="ENM01_missing_END_statement"> EN-01 missing END statement </h2>
+<br><b>EN-01 missing END statement</b>
+<br><br>The END statement for a PROGRAM, SUBROUTINE, FUNCTION or BLOCK DATA subprogram was not found before the next subprogram
+ or the end of the source input stream.
+<h2 id="EQM01_target_of_assignment_is_illegal"> EQ-01 target of assignment is illegal </h2>
+<br><b>EQ-01 target of assignment is illegal</b>
+<br><br>The target of an assignment statement, an input/output status specifier in an input/output statement, or an inquiry
+ specifier in an INQUIRE statement, is illegal.&nbsp; The target in any of the above cases must be a variable name, array
+ element, or a substring name.
+<h2 id="EQM02_cannot_assign_value_to__s1"> EQ-02 cannot assign value to %s1 </h2>
+<br><b>EQ-02 cannot assign value to %s1</b>
+<br><br>An attempt has been made to assign a value to a symbol with class %s1.&nbsp; For example, an array name cannot be
+ the target of an assignment statement.&nbsp; This error may also be issued when an illegal target is used for the input/output
+ status specifier in an input/output statement or an inquiry specifier in an INQUIRE statement.
+<h2 id="EQM03_illegal_use_of_equal_sign"> EQ-03 illegal use of equal sign </h2>
+<br><b>EQ-03 illegal use of equal sign</b>
+<br><br>An equal sign has been found in the statement but the statement is not an assignment statement.
+<h2 id="EQM04_multiple_assignment_is_not_FORTRAN_77_standard"> EQ-04 multiple assignment is not FORTRAN 77 standard </h2>
+<br><b>EQ-04 multiple assignment is not FORTRAN 77 standard</b>
+<br><br>More than one equal sign has been found in the assignment statement.
+<h2 id="EQM05_expecting_equals_sign"> EQ-05 expecting equals sign </h2>
+<br><b>EQ-05 expecting equals sign</b>
+<br><br>The equal sign is missing or misplaced.&nbsp; The PARAMETER statement uses an equal sign to equate a symbolic name
+ to the value of a constant expression.&nbsp; The I/O statements use an equal sign to equate the appropriate values to the
+ various specifiers.&nbsp; The DO statement uses an equal sign to assign the initial value to the DO variable.
+<h2 id="EVM01__s1_has_been_equivalenced_to_2_different_relative_positions"> EV-01 %s1 has been equivalenced to 2 different relative positions </h2>
+<br><b>EV-01 %s1 has been equivalenced to 2 different relative positions</b>
+<br><br>The storage unit referenced by %s1 has been equivalenced to two different storage units starting in two different
+ places.&nbsp; One name cannot be associated to two different values at the same time.
+<h2 id="EVM02_EQUIVALENCE_list_must_contain_at_least_2_names"> EV-02 EQUIVALENCE list must contain at least 2 names </h2>
+<br><b>EV-02 EQUIVALENCE list must contain at least 2 names</b>
+<br><br>The list of names to make a storage unit equivalent to several names must contain at least two names.
+<h2 id="EVM03__s1_incorrectly_subscripted_in__s2_statement"> EV-03 %s1 incorrectly subscripted in %s2 statement </h2>
+<br><b>EV-03 %s1 incorrectly subscripted in %s2 statement</b>
+<br><br>The name %s1 has been incorrectly subscripted in a %s2 statement.
+<h2 id="EVM04_incorrect_substring_of__s1_in__s2_statement"> EV-04 incorrect substring of %s1 in %s2 statement </h2>
+<br><b>EV-04 incorrect substring of %s1 in %s2 statement</b>
+<br><br>An attempt has been made to incorrectly substring %s1 in a %s2 statement.&nbsp; For example, if a CHARACTER variable
+ was declared to be of length 4 then (2:5) would be an invalid substring expression.
+<h2 id="EVM05_equivalencing_CHARACTER_and_nonMCHARACTER_data_is_not_FORTRAN_77_standard"> EV-05 equivalencing CHARACTER and non-CHARACTER data is not FORTRAN 77 standard </h2>
+<br><b>EV-05 equivalencing CHARACTER and non-CHARACTER data is not FORTRAN 77 standard</b>
+<br><br>Equivalencing numeric and character data is an extension to the FORTRAN 77 language.
+<h2 id="EVM06_attempt_to_substring__s1_in_EQUIVALENCE_statement_but_type_is__s2"> EV-06 attempt to substring %s1 in EQUIVALENCE statement but type is %s2 </h2>
+<br><b>EV-06 attempt to substring %s1 in EQUIVALENCE statement but type is %s2</b>
+<br><br>An attempt has been made to substring the symbolic name %s1 in an EQUIVALENCE statement but the type of the name is
+ %s2 and should be of type CHARACTER.
+<h2 id="EXM01_zeroTTJ_where_J_XE_0_is_not_allowed"> EX-01 zero**J where J &lt;= 0 is not allowed </h2>
+<br><b>EX-01 zero**J where J &lt;= 0 is not allowed</b>
+<br><br>Zero cannot be raised to a power less than or equal to zero.
+<h2 id="EXM02_XTTY_where_X_X_0_0__Y_is_not_of_type_INTEGER__is_not_allowed"> EX-02 X**Y where X &lt; 0.0, Y is not of type INTEGER, is not allowed </h2>
+<br><b>EX-02 X**Y where X &lt; 0.0, Y is not of type INTEGER, is not allowed</b>
+<br><br>When X is less than zero, Y may only be of type INTEGER.
+<h2 id="EXM03_L0_0RTTY_where_Y_is_not_real_is_not_allowed"> EX-03 (0,0)**Y where Y is not real is not allowed </h2>
+<br><b>EX-03 (0,0)**Y where Y is not real is not allowed</b>
+<br><br>In complex exponentiation, when the base is zero, the exponent may only be a real number or a complex number whose
+ imaginary part is zero.
+<h2 id="EYM01_type_of_entry__s1_does_not_match_type_of_function__s2"> EY-01 type of entry %s1 does not match type of function %s2 </h2>
+<br><b>EY-01 type of entry %s1 does not match type of function %s2</b>
+<br><br>If the type of a function is CHARACTER or a user-defined STRUCTURE, then the type of all entry names must match the
+ type of the function name.
+<h2 id="EYM02_ENTRY_statement_not_allowed_within_structured_control_blocks"> EY-02 ENTRY statement not allowed within structured control blocks </h2>
+<br><b>EY-02 ENTRY statement not allowed within structured control blocks</b>
+<br><br>FORTRAN 77 does not allow an ENTRY statement to appear between the start and end of a control structure.
+<h2 id="EYM03_size_of_entry__s1_does_not_match_size_of_function__s2"> EY-03 size of entry %s1 does not match size of function %s2 </h2>
+<br><b>EY-03 size of entry %s1 does not match size of function %s2</b>
+<br><br>The name %s1 found in an ENTRY statement must be declared to be the same size as that of the function name.&nbsp;
+ If the name of the function or the name of any entry point has a length specification of (*), then all such entries must
+ have a length specification of (*) otherwise they must all have a length specification of the same integer value.
+<h2 id="FMM01_missing_delimiter_in_format_string__comma_assumed"> FM-01 missing delimiter in format string, comma assumed </h2>
+<br><b>FM-01 missing delimiter in format string, comma assumed</b>
+<br><br>The omission of a comma between the descriptors listed in a format string is an extension to the FORTRAN 77 language.
+&nbsp; Care should be taken when omitting the comma since the assumed separation may not occur in the intended place.
+<h2 id="FMM02_missing_or_invalid_constant"> FM-02 missing or invalid constant </h2>
+<br><b>FM-02 missing or invalid constant</b>
+<br><br>An unsigned integer constant was expected with the indicated edit descriptor but was not correctly placed or was missing.
+<h2 id="FMM03_Ew_dDe_format_code_is_not_FORTRAN_77_standard"> FM-03 Ew.dDe format code is not FORTRAN 77 standard </h2>
+<br><b>FM-03 Ew.dDe format code is not FORTRAN 77 standard</b>
+<br><br>The edit descriptor Ew.dDe is an extension to the FORTRAN 77 language.
+<h2 id="FMM04_missing_decimal_point"> FM-04 missing decimal point </h2>
+<br><b>FM-04 missing decimal point</b>
+<br><br>The indicated edit descriptor must have a decimal point and an integer to indicate the number of decimal positions.
+&nbsp; These edit descriptors include:&nbsp; F, E, D and G.
+<h2 id="FMM05_missing_or_invalid_edit_descriptor_in_format_string"> FM-05 missing or invalid edit descriptor in format string </h2>
+<br><b>FM-05 missing or invalid edit descriptor in format string</b>
+<br><br>In the format string, two delimiters were found in succession with no valid descriptor in between.
+<h2 id="FMM06_unrecognizable_edit_descriptor_in_format_string"> FM-06 unrecognizable edit descriptor in format string </h2>
+<br><b>FM-06 unrecognizable edit descriptor in format string</b>
+<br><br>An edit descriptor has been found in the format string that is not a valid code.&nbsp; Valid codes are:&nbsp; apostrophe
+ ('), I, F, E, D, G, L, A, Z, H, T, TL, TR, X, /, :, S, SP, SS, P, BN, B, $, and \.
+<h2 id="FMM07_invalid_repeat_specification"> FM-07 invalid repeat specification </h2>
+<br><b>FM-07 invalid repeat specification</b>
+<br><br>The indicated repeatable edit descriptor is invalid.&nbsp; The forms of repeatable edit descriptors are:&nbsp; Iw,
+ Iw.m, Fw.d, Ew.d, Ew.dEe, Dw.d, Gw.d, Gw.dEe, Lw, A, Aw, Ew.dDe, and Zw where w and e are positive unsigned integer constants,
+ and d and m are unsigned integer constants.
+<h2 id="FMM08___or_B_format_code_is_not_FORTRAN_77_standard"> FM-08 $ or \ format code is not FORTRAN 77 standard </h2>
+<br><b>FM-08 $ or \ format code is not FORTRAN 77 standard</b>
+<br><br>The non-repeatable edit descriptors $ and \ are extensions to the FORTRAN 77 language.
+<h2 id="FMM09_invalid_field_modifier"> FM-09 invalid field modifier </h2>
+<br><b>FM-09 invalid field modifier</b>
+<br><br>The indicated edit descriptor for a field is incorrect.&nbsp; Consult the Language Reference for the correct form
+ of the edit descriptor.
+<h2 id="FMM10_expecting_end_of_FORMAT_statement_but_found_more_text"> FM-10 expecting end of FORMAT statement but found more text </h2>
+<br><b>FM-10 expecting end of FORMAT statement but found more text</b>
+<br><br>The right parenthesis was encountered in the FORMAT statement to terminate the statement and more text was found on
+ the line.
+<h2 id="FMM11_repeat_specification_not_allowed_for_this_format_code"> FM-11 repeat specification not allowed for this format code </h2>
+<br><b>FM-11 repeat specification not allowed for this format code</b>
+<br><br>A repeat specification was found in front of a format code that is a nonrepeatable edit descriptor.&nbsp; These include:
+&nbsp; apostrophe, H, T, TL, TR, X, /, :, S, SP, SS, P, BN, BZ, $,and \.
+<h2 id="FMM12_no_statement_number_on_FORMAT_statement"> FM-12 no statement number on FORMAT statement </h2>
+<br><b>FM-12 no statement number on FORMAT statement</b>
+<br><br>The FORMAT statement must have a statement label.&nbsp; This statement number is used by I/O statements to reference
+ the FORMAT statement.
+<h2 id="FMM13_no_closing_quote_on_apostrophe_edit_descriptor"> FM-13 no closing quote on apostrophe edit descriptor </h2>
+<br><b>FM-13 no closing quote on apostrophe edit descriptor</b>
+<br><br>The closing quote of an apostrophe edit descriptor was not found.
+<h2 id="FMM14_field_count_greater_than_256_is_invalid"> FM-14 field count greater than 256 is invalid </h2>
+<br><b>FM-14 field count greater than 256 is invalid</b>
+<br><br>The repeat specification of the indicated edit descriptor is greater than the maximum allowed of 256.
+<h2 id="FMM15_invalid_field_width_specification"> FM-15 invalid field width specification </h2>
+<br><b>FM-15 invalid field width specification</b>
+<br><br>The width specifier on the indicated edit descriptor is invalid.
+<h2 id="FMM16_Z_format_code_is_not_FORTRAN_77_standard"> FM-16 Z format code is not FORTRAN 77 standard </h2>
+<br><b>FM-16 Z format code is not FORTRAN 77 standard</b>
+<br><br>The Z (hexadecimal format) repeatable edit descriptor is an extension to the FORTRAN 77 language.
+<h2 id="FMM17_FORMAT_statement_exceeds_allotted_storage_size"> FM-17 FORMAT statement exceeds allotted storage size </h2>
+<br><b>FM-17 FORMAT statement exceeds allotted storage size</b>
+<br><br>The maximum allowable size of a FORMAT statement has exceeded.&nbsp; The statement must be split into two or more
+ FORMAT statements.
+<h2 id="FMM18_format_specification_not_allowed_on_input"> FM-18 format specification not allowed on input </h2>
+<br><b>FM-18 format specification not allowed on input</b>
+<br><br>A format specification, in the FORMAT statement, is not allowed to be used as an input specification.&nbsp; Valid
+ specifications include:&nbsp; T, TL,TR, X, /, :, P, BN, BZ, I, F, E, D, G, L, A, and Z.
+<h2 id="FMM19_FORMAT_missing_repeatable_edit_descriptor"> FM-19 FORMAT missing repeatable edit descriptor </h2>
+<br><b>FM-19 FORMAT missing repeatable edit descriptor</b>
+<br><br>An attempt has been made to read or write a piece of data without a valid repeatable edit descriptor.&nbsp; All data
+ requires a repeatable edit descriptor in the format.&nbsp; The forms of repeatable edit descriptors are:&nbsp; Iw, Iw.m,
+ Fw.d, Ew.d, Ew.dEe, Dw.d, Gw.d, Gw.dEe, Lw, A, Aw, Ew.dDe, and Zw where w and e are positive unsigned integer constants,
+ and d and m are unsigned integer constants.
+<h2 id="FMM20_missing_constant_before_X_edit_descriptor__1_assumed"> FM-20 missing constant before X edit descriptor, 1 assumed </h2>
+<br><b>FM-20 missing constant before X edit descriptor, 1 assumed</b>
+<br><br>The omission of the constant before an X edit descriptor in a format specification is an extension to the FORTRAN
+ 77 language.
+<h2 id="FMM21_Ew_dQe_format_code_is_not_FORTRAN_77_standard"> FM-21 Ew.dQe format code is not FORTRAN 77 standard </h2>
+<br><b>FM-21 Ew.dQe format code is not FORTRAN 77 standard</b>
+<br><br>The edit descriptor Ew.dQe is an extension to the FORTRAN 77 language.
+<h2 id="FMM22_Qw_d_format_code_is_not_FORTRAN_77_standard"> FM-22 Qw.d format code is not FORTRAN 77 standard </h2>
+<br><b>FM-22 Qw.d format code is not FORTRAN 77 standard</b>
+<br><br>The edit descriptor Qw.d is an extension to the FORTRAN 77 language.
+<h2 id="GOM01__s1_statement_label_may_not_appear_in_ASSIGN_statement_but_did_in_line__d2"> GO-01 %s1 statement label may not appear in ASSIGN statement but did in line %d2 </h2>
+<br><b>GO-01 %s1 statement label may not appear in ASSIGN statement but did in line %d2</b>
+<br><br>The statement label in the ASSIGN statement in line %d2 references a %s1 statement.&nbsp; The statement label in the
+ ASSIGN statement must appear in the same program unit and must be that of an executable statement or a FORMAT statement.
+<h2 id="GOM02_ASSIGN_of_statement_number__d1_in_line__d2_not_allowed"> GO-02 ASSIGN of statement number %d1 in line %d2 not allowed </h2>
+<br><b>GO-02 ASSIGN of statement number %d1 in line %d2 not allowed</b>
+<br><br>The statement label %d1 in the ASSIGN statement is used in the line %d2 which references a non-executable statement.
+&nbsp; A statement label must appear in the same program unit as the ASSIGN statement and must be that of an executable statement
+ or a FORMAT statement.
+<h2 id="GOM03_expecting_TO"> GO-03 expecting TO </h2>
+<br><b>GO-03 expecting TO</b>
+<br><br>The keyword TO is missing or misplaced in the ASSIGN statement.
+<h2 id="HOM01_hollerith_constant_is_not_FORTRAN_77_standard"> HO-01 hollerith constant is not FORTRAN 77 standard </h2>
+<br><b>HO-01 hollerith constant is not FORTRAN 77 standard</b>
+<br><br>Hollerith constants are an extension to the FORTRAN 77 language.
+<h2 id="HOM02_not_enough_characters_for_hollerith_constant"> HO-02 not enough characters for hollerith constant </h2>
+<br><b>HO-02 not enough characters for hollerith constant</b>
+<br><br>The number of characters following the H or h is not equal to the constant preceding the H or h.&nbsp; A hollerith
+ constant consists of a positive unsigned integer constant n followed by the letter H or h followed by a string of exactly
+ n characters.
+<h2 id="IFM01_ELSE_block_must_be_the_last_block_in_block_IF"> IF-01 ELSE block must be the last block in block IF </h2>
+<br><b>IF-01 ELSE block must be the last block in block IF</b>
+<br><br>Another ELSE IF block has been found after the ELSE block.&nbsp; The ELSE block must be the last block in an IF block.
+&nbsp; The form of the block IF is as follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; IF (logical expression) THEN &#91;:block-label&#93;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement}</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; { ELSE IF</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement} }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &#91;ELSE</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement}&nbsp; &#93;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ENDIF</tt>
+<h2 id="IFM02_expecting_THEN"> IF-02 expecting THEN </h2>
+<br><b>IF-02 expecting THEN</b>
+<br><br>The keyword THEN is missing or misplaced in the block IF statement.&nbsp; The form of the block IF is as follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; IF (logical expression) THEN &#91;:block-label&#93;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement}</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; { ELSE IF</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement} }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &#91;ELSE</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {statement}&nbsp; &#93;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ENDIF</tt>
+<h2 id="ILM01_missing_or_invalid_formatDFMT_specification"> IL-01 missing or invalid format/FMT specification </h2>
+<br><b>IL-01 missing or invalid format/FMT specification</b>
+<br><br>A valid format specification is required on all READ and WRITE statements.&nbsp; The format specification is specified
+ by:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &#91;FMT=&#93; &lt;format identifier&gt;</tt>
+<br><br><b>&lt;format identifier&gt;</b> is one of the following:&nbsp; statement label, integer variable-name, character
+ array-name, character expression, or *.
+<h2 id="ILM02_the_UNIT_may_not_be_an_internal_file_for_this_statement"> IL-02 the UNIT may not be an internal file for this statement </h2>
+<br><b>IL-02 the UNIT may not be an internal file for this statement</b>
+<br><br>An internal file may only be referenced in a READ or WRITE statement.&nbsp; An internal file may not be referenced
+ in a BACKSPACE, CLOSE, ENDFILE, INQUIRE, OPEN, or REWIND statement.
+<h2 id="ILM03__s1_statement_cannot_have__s2_specification"> IL-03 %s1 statement cannot have %s2 specification </h2>
+<br><b>IL-03 %s1 statement cannot have %s2 specification</b>
+<br><br>The I/O statement %s1 may not have the control information %s2 specified.
+<h2 id="ILM04_variable_must_have_a_size_of_4"> IL-04 variable must have a size of 4 </h2>
+<br><b>IL-04 variable must have a size of 4</b>
+<br><br>The variable used as a specifier in an I/O statement must be of size 4 but another size was specified.&nbsp; These
+ include the EXIST, OPENED, RECL, IOSTAT, NEXTREC, and NUMBER.&nbsp; The name used in the ASSIGN statement must also be of
+ size 4 but a different size was specified.
+<h2 id="ILM05_missing_or_unrecognizable_control_list_item__s1"> IL-05 missing or unrecognizable control list item %s1 </h2>
+<br><b>IL-05 missing or unrecognizable control list item %s1</b>
+<br><br>A control list item %s1 was encountered in an I/O statement and is not a valid control list item for that statement,
+ or a control list item was expected and was not found.
+<h2 id="ILM06_attempt_to_specify_control_list_item__s1_more_than_once"> IL-06 attempt to specify control list item %s1 more than once </h2>
+<br><b>IL-06 attempt to specify control list item %s1 more than once</b>
+<br><br>The control list item %s1 in the indicated I/O statement, has been named more than once.
+<h2 id="ILM07_implied_DO_loop_has_no_inputDoutput_list"> IL-07 implied DO loop has no input/output list </h2>
+<br><b>IL-07 implied DO loop has no input/output list</b>
+<br><br>The implied DO loop specified in the I/O statement does not correspond with a variable or expression in the input/output
+ list.
+<h2 id="ILM08_listMdirected_inputDoutput_with_internal_files_is_not_FORTRAN_77_standard"> IL-08 list-directed input/output with internal files is not FORTRAN 77 standard </h2>
+<br><b>IL-08 list-directed input/output with internal files is not FORTRAN 77 standard</b>
+<br><br>List-directed input/output with internal files is an extension to the FORTRAN 77 language.
+<h2 id="ILM09_FORTRAN_77_standard_requires_an_asterisk_for_listMdirected_formatting"> IL-09 FORTRAN 77 standard requires an asterisk for list-directed formatting </h2>
+<br><b>IL-09 FORTRAN 77 standard requires an asterisk for list-directed formatting</b>
+<br><br>An optional asterisk for list-directed formatting is an extension to the FORTRAN 77 language.&nbsp; The standard FORTRAN
+ 77 language specifies that an asterisk is required.
+<h2 id="ILM10_missing_or_improper_unit_identification"> IL-10 missing or improper unit identification </h2>
+<br><b>IL-10 missing or improper unit identification</b>
+<br><br>The control specifier, UNIT, in the I/O statement is either missing or identifies an improper unit.&nbsp; The unit
+ specifier specifies an external unit or internal file.&nbsp; The external unit identifier is a non-negative integer expression
+ or an asterisk.&nbsp; The internal file identifier is character variable, character array, character array element, or character
+ substring.
+<h2 id="ILM11_missing_unit_identification_or_file_specification"> IL-11 missing unit identification or file specification </h2>
+<br><b>IL-11 missing unit identification or file specification</b>
+<br><br>An identifier to specifically identify the required file is missing.&nbsp; The UNIT specifier is used to identify
+ the external unit or internal file.&nbsp; The FILE specifier in the INQUIRE and OPEN statements is used to identify the file
+ name.
+<h2 id="ILM12_asterisk_unit_identifier_not_allowed_in__s1_statement"> IL-12 asterisk unit identifier not allowed in %s1 statement </h2>
+<br><b>IL-12 asterisk unit identifier not allowed in %s1 statement</b>
+<br><br>The BACKSPACE, CLOSE, ENDFILE, INQUIRE, OPEN, and REWIND statements require the external unit identifier be an unsigned
+ positive integer from 0 to 999.
+<h2 id="ILM13_cannot_have_both_UNIT_and_FILE_specifier"> IL-13 cannot have both UNIT and FILE specifier </h2>
+<br><b>IL-13 cannot have both UNIT and FILE specifier</b>
+<br><br>There are two valid forms of the INQUIRE statement; INQUIRE by FILE and INQUIRE by UNIT.&nbsp; Both of these specifiers
+ cannot be specified in the same statement.
+<h2 id="ILM14_internal_files_require_sequential_access"> IL-14 internal files require sequential access </h2>
+<br><b>IL-14 internal files require sequential access</b>
+<br><br>An attempt has been made to randomly access an internal file.&nbsp; Internal files may only be accessed sequentially.
+<h2 id="ILM15_END_specifier_with_REC_specifier_is_not_FORTRAN_77_standard"> IL-15 END specifier with REC specifier is not FORTRAN 77 standard </h2>
+<br><b>IL-15 END specifier with REC specifier is not FORTRAN 77 standard</b>
+<br><br>The FORTRAN 77 standard specifies that an end-of-file condition can only occur with a file connected for sequential
+ access or an internal file.&nbsp; The REC specifier indicates that the file is connected for direct access.&nbsp; This extension
+ allows the programmer to detect an end-of-file condition when reading the records sequentially from a file connected for
+ direct access.
+<h2 id="ILM16__s1_specifier_in_iDo_list_is_not_FORTRAN_77_standard"> IL-16 %s1 specifier in i/o list is not FORTRAN 77 standard </h2>
+<br><b>IL-16 %s1 specifier in i/o list is not FORTRAN 77 standard</b>
+<br><br>The specified i/o list item is provided as an extension to the FORTRAN 77 language.
+<h2 id="ILM17_iDo_list_is_not_allowed_with_NAMELISTMdirected_format"> IL-17 i/o list is not allowed with NAMELIST-directed format </h2>
+<br><b>IL-17 i/o list is not allowed with NAMELIST-directed format</b>
+<br><br>An i/o list is not allowed when the format specification is a NAMELIST.
+<h2 id="ILM18_nonMcharacter_array_as_format_specifier_is_not_FORTRAN_77_standard"> IL-18 non-character array as format specifier is not FORTRAN 77 standard </h2>
+<br><b>IL-18 non-character array as format specifier is not FORTRAN 77 standard</b>
+<br><br>A format specifier must be of type character unless it is an array name.&nbsp; Allowing a non-character array name
+ is an extension to the FORTRAN 77 standard.
+<h2 id="IMM01_illegal_range_of_characters"> IM-01 illegal range of characters </h2>
+<br><b>IM-01 illegal range of characters</b>
+<br><br>In the IMPLICIT statement, the first letter in the range of characters must be smaller in the collating sequence than
+ the second letter in the range.
+<h2 id="IMM02_letter_can_only_be_implicitly_declared_once"> IM-02 letter can only be implicitly declared once </h2>
+<br><b>IM-02 letter can only be implicitly declared once</b>
+<br><br>The indicated letter has been named more than once in this or a previous IMPLICIT statement.&nbsp; A letter may only
+ be named once.
+<h2 id="IMM03_unrecognizable_type"> IM-03 unrecognizable type </h2>
+<br><b>IM-03 unrecognizable type</b>
+<br><br>The type declared in the IMPLICIT statement is not one of INTEGER, REAL, DOUBLE PRECISION, COMPLEX, LOGICAL or CHARACTER.
+<h2 id="IMM04_LTR_length_specifier_in_an_IMPLICIT_statement_is_not_FORTRAN_77_standard"> IM-04 (*) length specifier in an IMPLICIT statement is not FORTRAN 77 standard </h2>
+<br><b>IM-04 (*) length specifier in an IMPLICIT statement is not FORTRAN 77 standard</b>
+<br><br>A character length specified of (*) in an IMPLICIT statement is an extension to the FORTRAN 77 language.
+<h2 id="IMM05_IMPLICIT_NONE_allowed_once_or_not_allowed_with_other_IMPLICIT_statements"> IM-05 IMPLICIT NONE allowed once or not allowed with other IMPLICIT statements </h2>
+<br><b>IM-05 IMPLICIT NONE allowed once or not allowed with other IMPLICIT statements</b>
+<br><br>The IMPLICIT NONE statement must be the only IMPLICIT statement in the program unit in which it appears.&nbsp; Only
+ one IMPLICIT NONE statement is allowed in a program unit.
+<h2 id="IOM01_BACKSPACE_statement_requires_sequential_access_mode"> IO-01 BACKSPACE statement requires sequential access mode </h2>
+<br><b>IO-01 BACKSPACE statement requires sequential access mode</b>
+<br><br>The file connected to the unit specified in the BACKSPACE statement has not been opened for sequential access.
+<h2 id="IOM02_inputDoutput_is_already_active"> IO-02 input/output is already active </h2>
+<br><b>IO-02 input/output is already active</b>
+<br><br>An attempt has been made to read or write a record when there is an already active read or write in progress.&nbsp;
+ The execution of a READ or WRITE statement has caused transfer to a function that contains a READ or WRITE statement.
+<h2 id="IOM03_ENDFILE_statement_requires_sequential_access_mode"> IO-03 ENDFILE statement requires sequential access mode </h2>
+<br><b>IO-03 ENDFILE statement requires sequential access mode</b>
+<br><br>The specified external unit identifier must be connected for sequential access but was connected for direct access.
+<h2 id="IOM04_formatted_connection_requires_formatted_inputDoutput_statements"> IO-04 formatted connection requires formatted input/output statements </h2>
+<br><b>IO-04 formatted connection requires formatted input/output statements</b>
+<br><br>The FORM specifier in the OPEN statement specifies FORMATTED and the subsequent READ and/or WRITE statement does not
+ use formatted I/O.&nbsp; If the FORM specifier has been omitted and access is SEQUENTIAL then FORMATTED is assumed.&nbsp;
+ If the access is DIRECT then UNFORMATTED is assumed.
+<h2 id="IOM05_unformatted_connection_requires_unformatted_inputDoutput_statements"> IO-05 unformatted connection requires unformatted input/output statements </h2>
+<br><b>IO-05 unformatted connection requires unformatted input/output statements</b>
+<br><br>The FORM specifier in the OPEN statement specifies UNFORMATTED and the subsequent READ and/or WRITE statement uses
+ formatted I/O.&nbsp; If the FORM specifier has been omitted and access is SEQUENTIAL then FORMATTED is assumed.&nbsp; If
+ the access is DIRECT then UNFORMATTED is assumed.
+<h2 id="IOM06_REWIND_statement_requires_sequential_access"> IO-06 REWIND statement requires sequential access </h2>
+<br><b>IO-06 REWIND statement requires sequential access</b>
+<br><br>The external unit identifier is not connected to a sequential file.&nbsp; The REWIND statement positions to the first
+ record in the file.
+<h2 id="IOM07_bad_character_in_input_field"> IO-07 bad character in input field </h2>
+<br><b>IO-07 bad character in input field</b>
+<br><br>The data received from the record in a file does not match the type of the input list item.
+<h2 id="IOM08_BLANK_specifier_requires_FORM_specifier_to_be__FORMATTED_"> IO-08 BLANK specifier requires FORM specifier to be 'FORMATTED' </h2>
+<br><b>IO-08 BLANK specifier requires FORM specifier to be 'FORMATTED'</b>
+<br><br>In the OPEN statement, the BLANK specifier may only be used when the FORM specifier has the value of FORMATTED.&nbsp;
+ The BLANK specifier indicates whether blanks are treated as zeroes or ignored.
+<h2 id="IOM09_system_file_error_M__s1"> IO-09 system file error - %s1 </h2>
+<br><b>IO-09 system file error - %s1</b>
+<br><br>A system error has occurred while attempting to access a file.&nbsp; The I/O system error message is displayed.
+<h2 id="IOM10_format_specification_does_not_match_data_type"> IO-10 format specification does not match data type </h2>
+<br><b>IO-10 format specification does not match data type</b>
+<br><br>A format specification in the FMT specifier or FORMAT statement specifies data of one type and the variable list specifies
+ data of a different type.
+<h2 id="IOM11_input_item_does_not_match_the_data_type_of_list_variable"> IO-11 input item does not match the data type of list variable </h2>
+<br><b>IO-11 input item does not match the data type of list variable</b>
+<br><br>In the READ statement, the data type of a variable listed is not of the same data type in the data file.&nbsp; For
+ example, non-digit character data being read into an integer item.
+<h2 id="IOM12_internal_file_is_full"> IO-12 internal file is full </h2>
+<br><b>IO-12 internal file is full</b>
+<br><br>The internal file is full of data.&nbsp; If a file is a variable then the file may only contain one record.&nbsp;
+ If the file is a character array then there can be one record for each array element.
+<h2 id="IOM13_RECL_specifier_is_invalid"> IO-13 RECL specifier is invalid </h2>
+<br><b>IO-13 RECL specifier is invalid</b>
+<br><br>In the OPEN statement, the record length specifier must be a positive integer expression.
+<h2 id="IOM14_invalid_STATUS_specifier_in_CLOSE_statement"> IO-14 invalid STATUS specifier in CLOSE statement </h2>
+<br><b>IO-14 invalid STATUS specifier in CLOSE statement</b>
+<br><br>The STATUS specifier can only have a value of KEEP or DELETE.&nbsp; If the STATUS in the OPEN statement is SCRATCH
+ then the KEEP status on the CLOSE statement cannot be used.
+<h2 id="IOM15_unit_specified_is_not_connected"> IO-15 unit specified is not connected </h2>
+<br><b>IO-15 unit specified is not connected</b>
+<br><br>The unit number specified in the I/O statement has not been previously connected.
+<h2 id="IOM16_attempt_to_perform_data_transfer_past_end_of_file"> IO-16 attempt to perform data transfer past end of file </h2>
+<br><b>IO-16 attempt to perform data transfer past end of file</b>
+<br><br>An attempt has been made to read or write data after the end of file has been read or written.
+<h2 id="IOM17_invalid_RECL_specifierDACCESS_specifier_combination"> IO-17 invalid RECL specifier/ACCESS specifier combination </h2>
+<br><b>IO-17 invalid RECL specifier/ACCESS specifier combination</b>
+<br><br>In the OPEN statement, if the ACCESS specifier is DIRECT then the RECL specifier must be given.
+<h2 id="IOM18_REC_specifier_required_in_direct_access_inputDoutput_statements"> IO-18 REC specifier required in direct access input/output statements </h2>
+<br><b>IO-18 REC specifier required in direct access input/output statements</b>
+<br><br>In the OPEN statement, the ACCESS specified was DIRECT.&nbsp; All subsequent input/output statements for that file
+ must use the REC specifier to indicate which record to access.
+<h2 id="IOM19_REC_specifier_not_allowed_in_sequential_access_inputDoutput_statements"> IO-19 REC specifier not allowed in sequential access input/output statements </h2>
+<br><b>IO-19 REC specifier not allowed in sequential access input/output statements</b>
+<br><br>In the OPEN statement, the ACCESS specified was SEQUENTIAL.&nbsp; The REC specifier may not be used in subsequent
+ I/O statements for that file.&nbsp; The REC specifier is used to indicate which record to access when access is DIRECT.
+<h2 id="IOM20__s1_specifier_may_not_change_in_a_subsequent_OPEN_statement"> IO-20 %s1 specifier may not change in a subsequent OPEN statement </h2>
+<br><b>IO-20 %s1 specifier may not change in a subsequent OPEN statement</b>
+<br><br>The %s1 specifier may not be changed on a subsequent OPEN statement for the same file, in the same program.&nbsp;
+ Only the BLANK specifier may be changed.
+<h2 id="IOM21_invalid_STATUS_specifier_for_given_file"> IO-21 invalid STATUS specifier for given file </h2>
+<br><b>IO-21 invalid STATUS specifier for given file</b>
+<br><br>In the OPEN statement, the STATUS specifier does not match with the actual file status:&nbsp; OLD means the file must
+ exist, NEW means the file must not exist.&nbsp; If the STATUS specifier is omitted, UNKNOWN is assumed.
+<h2 id="IOM22_invalid_STATUS_specifierDFILE_specifier_combination"> IO-22 invalid STATUS specifier/FILE specifier combination </h2>
+<br><b>IO-22 invalid STATUS specifier/FILE specifier combination</b>
+<br><br>In the OPEN statement, if the STATUS is SCRATCH, the FILE specifier cannot be used.&nbsp; If the STATUS is NEW or
+ OLD, the FILE specifier must be given.
+<h2 id="IOM23_record_size_exceeded_during_unformatted_inputDoutput"> IO-23 record size exceeded during unformatted input/output </h2>
+<br><b>IO-23 record size exceeded during unformatted input/output</b>
+<br><br>This error is issued when the size of an i/o list item exceeds the maximum record size of the file.&nbsp; The record
+ size can be specified using the RECL= specified in the OPEN statement.
+<h2 id="IOM24_unit_specified_does_not_exist"> IO-24 unit specified does not exist </h2>
+<br><b>IO-24 unit specified does not exist</b>
+<br><br>The external unit identifier specified in the input/output statement has not yet been connected.&nbsp; Use preconnection
+ or the OPEN statement to connect a file to the external unit identifier.
+<h2 id="IOM25_REC_specifier_is_invalid"> IO-25 REC specifier is invalid </h2>
+<br><b>IO-25 REC specifier is invalid</b>
+<br><br>The REC specifier must be an unsigned positive integer.
+<h2 id="IOM26_UNIT_specifier_is_invalid"> IO-26 UNIT specifier is invalid </h2>
+<br><b>IO-26 UNIT specifier is invalid</b>
+<br><br>The UNIT specifier must be an unsigned integer between 0 and 999 inclusive.
+<h2 id="IOM27_formatted_record_or_format_edit_descriptor_is_too_large_for_record_size"> IO-27 formatted record or format edit descriptor is too large for record size </h2>
+<br><b>IO-27 formatted record or format edit descriptor is too large for record size</b>
+<br><br>This error is issued when the amount of formatted data in a READ, WRITE or PRINT statement exceeds the maximum record
+ size of the file.&nbsp; The record size can be specified using the RECL= specified in the OPEN statement.
+<h2 id="IOM28_illegal___s1E__specifier"> IO-28 illegal '%s1=' specifier </h2>
+<br><b>IO-28 illegal '%s1=' specifier</b>
+<br><br>In the OPEN or CLOSE statement the value associated with the %s1 specifier is not a valid value.&nbsp; In the OPEN
+ statement, STATUS may only be one of OLD, NEW, SCRATCH or UNKNOWN; ACCESS may only be one of SEQUENTIAL, APPEND or DIRECT;
+ FORM may only be one of FORMATTED or UNFORMATTED; CARRIAGECONTROL may only be one of YES or NO; RECORDTYPE may only be one
+ of FIXED, TEXT or VARIABLE; ACTION may only be one of READ, WRITE or READ/WRITE; and BLANK may only be one of NULL, or ZERO.
+&nbsp; In the CLOSE statement the STATUS may only be one of KEEP or DELETE.
+<h2 id="IOM29_invalid_CARRIAGECONTROL_specifierDFORM_specifier_combination"> IO-29 invalid CARRIAGECONTROL specifier/FORM specifier combination </h2>
+<br><b>IO-29 invalid CARRIAGECONTROL specifier/FORM specifier combination</b>
+<br><br>The CARRIAGECONTROL specifier is only allowed with formatted i/o statements.
+<h2 id="IOM30_iDo_operation_not_consistent_with_file_attributes"> IO-30 i/o operation not consistent with file attributes </h2>
+<br><b>IO-30 i/o operation not consistent with file attributes</b>
+<br><br>An attempt was made to read from a file that was opened with ACTION=WRITE or write to a file that was opened with
+ ACTION=READ.&nbsp; This message is also issued if you attempt to write to a read-only file or read from a write-only file.
+<h2 id="IOM31_symbol__s1_not_found_in_NAMELIST"> IO-31 symbol %s1 not found in NAMELIST </h2>
+<br><b>IO-31 symbol %s1 not found in NAMELIST</b>
+<br><br>During NAMELIST-directed input, a symbol was specified that does not belong to the NAMELIST group specified in the
+ i/o statement.
+<h2 id="IOM32_syntax_error_during_NAMELISTMdirected_input"> IO-32 syntax error during NAMELIST-directed input </h2>
+<br><b>IO-32 syntax error during NAMELIST-directed input</b>
+<br><br>Bad input was encountered during NAMELIST-directed input.&nbsp; Data must be in a special form during NAMELIST-directed
+ input.
+<h2 id="IOM33_subscripting_error_during_NAMELISTMdirected_iDo"> IO-33 subscripting error during NAMELIST-directed i/o </h2>
+<br><b>IO-33 subscripting error during NAMELIST-directed i/o</b>
+<br><br>An array was incorrectly subscripted during NAMELIST-directed input.
+<h2 id="IOM34_substring_error_during_NAMELISTMdirected_iDo"> IO-34 substring error during NAMELIST-directed i/o </h2>
+<br><b>IO-34 substring error during NAMELIST-directed i/o</b>
+<br><br>An character array element or variable was incorrectly substrung during NAMELIST-directed input.
+<h2 id="IOM35_BLOCKSIZE_specifier_is_invalid"> IO-35 BLOCKSIZE specifier is invalid </h2>
+<br><b>IO-35 BLOCKSIZE specifier is invalid</b>
+<br><br>In the OPEN statement, the block size specifier must be a positive integer expression.
+<h2 id="IOM36_invalid_operation_for_files_with_no_record_structure"> IO-36 invalid operation for files with no record structure </h2>
+<br><b>IO-36 invalid operation for files with no record structure</b>
+<br><br>An attempt has been made to perform an i/o operation on a file that requires a record structure.&nbsp; For example,
+ it is illegal to use a BACKSPACE statement for a file that has no record structure.
+<h2 id="IOM37_integer_overflow_converting_character_data_to_integer"> IO-37 integer overflow converting character data to integer </h2>
+<br><b>IO-37 integer overflow converting character data to integer</b>
+<br><br>An overflow has occurred while converting the character data read to its internal representation as an integer.
+<h2 id="IOM38_range_exceeded_converting_character_data_to_floatingMpoint"> IO-38 range exceeded converting character data to floating-point </h2>
+<br><b>IO-38 range exceeded converting character data to floating-point</b>
+<br><br>An overflow or underflow has occurred while converting the character data read to its internal representation as a
+ floating-point number.
+<h2 id="KOM01_floatingMpoint_divide_by_zero"> KO-01 floating-point divide by zero </h2>
+<br><b>KO-01 floating-point divide by zero</b>
+<br><br>An attempt has been made to divide a number by zero in a floating-point expression.
+<h2 id="KOM02_floatingMpoint_overflow"> KO-02 floating-point overflow </h2>
+<br><b>KO-02 floating-point overflow</b>
+<br><br>The floating-point expression result has exceeded the maximum floating-point number.
+<h2 id="KOM03_floatingMpoint_underflow"> KO-03 floating-point underflow </h2>
+<br><b>KO-03 floating-point underflow</b>
+<br><br>The floating-point expression result has exceeded the minimum floating-point number.
+<h2 id="KOM04_integer_divide_by_zero"> KO-04 integer divide by zero </h2>
+<br><b>KO-04 integer divide by zero</b>
+<br><br>An attempt has been made to divide a number by zero in an integer expression.
+<h2 id="KOM05_program_interrupted_from_keyboard"> KO-05 program interrupted from keyboard </h2>
+<br><b>KO-05 program interrupted from keyboard</b>
+<br><br>The user has interrupted the compilation or execution of a program through use of the keyboard.
+<h2 id="KOM06_integer_overflow"> KO-06 integer overflow </h2>
+<br><b>KO-06 integer overflow</b>
+<br><br>The integer expression result has exceeded the maximum integer number.
+<h2 id="LIM01_argument_must_be_greater_than_zero"> LI-01 argument must be greater than zero </h2>
+<br><b>LI-01 argument must be greater than zero</b>
+<br><br>The argument to the intrinsic function must be greater than zero (i.e., a positive number).
+<h2 id="LIM02_absolute_value_of_argument_to_arcsine__arccosine_must_not_exceed_one"> LI-02 absolute value of argument to arcsine, arccosine must not exceed one </h2>
+<br><b>LI-02 absolute value of argument to arcsine, arccosine must not exceed one</b>
+<br><br>The absolute value of the argument to the intrinsic function ASIN or ACOS cannot be greater than or equal to the value
+ 1.0.
+<h2 id="LIM03_argument_must_not_be_negative"> LI-03 argument must not be negative </h2>
+<br><b>LI-03 argument must not be negative</b>
+<br><br>The argument to the intrinsic function must be greater than or equal to zero.
+<h2 id="LIM04_argumentLsR_must_not_be_zero"> LI-04 argument(s) must not be zero </h2>
+<br><b>LI-04 argument(s) must not be zero</b>
+<br><br>The argument(s) to the intrinsic function must not be zero.
+<h2 id="LIM05_argument_of_CHAR_must_be_in_the_range_zero_to_255"> LI-05 argument of CHAR must be in the range zero to 255 </h2>
+<br><b>LI-05 argument of CHAR must be in the range zero to 255</b>
+<br><br>The argument to the intrinsic function CHAR must be in the range 0 to 255 inclusive.&nbsp; CHAR returns the character
+ represented by an 8-bit pattern.
+<h2 id="LIM06__s1_intrinsic_function_cannot_be_passed_2_complex_arguments"> LI-06 %s1 intrinsic function cannot be passed 2 complex arguments </h2>
+<br><b>LI-06 %s1 intrinsic function cannot be passed 2 complex arguments</b>
+<br><br>The second argument to the intrinsic function CMPLX and DCMPLX cannot be a complex number.
+<h2 id="LIM07_argument_types_must_be_the_same_for_the__s1_intrinsic_function"> LI-07 argument types must be the same for the %s1 intrinsic function </h2>
+<br><b>LI-07 argument types must be the same for the %s1 intrinsic function</b>
+<br><br>The second argument to the intrinsic function CMPLX or DCMPLX must be of the same type as the first argument.&nbsp;
+ The second argument may only be used when the first argument is of type INTEGER, REAL or DOUBLE PRECISION.
+<h2 id="LIM08_expecting_numeric_argument__but__s1_argument_was_found"> LI-08 expecting numeric argument, but %s1 argument was found </h2>
+<br><b>LI-08 expecting numeric argument, but %s1 argument was found</b>
+<br><br>The argument to the intrinsic function, INT, REAL, DBLE, CMPLX, or DCMPLX was of type %s1 and a numeric argument was
+ expected.
+<h2 id="LIM09_length_of_ICHAR_argument_greater_than_one"> LI-09 length of ICHAR argument greater than one </h2>
+<br><b>LI-09 length of ICHAR argument greater than one</b>
+<br><br>The length of the argument to the intrinsic function ICHAR must be of type CHARACTER and length of 1.&nbsp; ICHAR
+ converts a character to its integer representation.
+<h2 id="LIM10_cannot_pass__s1_as_argument_to_intrinsic_function"> LI-10 cannot pass %s1 as argument to intrinsic function </h2>
+<br><b>LI-10 cannot pass %s1 as argument to intrinsic function</b>
+<br><br>The item %s1 cannot be used as an argument to an intrinsic function.&nbsp; Only constants, simple variables, array
+ elements, and substrung array elements may be used as arguments.
+<h2 id="LIM11_intrinsic_function_requires_argumentLsR"> LI-11 intrinsic function requires argument(s) </h2>
+<br><b>LI-11 intrinsic function requires argument(s)</b>
+<br><br>An attempt has been made to invoke an intrinsic function and no actual arguments were listed.
+<h2 id="LIM12__s1_argument_type_is_invalid_for_this_generic_function"> LI-12 %s1 argument type is invalid for this generic function </h2>
+<br><b>LI-12 %s1 argument type is invalid for this generic function</b>
+<br><br>The type of the argument used in the generic intrinsic function is not correct.
+<h2 id="LIM13_this_intrinsic_function_cannot_be_passed_as_an_argument"> LI-13 this intrinsic function cannot be passed as an argument </h2>
+<br><b>LI-13 this intrinsic function cannot be passed as an argument</b>
+<br><br>Only the specific name of the intrinsic function can be used as an actual argument.&nbsp; The generic name may not
+ be used.&nbsp; When the generic and intrinsic names are the same, use the INTRINSIC statement.
+<h2 id="LIM14_expecting__s1_argument__but__s2_argument_was_found"> LI-14 expecting %s1 argument, but %s2 argument was found </h2>
+<br><b>LI-14 expecting %s1 argument, but %s2 argument was found</b>
+<br><br>An argument of type %s2 was passed to a function but an argument of type %s1 was expected.
+<h2 id="LIM15_intrinsic_function_was_assigned_wrong_type"> LI-15 intrinsic function was assigned wrong type </h2>
+<br><b>LI-15 intrinsic function was assigned wrong type</b>
+<br><br>The declared type of an intrinsic function does not agree with the actual type.
+<h2 id="LIM16_intrinsic_function__s1_is_not_FORTRAN_77_standard"> LI-16 intrinsic function %s1 is not FORTRAN 77 standard </h2>
+<br><b>LI-16 intrinsic function %s1 is not FORTRAN 77 standard</b>
+<br><br>The specified intrinsic function is provided as an extension to the FORTRAN 77 language.
+<h2 id="LIM17_argument_to_ALLOCATED_intrinsic_function_must_be_an_allocatable_array_or_characterTLTR_variable"> LI-17 argument to ALLOCATED intrinsic function must be an allocatable array or character*(*) variable </h2>
+<br><b>LI-17 argument to ALLOCATED intrinsic function must be an allocatable array or character*(*) variable</b>
+<br><br>The argument to the intrinsic function ALLOCATED must be an allocatable array or character*(*) variable.
+<h2 id="LIM18_invalid_argument_to_ISIZEOF_intrinsic_function"> LI-18 invalid argument to ISIZEOF intrinsic function </h2>
+<br><b>LI-18 invalid argument to ISIZEOF intrinsic function</b>
+<br><br>The argument to the intrinsic function ISIZEOF must be a user-defined structure name, a symbol name, or a constant.
+<h2 id="MDM01_relational_operator_has_a_logical_operand"> MD-01 relational operator has a logical operand </h2>
+<br><b>MD-01 relational operator has a logical operand</b>
+<br><br>The operands of a relational expression must either be both arithmetic or both character expressions.&nbsp; The operand
+ indicated is a logical expression.
+<h2 id="MDM02_mixing_DOUBLE_PRECISION_and_COMPLEX_types_is_not_FORTRAN_77_standard"> MD-02 mixing DOUBLE PRECISION and COMPLEX types is not FORTRAN 77 standard </h2>
+<br><b>MD-02 mixing DOUBLE PRECISION and COMPLEX types is not FORTRAN 77 standard</b>
+<br><br>The mixing of items of type DOUBLE PRECISION and COMPLEX in an expression is an extension to the FORTRAN 77 language.
+<h2 id="MDM03_operator_not_expecting__s1_operands"> MD-03 operator not expecting %s1 operands </h2>
+<br><b>MD-03 operator not expecting %s1 operands</b>
+<br><br>Operands of type %s1 cannot be used with the indicated operator.&nbsp; The operators **, /, *, +, and - may only have
+ numeric type data.&nbsp; The operator // may only have character type data.
+<h2 id="MDM04_operator_not_expecting__s1_and__s2_operands"> MD-04 operator not expecting %s1 and %s2 operands </h2>
+<br><b>MD-04 operator not expecting %s1 and %s2 operands</b>
+<br><br>Operands of conflicting type have been encountered.&nbsp; For example, in a relational expression, it is not possible
+ to compare a character expression to an arithmetic expression.&nbsp; Also, the type of the left hand operand of the field
+ selection operator must be a user-defined structure.
+<h2 id="MDM05_complex_quantities_can_only_be_compared_using__EQ__or__NE_"> MD-05 complex quantities can only be compared using .EQ.&nbsp; or .NE. </h2>
+<br><b>MD-05 complex quantities can only be compared using .EQ.&nbsp; or .NE.</b>
+<br><br>Complex operands cannot be compared using less than (.LT.), less than or equal (.LE.), greater than (.GT.), or greater
+ than or equal (.GE.) operators.
+<h2 id="MDM06_unary_operator_not_expecting__s1_type"> MD-06 unary operator not expecting %s1 type </h2>
+<br><b>MD-06 unary operator not expecting %s1 type</b>
+<br><br>The unary operators, + and -, may only be used with numeric types.&nbsp; The unary operator .NOT.&nbsp; may be used
+ only with a logical or integer operand.&nbsp; The indicated operand was of type %s1 which is not one of the valid types.
+<h2 id="MDM07_logical_operator_with_integer_operands_is_not_FORTRAN_77_standard"> MD-07 logical operator with integer operands is not FORTRAN 77 standard </h2>
+<br><b>MD-07 logical operator with integer operands is not FORTRAN 77 standard</b>
+<br><br>Integer operands are permitted with the logical operators .AND., .OR., .EQV., .NEQV., .NOT.&nbsp; and .XOR.&nbsp;
+ as an extension to the FORTRAN 77 language.
+<h2 id="MDM08_logical_operator__s1_is_not_FORTRAN_77_standard"> MD-08 logical operator %s1 is not FORTRAN 77 standard </h2>
+<br><b>MD-08 logical operator %s1 is not FORTRAN 77 standard</b>
+<br><br>The specified logical operator is an extension to the FORTRAN 77 standard.
+<h2 id="MOM01__s1_exceeds_compiler_limit_of__d2_bytes"> MO-01 %s1 exceeds compiler limit of %d2 bytes </h2>
+<br><b>MO-01 %s1 exceeds compiler limit of %d2 bytes</b>
+<br><br>An internal compiler limit has been reached.&nbsp; %s1 describes the limit and %d2 specifies the limit.
+<h2 id="MOM02_out_of_memory"> MO-02 out of memory </h2>
+<br><b>MO-02 out of memory</b>
+<br><br>All available memory has been used up.&nbsp; During the compilation phase, memory is primarily used for the symbol
+ table.&nbsp; During execution, memory is used for file descriptors and buffers, and dynamically allocatable arrays and character*(*)
+ variables.
+<h2 id="MOM03_dynamic_memory_exhausted_due_to_length_of_this_statement_M_statement_ignored"> MO-03 dynamic memory exhausted due to length of this statement - statement ignored </h2>
+<br><b>MO-03 dynamic memory exhausted due to length of this statement - statement ignored</b>
+<br><br>There was not enough memory to encode the specified statement.&nbsp; This message is usually issued when the compiler
+ is low on memory or if the statement is a very large statement that spans many continuation lines.&nbsp; This error does
+ not terminate the compiler since it may have been caused by a very large statement.&nbsp; The compiler attempts to compile
+ the remaining statements.
+<h2 id="MOM04_attempt_to_deallocate_an_unallocated_array_or_characterTLTR_variable"> MO-04 attempt to deallocate an unallocated array or character*(*) variable </h2>
+<br><b>MO-04 attempt to deallocate an unallocated array or character*(*) variable</b>
+<br><br>An attempt has been made to deallocate an array that has not been previously allocated.&nbsp; An array or character*(*)
+ variable must be allocated using an ALLOCATE statement.
+<h2 id="MOM05_attempt_to_allocate_an_already_allocated_array_or_characterTLTR_variable"> MO-05 attempt to allocate an already allocated array or character*(*) variable </h2>
+<br><b>MO-05 attempt to allocate an already allocated array or character*(*) variable</b>
+<br><br>An attempt has been made to allocate an array or character*(*) variable that has been previously allocated in an ALLOCATE
+ statement.
+<h2 id="PCM01_missing_or_misplaced_closing_parenthesis"> PC-01 missing or misplaced closing parenthesis </h2>
+<br><b>PC-01 missing or misplaced closing parenthesis</b>
+<br><br>An opening parenthesis '(' was found but no matching closing parenthesis ')' was found before the end of the statement.
+<h2 id="PCM02_missing_or_misplaced_opening_parenthesis"> PC-02 missing or misplaced opening parenthesis </h2>
+<br><b>PC-02 missing or misplaced opening parenthesis</b>
+<br><br>A closing parenthesis ')' was found before the matching opening parenthesis '('.
+<h2 id="PCM03_unexpected_parenthesis"> PC-03 unexpected parenthesis </h2>
+<br><b>PC-03 unexpected parenthesis</b>
+<br><br>A parenthesis was found in a statement where parentheses are not expected.
+<h2 id="PCM04_unmatched_parentheses"> PC-04 unmatched parentheses </h2>
+<br><b>PC-04 unmatched parentheses</b>
+<br><br>The parentheses in the expression are not balanced.
+<h2 id="PRM01_expecting_symbolic_name"> PR-01 expecting symbolic name </h2>
+<br><b>PR-01 expecting symbolic name</b>
+<br><br>Every auxiliary pragma must refer to a symbol.&nbsp; This error is issued when the symbolic name is illegal or missing.
+&nbsp; Valid symbolic names are formed from the following characters:&nbsp; a dollar sign, an underscore, digits and any letter
+ of the alphabet.&nbsp; The first character of a symbolic name must be alphabetic, a dollar sign, or an underscore.
+<h2 id="PRM02_illegal_size_specified_for_VALUE_attribute"> PR-02 illegal size specified for VALUE attribute </h2>
+<br><b>PR-02 illegal size specified for VALUE attribute</b>
+<br><br>The VALUE argument attribute of an auxiliary pragma contains in illegal length specification.&nbsp; Valid length specifications
+ are 1, 2, 4 and 8.
+<h2 id="PRM03_illegal_argument_attribute"> PR-03 illegal argument attribute </h2>
+<br><b>PR-03 illegal argument attribute</b>
+<br><br>An illegal argument attribute was specified.&nbsp; Valid argument attributes are VALUE, REFERENCE, or DATA_REFERENCE.
+<h2 id="PRM04_continuation_line_must_contain_a_comment_character_in_column_1"> PR-04 continuation line must contain a comment character in column 1 </h2>
+<br><b>PR-04 continuation line must contain a comment character in column 1</b>
+<br><br>When continuing a line of an auxiliary pragma directive, the continued line must end with a back-slash ('\') character
+ and the continuation line must begin with a comment character ('c', 'C' or '*') in column 1.
+<h2 id="PRM05_expecting___s1__near___s2_"> PR-05 expecting '%s1' near '%s2' </h2>
+<br><b>PR-05 expecting '%s1' near '%s2'</b>
+<br><br>A syntax error was found while processing a PRAGMA directive.&nbsp; %s1 identifies the expected information and %s2
+ identifies where in the pragma the error occurred.
+<h2 id="PRM06_inMline_byte_sequence_limit_exceeded"> PR-06 in-line byte sequence limit exceeded </h2>
+<br><b>PR-06 in-line byte sequence limit exceeded</b>
+<br><br>The limit on the number of bytes of code that can be generated in-line using a an auxiliary pragma has been exceeded.
+&nbsp; The limit is 127 bytes.
+<h2 id="PRM07_illegal_hexadecimal_data_in_byte_sequence"> PR-07 illegal hexadecimal data in byte sequence </h2>
+<br><b>PR-07 illegal hexadecimal data in byte sequence</b>
+<br><br>An illegal hexadecimal constant was encountered while processing a in-line byte sequence of an auxiliary pragma.&nbsp;
+ Valid hexadecimal constants in an in-line byte sequence must begin with the letter Z or z and followed by a string of hexadecimal
+ digits.
+<h2 id="PRM08_symbol___s1__in_inMline_assembly_code_cannot_be_resolved"> PR-08 symbol '%s1' in in-line assembly code cannot be resolved </h2>
+<br><b>PR-08 symbol '%s1' in in-line assembly code cannot be resolved</b>
+<br><br>The symbol %s1, referenced in an assembly language instruction in an auxiliary pragma, could not be resolved.
+<h2 id="REM01_alternate_return_specifier_only_allowed_in_subroutine"> RE-01 alternate return specifier only allowed in subroutine </h2>
+<br><b>RE-01 alternate return specifier only allowed in subroutine</b>
+<br><br>An alternate return specifier, in the RETURN statement, may only be specified when returning from a subroutine.
+<h2 id="REM02_RETURN_statement_in_main_program_is_not_FORTRAN_77_standard"> RE-02 RETURN statement in main program is not FORTRAN 77 standard </h2>
+<br><b>RE-02 RETURN statement in main program is not FORTRAN 77 standard</b>
+<br><br>A RETURN statement in the main program is allowed as an extension to the FORTRAN 77 standard.
+<h2 id="SAM01_COMMON_block__s1_saved_but_not_properly_defined"> SA-01 COMMON block %s1 saved but not properly defined </h2>
+<br><b>SA-01 COMMON block %s1 saved but not properly defined</b>
+<br><br>The named COMMON block %s1 was listed in a SAVE statement but there is no named COMMON block defined by that name.
+<h2 id="SAM02_COMMON_block__s1_must_be_saved_in_every_subprogram_in_which_it_appears"> SA-02 COMMON block %s1 must be saved in every subprogram in which it appears </h2>
+<br><b>SA-02 COMMON block %s1 must be saved in every subprogram in which it appears</b>
+<br><br>The named COMMON block %s1 appears in a SAVE statement in another subprogram and is not in a SAVE statement in this
+ subprogram.&nbsp; If a named COMMON block is specified in a SAVE statement in a subprogram, it must be specified in a SAVE
+ statement in every subprogram in which that COMMON block appears.
+<h2 id="SAM03_name_already_appeared_in_a_previous_SAVE_statement"> SA-03 name already appeared in a previous SAVE statement </h2>
+<br><b>SA-03 name already appeared in a previous SAVE statement</b>
+<br><br>The indicated name has already been referenced in another SAVE statement in this subprogram.
+<h2 id="SFM01_statement_function_definition_contains_duplicate_dummy_arguments"> SF-01 statement function definition contains duplicate dummy arguments </h2>
+<br><b>SF-01 statement function definition contains duplicate dummy arguments</b>
+<br><br>A dummy argument is repeated in the argument list of the statement function.
+<h2 id="SFM02_character_length_of_statement_function_name_must_not_be_LTR"> SF-02 character length of statement function name must not be (*) </h2>
+<br><b>SF-02 character length of statement function name must not be (*)</b>
+<br><br>If the type of a character function is character, its length specification must not be (*); it must be a constant
+ integer expression.
+<h2 id="SFM03_statement_function_definition_contains_illegal_dummy_argument"> SF-03 statement function definition contains illegal dummy argument </h2>
+<br><b>SF-03 statement function definition contains illegal dummy argument</b>
+<br><br>A dummy argument of type CHARACTER must have a length specification of an integer constant expression that is not
+ (*).
+<h2 id="SFM04_cannot_pass__s1__s2_to_statement_function"> SF-04 cannot pass %s1 %s2 to statement function </h2>
+<br><b>SF-04 cannot pass %s1 %s2 to statement function</b>
+<br><br>The actual arguments to a statement function can be any expression except character expressions involving the concatenation
+ of an operand whose length specification is (*) unless the operand is a symbolic constant.
+<h2 id="SFM05__s1_actual_argument_was_passed_to__s2_dummy_argument"> SF-05 %s1 actual argument was passed to %s2 dummy argument </h2>
+<br><b>SF-05 %s1 actual argument was passed to %s2 dummy argument</b>
+<br><br>The indicated actual argument is of type %s1 which is not the same type as that of the dummy argument of type %s2.
+<h2 id="SFM06_incorrect_number_of_arguments_passed_to_statement_function__s1"> SF-06 incorrect number of arguments passed to statement function %s1 </h2>
+<br><b>SF-06 incorrect number of arguments passed to statement function %s1</b>
+<br><br>The number of arguments passed to statement function %s1 does not agree with the number of dummy arguments specified
+ in its definition.
+<h2 id="SFM07_type_of_statement_function_name_must_not_be_a_userMdefined_structure"> SF-07 type of statement function name must not be a user-defined structure </h2>
+<br><b>SF-07 type of statement function name must not be a user-defined structure</b>
+<br><br>The type of a statement function cannot be a user-defined structure.&nbsp; Valid types for statement functions are:
+&nbsp; LOGICAL*1, LOGICAL, INTEGER*1, INTEGER*2, INTEGER, REAL, DOUBLE PRECISION, COMPLEX, DOUBLE COMPLEX, and CHARACTER.
+&nbsp; If the statement function is of type CHARACTER, its length specification must not be (*); it must be an integer constant
+ expression.
+<h2 id="SMM01_system_file_error_reading__s1_M__s2"> SM-01 system file error reading %s1 - %s2 </h2>
+<br><b>SM-01 system file error reading %s1 - %s2</b>
+<br><br>An I/O error, described by %s2, has occurred while reading the FORTRAN source file %s1.
+<h2 id="SMM02_error_opening_file__s1_M__s2"> SM-02 error opening file %s1 - %s2 </h2>
+<br><b>SM-02 error opening file %s1 - %s2</b>
+<br><br>The FORTRAN source file %s1 could not be opened.&nbsp; The error is described by %s2.
+<h2 id="SMM03_system_file_error_writing__s1_M__s2"> SM-03 system file error writing %s1 - %s2 </h2>
+<br><b>SM-03 system file error writing %s1 - %s2</b>
+<br><br>An I/O error, described by %s2, has occurred while writing to the file %s1.
+<h2 id="SMM06_error_opening__s1_M_too_many_temporary_files_exist"> SM-06 error opening %s1 - too many temporary files exist </h2>
+<br><b>SM-06 error opening %s1 - too many temporary files exist</b>
+<br><br>The compiler was not able to open a temporary file for intermediate storage during code generation.&nbsp; Temporary
+ files are created in the directory specified by the TMP environment variable.&nbsp; If the TMP environment variable is not
+ set, the temporary file is created in the current directory.&nbsp; This error is issued if an non-existent directory is specified
+ in the TMP environment variable, or more than 26 concurrent compiles are taking place in a multi-tasking environment and
+ the directory in which the temporary files are created is the same for all compilation processes.
+<h2 id="SMM07_generation_of_browsing_information_failed"> SM-07 generation of browsing information failed </h2>
+<br><b>SM-07 generation of browsing information failed</b>
+<br><br>An error occurred during the generation of browsing information.&nbsp; For example, a disk full condition encountered
+ during the creation of the browser module file will cause this message to be issued.&nbsp; Browsing information is generated
+ when the /db switch is specified.
+<h2 id="SPM01_cannot_have_both_ATEND_and_the_ENDE_specifier"> SP-01 cannot have both ATEND and the END= specifier </h2>
+<br><b>SP-01 cannot have both ATEND and the END= specifier</b>
+<br><br>It is not valid to use the AT END control statement and the END= option on the READ statement.&nbsp; Only one method
+ can be used to control the end-of-file condition.
+<h2 id="SPM02_ATEND_must_immediately_follow_a_READ_statement"> SP-02 ATEND must immediately follow a READ statement </h2>
+<br><b>SP-02 ATEND must immediately follow a READ statement</b>
+<br><br>The indicated AT END control statement or block does not immediately follow a READ statement.&nbsp; The AT END control
+ statement or block is executed when an end-of-file condition is encountered during the read.
+<h2 id="SPM03_block_label_must_be_a_symbolic_name"> SP-03 block label must be a symbolic name </h2>
+<br><b>SP-03 block label must be a symbolic name</b>
+<br><br>The indicated block label must be a symbolic name.&nbsp; A symbolic name must start with a letter and contain no more
+ than 32 letters and digits.&nbsp; A letter is an upper or lower case letter of the alphabet, a dollar sign ($), or an underscore
+ (_).&nbsp; A digit is a character in the range '0' to '9'.
+<h2 id="SPM04_could_not_find_a_structure_to__s1_from"> SP-04 could not find a structure to %s1 from </h2>
+<br><b>SP-04 could not find a structure to %s1 from</b>
+<br><br>This message is issued in the following cases.
+<ol>
+<li>There is no control structure to QUIT from.&nbsp; The QUIT statement will transfer control to the statement following
+ the currently active control structure or return from a REMOTE BLOCK if no other control structures are active within the
+ REMOTE BLOCK.
+<li>There is no control structure to EXIT from.&nbsp; The EXIT statement is used to exit a loop-processing structure such
+ as DO, DO WHILE, WHILE and LOOP, to return from a REMOTE BLOCK regardless of the number of active control structures within
+ the REMOTE BLOCK, or to transfer control from a GUESS or ADMIT block to the statement following the ENDGUESS statement.
+<li>There is no active looping control structure from which a CYCLE statement can be used.&nbsp; A CYCLE statement can only
+ be used within a DO, DO WHILE, WHILE and LOOP control structure.
+</ol>
+<h2 id="SPM05_REMOTE_BLOCK_is_not_allowed_in_the_range_of_any_control_structure"> SP-05 REMOTE BLOCK is not allowed in the range of any control structure </h2>
+<br><b>SP-05 REMOTE BLOCK is not allowed in the range of any control structure</b>
+<br><br>An attempt has been made to define a REMOTE BLOCK inside a control structure.&nbsp; Control structures include IF,
+ LOOP, WHILE, DO, SELECT and GUESS.&nbsp; When a REMOTE BLOCK definition is encountered during execution, control is transferred
+ to the statement following the corresponding END BLOCK statement.
+<h2 id="SPM06_the_SELECT_statement_must_be_followed_immediately_by_a_CASE_statement"> SP-06 the SELECT statement must be followed immediately by a CASE statement </h2>
+<br><b>SP-06 the SELECT statement must be followed immediately by a CASE statement</b>
+<br><br>The statement immediately after the SELECT statement must be a CASE statement.&nbsp; The SELECT statement allows one
+ of a number of blocks of code (case blocks) to be selected for execution by means of an integer expression in the SELECT
+ statement.
+<h2 id="SPM07_cases_are_overlapping"> SP-07 cases are overlapping </h2>
+<br><b>SP-07 cases are overlapping</b>
+<br><br>The case lists specified in the CASE statements in the SELECT control structure are in conflict.&nbsp; Each case list
+ must specify a unique integer constant expression or range.
+<h2 id="SPM08_select_structure_requires_at_least_one_CASE_statement"> SP-08 select structure requires at least one CASE statement </h2>
+<br><b>SP-08 select structure requires at least one CASE statement</b>
+<br><br>In the SELECT control structure, there must be at least one CASE statement.
+<h2 id="SPM09_cannot_branch_to__d1_from_outside_control_structure_in_line__d2"> SP-09 cannot branch to %d1 from outside control structure in line %d2 </h2>
+<br><b>SP-09 cannot branch to %d1 from outside control structure in line %d2</b>
+<br><br>The statement in line %d2 passes control to the statement %d1 in a control structure.&nbsp; Control may only be passed
+ out of a control structure or to another place in that control structure.&nbsp; Control structures include DO, GUESS, IF,
+ LOOP, SELECT, and WHILE.
+<h2 id="SPM10_cannot_branch_to__d1_inside_structure_on_line__d2"> SP-10 cannot branch to %d1 inside structure on line %d2 </h2>
+<br><b>SP-10 cannot branch to %d1 inside structure on line %d2</b>
+<br><br>The statement attempts to pass control to statement %d1 in line %d2 which is in a control structure.&nbsp; Control
+ may only be passed out of a control structure or to another place in that control structure.&nbsp; Control structures include
+ DO, GUESS, IF, LOOP, SELECT, and WHILE.
+<h2 id="SPM11_low_end_of_range_exceeds_the_high_end"> SP-11 low end of range exceeds the high end </h2>
+<br><b>SP-11 low end of range exceeds the high end</b>
+<br><br>The first number, the low end of the range, is greater than the second number, the high end of the range.
+<h2 id="SPM12_default_case_block_must_follow_all_case_blocks"> SP-12 default case block must follow all case blocks </h2>
+<br><b>SP-12 default case block must follow all case blocks</b>
+<br><br>The default case block in the SELECT control structure must be the last case block.&nbsp; A case block may not follow
+ the default case block.
+<h2 id="SPM13_attempt_to_branch_out_of_a_REMOTE_BLOCK"> SP-13 attempt to branch out of a REMOTE BLOCK </h2>
+<br><b>SP-13 attempt to branch out of a REMOTE BLOCK</b>
+<br><br>An attempt has been made to transfer execution control out of a REMOTE BLOCK.&nbsp; A REMOTE BLOCK may only be terminated
+ with the END BLOCK statement.&nbsp; Execution of a REMOTE BLOCK is similar in concept to execution of a subroutine.
+<h2 id="SPM14_attempt_to_EXECUTE_undefined_REMOTE_BLOCK__s1"> SP-14 attempt to EXECUTE undefined REMOTE BLOCK %s1 </h2>
+<br><b>SP-14 attempt to EXECUTE undefined REMOTE BLOCK %s1</b>
+<br><br>The REMOTE BLOCK %s1 referenced in the EXECUTE statement does not exist in the current program unit.&nbsp; A REMOTE
+ BLOCK is local to the program unit in which it is defined and may not be referenced from another program unit.
+<h2 id="SPM15_attempted_to_use_REMOTE_BLOCK_recursively"> SP-15 attempted to use REMOTE BLOCK recursively </h2>
+<br><b>SP-15 attempted to use REMOTE BLOCK recursively</b>
+<br><br>An attempt was made to execute a REMOTE BLOCK which was already active.
+<h2 id="SPM16_cannot_RETURN_from_subprogram_within_a_REMOTE_BLOCK"> SP-16 cannot RETURN from subprogram within a REMOTE BLOCK </h2>
+<br><b>SP-16 cannot RETURN from subprogram within a REMOTE BLOCK</b>
+<br><br>An illegal attempt has been made to execute a RETURN statement within a REMOTE BLOCK in a subprogram.
+<h2 id="SPM17__s1_statement_is_not_FORTRAN_77_standard"> SP-17 %s1 statement is not FORTRAN 77 standard </h2>
+<br><b>SP-17 %s1 statement is not FORTRAN 77 standard</b>
+<br><br>The statement %s1 is an extension to the FORTRAN 77 language.
+<h2 id="SPM18__s1_block_is_unfinished"> SP-18 %s1 block is unfinished </h2>
+<br><b>SP-18 %s1 block is unfinished</b>
+<br><br>The block starting with the statement %s1 does not have the ending block statement.&nbsp; For example:&nbsp; ATENDDO-ENDATEND,
+ DO-ENDDO, GUESS-ENDGUESS, IF-ENDIF, LOOP-ENDLOOP, SELECT-ENDSELECT, STRUCTURE-ENDSTRUCTURE and WHILE-ENDWHILE.
+<h2 id="SPM19__s1_statement_does_not_match_with__s2_statement"> SP-19 %s1 statement does not match with %s2 statement </h2>
+<br><b>SP-19 %s1 statement does not match with %s2 statement</b>
+<br><br>The statement %s1, which ends a control structure, cannot be used with statement %s2 to form a control structure.
+&nbsp; Valid control structures are:&nbsp; LOOP - ENDLOOP, LOOP - UNTIL, WHILE - ENDWHILE, and WHILE - UNTIL.
+<h2 id="SPM20_incomplete_control_structure_found_at__s1_statement"> SP-20 incomplete control structure found at %s1 statement </h2>
+<br><b>SP-20 incomplete control structure found at %s1 statement</b>
+<br><br>The ending control structure statement %s1 was found and there was no preceding matching beginning statement.&nbsp;
+ Valid control structures include:&nbsp; ATENDDO - ENDATEND, GUESS - ENDGUESS, IF - ENDIF, LOOP - ENDLOOP, REMOTE BLOCK -
+ ENDBLOCK, and SELECT - ENDSELECT.
+<h2 id="SPM21__s1_statement_is_not_allowed_in__s2_definition"> SP-21 %s1 statement is not allowed in %s2 definition </h2>
+<br><b>SP-21 %s1 statement is not allowed in %s2 definition</b>
+<br><br>Statement %s1 is not allowed between a %s2 statement and the corresponding END %s2 statement.&nbsp; For example, an
+ EXTERNAL statement is not allowed between a STRUCTURE and END STRUCTURE statement, a UNION and END UNION statement, or a
+ MAP and END MAP statement.
+<h2 id="SPM22_no_such_field_name_found_in_structure__s1"> SP-22 no such field name found in structure %s1 </h2>
+<br><b>SP-22 no such field name found in structure %s1</b>
+<br><br>A structure reference contained a field name that does not belong to the specified structure.
+<h2 id="SPM23_multiple_definition_of_field_name__s1"> SP-23 multiple definition of field name %s1 </h2>
+<br><b>SP-23 multiple definition of field name %s1</b>
+<br><br>The field name %s1 has already been defined in a structure.
+<h2 id="SPM24_structure__s1_has_not_been_defined"> SP-24 structure %s1 has not been defined </h2>
+<br><b>SP-24 structure %s1 has not been defined</b>
+<br><br>An attempt has been made to declare a symbol of user-defined type %s1.&nbsp; No structure definition for %s1 has occurred.
+<h2 id="SPM25_structure__s1_has_already_been_defined"> SP-25 structure %s1 has already been defined </h2>
+<br><b>SP-25 structure %s1 has already been defined</b>
+<br><br>The specified structure has already been defined as a structure.
+<h2 id="SPM26_structure__s1_must_contain_at_least_one_field"> SP-26 structure %s1 must contain at least one field </h2>
+<br><b>SP-26 structure %s1 must contain at least one field</b>
+<br><br>Structures must contain at least one field definition.
+<h2 id="SPM27_recursion_detected_in_definition_of_structure__s1"> SP-27 recursion detected in definition of structure %s1 </h2>
+<br><b>SP-27 recursion detected in definition of structure %s1</b>
+<br><br>Structure %s1 has been defined recursively.&nbsp; For example, it is illegal for structure X to contain a field that
+ is itself a structure named X.
+<h2 id="SPM28_illegal_use_of_structure__s1_containing_union"> SP-28 illegal use of structure %s1 containing union </h2>
+<br><b>SP-28 illegal use of structure %s1 containing union</b>
+<br><br>Structures containing unions cannot be used in formatted I/O statements or data initialized.
+<h2 id="SPM29_allocatable_arrays_cannot_be_fields_within_structures"> SP-29 allocatable arrays cannot be fields within structures </h2>
+<br><b>SP-29 allocatable arrays cannot be fields within structures</b>
+<br><br>An allocatable array cannot appear as a field name within a structure definition.
+<h2 id="SPM30_an_integer_conditional_expression_is_not_FORTRAN_77_standard"> SP-30 an integer conditional expression is not FORTRAN 77 standard </h2>
+<br><b>SP-30 an integer conditional expression is not FORTRAN 77 standard</b>
+<br><br>A conditional expression is the expression that is evaluated and checked to determine a path of execution.&nbsp; A
+ conditional expression can be found in an IF or WHILE statement.&nbsp; FORTRAN 77 requires that the conditional expression
+ be a logical expression.&nbsp; As an extension, an integer expression is also allowed.&nbsp; When an integer expression is
+ used, it is converted to a logical expression by comparing the value of the integer expression to zero.
+<h2 id="SPM31__s1_statement_must_be_used_within__s2_definition"> SP-31 %s1 statement must be used within %s2 definition </h2>
+<br><b>SP-31 %s1 statement must be used within %s2 definition</b>
+<br><br>The statement identified by %s1 must appear within a definition identified by %s2.
+<h2 id="SRM01_name_can_only_appear_in_an_EXTERNAL_statement_once"> SR-01 name can only appear in an EXTERNAL statement once </h2>
+<br><b>SR-01 name can only appear in an EXTERNAL statement once</b>
+<br><br>A function/subroutine name appears more than once in an EXTERNAL statement.
+<h2 id="SRM02_character_function__s1_may_not_be_called_since_size_was_declared_as_LTR"> SR-02 character function %s1 may not be called since size was declared as (*) </h2>
+<br><b>SR-02 character function %s1 may not be called since size was declared as (*)</b>
+<br><br>In the declaration of the character function name, the length was defined to be (*).&nbsp; The (*) length specification
+ is only allowed for external functions, dummy arguments or symbolic character constants.
+<h2 id="SRM03__s1_can_only_be_used_an_an_argument_to_a_subroutine"> SR-03 %s1 can only be used an an argument to a subroutine </h2>
+<br><b>SR-03 %s1 can only be used an an argument to a subroutine</b>
+<br><br>The specified class of an argument must only be passed to a subroutine.&nbsp; For example, an alternate return specifier
+ is illegal as a subscript or an argument to a function.
+<h2 id="SRM04_name_cannot_appear_in_both_an_INTRINSIC_and_EXTERNAL_statement"> SR-04 name cannot appear in both an INTRINSIC and EXTERNAL statement </h2>
+<br><b>SR-04 name cannot appear in both an INTRINSIC and EXTERNAL statement</b>
+<br><br>The same name appears in an INTRINSIC statement and in an EXTERNAL statement.
+<h2 id="SRM05_expecting_a_subroutine_name"> SR-05 expecting a subroutine name </h2>
+<br><b>SR-05 expecting a subroutine name</b>
+<br><br>The subroutine named in the CALL statement does not define a subroutine.&nbsp; A subroutine is declared in a SUBROUTINE
+ statement.
+<h2 id="SRM06__s1_statement_not_allowed_in_main_program"> SR-06 %s1 statement not allowed in main program </h2>
+<br><b>SR-06 %s1 statement not allowed in main program</b>
+<br><br>The main program can contain any statements except a FUNCTION, SUBROUTINE, BLOCK DATA, or ENTRY statement.&nbsp; A
+ SAVE statement is allowed but has no effect in the main program.&nbsp; A RETURN statement in the main program is an extension
+ to the FORTRAN 77 language.
+<h2 id="SRM07_not_an_intrinsic_FUNCTION_name"> SR-07 not an intrinsic FUNCTION name </h2>
+<br><b>SR-07 not an intrinsic FUNCTION name</b>
+<br><br>A name in the INTRINSIC statement is not an intrinsic function name.&nbsp; Refer to the Language Reference for a complete
+ list of the intrinsic functions.
+<h2 id="SRM08_name_can_only_appear_in_an_INTRINSIC_statement_once"> SR-08 name can only appear in an INTRINSIC statement once </h2>
+<br><b>SR-08 name can only appear in an INTRINSIC statement once</b>
+<br><br>An intrinsic function name appears more than once in the intrinsic function list.
+<h2 id="SRM09_subprogram_recursion_detected"> SR-09 subprogram recursion detected </h2>
+<br><b>SR-09 subprogram recursion detected</b>
+<br><br>An attempt has been made to recursively invoke a subprogram, that is, to invoke an already active subprogram.
+<h2 id="SRM10_two_main_program_units_in_the_same_file"> SR-10 two main program units in the same file </h2>
+<br><b>SR-10 two main program units in the same file</b>
+<br><br>There are two places in the program that signify the start of a main program.&nbsp; The PROGRAM statement or the first
+ statement that is not enclosed by a PROGRAM, FUNCTION, SUBROUTINE or BLOCK DATA statement specifies the main program start.
+<h2 id="SRM11_only_one_unnamed__s1_is_allowed_in_an_executable_program"> SR-11 only one unnamed %s1 is allowed in an executable program </h2>
+<br><b>SR-11 only one unnamed %s1 is allowed in an executable program</b>
+<br><br>There may only be one unnamed BLOCK DATA subprogram or main program in an executable program.
+<h2 id="SRM12_function_referenced_as_a_subroutine"> SR-12 function referenced as a subroutine </h2>
+<br><b>SR-12 function referenced as a subroutine</b>
+<br><br>An attempt has been made to invoke a function using the CALL statement.
+<h2 id="SSM01_substringing_of_function_or_statement_function_return_value_is_not_FORTRAN_77_standard"> SS-01 substringing of function or statement function return value is not FORTRAN 77 standard </h2>
+<br><b>SS-01 substringing of function or statement function return value is not FORTRAN 77 standard</b>
+<br><br>The character value returned from a CHARACTER function or statement function cannot be substrung.&nbsp; Only character
+ variable names and array element names may be substrung.
+<h2 id="SSM02_substringing_valid_only_for_character_variables_and_array_elements"> SS-02 substringing valid only for character variables and array elements </h2>
+<br><b>SS-02 substringing valid only for character variables and array elements</b>
+<br><br>An attempt has been made to substring a name that is not defined to be of type CHARACTER and is neither a variable
+ nor an array element.
+<h2 id="SSM03_subscript_expression_out_of_range"> SS-03 subscript expression out of range </h2>
+<br><b>SS-03 subscript expression out of range</b> %s1 does not exist
+<br><br>An attempt has been made to reference an element in an array that is out of bounds of the declared array size.&nbsp;
+ The array element %s1 does not exist.
+<h2 id="SSM04_substring_expression_L_d1__d2R_is_out_of_range"> SS-04 substring expression (%d1:%d2) is out of range </h2>
+<br><b>SS-04 substring expression (%d1:%d2) is out of range</b>
+<br><br>An expression in the substring is larger than the string length or less than the value 1.&nbsp; The substring expression
+ must be one in which
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 1 &lt;= %d1 &lt;= %d2 &lt;= len</tt>
+<h2 id="STM01_statement_number__d1_has_already_been_defined_in_line__d2"> ST-01 statement number %d1 has already been defined in line %d2 </h2>
+<br><b>ST-01 statement number %d1 has already been defined in line %d2</b>
+<br><br>The two statements, in line %d2 and the current line, in the current program unit have the same statement label number,
+ namely %d1.
+<h2 id="STM02_statement_function_definition_appears_after_first_executable_statement"> ST-02 statement function definition appears after first executable statement </h2>
+<br><b>ST-02 statement function definition appears after first executable statement</b>
+<br><br>There is a statement function definition after the first executable statement in the program unit.&nbsp; Statement
+ function definitions must follow specification statements and precede executable statements.&nbsp; Check that the statement
+ function name is not an undeclared array name.
+<h2 id="STM03__s1_statement_must_not_be_branched_to_but_was_in_line__d2"> ST-03 %s1 statement must not be branched to but was in line %d2 </h2>
+<br><b>ST-03 %s1 statement must not be branched to but was in line %d2</b>
+<br><br>Line %d2 passed execution control down to the statement %s1.&nbsp; The specification statements, ADMIT, AT END, BLOCK
+ DATA, CASE, ELSE, ELSE IF, END AT END, END BLOCK, END DO, END LOOP, END SELECT, END WHILE, ENTRY, FORMAT, FUNCTION, OTHERWISE,
+ PROGRAM, QUIT, REMOTE BLOCK, SAVE, SUBROUTINE, and UNTIL statements may not have control of execution transferred to it.
+<h2 id="STM04_branch_to_statement__d1_in_line__d2_not_allowed"> ST-04 branch to statement %d1 in line %d2 not allowed </h2>
+<br><b>ST-04 branch to statement %d1 in line %d2 not allowed</b>
+<br><br>An attempt has been made to pass execution control up to the statement labelled %d1 in line %d2.&nbsp; The specification
+ statements, ADMIT, AT END, BLOCK DATA, CASE, ELSE, ELSE IF, END AT END, END BLOCK, END DO, END LOOP, END SELECT, END WHILE,
+ ENTRY, FORMAT, FUNCTION, OTHERWISE, PROGRAM, QUIT, REMOTE BLOCK, SAVE, SUBROUTINE, and UNTIL statements may not have control
+ of execution transferred to it.
+<h2 id="STM05_specification_statement_must_appear_before__s1_is_initialized"> ST-05 specification statement must appear before %s1 is initialized </h2>
+<br><b>ST-05 specification statement must appear before %s1 is initialized</b>
+<br><br>The variable %s1 has been initialized in a specification statement.&nbsp; A COMMON or EQUIVALENCE statement then references
+ the variable.&nbsp; The COMMON or EQUIVALENCE statement must appear before the item can be initialized.&nbsp; Use the DATA
+ statement to initialize data in this case.
+<h2 id="STM06_statement__d1_was_referenced_as_a_FORMAT_statement_in_line__d2"> ST-06 statement %d1 was referenced as a FORMAT statement in line %d2 </h2>
+<br><b>ST-06 statement %d1 was referenced as a FORMAT statement in line %d2</b>
+<br><br>The statement in line %d2 references statement label %d1 as a FORMAT statement.&nbsp; The statement at that label
+ is not a FORMAT statement.
+<h2 id="STM07_IMPLICIT_statement_appears_too_late"> ST-07 IMPLICIT statement appears too late </h2>
+<br><b>ST-07 IMPLICIT statement appears too late</b>
+<br><br>The current IMPLICIT statement is out of order.&nbsp; The IMPLICIT statement may be interspersed with the PARAMETER
+ statement but must appear before other specification statements.
+<h2 id="STM08_this_statement_will_never_be_executed_due_to_the_preceding_branch"> ST-08 this statement will never be executed due to the preceding branch </h2>
+<br><b>ST-08 this statement will never be executed due to the preceding branch</b>
+<br><br>Because execution control will always be passed around the indicated statement, the statement will never be executed.
+<h2 id="STM09_expecting_statement_number"> ST-09 expecting statement number </h2>
+<br><b>ST-09 expecting statement number</b>
+<br><br>The keyword GOTO or ASSIGN has been detected and the next part of the statement was not a statement number as was
+ expected.
+<h2 id="STM10_statement_number__d1_was_not_used_as_a_FORMAT_statement_in_line__d2"> ST-10 statement number %d1 was not used as a FORMAT statement in line %d2 </h2>
+<br><b>ST-10 statement number %d1 was not used as a FORMAT statement in line %d2</b>
+<br><br>The statement at line %d2 with statement number %d1 is not a FORMAT statement but the current statement uses statement
+ number %d1 as if it labelled a FORMAT statement.
+<h2 id="STM11_specification_statement_appears_too_late"> ST-11 specification statement appears too late </h2>
+<br><b>ST-11 specification statement appears too late</b>
+<br><br>The indicated specification statement appears after a statement function definition or an executable statement.&nbsp;
+ All specification statements must appear before these types of statements.
+<h2 id="STM12__s1_statement_not_allowed_after__s2_statement"> ST-12 %s1 statement not allowed after %s2 statement </h2>
+<br><b>ST-12 %s1 statement not allowed after %s2 statement</b>
+<br><br>The statement %s1 cannot be the object of a %s2 statement.&nbsp; %s2 represents a logical IF or WHILE statement.&nbsp;
+ These statements include:&nbsp; specification statements, ADMIT, AT END, CASE, DO, ELSE, ELSE IF END, END AT END, END BLOCK,
+ END DO, END GUESS, ENDIF, END LOOP, END SELECT, END WHILE, ENTRY, FORMAT, FUNCTION, GUESS, logical IF, block IF, LOOP, OTHERWISE,
+ PROGRAM, REMOTE BLOCK, SAVE, SELECT, SUBROUTINE, UNTIL, and WHILE.
+<h2 id="STM13_statement_number_must_be_99999_or_less"> ST-13 statement number must be 99999 or less </h2>
+<br><b>ST-13 statement number must be 99999 or less</b>
+<br><br>The statement label number specified in the indicated statement has more than 5 digits.
+<h2 id="STM14_statement_number_cannot_be_zero"> ST-14 statement number cannot be zero </h2>
+<br><b>ST-14 statement number cannot be zero</b>
+<br><br>The statement label number specified in the indicated statement is zero.&nbsp; Statement label numbers must be greater
+ than 0 and less than or equal to 99999.
+<h2 id="STM15_this_statement_could_branch_to_itself"> ST-15 this statement could branch to itself </h2>
+<br><b>ST-15 this statement could branch to itself</b>
+<br><br>The indicated statement refers to a statement label number which appears on the statement itself and therefore could
+ branch to itself, creating an endless loop.
+<h2 id="STM16_missing_statement_number__d1_M_used_in_line__d2"> ST-16 missing statement number %d1 - used in line %d2 </h2>
+<br><b>ST-16 missing statement number %d1 - used in line %d2</b>
+<br><br>A statement with the statement label number %d1 does not exist in the current program unit.&nbsp; The statement label
+ number is referenced in line %d2 of the program unit.
+<h2 id="STM17_undecodeable_statement_or_misspelled_word__s1"> ST-17 undecodeable statement or misspelled word %s1 </h2>
+<br><b>ST-17 undecodeable statement or misspelled word %s1</b>
+<br><br>The statement cannot be identified as an assignment statement or any other type of FORTRAN statement.&nbsp; The first
+ word of a FORTRAN statement must be a statement keyword or the statement must be an assignment statement.
+<h2 id="STM18_statement__d1_will_never_be_executed_due_to_the_preceding_branch"> ST-18 statement %d1 will never be executed due to the preceding branch </h2>
+<br><b>ST-18 statement %d1 will never be executed due to the preceding branch</b>
+<br><br>The statement with the statement label number of %d1 will never be executed because the preceding statement will always
+ pass execution control around the statement and no other reference is made to the statement label.
+<h2 id="STM19_expecting_keyword_or_symbolic_name"> ST-19 expecting keyword or symbolic name </h2>
+<br><b>ST-19 expecting keyword or symbolic name</b>
+<br><br>The first character of a statement is not an alphabetic.&nbsp; The first word of a statement must be a statement keyword
+ or a symbolic name.&nbsp; Symbolic names must start with a letter (upper case or lower case), a dollar sign ($) or an underscore
+ (_).
+<h2 id="STM20_number_in__s1_statement_is_longer_than_5_digits"> ST-20 number in %s1 statement is longer than 5 digits </h2>
+<br><b>ST-20 number in %s1 statement is longer than 5 digits</b>
+<br><br>The number in the PAUSE or STOP statement is longer than 5 digits.
+<h2 id="STM21_position_of_DATA_statement_is_not_FORTRAN_77_standard"> ST-21 position of DATA statement is not FORTRAN 77 standard </h2>
+<br><b>ST-21 position of DATA statement is not FORTRAN 77 standard</b>
+<br><br>The FORTRAN 77 standard requires DATA statements to appear after all specification statements.&nbsp; As an extension
+ to the standard, Watcom FORTRAN 77 allows DATA statements to appear before specification statements.&nbsp; Note that in the
+ latter case, the type of the symbol must be established before data initialization occurs.
+<h2 id="SVM01_variable__s1_in_array_declarator_must_be_in_COMMON_or_a_dummy_argument"> SV-01 variable %s1 in array declarator must be in COMMON or a dummy argument </h2>
+<br><b>SV-01 variable %s1 in array declarator must be in COMMON or a dummy argument</b>
+<br><br>The variable %s1 was used as an array declarator in a subroutine or function but the variable was not in a COMMON
+ block nor was it a dummy argument in the FUNCTION, SUBROUTINE or ENTRY statement.
+<h2 id="SVM02_adjustableDassumed_size_array__s1_must_be_a_dummy_argument"> SV-02 adjustable/assumed size array %s1 must be a dummy argument </h2>
+<br><b>SV-02 adjustable/assumed size array %s1 must be a dummy argument</b>
+<br><br>The array %s1 used in the current subroutine or function must be a dummy argument.&nbsp; When the array declarator
+ is adjustable or assumed-size, the array name must be a dummy argument.
+<h2 id="SVM03_invalid_subscript_expression"> SV-03 invalid subscript expression </h2>
+<br><b>SV-03 invalid subscript expression</b>
+<br><br>The indicated subscript expression is not a valid integer expression or the high bound of the array is less than the
+ low bound of the array when declaring the size of the array.
+<h2 id="SVM04_invalid_number_of_subscripts"> SV-04 invalid number of subscripts </h2>
+<br><b>SV-04 invalid number of subscripts</b>
+<br><br>The number of subscripts used to describe an array element does not match the number of subscripts in the array declaration.
+&nbsp; The maximum number of subscripts allowed is 7.
+<h2 id="SVM05_using__s1_name_incorrectly_without_list"> SV-05 using %s1 name incorrectly without list </h2>
+<br><b>SV-05 using %s1 name incorrectly without list</b>
+<br><br>An attempt has been made to assign a value to the declared array %s1.&nbsp; Values may only be assigned to elements
+ in the array.&nbsp; An array element is the array name followed by integer expressions enclosed in parentheses and separated
+ by commas.
+<h2 id="SVM06_cannot_substring_array_name__s1"> SV-06 cannot substring array name %s1 </h2>
+<br><b>SV-06 cannot substring array name %s1</b>
+<br><br>An attempt has been made to substring the array %s1.&nbsp; Only an array element may be substrung.
+<h2 id="SVM07__s1_treated_as_an_assumed_size_array"> SV-07 %s1 treated as an assumed size array </h2>
+<br><b>SV-07 %s1 treated as an assumed size array</b>
+<br><br>A dummy array argument has been declared with 1 in the last dimension.&nbsp; The array is treated as if an '*' had
+ been specified in place of the 1.&nbsp; This is done to support a feature called &quot;pseudo-variable dimensioning&quot;
+ which was supported by some FORTRAN IV compilers and is identical in concept to FORTRAN 77 assumed-size arrays.
+<h2 id="SVM08_assumed_size_array__s1_cannot_be_used_as_an_iDo_list_item_or_a_formatDunit_identifier"> SV-08 assumed size array %s1 cannot be used as an i/o list item or a format/unit identifier </h2>
+<br><b>SV-08 assumed size array %s1 cannot be used as an i/o list item or a format/unit identifier</b>
+<br><br>Assumed size arrays (arrays whose last dimension is '*') must not appear as an i/o list item (i.e.&nbsp; in a PRINT
+ statement), a format identifier or an internal file specifier.
+<h2 id="SVM09_limit_of_65535_elements_per_dimension_has_been_exceeded"> SV-09 limit of 65535 elements per dimension has been exceeded </h2>
+<br><b>SV-09 limit of 65535 elements per dimension has been exceeded</b>
+<br><br>On the IBM PC, for 16-bit real mode applications, the number of elements in a dimension must not exceed 65535.
+<h2 id="SXM01_unexpected_number_or_name__s1"> SX-01 unexpected number or name %s1 </h2>
+<br><b>SX-01 unexpected number or name %s1</b>
+<br><br>The number or name %s1 is in an unexpected place in the statement.
+<h2 id="SXM02_bad_sequence_of_operators"> SX-02 bad sequence of operators </h2>
+<br><b>SX-02 bad sequence of operators</b>
+<br><br>The indicated arithmetic operator is out of order.&nbsp; An arithmetic operator is one of the following:&nbsp; **,
+ *, /, +, and -.&nbsp; All arithmetic operators must be followed by at least a primary.&nbsp; A primary is an array element,
+ constant, (expression), function name, or variable name.
+<h2 id="SXM03_invalid_operator"> SX-03 invalid operator </h2>
+<br><b>SX-03 invalid operator</b>
+<br><br>The indicated operator between the two arithmetic primaries is not a valid operator.&nbsp; Valid arithmetic operators
+ include:&nbsp; **, *, /, +, and -.&nbsp; A primary is an array element, constant, (expression), function name, or variable
+ name.
+<h2 id="SXM04_expecting_end_of_statement_after_right_parenthesis"> SX-04 expecting end of statement after right parenthesis </h2>
+<br><b>SX-04 expecting end of statement after right parenthesis</b>
+<br><br>The end of the statement is indicated by the closing right parenthesis but more characters were found on the line.
+&nbsp; Multiple statements per line are not allowed in FORTRAN 77.
+<h2 id="SXM05_expecting_an_asterisk"> SX-05 expecting an asterisk </h2>
+<br><b>SX-05 expecting an asterisk</b>
+<br><br>The next character of the statement should be an asterisk but another character was found instead.
+<h2 id="SXM06_expecting_colon"> SX-06 expecting colon </h2>
+<br><b>SX-06 expecting colon</b>
+<br><br>A colon (:) was expecting but not found.&nbsp; For example, the colon separating the low and high bounds of a character
+ substring was not found.
+<h2 id="SXM07_expecting_colon_or_end_of_statement"> SX-07 expecting colon or end of statement </h2>
+<br><b>SX-07 expecting colon or end of statement</b>
+<br><br>On a control statement, a word was found at the end of the statement that cannot be related to the statement.&nbsp;
+ The last word on several of the control statements may be a block label.&nbsp; All block labels must be preceded by a colon
+ (:).
+<h2 id="SXM08_missing_comma"> SX-08 missing comma </h2>
+<br><b>SX-08 missing comma</b>
+<br><br>A comma was expected and is missing.&nbsp; There must be a comma after the statement keyword AT END when a statement
+ follows.&nbsp; A comma must occur between the two statement labels in the GO TO statement.&nbsp; A comma must occur between
+ the expressions in the DO statement.&nbsp; A comma must occur between the names listed in the DATA statement and specification
+ statements.&nbsp; A comma must occur between the specifiers in I/O statements.
+<h2 id="SXM09_expecting_end_of_statement"> SX-09 expecting end of statement </h2>
+<br><b>SX-09 expecting end of statement</b>
+<br><br>The end of the statement was expected but more words were found on the line and cannot be associated to the statement.
+&nbsp; FORTRAN 77 only allows for one statement per line.
+<h2 id="SXM10_expecting_integer_variable"> SX-10 expecting integer variable </h2>
+<br><b>SX-10 expecting integer variable</b>
+<br><br>The name indicated in the statement must be of type INTEGER but is not.
+<h2 id="SXM11_expecting__s1_name"> SX-11 expecting %s1 name </h2>
+<br><b>SX-11 expecting %s1 name</b>
+<br><br>A name with the characteristic %s1 was expected at the indicated place in the statement but is missing.
+<h2 id="SXM12_expecting_an_integer"> SX-12 expecting an integer </h2>
+<br><b>SX-12 expecting an integer</b>
+<br><br>The length specifier, as in the IMPLICIT statement, must be an integer constant or an integer constant expression.
+&nbsp; The repeat specifier of the value to be assigned to the variables, as in the DATA statement, must be an integer constant
+ or an integer constant expression.
+<h2 id="SXM13_expecting_INTEGER__REAL__or_DOUBLE_PRECISION_variable"> SX-13 expecting INTEGER, REAL, or DOUBLE PRECISION variable </h2>
+<br><b>SX-13 expecting INTEGER, REAL, or DOUBLE PRECISION variable</b>
+<br><br>The indicated DO variable is not one of the types INTEGER, REAL, or DOUBLE PRECISION.
+<h2 id="SXM14_missing_operator"> SX-14 missing operator </h2>
+<br><b>SX-14 missing operator</b>
+<br><br>Two primaries were found in an expression and an operator was not found in between.&nbsp; A primary is an array element,
+ constant, (expression), function name, or variable name.
+<h2 id="SXM15_expecting_a_slash"> SX-15 expecting a slash </h2>
+<br><b>SX-15 expecting a slash</b>
+<br><br>A slash is expected in the indicated place in the statement.&nbsp; Slashes must be balanced as parentheses.&nbsp;
+ Slashes are used to enclose the initial data values in specification statements or to enclose names of COMMON blocks.
+<h2 id="SXM16_expecting__s1_expression"> SX-16 expecting %s1 expression </h2>
+<br><b>SX-16 expecting %s1 expression</b>
+<br><br>An expression of type %s1 is required.
+<h2 id="SXM17_expecting_a_constant_expression"> SX-17 expecting a constant expression </h2>
+<br><b>SX-17 expecting a constant expression</b>
+<br><br>A constant expression is required.
+<h2 id="SXM18_expecting_INTEGER__REAL__or_DOUBLE_PRECISION_expression"> SX-18 expecting INTEGER, REAL, or DOUBLE PRECISION expression </h2>
+<br><b>SX-18 expecting INTEGER, REAL, or DOUBLE PRECISION expression</b>
+<br><br>The indicated expression is not one of type INTEGER, REAL, or DOUBLE PRECISION.&nbsp; Each expression following the
+ DO variable must be an expression of one of these types.
+<h2 id="SXM19_expecting_INTEGER_or_CHARACTER_constant"> SX-19 expecting INTEGER or CHARACTER constant </h2>
+<br><b>SX-19 expecting INTEGER or CHARACTER constant</b>
+<br><br>In the PAUSE and STOP statement, the name following the keyword must be a constant of type INTEGER or of type CHARACTER.
+&nbsp; This constant will be printed on the console when the statement is executed.
+<h2 id="SXM20_unexpected_operator"> SX-20 unexpected operator </h2>
+<br><b>SX-20 unexpected operator</b>
+<br><br>An operand was expected but none was found.&nbsp; For example, in an I/O statement, the comma is used to separate
+ I/O list items.&nbsp; Two consecutive commas without an I/O list item between them would result in this error.
+<h2 id="SXM21_no_closing_quote_on_literal_string"> SX-21 no closing quote on literal string </h2>
+<br><b>SX-21 no closing quote on literal string</b>
+<br><br>The closing quote of a literal string was not found before the end of the statement.
+<h2 id="SXM22_missing_or_invalid_constant"> SX-22 missing or invalid constant </h2>
+<br><b>SX-22 missing or invalid constant</b>
+<br><br>In a DATA statement, the constant required to initialize a variable was not found or incorrectly specified.
+<h2 id="SXM23_expecting_character_constant"> SX-23 expecting character constant </h2>
+<br><b>SX-23 expecting character constant</b>
+<br><br>A character constant is required.
+<h2 id="TYM01_length_specification_before_array_declarator_is_not_FORTRAN_77_standard"> TY-01 length specification before array declarator is not FORTRAN 77 standard </h2>
+<br><b>TY-01 length specification before array declarator is not FORTRAN 77 standard</b>
+<br><br>An array declarator specified immediately after the length specification of the array is an extension to the FORTRAN
+ 77 language.
+<h2 id="TYM02__d1_is_an_illegal_length_for__s2_type"> TY-02 %d1 is an illegal length for %s2 type </h2>
+<br><b>TY-02 %d1 is an illegal length for %s2 type</b>
+<br><br>The length specifier %d1 is not valid for the type %s2.&nbsp; For type LOGICAL, valid lengths are 1 and 4.&nbsp; For
+ the type INTEGER, valid lengths are 1, 2, and 4.&nbsp; For the type REAL, valid lengths are 4 and 8.&nbsp; For the type COMPLEX,
+ valid lengths are 8 and 16.&nbsp; On the IBM PC, the length specifier for items of type CHARACTER must be greater than 0
+ and not exceed 65535.
+<h2 id="TYM03_length_specifier_in__s1_statement_is_not_FORTRAN_77_standard"> TY-03 length specifier in %s1 statement is not FORTRAN 77 standard </h2>
+<br><b>TY-03 length specifier in %s1 statement is not FORTRAN 77 standard</b>
+<br><br>A length specifier in certain type specification statements is an extension to the FORTRAN 77 language.&nbsp; These
+ include:&nbsp; LOGICAL*1, LOGICAL*4, INTEGER*1, INTEGER*2, INTEGER*4, REAL*4, REAL*8, COMPLEX*8, and COMPLEX*16.
+<h2 id="TYM04_length_specification_not_allowed_with_type__s1"> TY-04 length specification not allowed with type %s1 </h2>
+<br><b>TY-04 length specification not allowed with type %s1</b>
+<br><br>A length specification is not allowed in a DOUBLE PRECISION or DOUBLE COMPLEX statement.
+<h2 id="TYM05_type_of__s1_has_already_been_established_as__s2"> TY-05 type of %s1 has already been established as %s2 </h2>
+<br><b>TY-05 type of %s1 has already been established as %s2</b>
+<br><br>The indicated name %s1 has already been declared to have a different type, namely %s2.&nbsp; The name %s1 cannot be
+ used in this specification statement.
+<h2 id="TYM06_type_of__s1_has_not_been_declared"> TY-06 type of %s1 has not been declared </h2>
+<br><b>TY-06 type of %s1 has not been declared</b>
+<br><br>The indicated name %s1 has not been declared.&nbsp; This message is only issued when the IMPLICIT NONE specification
+ statement is used.
+<h2 id="TYM07__s1_of_type__s2_is_illegal_in__s3_statement"> TY-07 %s1 of type %s2 is illegal in %s3 statement </h2>
+<br><b>TY-07 %s1 of type %s2 is illegal in %s3 statement</b>
+<br><br>The symbol %s1 with type %s2 cannot be used in statement %s3.&nbsp; For example, a symbol of type STRUCTURE cannot
+ be used in a PARAMETER statement.
+<h2 id="VAM01_illegal_use_of__s1_name__s2_in__s3_statement"> VA-01 illegal use of %s1 name %s2 in %s3 statement </h2>
+<br><b>VA-01 illegal use of %s1 name %s2 in %s3 statement</b>
+<br><br>The name %s2 has been defined as %s1 and cannot be used as a name in the statement %s3.
+<h2 id="VAM02_symbolic_name__s1_is_longer_than_6_characters"> VA-02 symbolic name %s1 is longer than 6 characters </h2>
+<br><b>VA-02 symbolic name %s1 is longer than 6 characters</b>
+<br><br>Symbolic names greater than 6 characters is an extension to the FORTRAN 77 language.&nbsp; The maximum length is 32
+ characters.
+<h2 id="VAM03__s1_has_already_been_defined_as_a__s2"> VA-03 %s1 has already been defined as a %s2 </h2>
+<br><b>VA-03 %s1 has already been defined as a %s2</b>
+<br><br>The name %s1 has been previously defined as a %s2 in another statement and cannot be redefined as specified in the
+ indicated statement.
+<h2 id="VAM04__s1__s2_has_not_been_defined"> VA-04 %s1 %s2 has not been defined </h2>
+<br><b>VA-04 %s1 %s2 has not been defined</b>
+<br><br>The name %s2 has been referenced to be a %s1 but has not been defined as such in the program unit.
+<h2 id="VAM05__s1_is_an_unreferenced_symbol"> VA-05 %s1 is an unreferenced symbol </h2>
+<br><b>VA-05 %s1 is an unreferenced symbol</b>
+<br><br>The name %s1 has been defined but not referenced.
+<h2 id="VAM06__s1_already_belongs_to_this_NAMELIST_group"> VA-06 %s1 already belongs to this NAMELIST group </h2>
+<br><b>VA-06 %s1 already belongs to this NAMELIST group</b>
+<br><br>The name %s1 can only appear in a NAMELIST group once.&nbsp; However, a name can belong to multiple NAMELIST groups.
+<h2 id="VAM07__s1_has_been_used_but_not_defined"> VA-07 %s1 has been used but not defined </h2>
+<br><b>VA-07 %s1 has been used but not defined</b>
+<br><br>%s1 has not been defined before using it in a way that requires its definition.&nbsp; Note that symbols that are equivalenced,
+ belong to a common block, are dummy arguments, or passed as an argument to a subprogram, will not be checked to ensure that
+ they have been defined before requiring a value.
+<h2 id="VAM08_dynamically_allocating__s1_is_not_FORTRAN_77_standard"> VA-08 dynamically allocating %s1 is not FORTRAN 77 standard </h2>
+<br><b>VA-08 dynamically allocating %s1 is not FORTRAN 77 standard</b>
+<br><br>Allocatable storage are extensions to the FORTRAN 77 standard.
+<h2 id="VAM09__s1_in_NAMELIST__s2_is_illegal"> VA-09 %s1 in NAMELIST %s2 is illegal </h2>
+<br><b>VA-09 %s1 in NAMELIST %s2 is illegal</b>
+<br><br>Symbol %s1 appearing in NAMELIST %s2 is illegal.&nbsp; Symbols appearing in a NAMELIST cannot be dummy arguments,
+ allocatable, or of a user-defined type.
+</body>

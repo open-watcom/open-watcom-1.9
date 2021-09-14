@@ -1,0 +1,571 @@
+<head>
+<title> Open Watcom 1.9 Profiler </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Absolute_and_Relative_Percentages">Absolute and Relative Percentages</a>
+<br><a href="#The_Actions_Menu">The Actions Menu</a>
+<dt><br>- C -
+<dd><a href="#The_Convert_Dialog">The Convert Dialog</a>
+<br><a href="#The_Convert_Menu">The Convert Menu</a>
+<dt><br>- D -
+<dd><a href="#The_Detail_View">The Detail View</a>
+<dt><br>- F -
+<dd><a href="#The_File_Menu">The File Menu</a>
+<dt><br>- H -
+<dd><a href="#The_Help_Menu">The Help Menu</a>
+<br><a href="#How_to_Use_the_Profiler_Effectively">How to Use the Profiler Effectively</a>
+<dt><br>- I -
+<dd><a href="#The_Information_Area">The Information Area</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Execution_Profiler">The Open Watcom Execution Profiler</a>
+<br><a href="#Open_Watcom_Execution_Profiler_Command_Line_Format">Open Watcom Execution Profiler Command Line Format</a>
+<br><a href="#The_Open_Watcom_Execution_Profiler_User_Interface">The Open Watcom Execution Profiler User Interface</a>
+<br><a href="#The_Open_Watcom_Execution_Sampler">The Open Watcom Execution Sampler</a>
+<br><a href="#The_Options_Dialog">The Options Dialog</a>
+<dt><br>- P -
+<dd><a href="#The_Popup_Menu">The Popup Menu</a>
+<br><a href="#Profile_Analysis_Tools">Profile Analysis Tools</a>
+<br><a href="#The_Profiler_Menu_Bar">The Profiler Menu Bar</a>
+<br><a href="#Profiling_a_NetWare_NLM">Profiling a NetWare NLM</a>
+<dt><br>- S -
+<dd><a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>
+<br><a href="#Sampler_Operating_System_Considerations">Sampler Operating System Considerations</a>
+<br><a href="#Sampler_Options_Summary">Sampler Options Summary</a>
+<br><a href="#Samples">Samples</a>
+<br><a href="#The_Status_Line">The Status Line</a>
+<dt><br>- T -
+<dd><a href="#The_Title_Area">The Title Area</a>
+<dt><br>- U -
+<dd><a href="#Using_the_Sampler_with_DOS">Using the Sampler with DOS</a>
+<br><a href="#Using_the_Sampler_with_DOSD4GW_or_DOSD4G">Using the Sampler with DOS/4GW or DOS/4G</a>
+<br><a href="#Using_the_Sampler_with_NetWare_386">Using the Sampler with NetWare 386</a>
+<br><a href="#Using_the_Sampler_with_OSD2">Using the Sampler with OS/2</a>
+<br><a href="#Using_the_Sampler_with_the_Phar_Lap_386_DOSMExtender">Using the Sampler with the Phar Lap 386|DOS-Extender</a>
+<br><a href="#Using_the_Sampler_with_Win32">Using the Sampler with Win32</a>
+<br><a href="#Using_the_Sampler_with_Windows_3_x">Using the Sampler with Windows 3.x</a>
+<dt><br>- W -
+<dd><a href="#The_Windows_Menu">The Windows Menu</a>
+<dt><br>- Z -
+<dd><a href="#ZoomMIn_and_Backout">Zoom-In and Backout</a>
+</dl>
+<h1 id="Profile_Analysis_Tools"> Profile Analysis Tools </h1>
+<br>This section describes how to use the profile analysis tools to enhance the performance of your program.&nbsp; There are
+ two profile analysis tools:
+<ul>
+<li>The Open Watcom Execution Sampler (the sampler)
+<li>The Open Watcom Execution Profiler (the profiler)
+</ul>
+<br>You must use both of these tools to discover where your code is spending time as it executes.
+<br><br>First, you must run the<b> Sampler</b>.&nbsp; The sampler starts your application and, at a predetermined interval,
+ records the location where your program is executing.&nbsp; This information is saved in a &quot;sample file&quot;.&nbsp;
+ It is a statistical sampling of your program's execution.&nbsp; It is not exact information, but it is accurate enough to
+ be a very useful tool to enhance your program's performance.&nbsp; See <a href="#The_Open_Watcom_Execution_Sampler">The Open Watcom Execution Sampler</a>.
+<br><br>Second, you run the<b> Profiler</b>.&nbsp; It reads the sample file and displays the sample information graphically.
+&nbsp; You can use the profiler to examine the sample data and narrow in on the places where your program spends large amounts
+ of time.&nbsp; See <a href="#The_Open_Watcom_Execution_Profiler">The Open Watcom Execution Profiler</a>.
+<br><br>Once you have discovered heavily executed portions of your program, you might want to rewrite then using a faster
+ algorithm or fine tune your implementation of the current algorithms.
+<dl>
+<dt>Note
+<dd>You must compile and link the program with debugging information.&nbsp; Use at least the<b> d1</b> option when compiling and
+ the<b> debug all</b> option when linking.
+</dl>
+<h1 id="The_Open_Watcom_Execution_Sampler"> The Open Watcom Execution Sampler </h1>
+<br>To run the sampler from the Integrated Development Environment, click on the toolbar item that looks like a stopwatch.
+<br><br>The sampler's command line syntax is shown below.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WSAMPLE &#91;options&#93; program &#91;arguments&#93;</tt>
+<dl>
+<dt>WSAMPLE
+<dd>is one of several versions of the sampler.&nbsp; See the section entitled <a href="#Sampler_Operating_System_Considerations">Sampler Operating System Considerations</a>
+ for a description of how to run the sampler under various environments.
+<dt><br>options
+<dd>is a list of valid sampler options, each preceded by a slash (&quot;/&quot;) or a dash (&quot;-&quot;).&nbsp; Options may
+ be specified in any order.
+<dt><br>program
+<dd>is the name of the program to be sampled.
+<dt><br>arguments
+<dd>is the set of arguments passed to the program.&nbsp; The program behaves just as if it were executed directly from the command
+ line.&nbsp; If you normally run your program using:
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;program &#91;arguments&#93;</tt>
+<br><br>then it may be sampled using the following command:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample program &#91;arguments&#93;</tt>
+<br><br>By default, the output of WSAMPLE is a sample file with the same name as the executable but with an extension of .SMP.
+&nbsp; In the above example, it would be called<tt> PROGRAM.SMP.</tt>
+</dl>
+<h2 id="Sampler_Options_Summary"> Sampler Options Summary </h2>
+<br>The sampler has several command line options.&nbsp; A summary of the available options is displayed on the screen by executing
+ the &quot;WSAMPLE&quot; program appropriate for your system.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Usage: wsample &#91;options&#93; program &#91;program arguments&#93;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Options:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /b=&lt;size&gt; specify the buffer size for samples (default: 63)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /f=&lt;file&gt; specify the output filename for the sample file</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /r=&lt;rate&gt; specify the sampling rate</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;size&gt;&nbsp;&nbsp;&nbsp; is a number in the range 1 to
+ 63 (default: 63 kb)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;rate&gt;&nbsp;&nbsp;&nbsp; is a number (range 27 to 1000) specifying
+ the approximate</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time
+ interval (in milliseconds) between samples</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (default:
+ 55)</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '#' may be used instead of '=' in options (e.g., /b#10)</tt>
+<h2 id="Sampler_Command_Line_Options"> Sampler Command Line Options </h2>
+<br>Command line options allow you to control how much the program's execution will be affected by the presence of the sampler.
+&nbsp; System specific options are described in detail in subsequent sections.&nbsp; The options that apply to all versions
+ of the sampler are:
+<dl>
+<dt>/r=&lt;sample_rate&gt;
+<dd>Specifies the approximate time between execution samples (in milliseconds).&nbsp; The sampler will set up the system so that
+ the program will be interrupted in intervals of the number of milliseconds specified on the command line.&nbsp; A smaller
+ number will result in a more accurate sample file.&nbsp; A larger number result in a less accurate sample.&nbsp; If your
+ program runs for a very short time, you should use the smallest interval possible.&nbsp; The default value is system dependent
+ and it will be displayed if you enter &quot;WSAMPLE&quot; with no arguments.&nbsp; The following example will sample the
+ program's execution 200 times per second.
+<br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample /r=5 program</tt>
+<dt><br>/b=&lt;buffer_size&gt;
+<dd>Specifies the size of the sampler's internal buffer (in kilobytes).&nbsp; The execution of the program will produce many samples
+ which must be recorded in the sample file.&nbsp; The sampler stores the samples in an internal buffer until the buffer is
+ filled and must be written to the disk.&nbsp; You may reduce the buffer size if you want to leave more memory for your application
+ program.&nbsp; You should not make the buffer size so small that the sampler would have to write samples to disk more than
+ once a second.&nbsp; The default size for the sample buffer is 63K.&nbsp; In the following example, a buffer size of 10K
+ will be used:
+<br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample /b=10 program</tt>
+<dt><br>/f=&lt;fname&gt;
+<dd>Specify the name of the sample file.&nbsp; Samples will be written to the specified file.&nbsp; By default, a file with the
+ same name as the executable and an extension of .SMP is created.
+</dl>
+<h2 id="Sampler_Operating_System_Considerations"> Sampler Operating System Considerations </h2>
+<br>There is a different version of the sampler to match each operating system.&nbsp; Some systems do not allow the sample
+ rate to be adjusted.&nbsp; Each sampler will provide information about any unique aspects of its operation when you type
+ its program name on the command line.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample</tt>
+<br><br>Here are the Open Watcom Execution Sampler executable names provided.
+<dl>
+<dt><b><i>Operating System:</i></b>
+<dd><b><i>Command:</i></b>
+<dt><br>DOS
+<dd>WSAMPLE.EXE
+<dt><br>OS/2
+<dd>WSAMPLE.EXE
+<dt><br>DOS/4GW or DOS/4G
+<dd>WSAMPRSI.EXE
+<dt><br>386|DOS-Extender
+<dd>WSAMPPLS.EXP
+<dt><br>Windows 3.x
+<dd>WSAMPLEW.EXE
+<dt><br>Win32
+<dd>WSAMPLE.EXE
+<dt><br>NetWare 386
+<dd>WSAMPLE.NLM
+</dl>
+<br>The sampler for an operating system such as DOS will not operate correctly in an environment that is not strictly DOS
+ such as a Windows or OS/2 DOS box.&nbsp; The sampler obtains its information about what was executing when a timer interrupt
+ occurs from the stack.&nbsp; Unlike &quot;real&quot; DOS, the segment/offset on the stack in a protected-mode environment
+ supporting Virtual DOS Machines does not correspond to the program that was executing at the time of the timer interrupt.
+&nbsp; As a result, you must run the sampler in the real operating system environment for which it was designed.&nbsp; The
+ same is true for Windows applications in a Win-OS/2 session.
+<h3 id="Using_the_Sampler_with_DOS"> Using the Sampler with DOS </h3>
+<br>The following options are available under DOS.&nbsp; For a further description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 55ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.&nbsp; Since DOS places a limit on the amount of memory available to all programs, you may
+ need to use the &quot;b&quot; option to reduce the memory requirements of the sampler, leaving more memory for your program.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+<dt><br>/i=&lt;interrupt&gt;
+<dd>specify an interrupt to monitor
+<br>This option allows you to assign any samples that occur while a service interrupt is executing to the instruction following
+ the requesting INT instruction.&nbsp; This will reveal the amount of time code spends &quot;waiting&quot; for interrupt services.
+&nbsp; The interrupt number specified is in base 16 (hex) and can be in the range 20 to ff except for the range 34 to 3d which
+ is reserved for 80x87 emulation.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample /i=25 /i=26 program</tt>
+<dt><br>/d
+<dd>disable monitoring of the DOS interrupt
+<br>By default, the DOS version of the sampler assigns any samples that occur while a DOS interrupt is executing to the instruction
+ following the requesting INT 21H instruction.&nbsp; This will reveal the amount of time code spends &quot;waiting&quot; for
+ DOS to complete a service.&nbsp; This option can be used to disable this assignment of samples so that the total time spent
+ executing in DOS code may be determined.
+</dl>
+<h3 id="Using_the_Sampler_with_OSD2"> Using the Sampler with OS/2 </h3>
+<br>The following options are available under OS/2.&nbsp; For a further description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsample &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 1000ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+<dt><br>/s
+<dd>start the application in a new session.&nbsp; By default the sampler starts your application in its own session.&nbsp; Use
+ /s if you application is a PM application, or requires its own session to run.
+</dl>
+<h3 id="Using_the_Sampler_with_DOSD4GW_or_DOSD4G"> Using the Sampler with DOS/4GW or DOS/4G </h3>
+<br>This version of the sampler uses one of DOS/4GW or DOS/4G to run the sampler in 32-bit protected mode.&nbsp; One of DOS4GW.EXE
+ or DOS4G.EXE must be located in the path specified in<b> DOS4GPATH</b> or<b> PATH.</b>&nbsp; The sampler will, in turn, invoke
+ the program with any arguments specified on the command line.&nbsp; The following options are available.&nbsp; For a further
+ description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;wsamprsi &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<dl>
+<dt>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+</dl>
+<h3 id="Using_the_Sampler_with_the_Phar_Lap_386_DOSMExtender"> Using the Sampler with the Phar Lap 386|DOS-Extender </h3>
+<br>The sampler must be run using RUN386.&nbsp; RUN386 will run the sampler in 32-bit protected mode which will invoke the
+ program with any arguments specified on the command line.&nbsp; The following options are available.&nbsp; For a further
+ description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; C&gt;run386 wsamppls &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 55ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+</dl>
+<h3 id="Using_the_Sampler_with_Windows_3_x"> Using the Sampler with Windows 3.x </h3>
+<br>The Windows 3.x sampler (WSAMPLEW.EXE) will sample both 16-bit and 32-bit Windows applications.&nbsp; The sampler will
+ only run under Windows 3.x 386 enhanced mode.&nbsp; You must also include the &quot;device&quot; specification listed below
+ in the &#91;386Enh&#93; section of your SYSTEM.INI file.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; DEVICE=C:\WATCOM\BINW\WDEBUG.386</tt>
+<br><br>When starting the sampler, you will be presented with a window to select the executable and to specify the sampling
+ rate.
+<br><br>Once you start the sampler, a log window will appear.&nbsp; This will report the state of the sampled program (it
+ does not in any way interfere with the program as it is running).&nbsp; Once the program terminates, this window will remain.
+&nbsp; The sample file will be placed in the same directory as the program you are sampling, and will have the extension .SMP.
+<br><br>A well-behaved Windows application should have very few samples inside the application.&nbsp; Final development of
+ a Windows application should involve a phase where the application is analyzed so that it does not consume large amounts
+ of CPU time without yielding to Windows 3.x.
+<br><br>To start the sampler, double-click on the Open Watcom Execution Sampler icon.&nbsp; Enter a command in the prompt
+ dialogue box.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<br><br>The following options are available under Windows.&nbsp; For a further description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 1000ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+</dl>
+<h3 id="Using_the_Sampler_with_Win32"> Using the Sampler with Win32 </h3>
+<br>The Win32 sampler (WSAMPLE.EXE) will only sample Win32 applications such as those that run under Windows 9x or Windows
+ NT and later operating systems.&nbsp; It cannot be used to sample 16-bit applications.&nbsp; When starting the sampler, you
+ will be presented with a window to select the executable and to specify the sampling rate.
+<br><br>Once you start the sampler, a log window will appear.&nbsp; This will report the state of the sampled program (it
+ does not in any way interfere with the program as it is running).&nbsp; Once the program terminates, this window will remain.
+&nbsp; The sample file will be placed in the same directory as the program you are sampling, and will have the extension .SMP.
+<br><br>To start the sampler, double-click on the Open Watcom Execution Sampler icon.&nbsp; Enter a command in the prompt
+ dialogue box.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<br><br>The following options are available under Win32.&nbsp; For a further description of options, see <a href="#Sampler_Command_Line_Options">Sampler Command Line Options</a>.
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 1000ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+</dl>
+<h3 id="Using_the_Sampler_with_NetWare_386"> Using the Sampler with NetWare 386 </h3>
+<br>The sampler is also available for sampling the execution of NetWare Loadable Modules.&nbsp; The sampler (an NLM itself)
+ will load and execute the program with arguments.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; load wsample &#91;wsample_options&#93; program &#91;arguments&#93;</tt>
+<br><br>The following options are available under NetWare:
+<dl>
+<dt>/r=&lt;rate&gt;
+<dd>Rates from 1ms to 55ms are allowed.
+<dt><br>/b=&lt;size&gt;
+<dd>Sizes from 1K to 64K are allowed.
+<dt><br>/f=&lt;file&gt;
+<dd>Specify the name of the sample file.
+</dl>
+<h1 id="The_Open_Watcom_Execution_Profiler"> The Open Watcom Execution Profiler </h1>
+<br>The profiler reads the information from sample files and displays the results as a graph.&nbsp; Regions of concentrated
+ activity are visible and may be explored by zooming in to successive levels of detail.&nbsp; See <a href="#The_Open_Watcom_Execution_Sampler">The Open Watcom Execution Sampler</a>.
+<h2 id="ZoomMIn_and_Backout"> Zoom-In and Backout </h2>
+<br>The profiler allows you to<b> zoom-in</b> to successively more detailed views of your program.&nbsp; You may also<b> back-out</b>
+ of any detail view.&nbsp; The levels of detail available are:
+<dl>
+<dt>Sample
+<dd>This is a sample file.&nbsp; The profiler can show you information from several sample files at once.
+<dt><br>Image
+<dd>A sample file may consist of several images.&nbsp; These are your main executable file and any Dynamic Link Libraries (DLL)
+ or NetWare Loadable Modules (NLM) that your application called while executing.
+<dt><br>Modules
+<dd>An image may consist of several modules.&nbsp; Each module is a compilation unit.&nbsp; It consists of all the source code
+ generated by one invocation of the compiler.
+<dt><br>Files
+<dd>A module may be made up of several files.&nbsp; Your application may contain code that is generated by included files.
+<dt><br>Functions
+<dd>A file may contain several functions.&nbsp; These are all of the global functions that are defined within that file.
+<dt><br>Source Lines
+<dd>A function is made up of one or more source lines.
+<dt><br>Assembler instructions
+<dd>Each source line generates zero or more lines of assembler instructions.&nbsp; It is possible to get clues about expensive
+ operations from the number of samples found at each instruction.&nbsp; For example, the C statement &quot;i = j + k * l&quot;
+ will generate a multiply instruction.&nbsp; If you inspected the assembler instructions, you might find that the multiply
+ instruction took the majority of the time in question.
+</dl>
+<br>The process of moving from higher levels to lower levels, say, from &quot;modules&quot; to &quot;functions&quot;, is called<b>
+ zooming in.</b>&nbsp; Moving from lower levels to higher levels (&quot;assembler instructions&quot; to &quot;source lines&quot;)
+ is called<b> backing out.</b>&nbsp; As you zoom into your program the size of the region will get smaller but the amount
+ of detail will increase.&nbsp; Likewise, backing out will restore previous levels to the larger regions and reduced detail.
+&nbsp; You may zoom-in and back-out of detail views in order to explore your applications execution characteristics.
+<h2 id="Samples"> Samples </h2>
+<br>After you have run the sampler, you are left with a sample file.&nbsp; It contains a record of all locations where your
+ program was interrupted by the sampler.&nbsp; A<b> sample</b> is a record of the instruction pointer within the program at
+ the point in time that the interrupt occurred.&nbsp; Regions of the program that consume large amounts of execution time
+ have a larger number of samples associated with them.
+<h2 id="Absolute_and_Relative_Percentages"> Absolute and Relative Percentages </h2>
+<br>The most important piece of data that the profiler provides is the percentage of time that a region of code contributes
+ to total execution time.&nbsp; At the highest level (images), these percentages reflect each image's contribution to the
+ total execution time.&nbsp; As you successively zoom into modules and functions, you may become interested in the relative
+ percentages.
+<br><br>The percentage of time that a region contributes to the total program execution time of the<b> program</b> is called
+ an<b> absolute</b> percentage.&nbsp; The percentage of time that a piece of a region contributes to the total execution time<b>
+ of your current detail level</b> is called a<b> relative</b> percentage.
+<br><br>As you zoom in to the source and assembly views, the absolute percentages of execution time may get quite small.&nbsp;
+ The relative percentages help you to get a feel for the proportion of time involved within the detail view, but don't get
+ fooled into thinking that a routine contributes more than it actually does.&nbsp; Your decisions about which code to optimize
+ should always be based on absolute percentages.
+<h2 id="The_Open_Watcom_Execution_Profiler_User_Interface"> The Open Watcom Execution Profiler User Interface </h2>
+<br><tt><img src="wprof01.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Main Profiler Screen</b>
+<br><br>The profile screen is divided into six areas.&nbsp; In the middle of the screen is the<b> information area.</b>&nbsp;
+ It contains relative and absolute percentage numbers.&nbsp; The top half of the screen is the title area.&nbsp; The bottom
+ half of the screen is the detail view.&nbsp; The menu is displayed at the top of the screen.&nbsp; The bottom line displays
+ status information.
+<h3 id="The_Title_Area"> The Title Area </h3>
+<br><tt><img src="wprof02.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Profiler Title Area</b>
+<br><br>As you zoom in and back out, the title area adds and removes lines to show you that path that you took to your current
+ detail view.&nbsp; You can back out to any level displayed in the title area by double clicking on that line.
+<h3 id="The_Information_Area"> The Information Area </h3>
+<br><tt><img src="wprof03.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Profiler Information Area</b>
+<br><br>The information area is updated as you move around in the detail view.&nbsp; The red and green percentage numbers
+ give you numerical values that correspond to the histogram bar on the current line in the detail area.&nbsp; The red number
+ represents the line's percentage of total execution time.&nbsp; The green number represents the line's percentage of the
+ time spent within the current detail level.
+<h3 id="The_Detail_View"> The Detail View </h3>
+<br><tt><img src="wprof04.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Profiler Detail View</b>
+<br><br>The detail view shows you a list of one of the following:
+<ul>
+<li>Image Names
+<li>Module Names
+<li>File Names
+<li>Routine Names
+<li>Source Lines
+<li>Assembler Instructions
+</ul>
+<br>On the left half of the screen is a histogram which shows the number of samples at each location.&nbsp; On the right is
+ a list of names.&nbsp; If there are more lines than will fit on the screen, you can use the cursor keys and scroll bars to
+ move through the list.&nbsp; As you cursor through the list of names, or click on a name with the mouse, the information
+ area is updated to show statistics about the current line in the detail area.
+<br><br>If you find a line that is heavily executed, and you wish to examine the it in more detail, double click on it, or
+ cursor to it and press F3 or ENTER.&nbsp; You may back out of a detail view by pressing F4 or BACKSPACE.&nbsp; As you zoom
+ in and back out, the title area is updated to show that path you took to your current detail area.
+<br><br><tt><img src="wprof05.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The Profiler Assembly Detail</b>
+<br><br>The histogram will be drawn in two colors, red and green.&nbsp; The red portion represents the absolute percentages
+ of execution time for each line.&nbsp; The green and red portions, taken together, show the percentage of a line<b> relative</b>
+ to the current detail view.&nbsp; For example, if a detail line represented 10% of the total execution time, then the red
+ absolute bar would take 10% of the histogram area.&nbsp; If the entire digital view represented 20% of the execution time,
+ then the single detail line would have a green and red bar which would take 50% of the histogram area (10% is half the total
+ time of the entire detail view).
+<h3 id="The_Profiler_Menu_Bar"> The Profiler Menu Bar </h3>
+<br>The Profiler's menu bar lets you perform operations.&nbsp; You can activate the menu bar by using the mouse, or by holding
+ the ALT key and pressing the key that corresponds to the highlighted character in the menu bar.&nbsp; There are five menu
+ bars.
+<h4 id="The_File_Menu"> The File Menu </h4>
+<br>The File menu contains the following items:
+<dl>
+<dt>Open...
+<dd>Open a new sample file.&nbsp; A new window will be opened, and the data from the sample file will be displayed in it.
+<dt><br>Close
+<dd>Close the current sample file.&nbsp; The current window will be closed.
+<dt><br>Options
+<dd>This allows you to set profiler options.&nbsp; See the section entitled <a href="#The_Options_Dialog">The Options Dialog</a>
+ for details.
+<dt><br>System
+<dd>Start a new operating system shell.&nbsp; This option is only available in the DOS version of the profiler.
+<dt><br>Exit
+<dd>Close your profiler session and exit.
+</dl>
+<h4 id="The_Convert_Menu"> The Convert Menu </h4>
+<br>The Convert menu allows you to select an output format to save some of the raw information to a file.&nbsp; The DIF format
+ is supported by most of the major data manipulation or spreadsheet programs.&nbsp; The comma delimited format is a simpler
+ format that is supported by older software, and is easily manipulated by custom made software.&nbsp; The Convert menu contains
+ the following items:
+<dl>
+<dt>Current Module
+<dd>Use this menu item to save out the information related to the current module.
+<dt><br>Current Image
+<dd>Use this menu item to save out the information related to the current image.
+<dt><br>All Images
+<dd>Use this menu item to save out the information related to the all of the sample images.
+</dl>
+<h4 id="The_Windows_Menu"> The Windows Menu </h4>
+<br>The Windows menu contains one menu item for each sample file you have open.&nbsp; Use this menu to switch between sample
+ files.
+<h4 id="The_Actions_Menu"> The Actions Menu </h4>
+<br>When you select an item from the Actions menu, it acts on the current detail view.&nbsp; To configure one of the actions
+ across all windows, see <a href="#The_Options_Dialog">The Options Dialog</a>.&nbsp; The Actions menu is identical to the
+ floating popup associated with the current window.&nbsp; See <a href="#The_Popup_Menu">The Popup Menu</a>.&nbsp; The Actions
+ menu contains the following items:
+<dl>
+<dt>Zoom In (F3)
+<dd>Zoom in to the currently selected line.&nbsp; If the line is a source file, you will see a list of functions.&nbsp; If the
+ line is a function, you will see source lines, and so on.&nbsp; You can also zoom into a line by double clicking on it.
+<dt><br>Back Out (F4)
+<dd>Back out of the current detail view to the previous view.&nbsp; Double clicking in the title area will also achieve this.
+<dt><br>Gather Small Values
+<dd>Large portions of your program may be executed very little, if at all.&nbsp; This menu item will cause lines with a smaller
+ absolute percentage than the cutoff value to be grouped together.&nbsp; They will be displayed on a single line starting
+ with the text '***Gathered'.&nbsp; To change the cutoff value, see <a href="#The_Options_Dialog">The Options Dialog</a>.
+<dt><br>Bar Graph/Stretch
+<dd>When looking at areas that are not executed very much, the histogram bars can get very small.&nbsp; This menu item will stretch
+ the histogram so that the largest bar goes all the way to the left of the screen.
+<dt><br>Bar Graph/Absolute Bars
+<dd>Use this menu item to turn the absolute (red) histogram bars on and off.
+<dt><br>Bar Graph/Relative Bars
+<dd>Use this menu item to turn the relative (green) histogram bars on and off.
+<dt><br>Sort/Sample Count
+<dd>Use this menu item to sort the detail view with the most heavily executed region at the top.
+<dt><br>Sort/Name
+<dd>Use this menu item to sort the detail view alphabetically by name.
+</dl>
+<h4 id="The_Help_Menu"> The Help Menu </h4>
+<br>The Help menu item is used to select an action from the help sub-system.&nbsp; All of the profiler documentation is available
+ in the on-line help.
+<h3 id="The_Popup_Menu"> The Popup Menu </h3>
+<br>You can access the pop-up menu for a window by pressing the right mouse button or by typing the period (.) key.&nbsp;
+ The popup menu item is identical to the Action menu.&nbsp; The Zoom-in menu item will zoom in to the line on which the mouse
+ was clicked.&nbsp; See <a href="#The_Actions_Menu">The Actions Menu</a>.
+<h3 id="The_Options_Dialog"> The Options Dialog </h3>
+<br><tt><img src="wprof06.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Profiler Options Dialog</b>
+<br><br>The options dialog changes profiler settings across all views and windows.&nbsp; The following items can be changed:
+<dl>
+<dt>Stretch the Graphs
+<dd>When looking at areas that are not executed very much, the histogram bars can get very small.&nbsp; This menu item will stretch
+ the histogram so that the largest bar goes all the way to the left of the screen.
+<dt><br>Show Absolute Bar Graphs
+<dd>Check this box to turn the absolute (red) histogram bars on or off.
+<dt><br>Show Relative Bar Graphs
+<dd>Check this box to turn the relative (green) histogram bars on or off.
+<dt><br>Sort By Sample Count
+<dd>Check this radio button to sort the detail views with the most heavily executed regions at the top.
+<dt><br>Sort By Name
+<dd>Check this radio button to sort the detail view alphabetically by name.
+<dt><br>Gather Small Values
+<dd>Large portions of your program may be executed very little, if at all.&nbsp; This menu item will cause lines with a smaller
+ absolute percentage than the cutoff value to be grouped together.&nbsp; They will be displayed on a single line starting
+ with the text '***Gathered'.
+<dt><br>Cutoff Percentage
+<dd>Specify a new cutoff percentage here.&nbsp; You can specify any value between 0 and 100.
+</dl>
+<br><tt><img src="wprof07.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> The Bar Graph After the Stretch Option is Selected</b>
+<h3 id="The_Convert_Dialog"> The Convert Dialog </h3>
+<br><tt><img src="wprof08.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> The Convert Dialog</b>
+<br><br>After selecting from the Convert menu the portion of the sample information that you wish to convert, a conversion
+ dialog is presented.&nbsp; The following items may be changed:
+<dl>
+<dt>Output File Name
+<dd>The name of the sample file with the file extension most commonly used for the conversion type is displayed.&nbsp; You may
+ change this to any name, or use the<b> Browse</b> button to help select the name.
+<dt><br>Format Type
+<dd>Check this radio button to specify the data type that the sample information will be converted to.
+</dl>
+<h3 id="The_Status_Line"> The Status Line </h3>
+<br>The status line is located at the bottom of the profiler screen.&nbsp; As you cursor through a menu, or drag the mouse
+ over a menu, the status line will display hints about what each menu item does.
+<h2 id="How_to_Use_the_Profiler_Effectively"> How to Use the Profiler Effectively </h2>
+<br>The fundamental principle behind the profiler is:<b>&nbsp; devote your attention to the heavily executed regions of the
+ program in order to extract the most performance out of a program.</b>&nbsp; This principle can be applied to the different
+ levels of detail within a program.&nbsp; You should focus on the modules that contribute the most time to the execution of
+ a program.&nbsp; Within a module, you should focus on the functions that contribute the most time to the module's total execution
+ time.&nbsp; Regions of the program that exhibit heavy use during the execution of a program will benefit most from improvement.
+<br><br>A simple example will illustrate how this is accomplished.&nbsp; Suppose we have a program that has three distinct
+ regions.
+<dl>
+<dt><b><i>Region</i></b>
+<dd><b><i>Percentage</i></b>
+<dt><br>1
+<dd>10%
+<dt><br>2
+<dd>70%
+<dt><br>3
+<dd>20%
+</dl>
+<br>The percentages represent the percentage of the total execution time that the region contributed.&nbsp; If the program
+ took 100 seconds to execute, we could know that regions 1, 2, and 3 took 10, 70, and 20 seconds respectively.&nbsp; Now suppose
+ we could rewrite region 1 so that it was twice as fast.&nbsp; What would be the impact on the total execution time of the
+ program?&nbsp; It is difficult to predict precisely but, as a rule of thumb, we would expect that if we made region 1 twice
+ as fast, it would only take 5% of the original execution time as opposed to the original 10% before optimization.&nbsp; So,
+ if the original program took 100 seconds to execute, we would expect region 1's contribution of time to drop from 10 seconds
+ to 5 seconds making the execution time of the new program now 95 seconds.&nbsp; Notice that the region of code was twice
+ as fast as before but the total effect on the execution of the program was small.&nbsp; The impact of rewriting the code
+ was reduced because the region did not contribute greatly to the execution time of the original program.
+<br><br>To illustrate the point of using a profiler tool to increase performance, let us now look at the effect on the program
+ execution speed if we were to recode region 2 so that it was twice as fast as before.&nbsp; Using the previous rule of thumb,
+ we would expect region 2's contribution to the original execution time to drop from 70% to 35%.&nbsp; Now, if the original
+ program took 100 seconds to execute, we would have reduced the total execution time to 65 seconds by focusing on region 2.
+&nbsp; Comparing these results, we can see that the most benefit was derived from doubling the speed of region 2 as opposed
+ to doubling the speed of region 1.&nbsp; The change in region 2 reduced the execution time by 35% while the change to region
+ 1 reduced the execution time by 5% for roughly the same amount of work.&nbsp; The large amount of work involved in speeding
+ up code means that the most productive avenue is to focus on the heavily executed regions of the program.
+<h2 id="Open_Watcom_Execution_Profiler_Command_Line_Format"> Open Watcom Execution Profiler Command Line Format </h2>
+<br>The formal profiler command line syntax is shown below.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; WPROF &#91;options&#93; &#91;sample_file&#93;</tt>
+<br><br>The options are:
+<dl>
+<dt>-DIP dip_name
+<dd>Specify a DIP for use by the profiler.&nbsp; All default DIPs are disabled by the first use of this option.&nbsp; Successive
+ uses of the option will add to the list of DIPs.&nbsp; The DIPS will used in the order in which they are specified.
+<dt><br>-NOCHarremap
+<dd>The profiler uses character re-mapping to display many of the graphics characters.&nbsp; When you are running the profiler
+ in some DOS environments, you may see a number of strange characters on the screen.&nbsp; This is a DOS only option to turn
+ off character re-mapping.
+<dt><br>-NOGrahicsmouse
+<dd>This is a DOS only option to turn off the graphics mouse, and to use the block mouse cursor instead.
+<dt><br>-?&nbsp; or -Help
+<dd>Display command line help.
+</dl>
+<h2 id="Profiling_a_NetWare_NLM"> Profiling a NetWare NLM </h2>
+<br>The profiler does not run under NetWare.&nbsp; After you have run the sampler under NetWare, you will have to run the
+ profiler under DOS, OS/2 or Windows.&nbsp; By default, the sample file will be created in the root directory of the file
+ server.&nbsp; Log into the file server from a workstation and specify the name of the sample file on the server when you
+ start the profiler.&nbsp; All NLMs should be found automatically.&nbsp; If they are not, copy the sample file and all relevant
+ NLMs to the current directory on your workstation then try running the profiler again.
+</body>

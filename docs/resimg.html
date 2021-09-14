@@ -1,0 +1,390 @@
+<head>
+<title> Open Watcom 1.9 Image Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Assigning_Colors_to_Mouse_Buttons">Assigning Colors to Mouse Buttons</a>
+<dt><br>- C -
+<dd><a href="#Closing_the_Image_Editor">Closing the Image Editor</a>
+<br><a href="#Creating_a_Design_Grid">Creating a Design Grid</a>
+<br><a href="#Creating_and_Editing_Bitmaps">Creating and Editing Bitmaps</a>
+<br><a href="#Creating_and_Editing_Cursors">Creating and Editing Cursors</a>
+<br><a href="#Creating_and_Editing_Icons">Creating and Editing Icons</a>
+<dt><br>- H -
+<dd><a href="#Hiding_and_Showing_the_Color_Palette">Hiding and Showing the Color Palette</a>
+<dt><br>- I -
+<dd><a href="#The_Image_Editor_Color_Palette">The Image Editor Color Palette</a>
+<br><a href="#The_Image_Editor_Menu_Bar">The Image Editor Menu Bar</a>
+<br><a href="#The_Image_Editor_Status_Line">The Image Editor Status Line</a>
+<br><a href="#The_Image_Editor_Toolbar">The Image Editor Toolbar</a>
+<br><a href="#The_Image_Editor_Toolbox">The Image Editor Toolbox</a>
+<dt><br>- M -
+<dd><a href="#The_Main_Screen">The Main Screen</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Image_Editor">The Open Watcom Image Editor</a>
+<br><a href="#Opening_the_Image_Editor">Opening the Image Editor</a>
+<dt><br>- S -
+<dd><a href="#Selecting_Screen_and_Inverse_Colors">Selecting Screen and Inverse Colors</a>
+</dl>
+<h1 id="The_Open_Watcom_Image_Editor"> The Open Watcom Image Editor </h1>
+<br>If you want to design visual resources such as bitmaps, icons, or cursors and add sizzle to your application's interface,
+ the image editor can help.
+<br><br>The Image Editor is a visually oriented drawing tool with the power to draw all the visual resources you want - exactly
+ the way you picture them.&nbsp; This way, you can design effective bitmaps, meaningful icons, and communicative cursors.
+<br><br>Of course, the Image Editor can help bring to life your new artistic achievements.&nbsp; But it can also copy visual
+ images from anything else you can see on your computer screen.&nbsp; For example, if you would like to incorporate a favorite
+ bitmap or icon from your desktop or even from another application, you can use the Image Editor's Screen Select option to
+ copy that image to your design grid where you can tailor the image to your exact specifications.&nbsp; Then, when you are
+ happy with your visual image, you can save it to an executable.
+<br><br>Most of the sections in this chapter apply to all your visuals, but for more information on the specific type of visual
+ you are creating, see the sections specific to creating and editing your specific resource type.
+<br><br>This chapter contains the following:
+<ul>
+<li>Opening the Image Editor
+<li>Closing the Image Editor
+<li>The Main Screen
+<li>The Image Editor Menu Bar
+<li>The Image Editor Toolbar
+<li>The Image Editor Toolbox
+<li>The Image Editor Color Palette
+<li>The Image Editor Status Line
+<li>Creating and Editing Bitmaps
+<li>Creating and Editing Cursors
+<li>Creating and Editing Icons
+</ul>
+<h2 id="Opening_the_Image_Editor"> Opening the Image Editor </h2>
+<dl>
+<dt>To open the Image Editor:
+<dd>
+<dt><br>
+<dd><b> Double click on the Image Editor icon</b> in your windows program manager,
+<br>or
+<dt><br>
+<dd><b> Select the Image Editor icon and choose Open from the File menu.</b>
+<br>The Open Watcom Image Editor window appears.
+</dl>
+<h2 id="Closing_the_Image_Editor"> Closing the Image Editor </h2>
+<dl>
+<dt>To close the Image Editor and return to your desktop:
+<dd>
+<dt><br>
+<dd><b> Double click on the system menu</b> in the top, left corner of the screen,
+<br>or
+<dt><br>
+<dd><b> Choose Exit</b> from the File menu.
+</dl>
+<br>When you close the Image Editor, it remembers the size and position of its main window, as well as the position of the
+ toolbar and color palette.&nbsp; It also remembers whether the toolbar and color palette were hidden or not.&nbsp; This way,
+ when you open the Image Editor again, it is set up the same way you left it.
+<h2 id="The_Main_Screen"> The Main Screen </h2>
+<br>Every time you open the Image Editor, the Open Watcom Image Editor window appears.&nbsp; The toolbar, toolbox, and color
+ palette you use to edit your images appear on top of this window.
+<br><br><tt><img src="img1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Open Watcom Image Editor window</b>
+<br><br>You cannot draw or copy images onto the screen itself.&nbsp; Instead, you must first create a design grid, a work
+ area on which you can design your visuals.&nbsp; You can create an empty design grid and draw your own visual or you can
+ create a design grid with an image from your desktop or another application already on it.&nbsp; Once you have an image on
+ your design grid you can edit it so it looks exactly the way you want.
+<h3 id="Creating_a_Design_Grid"> Creating a Design Grid </h3>
+<dl>
+<dt>To create a design grid:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New</b> from the File menu.
+<br>The Image Type dialog box appears.
+<dt><br>(2)
+<dd><b> Select the type of image you want to create</b> by clicking on either Bitmap, Icon, or Cursor.
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>A dialog box appears where you specify the image size you want to work with.&nbsp; The Image Editor automatically defaults
+ to the standard sizes (in pixels) for bitmaps, icons, and cursors.&nbsp; To create different sized images, simply enter the
+ desired pixel width and height.
+<dt><br>(4)
+<dd><b> Click on OK.</b>
+</dl>
+<br>For more information on creating and editing a bitmaps, cursors or icons, see the sections entitled <a href="#Creating_and_Editing_Bitmaps">Creating and Editing Bitmaps</a>,
+ <a href="#Creating_and_Editing_Icons">Creating and Editing Icons</a>, and <a href="#Creating_and_Editing_Cursors">Creating and Editing Cursors</a>.
+<h2 id="The_Image_Editor_Menu_Bar"> The Image Editor Menu Bar </h2>
+<br>The menu bar along the top of the Image Editor window allows you to access most of the items in the toolbar, the toolbox,
+ and the color palette.&nbsp; It also provides you with other items that you cannot access anywhere else except on the menu
+ bar.
+<br><br><tt><img src="img2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Open Watcom Image Editor menu bar</b>
+<br><br>To see what an item does, position your cursor over the item and hold the mouse button.&nbsp; A description of the
+ item appears in the status line.&nbsp; For more information about the status line, see the section entitled <a href="#The_Image_Editor_Status_Line">The Image Editor Status Line</a>.
+&nbsp; This manual assumes that you know how to use the menus and are familiar with common menu items such as Save As and
+ Undo.
+<br><br>Some of the menu items have accelerator keys, also called accelerators, so you can invoke an item without having to
+ pull down the menu.&nbsp; This means, for example, that you can start a new image in three ways.&nbsp; You can either:
+<ul>
+<li>Select the new image button from the toolbar, or
+<li>Choose New from the File menu, or
+<li>Press F2 (the accelerator for starting a new image).
+</ul>
+<h2 id="The_Image_Editor_Toolbar"> The Image Editor Toolbar </h2>
+<br>The toolbar allows you quick and easy access to the most used items in the menus.
+<br><br><tt><img src="img3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Open Watcom Image Editor tool bar</b>
+<br><br>To find out what a button does, position your cursor over the button and hold the mouse button.&nbsp; A description
+ of the button's function appears in the bottom right corner of your screen.&nbsp; If you only wish to read what the button
+ will do and not activate it, drag your cursor onto another part of the window and then release the mouse button.
+<br><br>Here is a list of the buttons from left to right in the toolbar and what they do.
+<dl>
+<dt>New
+<dd>Creates a new bitmap, icon, or cursor
+<dt><br>Open
+<dd>Opens an existing file
+<dt><br>Save
+<dd>Saves the current image
+<dt><br>Toggle Grid
+<dd>Allows you to view the exact pixels on your design grid
+<dt><br>Maximize
+<dd>Enlarges the appearance of your image and design grid
+<dt><br>Clear
+<dd>Deletes everything on your design grid
+<dt><br>Snap Bitmap
+<dd>Allows you to select a bitmap image from your desktop or another application and place that image on your design grid
+<dt><br>Shift Right
+<dd>Moves the current image to the right
+<dt><br>Shift Left
+<dd>Moves the current image to the left
+<dt><br>Shift Up
+<dd>Moves the current image up
+<dt><br>Shift Down
+<dd>Moves the current image down
+<dt><br>Flip Vertically
+<dd>Mirrors the current image along the X-axis
+<dt><br>Flip Horizontally
+<dd>Mirrors the current image along the Y-axis
+<dt><br>Rotate 90 Clockwise
+<dd>Rotates the current image 90 degrees clockwise
+<dt><br>Rotate 90 Counter Clockwise
+<dd>Rotates the current image 90 degrees counter clockwise
+</dl>
+<h2 id="The_Image_Editor_Toolbox"> The Image Editor Toolbox </h2>
+<br>The toolbox allows you to conveniently select and change the tool you are using to edit your image, without having to
+ hunt through the menus for the tool you want.
+<br><br><tt><img src="img4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Open Watcom Image Editor toolbox</b>
+<br><br>Here is a list of the tools and what they do.
+<dl>
+<dt>Pencil
+<dd>Draws on the grid, pixel by pixel
+<dt><br>Lines
+<dd>Draws straight lines on the grid
+<dt><br>Ellipse Outline
+<dd>Draws outlines of circles and ellipses
+<dt><br>Ellipse Fill
+<dd>Draws filled circles and ellipses
+<dt><br>Rectangle Outline
+<dd>Draws outlines of rectangles
+<dt><br>Rectangle Fill
+<dd>Draws filled rectangles
+<dt><br>Brush
+<dd>Draws on the grid in various brush sizes
+<dt><br>Select Region
+<dd>Allows you to select a rectangular region on the grid
+<dt><br>Select Hot Spot
+<dd>Allows you to select the cursor hot spot (for cursors only)
+</dl>
+<h2 id="The_Image_Editor_Color_Palette"> The Image Editor Color Palette </h2>
+<br>If you want to draw or fill a new visual in different colors, or change the colors of an existing bitmap, icon, or cursor,
+ the color palette allows you to select the colors you want.
+<br><br><tt><img src="img5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The Open Watcom Image Editor color palette</b>
+<dl>
+<dt>To select a color:
+<dd>
+<dt><br>(1)
+<dd><b> Click either the left or right mouse button on the color</b> in the color palette that you wish to assign to that button.
+<dt><br>(2)
+<dd><b> Select a drawing tool.</b>
+<dt><br>(3)
+<dd><b> Draw or fill</b> holding down the mouse button assigned to the color you want.
+</dl>
+<br>For example, if you want to draw a red line:
+<ol>
+<li>Create a design grid for the resource you want
+<li>Select a shade of red from the color palette.
+<li>Select the line tool from the toolbox.
+<li>Drag your cursor across the design grid.
+</ol>
+<br>When you choose one of the 12 colors on the right of the color palette, the draw color will not be the same as the fill
+ color.&nbsp; Don't be alarmed.&nbsp; This is because they are not true VGA colors.&nbsp; The Image Editor creates them by
+ dithering two or more colors together so that, while the color appears solid in the view window, it is actually made up of
+ different colored pixels intermingled with each other.&nbsp; Since it is impossible to represent a single pixel-unit of a
+ dithered color, the draw color always differs from the fill color when you select a dithered color.
+<h3 id="Selecting_Screen_and_Inverse_Colors"> Selecting Screen and Inverse Colors </h3>
+<br>Unlike simple bitmaps, visuals such as icons and cursors usually require transparent or inverse colors.&nbsp; This is
+ so that they don't entirely obscure everything underneath them and so they can be seen no matter what color they happen to
+ be sitting on.
+<br><br>When you create or edit an icon or cursor, you can choose the screen and inverse colors from the color palette.&nbsp;
+ Then, you can draw portions of your icon or cursor with those colors, so that these pixels blend into the background of your
+ application.
+<br><br>Remember, if you want to use a specific color in your icon or cursor, make sure the color you want to use is not the
+ screen or inverse color.&nbsp; Reserve these two colors for drawing only the transparent portions of your icon or cursor.
+&nbsp; And use the other 26 colors available in the color palette for regular drawing.
+<dl>
+<dt>To choose a screen color:
+<dd>
+<dt><br>(1)
+<dd><b> Create a design grid</b> for a cursor or icon.
+<dt><br>(2)
+<dd><b> Move your cursor</b> over the two squares beside the words Screen and Inverse, so that your cursor changes from a pointer
+ to a hand.
+<dt><br>(3)
+<dd><b> Double click on either square.</b>
+<br>The Select Screen Color dialog appears.
+<dt><br>(4)
+<dd><b> Select the color</b> you want to use as your screen color.
+<dt><br>(5)
+<dd><b> Click on OK.</b>
+<br>The dialog closes and the screen color and its inverse are assigned to the screen and inverse boxes in the color palette.
+&nbsp; These will be the Screen and Inverse colors you can use to draw the portions of your icon or cursor that you want to
+ be transparent.
+<dl>
+<dt>Note:
+<dd>When you select a color, its inverse is automatically selected for you.&nbsp; Try to find a screen color and inverse color
+ that you won't want to use in the foreground of your icon or cursor.&nbsp; For example, if you don't intend to use yellow
+ in your icon, select yellow as your screen color.&nbsp; The inverse color, blue, is automatically selected for you, so if
+ you intend to use blue in your icon, find another screen color that doesn't have blue as its inverse.
+</dl>
+</dl>
+<h3 id="Assigning_Colors_to_Mouse_Buttons"> Assigning Colors to Mouse Buttons </h3>
+<br>When you are drawing and filling in multiple colors, you may find it useful to assign colors to the left and right mouse
+ buttons.&nbsp; This way, you can draw in one color, and quickly switch to another color simply by pressing the opposite mouse
+ button.&nbsp; For example, if you find you draw mostly in black and red, assign black to the left mouse button and red to
+ the right mouse button.&nbsp; To do this,
+<dl>
+<dt>(1)
+<dd><b> Select the black square</b> by clicking on it with the left mouse button.
+<dt><br>(2)
+<dd><b> Select the red square</b> by clicking on it with the right mouse button.
+<br>The colors assigned to the mouse buttons appear in the squares of the color palette marked L (for left) and R (for right).
+</dl>
+<h3 id="Hiding_and_Showing_the_Color_Palette"> Hiding and Showing the Color Palette </h3>
+<br>If you generally only draw in one or two colors or temporarily need more room on your screen, you can hide the color palette:
+<ul>
+<li>Double click on the system menu icon in the corner of the Color Palette, or
+<li>Choose Show Color Palette from the Options menu.
+</ul>
+<br>To reveal the color palette again, choose Show Color Palette again from the Options menu.
+<h2 id="The_Image_Editor_Status_Line"> The Image Editor Status Line </h2>
+<br>There are five sections in the status line.&nbsp; The first four sections provide information on the current image.&nbsp;
+ The fifth section displays hint text for the items in the menus, toolbar, and toolbox when you position your cursor over
+ an item and hold down the mouse button.
+<br><br><tt><img src="img6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Open Watcom Image Editor status line</b>
+<h2 id="Creating_and_Editing_Bitmaps"> Creating and Editing Bitmaps </h2>
+<br>If you want your applications to have visual impact, you can create and edit bitmaps.&nbsp; Bitmaps are graphical images
+ that can be as large as 512 x 512 square pixels representing such things as buttons, brush patterns, company logos, toolbar
+ items, wallpaper, and graphical elements in menus.
+<br><br>Using the Image Editor you can create a new bitmap or you can create a bitmap from any other image on your desktop.
+&nbsp; You can even copy a bitmap from another application on your desktop.
+<dl>
+<dt>To create a new bitmap:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New</b> from the File menu.
+<br>The Image Type dialog appears.
+<dt><br>(2)
+<dd><b> Select Bitmap.</b>
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>The Bitmap Information dialog appears.&nbsp; This dialog prompts you for information about the dimensions of the bitmap
+ you want to create and the color scheme you want to work with.&nbsp; The Image Editor defaults to the dimensions most commonly
+ used for creating bitmaps, 32 pixels by 32 pixels.&nbsp; However, if you want to create a different sized bitmap, enter the
+ pixel width and height you want.&nbsp; The Image Editor also defaults to a 256-Color color scheme.&nbsp; Other color schemes
+ available are 16-Color VGA and 2-Color Monochrome.
+</dl>
+<br>To copy a bitmap from your desktop or from another application on your desktop:
+<dl>
+<dt>(1)
+<dd><b> Choose New</b> from the File menu.
+<br>The Image Type dialog appears.
+<dt><br>(2)
+<dd><b> Select Bitmap.</b>
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>The Bitmap Information dialog appears.
+<dt><br>(4)
+<dd><b> Select the Screen Select button.</b>
+<br>This option allows you to choose the size and contents of the newly created bitmap with images from your desktop or from
+ another application sitting on your desktop.&nbsp; The Image Editor ignores the limitations specified in the Bitmap Information
+ dialog and uses the dimensions you sweep out (up to 512x512 pixels).
+<dt><br>(5)
+<dd><b> Position the cursor at the image you want to select.</b>
+<dt><br>(6)
+<dd><b> Hold the left mouse button and drag the cursor</b> across the image you want to copy to your design grid.
+<dt><br>(7)
+<dd><b> Release the mouse button.</b>
+<br>The image you selected appears on your design grid.
+</dl>
+<h2 id="Creating_and_Editing_Cursors"> Creating and Editing Cursors </h2>
+<br>You can create and edit cursors that communicate to your users the mode or state of the application.
+<br><br>You can create a new cursor or you can create an empty cursor and copy an image from your desktop or another application
+ onto your design grid.&nbsp; From there you can edit your cursor's appearance and set its hot spot.
+<br><br>When you edit cursors, the Image Editor provides you with an extra tool called<b> Set Hotspot</b> This tool allows
+ you to select the exact pixel to which you want to assign the hotspot.&nbsp; The default hotspot is 0,0 (at the top left
+ corner of the design grid).
+<br><br><tt><img src="img7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> The Set Hotspot tool allows you to select the hotspot</b>
+<dl>
+<dt>To create a new cursor:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New</b> from the File menu.
+<br>The Image Type dialog appears.
+<dt><br>(2)
+<dd><b> Select Cursor.</b>
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>The Cursor Format dialog box appears.&nbsp; Since cursors should be standardized, you can only choose monochrome cursors
+ 32x32 pixels.&nbsp; You cannot create a colored cursor.
+<dt><br>(4)
+<dd><b> Click on OK.</b>
+</dl>
+<br>Cursors (and icons, too) differ from bitmaps in that they almost always include pixels that blend into the background
+ of your application.&nbsp; Unless you want a rectangular shaped cursor, you must assign special screen and inverse colors
+ to the &quot;blending pixels,&quot; so that they don't obscure the areas over which you move the cursor.
+<br><br>Since you can only create black and white cursors, do not use black or white as your screen or inverse colors.&nbsp;
+ Instead, use one of the dithered colors as your screen color.&nbsp; The Image Editor automatically chooses the inverse of
+ the chosen dithered color.
+<br><br>For more information on selecting screen and inverse colors, refer to the section entitled <a href="#Selecting_Screen_and_Inverse_Colors">Selecting Screen and Inverse Colors</a>.
+<h2 id="Creating_and_Editing_Icons"> Creating and Editing Icons </h2>
+<br>With the Image Editor, you can create icons that look exactly the way you want.&nbsp; Icons are usually the user's first
+ exposure to your application, so you want them to be as professional and meaningful as possible.
+<br><br>You can create a new icon or you can create an empty icon design grid and use the Image Editor's Snap Bitmap option
+ to copy an image from your desktop to your design grid where you can edit it as desired.
+<dl>
+<dt>To create a new icon:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New</b> from the File menu.
+<br>The Image Type dialog appears.
+<dt><br>(2)
+<dd><b> Select Icon.</b>
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>The Icon Target dialog box appears.&nbsp; You can create the following types of icons:
+<ul>
+<li>16-color 32x32
+<li>2-color 32x32
+<li>2-color 32x16
+<li>16-color 16x16
+<li>2-color 16x16
+<li>256-color 48x48
+<li>16-color 48x48
+<li>16-color 24x24
+</ul>
+<dt><br>(4)
+<dd><b> Select the desired icon type.</b>
+<dt><br>(5)
+<dd><b> Click on OK.</b>
+<br>The Image Editor window displays an empty icon design grid awaiting your new creation.
+</dl>
+<br>If you want to copy an image from your desktop or from another application sitting on your desktop, select the Snap Bitmap
+ option from the toolbar and drag across the image on your desktop that you want to copy.
+</body>

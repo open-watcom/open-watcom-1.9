@@ -1,0 +1,827 @@
+<head>
+<title> Open Watcom 1.9 Spy </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_a_Window">Adding a Window</a>
+<dt><br>- C -
+<dd><a href="#Changing_the_Monitoring_State_of_the_Message">Changing the Monitoring State of the Message</a>
+<br><a href="#Clipboard_Messages">Clipboard Messages</a>
+<dt><br>- D -
+<dd><a href="#DDE_Messages">DDE Messages</a>
+<br><a href="#Deleting_a_Window">Deleting a Window</a>
+<br><a href="#Displaying_Help_for_the_Message">Displaying Help for the Message</a>
+<br><a href="#Displaying_Information_about_the_Receiving_Window">Displaying Information about the Receiving Window</a>
+<dt><br>- H -
+<dd><a href="#Highlighting_the_Receiving_Window">Highlighting the Receiving Window</a>
+<dt><br>- I -
+<dd><a href="#Init_Messages">Init Messages</a>
+<br><a href="#Input_Messages">Input Messages</a>
+<dt><br>- L -
+<dd><a href="#Listing_All_Windows">Listing All Windows</a>
+<br><a href="#Loading_a_Message_Configuration">Loading a Message Configuration</a>
+<dt><br>- M -
+<dd><a href="#MDI_Messages">MDI Messages</a>
+<br><a href="#Monitoring_All_Windows">Monitoring All Windows</a>
+<br><a href="#Mouse_Messages">Mouse Messages</a>
+<dt><br>- N -
+<dd><a href="#NC_Misc_Messages">NC Misc Messages</a>
+<br><a href="#NC_Mouse_Messages">NC Mouse Messages</a>
+<dt><br>- O -
+<dd><a href="#Other_Messages">Other Messages</a>
+<dt><br>- P -
+<dd><a href="#Pause_Spying">Pause Spying</a>
+<br><a href="#Predefined_Spy_Message_Classes">Predefined Spy Message Classes</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_Spy">Quitting Spy</a>
+<dt><br>- R -
+<dd><a href="#Resetting_the_Usage_Count">Resetting the Usage Count</a>
+<dt><br>- S -
+<dd><a href="#Saving_a_Message_Configuration">Saving a Message Configuration</a>
+<br><a href="#Saving_and_Loading_Message_Configurations">Saving and Loading Message Configurations</a>
+<br><a href="#Selecting_Individual_Messages">Selecting Individual Messages</a>
+<br><a href="#Selecting_Message_Classes">Selecting Message Classes</a>
+<br><a href="#Selecting_Messages_to_Monitor">Selecting Messages to Monitor</a>
+<br><a href="#Spy">Spy</a>
+<br><a href="#The_Spy_Menu_Bar">The Spy Menu Bar</a>
+<br><a href="#The_Spy_Toolbar">The Spy Toolbar</a>
+<br><a href="#The_Spy_Window">The Spy Window</a>
+<br><a href="#Spy__Action_When_Log_File_Exists">Spy:&nbsp; Action When Log File Exists</a>
+<br><a href="#Spy__Always_On_Top">Spy:&nbsp; Always On Top</a>
+<br><a href="#Spy__Automatic_Scrolling">Spy:&nbsp; Automatic Scrolling</a>
+<br><a href="#Spy__Clearing_the_Message_List">Spy:&nbsp; Clearing the Message List</a>
+<br><a href="#Spy__Configuring_the_Log_File">Spy:&nbsp; Configuring the Log File</a>
+<br><a href="#Spy__Default_Log_Name">Spy:&nbsp; Default Log Name</a>
+<br><a href="#Spy__Log_Name">Spy:&nbsp; Log Name</a>
+<br><a href="#Spy__Logging_Type">Spy:&nbsp; Logging Type</a>
+<br><a href="#Spy__Marking_the_Message_List">Spy:&nbsp; Marking the Message List</a>
+<br><a href="#Spy__Pause_Logging">Spy:&nbsp; Pause Logging</a>
+<br><a href="#Spy__Saving_the_Contents_of_the_Message_List">Spy:&nbsp; Saving the Contents of the Message List</a>
+<br><a href="#Spy__Setting_the_Fonts">Spy:&nbsp; Setting the Fonts</a>
+<br><a href="#Spy__Start_Logging">Spy:&nbsp; Start Logging</a>
+<br><a href="#Spy__Stop_Logging">Spy:&nbsp; Stop Logging</a>
+<br><a href="#Spy__Working_with_Log_Files">Spy:&nbsp; Working with Log Files</a>
+<br><a href="#Spying">Spying</a>
+<br><a href="#Spying_on_More_Windows">Spying on More Windows</a>
+<br><a href="#Start_Spying">Start Spying</a>
+<br><a href="#Starting_Spy">Starting Spy</a>
+<br><a href="#Stop_Spying">Stop Spying</a>
+<br><a href="#System_Messages">System Messages</a>
+<dt><br>- U -
+<dd><a href="#Unknown_Messages">Unknown Messages</a>
+<br><a href="#User_Messages">User Messages</a>
+<br><a href="#Using_Spy">Using Spy</a>
+<br><a href="#Using_the_Auto_Save_Feature">Using the Auto Save Feature</a>
+<dt><br>- V -
+<dd><a href="#Viewing_Information">Viewing Information</a>
+<br><a href="#Viewing_Information_About_a_Window">Viewing Information About a Window</a>
+<br><a href="#Viewing_Message_Information">Viewing Message Information</a>
+<br><a href="#Viewing_Window_Information">Viewing Window Information</a>
+<dt><br>- W -
+<dd><a href="#Window_Messages">Window Messages</a>
+</dl>
+<h1 id="Spy"> Spy </h1>
+<br>Most Windows programs are message based.&nbsp; Messages are sent to windows that programs create and the programs are
+ expected to react to the messages appropriately.
+<br><br>When a program does not react as expected, you must spend time debugging the program to find and correct the errors.
+&nbsp; Spy is a tool designed to help you debug Windows programs by letting you view the messages sent to windows in Win16
+ and Win32 applications.&nbsp; By watching how a program reacts to the messages it receives, you can isolate the parts of
+ your code that are causing problems and then make the required corrections.
+<br><br>With Spy:
+<ul>
+<li>you can determine if your window is receiving the messages you expect it to receive.
+<li>you can verify that your window is receiving messages in the order you expect.
+<li>novice Windows programmers can become familiar with Windows messages, by viewing the messages and their parameters.
+</ul>
+<br>As you run your Windows programs, Spy displays messages in the Spy window.&nbsp; You control the window using the menu
+ items or the Spy toolbar.
+<h2 id="Using_Spy"> Using Spy </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting Spy
+<li>Quitting Spy
+<li>The Spy Menu Bar
+<li>The Spy Toolbar
+</ul>
+<h3 id="Starting_Spy"> Starting Spy </h3>
+<br>To start Spy, double click on the Spy icon.&nbsp; This opens the Spy window.&nbsp; When you start the application, the
+ Spy window is always empty.&nbsp; This window displays the menu bar, message list and a toolbar.
+<br><br><tt><img src="spy1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Spy window contains the menu bar, message list and toolbar.</b>
+<h3 id="Quitting_Spy"> Quitting Spy </h3>
+<br>To exit Spy, choose Exit from the File menu of the Spy window.
+<h3 id="The_Spy_Menu_Bar"> The Spy Menu Bar </h3>
+<br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Save to a file, start and pause logging, and configure the session
+<dt><br>List
+<dd>Manipulate the message list by clearing, marking, and autoscrolling it
+<dt><br>Spy
+<dd>Start, stop, and pause the Spy session, select the windows you want to monitor, and gain access to information in windows.
+<dt><br>Messages
+<dd>Select the messages you want to monitor or stop on.
+<dt><br>Help
+<dd>Gain access to on-line help information
+</dl>
+<br><tt><img src="spy1a.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The Spy menu bar.</b>
+<h3 id="The_Spy_Toolbar"> The Spy Toolbar </h3>
+<br>The Spy toolbar provides quick access to commonly used menu items.&nbsp; The following explains the function each tool
+ bar button performs as well as the equivalent menu item.
+<dl>
+<dt>SELECT WINDOW
+<dd>Select a single window and start spying on it or add a window to the list of windows being spied on.&nbsp; This is equivalent
+ to the Select Window and Add Window items in the Spy menu.
+<dt><br>STOP
+<dd>Stop monitoring the selected window(s) and cancel the window selections.&nbsp; This is equivalent to the Stop Spying item
+ in the Spy menu.
+<dt><br>PEEK AT WINDOW
+<dd>Obtain information about a selected window.&nbsp; This is equivalent to the Peek at Window item in the Spy menu.
+<dt><br>MARK
+<dd>Record your own comments in the Spy window.&nbsp; This is equivalent to the Mark item in the List menu.
+<dt><br>CLEAR MESSAGE LIST
+<dd>Erase all messages from the Spy window.&nbsp; This is equivalent to the Clear Message List item in the List menu.
+<dt><br>SHOW SELECTED WINDOWS
+<dd>Obtain information about the windows open on your desktop.&nbsp; This is equivalent to the Show Selected Windows item in the
+ Spy menu.
+<dt><br>MESSAGES TO WATCH
+<dd>Select the messages you want to monitor and log.&nbsp; This is equivalent to the Messages to Watch item in the Messages menu.
+<dt><br>MESSAGES TO STOP ON
+<dd>Specify the messages you want Spy to stop on when it encounters them.&nbsp; This is equivalent to the Messages to Stop on
+ item in the Messages menu.
+</dl>
+<br><tt><img src="spy1a.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Spy toolbar.</b>
+<br><br>Only one of the following three toolbar buttons appears at a time.
+<dl>
+<dt>NOT SPYING
+<dd>This button appears when Spy is not monitoring any windows.&nbsp; Pressing this button has no effect.&nbsp; It is simply an
+ indicator to you that spying is not in progress.
+<dt><br>STOP SPYING TEMPORARILY
+<dd>This button appears when Spy is in the process of monitoring one or more windows.&nbsp; Choosing this button temporarily suspends
+ monitoring operations.&nbsp; This is equivalent to the Stop Spying Temporarily item in the Spy menu.
+<dt><br>CONTINUE SPYING
+<dd>This button appears when you instruct Spy to temporarily suspend monitoring operations.&nbsp; Choosing this button resumes
+ monitoring operations.&nbsp; This is equivalent to the Continue Spying item in the Spy menu.
+</dl>
+<h2 id="The_Spy_Window"> The Spy Window </h2>
+<br>The Spy window contains the menu bar and the toolbar discussed above.&nbsp; However, most of the Spy window is occupied
+ by the message list.&nbsp; This is where Spy logs the messages it monitors.
+<br><br><tt><img src="spy2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> Once you start spying, the message list displays the messages selected for monitoring.</b>
+<br><br>For the messages it monitors Spy displays the following information in the message list:
+<dl>
+<dt>Message Name
+<dd>Name of the message sent.
+<dt><br>hWnd
+<dd>The handle of the window that received the message.
+<dt><br>MsgID
+<dd>The numeric identifier of the message.
+<dt><br>wParam
+<dd>Data specific to the message.&nbsp; This is the value that will be passed as the wparam parameter of the window's callback
+ function.&nbsp; To find the meaning of this parameter see the section Viewing Message Information for information on how
+ to get help on a message or refer to your Windows 3.x or Win32 programmer's documentation.
+<dt><br>lParam
+<dd>Data specific to the message.&nbsp; This is the value that will be passed as the lparam parameter of the window's callback
+ function.&nbsp; To find the meaning of this parameter see the section Viewing Message Information for information on how
+ to get help on a message or refer to your Windows 3.x or Win32 programmer's documentation.
+</dl>
+<br>Several spy functions affect the appearance or behavior of the Spy window.
+<ul>
+<li>Setting the Fonts
+<li>Saving
+<li>Clearing the Message List
+<li>Marking the Message List
+<li>Automatic Scrolling
+<li>Always On Top
+</ul>
+<h3 id="Spy__Setting_the_Fonts"> Spy:&nbsp; Setting the Fonts </h3>
+<br>The Set Font item in the File menu allows you to set the font, style, and size for the text in the Spy window.&nbsp; Choosing
+ this item opens the Font dialog box.&nbsp; Select the desired font details and click on OK to close the dialog and apply
+ the fonts.
+<h3 id="Spy__Saving_the_Contents_of_the_Message_List"> Spy:&nbsp; Saving the Contents of the Message List </h3>
+<br>The Save and Save as items under the File menu in Spy allow you to save the contents of the message list to a text file.
+&nbsp; Saving information to a file enables you to print the output later or annotate the text file on-line.
+<br><br>Choose Save from the File menu in the Spy window to save the message list information into the current working directory.
+&nbsp; A message box appears indicating the path to which Spy saved the file.
+<br><br>Choose Save As from the File menu to specify the file to which you want to save the currently displayed information.
+&nbsp; This opens a Save As dialog box where you select the desired file.&nbsp; Click on OK when completed.&nbsp; A message
+ box appears indicating the path to which Spy saved the file.
+<h3 id="Spy__Clearing_the_Message_List"> Spy:&nbsp; Clearing the Message List </h3>
+<br>Choose Clear from the File menu to delete all information from the message list.
+<h3 id="Spy__Marking_the_Message_List"> Spy:&nbsp; Marking the Message List </h3>
+<br>Use the Mark function to annotate the information in the message list by entering text into it.
+<dl>
+<dt>To mark the message list :
+<dd>
+<dt><br>(1)
+<dd><b> Choose Mark</b> from the List menu.
+<br>This opens the Set Mark dialog box.
+<br><br><tt><img src="drw2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> With the Set Mark dialog, you can annotate the message list by entering text
+ and choosing a mark style.</b>
+<dt><br>(2)
+<dd><b> Type the desired text</b> in the Enter Mark Text field.
+<br>The text you enter will appear at the end of the message list
+<dt><br>(3)
+<dd><b> Select the desired Mark Style option.</b>
+<br>These options determine how the entered text is formatted when it is added to the message list When the boxed option is
+ selected, the text is displayed bordered by asterisks.&nbsp; With this option the text is easier to find.&nbsp; When the
+ plain option is selected, the text is displayed as it is entered.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>The Set Mark dialog closes and the text in the dialog appears at the end of the message list.
+</dl>
+<br><tt><img src="drw3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> Text you enter in the Set Mark dialog appears in the message list in the selected
+ style.</b>
+<h3 id="Spy__Automatic_Scrolling"> Spy:&nbsp; Automatic Scrolling </h3>
+<br>As Spy writes new information to the message list, the information is added to the bottom of the list.&nbsp; Choosing
+ Auto Scroll Message List from the List menu tells Spy to automatically scroll the information in the message list so that
+ the most recent information written to the message list always appears on the screen.&nbsp; The Auto Scroll Message List
+ menu item is checked when this feature is active.
+<br><br>When this feature is deactivated, new messages written to the message list are added to the bottom of the list and
+ you must use the scroll bar to scroll down and view the information.
+<h3 id="Spy__Always_On_Top"> Spy:&nbsp; Always On Top </h3>
+<br>The Spy window behaves like all other windows-it moves into the background when other windows are selected.&nbsp; To ensure
+ the Spy window is visible at all times, select the Always On Top item from the File menu.&nbsp; The Always On Top menu item
+ is checked when this feature is enabled.&nbsp; To turn this feature off, select the item again from the File menu.
+<h2 id="Selecting_Messages_to_Monitor"> Selecting Messages to Monitor </h2>
+<br>Each window receives an overwhelming volume of messages.&nbsp; Generally, you will only be interested in a small subset
+ of these.&nbsp; Spy lets you limit the messages on which it will report so that you do not have to sort through all the extraneous
+ data yourself.
+<br><br>Spy maintains two lists of messages:&nbsp; the messages to watch list and the messages to stop on list.&nbsp; When
+ spy monitors a message in the messages to watch list it adds information about that message to the Message List in the Spy
+ window.&nbsp; When spy monitors a message in the messages to stop on list it displays a message box reporting that the message
+ has been encountered and pauses spying operations until you restart them by selecting Continue Spying from the spy menu.
+&nbsp; Any message that does not appear on either list is ignored by Spy
+<br><br>To modify the messages to watch list choose Messages To Watch from the Messages menu.&nbsp; To modify the messages
+ to stop on list choose Messages To Stop On from the Messages menu.&nbsp; In either case, the process of modifying the list
+ is the same.&nbsp; The rest of this section explains the dialogs you use to do this.
+<h3 id="Selecting_Individual_Messages"> Selecting Individual Messages </h3>
+<br>The most precise way to modify the messages to watch or messages to stop on lists is simply to select a set of individual
+ messages to appear on the list.&nbsp; To select a set of individual messages to monitor follow these procedures.
+<dl>
+<dt>(1)
+<dd><b> Choose Messages To Watch or Messages To Stop On</b> from the Messages Menu.
+<br>This opens a Message Class dialog box.&nbsp; The caption of the dialog box reflects the menu item selected.
+<br><br><tt><img src="spy5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> In the Message Class dialog, select the Individual Message Control button.</b>
+<dt><br>(2)
+<dd><b> Click on the Individual Message Control button.</b>
+<br>This opens a dialog that contains a check box for each message.
+<br><br><tt><img src="spy6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> In the Message Range dialog, you select the individual messages you want Spy
+ to watch or stop on.</b>
+<dt><br>(3)
+<dd><b> Add or remove messages from the list of messages.</b>
+<br>A message appears on the selected list if it is checked.&nbsp; The following buttons are provided for your convenience:
+<dl>
+<dt>Clear All
+<dd>Uncheck all messages on this dialog.
+<dt><br>Set All
+<dd>Check all messages on this dialog.
+</dl>
+<dt><br>(4)
+<dd><b> Choose an action button.</b>
+<br>The following buttons allow you to proceed from this dialog:
+<dl>
+<dt>Next
+<dd>Close the current dialog and open the one for the alphabetic range of messages immediately following this one.&nbsp; Changes
+ made on the current dialog will not be saved until you press the OK button on some future message range dialog.
+<dt><br>Prev
+<dd>Close the current dialog and open the one for the alphabetic range of messages immediately preceding this one.&nbsp; Changes
+ made on the current dialog will not be saved until you press the OK button on some future message range dialog.
+<dt><br>OK
+<dd>Close the current dialog and save all changes made in it and in previous dialog that were exited using the Next or Prev button.
+<dt><br>Cancel
+<dd>Close the current dialog and ignore all changes made in it and in previous dialog that were exited using the Next or Prev
+ button.
+</dl>
+<dt><br>(5)
+<dd><b> Select OK on the Message Class dialog.</b>
+<br>The message class dialog closes and your message selections take effect.&nbsp; If you choose Cancel on the Message Class
+ dialog your message selections will be discarded.
+</dl>
+<h3 id="Selecting_Message_Classes"> Selecting Message Classes </h3>
+<br>Although modifying the list of messages to watch or stop on by selecting individual messages is more precise, you may
+ find this process tedious.&nbsp; To speed up the process several message classes have been defined for you.&nbsp; These classes
+ group messages by their function.&nbsp; The messages contained in each message class are listed in the section entitled <a href="#Predefined_Spy_Message_Classes">Predefined Spy Message Classes</a>
+<br><br>Selecting a message class adds all the individual messages in that class to the selected list.&nbsp; Similarly, de-selecting
+ a message class removes all the individual messages in that class from the selected list.
+<br><br>To select messages to monitor by class follow these procedures:
+<dl>
+<dt>(1)
+<dd><b> Choose Messages To Watch or Messages To Stop On</b> from the Messages Menu.
+<br>This opens a Message Class dialog box.&nbsp; The caption of the dialog box reflects the menu item selected.&nbsp; 
+<br><br><tt><img src="spy5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> In the Message class dialog, choose the message classes you want Spy to monitor.</b>
+<dt><br>(2)
+<dd><b> Click on the check box</b> beside the message classes you want to monitor.
+<br>A message class is selected when an X appears in the check box.&nbsp; The following buttons are available for your convenience:
+<dl>
+<dt>Clear All
+<dd>De-select all of the message classes.
+<dt><br>Set All
+<dd>Select all of the message classes.
+</dl>
+<dt><br>(3)
+<dd><b> Click on OK</b> to save your choices and close the dialog.
+<br>Selecting Cancel on this dialog exits without saving your selections.
+</dl>
+<h3 id="Predefined_Spy_Message_Classes"> Predefined Spy Message Classes </h3>
+<br>The sections that follow list the messages contained in each message class that Spy defines for you.
+<br><br>Messages followed by (*) are undocumented messages.
+<br><br>Messages followed by (**) are available under Win32 only.
+<h4 id="Clipboard_Messages"> Clipboard Messages </h4>
+<br><tt> WM_ASKCBFORMATNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CHANGECBCHAIN</tt>
+<br><tt> WM_CLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; WM_CLIPBOARDUPDATE (**)</tt>
+<br><tt> WM_COPY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_CUT</tt>
+<br><tt> WM_DESTROYCLIPBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DRAWCLIPBOARD</tt>
+<br><tt> WM_HSCROLLCLIPBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PAINTCLIPBOARD</tt>
+<br><tt> WM_PASTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; WM_RENDERALLFORMATS</tt>
+<br><tt> WM_RENDERFORMAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SIZECLIPBOARD</tt>
+<br><tt> WM_UNDO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_VSCROLLCLIPBOARD</tt>
+<h4 id="DDE_Messages"> DDE Messages </h4>
+<br><tt> WM_DDE_ACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_DDE_ADVISE</tt>
+<br><tt> WM_DDE_DATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ WM_DDE_EXECUTE</tt>
+<br><tt> WM_DDE_INITIATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DDE_POKE</tt>
+<br><tt> WM_DDE_REQUEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DDE_TERMINATE</tt>
+<br><tt> WM_DDE_UNADVISE</tt>
+<h4 id="Init_Messages"> Init Messages </h4>
+<br><tt> WM_INITDIALOG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_INITMENU</tt>
+<br><tt> WM_INITMENUPOPUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_UNINITMENUPOPUP (**)</tt>
+<h4 id="Input_Messages"> Input Messages </h4>
+<br><tt> WM_APPCOMMAND (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_BEGINDRAG (*)</tt>
+<br><tt> WM_CHAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_CHARTOITEM</tt>
+<br><tt> WM_COMMAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_CONTEXTMENU (**)</tt>
+<br><tt> WM_COPYDATA (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DEADCHAR</tt>
+<br><tt> WM_DRAGLOOP (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DRAGMOVE (*)</tt>
+<br><tt> WM_DRAGSELECT (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DROPOBJECT (*)</tt>
+<br><tt> WM_EXITSIZEMEOVE (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_HSCROLL</tt>
+<br><tt> WM_INPUT (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_INPUT_DEVICE_CHANGE
+ (**)</tt>
+<br><tt> WM_INPUTLANGCHANGE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_INPUTLANGCHANGEREQUEST (**)</tt>
+<br><tt> WM_KEYDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_KEYUP</tt>
+<br><tt> WM_LBTRACKPOINT (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MENUCHAR</tt>
+<br><tt> WM_MENUCOMMAND (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MENUDRAG (**)</tt>
+<br><tt> WM_MENUGETOBJECT (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MENURBUTTONUP (**)</tt>
+<br><tt> WM_MENUSELECT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NEXTMENU
+ (*)</tt>
+<br><tt> WM_NOTIFY (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NOTIFYFORMAT
+ (**)</tt>
+<br><tt> WM_QUERYDROPOBJECT (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_TCARD (**)</tt>
+<br><tt> WM_UNICHAR (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_VSCROLL</tt>
+<h4 id="MDI_Messages"> MDI Messages </h4>
+<br><tt> WM_ISACTIVEICON (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MDIACTIVATE</tt>
+<br><tt> WM_MDICASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MDICREATE</tt>
+<br><tt> WM_MDIDESTROY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MDIGETACTIVE</tt>
+<br><tt> WM_MDIICONARRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MDIMAXIMIZE</tt>
+<br><tt> WM_MDINEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_MDIRESTORE</tt>
+<br><tt> WM_MDISETMENU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MDITILE</tt>
+<h4 id="Mouse_Messages"> Mouse Messages </h4>
+<br><tt> WM_CAPTURECHANGED (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_LBUTTONDBLCLK</tt>
+<br><tt> WM_LBUTTONDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_LBUTTONUP</tt>
+<br><tt> WM_MBUTTONDBLCLK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MBUTTONDOWN</tt>
+<br><tt> WM_MBUTTONUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MOUSEACTIVATE</tt>
+<br><tt> WM_MOUSEHOVER (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MOUSEHWHEEL (**)</tt>
+<br><tt> WM_MOUSELEAVE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MOUSEMOVE</tt>
+<br><tt> WM_MOUSEWHEEL (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_RBUTTONDBLCLK</tt>
+<br><tt> WM_RBUTTONDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_RBUTTONUP</tt>
+<br><tt> WM_SETCURSOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_XBUTTONDBLCLK
+ (**)</tt>
+<br><tt> WM_XBUTTONDOWN (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_XBUTTONUP (**)</tt>
+<h4 id="NC_Misc_Messages"> NC Misc Messages </h4>
+<br><tt> WM_NCACTIVATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCCALCSIZE</tt>
+<br><tt> WM_NCCREATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ WM_NCDESTROY</tt>
+<br><tt> WM_NCPAINT</tt>
+<h4 id="NC_Mouse_Messages"> NC Mouse Messages </h4>
+<br><tt> WM_NCHITTEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCLBUTTONDBLCLK</tt>
+<br><tt> WM_NCLBUTTONDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCLBUTTONUP</tt>
+<br><tt> WM_NCMBUTTONDBLCLK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCMBUTTONDOWN</tt>
+<br><tt> WM_NCMBUTTONUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCMOUSEHOVER
+ (**)</tt>
+<br><tt> WM_NCMOUSELEAVE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCMOUSEMOVE</tt>
+<br><tt> WM_NCRBUTTONDBLCLK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCRBUTTONDOWN</tt>
+<br><tt> WM_NCRBUTTONUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCXBUTTONDBLCLK
+ (**)</tt>
+<br><tt> WM_NCXBUTTONDOWN (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_NCXBUTTONUP (**)</tt>
+<h4 id="Other_Messages"> Other Messages </h4>
+<br><tt> WM_CHANGEUISTATE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_COALESCE_FIRST</tt>
+<br><tt> WM_COALESCE_LAST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_COMMNOTIFY</tt>
+<br><tt> WM_CONVERTREQUEST (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CONVERTRESULT (*)</tt>
+<br><tt> WM_DROPFILES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_INTERIM
+ (*)</tt>
+<br><tt> WM_PENWINFIRST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PENWINLAST</tt>
+<br><tt> WM_PRINT (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PRINTCLIENT
+ (**)</tt>
+<br><tt> WM_QUERYSAVESTATE (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_QUEUESYNC</tt>
+<br><tt> WM_QUERYUISTATE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SIZEWAIT (*)</tt>
+<br><tt> WM_SYNCTASK (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_TESTING (*)</tt>
+<br><tt> WM_UPDATEUISTATE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_YOMICHAR (*)</tt>
+<h4 id="System_Messages"> System Messages </h4>
+<br><tt> WM_CANCELJOURNAL (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_COMPACTING</tt>
+<br><tt> WM_DEVMODECHANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DEVICECHANGE (**)</tt>
+<br><tt> WM_DISPLAYCHANGE (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_ENDSESSION</tt>
+<br><tt> WM_ENTERIDLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_ENTERMENULOOP</tt>
+<br><tt> WM_EXITMENULOOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_FILESYSCHANGE (*)</tt>
+<br><tt> WM_NULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_POWER</tt>
+<br><tt> WM_POWERBROADCAST (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SPOOLERSTATUS</tt>
+<br><tt> WM_SYSCHAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_SYSCOLORCHANGE</tt>
+<br><tt> WM_SYSCOMMAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SYSDEADCHAR</tt>
+<br><tt> WM_SYSKEYDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SYSKEYUP</tt>
+<br><tt> WM_SYSTEMERROR (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SYSTIMER (*)</tt>
+<br><tt> WM_THEMECHANGED (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_TIMECHANGE</tt>
+<br><tt> WM_TIMER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; WM_USERCHANGED (**)</tt>
+<br><tt> WM_WININICHANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_WTSSESSION_CHANGE
+ (**)</tt>
+<h4 id="User_Messages"> User Messages </h4>
+<br><tt> WM_USER</tt>
+<h4 id="Unknown_Messages"> Unknown Messages </h4>
+<br><tt> None</tt>
+<h4 id="Window_Messages"> Window Messages </h4>
+<br><tt> WM_ACTIVATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ WM_ACTIVATEAPP</tt>
+<br><tt> WM_ACTIVATESHELLWINDOW (*)&nbsp;&nbsp; WM_ALTTABACTIVE (*)</tt>
+<br><tt> WM_CANCELMODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CREATE</tt>
+<br><tt> WM_CHILDACTIVATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CLOSE</tt>
+<br><tt> WM_COMPAREITEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CTLCOLOR</tt>
+<br><tt> WM_CTLCOLORBTN (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CTLCOLORDLG (**)</tt>
+<br><tt> WM_CTLCOLOREDIT (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CTLCOLORLISTBOX (**)</tt>
+<br><tt> WM_CTLCOLORMSGBOX (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_CTLCOLORSCROLLBAR (**)</tt>
+<br><tt> WM_CTLCOLORSTATIC (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DELETEITEM</tt>
+<br><tt> WM_DESTROY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_DRAWITEM</tt>
+<br><tt> WM_DWMCOLORIZATIONCHANGED</tt>
+<br><tt>(**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DWMCOMPOSITIONCHANGED (**)</tt>
+<br><tt> WM_DWMNCRENDERINGCHANGED</tt>
+<br><tt>(**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_DWMWINDOWMAXIMIZEDCHANGE (**)</tt>
+<br><tt> WM_ENABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; WM_ENTERSIZEMOVE (*)</tt>
+<br><tt> WM_ERASEBKGND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_FONTCHANGE</tt>
+<br><tt> WM_GETDLGCODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_GETFONT</tt>
+<br><tt> WM_GETHOTKEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_GETICON
+ (**)</tt>
+<br><tt> WM_GETMINMAXINFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_GETTEXT</tt>
+<br><tt> WM_GETTEXTLENGTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_GETTITLEBARINFOEX (**)</tt>
+<br><tt> WM_HELP (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_ICONERASEBKGND</tt>
+<br><tt> WM_KILLFOCUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_MEASUREITEM</tt>
+<br><tt> WM_MOVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_MOVING (**)</tt>
+<br><tt> WM_NEXTDLGCTL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_OTHERWINDOWCREATED</tt>
+<br><tt> WM_OTHERWINDOWDESTROYED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PAINT</tt>
+<br><tt> WM_PAINTICON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PALETTECHANGED</tt>
+<br><tt> WM_PALETTEISCHANGING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_PARENTNOTIFY</tt>
+<br><tt> WM_QUERYDRAGICON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_QUERYENDSESSION</tt>
+<br><tt> WM_QUERYNEWPALETTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_QUERYOPEN</tt>
+<br><tt> WM_QUERYPARKICON (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_QUIT</tt>
+<br><tt> WM_SETFOCUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ WM_SETFONT</tt>
+<br><tt> WM_SETHOTKEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SETICON
+ (**)</tt>
+<br><tt> WM_SETREDRAW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SETTEXT</tt>
+<br><tt> WM_SETVISIBLE (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_SHOWWINDOW</tt>
+<br><tt> WM_SIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; WM_SIZING (**)</tt>
+<br><tt> WM_STYLECHANGED (**)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_STYLECHANGING (**)</tt>
+<br><tt> WM_SYNCPAINT (*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_VKEYTOITEM</tt>
+<br><tt> WM_WINDOWPOSCHANGED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WM_WINDOWPOSCHANGING</tt>
+<h3 id="Saving_and_Loading_Message_Configurations"> Saving and Loading Message Configurations </h3>
+<br>Selecting messages to monitor can be an involved procedure because of the number of options available.&nbsp; Once selected,
+ the group of message selections is called a message configuration.
+<br><br>Spy allows you to save message configurations and recall them again.&nbsp; This section describes the functions relating
+ to message configurations:
+<ul>
+<li>Using the Auto Save Feature
+<li>Saving a Message Configuration
+<li>Loading a Message Configuration
+</ul>
+<h4 id="Using_the_Auto_Save_Feature"> Using the Auto Save Feature </h4>
+<br>When the Auto Save Message Configuration feature is active Spy saves your message configuration each time you exit.&nbsp;
+ The next time you start Spy, the message configuration is automatically reloaded.
+<br><br>To activate or deactivate this feature choose the Auto Save Message Configuration item from the Messages menu.&nbsp;
+ When this feature is active its menu item is checked.
+<h4 id="Saving_a_Message_Configuration"> Saving a Message Configuration </h4>
+<br>With Spy you can save your message configurations so you can easily load a previous message configuration instead of reselecting
+ the desired messages.
+<br><br>To save a message configuration follow these procedures:
+<dl>
+<dt>(1)
+<dd><b> Select the messages you want to monitor</b> as described in the sections entitled <a href="#Selecting_Message_Classes">Selecting Message Classes</a>
+ and <a href="#Selecting_Individual_Messages">Selecting Individual Messages</a>.
+<dt><br>(2)
+<dd><b> Choose Save Message Configuration</b> from the Messages menu.
+<br>This opens a Save As dialog box.
+<dt><br>(3)
+<dd><b> Specify the desired file name and path</b> for this message configuration.
+<dt><br>(4)
+<dd><b> Click on OK</b> in the Save As dialog box when completed.
+<br>This saves the message configuration as specified and closes the dialog.
+</dl>
+<h4 id="Loading_a_Message_Configuration"> Loading a Message Configuration </h4>
+<br>To load a previously saved message configuration, follow these procedures:
+<dl>
+<dt>(1)
+<dd><b> Choose Load Message Configuration</b> from the Messages menu.
+<br>The Open dialog box appears.
+<dt><br>(2)
+<dd><b> Select the message configuration you previously saved.</b>
+<dt><br>(3)
+<dd><b> Click on OK.</b>
+<br>The Open dialog box closes and Spy loads the selected message configuration.
+</dl>
+<h2 id="Spying"> Spying </h2>
+<br>Once you have selected the messages you want Spy to monitor, you select windows for Spy to watch.&nbsp; This starts spying
+ operations.
+<h3 id="Start_Spying"> Start Spying </h3>
+<br>Message logging begins when you select a window to monitor.&nbsp; Spy monitors the selected window for the messages specified.
+&nbsp; You can start spying by selecting one window to spy on, or choosing to spy on all windows.
+<dl>
+<dt>To spy on all windows:
+<dd>
+<dt><br>(1)
+<dd><b> Choose All Windows</b> from the Spy menu.
+<br>Spy begins immediately monitoring all windows for the specified messages.&nbsp; The caption bar specifies that you are
+ monitoring all windows.
+</dl>
+<dl>
+<dt>Note:
+<dd>You can use the All Windows menu item at any time, not just to start spying.&nbsp; If you begin spying by choosing one window,
+ then want to monitor all windows, choose All Windows from the Spy menu.
+</dl>
+<dl>
+<dt>To spy on one window:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Select Window</b> from the Spy menu.
+<br>This minimizes the Spy window and opens the Select Window dialog which prompts you to choose a window to monitor.
+<br><br><tt><img src="spy8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> The Select Window dialog displays information for the window on which the cursor
+ rests.</b>
+<dt><br>(2)
+<dd><b> Position the cursor inside the icon in the dialog box.&nbsp; Press the mouse button and hold it down.</b>
+<br>As you move the cursor across the screen, the window on which the cursor is positioned has a highlighted border and information
+ about the selected window appears in the dialog box.
+<dt><br>(3)
+<dd><b> Position the cursor on the window you want to monitor.&nbsp; Release the mouse button.</b>
+<dl>
+<dt>Note:
+<dd>You can select only one window at a time using the Select Window dialog box.
+</dl>
+<dt><br>(4)
+<dd><b> Click on OK</b> to save this window selection.
+<br>This closes the Select Window dialog and returns you to the Spy window.&nbsp; The caption bar indicates the window you
+ are monitoring.
+</dl>
+<h3 id="Spying_on_More_Windows"> Spying on More Windows </h3>
+<br>Once you have started spying you can select additional windows to monitor, unless you chose All Windows to start the spy
+ process.&nbsp; You select additional windows in the same way you select one window.&nbsp; 
+<dl>
+<dt>(1)
+<dd><b> Choose Add Window</b> from the Spy menu.
+<br>This minimizes the Spy window and opens the Select Window dialog.
+<dt><br>(2)
+<dd><b> Position the cursor inside the icon in the dialog box.&nbsp; Press the mouse button and hold it down.</b>
+<br>Information about the currently selected window appears in the dialog.
+<dt><br>(3)
+<dd><b> Position the cursor on the window you want to monitor.&nbsp; Release the mouse button.</b>
+<dl>
+<dt>Note:
+<dd>You can select only one window at a time using the Select Window dialog box.
+</dl>
+<dt><br>(4)
+<dd><b> Click on OK</b> to save this window selection.
+<br>This closes the Select Window dialog and opens the Spy window.&nbsp; The window heading specifies that you are monitoring
+ multiple windows.
+</dl>
+<h3 id="Stop_Spying"> Stop Spying </h3>
+<br>Choose Done Spying from the Spy menu to stop spying on the selected windows.&nbsp; When you choose this item, Spy does
+ not retain the list of windows selected for spying.
+<h3 id="Pause_Spying"> Pause Spying </h3>
+<br>Choose Stop Spying Temporarily from the Spy menu to pause message logging.&nbsp; When you choose this item, Spy retains
+ the list of windows selected for spying.
+<br><br>The Stop Spying Temporarily menu item changes to Continue Spying when the pause is active.&nbsp; Choose Continue Spying
+ from the Spy menu to start spying again.&nbsp; This starts spying and changes the menu item back to Stop Spying Temporarily.
+<h2 id="Viewing_Message_Information"> Viewing Message Information </h2>
+<br>Double clicking on a message in the message list reveals a Message Information dialog box which contains additional information
+ about the selected message.&nbsp; This dialog displays the message, the number of times it has been issued, and the window
+ that received the selected instance of the message.
+<br><br><tt><img src="spy9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> The Message Information dialog box displays additional information about the
+ selected message.</b>
+<br><br>From the Message Information dialog you can perform the following actions:
+<ul>
+<li>Reset the usage count
+<li>Display Windows help for the message.
+<li>Change the monitoring state for the message.
+<li>Highlight the window that received the message.
+<li>Display information about the window that received the message.
+</ul>
+<h3 id="Resetting_the_Usage_Count"> Resetting the Usage Count </h3>
+<br>You can reset the usage count for the message to zero by pressing the Reset Count button on the Message Information dialog.
+&nbsp; The usage count will also be automatically reset to zero when you start spying or clear the message list.
+<h3 id="Displaying_Help_for_the_Message"> Displaying Help for the Message </h3>
+<br>You can get more information about most messages, such as the meaning of their parameters, by the Help for Message button
+ on the Message Information dialog.&nbsp; This starts the Windows help facility to display the information.&nbsp; Help is
+ not available for all messages.
+<h3 id="Changing_the_Monitoring_State_of_the_Message"> Changing the Monitoring State of the Message </h3>
+<br>The watch and stop on check boxes in the Message Information dialog indicate if the message appears in the messages to
+ watch or messages to stop on lists.&nbsp; You can add the message to either of these lists by checking the appropriate check
+ box or remove it by removing the check.
+<h3 id="Highlighting_the_Receiving_Window"> Highlighting the Receiving Window </h3>
+<br>If the window that received this message has not been destroyed you can highlight it by selecting the Highlight Window
+ button.&nbsp; This changes the border color of the window so it is easy to locate.
+<h3 id="Displaying_Information_about_the_Receiving_Window"> Displaying Information about the Receiving Window </h3>
+<br>If the window that received this message has not been destroyed you can get additional information about it by selecting
+ the Show Information button.&nbsp; This opens a Window Information dialog that displays information such as the window's
+ class, style, size and position.&nbsp; For more information on the Window Information dialog see the section entitled <a href="#Viewing_Window_Information">Viewing Window Information</a>.
+<h2 id="Spy__Working_with_Log_Files"> Spy:&nbsp; Working with Log Files </h2>
+<br>By writing the information in the message list to a log file, you have a file you can look at in case a program you are
+ running terminates your applications.&nbsp; In such a situation, your message list is lost so you have no information to
+ refer to when debugging.&nbsp; Writing to a log file also allows you to print the output later or annotate the text file
+ on-line.
+<h3 id="Spy__Configuring_the_Log_File"> Spy:&nbsp; Configuring the Log File </h3>
+<br>Choosing Configure Log from the File menu opens the Log Configuration dialog where you customize Spy's behaviour when
+ it logs to a file.&nbsp; This dialog contains four sections where you specify information.
+<br><br><tt><img src="spy10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> In the Log Configuration dialog you set the desired behaviour for Spy when logging
+ to a file.</b>
+<h4 id="Spy__Default_Log_Name"> Spy:&nbsp; Default Log Name </h4>
+<br>In the Default Log Name field, specify the file to which Spy writes when you begin logging.&nbsp; Clicking the Browse
+ button next to this field opens a Choose Log Name dialog that lets you browse your file structure while choosing the log
+ name.
+<h4 id="Spy__Log_Name"> Spy:&nbsp; Log Name </h4>
+<br>The settings in the Log Name section of the dialog indicate to Spy how the name of the log file should be determined when
+ the Log to File menu item is chosen.
+<br><br>When the Query for Log Name option is selected, Spy presents a prompt each time you select Log to File from the File
+ menu or the toolbar.&nbsp; This reveals a Choose Log Name dialog where you specify the file to which Spy writes the log information.
+<br><br>When the Use Default Log Name option is selected, Spy writes the log information to the file indicated in the Default
+ Log Name field in the Log Configuration dialog.&nbsp; No prompt appears.
+<h4 id="Spy__Action_When_Log_File_Exists"> Spy:&nbsp; Action When Log File Exists </h4>
+<br>The options in the Action When Log File Exists section of the Log Configuration dialog dictate how Spy behaves when you
+ choose Log to File and a log file already exists.
+<dl>
+<dt>Replace
+<dd>Spy writes over the existing log file.&nbsp; All information in the existing file is lost.
+<dt><br>Append
+<dd>Spy adds the new information to the end of the existing log file.
+<dt><br>Query
+<dd>Spy prompts you with a message box that allows you to choose a course of action-Replace, Append, or Cancel.
+</dl>
+<br><tt><img src="spy11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> The Log Information message box appears when logging if the Query option is
+ selected on the Log Configuration dialog.</b>
+<h3 id="Spy__Start_Logging"> Spy:&nbsp; Start Logging </h3>
+<br>Choosing Log to File from the File menu tells Spy to write all new information added to the message list to the log file.
+&nbsp; Depending on the options selected in the Log Configuration dialog, the following dialogs may appear when you choose
+ Log to File:
+<ul>
+<li>Choose Log Name dialog-On this dialog you specify the file to which Spy writes the log information.
+<li>Log Information dialog-On this dialog you choose a course of action for logging when the specified log file already exists.
+</ul>
+<dl>
+<dt>Note:
+<dd>Choosing Cancel on either of these dialogs closes the dialog and prevents logging from starting.
+</dl>
+<h3 id="Spy__Logging_Type"> Spy:&nbsp; Logging Type </h3>
+<br>There are two ways to write information to the log file:&nbsp; 
+<ul>
+<li>Continuous Logging
+<li>Periodic Logging
+</ul>
+<br>If the Continuous Logging option is activated, then as Spy writes information to the message list, it simultaneously writes
+ to a log file.
+<br><br>When the Periodic Logging option is activated, Spy writes information to the log file only after a reasonable amount
+ of information, as determined by the application, has been recorded in the message list
+<br><br>Periodic logging is more convenient because it is faster than continuous logging.&nbsp; However, if your system goes
+ down, some information will be lost.&nbsp; By simultaneously writing to the log file and the message list, continuous logging
+ allows you to store all information in a log file without the chance of losing information.
+<h3 id="Spy__Stop_Logging"> Spy:&nbsp; Stop Logging </h3>
+<br>Once the log is started, Spy continues writing to the log file until you stop logging.&nbsp; A check mark beside the Log
+ to File item in the File menu indicates that a log is being created.&nbsp; Choose this item again to stop logging.
+<h3 id="Spy__Pause_Logging"> Spy:&nbsp; Pause Logging </h3>
+<br>To temporarily stop writing information to the log file you can choose the Pause Log item from the File menu.&nbsp; A
+ check mark appears beside the item indicating that the log is currently paused.&nbsp; To restart logging, choose this item
+ again from the File menu.
+<h2 id="Viewing_Window_Information"> Viewing Window Information </h2>
+<br>In Spy you can view different window information using items in the Spy menu.&nbsp; You can view:
+<ul>
+<li>information about a specific window
+<li>a list of all windows open on your desktop
+</ul>
+<h3 id="Viewing_Information_About_a_Window"> Viewing Information About a Window </h3>
+<br>To view information about a window:
+<dl>
+<dt>(1)
+<dd><b> Choose Peek At Window</b> from the Spy menu.
+<br>This minimizes the Spy window and opens the Peek At Window dialog box.
+<dt><br>(2)
+<dd><b> Position the cursor inside the icon in the dialog box.&nbsp; Press the mouse button and hold it down.</b>
+<br>As you move the cursor across the screen, the window on which the cursor is positioned has a highlighted border and information
+ about the selected window appears in the dialog box.&nbsp; The following information is displayed:
+<dl>
+<dt>Window
+<dd>the handle of the window and its title, if it has one
+<dt><br>Class
+<dd>the name of the window class to which this window belongs
+<dt><br>Parent
+<dd>the handle of the window's parent if it has one
+<dt><br>Size
+<dd>the screen coordinates of the top right and bottom left corners of the window, followed by the window's size
+<dt><br>Window Style
+<dd>the window's style bits
+<dt><br>Class Style
+<dd>the style bits for the window's class
+<dt><br>Child ID
+<dd>a numeric identifier associated with the window when it is created (This only appears if the selected window is a child window.)
+</dl>
+<dt><br>(3)
+<dd><b> Position the cursor on the window you want to monitor.&nbsp; Release the mouse button.</b>
+<dt><br>(4)
+<dd><b> Click on OK</b> to close the dialog box.
+<br>This closes the Peek at Window dialog box and returns you to the Spy window.
+</dl>
+<h3 id="Listing_All_Windows"> Listing All Windows </h3>
+<br>To view a list of all windows open on your desktop:
+<dl>
+<dt>(1)
+<dd><b> Choose Show Selected Windows</b> from the Spy menu.&nbsp; 
+<br>This opens the Window Selection dialog box which displays the following:
+<ul>
+<li>window handles
+<li>window captions
+</ul>
+<br><tt><img src="spy13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> The Window Selection dialog displays a list of all windows currently open on
+ the desktop.</b>
+<br><br>The information appears in a hierarchical manner.&nbsp; Windows with a parent are listed, indented, directly below
+ their parent.&nbsp; Windows currently being monitored by Spy are marked with an asterisk.
+<dt><br>(2)
+<dd>From this dialog you can perform the following functions:
+<ul>
+<li>Add a window for Spy to monitor
+<li>Delete a window that Spy is monitoring
+<li>Select all windows for monitoring
+<li>View information about a window in the list
+</ul>
+</dl>
+<h4 id="Adding_a_Window"> Adding a Window </h4>
+<br>You can add a window for Spy to monitor in two ways:
+<dl>
+<dt>(1)
+<dd><b> Double click on the line</b> for the window you want to add, or
+<dt><br>(2)
+<dd><b> Click once on the line</b> for the desired window to select it and then select the Add button.
+</dl>
+<br>The window you added is now marked with an asterisk indicating that Spy is monitoring that window.
+<br><br>Click on OK to close the dialog and save the updated window list.
+<h4 id="Deleting_a_Window"> Deleting a Window </h4>
+<br>To delete a window that Spy is monitoring, do one of the following:
+<dl>
+<dt>(1)
+<dd><b> Double click on the line</b> for the window you want to delete, or
+<dt><br>(2)
+<dd><b> Click once on the line</b> for the window that you no longer want Spy to monitor and then select the Delete button.
+</dl>
+<br>This removes the asterisk from beside the window handle, indicating that Spy is no longer monitoring that window.
+<br><br>Click on OK to close the dialog and save the updated window list.
+<h4 id="Monitoring_All_Windows"> Monitoring All Windows </h4>
+<br>To instruct spy to start spying on all windows open on the desktop, check the &quot;Spy on all windows&quot; check box.
+&nbsp; Then chose the OK button to close the dialog and accept this selection.
+<h4 id="Viewing_Information"> Viewing Information </h4>
+<br>To view information about a window in the list, do the following:
+<dl>
+<dt>(1)
+<dd><b> Click once on the line</b> for the window whose information you want to view.
+<br>The selected line appears highlighted in the list.
+<dt><br>(2)
+<dd><b> Select the Show Info button</b> on the dialog.
+<br>The Window Information dialog box opens.&nbsp; The information in this dialog is identical to the information in the Peek
+ at Window dialog box.&nbsp; Refer to the section entitled <a href="#Viewing_Information_About_a_Window">Viewing Information About a Window</a>
+ for a description of the fields in this dialog.
+<dt><br>(3)
+<dd><b> Click OK.</b>
+<br>The Window Information dialog closes and you return to the Window Selection dialog.
+<dt><br>(4)
+<dd><b> Click OK</b> on the Window Selection dialog to close it.
+</dl>
+</body>

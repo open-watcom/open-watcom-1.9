@@ -1,0 +1,484 @@
+<head>
+<title> Open Watcom 1.9 Dialog Editor </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_Controls_to_a_Dialog">Adding Controls to a Dialog</a>
+<dt><br>- C -
+<dd><a href="#Changing_the_Caption_in_a_Dialog">Changing the Caption in a Dialog</a>
+<br><a href="#Changing_the_Dialog_Size">Changing the Dialog Size</a>
+<br><a href="#Changing_the_Location_of_a_Dialog">Changing the Location of a Dialog</a>
+<br><a href="#Changing_the_Name_of_a_Dialog">Changing the Name of a Dialog</a>
+<br><a href="#Controls">Controls</a>
+<br><a href="#Creating_New_Dialogs">Creating New Dialogs</a>
+<dt><br>- D -
+<dd><a href="#The_Dialog_Editor_Information_Bar">The Dialog Editor Information Bar</a>
+<br><a href="#The_Dialog_Editor_Menu_Bar">The Dialog Editor Menu Bar</a>
+<br><a href="#The_Dialog_Editor_Toolbar">The Dialog Editor Toolbar</a>
+<br><a href="#The_Dialog_Editor_Toolbox">The Dialog Editor Toolbox</a>
+<br><a href="#Dialog_Editor__Save">Dialog Editor:&nbsp; Save</a>
+<br><a href="#Dialog_Editor__Save_As">Dialog Editor:&nbsp; Save As</a>
+<br><a href="#Dialog_Functions">Dialog Functions</a>
+<br><a href="#Dialogs">Dialogs</a>
+<dt><br>- E -
+<dd><a href="#The_Edit_Window">The Edit Window</a>
+<dt><br>- M -
+<dd><a href="#Modifying_Controls_in_a_Dialog">Modifying Controls in a Dialog</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_Dialog_Editor">The Open Watcom Dialog Editor</a>
+<br><a href="#Opening_a_New_Resource_File_with_the_Dialog_Editor">Opening a New Resource File with the Dialog Editor</a>
+<br><a href="#Opening_an_Existing_Resource_File_with_the_Dialog_Editor">Opening an Existing Resource File with the Dialog Editor</a>
+<br><a href="#Opening_Existing_Dialogs">Opening Existing Dialogs</a>
+<br><a href="#Ordering_Controls_in_a_Dialog">Ordering Controls in a Dialog</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_Dialog_Editor">Quitting the Dialog Editor</a>
+<dt><br>- S -
+<dd><a href="#Saving_a_Resource_File_with_the_Dialog_Editor">Saving a Resource File with the Dialog Editor</a>
+<br><a href="#Saving_Dialogs">Saving Dialogs</a>
+<br><a href="#Starting_the_Dialog_Editor">Starting the Dialog Editor</a>
+<dt><br>- U -
+<dd><a href="#Using_the_Dialog_Editor">Using the Dialog Editor</a>
+<br><a href="#Using_the_Dialog_Editor_Window">Using the Dialog Editor Window</a>
+<dt><br>- W -
+<dd><a href="#The_Workspace">The Workspace</a>
+</dl>
+<h1 id="The_Open_Watcom_Dialog_Editor"> The Open Watcom Dialog Editor </h1>
+<br>Dialogs are windows that contain controls such as push buttons, check boxes, list boxes, and combo boxes.&nbsp; Dialogs
+ are the principle medium for the exchanging of information between the user and the application.&nbsp; You include dialogs
+ in your application to prompt the user for information, enable the user to change settings, and allow the user to make choices.
+&nbsp; Dialogs provide the medium through which users and your application can communicate with each other.
+<br><br>The Open Watcom Dialog Editor enables you to create dialogs.&nbsp; With this editor you can design and test your dialogs
+ so you can see exactly how they will look and work in your application.
+<br><br>The Dialog Editor allows you to create a new dialog or modify an existing dialog.&nbsp; When you complete the dialog
+ you can save it as a resource script or binary resource file.&nbsp; You can also save your dialog directly to an .EXE or
+ .DLL file if you originally loaded that dialog from one of these files.
+<h2 id="Using_the_Dialog_Editor"> Using the Dialog Editor </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Dialog Editor
+<li>Quitting the Dialog Editor
+<li>Saving a Resource File with the Dialog Editor
+<li>The Dialog Editor Menu Bar
+<li>The Dialog Editor Toolbar
+</ul>
+<h3 id="Starting_the_Dialog_Editor"> Starting the Dialog Editor </h3>
+<br>The Dialog Editor is a stand-alone application, so you can invoke it without first starting the Resource Editor.&nbsp;
+ To start the Dialog Editor, double click on the Dialog Editor icon in your Windows Program Manager.&nbsp; An empty Open Watcom
+ Dialog Editor window opens.&nbsp; To create a dialog resource you must first open a resource file.&nbsp; You can either open
+ a new or existing resource file.
+<br><br>How you proceed depends on whether you are opening a new resource file or working with an existing resource file.
+<br><br><tt><img src="dia1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Dialog Editor window</b>
+<h4 id="Opening_a_New_Resource_File_with_the_Dialog_Editor"> Opening a New Resource File with the Dialog Editor </h4>
+<br><b> Choose New from the File menu</b> of the Open Watcom Dialog Editor window.
+<br><br>Default dialog information appears in the editor window of the Dialog Editor window.&nbsp; The Dialog Editor window
+ is ready for you to create a new dialog resource.
+<h4 id="Opening_an_Existing_Resource_File_with_the_Dialog_Editor"> Opening an Existing Resource File with the Dialog Editor </h4>
+<dl>
+<dt>(1)
+<dd><b> Double click on the Dialog Editor icon.</b>
+<br>The Open Watcom Dialog Editor window opens.
+<dt><br>(2)
+<dd><b> Choose Open</b> from the File menu.
+<br>An Open Dialog Resource dialog appears listing all resource files.
+<dt><br>(3)
+<dd><b> Double click on the resource file you want to open</b>
+<br>or
+<dt><br>
+<dd><b> Click on the resource file you want to open</b> to select it, then<b> click on OK</b>.
+<br>A Select Dialog(s) dialog appears listing all of the dialog resources in the selected resource file.&nbsp; You can select
+ one, several, or all of the dialog resources in the resource file.&nbsp; All of the dialog resources you select will open
+ on the editor window of the Dialog Editor window.
+<dt><br>(4)
+<dd><b> Double click on the dialog you want to open.</b>
+<br>or
+<dt><br>
+<dd><b> Click on the dialogs you want to open</b> to select them, then<b> click on OK</b>.
+<br>The selected dialog(s) appears in the Open Watcom Dialog Editor window in the editor window.
+</dl>
+<br><tt><img src="dia2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> You can select one or more resources to edit</b>
+<h3 id="Quitting_the_Dialog_Editor"> Quitting the Dialog Editor </h3>
+<br>To exit the Dialog Editor, choose Exit from the File menu of the Open Watcom Dialog Editor window.
+<br><br>When you exit the Dialog Editor, it remembers the size and position of its main window and the position of the toolbox.
+&nbsp; It also remembers whether the toolbar and toolbox were hidden or not.&nbsp; The next time you open the Dialog Editor,
+ it will be set up the same way you left it.&nbsp; The Dialog Editor also remembers the directory in which you last opened
+ or saved a dialog.&nbsp; This feature makes the Dialog Editor more convenient and efficient to use.
+<h3 id="Saving_a_Resource_File_with_the_Dialog_Editor"> Saving a Resource File with the Dialog Editor </h3>
+<br>There are two functions you can use to save resource files with the Dialog Editor:
+<ul>
+<li>Save
+<li>Save As
+</ul>
+<dl>
+<dt>Important:
+<dd>You can have several resource files open in the Dialog Editor window at one time.&nbsp; The caption bar of the currently selected
+ resource file appears highlighted.&nbsp; Only this window is affected when you choose Save or Save As from the File menu.
+</dl>
+<dl>
+<dt>Note:
+<dd>Save operations will always create a file containing the dialog script(s) (.DLG) and a resource file (.RES).
+</dl>
+<h4 id="Dialog_Editor__Save"> Dialog Editor:&nbsp; Save </h4>
+<br><b> Choose Save from the File menu</b> in the Open Watcom Dialog Editor window to save any changes made to the resource
+ file.
+<br><br>After modifying individual dialog resources, you perform an update at the resource level (the Save item in the Dialog
+ menu).&nbsp; The resource file is not saved until you perform a save at the editor level as well, using the Save function.
+&nbsp; The Dialog Editor prompts you if you attempt to exit the editor without saving changes.&nbsp; Choose Yes, No, or Cancel
+ to continue.
+<h4 id="Dialog_Editor__Save_As"> Dialog Editor:&nbsp; Save As </h4>
+<dl>
+<dt>(1)
+<dd><b> Choose Save As</b> from the File menu in the Open Watcom Dialog Editor window to save any changes made to the resource
+ file.
+<br>A Save Resource dialog appears where you specify the file to which you want to save the current resource file.
+<dt><br>(2)
+<dd><b> Specify the file to which you are saving</b> by selecting an existing file or entering the name of a new file.
+<dl>
+<dt>Note:
+<dd>If you attempt to save the current resource file to an existing resource file, a Save Resource message box appears informing
+ you that the selected file already exists.&nbsp; Choosing Yes on this dialog overwrites the selected existing resource file
+ with the contents of the current resource file.&nbsp; Choosing No returns you to the Save Resource dialog.
+</dl>
+<dt><br>(3)
+<dd><b> Click on OK</b> when completed.
+<br>The dialog closes and the editor saves the resource file, returning you to the Dialog Editor window.
+</dl>
+<h3 id="The_Dialog_Editor_Menu_Bar"> The Dialog Editor Menu Bar </h3>
+<br><tt><img src="dia3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> The Dialog Editor menu bar</b>
+<br><br>The menu bar consists of the following five menus:
+<dl>
+<dt>File
+<dd>Open and save resource file, load libraries, select custom controls, work with symbols, and exit the editor
+<dt><br>Edit
+<dd>Access the clipboard functions, align and size the dialog controls, configure the dialog, and delete dialogs
+<dt><br>Dialog
+<dd>Test, revert, and save the dialog, create a new dialog, copy the dialog to another resource file, and set the order, tabs,
+ and groups for dialog controls
+<dt><br>Tools
+<dd>Select the desired tools to use to create the dialog
+<dt><br>Window
+<dd>Manipulate child windows, arrange icons, and hide/show the toolbox and toolbar
+<dt><br>Help
+<dd>Access the on-line help information
+</dl>
+<br>To see the function of an item in the menu bar or submenus, hold the mouse button and drag the cursor over the desired
+ menu item.&nbsp; A description of the item appears in the status line at the bottom of the screen.&nbsp; If you do not want
+ to select the menu item, drag the cursor off of the menu item before releasing the mouse button.
+<h3 id="The_Dialog_Editor_Toolbar"> The Dialog Editor Toolbar </h3>
+<br>In the Open Watcom Dialog Editor window, the toolbar appears below the menu bar when the Show Toolbar item in the Window
+ menu is enabled.&nbsp; Once enabled, the menu item changes to Hide Toolbar.&nbsp; To disable this feature, choose Hide Toolbar
+ from the File menu and the Toolbar disappears.
+<br><br><tt><img src="dia4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> The Dialog Editor Toolbar</b>
+<br><br>The following explains the function each icon performs, as well as the equivalent function in the menu bar.
+<dl>
+<dt>Create
+<dd>Create a new resource file.&nbsp; This is equivalent to the item New in the File menu.
+<dt><br>Open
+<dd>Open an existing resource file.&nbsp; This is equivalent to the item Open in the File menu.
+<dt><br>Save
+<dd>Save the current resource file.&nbsp; This is equivalent to the item Save in the File menu.
+<dt><br>Cut
+<dd>Cut the selected object(s) to the clipboard.&nbsp; This is equivalent to the item Cut in the Edit menu.
+<dt><br>Copy
+<dd>Copy the selected object(s) to the clipboard.&nbsp; This is equivalent to the item Copy in the Edit menu.
+<dt><br>Paste
+<dd>Paste the object(s) on the clipboard to the current resource file.&nbsp; This is equivalent to the item Paste in the Edit
+ menu.
+<dt><br>Size
+<dd>Size the selected control to the text within it.&nbsp; This is equivalent to the item Size to Text in the Edit menu.
+<dt><br>Test
+<dd>Test the current dialog.&nbsp; This is equivalent to the item Test Mode in the Dialog menu.
+<dt><br>Order
+<dd>Order the controls in the current dialog.&nbsp; This is equivalent to the item Set Order in the Dialog menu.
+<dt><br>Set Tab
+<dd>Set tab stops in the current dialog.&nbsp; This is equivalent to the item Set Tabs in the Dialog menu.
+<dt><br>Set Groups
+<dd>Set groups in the current dialog.&nbsp; This is equivalent to the item Set Groups in the Dialog menu.
+</dl>
+<br>To see the function of an item in the toolbar, position your cursor over the desired icon.&nbsp; A description of the
+ button's function appears in the status line at the bottom of the window.
+<h3 id="The_Dialog_Editor_Toolbox"> The Dialog Editor Toolbox </h3>
+<br>The toolbox allows you to conveniently select the tool you want, without having to access it through the Tools menu.&nbsp;
+ Each toolbox button represents an option in the Tools menu.&nbsp; Moving the cursor over the toolbox buttons displays the
+ function of the button in the status bar.
+<br><br><tt><img src="dia5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> The Dialog Editor toolbox</b>
+<h2 id="Using_the_Dialog_Editor_Window"> Using the Dialog Editor Window </h2>
+<br>The Open Watcom Dialog Editor window contains a menu bar, toolbar, toolbox, and status line.&nbsp; The rest of the window
+ is divided into three sections:
+<ul>
+<li>The Information Bar
+<li>The Edit Window
+<li>The Workspace
+</ul>
+<br><tt><img src="dia6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> The Dialog Editor window contains a menu bar, toolbar, workspace, and status
+ line.</b>
+<h3 id="The_Dialog_Editor_Information_Bar"> The Dialog Editor Information Bar </h3>
+<br>The Information Bar is located under the toolbar.&nbsp; It provides information about the currently selected object you
+ are adding to the dialog or modifying.&nbsp; This object can be a control or the dialog window itself.&nbsp; There are three
+ fields in the Information Bar.&nbsp; The contents of two fields depends on whether the selected object is a dialog or a control.
+&nbsp; You may press F9 to set the keyboard focus to the Information Bar.&nbsp; While the Information Bar has the keyboard
+ focus you may press ESCAPE to have the focus return to the Editor.
+<br><br><tt><img src="dia7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> The Dialog Editor information bar</b>
+<br><br>Changes made to these fields are only processed once you press ENTER or click on the Set button.&nbsp; Reverse uncommitted
+ changes by clicking on the Discard button.
+<dl>
+<dt>Size
+<dd>The Size field in this area contains three sets of numbers.&nbsp; These numbers provide information on the size and position
+ of the selected dialog or object in the Edit Window.&nbsp; The default number sequence when you create a new dialog is:
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; (20, 20) (115, 95) 95x75</tt>
+<br><br>(20, 20) indicates that the top left hand corner of the dialog is at the position 20, 20 on the Edit Window grid.
+<br><br>(115, 95) indicates that the bottom right hand corner of the dialog is at the position 115, 95 on the Edit Window
+ grid.
+<br><br>95x75 indicates the width and height of the dialog.
+</dl>
+<h4 id="Dialogs"> Dialogs </h4>
+<dl>
+<dt>Caption
+<dd>When the selected object is a dialog, this field contains the name of the dialog that you want to appear on the dialog in
+ the application.&nbsp; Any changes you make to this field are not stored until you:
+<ul>
+<li><b> Press ENTER</b>, or
+<li><b> Select the Set button</b> to the right of the field.
+</ul>
+<dt><br>Dlg Name
+<dd>When the selected object is a dialog, this field contains the name of the dialog resource.&nbsp; This is the name by which
+ the dialog is stored in the resource file.&nbsp; When you create a new dialog, the Dialog Editor assigns the default name
+ DIALOG_# to the new dialog.&nbsp; You change the name of the dialog using the Dlg Name field.
+<dl>
+<dt>To change the dialogs name:
+<dd>
+<dt><br>(1)
+<dd><b> Type the new dialog name</b> using double quotes if the dialogs name is to be an character string.
+<br>or
+<dt><br>
+<dd><b> Type the symbol name</b> (without double quotes).&nbsp; New symbols will automatically be created.
+</dl>
+</dl>
+<h4 id="Controls"> Controls </h4>
+<dl>
+<dt>Text
+<dd>When the selected object is a control, the Text field contains the text appearing in the dialog with the selected object.
+<br><tt><img src="dia8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> The information bar text field</b>
+<br><br>This field is not applicable for all objects.&nbsp; Any changes you make to this field are not stored until you:
+<ul>
+<li><b> Press ENTER</b>, or
+<li><b> Select the Set button</b> to the right of the field
+</ul>
+<dt><br>ID
+<dd>There are two parts to the ID field.&nbsp; The field on the right contains the numeric value of the currently selected control.
+&nbsp; Each control always has a numeric identifier.&nbsp; You may enter a symbol here ( new symbols will automatically be
+ created ) or a numeric identifier.
+<br>The symbol is a string used to specify the selected control.&nbsp; This is an alternate way to identify the control in
+ your source code.
+</dl>
+<h3 id="The_Edit_Window"> The Edit Window </h3>
+<br>The edit window is the window on which you create dialogs and controls.&nbsp; It represents the resource file that your
+ dialog is a part of.
+<br><br><tt><img src="dia9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> The Dialog Editor edit window</b>
+<br><br>The edit window gives you space so you can temporarily move controls off your dialog when it gets too crowded.&nbsp;
+ For example, to rearrange controls in your dialog, you can drag them onto the edit window and then drag them back onto the
+ dialog in the desired order.
+<br><br>Although you can't see it on your screen, the edit window is an infinite grid with the origin (0,0) initially at its
+ top left.&nbsp; Dialogs are always positioned relative to the edit window.&nbsp; The origin is in the middle of the world
+ co-ordinate system, which is the reason the scroll thumbs are initially in the middle of the scroll bars.
+<h3 id="The_Workspace"> The Workspace </h3>
+<br>The workspace is the area under the Information Bar on which you can manipulate several resource files.&nbsp; This area
+ can be compared to your desktop.&nbsp; For instance, if you minimize an edit window, an icon representing that edit window
+ appears in the workspace.&nbsp; The workspace provides you with an area in which to open and close edit windows.
+<br><br><tt><img src="dia10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> The Dialog Editor workspace</b>
+<h2 id="Dialog_Functions"> Dialog Functions </h2>
+<br>This section describes the several functions you can perform with the Dialog Editor.&nbsp; The following tasks are included
+ in this section:
+<ul>
+<li>Creating New Dialogs
+<li>Opening Existing Dialogs
+<li>Changing the Dialog Size
+<li>Changing the Location of a Dialog
+<li>Saving Dialogs
+<li>Changing the Name of a Dialog
+<li>Changing the Caption in a Dialog
+<li>Adding Controls to a Dialog
+<li>Modifying Controls in a Dialog
+<li>Ordering Controls in a Dialog
+</ul>
+<h3 id="Creating_New_Dialogs"> Creating New Dialogs </h3>
+<br>When you open the Dialog Editor, it displays an empty dialog box in the editor window of the Dialog Editor window.&nbsp;
+ You can change the size and location of this dialog and add controls to it to meet the needs of your application.&nbsp; However,
+ if you are not happy with the changes you have made and want to delete your dialog to start over again, or if you want to
+ modify more than one dialog at a time, you can create another empty dialog in one of the following ways:
+<dl>
+<dt>(1)
+<dd><b> Select New</b> from the File menu.
+<dt><br>(2)
+<dd><b> Select New</b> from the toolbar.
+<dt><br>(3)
+<dd><b> Draw another dialog</b> in the editor window with the &quot;dialog&quot; item from the toolbox.
+</dl>
+<br>An empty dialog named &quot;Untitled&quot; appears in the editor window.&nbsp; Now you can add controls to the empty dialog,
+ and change its size and location within the edit window.
+<h3 id="Opening_Existing_Dialogs"> Opening Existing Dialogs </h3>
+<br>You can open a dialog from any .RES, .EXE, or .DLL file to your edit window where you can modify it.&nbsp; To do this:
+<dl>
+<dt>(1)
+<dd><b> Open the file you want,</b> in one of the following ways:
+<ul>
+<li>Select Open from the file menu, or
+<li>Select the Open button from the toolbar.
+</ul>
+<dt><br>(2)
+<dd><b> Select the .RES, .EXE, or .DLL file</b> that contains the dialog you want to copy.
+<br>The Open Watcom Dialog Editor Open Resource dialog appears.
+<dt><br>(3)
+<dd><b> Select the resource file you want.</b>
+<dt><br>(4)
+<dd><b> Select the name of the file you want,</b> in one of the following ways:
+<ul>
+<li>Select the name and press OK, or
+<li>Double click on the name of the file.
+</ul>
+<br>If there are any dialog resources in the file, the Select Dialog appears listing the names of all the dialog resources
+ that exist in that resource file.
+<dl>
+<dt>Note:
+<dd>If the file does not contain any dialog resources, the main screen appears with an empty edit window and dialog for you to
+ add controls and modify.
+</dl>
+<dt><br>(5)
+<dd><b> Select one or more dialogs to place in the edit window</b> in one of the following ways:
+<ul>
+<li>Double click on the dialogs you wish to modify, or
+<li>Select the dialogs you wish to modify and select OK.
+</ul>
+<br>The dialog you copied appears in the edit window of your main screen.&nbsp; From here you can add controls to the dialog
+ and modify its size and location.
+</dl>
+<h3 id="Changing_the_Dialog_Size"> Changing the Dialog Size </h3>
+<br>To modify the size of a dialog,
+<dl>
+<dt>(1)
+<dd><b> Select the dialog.</b>
+<dt><br>(2)
+<dd><b> Position the mouse</b> above the appropriate sizing handle.
+<dt><br>(3)
+<dd><b> Drag the dialog's sizing handle</b> until the dialog is the size you want.
+</dl>
+<br>You will notice that the dialog size information in the Information Bar will track the size of the dialog.
+<h3 id="Changing_the_Location_of_a_Dialog"> Changing the Location of a Dialog </h3>
+<br>Since you will want all parts of your dialog to be visible to your users and grab their attention, you can modify the
+ location of your dialog relative to the parent window.&nbsp; To do this:
+<dl>
+<dt>(1)
+<dd><b> Position the mouse</b> either above the dialog caption or within several pixels of the dialog's border (while remaining
+ in the dialog).
+<dt><br>(2)
+<dd><b> Drag the dialog</b> to the position you want in the edit window.
+</dl>
+<br>You will notice that the dialog size information in the Information Bar will track the location of the dialog.
+<h3 id="Saving_Dialogs"> Saving Dialogs </h3>
+<br>It is a good idea to save changes to your dialog as you modify it rather than wait for the Dialog Editor to prompt you
+ when you close your dialog or exit the Dialog Editor.&nbsp; There are five ways to save dialogs.&nbsp; The two primary ways
+ to save a dialog are to select one of the following from the file menu:
+<ul>
+<li>Save
+<li>Save As
+</ul>
+<br>Selecting Save or Save As from the File menu saves the entire resource file in which your dialog resides, updating any
+ changes you made to your dialog in the process.
+<br><br>In addition, there are three other ways to save your dialog.&nbsp; You can choose Save, Save As, or Copy To from the
+ Dialog menu.&nbsp; Saving a dialog from the Dialog menu only saves one resource - the currently selected dialog - not the
+ entire resource file which typically contains numerous resources.
+<dl>
+<dt>Warning:
+<dd>If you choose to select Save or Save As from the dialog menu you will only be saving the current dialog and not any of the
+ other resources in the resource file.&nbsp; If you save the dialog under the same name as the resource file, you will overwrite
+ all the resources in that file and be left with a resource file that contains nothing more than your dialog.
+</dl>
+<h3 id="Changing_the_Name_of_a_Dialog"> Changing the Name of a Dialog </h3>
+<br>The name of a dialog is the name associated with the dialog resource when you save it to a dialog resource file.
+<br><br>To avoid name conflicts, (you can't have two dialog resources with the same name, in the same file) you will want
+ to change the name of your dialog (the editor gives you one as a default).&nbsp; Type in the edit field a name you want to
+ give your dialog or, if symbols have been loaded, you can select a symbol from the combo box.&nbsp; You can drop down the
+ combo list box and select a symbol from there.
+<br><br><tt><img src="dia11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> The combo box is labelled &quot;ID&quot;.</b>
+<h3 id="Changing_the_Caption_in_a_Dialog"> Changing the Caption in a Dialog </h3>
+<br>A dialog's caption is the text that appears in the title bar of the dialog.
+<br><br>You can type in the edit field of the Information Bar to change the caption's name.
+<h3 id="Adding_Controls_to_a_Dialog"> Adding Controls to a Dialog </h3>
+<br>Select a tool that will allow you to create controls by selecting an item from the Tools menu or from the toolbox.
+<br><br>There are two ways in which controls may be drawn in the dialog.
+<dl>
+<dt>
+<dd><b> Click the left mouse button</b> at the position where you would like the top left corner of the control to be.&nbsp; The
+ control will be created in its default size.
+<br>or
+<dt><br>
+<dd><b> Press the left mouse button and drag out a rectangle.</b>&nbsp; Release the left mouse button.
+</dl>
+<br>The tool box goes back to select mode when you draw a control (the current tool becomes the select tool).
+<br><br>To draw more than one of the same types of controls without having to choose the control from the toolbar or menu
+ every time, choose the sticky tool which causes the tool to stay down.
+<h3 id="Modifying_Controls_in_a_Dialog"> Modifying Controls in a Dialog </h3>
+<br>Once you have created controls for your dialog you can modify the controls as follows:
+<dl>
+<dt>(1)
+<dd><b> Double-click the control.</b>
+<br>or
+<dt><br>
+<dd><b> Select the control and Press ENTER.</b>
+<br>A Style dialog box appears.
+</dl>
+<br>Once in the Dialog editor, you can define your dialog box.&nbsp; You can also add, change, group, reorder, move, resize,
+ ore delete dialog controls so that your dialog box functions the way you want it to.
+<h3 id="Ordering_Controls_in_a_Dialog"> Ordering Controls in a Dialog </h3>
+<br>There is an ordering associated with the controls of a dialog.&nbsp; This ordering is commonly referred to as the &quot;tab
+ order&quot; and controls which dialog control is highlighted next when you press the TAB or cursor keys.&nbsp; As you add
+ controls to a dialog, they are added to the end of the list.
+<br><br>The Dialog editor allows you to change this ordering using a simple &quot;point-and-click&quot; technique.&nbsp; To
+ do this:
+<dl>
+<dt>(1)
+<dd><b> Select the dialog</b>
+<dt><br>(2)
+<dd><b> Select Set Order</b> from the Dialog Menu dialog
+<br>or
+<dt><br>
+<dd><b> Press the Set Order button</b> on the toolbar
+<br>All of the controls in the dialog now have a button at their top-left corner indicating their current position.
+<dt><br>(3)
+<dd><b> Click the dialog controls</b> in order until the ordering is what you would like.
+<dt><br>(4)
+<dd><b> Select Set Order</b> from the Dialog Menu dialog
+<br>or
+<dt><br>
+<dd><b> Press the Set Order button</b> on the toolbar
+<br>Reselecting Set Order will terminate the ordering session and record any changes made.
+</dl>
+<br>As you click the dialog controls you will notice two things.&nbsp; First, the buttons at the dialog controls top-left
+ take on a &quot;depressed&quot; look.&nbsp; This indicates a button you have already clicked.&nbsp; Second, the unselected
+ or unclicked buttons will reorder themselves to reflect any changes you have made so far.&nbsp; This will allow you terminate
+ the ordering session without having to click all of the dialogs controls.
+<br><br>Clicking on a dialog control that is in the &quot;depressed&quot; or selected state will undo the new ordering you
+ have given it and it will go back to its original position.&nbsp; If a &quot;depressed&quot; dialog control already has its
+ original position then it finds the first available position.&nbsp; This feature is handy if you make a mistake and would
+ like to perform a quick fix.
+<br><br>There may be a point in the ordering process where you decide to start over from the beginning.&nbsp; Instead of clicking
+ over all the dialog controls you have previously clicked or leaving and then re-entering the Set Order mode you may simply
+ double click the dialog control you wish to be first.&nbsp; This will undo all that you have done and make the selected dialog
+ control the first one.
+<br><br>You may run into a situation where the first n dialog controls are correctly ordered but subsequent one are not.&nbsp;
+ Before you begin to click through the first n dialog controls note that there is a better way.&nbsp; Simply shift-click the
+ n'th control to accept the current ordering up to that point and proceed.
+</body>

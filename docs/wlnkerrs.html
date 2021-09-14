@@ -1,0 +1,730 @@
+<head>
+<title> Open Watcom 1.9 Linker Diagnostic Messages </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- 1 -
+<dd><a href="#1014_stack_segment_not_found">1014 stack segment not found</a>
+<br><a href="#1019_segment_relocation_at__a">1019 segment relocation at %a</a>
+<br><a href="#1023_no_starting_address_found__using__a">1023 no starting address found, using %a</a>
+<br><a href="#1027_redefinition_of__S_ignored">1027 redefinition of %S ignored</a>
+<br><a href="#1028_2028__S_is_an_undefined_reference">1028,2028 %S is an undefined reference</a>
+<br><a href="#1032_record_Ltype_0x_xR_not_processed">1032 record (type 0x%x) not processed</a>
+<br><a href="#1038_DEBUG_directive_appears_after_object_files">1038 DEBUG directive appears after object files</a>
+<br><a href="#1043_duplicate_exported_ordinal">1043 duplicate exported ordinal</a>
+<br><a href="#1044_2044_exported_symbol__s_not_found">1044,2044 exported symbol %s not found</a>
+<br><a href="#1045_segment_attribute_defined_more_than_once">1045 segment attribute defined more than once</a>
+<br><a href="#1046_segment_name__s_not_found">1046 segment name %s not found</a>
+<br><a href="#1047_class_name__s_not_found">1047 class name %s not found</a>
+<br><a href="#1048_inconsistent_attributes_for_automatic_data_segment">1048 inconsistent attributes for automatic data segment</a>
+<br><a href="#1050_invalid_DLL_specified_in_OLDLIBRARY_option">1050 invalid DLL specified in OLDLIBRARY option</a>
+<br><a href="#1054_debugging_information_incompatible__using_line_numbers_only">1054 debugging information incompatible:&nbsp; using line numbers only</a>
+<br><a href="#1058__s_option_not_valid_for__s_executable">1058 %s option not valid for %s executable</a>
+<br><a href="#1059_2059_value_for__s_too_large">1059,2059 value for %s too large</a>
+<br><a href="#1060_value_for__s_incorrect">1060 value for %s incorrect</a>
+<br><a href="#1061_multiple_values_specified_for_REALBREAK">1061 multiple values specified for REALBREAK</a>
+<br><a href="#1062_export_and_import_records_not_valid_for__f">1062 export and import records not valid for %f</a>
+<br><a href="#1069_unload_CHECK_procedure_not_found">1069 unload CHECK procedure not found</a>
+<br><a href="#1072_SECTION_directive_not_allowed_in_root">1072 SECTION directive not allowed in root</a>
+<br><a href="#1076__s_option_multiply_specified">1076 %s option multiply specified</a>
+<br><a href="#1080_file__s_is_a__dMbit_object_file">1080 file %s is a %d-bit object file</a>
+<br><a href="#1087_stack_segment_ignored_in__COM_file">1087 stack segment ignored in .COM file</a>
+<br><a href="#1090_redefinition_of__s_by__s_ignored">1090 redefinition of %s by %s ignored</a>
+<br><a href="#1098_Offset_option_must_be_a_multiple_of__dK">1098 Offset option must be a multiple of %dK</a>
+<br><a href="#1101_invalid_incremental_information_file">1101 invalid incremental information file</a>
+<br><a href="#1102_object_file__s_not_found_for_tracing">1102 object file %s not found for tracing</a>
+<br><a href="#1103_library_module__sL_sR_not_found_for_tracing">1103 library module %s(%s) not found for tracing</a>
+<br><a href="#1105_cannot_reserve__l_bytes_of_extra_overlay_space">1105 cannot reserve %l bytes of extra overlay space</a>
+<br><a href="#1107_undefined_system_name___s">1107 undefined system name:&nbsp; %s</a>
+<br><a href="#1108_system__s_defined_more_than_once">1108 system %s defined more than once</a>
+<br><a href="#1109_OFFSET_option_is_less_than_the_stack_size">1109 OFFSET option is less than the stack size</a>
+<br><a href="#1110_library_members_not_allowed_in_libfile">1110 library members not allowed in libfile</a>
+<br><a href="#1111_error_in_default_system_block">1111 error in default system block</a>
+<br><a href="#1115_environment_name__s_not_found">1115 environment name %s not found</a>
+<br><a href="#1116_overlay_area_must_be_at_least__l_bytes">1116 overlay area must be at least %l bytes</a>
+<br><a href="#1117_segment_number_too_high_for_a_movable_entry_point">1117 segment number too high for a movable entry point</a>
+<br><a href="#1118_heap_size_too_large">1118 heap size too large</a>
+<br><a href="#1121___s__has_already_been_exported">1121 '%s' has already been exported</a>
+<br><a href="#1124_lazy_reference_for__S_has_different_default_resolutions">1124 lazy reference for %S has different default resolutions</a>
+<br><a href="#1125_multiple_aliases_found_for__S">1125 multiple aliases found for %S</a>
+<br><a href="#1126__s_has_been_modified__doing_full_relink">1126 %s has been modified:&nbsp; doing full relink</a>
+<br><a href="#1130__s_is_an_invalid_shared_nlm_file">1130 %s is an invalid shared nlm file</a>
+<br><a href="#1133_no_realbreak_specified_for_16Mbit_code">1133 no realbreak specified for 16-bit code</a>
+<br><a href="#1134__s_is_an_invalid_message_file">1134 %s is an invalid message file</a>
+<br><a href="#1136_segment_relocation_to_a_readDwrite_data_segment_found_at__aL_SR">1136 segment relocation to a read/write data segment found at %a(%S)</a>
+<br><a href="#1140_invalid_message_number">1140 invalid message number</a>
+<br><a href="#1141_virtual_function_table_record_for__s_mismatched">1141 virtual function table record for %s mismatched</a>
+<br><a href="#1143_not_enough_memory_to_sort_map_file_symbols">1143 not enough memory to sort map file symbols</a>
+<br><a href="#1145__S_is_both_pure_virtual_and_nonMpure_virtual">1145 %S is both pure virtual and non-pure virtual</a>
+<br><a href="#1148_Invalid_segment_type_specified">1148 Invalid segment type specified</a>
+<br><a href="#1149_Only_one_debugging_format_can_be_specified">1149 Only one debugging format can be specified</a>
+<br><a href="#1150_file__s_has_code_for_a_different_processor">1150 file %s has code for a different processor</a>
+<br><a href="#1158_problem_adding_resource_information">1158 problem adding resource information</a>
+<br><a href="#1162_relocations_on_iterated_data_not_supported">1162 relocations on iterated data not supported</a>
+<br><a href="#1163_module_has_not_been_compiled_with_the__zv__option">1163 module has not been compiled with the &quot;zv&quot; option</a>
+<br><a href="#1165_resource_file__s_too_big">1165 resource file %s too big</a>
+<br><a href="#1167_NLM_internal_name_L_sR_truncated">1167 NLM internal name (%s) truncated</a>
+<br><a href="#1170_directive__s_can_only_occur_once">1170 directive %s can only occur once</a>
+<br><a href="#1171_locally_defined_symbol__s_imported">1171 locally defined symbol %s imported</a>
+<br><a href="#1172_stack_size_is_less_than__d_bytes_">1172 stack size is less than %d bytes.</a>
+<br><a href="#1174_IOPL_bytes_in_EXPORT_directive_odd__ignoring_low_bit">1174 IOPL bytes in EXPORT directive odd, ignoring low bit</a>
+<dt><br>- 2 -
+<dd><a href="#2002_TT_internal_TT_M__s">2002 ** internal ** - %s</a>
+<br><a href="#2008_cannot_open__s1____s2">2008 cannot open %s1 :&nbsp; %s2</a>
+<br><a href="#2010_3010_IDO_error_processing__s1____s2">2010,3010 I/O error processing %s1 :&nbsp; %s2</a>
+<br><a href="#2011_invalid_object_file_attribute">2011 invalid object file attribute</a>
+<br><a href="#2012_invalid_library_file_attribute">2012 invalid library file attribute</a>
+<br><a href="#2015_bad_relocation_type_specified">2015 bad relocation type specified</a>
+<br><a href="#2016__a__absolute_target_invalid_for_selfMrelative_relocation">2016 %a:&nbsp; absolute target invalid for self-relative relocation</a>
+<br><a href="#2017_bad_location_specified_for_selfMrelative_relocation_at__a">2017 bad location specified for self-relative relocation at %a</a>
+<br><a href="#2018_relocation_offset_at__a_is_out_of_range">2018 relocation offset at %a is out of range</a>
+<br><a href="#2020_size_of_group__s_exceeds_64k_by__l_bytes">2020 size of group %s exceeds 64k by %l bytes</a>
+<br><a href="#2021_size_of_segment__s_exceeds_64k_by__l_bytes">2021 size of segment %s exceeds 64k by %l bytes</a>
+<br><a href="#2022_cannot_have_a_starting_address_with_an_imported_symbol">2022 cannot have a starting address with an imported symbol</a>
+<br><a href="#2024_missing_overlay_loader">2024 missing overlay loader</a>
+<br><a href="#2025_short_vector__d_is_out_of_range">2025 short vector %d is out of range</a>
+<br><a href="#2026_redefinition_of_reserved_symbol__s">2026 redefinition of reserved symbol %s</a>
+<br><a href="#2029_premature_end_of_file_encountered">2029 premature end of file encountered</a>
+<br><a href="#2030_multiple_starting_addresses_found">2030 multiple starting addresses found</a>
+<br><a href="#2031_segment__s_is_in_group__s_and_group__s">2031 segment %s is in group %s and group %s</a>
+<br><a href="#2033_3033_directive_error_near___s_">2033,3033 directive error near '%s'</a>
+<br><a href="#2034__a_cannot_have_an_offset_with_an_imported_symbol">2034 %a cannot have an offset with an imported symbol</a>
+<br><a href="#2039_ALIGNMENT_value_too_small">2039 ALIGNMENT value too small</a>
+<br><a href="#2040_ordinal_in_IMPORT_directive_not_valid">2040 ordinal in IMPORT directive not valid</a>
+<br><a href="#2041_ordinal_in_EXPORT_directive_not_valid">2041 ordinal in EXPORT directive not valid</a>
+<br><a href="#2042_too_many_IOPL_words_in_EXPORT_directive">2042 too many IOPL words in EXPORT directive</a>
+<br><a href="#2049_invalid_STUB_file">2049 invalid STUB file</a>
+<br><a href="#2051_STUB_file_name_same_as_executable_file_name">2051 STUB file name same as executable file name</a>
+<br><a href="#2052_relocation_at__a_not_in_the_same_segment">2052 relocation at %a not in the same segment</a>
+<br><a href="#2053__a__cannot_reach_a_DLL_with_a_relative_relocation">2053 %a:&nbsp; cannot reach a DLL with a relative relocation</a>
+<br><a href="#2055__a__frame_must_be_the_same_as_the_target_in_protected_mode">2055 %a:&nbsp; frame must be the same as the target in protected mode</a>
+<br><a href="#2056_cannot_find_library_member__sL_sR">2056 cannot find library member %s(%s)</a>
+<br><a href="#2063_invalid_relocation_for_flat_memory_model_at__a">2063 invalid relocation for flat memory model at %a</a>
+<br><a href="#2064_cannot_combine_32Mbit_segments_L_s1R_with_16Mbit_segments_L_s2R">2064 cannot combine 32-bit segments (%s1) with 16-bit segments (%s2)</a>
+<br><a href="#2065_REALBREAK_symbol__s_not_found">2065 REALBREAK symbol %s not found</a>
+<br><a href="#2066_invalid_relative_relocation_type_for_an_import_at__a">2066 invalid relative relocation type for an import at %a</a>
+<br><a href="#2067__a__cannot_relocate_between_code_and_data_in_Novell_formats">2067 %a:&nbsp; cannot relocate between code and data in Novell formats</a>
+<br><a href="#2068_absolute_segment_fixup_not_valid_in_protected_mode">2068 absolute segment fixup not valid in protected mode</a>
+<br><a href="#2070_START_procedure_not_found">2070 START procedure not found</a>
+<br><a href="#2071_EXIT_procedure_not_found">2071 EXIT procedure not found</a>
+<br><a href="#2073_bad_Novell_file_format_specified">2073 bad Novell file format specified</a>
+<br><a href="#2074_circular_alias_found_for__s">2074 circular alias found for %s</a>
+<br><a href="#2075_expecting_an_END_directive">2075 expecting an END directive</a>
+<br><a href="#2082_invalid_record_type_0x_x">2082 invalid record type 0x%x</a>
+<br><a href="#2083_cannot_reference_address__a_from_frame__x">2083 cannot reference address %a from frame %x</a>
+<br><a href="#2084_target_offset_exceeds_64K_at__a">2084 target offset exceeds 64K at %a</a>
+<br><a href="#2086_invalid_starting_address_for__COM_file">2086 invalid starting address for .COM file</a>
+<br><a href="#2089_program_too_large_for_a__COM_file">2089 program too large for a .COM file</a>
+<br><a href="#2091_group__s_is_in_more_than_one_overlay">2091 group %s is in more than one overlay</a>
+<br><a href="#2092_NEWSEGMENT_directive_appears_before_object_files">2092 NEWSEGMENT directive appears before object files</a>
+<br><a href="#2093_cannot_open__s">2093 cannot open %s</a>
+<br><a href="#2094_iDo_error_processing__s">2094 i/o error processing %s</a>
+<br><a href="#2099_symbol_name_too_long___s">2099 symbol name too long:&nbsp; %s</a>
+<br><a href="#2119_wlib_import_statement_incorrect">2119 wlib import statement incorrect</a>
+<br><a href="#2120_application_too_large_to_run_under_DOS">2120 application too large to run under DOS</a>
+<br><a href="#2127_cannot_export_symbol__S">2127 cannot export symbol %S</a>
+<br><a href="#2132_curly_brace_delimited_list_incorrect">2132 curly brace delimited list incorrect</a>
+<br><a href="#2146__s_is_an_invalid_object_file">2146 %s is an invalid object file</a>
+<br><a href="#2151_big_endian_code_not_supported">2151 big endian code not supported</a>
+<br><a href="#2152_no_dictionary_found">2152 no dictionary found</a>
+<br><a href="#2154_cannot_execute__s1____s2">2154 cannot execute %s1 :&nbsp; %s2</a>
+<br><a href="#2155_relocation_at__a_to_an_improperly_aligned_target">2155 relocation at %a to an improperly aligned target</a>
+<br><a href="#2156_OPTION_INCREMENTAL_must_be_one_of_the_first_directives_specified">2156 OPTION INCREMENTAL must be one of the first directives specified</a>
+<br><a href="#2166_both__s1_and__s2_marked_as_starting_symbols">2166 both %s1 and %s2 marked as starting symbols</a>
+<br><a href="#2169_location_counter_already_beyond_fixed_segment_address__a">2169 location counter already beyond fixed segment address %a</a>
+<dt><br>- 3 -
+<dd><a href="#3009_dynamic_memory_exhausted">3009 dynamic memory exhausted</a>
+<br><a href="#3013_break_key_detected">3013 break key detected</a>
+<br><a href="#3057_executable_format_has_been_established">3057 executable format has been established</a>
+<br><a href="#3088_virtual_memory_exhausted">3088 virtual memory exhausted</a>
+<br><a href="#3097_too_many_library_modules">3097 too many library modules</a>
+<br><a href="#3114_environment_name_specified_incorrectly">3114 environment name specified incorrectly</a>
+<br><a href="#3122_no_FILE_directives_found">3122 no FILE directives found</a>
+<br><a href="#3123_overlays_are_not_supported_in_this_version_of_the_linker">3123 overlays are not supported in this version of the linker</a>
+<br><a href="#3128_directive_error_near_beginning_of_input">3128 directive error near beginning of input</a>
+<br><a href="#3129_address_information_too_large">3129 address information too large</a>
+<br><a href="#3131_cannot_open_spill_file__file_already_exists">3131 cannot open spill file:&nbsp; file already exists</a>
+<br><a href="#3135_need_exactly_1_overlay_area_with_dynamic_overlay_manager">3135 need exactly 1 overlay area with dynamic overlay manager</a>
+<br><a href="#3137_too_many_errors_encountered">3137 too many errors encountered</a>
+<br><a href="#3138_invalid_filename___s_">3138 invalid filename '%s'</a>
+<br><a href="#3139_cannot_have_both_16Mbit_and_32Mbit_object_files">3139 cannot have both 16-bit and 32-bit object files</a>
+<br><a href="#3147_Ambiguous_format_specified">3147 Ambiguous format specified</a>
+<br><a href="#3157_no_code_or_data_present">3157 no code or data present</a>
+<br><a href="#3159_incremental_linking_only_supports_DWARF_debugging_information">3159 incremental linking only supports DWARF debugging information</a>
+<br><a href="#3160_incremental_linking_does_not_support_dead_code_elimination">3160 incremental linking does not support dead code elimination</a>
+<br><a href="#3164_incremental_linking_does_not_support_virtual_function_removal">3164 incremental linking does not support virtual function removal</a>
+<br><a href="#3168_exactly_one_export_must_exist_for_VxD_format">3168 exactly one export must exist for VxD format</a>
+<br><a href="#3173_default_data_segment_exceeds_maximum_size_by__l_bytes">3173 default data segment exceeds maximum size by %l bytes</a>
+<dt><br>- P -
+<dd><a href="#PowerPP_Linker_Diagnostic_Messages">Power++ Linker Diagnostic Messages</a>
+</dl>
+<h1 id="PowerPP_Linker_Diagnostic_Messages"> Power++ Linker Diagnostic Messages </h1>
+<br>The Power++ Linker issues three classes of messages; fatal errors, errors and warnings.&nbsp; Each message has a 4-digit
+ number associated with it.&nbsp; Fatal messages start with the digit 3, error messages start with the digit 2, and warning
+ messages start with the digit 1.&nbsp; It is possible for a message to be issued as a warning or an error.
+<br><br>If a fatal error occurs, the linker will terminate immediately and no executable file will be generated.
+<br><br>If an error occurs, the linker will continue to execute so that all possible errors are issued.&nbsp; However, no
+ executable file will be generated since these errors do not permit a proper executable file to be generated.
+<br><br>If a warning occurs, the linker will continue to execute.&nbsp; A warning message is usually informational and does
+ not prevent the creation of a proper executable file.&nbsp; However, all warnings should eventually be corrected.
+<br><br>The messages listed contain references to<tt> %s, %S, %a, %x, %d, %l,</tt> and<tt> %f.</tt>&nbsp; They represent strings
+ that are substituted by the Power++ Linker to make the error message more precise.
+<ol>
+<li><tt> %s</tt> represents a string.&nbsp; This may be a segment or group name, or the name of a linker directive or option.
+<li><tt> %S</tt> represents the name of a symbol.
+<li><tt> %a</tt> represents an address.&nbsp; The format of the address depends on the format of the executable file being
+ generated.
+<li><tt> %x</tt> represents a hexadecimal number.
+<li><tt> %d</tt> represents integers in the range -32768 and 32767.
+<li><tt> %l</tt> represents integers in the range -2147483648 and 2147483647.
+<li><tt> %f</tt> represents an executable file format such as DOS, ZDOS, WINDOWS, PHARLAP, NOVELL, OS2, QNX or ELF.
+</ol>
+<br>The following is a list of all warning and error messages produced by the Power++ Linker followed by a description of
+ the message.&nbsp; A message may contain more than one reference to &quot;%s&quot;.&nbsp; In such a case, the description
+ will reference them as &quot;%sn&quot; where n is the occurrence of &quot;%s&quot; in the message.
+<h2 id="2002_TT_internal_TT_M__s"> 2002 ** internal ** - %s </h2>
+<br>If this message occurs, you have found a bug in the linker and should report it.
+<h2 id="2008_cannot_open__s1____s2"> 2008 cannot open %s1 :&nbsp; %s2 </h2>
+<br>An error occurred while trying to open the file &quot;%s1&quot;.&nbsp; The reason for the error is given by &quot;%s2&quot;.
+&nbsp; Generally this error message is issued when the linker cannot open a file (e.g., an object file or an executable file).
+<h2 id="3009_dynamic_memory_exhausted"> 3009 dynamic memory exhausted </h2>
+<br>The linker uses all available memory when linking an application.&nbsp; For DOS-hosted versions of the linker, this includes
+ expanded memory (EMS) and extended memory.&nbsp; When all available memory is used, a spill file will be used.&nbsp; Therefore,
+ unless you are low on disk space, the linker will always be able to generate the executable file.
+<h2 id="2010_3010_IDO_error_processing__s1____s2"> 2010,3010 I/O error processing %s1 :&nbsp; %s2 </h2>
+<br>An error has occurred while processing the file &quot;%s1&quot;.&nbsp; The cause of the error is given by &quot;%s2&quot;.
+&nbsp; This error is usually detected while reading from object and library files or writing to the spill file or executable
+ file.&nbsp; For example, this error would be issued if a &quot;disk full&quot; condition existed.
+<h2 id="2011_invalid_object_file_attribute"> 2011 invalid object file attribute </h2>
+<br>The linker encountered an object file that was not of the format required of an object file.
+<h2 id="2012_invalid_library_file_attribute"> 2012 invalid library file attribute </h2>
+<br>The linker encountered a library file that was not of the format required of a library file.
+<h2 id="3013_break_key_detected"> 3013 break key detected </h2>
+<br>The linking process was interrupted by the user from the keyboard.
+<h2 id="1014_stack_segment_not_found"> 1014 stack segment not found </h2>
+<br>The linker identifies the stack segment by a segment defined as having the &quot;STACK&quot; attribute.&nbsp; This message
+ is issued if no such segment is encountered.&nbsp; This usually happens if the linker cannot find the run-time libraries
+ required to link your application.
+<h2 id="2015_bad_relocation_type_specified"> 2015 bad relocation type specified </h2>
+<br>This message is issued if a a relocation is found in an object file which the linker does not support.
+<h2 id="2016__a__absolute_target_invalid_for_selfMrelative_relocation"> 2016 %a:&nbsp; absolute target invalid for self-relative relocation </h2>
+<br>This message is issued, for example, if a near call or jump is made to an external symbol which is defined using the &quot;EQU&quot;
+ assembler directive.&nbsp; &quot;%a&quot; identifies the location of the near call or jump instruction.
+<h2 id="2017_bad_location_specified_for_selfMrelative_relocation_at__a"> 2017 bad location specified for self-relative relocation at %a </h2>
+<br>This message is issued if a bad fixup is encountered.&nbsp; &quot;%a&quot; defines the location of the fixup.
+<h2 id="2018_relocation_offset_at__a_is_out_of_range"> 2018 relocation offset at %a is out of range </h2>
+<br>This message is issued when the offset part of a relocation exceeds 64K in a 16-bit executable or an Alpha executable.
+&nbsp; &quot;%a&quot; defines the location of the fixup.&nbsp; The error is most commonly caused by errors in coding assembly
+ language routines.&nbsp; Consider a module that references an external symbol that is defined in a segment different from
+ the one in which the reference occurred.&nbsp; The module, however, specifies that the segment in which the symbol is defined
+ is the same segment as the segment that references the symbol.&nbsp; This error is most commonly caused when the &quot;EXTRN&quot;
+ assembler directive is placed after the &quot;SEGMENT&quot; assembler directive for the segment referencing the symbol.&nbsp;
+ If the segment that references the symbol is allocated far enough away from the segment that defines the symbol, the linker
+ will issue this message.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1019_segment_relocation_at__a"> 1019 segment relocation at %a </h2>
+<br>This message is issued when a 16-bit segment relocation is encountered and &quot;FORMAT DOS COM&quot;, &quot;FORMAT PHARLAP&quot;
+ or &quot;FORMAT NOVELL&quot; has been specified.&nbsp; None of the above executable file formats allow segment relocation.
+&nbsp; &quot;%a&quot; identifies the location of the segment relocation.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2020_size_of_group__s_exceeds_64k_by__l_bytes"> 2020 size of group %s exceeds 64k by %l bytes </h2>
+<br>The group &quot;%s&quot; has exceeded the maximum size (64K) allowed for a group in a 16-bit executable by &quot;%l&quot;
+ bytes.&nbsp; Usually, the group is &quot;DGROUP&quot; (the default data segment) and your application has placed too much
+ data in this group.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2021_size_of_segment__s_exceeds_64k_by__l_bytes"> 2021 size of segment %s exceeds 64k by %l bytes </h2>
+<br>The segment &quot;%s&quot; has exceeded the maximum size (64K) for a segment in a 16-bit executable.&nbsp; This usually
+ occurs if you are linking a 16-bit application that has been compiled for a small code model and the size of the application
+ has grown in such a way that the size of the code segment (&quot;_TEXT&quot;) has exceeded 64K.&nbsp; You can overlay your
+ application or compile it for a large code model if you cannot reduce the amount of code in your application.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2022_cannot_have_a_starting_address_with_an_imported_symbol"> 2022 cannot have a starting address with an imported symbol </h2>
+<br>When generating an OS/2 executable file, a symbol imported from a DLL cannot be a start address.&nbsp; When generating
+ a NetWare executable file, a symbol imported from an NLM cannot be a start address.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1023_no_starting_address_found__using__a"> 1023 no starting address found, using %a </h2>
+<br>The starting address defines the location where execution is to begin and must be defined by a special &quot;module end&quot;
+ record in one of the object files linked into your application.&nbsp; This message is issued if no such record is encountered
+ in which case a default starting address, namely &quot;%a&quot;, will be used.&nbsp; This usually happens if the linker cannot
+ find the run-time libraries required to link your application.
+<h2 id="2024_missing_overlay_loader"> 2024 missing overlay loader </h2>
+<br>This message is issued when an overlayed 16-bit DOS executable is being linked and the overlay manager has not been encountered.
+&nbsp; This usually happens if the linker cannot find the run-time libraries required to link your application.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2025_short_vector__d_is_out_of_range"> 2025 short vector %d is out of range </h2>
+<br>This message is issued when the linker is creating an overlayed 16-bit DOS executable and &quot;OPTION SMALL&quot; is
+ specified.&nbsp; Since an overlay vector contains a near call to the overlay loader followed by a near jump to the routine
+ corresponding to the overlay vector, all code including the overlay manager and all overlay vectors must be less than 64K.
+&nbsp; This message is issued if the offset of an overlay vector from the overlay loader or the corresponding routine exceeds
+ 64K.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2026_redefinition_of_reserved_symbol__s"> 2026 redefinition of reserved symbol %s </h2>
+<br>The linker defines certain reserved symbols.&nbsp; These symbols are &quot;_edata&quot;, &quot;_end&quot;, &quot;__OVLTAB__&quot;,
+ &quot;__OVLSTARTVEC__&quot;, &quot;__OVLENDVEC__&quot;, &quot;__LOVLLDR__&quot;, &quot;__NOVLLDR__&quot;, &quot;__SOVLLDR__&quot;,
+ &quot;__LOVLINIT__&quot;, &quot;__NOVLINIT__&quot; and &quot;__SOVLINIT__&quot;.&nbsp; The symbols &quot;_edata&quot; and
+ &quot;_end&quot; are defined only if the &quot;DOSSEG&quot; option is specified.&nbsp; Your application must not attempt
+ to define these symbols.&nbsp; &quot;%s&quot; identifies the reserved symbol.
+<h2 id="1027_redefinition_of__S_ignored"> 1027 redefinition of %S ignored </h2>
+<br>The symbol &quot;%S&quot; has been defined by more that one module; the first definition is used.&nbsp; This is only a
+ warning message.&nbsp; Note that if a symbol is defined more than once and its address is the same in both cases, no warning
+ will be issued.
+<h2 id="1028_2028__S_is_an_undefined_reference"> 1028,2028 %S is an undefined reference </h2>
+<br>The symbol &quot;%S&quot; has been referenced but not defined.&nbsp; Check that the spelling of the symbol is consistent.
+<h2 id="2029_premature_end_of_file_encountered"> 2029 premature end of file encountered </h2>
+<br>This error is issued while processing object files and object modules from libraries and is caused if the end of the file
+ or module is reached before the &quot;module end&quot; record is encountered.&nbsp; The probable cause is a truncated object
+ file.
+<h2 id="2030_multiple_starting_addresses_found"> 2030 multiple starting addresses found </h2>
+<br>The starting address defines the location where execution is to begin and is defined by a &quot;module end&quot; record
+ in a particular object file.&nbsp; This message is issued if more than one object file contains a &quot;module end&quot;
+ record that defines a starting address.
+<h2 id="2031_segment__s_is_in_group__s_and_group__s"> 2031 segment %s is in group %s and group %s </h2>
+<br>The segment &quot;%s1&quot; has been defined to be in group &quot;%s2&quot; in one module and in group &quot;%s3&quot;
+ in another module.&nbsp; A segment can only belong to one group.
+<h2 id="1032_record_Ltype_0x_xR_not_processed"> 1032 record (type 0x%x) not processed </h2>
+<br>An object record type not supported by the linker has been encountered.&nbsp; This message is issued when linking object
+ modules created by other compilers or assemblers that create object files with records that the linker does not support.
+<h2 id="2033_3033_directive_error_near___s_"> 2033,3033 directive error near '%s' </h2>
+<br>A syntax error occurred while the linker was processing directives.&nbsp; &quot;%s&quot; specifies where the error occurred.
+<h2 id="2034__a_cannot_have_an_offset_with_an_imported_symbol"> 2034 %a cannot have an offset with an imported symbol </h2>
+<br>An imported symbol is one that was specified in an &quot;IMPORT&quot; directive.&nbsp; Imported symbols are defined in
+ Windows or OS/2 16-bit DLLs and in Netware NLMs.&nbsp; References to imported symbols must always have an offset value of
+ 0.&nbsp; If &quot;DosWrite&quot; is an imported symbol, then referencing &quot;DosWrite+2&quot; is illegal.&nbsp; &quot;%a&quot;
+ defines the location of the illegal reference.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1038_DEBUG_directive_appears_after_object_files"> 1038 DEBUG directive appears after object files </h2>
+<br>This message is issued if the first &quot;DEBUG&quot; directive appears after a &quot;FILE&quot; directive.&nbsp; A common
+ error is to specify a &quot;DEBUG&quot; directive after the &quot;FILE&quot; directives in which case no debugging information
+ for those object files is generated in the executable file.
+<br><br>This message should not be issued when using Power++.&nbsp; If it is issued, please report this problem.
+<h2 id="2039_ALIGNMENT_value_too_small"> 2039 ALIGNMENT value too small </h2>
+<br>The value specified in the &quot;ALIGNMENT&quot; option refers to the alignment of segments in the executable file.&nbsp;
+ For 16-bit Windows or 16-bit OS/2, segments in the executable file are pointed to by a segment table.&nbsp; An entry in the
+ segment table contains a 16-bit value which is a multiple of the alignment value.&nbsp; Together they form the offset of
+ the segment from the start of the segment table.&nbsp; The smaller the alignment, the bigger the value required in the segment
+ table to point to the segment.&nbsp; If this value exceeds 64K, then a larger alignment value is required to decrease the
+ size that goes in the segment table.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2040_ordinal_in_IMPORT_directive_not_valid"> 2040 ordinal in IMPORT directive not valid </h2>
+<br>The specified ordinal in the &quot;IMPORT&quot; directive is incorrect (e.g., -1).&nbsp; An ordinal number must be in
+ the range 0 to 65535.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2041_ordinal_in_EXPORT_directive_not_valid"> 2041 ordinal in EXPORT directive not valid </h2>
+<br>The specified ordinal in the &quot;EXPORT&quot; directive is incorrect (e.g., -1).&nbsp; An ordinal number must be in
+ the range 0 to 65535.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2042_too_many_IOPL_words_in_EXPORT_directive"> 2042 too many IOPL words in EXPORT directive </h2>
+<br>The maximum number of IOPL words for an OS/2 executable is 31, i.e.&nbsp; 62 bytes.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1043_duplicate_exported_ordinal"> 1043 duplicate exported ordinal </h2>
+<br>This message is issued for ordinal numbers specified in an &quot;EXPORT&quot; directive for symbols belonging to DLLs.
+&nbsp; This message is issued if an ordinal number is assigned to two different symbols.&nbsp; A warning is issued and the
+ linker assigns a non-used ordinal number to the symbol that caused the warning.
+<h2 id="1044_2044_exported_symbol__s_not_found"> 1044,2044 exported symbol %s not found </h2>
+<br>This message is issued when generating a DLL or NetWare NLM.&nbsp; An attempt has been made to define an entry point into
+ a DLL or NLM that does not exist.
+<h2 id="1045_segment_attribute_defined_more_than_once"> 1045 segment attribute defined more than once </h2>
+<br>A segment appearing in a &quot;SEGMENT&quot; directive has been given conflicting or duplicate attributes.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1046_segment_name__s_not_found"> 1046 segment name %s not found </h2>
+<br>The segment name specified in a &quot;SEGMENT&quot; directive has not been defined.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1047_class_name__s_not_found"> 1047 class name %s not found </h2>
+<br>The class name specified in a &quot;SEGMENT&quot; directive has not been defined.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1048_inconsistent_attributes_for_automatic_data_segment"> 1048 inconsistent attributes for automatic data segment </h2>
+<br>This message is issued for Windows or OS/2 16-bit executable files.&nbsp; Two conflicting attributes were specified for
+ the automatic data segment.&nbsp; For example, &quot;LOADONCALL&quot; and &quot;PRELOAD&quot; are conflicting attributes.
+&nbsp; Only the first attribute is used.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2049_invalid_STUB_file"> 2049 invalid STUB file </h2>
+<br>The stub file is not a valid executable file.&nbsp; The stub file is only used for OS/2 executable files and Windows (both
+ Win16 and Win32) executable files.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1050_invalid_DLL_specified_in_OLDLIBRARY_option"> 1050 invalid DLL specified in OLDLIBRARY option </h2>
+<br>The DLL specified in an &quot;OLDLIBRARY&quot; option is not a valid dynamic link library.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2051_STUB_file_name_same_as_executable_file_name"> 2051 STUB file name same as executable file name </h2>
+<br>When generating an OS/2 or Windows (Win16, Win32) executable file, the stub file name must not be same as the executable
+ file name.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2052_relocation_at__a_not_in_the_same_segment"> 2052 relocation at %a not in the same segment </h2>
+<br>This message is only issued for Windows (Win16), OS/2, Phar Lap, and QNX executables.&nbsp; A relative fixup must relocate
+ to the same segment.&nbsp; &quot;%a&quot; defines the location of the fixup.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2053__a__cannot_reach_a_DLL_with_a_relative_relocation"> 2053 %a:&nbsp; cannot reach a DLL with a relative relocation </h2>
+<br>A reference to a symbol in an OS/2 or Windows 16-bit DLL must not be relative.&nbsp; &quot;%a&quot; defines the location
+ of the reference.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1054_debugging_information_incompatible__using_line_numbers_only"> 1054 debugging information incompatible:&nbsp; using line numbers only </h2>
+<br>An attempt has been made to link an object file with out-of-date debugging information.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2055__a__frame_must_be_the_same_as_the_target_in_protected_mode"> 2055 %a:&nbsp; frame must be the same as the target in protected mode </h2>
+<br>Each relocation consists of three components; the location being relocated, the target (or address being referenced),
+ and the frame (the segment to which the target is adjusted).&nbsp; In protected mode, the segment of the target must be the
+ same as the frame.&nbsp; &quot;%a&quot; defines the location of the fixup.&nbsp; This message does not apply to 32-bit OS/2
+ and Windows (Win32).
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2056_cannot_find_library_member__sL_sR"> 2056 cannot find library member %s(%s) </h2>
+<br>Library member &quot;%s2&quot; in library file &quot;%s1&quot; could not be found.&nbsp; This message is issued if the
+ library file could not be found or the library file did not contain the specified member.
+<h2 id="3057_executable_format_has_been_established"> 3057 executable format has been established </h2>
+<br>This message is issued if there is more than one &quot;FORMAT&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1058__s_option_not_valid_for__s_executable"> 1058 %s option not valid for %s executable </h2>
+<br>The option &quot;%s1&quot; can only be specified if an executable file whose format is &quot;%s2&quot; is being generated.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1059_2059_value_for__s_too_large"> 1059,2059 value for %s too large </h2>
+<br>The value specified for option &quot;%s&quot; exceeds its limit.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1060_value_for__s_incorrect"> 1060 value for %s incorrect </h2>
+<br>The value specified for option &quot;%s&quot; is not in the allowable range.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1061_multiple_values_specified_for_REALBREAK"> 1061 multiple values specified for REALBREAK </h2>
+<br>The &quot;REALBREAK&quot; option for Phar Lap executables can only be specified once.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1062_export_and_import_records_not_valid_for__f"> 1062 export and import records not valid for %f </h2>
+<br>This message is issued if a reference to a DLL is encountered and the executable file format is not one that supports
+ DLLs.&nbsp; The file format is represented by &quot;%f&quot;.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2063_invalid_relocation_for_flat_memory_model_at__a"> 2063 invalid relocation for flat memory model at %a </h2>
+<br>A segment relocation in the flat memory model was encountered.&nbsp; &quot;%a&quot; defines the location of the fixup.
+<h2 id="2064_cannot_combine_32Mbit_segments_L_s1R_with_16Mbit_segments_L_s2R"> 2064 cannot combine 32-bit segments (%s1) with 16-bit segments (%s2) </h2>
+<br>A 32-bit segment &quot;%s1&quot; and a 16-bit segment &quot;%s2&quot; have been encountered.&nbsp; Mixing object files
+ created by a 286 compiler and object files created by a 386 compiler is the most probable cause of this error.
+<h2 id="2065_REALBREAK_symbol__s_not_found"> 2065 REALBREAK symbol %s not found </h2>
+<br>The symbol specified in the &quot;REALBREAK&quot; option for Phar Lap executables has not been defined.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2066_invalid_relative_relocation_type_for_an_import_at__a"> 2066 invalid relative relocation type for an import at %a </h2>
+<br>This message is issued only if a NetWare executable file is being generated.&nbsp; An imported symbol is one that was
+ specified in an &quot;IMPORT&quot; directive or an import library.&nbsp; Any reference to an imported symbol must not refer
+ to the segment of the imported symbol.&nbsp; &quot;%a&quot; defines the location of the reference.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2067__a__cannot_relocate_between_code_and_data_in_Novell_formats"> 2067 %a:&nbsp; cannot relocate between code and data in Novell formats </h2>
+<br>This message is issued only if a NetWare executable file is being generated.&nbsp; Segment relocation is not permitted.
+&nbsp; &quot;%a&quot; defines the location of the fixup.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2068_absolute_segment_fixup_not_valid_in_protected_mode"> 2068 absolute segment fixup not valid in protected mode </h2>
+<br>A reference to an absolute location is not allowed in protected mode.&nbsp; A protected-mode application is one that is
+ being generated for ZDOS, OS/2, CauseWay DOS extender, Tenberry Software's DOS/4G or DOS/4GW DOS extender, FlashTek's DOS
+ extender, Phar Lap's 386|DOS-Extender, Novell's NetWare operating systems, Windows NT, or Windows 95.&nbsp; An absolute location
+ is most commonly defined by the &quot;EQU&quot; assembler directive.
+<h2 id="1069_unload_CHECK_procedure_not_found"> 1069 unload CHECK procedure not found </h2>
+<br>This message is issued only if a NetWare executable file is being generated.&nbsp; The symbol specified in the &quot;CHECK&quot;
+ option has not been defined.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2070_START_procedure_not_found"> 2070 START procedure not found </h2>
+<br>This message is issued only if a NetWare executable file is being generated.&nbsp; The symbol specified in the &quot;START&quot;
+ option has not been defined.&nbsp; The default &quot;START&quot; symbol is &quot;_Prelude&quot;.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2071_EXIT_procedure_not_found"> 2071 EXIT procedure not found </h2>
+<br>This message is issued only if a NetWare executable file is being generated.&nbsp; The symbol specified in the &quot;EXIT&quot;
+ option has not been defined.&nbsp; The default &quot;STOP&quot; symbol is &quot;_Stop&quot;.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1072_SECTION_directive_not_allowed_in_root"> 1072 SECTION directive not allowed in root </h2>
+<br>When describing 16-bit overlays, &quot;SECTION&quot; directives must appear between a &quot;BEGIN&quot; directive and
+ its corresponding &quot;END&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2073_bad_Novell_file_format_specified"> 2073 bad Novell file format specified </h2>
+<br>An invalid NetWare executable file format was specified.&nbsp; Valid formats are NLM, DSK, NAM, LAN, MSL, HAM, CDM or
+ a numerical module type.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2074_circular_alias_found_for__s"> 2074 circular alias found for %s </h2>
+<br>An attempt was made to circularly define the symbol name specified in an ALIAS directive.&nbsp; For example:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ALIAS foo1=foo2, foo2=foo1</tt>
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2075_expecting_an_END_directive"> 2075 expecting an END directive </h2>
+<br>A &quot;BEGIN&quot; directive is missing its corresponding &quot;END&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1076__s_option_multiply_specified"> 1076 %s option multiply specified </h2>
+<br>The option &quot;%s&quot; can only be specified once.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1080_file__s_is_a__dMbit_object_file"> 1080 file %s is a %d-bit object file </h2>
+<br>A 32-bit attribute was encountered while generating a 16-bit executable file format, or a 16-bit attribute was encountered
+ while generating a 32-bit executable file format.
+<h2 id="2082_invalid_record_type_0x_x"> 2082 invalid record type 0x%x </h2>
+<br>An object record type not recognized by the linker has been encountered.&nbsp; This message is issued when linking object
+ modules created by other compilers or assemblers that create object files with records that the linker does not recognize.
+<h2 id="2083_cannot_reference_address__a_from_frame__x"> 2083 cannot reference address %a from frame %x </h2>
+<br>When generating a 16-bit executable, the offset of a referenced symbol was greater than 64K from the location referencing
+ it.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2084_target_offset_exceeds_64K_at__a"> 2084 target offset exceeds 64K at %a </h2>
+<br>When generating a 16-bit executable, the computed offset for a symbol exceeds 64K.&nbsp; &quot;%a&quot; defines the location
+ of the fixup.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2086_invalid_starting_address_for__COM_file"> 2086 invalid starting address for .COM file </h2>
+<br>The value of the segment of the starting address for a 16-bit DOS &quot;COM&quot; file, as specified in the map file,
+ must be 0.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1087_stack_segment_ignored_in__COM_file"> 1087 stack segment ignored in .COM file </h2>
+<br>A stack segment must not be defined when generating a 16-bit DOS &quot;COM&quot; file.&nbsp; Only a single physical segment
+ is allowed in a DOS &quot;COM&quot; file.&nbsp; The stack is allocated from the high end of the physical segment.&nbsp; That
+ is, the initial value of SP is hexadecimal FFFE.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3088_virtual_memory_exhausted"> 3088 virtual memory exhausted </h2>
+<br>This message is similar to the &quot;dynamic memory exhausted&quot; message.&nbsp; The DOS-hosted version of the linker
+ has run out of memory trying to keep track of virtual memory blocks.&nbsp; Virtual memory blocks are allocated from expanded
+ memory, extended memory and the spill file.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2089_program_too_large_for_a__COM_file"> 2089 program too large for a .COM file </h2>
+<br>The total size of a 16-bit DOS &quot;COM&quot; program must not exceed 64K.&nbsp; That is, the total amount of code and
+ data must be less than 64K since only a single physical segment is allowed in a DOS &quot;COM&quot; file.&nbsp; You must
+ decrease the size of your program or generate a DOS &quot;EXE&quot; file.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1090_redefinition_of__s_by__s_ignored"> 1090 redefinition of %s by %s ignored </h2>
+<br>The symbol &quot;%s1&quot; has been redefined by module &quot;%s2&quot;.&nbsp; This message is issued when the size specified
+ in the &quot;NAMELEN&quot; option has caused two symbols to map to the same symbol.&nbsp; For example, if the symbols<b>
+ routine1</b> and<b> routine2</b> are encountered and &quot;OPTION NAMELEN=7&quot; is specified, then this message will be
+ issued since the first seven characters of the two symbols are identical.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2091_group__s_is_in_more_than_one_overlay"> 2091 group %s is in more than one overlay </h2>
+<br>A group that spans more than one section in a 16-bit DOS executable has been detected.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2092_NEWSEGMENT_directive_appears_before_object_files"> 2092 NEWSEGMENT directive appears before object files </h2>
+<br>The 16-bit &quot;NEWSEGMENT&quot; directive must appear after a &quot;FILE&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2093_cannot_open__s"> 2093 cannot open %s </h2>
+<br>This message is issued when the linker is unable to open a file and is unable to determine the cause.
+<h2 id="2094_iDo_error_processing__s"> 2094 i/o error processing %s </h2>
+<br>This message is issued when the linker has encountered an i/o error while processing the file and is unable to determine
+ the cause.&nbsp; This message may be issued when reading from object and library files, or writing to the executable and
+ spill file.
+<h2 id="3097_too_many_library_modules"> 3097 too many library modules </h2>
+<br>This message is similar to the &quot;dynamic memory exhausted&quot; message.&nbsp; This message if issued when the &quot;DISTRIBUTE&quot;
+ option for 16-bit DOS executables is specified.&nbsp; The linker has run out of memory trying to keep track of the relationship
+ between object modules extracted from libraries and the overlays they should be placed in.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1098_Offset_option_must_be_a_multiple_of__dK"> 1098 Offset option must be a multiple of %dK </h2>
+<br>The value specified with the &quot;OFFSET&quot; option must be a multiple of 4K (4096) for Phar Lap and QNX executables
+ and a multiple of 64K (65536) for OS/2 and Windows 32-bit executables.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2099_symbol_name_too_long___s"> 2099 symbol name too long:&nbsp; %s </h2>
+<br>The maximum size (approximately 2048) of a symbol has been exceeded.&nbsp; Reduce the size of the symbol to avoid this
+ error.
+<h2 id="1101_invalid_incremental_information_file"> 1101 invalid incremental information file </h2>
+<br>The incremental information file is corrupt or from an older version of the compiler.&nbsp; The old information file and
+ the executable will be deleted and new ones will be generated.
+<h2 id="1102_object_file__s_not_found_for_tracing"> 1102 object file %s not found for tracing </h2>
+<br>A &quot;SYMTRACE&quot; or &quot;MODTRACE&quot; directive contained an object file (namely %s) that could not be found.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1103_library_module__sL_sR_not_found_for_tracing"> 1103 library module %s(%s) not found for tracing </h2>
+<br>A &quot;SYMTRACE&quot; or &quot;MODTRACE&quot; directive contained an object module (namely module %s1 in library %s2
+ ) that could not be found.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1105_cannot_reserve__l_bytes_of_extra_overlay_space"> 1105 cannot reserve %l bytes of extra overlay space </h2>
+<br>The value specified with the &quot;AREA&quot; option for 16-bit DOS executables results in an executable file that requires
+ more than 1 megabyte of memory to execute.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1107_undefined_system_name___s"> 1107 undefined system name:&nbsp; %s </h2>
+<br>The name %s was referenced in a &quot;SYSTEM&quot; directive but never defined by a system block definition.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1108_system__s_defined_more_than_once"> 1108 system %s defined more than once </h2>
+<br>The name %s has appeared in a system definition block more than once.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1109_OFFSET_option_is_less_than_the_stack_size"> 1109 OFFSET option is less than the stack size </h2>
+<br>For the QNX operating system, the stack is placed at the front of the executable image and thus the initial load address
+ must leave enough room for the stack.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1110_library_members_not_allowed_in_libfile"> 1110 library members not allowed in libfile </h2>
+<br>Only object files are allowed in a &quot;LIBFILE&quot; directive.&nbsp; This message will be issued if a module from a
+ library file is specified in a &quot;LIBFILE&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1111_error_in_default_system_block"> 1111 error in default system block </h2>
+<br>The default system block definition (system name &quot;286&quot; for 16-bit applications) and (system name &quot;386&quot;
+ for 32-bit applications) contains a directive error.&nbsp; The system name &quot;286&quot; or &quot;386&quot; is automatically
+ referenced by the linker when the format of the executable cannot be determined (i.e.&nbsp; no &quot;FORMAT&quot; directive
+ has been specified).
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3114_environment_name_specified_incorrectly"> 3114 environment name specified incorrectly </h2>
+<br>This message is specified if the environment variable is not properly enclosed between two percent (%) characters.
+<h2 id="1115_environment_name__s_not_found"> 1115 environment name %s not found </h2>
+<br>The environment variable %s has not been defined in the environment space.
+<h2 id="1116_overlay_area_must_be_at_least__l_bytes"> 1116 overlay area must be at least %l bytes </h2>
+<br>This message is issued if the size of the largest overlay exceeds the size of the overlay area specified by the &quot;AREA&quot;
+ option for 16-bit DOS executables.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1117_segment_number_too_high_for_a_movable_entry_point"> 1117 segment number too high for a movable entry point </h2>
+<br>The segment number of a moveable segment must not exceed 255 for 16-bit executables.&nbsp; Reduce the number of segments
+ or use the &quot;PACKCODE&quot; option.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1118_heap_size_too_large"> 1118 heap size too large </h2>
+<br>This message is issued if the size of the heap, stack and the default data segment (group DGROUP) exceeds 64K for 16-bit
+ executables.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2119_wlib_import_statement_incorrect"> 2119 wlib import statement incorrect </h2>
+<br>The &quot;EXPORT&quot; directive allows you to specify a library command file.&nbsp; This command file is scanned for
+ any librarian commands that create import library entries.&nbsp; An invalid command was detected.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2120_application_too_large_to_run_under_DOS"> 2120 application too large to run under DOS </h2>
+<br>This message is issued if the size of the 16-bit DOS application exceeds 1M.
+<h2 id="1121___s__has_already_been_exported"> 1121 '%s' has already been exported </h2>
+<br>The linker has detected an attempt to export a symbol more than once.&nbsp; For example, a name appearing in more than
+ one &quot;EXPORT&quot; directive will cause this message to be issued.&nbsp; Also, if you have declared a symbol as an export
+ in your source and have also specified the same symbol in an &quot;EXPORT&quot; directive, this message will be issued.&nbsp;
+ This message is only a warning.
+<h2 id="3122_no_FILE_directives_found"> 3122 no FILE directives found </h2>
+<br>This message is issued if no &quot;FILE&quot; directive has been specified.&nbsp; In other words, you have specified no
+ object files to link.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3123_overlays_are_not_supported_in_this_version_of_the_linker"> 3123 overlays are not supported in this version of the linker </h2>
+<br>This version of the linker does not support the creation of overlaid 16-bit executables.
+<h2 id="1124_lazy_reference_for__S_has_different_default_resolutions"> 1124 lazy reference for %S has different default resolutions </h2>
+<br>A lazy external reference is one which has two resolutions:&nbsp; a preferred one and a default one which is used if the
+ preferred one is not found.&nbsp; In this case, the linker has found two lazy references that have the same preferred resolution
+ but different default resolutions.
+<h2 id="1125_multiple_aliases_found_for__S"> 1125 multiple aliases found for %S </h2>
+<br>The linker has found a name which has been aliased to two different symbols.
+<h2 id="1126__s_has_been_modified__doing_full_relink"> 1126 %s has been modified:&nbsp; doing full relink </h2>
+<br>The linker has determined that the time stamps on the executable file and symbolic information file (.sym) are different.
+&nbsp; An incremental link will not be done.
+<h2 id="2127_cannot_export_symbol__S"> 2127 cannot export symbol %S </h2>
+<br>An attempt was made to export a symbol defined with an absolute address or to export an imported symbol.&nbsp; It is not
+ possible to export these symbols with the &quot;EXPORT&quot; directive.
+<h2 id="3128_directive_error_near_beginning_of_input"> 3128 directive error near beginning of input </h2>
+<br>The linker detected an error at the start of the command line.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3129_address_information_too_large"> 3129 address information too large </h2>
+<br>The linker has encountered a segment that appears in more than 11000 object files.&nbsp; An empty segment does not affect
+ this limit.&nbsp; This can only occur with Watcom debugging information.&nbsp; If this message appears, switch to DWARF debugging
+ information.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1130__s_is_an_invalid_shared_nlm_file"> 1130 %s is an invalid shared nlm file </h2>
+<br>The NLM specified in a &quot;SHAREDNLM&quot; option is not valid.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3131_cannot_open_spill_file__file_already_exists"> 3131 cannot open spill file:&nbsp; file already exists </h2>
+<br>All 26 of the DOS-hosted linker's possible spill file names are in use.&nbsp; Spill files can accumulate when linking
+ on a multi-tasking system and the directory in which the spill file is created is identical for each invocation of the linker.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2132_curly_brace_delimited_list_incorrect"> 2132 curly brace delimited list incorrect </h2>
+<br>A list delimited by curly braces is not correct.&nbsp; The most likely cause is a missing right brace.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1133_no_realbreak_specified_for_16Mbit_code"> 1133 no realbreak specified for 16-bit code </h2>
+<br>While generating a Phar Lap executable file, both 16-bit and 32-bit code was linked together and no &quot;REALBREAK&quot;
+ option has been specified.&nbsp; A warning message is issued since this may be a potential problem.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1134__s_is_an_invalid_message_file"> 1134 %s is an invalid message file </h2>
+<br>The file specified in a &quot;MESSAGE&quot; option for NetWare executable files is invalid.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3135_need_exactly_1_overlay_area_with_dynamic_overlay_manager"> 3135 need exactly 1 overlay area with dynamic overlay manager </h2>
+<br>Only a single overlay area is supported by the 16-bit dynamic overlay manager.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1136_segment_relocation_to_a_readDwrite_data_segment_found_at__aL_SR"> 1136 segment relocation to a read/write data segment found at %a(%S) </h2>
+<br>The &quot;RWRELOCCHECK&quot; option for 16-bit Windows (Win16) executables has been specified and the linker has detected
+ a segment relocation to a read/write data segment.&nbsp; Where the name of the offending symbol is not available, &quot;identifier
+ unavailable&quot; is used.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3137_too_many_errors_encountered"> 3137 too many errors encountered </h2>
+<br>This message is issued when the number of error messages issued by the linker exceeds the number specified by the &quot;MAXERRORS&quot;
+ option.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3138_invalid_filename___s_"> 3138 invalid filename '%s' </h2>
+<br>The linker performs a simple filename validation whenever a filename is specified to the linker.&nbsp; For example, a
+ directory specification is not a valid filename.
+<h2 id="3139_cannot_have_both_16Mbit_and_32Mbit_object_files"> 3139 cannot have both 16-bit and 32-bit object files </h2>
+<br>It is impossible to mix 16-bit code and 32-bit code in the same executable when generating a QNX executable file.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1140_invalid_message_number"> 1140 invalid message number </h2>
+<br>An invalid message number has been specified in a &quot;DISABLE&quot; directive.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1141_virtual_function_table_record_for__s_mismatched"> 1141 virtual function table record for %s mismatched </h2>
+<br>The linker performs a consistency check to ensure that the C++ compiler has not generated incorrect virtual function information.
+&nbsp; If the message is issued, please report this problem.
+<h2 id="1143_not_enough_memory_to_sort_map_file_symbols"> 1143 not enough memory to sort map file symbols </h2>
+<br>There was not enough memory for the linker to sort the symbols in the &quot;Memory Map&quot; portion of the map file.
+&nbsp; This will only occur when the &quot;SORT GLOBAL&quot; option has been specified.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1145__S_is_both_pure_virtual_and_nonMpure_virtual"> 1145 %S is both pure virtual and non-pure virtual </h2>
+<br>A function has been declared both as &quot;pure&quot; and &quot;non-pure&quot; virtual.
+<h2 id="2146__s_is_an_invalid_object_file"> 2146 %s is an invalid object file </h2>
+<br>Something was encountered in the object file that cannot be processed by the linker.
+<h2 id="3147_Ambiguous_format_specified"> 3147 Ambiguous format specified </h2>
+<br>Not enough of the FORMAT directive attributes were specified to enable the linker to determine the executable file format.
+&nbsp; For example,
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; FORMAT OS2</tt>
+<br><br>will generate this message.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1148_Invalid_segment_type_specified"> 1148 Invalid segment type specified </h2>
+<br>The segment type must be one of CODE or DATA.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1149_Only_one_debugging_format_can_be_specified"> 1149 Only one debugging format can be specified </h2>
+<br>The debugging format must be one of Watcom, CodeView, DWARF (default), or Novell.&nbsp; You cannot specify multiple debugging
+ formats.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1150_file__s_has_code_for_a_different_processor"> 1150 file %s has code for a different processor </h2>
+<br>An object file has been encountered which contains code compiled for a different processor (e.g., an Intel application
+ and an Alpha object file).
+<h2 id="2151_big_endian_code_not_supported"> 2151 big endian code not supported </h2>
+<br>Big endian code is not supported by the linker.
+<h2 id="2152_no_dictionary_found"> 2152 no dictionary found </h2>
+<br>No symbol search dictionary was found in a library that the linker attempted to process.
+<h2 id="2154_cannot_execute__s1____s2"> 2154 cannot execute %s1 :&nbsp; %s2 </h2>
+<br>An attempt by the linker to spawn another application failed.&nbsp; The application is specified by &quot;%s1&quot; and
+ the reason for the failure is specified by &quot;%s2&quot;.
+<h2 id="2155_relocation_at__a_to_an_improperly_aligned_target"> 2155 relocation at %a to an improperly aligned target </h2>
+<br>Some relocations in Alpha executables require that the object be aligned on a 4 byte boundary.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2156_OPTION_INCREMENTAL_must_be_one_of_the_first_directives_specified"> 2156 OPTION INCREMENTAL must be one of the first directives specified </h2>
+<br>The option must be specified before any option or directive which modifies the linker's symbol table (e.g., IMPORT, EXPORT,
+ REFERENCE, ALIAS).
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3157_no_code_or_data_present"> 3157 no code or data present </h2>
+<br>The linker requires that there be at least 1 byte of either code or data in the executable.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1158_problem_adding_resource_information"> 1158 problem adding resource information </h2>
+<br>The resource file is invalid or corrupt.
+<h2 id="3159_incremental_linking_only_supports_DWARF_debugging_information"> 3159 incremental linking only supports DWARF debugging information </h2>
+<br>When OPTION INCREMENTAL is used, you cannot specify non-DWARF debugging information for the executable.&nbsp; You must
+ specify DEBUG DWARF when requesting debugging information.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="3160_incremental_linking_does_not_support_dead_code_elimination"> 3160 incremental linking does not support dead code elimination </h2>
+<br>When OPTION INCREMENTAL is used, you cannot specify OPTION ELIMINATE.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1162_relocations_on_iterated_data_not_supported"> 1162 relocations on iterated data not supported </h2>
+<br>An object file was encountered that contained an iterated data record that requires relocation.&nbsp; This is most commonly
+ caused by a module coded in assembly language.
+<h2 id="1163_module_has_not_been_compiled_with_the__zv__option"> 1163 module has not been compiled with the &quot;zv&quot; option </h2>
+<br>When OPTION VFREMOVAL is used, all object files must be compiled with the &quot;zv&quot; option.&nbsp; The linker has
+ detected an object file that has not been compiled with this option.
+<h2 id="3164_incremental_linking_does_not_support_virtual_function_removal"> 3164 incremental linking does not support virtual function removal </h2>
+<br>When OPTION INCREMENTAL is used, you cannot also specify OPTION VFREMOVAL.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="1165_resource_file__s_too_big"> 1165 resource file %s too big </h2>
+<br>The resource file specified in OPTION RESOURCE was too big to fit inside the QNX executable.&nbsp; The maximum size is
+ approximately 32000 bytes.
+<br><br>This message should not be issued for a Power++ Win32 executable.&nbsp; If it is issued, please report this problem.
+<h2 id="2166_both__s1_and__s2_marked_as_starting_symbols"> 2166 both %s1 and %s2 marked as starting symbols </h2>
+<br>If the linker sees that there is more than one starting address specified in the program and they have symbol names associated
+ with them, it will emit this error message.&nbsp; If there is more than one starting address specified and at least one of
+ them is unnamed, it will issue message 2030.
+<h2 id="1167_NLM_internal_name_L_sR_truncated"> 1167 NLM internal name (%s) truncated </h2>
+<br>This message is issued when generating a NetWare NLM.&nbsp; The output file name as specified by the NAME directive has
+ specified a long file name (exceeds 8.3).&nbsp; The linker will truncate the generated file name by using the first eight
+ characters of the specified file name and the first three characters of the file extension (if supplied), separated by a
+ period.
+<h2 id="3168_exactly_one_export_must_exist_for_VxD_format"> 3168 exactly one export must exist for VxD format </h2>
+<br>The Windows VxD format requires exactly one export to be present, but an attempt was made to build a VxD module with no
+ exports or more than one export.
+<h2 id="2169_location_counter_already_beyond_fixed_segment_address__a"> 2169 location counter already beyond fixed segment address %a </h2>
+<br>When creating an image using the OUTPUT directive, a segment was specified with an address lower than the current location
+ counter.&nbsp; This would overlay the segment data with already existing data at the same address, and is not allowed.
+<h2 id="1170_directive__s_can_only_occur_once"> 1170 directive %s can only occur once </h2>
+<br>A directive was specified more than once on the Power++ Linker command line and was ignored.&nbsp; Remove the redundant
+ instances of the directive.
+<h2 id="1171_locally_defined_symbol__s_imported"> 1171 locally defined symbol %s imported </h2>
+<br>An imported symbol (intended to be imported from a DLL) was resolved locally.&nbsp; The linker will ignore the symbol
+ defined in a DLL, if provided, and the local reference will be used.&nbsp; Ensure that this is the intended behaviour.
+<h2 id="1172_stack_size_is_less_than__d_bytes_"> 1172 stack size is less than %d bytes. </h2>
+<br>The stack size for an executable specified through OPTION STACK is very small.&nbsp; There is a high probability that
+ the program will not work correctly.&nbsp; Consider specifying a greater stack size.
+<h2 id="3173_default_data_segment_exceeds_maximum_size_by__l_bytes"> 3173 default data segment exceeds maximum size by %l bytes </h2>
+<br>The default data segment size in a NE format executable (16-bit OS/2 or Windows) exceeds the maximum allowed size.&nbsp;
+ The default data segment includes the data segment plus default stack size plus default heap size.&nbsp; The total size must
+ be 64K or less for OS/2 executables and 65,533 bytes or less for Windows executables.
+<h2 id="1174_IOPL_bytes_in_EXPORT_directive_odd__ignoring_low_bit"> 1174 IOPL bytes in EXPORT directive odd, ignoring low bit </h2>
+<br>The EXPORT directive accepts the number of IOPL bytes, but the OS/2 executable formats, as well as the CPU, only work
+ with the number of words.&nbsp; If the specified number of IOPL bytes is an odd number, the lowest bit will be ignored.
+</body>

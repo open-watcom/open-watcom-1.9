@@ -1,0 +1,2373 @@
+<HEAD>
+<TITLE> Open Watcom Code Generator </TITLE>
+</HEAD>
+<BODY>
+<H1 ID="General"> General </H1>
+<P>The code generator (back end) interface is a set of procedure calls.&nbsp; These are divided into Code Generation (CG),
+Data Generation (DG), miscellaneous Back End (BE), Front end supplied (FE), and debugger information (DB) routines.
+<H2 ID="cg_init_info_BEInitL_cg_switches_switches__cg_target_switches_targ_switches__uint_optsize__proc_revision_proc_R"> cg_init_info BEInit( cg_switches switches, cg_target_switches targ_switches, uint optsize, proc_revision proc ) </H2>
+<P>Initialize the code generator.&nbsp; This must be the first routine to be called.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>switches
+<DD>Select code generation options.&nbsp; The options are bits, so may be combined with the bit-wise operator |.&nbsp; Options
+apply to the entire compilation unit.&nbsp; The bit values are defined below.
+<P><DT>targ_switches
+<DD>Target specific switches.&nbsp; The bit values are defined below.
+<P><DT>optsize
+<DD>A number between 0 and 100.&nbsp; 0 means optimize for speed, 100 means optimize for size.&nbsp; Anything in between selects
+a compromise between speed and size.
+<P><DT>proc
+<DD>The target hardware configuration, defined below.
+</DL>
+<DL>
+<DT>Returns
+<DD>Information about the code generator revision in a cg_init_info structure, defined below.
+</DL>
+<DL>
+<DT><B><I>Switch</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>NO_OPTIMIZATION
+<DD>Turn off optimizations.
+<P><DT>NUMBERS
+<DD>Generate line number debugging information.
+<P><DT>FORTRAN_ALIASING
+<DD>Assume pointers are only used for parameter passing.
+<P><DT>DBG_DF
+<DD>Generate debugging information in DWARF format.
+<P><DT>DBG_CV
+<DD>Generate debugging information in CodeView format.&nbsp; If neither DBG_DF nor DBG_CV is set, debugging information (if any)
+is generated in the Watcom format.
+<P><DT>RELAX_ALIAS
+<DD>Assume that a static/extern variable and a pointer to that same variable are not used within the same routine.
+<P><DT>DBG_LOCALS
+<DD>Generate local symbol information for use by a debugger.
+<P><DT>DBG_TYPES
+<DD>Generate typing information for use by a debugger.
+<P><DT>LOOP_UNROLLING
+<DD>Turn on loop unrolling.
+<P><DT>LOOP_OPTIMIZATION
+<DD>Turn on loop optimizations.
+<P><DT>INS_SCHEDULING
+<DD>Turn on instruction scheduling.
+<P><DT>MEMORY_LOW_FAILS
+<DD>Allow the code generator to run out of memory without being able to generate object code (allows the 386 compiler to use EBP
+as a cache register).
+<P><DT>FP_UNSTABLE_OPTIMIZATION
+<DD>Allow the code generator to perform optimizations that are mathematically correct, but are numerically unstable.&nbsp; E.g.
+&nbsp;converting division by a constant to a multiplication by the reciprocal.
+<P><DT>NULL_DEREF_OK
+<DD>NULL points to valid memory and may be dereferenced.
+<P><DT>FPU_ROUNDING_INLINE
+<DD>Inline floating-point value rounding (actually truncation) routine when converting floating-point values to integers.
+<P><DT>FPU_ROUNDING_OMIT
+<DD>Omit floating-point value rounding entirely and use FPU default.&nbsp; Results will not be ISO C compliant.
+<P><DT>ECHO_API_CALLS
+<DD>Log each call to the code generator with its arguments and return value.&nbsp; Only available in debug builds.
+<P><DT>OBJ_ELF
+<DD>Emit ELF object files.
+<P><DT>OBJ_COFF
+<DD>Emit COFF object files.&nbsp; For Intel compilers, OMF object files will be emitted in the absence of either switch.
+<P><DT>OBJ_ENDIAN_BIG
+<DD>Emit big-endian object files (COFF or ELF).&nbsp; If OBJ_ENDIAN_BIG is not set, little-endian objects will be generated.
+</DL>
+<DL>
+<DT><B><I>x86 Switch</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>I_MATH_INLINE
+<DD>Do not check arguments for operators like O_SQRT.&nbsp; This allows the compiler to use some specialty x87 instructions.
+<P><DT>EZ_OMF
+<DD>Generate Phar Lap EZ-OMF object files.
+<P><DT>BIG_DATA
+<DD>Use segmented pointers (16:16 or 16:32).&nbsp; This defines T_POINTER to be equivalent to T_HUGE_POINTER.
+<P><DT>BIG_CODE
+<DD>Use inter segment (far) call and return instructions.
+<P><DT>CHEAP_POINTER
+<DD>Assume far objects are addressable by one segment value.&nbsp; This must be used in conjunction with BIG_DATA.&nbsp; It defines
+T_POINTER to be equivalent to T_FAR_POINTER.
+<P><DT>FLAT_MODEL
+<DD>Assume all segment registers address the same base memory.
+<P><DT>FLOATING_FS
+<DD>Does FS float (or is it pegged to DGROUP).
+<P><DT>FLOATING_GS
+<DD>Does GS float (or is it pegged to DGROUP).
+<P><DT>FLOATING_ES
+<DD>Does ES float (or is it pegged to DGROUP).
+<P><DT>FLOATING_SS
+<DD>Does SS float (or is it pegged to DGROUP).
+<P><DT>FLOATING_DS
+<DD>Does DS float (or is it pegged to DGROUP).
+<P><DT>USE_32
+<DD>Generate code into a use32 segment (versus use16).
+<P><DT>INDEXED_GLOBALS
+<DD>Generate all global and static variable references as an offset past EBX.
+<P><DT>WINDOWS
+<DD>Generate windows prolog/epilog sequences for all routines.
+<P><DT>CHEAP_WINDOWS
+<DD>Generate windows prolog/epilog sequences assuming that call backs functions are defined as __export.
+<P><DT>NO_CALL_RET_TRANSFORM
+<DD>Do not change a CALL followed by a RET into a JMP.&nbsp; This is used for some older overlay managers that cannot handle a
+JMP to an overlay.
+<P><DT>CONST_IN_CODE
+<DD>Generate all constant data into the code segment.&nbsp; This only applies to the internal code generator data, such as floating
+point constants.&nbsp; The front end decides where its data goes using BESetSeg().
+<P><DT>NEED_STACK_FRAME
+<DD>Generate a traceable stack frame.&nbsp; The first instructions will be<B> INC BP</B> if the routine uses a far return instruction,
+followed by<B> PUSH BP</B> and<B> MOV BP,SP</B>.&nbsp; (ESP and EBP for 386 targets).
+<P><DT>LOAD_DS_DIRECTLY
+<DD>Generate code to load DS directly.&nbsp; By default, a call to __GETDS routine is generated.
+<P><DT>GEN_FWAIT_386
+<DD>Generate FWAIT instructions on 386 and later CPUs.&nbsp; The 386 never needs FWAIT for data synchronization, but FWAIT may
+still be needed for accurate exception reporting.
+</DL>
+<DL>
+<DT><B><I>RISC Switch</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>ASM_OUTPUT
+<DD>Print final pseudo-assembly on the console.&nbsp; Debug builds only.
+<P><DT>OWL_LOGGING
+<DD>Log calls to the Object Writer Library
+<P><DT>STACK_INIT
+<DD>Pre-initialize stack variables to a known bit pattern.
+<P><DT>EXCEPT_FILTER_USED
+<DD>Set when SEH (Structured Exception Handling) is used.
+</DL>
+<P>The supported proc_revision CPU values are:
+<UL>
+<P><LI>CPU_86
+<P><LI>CPU_186
+<P><LI>CPU_286
+<P><LI>CPU_386
+<P><LI>CPU_486
+<P><LI>CPU_586
+</UL>
+<P>The supported proc_revision FPU values are:
+<UL>
+<P><LI>FPU_NONE
+<P><LI>FPU_87
+<P><LI>FPU_387
+<P><LI>FPU_586
+<P><LI>FPU_EMU
+<P><LI>FPU_E87
+<P><LI>FPU_E387
+<P><LI>FPU_E586
+</UL>
+<P>The supported proc_revision WEITEK values are:
+<UL>
+<P><LI>WTK_NONE
+<P><LI>WTK_1167
+<P><LI>WTK_3167
+<P><LI>WTK_4167
+</UL>
+<P>The following example sets the processor revision information to indicate a 386 with 387 and Weitek 3167.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; proc_revision proc;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; SET_CPU( p, CPU_386 );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; SET_FPU( p, FPU_387 );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; SET_WTK( p, WTK_3167 );</TT>
+<P>The return value structure is defined as follows:
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; typedef union&nbsp;&nbsp; cg_init_info {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; struct {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned revision&nbsp;&nbsp; : 10; /* contains II_REVISION */</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned target&nbsp;&nbsp;&nbsp;&nbsp; : 5;&nbsp; /* has II_TARG_???
+*/</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned is_large&nbsp;&nbsp; : 1;&nbsp; /* 1 if 16 bit host */</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } version;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; success;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; } cg_init_info;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; enum {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_8086,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_80386,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_STUB,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_CHECK,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_370,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_AXP,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_PPC,</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; II_TARG_MIPS</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; };</TT>
+<H2 ID="void_BEStartLR"> void BEStart() </H2>
+<P>Start the code generator.&nbsp; Must be called immediately after all calls to BEDefSeg have been made.&nbsp; This restriction
+is relaxed somewhat for the 80(x)86 code generator.&nbsp; See BEDefSeg for details.
+<H2 ID="void_BEStopLR"> void BEStop() </H2>
+<P>Normal termination of code generator.&nbsp; This must be the second last routine called.
+<H2 ID="void_BEAbortLR"> void BEAbort() </H2>
+<P>Abnormal termination of code generator.&nbsp; This must be the second last routine called.
+<H2 ID="void_BEFiniLR"> void BEFini() </H2>
+<P>Finalize the code generator.&nbsp; This must be the last routine called.
+<H2 ID="extern_patch_handle_BEPatchLR"> extern patch_handle BEPatch() </H2>
+<P>Allocate a patch handle which can be used to create a patchable integer (an integer which will have a constant value provided
+sometime while the codegen is handling the CGDone call).&nbsp; See CGPatchNode.
+<H2 ID="extern_void_BEPatchIntegerL_patch_handle_hdl__signed_32_value_R"> extern void BEPatchInteger( patch_handle hdl, signed_32 value ) </H2>
+<P>Patch the integer corresponding to the given handle to have the given value.&nbsp; This may be called repeatedly with different
+values, providing CGPatchNode has been called and BEFiniPatch has not been called.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>hdl
+<DD>A patch_handle returned from an earlier invocation of BEPatch which has had a node allocated for it via CGPatchNode.&nbsp;
+If CGPatchNode has not been called with the handle given, the behaviour is undefined.
+<P><DT>value
+<DD>A signed 32-bit integer value.&nbsp; This will be the new value of the node which has been associated with the patch handle.
+</DL>
+<H2 ID="extern_cg_name_BEFiniPatchL_patch_handle_hdl_R"> extern cg_name BEFiniPatch( patch_handle hdl ) </H2>
+This must be called to free up resources used by the given handle.&nbsp; After this, the handle must not be used again.
+<H1 ID="Segments"> Segments </H1>
+<P>The object file produced by the code generator is composed of various segments.&nbsp; These are defined by the front end.
+&nbsp;A program may have as many data and code segments as required by the front end.&nbsp; Each segment may be regarded as
+an individual file of objects, and may be created simultaneously.&nbsp; There is a current segment, selected by BESetSeg(),
+into which all DG routines generate their data.&nbsp; The code for each routine is generated into the segment returned by
+the FESegID() call when it is passed the cg_sym_handle for the routine.&nbsp; It is illegal to write data to the code segment
+for a routine in between the CGProcDecl call and the CGReturn call.
+<P>The following routines are used for initializing, finalizing, defining and selecting segments.
+<H2 ID="void_BEDefSegL_segment_id_id__seg_attr_attr__char_Tstr__uint_algn_R"> void BEDefSeg( segment_id id, seg_attr attr, char *str, uint algn ) </H2>
+<P>Define a segment.&nbsp; This must be called after BEInit and before BEStart.&nbsp; For the 80(x)86 code generator, you
+are allowed to define additional segments after BEStart if they are:
+<OL>
+<P><LI>Code Segments
+<P><LI>PRIVATE data segments.
+</OL>
+<DL>
+<DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>id
+<DD>A non-negative integer used as an identifier for the segment.&nbsp; It is arbitrarily picked by the front end.
+<P><DT>attr
+<DD>Segment attribute bits, defined below.
+<P><DT>str
+<DD>The name given to the segment.
+<P><DT>algn
+<DD>The segment alignment requirements.&nbsp; The code generator will pick the next larger alignment allowed by the object module
+format.&nbsp; For example, 9 would select paragraph alignment.
+</DL>
+<DL>
+<DT><B><I>Attribute</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>EXEC
+<DD>This is a code segment.
+<P><DT>GLOBAL
+<DD>The segment is accessible to other modules.&nbsp; (versus PRIVATE).
+<P><DT>INIT
+<DD>The segment is statically initialized.
+<P><DT>ROM
+<DD>The segment is read only.
+<P><DT>BACK
+<DD>The code generator may put its data here.&nbsp; One segment must be marked with this attribute.&nbsp; It may not be a COMMON,
+PRIVATE or EXEC segment.&nbsp; If the front end requires code in the EXEC segment, the CONST_IN_CODE switch must be passed
+to BEInit().
+<P><DT>COMMON
+<DD>All occurrences of this segment will be overlayed.&nbsp; This is used for FORTRAN common blocks.
+<P><DT>PRIVATE
+<DD>The segment is non combinable.&nbsp; This is used for far data items.
+<P><DT>GIVEN_NAME
+<DD>Normally, the back end feels free to prepend or append strings to the segment name passed in by the front end.&nbsp; This
+allows a naive front end to specify a constant set of segment names, and have the code generator mangle them in such a manner
+that they work properly in concert with the set of cg_switches that have been specified (e.g.&nbsp; prepending the module
+name to the code segments when BIG_CODE is specified on the x86).&nbsp; When GIVEN_NAME is specified, the back end outputs
+the segment name to the object file exactly as given.
+<P><DT>NOGROUP
+<DD>Segment will not be part of DGROUP (if it is a data segment).&nbsp; Private segments are never part of DGROUP, but sometimes
+it is useful to have segments that are combinable with others but can be physically separate.
+<P><DT>THREAD_LOCAL
+<DD>Segment contains thread local data.&nbsp; Such segments may need special handling in executable modules.
+</DL>
+<H2 ID="segment_id_BESetSegL_segment_id_seg_R"> segment_id BESetSeg( segment_id seg ) </H2>
+Select the current segment for data generation routines.&nbsp; Code for a routine is always output into the segment returned
+by FESegID when it is passed the routine symbol handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>seg
+<DD>Selects the current segment.
+</DL>
+<DL>
+<DT>Returns
+<DD>The previous current segment.
+</DL>
+<P><B>NOTE:</B>&nbsp; When emitting data into an EXEC or BACK segment, be aware that the code generator is at liberty to emit
+code and/or back end data into that segment anytime you make a call to a code generation routine (CG*).&nbsp; Do NOT expect
+data items to be contiguous in the segment if you have made an intervening CG* call.
+<H2 ID="void_BEFlushSegL_segment_id_seg_R"> void BEFlushSeg( segment_id seg ) </H2>
+<P>BEFlushSeg informs the back end that no more code/data will be generated in the specified segment.&nbsp; For code segments,
+it must be called after the CGReturn() for the final function which is placed in the segment.&nbsp; This causes the code generator
+to flush all pending information associated with the segment and allows the front end to free all the back handles for symbols
+which were referenced by the code going into the segment.&nbsp; (The FORTRAN compiler uses this since each function has its
+own symbol table which is thrown out at the end of the function).
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>seg
+<DD>The code segment id.
+</DL>
+<H1 ID="Labels"> Labels </H1>
+The back end uses a<B> label_handle</B> for flow of control.&nbsp; Each<B> label_handle</B> is a unique code label.&nbsp;
+These labels may only be used for flow of control.&nbsp; In order to define a label in a data segment, a<B> back_handle</B>
+must be used.
+<H2 ID="label_handle_BENewLabelLR"> label_handle BENewLabel() </H2>
+<P>Allocate a new control flow label.
+<DL>
+<P><DT>Returns
+<DD>A new label_handle.
+</DL>
+<H2 ID="void_BEFiniLabelL_label_handle_lbl_R"> void BEFiniLabel( label_handle lbl ) </H2>
+Indicate that a label_handle will not be used by the front end anymore.&nbsp; This allows the back end to free some memory
+at some later stage.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>lbl
+<DD>A label_handle
+</DL>
+<H1 ID="Back_Handles"> Back Handles </H1>
+A<B> back_handle</B> is the front end's handle for a code generator symbol table entry.&nbsp; A<B> cg_sym_handle</B> is the
+code generator's handle for a front end symbol table entry.&nbsp; The back end may call FEBack, passing in any cg_sym_handle
+that has been passed to it.&nbsp; The front end must allocate a back_handle via BENewBack if one does not exist.&nbsp; Subsequent
+calls to FEBack should return the same back_handle.&nbsp; This mechanism is used so that the back end does not have to do
+symbol table searches.&nbsp; For example:
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; back_handle FEBack( SYMPOINTER sym )</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( sym-&gt;back == NULL ) {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sym-&gt;back = BENewBack( sym );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return( sym-&gt;back );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P>It is the responsibility of the front end to free each back_handle, via BEFreeBack, when it frees the corresponding cg_sym_handle
+entry.
+<P>A back_handle for a symbol having automatic or register storage duration (auto back_handle) may not be freed until CGReturn
+is called.&nbsp; A back_handle for a symbol having static storage duration, (static back_handle) may not be freed until BEStop
+is called or until after a BEFlushSeg is done for a segment and the back_handle will never be referenced by any other function.
+<P>The code generator will not require a back handle for symbols which are not defined in the current compilation unit.
+<P>The front end must define the location of all symbols with static storage duration by passing the appropriate back_handle
+to DGLabel.&nbsp; It must also reserve the correct amount of space for that variable using DGBytes or DGUBytes.
+<P>The front end may also allocate an back_handle with static storage duration that has no cg_sym_handle associated with it
+(anonymous back_handle) by calling BENewBack(NULL).&nbsp; These are useful for literal strings.&nbsp; These must also be freed
+after calling BEStop.
+<H2 ID="back_handle_BENewBackL_cg_sym_handle_sym_R"> back_handle BENewBack( cg_sym_handle sym ) </H2>
+<P>Allocate a new back_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>The front end symbol handle to be associated with the back_handle.&nbsp; It may be NULL.
+</DL>
+<DL>
+<DT>Returns
+<DD>A new back_handle.
+</DL>
+<H2 ID="void_BEFiniBackL_back_handle_bck_R"> void BEFiniBack( back_handle bck ) </H2>
+Indicate that<B> bck</B> will never be passed to the back end again, except to BEFreeBack.&nbsp; This allows the code generator
+to free some memory at some later stage.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bck
+<DD>A back_handle.
+</DL>
+<H2 ID="void_BEFreeBackL_back_handle_bck_R"> void BEFreeBack( back_handle bck ) </H2>
+Free the back_handle<B> bck</B>.&nbsp; See the preamble in this section for restrictions on freeing a back_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bck
+<DD>A back_handle.
+</DL>
+<H1 ID="Type_definitions"> Type definitions </H1>
+Base types are defined as constants.&nbsp; All other types (structures, arrays, unions, etc) are simply defined by their length.
+&nbsp;The base types are:
+<DL>
+<P><DT><B><I>Type</I></B>
+<DD><B><I>C type</I></B>
+<P><DT>T_UINT_1
+<DD>unsigned char
+<P><DT>T_INT_1
+<DD>signed char
+<P><DT>T_UINT_2
+<DD>unsigned short
+<P><DT>T_INT_2
+<DD>signed short
+<P><DT>T_UINT_4
+<DD>unsigned long
+<P><DT>T_INT_4
+<DD>signed long
+<P><DT>T_LONG_POINTER
+<DD>far *
+<P><DT>T_HUGE_POINTER
+<DD>huge *
+<P><DT>T_NEAR_POINTER
+<DD>near *
+<P><DT>T_LONG_CODE_PTR
+<DD>(far *)()
+<P><DT>T_NEAR_CODE_PTR
+<DD>(near *)()
+<P><DT>T_SINGLE
+<DD>float
+<P><DT>T_DOUBLE
+<DD>double
+<P><DT>T_INTEGER
+<DD>int
+<P><DT>T_UNSIGNED
+<DD>unsigned int
+<P><DT>T_POINTER
+<DD>*
+<P><DT>T_CODE_PTR
+<DD>(*)()
+<P><DT>T_BOOLEAN
+<DD>The result of a comparison or flow operator.&nbsp; May also be used as an integer.
+<P><DT>T_DEFAULT
+<DD>Used to indicate default conversion
+<P><DT>T_NEAR_INTEGER
+<DD>The result of subtracting 2 near pointers
+<P><DT>T_LONG_INTEGER
+<DD>The result of subtracting 2 far pointers
+<P><DT>T_HUGE_INTEGER
+<DD>The result of subtracting 2 huge pointers
+<P><DT>T_FIRST_FREE
+<DD>The first user definable type
+</DL>
+<H2 ID="void_BEDefTypeL_cg_type_what__uint_align__unsigned_32_len_R"> void BEDefType( cg_type what, uint align, unsigned_32 len ) </H2>
+Define a new type to the code generator.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>what
+<DD>An integral value greater than T_FIRST_FREE, used as the type identifier.
+<P><DT>align
+<DD>Currently ignored.
+<P><DT>len
+<DD>The length of the new type.
+</DL>
+<H2 ID="void_BEAliasTypeL_cg_type_what__cg_type_to_R"> void BEAliasType( cg_type what, cg_type to ) </H2>
+Define a type to be an alias for an existing type.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>what
+<DD>Will become an alias for an existing type.
+<P><DT>to
+<DD>An existing type.
+</DL>
+<H2 ID="unsigned_32_BETypeLengthL_cg_type_type_R"> unsigned_32 BETypeLength( cg_type type ) </H2>
+Return the length of a previously defined type, or a base type.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>type
+<DD>A previously defined type.
+</DL>
+<DL>
+<DT>Returns
+<DD>The length associated with the type.
+</DL>
+<H2 ID="uint_BETypeAlignL_cg_type_type_R"> uint BETypeAlign( cg_type type ) </H2>
+Return the alignment requirements of a type.&nbsp; This is always 1 for x86 and 370 machines.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>type
+<DD>A previously defined type.
+</DL>
+<DL>
+<DT>Returns
+<DD>The alignment requirements of<B> type</B> as declared in BEDefType, or for a base type, as defined by the machine architecture.
+</DL>
+<H1 ID="Procedure_Declarations"> Procedure Declarations </H1>
+<H2 ID="void_CGProcDeclL_cg_sym_handle_name__cg_type_type_R"> void CGProcDecl( cg_sym_handle name, cg_type type ) </H2>
+Declare a new procedure.&nbsp; This must be the first routine to be called when generating each procedure.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The front end symbol table entry for the procedure.&nbsp; A back_handle will be requested.
+<P><DT>type
+<DD>The return type of the procedure.&nbsp; Use T_INTEGER for void functions.
+</DL>
+<H2 ID="void_CGParmDeclL_cg_sym_handle_name__cg_type_type_R"> void CGParmDecl( cg_sym_handle name, cg_type type ) </H2>
+Declare a new parameter to the current function.&nbsp; The calls to this function define the order of the parameters.&nbsp;
+This function must be called immediately after calling CGProcDecl.&nbsp; Parameters are defined in left to right order, as
+defined by the procedure prototype.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The symbol table entry for the parameter.
+<P><DT>type
+<DD>The type of the parameter.
+</DL>
+<H2 ID="label_handle_CGLastParmLR"> label_handle CGLastParm() </H2>
+End a parameter declaration section.&nbsp; This function must be called after the last parameter has been declared.&nbsp;
+Prior to this function, the only calls the front-end is allowed to make are CGParmDecl and CGAutoDecl.
+<H2 ID="void_CGAutoDeclL_cg_sym_handle_name__cg_type_type_R"> void CGAutoDecl( cg_sym_handle name, cg_type type ) </H2>
+<P>Declare an automatic variable.
+<P>This routine may be called at any point in the generation of a function between the calls to CGProcDecl and CGReturn, but
+must be called before<B> name</B> is passed to CGFEName.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The symbol table entry for the variable.
+<P><DT>type
+<DD>The type of the variable.
+</DL>
+<H2 ID="temp_handle_CGTempL_cg_type_type_R"> temp_handle CGTemp( cg_type type ) </H2>
+Yields a temporary with procedure scope.&nbsp; This can be used for things such as iteration counts for FORTRAN do loops,
+or a variable in which to store the return value of a function.&nbsp; This routine should be used<B> only if necessary</B>.
+&nbsp;It should be used when the front end requires a temporary which persists across a flow of control boundary.&nbsp; Other
+temporary results are handled by the expression trees.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>type
+<DD>The type of the new temporary.
+</DL>
+<DL>
+<DT>Returns
+<DD>A temp_handle which may be passed to CGTempName.&nbsp; This will be freed and invalidated by the back end when CGReturn is
+called.
+</DL>
+<H1 ID="Expressions"> Expressions </H1>
+Expression processing involves building an expression tree in the back end, using calls to CG routines.&nbsp; There are routines
+to generate leaf nodes, binary and unary nodes, and others.&nbsp; These routines return a handle for a node in a back end
+tree structure, called a<B> cg_name</B>.&nbsp; This handle must be exactly once in a subsequent call to a CG routine.&nbsp;
+A tree may be built in any order, but a cg_name is invalidated by a call to any CG routine with return type void.&nbsp; The
+exception to this rule is CGTrash.
+<P>There is no equivalent of the C address of operator.&nbsp; All leaf nodes generated for symbols, via CGFEName, CGBackName
+and CGTempName, yield the address of that symbol, and it is the responsibility of the front end to use an indirection operator
+to get its value.&nbsp; The following operators are available:&nbsp; 
+<DL>
+<P><DT><B><I>0-ary Operator</I></B>
+<DD><B><I>C equivalent</I></B>
+<P><DT>O_NOP
+<DD>N/A
+</DL>
+<DL>
+<DT><B><I>Unary Operator</I></B>
+<DD><B><I>C equivalent</I></B>
+<P><DT>O_UMINUS
+<DD>-x
+<P><DT>O_COMPLEMENT
+<DD>x
+<P><DT>O_POINTS
+<DD>(*x)
+<P><DT>O_CONVERT
+<DD>x=y
+<P><DT>O_ROUND
+<DD>Do not use!
+<P><DT>O_LOG
+<DD>log(x)
+<P><DT>O_COS
+<DD>cos(x)
+<P><DT>O_SIN
+<DD>sin(x)
+<P><DT>O_TAN
+<DD>tan(x)
+<P><DT>O_SQRT
+<DD>sqrt(x)
+<P><DT>O_FABS
+<DD>fabs(x)
+<P><DT>O_ACOS
+<DD>acos(x)
+<P><DT>O_ASIN
+<DD>asin(x)
+<P><DT>O_ATAN
+<DD>atan(x)
+<P><DT>O_COSH
+<DD>cosh(x)
+<P><DT>O_SINH
+<DD>sinh(x)
+<P><DT>O_TANH
+<DD>tanh(x)
+<P><DT>O_EXP
+<DD>exp(x)
+<P><DT>O_LOG10
+<DD>log10(x)
+<P><DT>O_PARENTHESIS
+<DD>This operator represents the &quot;strong&quot; parenthesises of FORTRAN and C.&nbsp; It prevents the back end from performing
+certain mathematically correct, but floating point incorrect optimizations.&nbsp; E.g.&nbsp; in the expression &quot;(a*2.4)/2.0&quot;,
+the back end is not allowed constant fold the expression into &quot;a*1.2&quot;.
+</DL>
+<DL>
+<DT><B><I>Binary Operator</I></B>
+<DD><B><I>C equivalent</I></B>
+<P><DT>O_PLUS
+<DD>+
+<P><DT>O_MINUS
+<DD>-
+<P><DT>O_TIMES
+<DD>*
+<P><DT>O_DIV
+<DD>/
+<P><DT>O_MOD
+<DD>%
+<P><DT>O_AND
+<DD>&amp;
+<P><DT>O_OR
+<DD>|
+<P><DT>O_XOR
+<DD>^
+<P><DT>O_RSHIFT
+<DD>&gt;&gt;
+<P><DT>O_LSHIFT
+<DD>&lt;&lt;
+<P><DT>O_COMMA
+<DD>,
+<P><DT>O_TEST_TRUE
+<DD>( x &amp; y ) != 0
+<P><DT>O_TEST_FALSE
+<DD>( x &amp; y ) == 0
+<P><DT>O_EQ
+<DD>==
+<P><DT>O_NE
+<DD>!=
+<P><DT>O_GT
+<DD>&gt;
+<P><DT>O_LE
+<DD>&lt;=
+<P><DT>O_LT
+<DD>&lt;
+<P><DT>O_GE
+<DD>&gt;=
+<P><DT>O_POW
+<DD>pow( x, y )
+<P><DT>O_ATAN2
+<DD>atan2( x, y )
+<P><DT>O_FMOD
+<DD>fmod( x, y )
+<P><DT>O_CONVERT
+<DD>See below.
+</DL>
+<P>The binary O_CONVERT operator is only available on the x86 code generator.&nbsp; It is used for based pointer operations
+(the result type of the CGBinary call must be a far pointer type).&nbsp; It effectively performs a MK_FP operation with the
+left hand side providing the offset portion of the address, and the right hand side providing the segment value.&nbsp; If
+the right hand side expression is the address of a symbol, or the type of the expression is a far pointer, then the segment
+value for the symbol, or the segment value of the expression is used as the segment value after the O_CONVERT operation.
+<DL>
+<P><DT><B><I>Short circuit operators</I></B>
+<DD><B><I>C equivalent</I></B>
+<P><DT>O_FLOW_AND
+<DD>&amp;&amp;
+<P><DT>O_FLOW_OR
+<DD>||
+<P><DT>O_FLOW_NOT
+<DD>!
+</DL>
+<DL>
+<DT><B><I>Control flow operators</I></B>
+<DD><B><I>C equivalent</I></B>
+<P><DT>O_GOTO
+<DD>goto label;
+<P><DT>O_LABEL
+<DD>label:;
+<P><DT>O_IF_TRUE
+<DD>if( x ) goto label;
+<P><DT>O_IF_FALSE
+<DD>if( !(x) ) goto label;
+<P><DT>O_INVOKE_LABEL
+<DD>GOSUB (Basic)
+<P><DT>O_LABEL_RETURN
+<DD>RETURN (Basic)
+</DL>
+<P>The type passed into a CG routine is used by the back end as the type for the resulting node.&nbsp; If the node is an operator
+node (CGBinary, CGUnary) the back end will convert the operands to the result type before performing the operation.&nbsp;
+If the type T_DEFAULT is passed, the code generator will use default conversion rules to determine the resulting type of the
+node.&nbsp; These rules are the same as the ANSI C value preserving rules, with the exception that characters are not promoted
+to integers before doing arithmetic operations.
+<P>For example, if a node of type T_UINT_2 and a node of type T_INT_4 are to be added, the back end will automatically convert
+the operands to T_INT_4 before performing the addition.&nbsp; The resulting node will have type T_INT_4.
+<H1 ID="Leaf_Nodes"> Leaf Nodes </H1>
+<H2 ID="cg_name_CGIntegerL_signed_32_val__cg_type_type_R"> cg_name CGInteger( signed_32 val, cg_type type ) </H2>
+<P>Create an integer constant leaf node.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>val
+<DD>The integral value.
+<P><DT>type
+<DD>An integral type.
+</DL>
+<H2 ID="cg_name_CGFloatL_char_Tnum__cg_type_type_R"> cg_name CGFloat( char *num, cg_type type ) </H2>
+Create a floating-point constant leaf node.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>num
+<DD>A NULL terminated E format string.&nbsp; (-1.23456E-102)
+<P><DT>type
+<DD>A floating point type.
+</DL>
+<H2 ID="cg_name_CGFENameL_cg_sym_handle_sym__cg_type_type_R"> cg_name CGFEName( cg_sym_handle sym, cg_type type ) </H2>
+Create a leaf node representing the address of the back_handle associated with<B> sym</B>.&nbsp; If sym represents an automatic
+variable or a parameter, CGAutoDecl or CGParmDecl must be called before this routine is first used.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>The front end symbol.
+<P><DT>type
+<DD>The type to be associated with the value of the symbol.
+</DL>
+<H2 ID="cg_name_CGBackNameL_back_handle_bck__cg_type_type_R"> cg_name CGBackName( back_handle bck, cg_type type ) </H2>
+Create a leaf node which represents the address of the back_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bck
+<DD>A back handle.
+<P><DT>type
+<DD>The type to be associated with the<B> value</B> of the symbol.
+</DL>
+<H2 ID="cg_name_CGTempNameL_temp_handle_temp__cg_type_type_R"> cg_name CGTempName( temp_handle temp, cg_type type ) </H2>
+Create a leaf node which yields the address of the temp_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>temp
+<DD>A temp_handle.
+<P><DT>type
+<DD>The type to be associated with the<B> value</B> of the symbol.
+</DL>
+<H1 ID="Assignment_Operations"> Assignment Operations </H1>
+<H2 ID="cg_name_CGAssignL_cg_name_dest__cg_name_src__cg_type_type_R"> cg_name CGAssign( cg_name dest, cg_name src, cg_type type ) </H2>
+Create an assignment node.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>dest
+<DD>The destination address.
+<P><DT>src
+<DD>The source value.
+<P><DT>type
+<DD>The type to which the destination address points.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of the right hand side.
+</DL>
+<H2 ID="cg_name_CGLVAssignL_cg_name_dest__cg_name_src__cg_type_type_R"> cg_name CGLVAssign( cg_name dest, cg_name src, cg_type type ) </H2>
+Like CGAssign, but yields the address of the destination.
+<H2 ID="cg_name_CGPreGetsL_cg_op_op__cg_name_dest__cg_name_src__cg_type_type_R"> cg_name CGPreGets( cg_op op, cg_name dest, cg_name src, cg_type type ) </H2>
+<P>Used for the C expressions a += b, a /= b.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>The arithmetic operator to be used.
+<P><DT>dest
+<DD>The address of the destination.
+<P><DT>src
+<DD>The value of the right hand side.
+<P><DT>type
+<DD>The type to which the destination address points.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of the left hand side.
+</DL>
+<H2 ID="cg_name_CGLVPreGetsL_cg_op_op__cg_name_dest__cg_name_src__cg_type_type_R"> cg_name CGLVPreGets( cg_op op, cg_name dest, cg_name src, cg_type type ) </H2>
+Like CGPreGets, but yields the address of the destination.
+<H2 ID="cg_name_CGPostGetsL_cg_op_op__cg_name_dest__cg_name_src__cg_type_type_R"> cg_name CGPostGets( cg_op op, cg_name dest, cg_name src, cg_type type ) </H2>
+<P>Used for the C expressions a++, a--.&nbsp; No automatic scaling is done for pointers.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>The operator.
+<P><DT>dest
+<DD>The address of the destination
+<P><DT>src
+<DD>The value of the increment.
+<P><DT>type
+<DD>The type of the destination.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of the left hand side before the operation occurs.
+</DL>
+<H1 ID="ArithmeticDlogical_operations"> Arithmetic/logical operations </H1>
+<H2 ID="cg_name_CGBinaryL_cg_op_op__cg_name_left__cg_name_right__cg_type_type_R"> cg_name CGBinary( cg_op op, cg_name left, cg_name right, cg_type type ) </H2>
+Binary operations.&nbsp; No automatic scaling is done for pointer operations.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>The operator.
+<P><DT>left
+<DD>The value of the left hand side.
+<P><DT>right
+<DD>The value of the right hand side.
+<P><DT>type
+<DD>The result type.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of the result.
+</DL>
+<H2 ID="cg_name_CGUnaryL_cg_op_op__cg_name_name__cg_type_type_R"> cg_name CGUnary( cg_op op, cg_name name, cg_type type ) </H2>
+Unary operations.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>The operator.
+<P><DT>name
+<DD>The value of operand.
+<P><DT>type
+<DD>The result type.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of the result.
+</DL>
+<H2 ID="cg_name_CGIndexL_cg_name_name__cg_name_by__cg_type_type__cg_type_ptype_R"> cg_name CGIndex( cg_name name, cg_name by, cg_type type, cg_type ptype ) </H2>
+Obsolete.&nbsp; Do not use.
+<H1 ID="Procedure_calls"> Procedure calls </H1>
+<H2 ID="call_handle_CGInitCallL_cg_name_name__cg_type_type__cg_sym_handle_aux_info_R"> call_handle CGInitCall( cg_name name, cg_type type, cg_sym_handle aux_info ) </H2>
+<P>Initiate a procedure call.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The address of the routine to call.
+<P><DT>type
+<DD>The return type of the routine.
+<P><DT>aux_info
+<DD>A handle which the back end may passed to FEAuxInfo to determine the attributes of the call.
+</DL>
+<DL>
+<DT>Returns
+<DD>A<B> call_handle</B> to be passed to the following routines.
+</DL>
+<H2 ID="void_CGAddParmL_call_handle_call__cg_name_name__cg_type_type_R"> void CGAddParm( call_handle call, cg_name name, cg_type type ) </H2>
+Add a parameter to a call_handle.&nbsp; The order of parameters is defined by the order in which they are passed to this routine.
+&nbsp;Parameters should be added in right to left order, as defined by the procedure call.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>call
+<DD>A call_handle.
+<P><DT>name
+<DD>The value of the parameter.
+<P><DT>type
+<DD>The type of the parameter.&nbsp; This type will be passed to FEParmType to determine the actual type to be used when passing
+the parameter.&nbsp; For instance, characters are usually passes as integers in C.
+</DL>
+<H2 ID="cg_name_CGCallL_call_handle_call_R"> cg_name CGCall( call_handle call ) </H2>
+Turn a call_handle into a cg_name by performing the call.&nbsp; This may be immediately followed by an optional addition operation,
+to reference a field in a structure return value.&nbsp; An indirection operator must immediately follow, even if the function
+has no return value.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>call
+<DD>A call_handle.
+</DL>
+<DL>
+<DT>Returns
+<DD>The address of the function return value.
+</DL>
+<H1 ID="ComparisonDshortMcircuit_operations"> Comparison/short-circuit operations </H1>
+<H2 ID="cg_name_CGCompareL_cg_op_op__cg_name_left__cg_name_right__cg_type_type_R"> cg_name CGCompare( cg_op op, cg_name left, cg_name right, cg_type type ) </H2>
+Compare two values.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>The comparison operator.
+<P><DT>left
+<DD>The value of the left hand side.
+<P><DT>right
+<DD>The value of the right hand side.
+<P><DT>type
+<DD>The type to which to convert the operands to before performing comparison.
+</DL>
+<DL>
+<DT>Returns
+<DD>A T_BOOLEAN cg_name, which may be passed to a control flow CG routine, or used in an expression as an integral value.
+</DL>
+<H1 ID="Control_flow_operations"> Control flow operations </H1>
+<H2 ID="cg_name_CGFlowL_cg_op_op__cg_name_left__cg_name_right_R"> cg_name CGFlow( cg_op op, cg_name left, cg_name right ) </H2>
+Perform short-circuit boolean operations.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>An operator.
+<P><DT>left
+<DD>A T_BOOLEAN or integral cg_name.
+<P><DT>right
+<DD>A T_BOOLEAN or integral cg_name, or NULL if op is O_FLOW_NOT.
+</DL>
+<DL>
+<DT>Returns
+<DD>A T_BOOLEAN cg_name.
+</DL>
+<H2 ID="cg_name_CGChooseL_cg_name_sel__cg_name_n1__cg_name_n2__cg_type_type_R"> cg_name CGChoose( cg_name sel, cg_name n1, cg_name n2, cg_type type ) </H2>
+Used for the C expression<B> sel</B> ?<B>&nbsp; n1</B> :<B>&nbsp; n2</B>.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sel
+<DD>A T_BOOLEAN or integral cg_name used as the selector.
+<P><DT>n1
+<DD>The value to return if<B> sel</B> is non-zero.
+<P><DT>n2
+<DD>The value to return if<B> sel</B> is zero.
+<P><DT>type
+<DD>The type to which convert the result.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of<B> n1</B> or<B> n2</B> depending upon the truth of<B> sel</B>.
+</DL>
+<H2 ID="cg_name_CGWarpL_cg_name_before__label_handle_label__cg_name_after_R"> cg_name CGWarp( cg_name before, label_handle label, cg_name after ) </H2>
+To be used for FORTRAN statement functions.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>before
+<DD>An arbitrary expression tree to be evaluated before<B> label</B> is called.&nbsp; This is used to assign values to statement
+function arguments, which are usually temporaries allocated with CGTemp.
+<P><DT>label
+<DD>A label_handle to invoke via O_CALL_LABEL.
+<P><DT>after
+<DD>An arbitrary expression tree to be evaluated after<B> label</B> is called.&nbsp; This is used to retrieve the statement function
+return value.
+</DL>
+<DL>
+<DT>Returns
+<DD>The value of<B> after</B>.&nbsp; This can be passed to CGEval, to guarantee that nested statement functions are fully evaluated
+before their parameter variables are reassigned, as in f(1,f(2,3,4),5).
+</DL>
+<H2 ID="void_CG3WayControlL_cg_name_expr__label_handle_lt__label_handle_eq__label_handle_gt_R"> void CG3WayControl( cg_name expr, label_handle lt, label_handle eq, label_handle gt ) </H2>
+Used for the FORTRAN arithmetic if statement.&nbsp; Go to label<B> lt</B>,<B> eq</B> or<B> gt</B> depending on whether<B>
+expr</B> is less than, equal to, or greater than zero.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>expr
+<DD>The selector value.
+<P><DT>lt
+<DD>A label_handle.
+<P><DT>eq
+<DD>A label_handle.
+<P><DT>gt
+<DD>A label_handle.
+</DL>
+<H2 ID="void_CGControlL_cg_op_op__cg_name_expr__label_handle_lbl_R"> void CGControl( cg_op op, cg_name expr, label_handle lbl ) </H2>
+Generate conditional and unconditional flow of control.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>op
+<DD>a control flow operator.
+<P><DT>expr
+<DD>A T_BOOLEAN expression if op is O_IF_TRUE or O_IF_FALSE.&nbsp; NULL otherwise.
+<P><DT>lbl
+<DD>The target label.
+</DL>
+<H2 ID="void_CGBigLabelL_back_handle_lbl_R"> void CGBigLabel( back_handle lbl ) </H2>
+Generate a label which may be branched to from a nested procedure or used in NT structured exception handling.&nbsp; Don't
+use this call unless you *really*, *really* need to.&nbsp; It kills a lot of optimizations.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>lbl
+<DD>A back_handle.&nbsp; There must be a front end symbol associated with this back handle.
+</DL>
+<H2 ID="void_CGBigGotoL_back_handle_value__int_level_R"> void CGBigGoto( back_handle value, int level ) </H2>
+Generate a branch to a label in an outer procedure.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>lbl
+<DD>A back_handle.&nbsp; There must be a front end symbol associated with this back handle.
+<P><DT>level
+<DD>The lexical level of the target label.
+</DL>
+<H1 ID="Select_and_Switch_statements_"> Select and Switch statements. </H1>
+The select routines are used as follows.&nbsp; CGSelOther should always be used even if there is no otherwise/default case.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; end_label = BENewLabel();</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; sel_label = BENewLabel();</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_GOTO, NULL, sel_label );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; sel_handle = CGSelInit();</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; case_label = BENewLabel();</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_LABEL, NULL, case_label );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGSelCase( sel_handle, case_label, case_value );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... generate code associated with &quot;case_value&quot;&nbsp; here.</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_GOTO, NULL, end_label ); // or else, fall through</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; other_label = BENewLabel();</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_LABEL, NULL, other_label );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGSelOther( sel_handle, other_label );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... generate &quot;otherwise&quot; code here</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_GOTO, NULL, end_label ); // or else, fall through</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_LABEL, NULL, sel_label );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGSelect( sel_handle );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; CGControl( O_LABEL, NULL, end_label );</TT>
+<H2 ID="sel_handle_CGSelInitLR"> sel_handle CGSelInit() </H2>
+<P>Create a sel_handle.
+<DL>
+<P><DT>Returns
+<DD>A sel_handle to be passed to the following routines.
+</DL>
+<H2 ID="void_CGSelCaseL_sel_handle_sel__label_handle_lbl__signed_32_val_R"> void CGSelCase( sel_handle sel, label_handle lbl, signed_32 val ) </H2>
+Add a single value case to a select or switch.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sel
+<DD>A sel_handle obtained from CGSelInit().
+<P><DT>lbl
+<DD>The label to be associated with the case value.
+<P><DT>val
+<DD>The case value.
+</DL>
+<H2 ID="void_CGSelRangeL_sel_handle_s__signed_32_lo__signed_32_hi__label_handle_lbl_R"> void CGSelRange( sel_handle s, signed_32 lo, signed_32 hi, label_handle lbl ) </H2>
+Add a range of values to a select.&nbsp; All values are eventually converted into unsigned types to generate the switch code,
+so lo and hi must have the same sign.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>s
+<DD>A sel_handle obtained from CGSelInit().
+<P><DT>lo
+<DD>The lower bound of the case range.
+<P><DT>hi
+<DD>The upper bound of the case range.
+<P><DT>lbl
+<DD>The label to be associated with the case value.
+</DL>
+<H2 ID="void_CGSelOtherL_sel_handle_s__label_handle_lbl_R"> void CGSelOther( sel_handle s, label_handle lbl ) </H2>
+Add the otherwise case to a select.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>s
+<DD>A sel_handle.
+<P><DT>lbl
+<DD>The label to be associated with the otherwise case.
+</DL>
+<H2 ID="void_CGSelectL_sel_handle_s__cg_name_expr_R"> void CGSelect( sel_handle s, cg_name expr ) </H2>
+Add the select expression to a select statement and generate code.&nbsp; This must be the last routine called for a given
+select statement.&nbsp; It invalidates the sel_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>s
+<DD>A sel_handle.
+<P><DT>expr
+<DD>The value we are selecting.
+</DL>
+<H2 ID="void_CGSelectRestrictedL_sel_handle_s__cg_name_expr__cg_switch_type_allowed_R"> void CGSelectRestricted( sel_handle s, cg_name expr, cg_switch_type allowed ) </H2>
+Identical to CGSelect, except that only switch generation techniques corresponding to the set of allowed methods will be considered
+when determining how to produce code.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>s
+<DD>A sel_handle.
+<P><DT>expr
+<DD>The value we are selecting.
+<P><DT>allowed
+<DD>The allowed methods of generating code.&nbsp; Must be a combination (non-empty) of the following bits:
+<UL>
+<P><LI>CG_SWITCH_SCAN
+<P><LI>CG_SWITCH_BSEARCH
+<P><LI>CG_SWITCH_TABLE
+</UL>
+</DL>
+<H1 ID="Other"> Other </H1>
+<H2 ID="void_CGReturnL_cg_name_name__cg_type_type_R"> void CGReturn( cg_name name, cg_type type ) </H2>
+<P>Return from a function.&nbsp; This is the last routine that may be called in any routine.&nbsp; Multiple return statements
+must be implemented with assignments to a temporary variable (CGTemp) and a branch to a label generated just before this routine
+call.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The value of the return value, or NULL.
+<P><DT>type
+<DD>The type of the return value.&nbsp; Use T_INTEGER for void functions.
+</DL>
+<H2 ID="cg_name_CGEvalL_cg_name_name_R"> cg_name CGEval( cg_name name ) </H2>
+Evaluate this expression tree now and assign its value to a leaf node.&nbsp; Used to force the order of operations.&nbsp;
+This should only be used if necessary.&nbsp; Normally, the expression trees adequately define the order of operations.&nbsp;
+This usually used to force the order of parameter evaluation.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The tree to be evaluated.
+</DL>
+<DL>
+<DT>Returns
+<DD>A leaf node containing the value of the tree.
+</DL>
+<H2 ID="void_CGDoneL_cg_name_name_R"> void CGDone( cg_name name ) </H2>
+Generate the tree and throw away the resultant value.&nbsp; For example, CGAssign yields a value which may not be needed,
+but must be passed to this routine to cause the tree to be generated.&nbsp; This routine invalidates all cg_name handles.
+&nbsp;After this routine has returned, any pending inline function expansions will have been performed.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The cg_name to be generated/discarded.
+</DL>
+<H2 ID="void_CGTrashL_cg_name_name_R"> void CGTrash( cg_name name ) </H2>
+Like CGDone, but used for partial expression trees.&nbsp; This routine does not cause all existing cg_names to become invalid.
+<H2 ID="cg_type_CGTypeL_cg_name_name_R"> cg_type CGType( cg_name name ) </H2>
+<P>Returns the type of the given cg_name.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>A cg_name.
+</DL>
+<DL>
+<DT>Returns
+<DD>The type of the cg_name.
+</DL>
+<H2 ID="cg_name_TCGDuplicateL_cg_name_name_R"> cg_name *CGDuplicate( cg_name name ) </H2>
+Create two copies of a cg_name.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The cg_name to be duplicated.
+</DL>
+<DL>
+<DT>Returns
+<DD>A pointer to an array of two new cg_names, each representing the same value as the original.&nbsp; These should be copied
+out of the array immediately since subsequent calls to CGDuplicate will overwrite the array.
+</DL>
+<H2 ID="cg_name_CGBitMaskL_cg_name_name__byte_start__byte_len__cg_type_type_R"> cg_name CGBitMask( cg_name name, byte start, byte len, cg_type type ) </H2>
+Yields the address of a bit field.&nbsp; This address may not really be used except with an indirection operator or as the
+destination of an assignment operation.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The address of the integral variable containing the bit field.
+<P><DT>start
+<DD>The position of the least significant bit of the bit field.&nbsp; 0 indicates the least significant bit of the host data type.
+<P><DT>len
+<DD>The length of the bit field in bits.
+<P><DT>type
+<DD>The integral type of the value containing the bit field.
+</DL>
+<DL>
+<DT>Returns
+<DD>The address of the bit field.&nbsp; To reference field2 in the following C structure for a little endian target, use start=4,
+len=5, and type=T_INT_2.&nbsp; For a big endian target, start=7.
+</DL>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; typedef struct {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; short field1 : 4;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; short field2 : 5;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; short field3 : 7;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<H2 ID="cg_name_CGVolatileL_cg_name_name_R"> cg_name CGVolatile( cg_name name ) </H2>
+<P>Indicate that the given address points to a volatile location.&nbsp; This back end does not remember this information beyond
+this node in the expression tree.&nbsp; If an address points to a volatile location, the front end must call this routine
+each time that address is used.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>name
+<DD>The address of the volatile location.
+</DL>
+<DL>
+<DT>Returns
+<DD>A new cg_name representing the same value as name.
+</DL>
+<H2 ID="cg_name_CGCallbackL_cg_callback_func__void_Tptr_R"> cg_name CGCallback( cg_callback func, void *ptr ) </H2>
+When a callback node is inserted into the tree, the code generator will call the given function with the pointer as a parameter
+when it turns the node into an instruction.&nbsp; This can be used to retrieve order information about the placement of nodes
+in the instruction stream.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>func
+<DD>This is a pointer to a function which is compatible with the C type &quot;void (*)(void *)&quot;.&nbsp; This function will
+be called with the second parameter to this function as it's only parameter sometime during the execution of the CGDone call.
+<P><DT>ptr
+<DD>This will be a parameter to the function given as the first parameter.
+</DL>
+<H2 ID="cg_name_CGPatchNodeL_patch_handle_hdl__cg_type_type_R"> cg_name CGPatchNode( patch_handle hdl, cg_type type ) </H2>
+This prepares a leaf node to hold an integer constant which will be provided sometime during the execution of the CGDone call
+by means of a BEPatchInteger() call.&nbsp; It is an error to insert a patch node into the tree and not call BEPatchInteger().
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>hdl
+<DD>A handle for a patch allocated with BEPatch().
+<P><DT>type
+<DD>The actual type of the node.&nbsp; Must be an integer type.
+</DL>
+<H1 ID="Data_Generation"> Data Generation </H1>
+The following routines generate a data item described at the current location in the current segment, and increment the current
+location by the size of the generated object.
+<H2 ID="void_DGLabelL_back_handle_bck_R"> void DGLabel( back_handle bck ) </H2>
+<P>Generate the label for a given back_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bck
+<DD>A back_handle.
+</DL>
+<H2 ID="void_DGBackPtrL_back_handle_bck__segment_id_seg__signed_32_offset__cg_type_type_R"> void DGBackPtr( back_handle bck, segment_id seg, signed_32 offset, cg_type type ) </H2>
+Generate a pointer to the label defined by the back_handle.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bck
+<DD>A back_handle.
+<P><DT>seg
+<DD>The segment_id of the segment in which the label for<B> bck</B> will be defined if it has not already been passed to DGLabel.
+<P><DT>offset
+<DD>A value to be added to the generated pointer value.
+<P><DT>type
+<DD>The pointer type to be used.
+</DL>
+<H2 ID="void_DGFEPtrL_cg_sym_handle_sym__cg_type_type__signed_32_offset_R"> void DGFEPtr( cg_sym_handle sym, cg_type type, signed_32 offset ) </H2>
+Generate a pointer to the label associated with<B> sym</B>.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>A cg_sym_handle.
+<P><DT>type
+<DD>The pointer type to be used.
+<P><DT>offset
+<DD>A value to be added to the generated pointer value.
+</DL>
+<H2 ID="void_DGIntegerL_unsigned_32_value__cg_type_type_R"> void DGInteger( unsigned_32 value, cg_type type ) </H2>
+Generate an integer.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>value
+<DD>An integral value.
+<P><DT>type
+<DD>The integral type to be used.
+</DL>
+<H2 ID="void_DGFloatL_char_Tvalue__cg_type_type_R"> void DGFloat( char *value, cg_type type ) </H2>
+Generate a floating-point constant.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>value
+<DD>An E format string (ie:&nbsp; 1.2345e-134)
+<P><DT>type
+<DD>The floating point type to be used.
+</DL>
+<H2 ID="void_DGCharL_char_value_R"> void DGChar( char value ) </H2>
+Generate a character constant.&nbsp; Will be translated if cross compiling.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>value
+<DD>A character value.
+</DL>
+<H2 ID="void_DGStringL_char_Tvalue__uint_len_R"> void DGString( char *value, uint len ) </H2>
+Generate a character string.&nbsp; Will be translated if cross compiling.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>value
+<DD>Pointer to the characters to put into the segment.&nbsp; It is not necessarily a null terminated string.
+<P><DT>len
+<DD>The length of the string.
+</DL>
+<H2 ID="void_DGBytesL_unsigned_32_len__byte_Tsrc_R"> void DGBytes( unsigned_32 len, byte *src ) </H2>
+Generate raw binary data.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>src
+<DD>Pointer to the data.
+<P><DT>len
+<DD>The length of the byte stream.
+</DL>
+<H2 ID="void_DGIBytesL_unsigned_32_len__byte_pat_R"> void DGIBytes( unsigned_32 len, byte pat ) </H2>
+Generate the byte<B> pat</B>,<B> len</B> times.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>pat
+<DD>The pattern byte.
+<P><DT>len
+<DD>The number of times to repeat the byte.
+</DL>
+<H2 ID="void_DGUBytesL_unsigned_32_len_R"> void DGUBytes( unsigned_32 len ) </H2>
+Generate<B> len</B> undefined bytes.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>len
+<DD>The size by which to increase the segment.
+</DL>
+<H2 ID="void_DGAlignL_uint_align_R"> void DGAlign( uint align ) </H2>
+Align the segment to an<B> align</B> byte boundary.&nbsp; Any slack bytes will have an undefined value.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>align
+<DD>The desired alignment boundary.
+</DL>
+<H2 ID="unsigned_32_DGSeekL_unsigned_32_where_R"> unsigned_32 DGSeek( unsigned_32 where ) </H2>
+Seek to a location within a segment.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>where
+<DD>The location within the segment.
+</DL>
+<DL>
+<DT>Returns
+<DD>The current location in the segment before the seek takes place.
+</DL>
+<H2 ID="unsigned_long_DGTellLR"> unsigned long DGTell() </H2>
+<DL>
+<DT>Returns
+<DD>The current location within the segment.
+</DL>
+<H2 ID="unsigned_long_DGBackTellL_back_handle_bck_R"> unsigned long DGBackTell( back_handle bck ) </H2>
+<DL>
+<DT>Returns
+<DD>The location of the label within its segment.&nbsp; The label must have been previously generated via DGLabel.
+</DL>
+<H1 ID="Front_End_Routines"> Front End Routines </H1>
+<H2 ID="void_FEGenProcL_cg_sym_handle_sym_R"> void FEGenProc( cg_sym_handle sym ) </H2>
+This routine will be called when the back end is generating a tree and encounters a function call having the<B> call_class</B>
+MAKE_CALL_INLINE.&nbsp; The front end must save its current state and start generating code for<B> sym</B>.&nbsp; FEGenProc
+calls may be nested if the code generator encounters an inline within the code for an inline function.&nbsp; The front end
+should maintain a state stack.&nbsp; It is up to the front end to prevent infinite recursion.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>The cg_sym_handle of the function to be generated.
+</DL>
+<H2 ID="back_handle_FEBackL_cg_sym_handle_sym_R"> back_handle FEBack( cg_sym_handle sym ) </H2>
+Return, and possibly allocate using BENewBack, a back handle for sym.&nbsp; See the example under <A HREF="#Back_Handles">Back Handles</A>
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>
+</DL>
+<DL>
+<DT>Returns
+<DD>A back_handle.
+</DL>
+<H2 ID="segment_id_FESegIDL_cg_sym_handle_sym_R"> segment_id FESegID( cg_sym_handle sym ) </H2>
+Return the segment_id for symbol<B> sym</B>.&nbsp; A negative value may be returned to indicate that the symbol is defined
+in an unknown PRIVATE segment which has been defined in another module.&nbsp; If two symbols have the same negative value
+returned, the back end assumes that they are both defined in the same (unknown) segment.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>A cg_sym_handle.
+</DL>
+<DL>
+<DT>Returns
+<DD>A segment_id.
+</DL>
+<H2 ID="char_TFEModuleNameLR"> char *FEModuleName() </H2>
+<DL>
+<DT>Returns
+<DD>A null terminated string which is the name of the module being compiled.&nbsp; This is usually the file name with path and
+extension information stripped.
+</DL>
+<H2 ID="char_FEStackCheckL_cg_sym_handle_sym_R"> char FEStackCheck( cg_sym_handle sym ) </H2>
+<DL>
+<DT>Returns
+<DD>1 if stack checking required for this routine
+</DL>
+<H2 ID="unsigned_FELexLevelL_cg_sym_handle_sym_R"> unsigned FELexLevel( cg_sym_handle sym ) </H2>
+<DL>
+<DT>Returns
+<DD>The lexical level of routine<B> sym</B>.&nbsp; This must be zero for all languages except Pascal.&nbsp; In Pascal, 1 indicates
+the level of the main program.&nbsp; Each nested procedures adds an additional level.
+</DL>
+<H2 ID="char_TFENameL_cg_sym_handle_sym_R"> char *FEName( cg_sym_handle sym ) </H2>
+<DL>
+<DT>Returns
+<DD>A NULL terminated character string which is the name of sym.&nbsp; A null string should be returned if the symbol has no name.
+&nbsp;NULL should never be returned.
+</DL>
+<H2 ID="char_TFEExtNameL_cg_sym_handle_sym__int_request_R"> char *FEExtName( cg_sym_handle sym, int request ) </H2>
+<DL>
+<DT>Returns
+<DD>A various kind in dependency on request parameter.
+<P><DT><B><I>Request parameter</I></B>
+<DD><B><I>Returns</I></B>
+<P><DT>EXTN_BASENAME
+<DD>NULL terminated character string which is the name of sym.&nbsp; A null string should be returned if the symbol has no name.
+&nbsp;NULL should never be returned.
+<P><DT>EXTN_PATTERN
+<DD>NULL terminated character string which is the pattern for symbol name decoration.&nbsp; '*' is replaced by symbol name.&nbsp;
+'^' is replaced by its upper case equivalent.&nbsp; '!' is replaced by its lower case equivalent.&nbsp; '#' is replaced by
+'@nnn' where nnn is decimal number representing total size of all function parameters.&nbsp; If an '\' is present, the character
+following is used literally.
+<P><DT>EXTN_PRMSIZE
+<DD>Returns int value which represent size of all parameters when symbol is function.
+</DL>
+<H2 ID="cg_type_FEParmTypeL_cg_sym_handle_func__cg_sym_handle_parm__cg_type_type_R"> cg_type FEParmType( cg_sym_handle func, cg_sym_handle parm, cg_type type ) </H2>
+<DL>
+<DT>Returns
+<DD>The type to which to promote an argument with a given type before passing it to a procedure.&nbsp; Type will be a dealiased
+type.
+</DL>
+<H2 ID="int_FETrueLR"> int FETrue() </H2>
+<DL>
+<DT>Returns
+<DD>The value of TRUE.&nbsp; This is normally 1.
+</DL>
+<H2 ID="char_FEMoreMemL_unsigned_size_R"> char FEMoreMem( unsigned size ) </H2>
+Release memory for the back end to use.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>size
+<DD>is the amount of memory required
+</DL>
+<DL>
+<DT>Returns
+<DD>1 if at least<B> size</B> bytes were released.&nbsp; May always return 0 if memory is not a scarce resource in the host environment.
+</DL>
+<H2 ID="dbg_type_FEDbgTypeL_cg_sym_handle_sym_R"> dbg_type FEDbgType( cg_sym_handle sym ) </H2>
+<DL>
+<DT>Returns
+<DD>The dbg_type handle for the symbol<B> sym</B>.
+</DL>
+<H2 ID="fe_attr_FEAttrL_cg_sym_handle_sym_R"> fe_attr FEAttr( cg_sym_handle sym ) </H2>
+Return symbol attributes for<B> sym</B>.&nbsp; These are bits combinable with the bit-wise or operator |.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>A cg_sym_handle.
+</DL>
+<DL>
+<DT><B><I>Return value</I></B>
+<DD><B><I> Definition</I></B>
+<P><DT>FE_PROC
+<DD>A procedure.
+<P><DT>FE_STATIC
+<DD>A static or external symbol.
+<P><DT>FE_GLOBAL
+<DD>Is a global (extern) symbol.
+<P><DT>FE_IMPORT
+<DD>Needs to be imported.
+<P><DT>FE_CONSTANT
+<DD>The symbol is read only.
+<P><DT>FE_MEMORY
+<DD>This automatic variable needs a memory location.
+<P><DT>FE_VISIBLE
+<DD>Accessible outside this procedure?
+<P><DT>FE_NOALIAS
+<DD>No pointers point to this symbol.
+<P><DT>FE_UNIQUE
+<DD>This symbol should have an address which is different from all other symbols with the FE_UNIQUE attribute.
+<P><DT>FE_COMMON
+<DD>There might be multiple definitions of this symbol in a program, and it should be generated in such a way that all versions
+of the symbol are merged into one copy by the linker.
+<P><DT>FE_ADDR_TAKEN
+<DD>The symbol has had it's address taken somewhere in the program (not necessarally visible to the code generator).
+<P><DT>FE_VOLATILE
+<DD>The symbol is &quot;volatile&quot; (in the C language sense).
+<P><DT>FE_INTERNAL
+<DD>The symbol is not at file scope.
+</DL>
+<H2 ID="void_FEMessageL_msg_class_msg__void_Textra_R"> void FEMessage( msg_class msg, void *extra ) </H2>
+Relays information to the front end.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>msg
+<DD>Defined below.
+<P><DT>extra
+<DD>Extra information.&nbsp; The type and meaning depends on the value of<B> msg</B> and is indicated below.
+</DL>
+<DL>
+<DT>MSG_INFO_FILE 
+<DD>Informational message about file.&nbsp; extra (void) is ignored.
+<P><DT>MSG_CODE_SIZE
+<DD>Code size.&nbsp; Extra (int) is the size of the generated code.
+<P><DT>MSG_DATA_SIZE
+<DD>Data size.&nbsp; Extra (int) is the size of the generated data.
+<P><DT>MSG_ERROR
+<DD>A back end error message.&nbsp; Extra (char *) is the error message.
+<P><DT>MSG_FATAL
+<DD>A fatal code generator error.&nbsp; Extra (char *) is the reason for the fatal error.&nbsp; The front end should issue this
+message and exit immediately to the system.
+<P><DT>MSG_INFO_PROC
+<DD>Informational message about current procedure.&nbsp; Extra (char *) is a message.
+<P><DT>MSG_BAD_PARM_REGISTER
+<DD>Invalid parameter register returned from FEAuxInfo.&nbsp; Extra (int) is position of the offending parameter.
+<P><DT>MSG_BAD_RETURN_REGISTER
+<DD>Invalid return register returned from FEAuxInfo.&nbsp; Extra (aux_handle) is the offending aux_handle.
+<P><DT>MSG_REGALLOC_DIED
+<DD>The register alloc ran out of memory.&nbsp; Extra (cg_sym_handle) is the procedure which was not fully optimized.
+<P><DT>MSG_SCOREBOARD_DIED
+<DD>The register scoreboard ran out of memory.&nbsp; Extra (cg_sym_handle) is the procedure which was not fully optimized.
+<P><DT>MSG_PEEPHOLE_FLUSHED
+<DD>Peep hole optimizer flushed due to lack of memory.&nbsp; (void)
+<P><DT>MSG_BACK_END_ERROR
+<DD>BAD NEWS!&nbsp; Internal compiler error.&nbsp; Extra (int) is an internal error number.
+<P><DT>MSG_BAD_SAVE
+<DD>Invalid register modification information return from FEAuxInfo.&nbsp; Extra (aux_handle) is the offending aux_handle.
+<P><DT>MSG_WANT_MORE_DATA
+<DD>The back end wants more data space.&nbsp; Extra (int) is amount of additional memory needed to run.&nbsp; (DOS real mode hosts
+only).
+<P><DT>MSG_BLIP
+<DD>Blip.&nbsp; Let the world know we're still alive by printing a dot on the screen.&nbsp; This is called approximately every
+4 seconds during code generation.&nbsp; (void)
+<P><DT>MSG_BAD_LINKAGE
+<DD>Cannot resolve linkage conventions.&nbsp; 370 only.&nbsp; (sym)
+<P><DT>MSG_SCHEDULER_DIED
+<DD>Instruction scheduler ran out of memory.&nbsp; Extra (cg_sym_handle) is the procedure which was not fully optimized.
+<P><DT>MSG_NO_SEG_REGS
+<DD>(Only occurs in the x86 version).&nbsp; The cg_switches did not allow any segment registers to float, but the user has requested
+a far pointer indirection.&nbsp; Extra (cg_sym_handle) is the procedure which contained the far pointer usage.
+<P><DT>MSG_SYMBOL_TOO_LONG
+<DD>Given symbol is too long and is truncated to maximum permited length for current module output format.&nbsp; Extra (cg_sym_handle)
+is the symbol which was truncated.
+</DL>
+<H2 ID="void_TFEAuxInfoL_void_Textra__aux_class_class_R"> void *FEAuxInfo( void *extra, aux_class class ) </H2>
+relay information to back end
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>extra
+<DD>Extra information.&nbsp; Its type and meaning is determined by the value of class.
+<P><DT>class
+<DD>Defined below.
+</DL>
+<DL>
+<DT><B><I>Parameters</I></B>
+<DD><B><I>Return Value</I></B>
+<P><DT>( cg_sym_handle, AUX_LOOKUP )
+<DD>aux_handle - given a cg_sym_handle, return an aux_handle.
+<P><DT>( aux_handle, CALL_BYTES )
+<DD>byte_seq * - A pointer to bytes to be generated instead of a call, or NULL if a call is to be generated.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; typedef struct byte_seq {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char&nbsp;&nbsp;&nbsp; length;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char&nbsp;&nbsp;&nbsp; data[ 1 ];</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; } byte_seq;</TT>
+<P><DT>( aux_handle, CALL_CLASS )
+<DD>call_class * - returns call_class of the given aux_handle.&nbsp; See definitions below.
+<P><DT>( short, FREE_SEGMENT )
+<DD>short - A free segment value which is free memory for the code generator to use.&nbsp; The first word at segment:0 is the
+size of the free memory in bytes.&nbsp; (DOS real mode host only)
+<P><DT>( NULL, OBJECT_FILE_NAME )
+<DD>char * - The name of the object file to be generated.&nbsp; 
+<P><DT>( aux_handle, PARM_REGS )
+<DD>hw_reg_set[] - The set of register to be used as parameters.
+<P><DT>( aux_handle, RETURN_REG )
+<DD>hw_reg_set * - The return register.&nbsp; This is only called if the routine is declared to have the SPECIAL_RETURN call_class.
+<P><DT>( NULL, REVISION_NUMBER )
+<DD>int - Front end revision number.&nbsp; Must return II_REVISION.
+<P><DT>( aux_handle, SAVE_REGS )
+<DD>hw_reg_set * - Registers which are preserved by the routine.
+<P><DT>( cg_sym_handle, SHADOW_SYMBOL )
+<DD>cg_sym_handle - An alternate handle for a symbol.&nbsp; Required for FORTRAN.&nbsp; Usually implemented by turning on the
+LSB of a pointer or MSB of an integer.
+<P><DT>( NULL, SOURCE_NAME )
+<DD>char * - The name of the source file to be put into the object file.
+<P><DT>( cg_sym_handle, TEMP_LOC_NAME )
+<DD>Return one of TEMP_LOC_NO, TEMP_LOC_YES, TEMP_LOC_QUIT.&nbsp; After the back end has assigned stack locations to those temporaries
+which were not placed in registers, it begins to call FEAuxInfo with this request and passes in the cg_sym_handle for each
+of those temporaries.&nbsp; If the front end responds with TEMP_LOC_QUIT the back end will stop making TEMP_LOC_NAME requests.
+&nbsp;If the front end responds with TEMP_LOC_YES the back end will then perform a TEMP_LOC_TELL request (see next).&nbsp;
+If the front end returns TEMP_LOC_NO the back end moves onto the next cg_sym_handle in its list.
+<P><DT>( int, TEMP_LOC_TELL )
+<DD>Returns nothing.&nbsp; The 'int' value passed in is the relative position on the stack for the temporary identified by the
+cg_sym_handle passed in from the previous TEMP_LOC_NAME.&nbsp; The value for an individual temporary has no meaning, but the
+difference between two of the values is the number of bytes between the addresses of the temporaries on the stack.
+<P><DT>( void *, NEXT_DEPENDENCY )
+<DD>Returns the handle of the next dependency file for which information is available.&nbsp; To start the list off, the back end
+passes in NULL for the dependency file handle.
+<P><DT>( void *, DEPENDENCY_TIMESTAMP )
+<DD>Given the dependency file handle from the last NEXT_DEPENDENCY request, return pointer to an unsigned long containing a timestamp
+value for the dependency file.
+<P><DT>( void *, DEPENDENCY_NAME )
+<DD>Given the dependency file handle from the last NEXT_DEPENDENCY request, return a pointer to a string containing the name for
+the dependency file.
+<P><DT>( NULL, SOURCE_LANGUAGE )
+<DD>Returns a pointer to a string which identifies the source language of the pointer.&nbsp; E.g.&nbsp; &quot;C&quot; for C, &quot;FORTRAN&quot;
+for FORTRAN, &quot;CPP&quot; for C++.
+<P><DT>( cg_sym_handle, DEFAULT_IMPORT_RESOLVE )
+<DD>Only called for imported symbols.&nbsp; Returns a cg_sym_handle for another imported symbol which the reference should be
+resolved to if certain conditions are met (see IMPORT_TYPE request).&nbsp; If NULL or the original cg_sym_handle is returned,
+there is no default import resolution symbol.
+<P><DT>( int, UNROLL_COUNT )
+<DD>Returns a user-specified unroll count, or 0 if the user did not specify an unroll count.&nbsp; The parameter is the nesting
+level of the loop for which the request is being made.&nbsp; Loops which are not contained inside of other loops are nesting
+level 1.&nbsp; If this function returns a non-zero value, the loop in question will be unrolled that many times (there will
+be (count + 1) copies of the body).
+</DL>
+<DL>
+<DT><B><I>x86 Parameters</I></B>
+<DD><B><I>Return value</I></B>
+<P><DT>( NULL, CODE_GROUP )
+<DD>char * - The name of the code group.
+<P><DT>( aux_handle, STRETURN_REG )
+<DD>hw_reg_set * - The register which points to a structure return value.&nbsp; Only called if the routine has the SPECIAL_STRUCT_RETURN
+attribute.
+<P><DT>( void *, NEXT_IMPORT )
+<DD>void * (See notes at end) - A handle for the next symbol to generate a reference to in the object file.
+<P><DT>( void*, IMPORT_NAME )
+<DD>char * - The EXTDEF name to generate given a handle
+<P><DT>( void *, NEXT_IMPORT_S )
+<DD>void * (See notes at end) - A handle for the next symbol to generate a reference to in the object file.
+<P><DT>( void*, IMPORT_NAME_S )
+<DD>Returns a cg_sym_handle.&nbsp; The EXTDEF name symbol reference to generate given a handle.
+<P><DT>( void*, NEXT_LIBRARY )
+<DD>void * (See notes at end) - Handle for the next library required
+<P><DT>( void*, LIBRARY_NAME )
+<DD>char * - The library name to generate given a handle
+<P><DT>( NULL, DATA_GROUP )
+<DD>char * - Used to name DGROUP exactly.&nbsp; NULL means use no group at all.
+<P><DT>( segment_id, CLASS_NAME )
+<DD>NULL - Used to name the class of a segment.
+<P><DT>( NULL, USED_8087 )
+<DD>NULL - Indicate that 8087 instructions were generated.
+<P><DT>( NULL, STACK_SIZE_8087 )
+<DD>int - How many 8087 registers are reserved for stack.
+<P><DT>( NULL, CODE_LABEL_ALIGNMENT )
+<DD>char * - An array x, such that x[i] is the label alignment requirements for labels nested within i loops.
+<P><DT>( NULL, PROEPI_DATA_SIZE )
+<DD>int - How much stack is reserved for the prolog hook routine.
+<P><DT>( cg_sym_handle, IMPORT_TYPE )
+<DD>Returns IMPORT_IS_WEAK, IMPORT_IS_LAZY, IMPORT_IS_CONDITIONAL.&nbsp; If the DEFAULT_IMPORT_RESOLVE request returned a default
+resolution symbol the back end then performs an IMPORT_TYPE request to determine the type of the resolution.&nbsp; IMPORT_IS_WEAK
+generates a weak import (the symbol is not searched for in libraries).&nbsp; IMPORT_IS_LAZY generates a lazy import (the symbol
+is searched for in libraries).&nbsp; IMPORT_IS_CONDITIONAL is used for eliminating unused virtual functions.&nbsp; The default
+symbol resolution is used if none of the conditional symbols are referenced/defined by the program.&nbsp; The back end is
+informed of the list of conditional symbols by the following three aux requests.&nbsp; IMPORT_IS_CONDITIONAL_PURE is used
+for eliminating unused pure virtual functions.
+<P><DT>( cg_sym_handle, CONDITIONAL_IMPORT )
+<DD>Returns void *.&nbsp; Once the back end determines that it has a conditional import, it performs this request to get a conditional
+list handle which is the head of the list of conditional symbols.
+<P><DT>( void *, CONDITIONAL_SYMBOL )
+<DD>Returns a cg_sym_handle.&nbsp; Give an conditional list handle, return the front end symbol associated with it.
+<P><DT>( void *, NEXT_CONDITIONAL )
+<DD>Given an conditional list handle, return the next conditional list handle.&nbsp; Return NULL at the end of the list.
+<P><DT>( aux_handle, VIRT_FUNC_REFERENCE )
+<DD>Returns void *.&nbsp; When performing an indirect function call, the back end invokes FEAuxInfo passing the aux_handle supplied
+with the CGInitCall.&nbsp; If the indirect call is referencing a C++ virtual function, the front end should return a magic
+cookie which is the head of a list of virtual functions that might be invoked by this call.&nbsp; If it is not a virtual function
+invocation, return NULL.
+<P><DT>( void *, VIRT_FUNC_NEXT_REFERENCE )
+<DD>Returns void *.&nbsp; Given the magic cookie returned by the VIRT_FUNC_REFERENCE or a previous VIRT_FUNC_NEXT_REFRENCE, return
+the next magic cookie in the list of virtual functions that might be refrenced from this indirect call.&nbsp; Return NULL
+if at the end of the list.
+<P><DT>( void *, VIRT_FUNC_SYM )
+<DD>Returns cg_sym_handle.&nbsp; Given a magic cookie from a VIRT_FUNC_REFERENCE or VIRT_FUNC_NEXT_REFERENCE, return the cg_sym_handle
+for that entry in the list of virtual functions that might be invoked.
+<P><DT>( segment_id, PEGGED_REGISTER )
+<DD>Returns a pointer at a hw_reg_set or NULL.&nbsp; If the pointer is non-NULL and the hw_reg_set is not EMPTY, the hw_reg_set
+will indicate a segment register that is pegged (pointing) to the given segment_id.&nbsp; The code generator will use this
+segment register in any references to objects in the segment.&nbsp; If the pointer is NULL or the hw_reg_set is EMPTY, the
+code generator uses the cg_switches to determine if a segment register is pointing at the segment or if it will have to load
+one.
+</DL>
+<DL>
+<DT><B><I>Call Class</I></B>
+<DD><B><I>Meaning</I></B> 
+<P><DT>REVERSE_PARMS
+<DD>Reverse the parameter list.
+<P><DT>SUICIDAL
+<DD>Routine never returns.
+<P><DT>PARMS_BY_ADDRESS
+<DD>Pass parameters by reference.
+<P><DT>MAKE_CALL_INLINE
+<DD>Call should be inline.&nbsp; FEGenProc will be called for code sequence when required.
+</DL>
+<DL>
+<DT><B><I>x86 Call Class</I></B>
+<DD><B><I>Meaning</I></B>
+<P><DT>FAR
+<DD>Does routine require a far call/return.
+<P><DT>LOAD_DS_ON_CALL
+<DD>Load DS from DGROUP prior to call.
+<P><DT>CALLER_POPS
+<DD>Caller pops/removes parms from the stack.
+<P><DT>ROUTINE_RETURN
+<DD>Routine allocates structure return memory.
+<P><DT>SPECIAL_RETURN
+<DD>Routine has non-default return register.
+<P><DT>NO_MEMORY_CHANGED
+<DD>Routine modifies no visible statics.
+<P><DT>NO_MEMORY_READ
+<DD>Routine reads no visible statics.
+<P><DT>MODIFY_EXACT
+<DD>Routine modifies no parameter registers.
+<P><DT>SPECIAL_STRUCT_RETURN
+<DD>Routine has special struct return register.
+<P><DT>NO_STRUCT_REG_RETURNS
+<DD>Pass 2/4/8 byte structs on stack, as opposed to registers.
+<P><DT>NO_FLOAT_REG_RETURNS
+<DD>Return floats as structs.
+<P><DT>INTERRUPT
+<DD>Routine is an interrupt routine.
+<P><DT>NO_8087_RETURNS
+<DD>No return values in the 8087.
+<P><DT>LOAD_DS_ON_ENTRY
+<DD>Load ds with dgroup on entry.
+<P><DT>DLL_EXPORT
+<DD>Is routine an OS/2 export symbol?
+<P><DT>FAT_WINDOWS_PROLOG
+<DD>Generate the real mode windows prolog code.
+<P><DT>GENERATE_STACK_FRAME
+<DD>Always generate a traceable prolog.
+<P><DT>EMIT_FUNCTION_NAME
+<DD>Emit the function name in front of the function in the code segment.
+<P><DT>GROW_STACK
+<DD>Emit a call to grow the stack on entry
+<P><DT>PROLOG_HOOKS
+<DD>Generate a prolog hook call.
+<P><DT>EPILOG_HOOKS
+<DD>Generate an epilog hook call.
+<P><DT>THUNK_PROLOG
+<DD>Generate a thunking prolog for routines calling 16 bit code.
+<P><DT>FAR16_CALL
+<DD>Performs a 16:16 call in the 386 compiler.
+<P><DT>TOUCH_STACK
+<DD>Certain people (who shall remain nameless) have implemented an operating system (which shall remain nameless) that can't be
+bothered figuring out whether a page reference is in the stack or not.&nbsp; This attribute forces the first reference to
+the stack (after a routine prologue has grown it) to be through the SS register.
+</DL>
+<H1 ID="Debugging_Information"> Debugging Information </H1>
+These routines generate information about types, symbols, etc.
+<H2 ID="extern_void_DBLineNumL_uint_no_R"> extern void DBLineNum( uint no ) </H2>
+<P>Set the current source line number.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>no
+<DD>Is the current source line number.
+</DL>
+<H2 ID="extern_void_DBModSymL_cg_sym_handle_sym__cg_type_indirect_R"> extern void DBModSym( cg_sym_handle sym, cg_type indirect ) </H2>
+Define a symbol within the module (file scope).
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>is a front end symbol handle.
+<P><DT>indirect
+<DD>is the type of indirection needed to obtain the value
+</DL>
+<H2 ID="extern_void_DBObjectL_dbg_type_tipe__dbg_loc_loc_R"> extern void DBObject( dbg_type tipe, dbg_loc loc ) </H2>
+Define a function as being a member function of a C++ class, and identify the type of the class and the location of the object
+being manipulated.&nbsp; This function may only be done after the DBModSym for the function.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>tipe
+<DD>is the debug type of the class that the function is a member of.
+<P><DT>loc
+<DD>is a location expression that evaluates to the address of the object being manipulated by the function (the contents of the
+'this' pointer in C++).&nbsp; This parameter is NULL if the routine is a static member function.
+</DL>
+<H2 ID="extern_void_DBLocalSymL_cg_sym_handle_sym__cg_type_indirect_R"> extern void DBLocalSym( cg_sym_handle sym, cg_type indirect ) </H2>
+As DBModSym but for local (routine scope) symbols.
+<H2 ID="extern_void_DBGenSymL_cg_sym_handle_sym__dbg_loc_loc__int_scoped_R"> extern void DBGenSym( cg_sym_handle sym, dbg_loc loc, int scoped ) </H2>
+<P>Define a symbol either with module scope ('scoped' == 0) or within the current block ('scoped' != 0).&nbsp; This routine
+superseeds both DBLocalSym and DBModuleSym.&nbsp; The 'loc' parameter is a location expression (explained later) which allows
+an aribitrary sequence of operations to locate the storage for the symbol.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>sym
+<DD>is a front end symbol handle.
+<P><DT>loc
+<DD>the location expression which is evaluated by the debugger to locate the lvalue of the symbol.
+<P><DT>scoped
+<DD>whether the symbol is file scoped or not.
+</DL>
+<H2 ID="extern_void_DBBegBlockLR"> extern void DBBegBlock() </H2>
+Open a new scope level.
+<H2 ID="extern_void_DBEndBlockLR"> extern void DBEndBlock() </H2>
+<P>Close the current scope level.
+<H2 ID="extern_dbg_type_DBScalarL_char_Tname__cg_type_tipe_R"> extern dbg_type DBScalar( char *name, cg_type tipe ) </H2>
+<P>Defines the string<B> name</B> to have type<B> tipe</B>.
+<H2 ID="extern_dbg_type_DBScopeL_char_Tname_R"> extern dbg_type DBScope( char *name ) </H2>
+<P>define a symbol which &quot;scopes&quot; subsequent symbols.&nbsp; In C, the keywords<B> enum</B>,<B> union</B>,<B> struct</B>
+may perform this function as in<B> struct foo</B>.
+<H2 ID="extern_dbg_name_DBBegNameL_char_Tname__dbg_type_scope_R"> extern dbg_name DBBegName( char *name, dbg_type scope ) </H2>
+<P>start a type name whose type is yet undetermined
+<H2 ID="extern_dbg_type_DBForwardL_dbg_name_name_R"> extern dbg_type DBForward( dbg_name name ) </H2>
+<P>declare a type to be a forward reference
+<H2 ID="extern_dbg_type_DBEndNameL_dbg_name_name__dbg_type_tipe_R"> extern dbg_type DBEndName( dbg_name name, dbg_type tipe ) </H2>
+<P>complete the definition of a type name.
+<H2 ID="extern_dbg_type_DBArrayL_dbg_type_index__dbg_type_base_R"> extern dbg_type DBArray( dbg_type index, dbg_type base ) </H2>
+<P>define a C array type
+<H2 ID="extern_dbg_type_DBIntArrayL_unsigned_32_hi__dbg_type_base_R"> extern dbg_type DBIntArray( unsigned_32 hi, dbg_type base ) </H2>
+<P>define a C array type
+<H2 ID="extern_dbg_type_DBSubRangeL_signed_32_lo__signed_32_hi__dbg_type_base_R"> extern dbg_type DBSubRange( signed_32 lo, signed_32 hi, dbg_type base ) </H2>
+<P>define an integer range type
+<H2 ID="extern_dbg_type_DBPtrL_cg_type_ptr_type__dbg_type_base_R"> extern dbg_type DBPtr( cg_type ptr_type, dbg_type base ) </H2>
+<P>declare a pointer type
+<H2 ID="extern_dbg_type_DBBasedPtrL_cg_type_ptr_type__dbg_type_base__dbg_loc_seg_loc_R"> extern dbg_type DBBasedPtr( cg_type ptr_type, dbg_type base, dbg_loc seg_loc ) </H2>
+<P>declare a based pointer type.&nbsp; The 'seg_loc' parameter is a location expression which evaluates to the base address
+for the pointer after the indirection has been performed.&nbsp; Before the location expression is evalated, the current lvalue
+of the pointer symbol associated with this type is pushed onto the expression stack (needed for based on self pointers).
+<H2 ID="extern_dbg_struct_DBBegStructLR"> extern dbg_struct DBBegStruct() </H2>
+<P>start a structure type definition
+<H2 ID="extern_void_DBAddFieldL_dbg_struct_st__unsigned_32_off__char_Tnm__dbg_type_base_R"> extern void DBAddField( dbg_struct st, unsigned_32 off, char *nm, dbg_type base ) </H2>
+<P>add a field to a structure
+<H2 ID="extern_void_DBAddBitFieldL_dbg_struct_st__unsigned_32_off__byte_strt__byte_len__char_Tnm__dbg_type_base_R"> extern void DBAddBitField( dbg_struct st, unsigned_32 off, byte strt, byte len, char *nm, dbg_type base ) </H2>
+<P>add a bit field to a structure
+<H2 ID="extern_void_DBAddLocFieldL_dbg_struct_st__dbg_loc_loc__uint_attr__byte_strt__byte_len__char_Tnm__dbg_type_base_R"> extern void DBAddLocField( dbg_struct st, dbg_loc loc, uint attr, byte strt, byte len, char *nm, dbg_type base ) </H2>
+<P>Add a field or bit field to a structure with a generalized location expression 'loc'.&nbsp; The location expression should
+assume the the address of the base of the structure has already been pushed onto the debugger's evaluation stack.&nbsp; The
+'attr' parameter contains a zero or more of the following attributes or'd together:
+<DL>
+<P><DT><B><I>Attribute</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>FIELD_ATTR_INTERNAL
+<DD>the field is internally generated by the compiler and would not be normally visible to the user.
+<P><DT>FIELD_ATTR_PUBLIC
+<DD>the field has the C++ 'public' attribute.
+<P><DT>FIELD_ATTR_PROTECTED
+<DD>the field has the C++ 'protected' attribute.
+<P><DT>FIELD_ATTR_PRIVATE
+<DD>the field has the C++ 'private' attribute.
+</DL>
+<P>If the field being described is _not_ a bit field, the 'len' parameter should be set to zero.
+<H2 ID="extern_void_DBAddInheritanceL_dbg_struct_st__dbg_type_inherit__dbg_loc_adjust_R"> extern void DBAddInheritance( dbg_struct st, dbg_type inherit, dbg_loc adjust ) </H2>
+<P>Add the fields of an inherited structure to the current structure being defined.
+<DL>
+<P><DT><B><I>Parameter</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>st
+<DD>the dbg_struct handle for the structure currently being defined.
+<P><DT>inherit
+<DD>the dbg_type of a previously defined structure which is being inherited.
+<P><DT>adjust
+<DD>a location expression which evaluates to a value which is the amount to adjust the field offsets by in the inherited structure
+to access them in the current structure.&nbsp; The base address of the symbol associated with the structure type is pushed
+onto the location expression stack before the expression is evaluated.
+</DL>
+<H2 ID="extern_dbg_type_DBEndStructL_dbg_struct_st_R"> extern dbg_type DBEndStruct( dbg_struct st ) </H2>
+end a structure definition
+<H2 ID="extern_dbg_enum_DBBegEnumL_cg_type_tipe_R"> extern dbg_enum DBBegEnum( cg_type tipe ) </H2>
+<P>begin defining an enumerated type
+<H2 ID="extern_void_DBAddConstL_dbg_enum_en__char_Tnm__signed_32_val_R"> extern void DBAddConst( dbg_enum en, char *nm, signed_32 val ) </H2>
+<P>add a symbolic constant to an enumerated type
+<H2 ID="extern_dbg_type_DBEndEnumL_dbg_enum_en_R"> extern dbg_type DBEndEnum( dbg_enum en ) </H2>
+<P>finish declaring an enumerated type
+<H2 ID="extern_dbg_proc_DBBegProcL_cg_type_call_type__dbg_type_ret_R"> extern dbg_proc DBBegProc( cg_type call_type, dbg_type ret ) </H2>
+<P>begin the a current procedure
+<H2 ID="extern_void_DBAddParmL_dbg_proc_pr__dbg_type_tipe_R"> extern void DBAddParm( dbg_proc pr, dbg_type tipe ) </H2>
+<P>declare a parameter to the procedure
+<H2 ID="extern_dbg_type_DBEndProcL_proc_list_Tpr_R"> extern dbg_type DBEndProc( proc_list *pr ) </H2>
+<P>end the current procedure
+<H2 ID="extern_dbg_type_DBFtnTypeL_char_Tname__dbg_ftn_type_tipe_R"> extern dbg_type DBFtnType( char *name, dbg_ftn_type tipe ) </H2>
+<P>declare a fortran COMPLEX type
+<H2 ID="extern_dbg_type_DBCharBlockL_unsigned_32_len_R"> extern dbg_type DBCharBlock( unsigned_32 len ) </H2>
+<P>declare a type to be a block of length<B> len</B> characters
+<H2 ID="extern_dbg_type_DBIndCharBlockL_back_handle_len__cg_type_len_type__int_off_R"> extern dbg_type DBIndCharBlock( back_handle len, cg_type len_type, int off ) </H2>
+<P>declare a type to be a block of characters.&nbsp; The length is found at run-time at back_handle<B> len</B> + offset<B>
+off</B>.&nbsp; The integral type of the back_handle location is<B> len_type</B>
+<H2 ID="extern_dbg_type_DBLocCharBlockL_dbg_loc_loc__cg_type_len_type_R"> extern dbg_type DBLocCharBlock( dbg_loc loc, cg_type len_type ) </H2>
+<P>declare a type to be a block of characters.&nbsp; The length is found at run-time at the address specified by the location
+expression<B> loc</B>.&nbsp; The integral type of the location is<B> len_type</B>
+<H2 ID="extern_dbg_type_DBFtnArrayL_back_handle_dims__cg_type_lo_bound_tipe__cg_type_num_elts_tipe__int_off__dbg_type_base_R"> extern dbg_type DBFtnArray( back_handle dims, cg_type lo_bound_tipe, cg_type num_elts_tipe, int off, dbg_type base ) </H2>
+<P>define a FORTRAN array dimension slice.<B>&nbsp; dims</B> is a back handle + offset<B> off</B> which will point to a structure
+at run-time.&nbsp; The structure contains the array low bound (type<B> lo_bound_tipe</B>) followed by the number of elements
+(type<B> num_elts_tipe</B>).<B>&nbsp; base</B> is the element type of the array.
+<H2 ID="extern_dbg_type_DBDereferenceL_cg_type_ptr_type__dbg_type_base_R"> extern dbg_type DBDereference( cg_type ptr_type, dbg_type base ) </H2>
+<P>declare a type to need an implicit de-reference to retrieve the value (for FORTRAN parameters)
+<P><B>NOTE:</B>&nbsp; This routine has been superceded by the use of location expressions.
+<H2 ID="extern_dbg_loc_DBLocInitL_void_R"> extern dbg_loc DBLocInit( void ) </H2>
+<P>create an initial empty location expression
+<H2 ID="extern_dbg_loc_DBLocSymL_dbg_loc_loc__cg_sym_handle_sym_R"> extern dbg_loc DBLocSym( dbg_loc loc, cg_sym_handle sym ) </H2>
+<P>push the address of 'sym' on to the expression stack
+<H2 ID="extern_dbg_loc_DBLocTempL_dbg_loc_loc__temp_handle_tmp_R"> extern dbg_loc DBLocTemp( dbg_loc loc, temp_handle tmp ) </H2>
+<P>push the address of 'tmp' on to the expression stack
+<H2 ID="extern_dbg_loc_DBLocConstL_dbg_loc_loc__unsigned_32_val_R"> extern dbg_loc DBLocConst( dbg_loc loc, unsigned_32 val ) </H2>
+<P>push the constant 'val' on to the expression stack
+<H2 ID="extern_dbg_loc_DBLocOpL_dbg_loc_loc__dbg_loc_op_op__unsigned_other_R"> extern dbg_loc DBLocOp( dbg_loc loc, dbg_loc_op op, unsigned other ) </H2>
+<P>perform the following list of operations on the expression stack
+<DL>
+<P><DT><B><I>Operation</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>DB_OP_POINTS
+<DD>take the top of the expression stack and use it as the address in an indirection operation.&nbsp; The result type of the operation
+is given by the 'other' parameter which must be a cg_type which resolves to either an unsigned_16, unsigned_32, a 16-bit far
+pointer, or a 32-bit far pointer.
+<P><DT>DB_OP_ZEX
+<DD>zero extend the top of the stack.&nbsp; The 'other' parameter is a cg_type which is either 1 byte in size or 2 bytes in size.
+&nbsp;That size determines how much of the original top of stack value to leave untouched.
+<P><DT>DB_OP_XCHG
+<DD>exchange the top of stack value with the stack entry indexed by 'other'.
+<P><DT>DB_OP_MK_FP
+<DD>take the top two entries on the stack.&nbsp; Make the second entry the segment value and the first entry the offset value
+of an address.
+<P><DT>DB_OP_ADD
+<DD>add the top two stack entries together.
+<P><DT>DB_OP_DUP
+<DD>duplicate the top stack entry.
+<P><DT>DB_OP_POP
+<DD>pop off (throw away) the top stack entry.
+</DL>
+<H2 ID="extern_void_DBLocFiniL_dbg_loc_loc_R"> extern void DBLocFini( dbg_loc loc ) </H2>
+the given location expression will not be used anymore.
+<H2 ID="extern_unsigned_DBSrcFileL_char_Tfname_R"> extern unsigned DBSrcFile( char *fname ) </H2>
+<P>add the file name into the list of source files for positon info, return handle to this name
+<P><B>NOTE:</B>&nbsp; Handle 0 is reserved for base source file name and is added by BE automaticaly during initialization.
+<H2 ID="extern_void_DBSrcCueL_unsigned_fno__unsigned_line__unsigned_col_R"> extern void DBSrcCue( unsigned fno, unsigned line, unsigned col ) </H2>
+<P>add source position info for the appropriate source file
+<H1 ID="Registers"> Registers </H1>
+<P>The hw_reg_set type is an abstract data type capable of representing any combination of machine registers.&nbsp; It must
+be manipulated using the following macros.&nbsp; A parameter<B> c</B>,<B> c1</B>,<B> c2</B>, etc.&nbsp; indicate a register
+constant such as HW_EAX must be used.&nbsp; Anything else must be a variable of type<B> hw_reg_set</B>.
+<P>The following are used for static initialization.
+<UL>
+<P><LI>HW_D_1( c1 )
+<P><LI>HW_NotD_1( c1 )
+<P><LI>HW_D_2( c1, c2 )
+<P><LI>HW_NotD_2( c1, c2 )
+<P><LI>HW_D_3( c1, c2, c3 )
+<P><LI>HW_NotD_3( c1, c2, c3 )
+<P><LI>HW_D_4( c1, c2, c3, c4 )
+<P><LI>HW_NotD_4( c1, c2, c3, c4 )
+<P><LI>HW_D_5( c1, c2, c3, c4, c5 )
+<P><LI>HW_NotD_5( c1, c2, c3, c4, c5 )
+<P><LI>HW_D( c1 )
+<P><LI>HW_NotD( c1 )
+</UL>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; hw_reg_set regs[] = {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* the EAX register */</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_D( HW_EAX ),</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* all registers except EDX and EBX */</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_NotD_2( HW_EDX, HW_EBX )</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; };</TT>
+<P>The following are to build registers dynamically.
+<DL>
+<P><DT><B><I>Macro</I></B>
+<DD><B><I>Usage</I></B>
+<P><DT>HW_CEqual( a, c )
+<DD>Is<B> a</B> equal to<B> c</B>
+<P><DT>HW_COvlap( a, c )
+<DD>Does<B> a</B> overlap with<B> c</B>
+<P><DT>HW_CSubset( a, c )
+<DD>Is<B> a</B> subset of<B> c</B>
+<P><DT>HW_CAsgn( dst, c )
+<DD>Assign<B> c</B> to<B> dst</B>
+<P><DT>HW_CTurnOn( dst, c )
+<DD>Turn on registers<B> c</B> in<B> dst</B>.
+<P><DT>HW_CTurnOff( dst, c )
+<DD>Turn off registers<B> c</B> in<B> dst</B>.
+<P><DT>HW_COnlyOn( a, c )
+<DD>Turn off all registers except<B> c</B> in<B> dst</B>.
+<P><DT>HW_Equal( a, b )
+<DD>Is<B> a</B> equal to<B> b</B>
+<P><DT>HW_Ovlap( a, b )
+<DD>Does<B> a</B> overlap with<B> b</B>
+<P><DT>HW_Subset( a, b )
+<DD>Is<B> a</B> subset of<B> b</B>
+<P><DT>HW_Asgn( dst, b )
+<DD>Assign<B> b</B> to<B> dst</B>
+<P><DT>HW_TurnOn( dst, b )
+<DD>Turn on registers<B> b</B> in<B> dst</B>.
+<P><DT>HW_TurnOff( dst, b )
+<DD>Turn off registers<B> b</B> in<B> dst</B>.
+<P><DT>HW_OnlyOn( dst, b )
+<DD>Turn off all registers except<B> b</B> in<B> dst</B>.
+</DL>
+<P>The following example selects the low order 16 bits of any register.&nbsp; that has a low part.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; hw_reg_set low16( hw_reg_set reg )</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hw_reg_set&nbsp; low;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_CAsgn( low, HW_EMPTY );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_CTurnOn( low, HW_AX );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_CTurnOn( low, HW_BX );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_CTurnOn( low, HW_CX );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_CTurnOn( low, HW_DX );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( HW_Ovlap( reg, low ) ) {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW_OnlyOn( reg, low );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P>The following register constants are defined for all targets.
+<DL>
+<P><DT>HW_EMPTY
+<DD>The null register set.
+<P><DT>HW_UNUSED
+<DD>The set of unused register entries.
+<P><DT>HW_FULL
+<DD>All possible registers.
+</DL>
+<P>The following example yields the set of all valid machine registers.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; hw_reg_set reg;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; HW_CAsgn( reg, HW_FULL );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; HW_CTurnOff( reg, HW_UNUSED );</TT>
+<H1 ID="Miscellaneous"> Miscellaneous </H1>
+<P>I apologize for my lack of consistency in this document.&nbsp; I use the terms function, routine, procedure interchangeably,
+as well as index, subscript - select, switch - parameter, argument - etc.&nbsp; I come from a multiple language background
+and will always be hopelessly confused.
+<P>The NEXT_IMPORT/NEXT_IMPORT_S/NEXT_LIBRARY are used as follows.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; handle = NULL;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; for( ;; ) {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handle = FEAuxInfo( handle, NEXT_IMPORT );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( handle == NULL ) break;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_something( FEAuxInfo( handle, IMPORT_NAME ) );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P>The FREE_SEGMENT request is used as follows.
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; segment = 0;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; for( ;; ) {</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; segment = FEAuxInfo( segment, FREE_SEGMENT );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( segment == NULL ) break;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; segment_size = *(short *)MK_FP( segment, 0 ) * 16;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this_is_my_memory_now( MK_FP( segment, 0 ), segment_size );</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P>The main line in Pascal is defined to be lexical level 1.&nbsp; Add 1 for each nested subroutine level.&nbsp; C style routines
+are defined to be lexical level 0.
+<P>The following types are defined by the code generator header files:&nbsp; 
+<DL>
+<P><DT><B><I>Utility type</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>bool
+<DD>(unsigned char) 0 = false, non-0 = true.
+<P><DT>byte
+<DD>(unsigned char)
+<P><DT>int_8
+<DD>(signed char)
+<P><DT>int_16
+<DD>(signed short)
+<P><DT>int_32
+<DD>(signed long)
+<P><DT>signed_8
+<DD>(signed char)
+<P><DT>signed_16
+<DD>(signed short)
+<P><DT>signed_32
+<DD>(signed long)
+<P><DT>uint
+<DD>(unsigned)
+<P><DT>uint_8
+<DD>(unsigned char)
+<P><DT>uint_16
+<DD>(unsigned short)
+<P><DT>uint_32
+<DD>(unsigned long)
+<P><DT>unsigned_8
+<DD>(unsigned char)
+<P><DT>unsigned_16
+<DD>(unsigned short)
+<P><DT>unsigned_32
+<DD>(unsigned long)
+<P><DT>real
+<DD>(float)
+<P><DT>reallong
+<DD>(double)
+<P><DT>pointer
+<DD>(void*)
+</DL>
+<DL>
+<DT><B><I>Type</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>aux_class
+<DD>(enum) Passed as 2nd parameter to FEAuxInfo.
+<P><DT>aux_handle
+<DD>(void*) A handle used as 1st parameter to FEAuxInfo.
+<P><DT>back_handle
+<DD>(void*) A handle for a back end symbol table entry.
+<P><DT>byte_seq
+<DD>(struct) Passed to back end in response to CALL_BYTES FEAuxInfo request.
+<P><DT>call_class
+<DD>(unsigned long) A set of combinable bits indicating the call attributes for a routine.
+<P><DT>call_handle
+<DD>(void*) A handle to be used in CGInitCall, CGAddParm and CGCall.
+<P><DT>cg_init_info
+<DD>(union) The return value of BEInit.
+<P><DT>cg_name
+<DD>(void*) A handle for a back end expression tree node.
+<P><DT>cg_op
+<DD>(enum) An operator to be used in building expressions.
+<P><DT>cg_switches
+<DD>(unsigned_32) A set of combinable bits indicating the code generator options.
+<P><DT>cg_sym_handle
+<DD>(uint) A handle for a front end symbol table entry.
+<P><DT>cg_type
+<DD>(unsigned short) A code generator type.
+<P><DT>fe_attr
+<DD>(enum) A set of combinable bits indicating symbol attributes.
+<P><DT>hw_reg_set
+<DD>(struct hw_reg_set) A structure representing a hardware register.
+<P><DT>label_handle
+<DD>(void*) A handle for a code generator code label.
+<P><DT>linkage_regs
+<DD>(struct) For 370 linkage conventions.
+<P><DT>more_cg_types
+<DD>(enum)
+<P><DT>msg_class
+<DD>(enum) The 1st parameter to FEMessage.
+<P><DT>proc_revision
+<DD>(enum) The 3rd parameter to BEInit.
+<P><DT>seg_attr
+<DD>(enum) A set of combinable bits indicate the attributes of a segment.
+<P><DT>segment_id
+<DD>(int) A segment identifier.
+<P><DT>sel_handle
+<DD>(void*) A handle to be used in the CGSel calls.
+<P><DT>temp_handle
+<DD>(void*) A handle for a code generator temporary.
+</DL>
+<DL>
+<DT><B><I>Misc Type</I></B>
+<DD><B><I>Definition</I></B>
+<P><DT>HWT
+<DD>hw_reg_part
+<P><DT>hw_reg_part
+<DD>(unsigned)
+<P><DT>dbg_enum
+<DD>(void*)
+<P><DT>dbg_ftn_type
+<DD>(enum)
+<P><DT>dbg_name
+<DD>(void*)
+<P><DT>dbg_proc
+<DD>(void*)
+<P><DT>dbg_struct
+<DD>(void*)
+<P><DT>dbg_type
+<DD>(unsigned short)
+<P><DT>predefined_cg_types
+<DD>(enum)
+</DL>
+<H1 ID="PreMdefined_macros"> Pre-defined macros </H1>
+The following macros are defined by the code generator include files.
+<UL>
+<P><LI>HW_D
+<P><LI>HW_D_1
+<P><LI>HW_D_2
+<P><LI>HW_D_3
+<P><LI>HW_D_4
+<P><LI>HW_D_5
+<P><LI>BIG_CODE
+<P><LI>BIG_DATA
+<P><LI>CALLER_POPS
+<P><LI>CHEAP_POINTER
+<P><LI>CHEAP_WINDOWS
+<P><LI>CONST_IN_CODE
+<P><LI>CPU_MASK
+<P><LI>C_FRONT_END
+<P><LI>DBG_FWD_TYPE
+<P><LI>DBG_LOCALS
+<P><LI>DBG_NIL_TYPE
+<P><LI>DBG_TYPES
+<P><LI>DLL_EXPORT
+<P><LI>DO_FLOATING_FIXUPS
+<P><LI>DO_SYM_FIXUPS
+<P><LI>EMIT_FUNCTION_NAME
+<P><LI>EPILOG_HOOKS
+<P><LI>EZ_OMF
+<P><LI>E_8087
+<P><LI>FALSE
+<P><LI>FAR
+<P><LI>FAT_WINDOWS_PROLOG
+<P><LI>FIX_SYM_OFFSET
+<P><LI>FIX_SYM_RELOFF
+<P><LI>FIX_SYM_SEGMENT
+<P><LI>FLAT_MODEL
+<P><LI>FLOATING_DS
+<P><LI>FLOATING_ES
+<P><LI>FLOATING_FIXUP_BYTE
+<P><LI>FLOATING_FS
+<P><LI>FLOATING_GS
+<P><LI>FLOATING_SS
+<P><LI>FORTRAN_ALIASING
+<P><LI>FORTRAN_FRONT_END
+<P><LI>FPU_MASK
+<P><LI>FRONT_END_MASK
+<P><LI>FUNCS_IN_OWN_SEGMENTS
+<P><LI>GENERATE_STACK_FRAME
+<P><LI>GET_CPU
+<P><LI>GET_FPU
+<P><LI>GET_WTK
+<P><LI>GROW_STACK
+<P><LI>HWREG_INCLUDED
+<P><LI>HW_0
+<P><LI>HW_1
+<P><LI>HW_2
+<P><LI>HW_3
+<P><LI>HW_64
+<P><LI>HW_Asgn
+<P><LI>HW_CAsgn
+<P><LI>HW_CEqual
+<P><LI>HW_COMMA
+<P><LI>HW_COnlyOn
+<P><LI>HW_COvlap
+<P><LI>HW_CSubset
+<P><LI>HW_CTurnOff
+<P><LI>HW_CTurnOn
+<P><LI>HW_DEFINE_COMPOUND
+<P><LI>HW_DEFINE_GLOBAL_CONST
+<P><LI>HW_DEFINE_SIMPLE
+<P><LI>HW_Equal
+<P><LI>HW_ITER
+<P><LI>HW_NotD
+<P><LI>HW_NotD_1
+<P><LI>HW_NotD_2
+<P><LI>HW_NotD_3
+<P><LI>HW_NotD_4
+<P><LI>HW_NotD_5
+<P><LI>HW_OnlyOn
+<P><LI>HW_Op1
+<P><LI>HW_Op2
+<P><LI>HW_Op3
+<P><LI>HW_Op4
+<P><LI>HW_Op5
+<P><LI>HW_Ovlap
+<P><LI>HW_Subset
+<P><LI>HW_TurnOff
+<P><LI>HW_TurnOn
+<P><LI>II_REVISION
+<P><LI>INDEXED_GLOBALS
+<P><LI>INS_SCHEDULING
+<P><LI>INTERNAL_DBG_OUTPUT
+<P><LI>INTERRUPT
+<P><LI>I_MATH_INLINE
+<P><LI>LAST_AUX_ATTRIBUTE
+<P><LI>LAST_CGSWITCH
+<P><LI>LAST_TARG_AUX_ATTRIBUTE
+<P><LI>LAST_TARG_CGSWITCH
+<P><LI>LOAD_DS_ON_CALL
+<P><LI>LOAD_DS_ON_ENTRY
+<P><LI>LOOP_OPTIMIZATION
+<P><LI>MAKE_CALL_INLINE
+<P><LI>MAX_POSSIBLE_REG
+<P><LI>MIN_OP
+<P><LI>MODIFY_EXACT
+<P><LI>NEED_STACK_FRAME
+<P><LI>NO_8087_RETURNS
+<P><LI>NO_CALL_RET_TRANSFORM
+<P><LI>NO_FLOAT_REG_RETURNS
+<P><LI>NO_MEMORY_CHANGED
+<P><LI>NO_MEMORY_READ
+<P><LI>NO_OPTIMIZATION
+<P><LI>NO_STRUCT_REG_RETURNS
+<P><LI>NULL
+<P><LI>NULLCHAR
+<P><LI>NUMBERS
+<P><LI>O_FIRST_COND
+<P><LI>O_FIRST_FLOW
+<P><LI>O_LAST_COND
+<P><LI>O_LAST_FLOW
+<P><LI>PARMS_BY_ADDRESS
+<P><LI>PROLOG_HOOKS
+<P><LI>RELAX_ALIAS
+<P><LI>REVERSE_PARMS
+<P><LI>ROUTINE_RETURN
+<P><LI>SEG_EXTRN_FAR
+<P><LI>SET_CPU
+<P><LI>SET_FPU
+<P><LI>SET_WTK
+<P><LI>SPECIAL_RETURN
+<P><LI>SPECIAL_STRUCT_RETURN
+<P><LI>STANDARD_INCLUDED
+<P><LI>SUICIDAL
+<P><LI>SYM_FIXUP_BYTE
+<P><LI>THUNK_PROLOG
+<P><LI>TRUE
+<P><LI>T_HUGE_CODE_PTR
+<P><LI>T_LAST_FREE
+<P><LI>USE_32
+<P><LI>WINDOWS
+<P><LI>WTK_MASK
+<P><LI>_AL
+<P><LI>_AX
+<P><LI>_BL
+<P><LI>_BP
+<P><LI>_BX
+<P><LI>_CG_H_INCLUDED
+<P><LI>_CL
+<P><LI>_CMS
+<P><LI>_CX
+<P><LI>_DI
+<P><LI>_DL
+<P><LI>_DX
+<P><LI>_HOST_INTEGER
+<P><LI>_OS
+<P><LI>_SI
+<P><LI>_TARG_AUX_SHIFT
+<P><LI>_TARG_CGSWITCH_SHIFT
+<P><LI>far
+<P><LI>huge
+<P><LI>interrupt
+<P><LI>near
+<P><LI>offsetof
+</UL>
+<H1 ID="Register_constants"> Register constants </H1>
+The following register constants are defined for x86 targets.
+<UL>
+<P><LI>HW_AH
+<P><LI>HW_AL
+<P><LI>HW_BH
+<P><LI>HW_BL
+<P><LI>HW_CH
+<P><LI>HW_CL
+<P><LI>HW_DH
+<P><LI>HW_DL
+<P><LI>HW_SI
+<P><LI>HW_DI
+<P><LI>HW_BP
+<P><LI>HW_SP
+<P><LI>HW_DS
+<P><LI>HW_ES
+<P><LI>HW_CS
+<P><LI>HW_SS
+<P><LI>HW_ST0
+<P><LI>HW_ST1
+<P><LI>HW_ST2
+<P><LI>HW_ST3
+<P><LI>HW_ST4
+<P><LI>HW_ST5
+<P><LI>HW_ST6
+<P><LI>HW_ST7
+<P><LI>HW_FS
+<P><LI>HW_GS
+<P><LI>HW_AX
+<P><LI>HW_BX
+<P><LI>HW_CX
+<P><LI>HW_DX
+<P><LI>HW_EAX
+<P><LI>HW_EBX
+<P><LI>HW_ECX
+<P><LI>HW_EDX
+<P><LI>HW_ESI
+<P><LI>HW_EDI
+<P><LI>HW_ESP
+<P><LI>HW_EBP
+</UL>
+<P>The following registers are defined for the Alpha AXP target.
+<UL>
+<P><LI>HW_R0-HW_R31
+<P><LI>HW_D0-HW_D31
+<P><LI>HW_W0-HW_W31
+<P><LI>HW_B0-HW_B31
+<P><LI>HW_F0-HW_F31
+</UL>
+<P>The following registers are defined for the PowerPC target.
+<UL>
+<P><LI>HW_R0-HW_R31
+<P><LI>HW_Q3-HW_Q29
+<P><LI>HW_D0-HW_D31
+<P><LI>HW_W0-HW_W31
+<P><LI>HW_B0-HW_B31
+<P><LI>HW_F0-HW_F31
+</UL>
+<P>The following registers are defined for the MIPS32 target.
+<UL>
+<P><LI>HW_R0-HW_R31
+<P><LI>HW_Q2-HW_Q24
+<P><LI>HW_D0-HW_D31
+<P><LI>HW_W0-HW_W31
+<P><LI>HW_B0-HW_B31
+<P><LI>HW_F0-HW_F31
+<P><LI>HW_FD0-HW_FD30
+</UL>
+</BODY>

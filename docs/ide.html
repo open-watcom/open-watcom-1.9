@@ -1,0 +1,1883 @@
+<head>
+<title> Open Watcom 1.9 IDE </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- A -
+<dd><a href="#Adding_a_Target">Adding a Target</a>
+<br><a href="#Adding_Resources_to_a_Target">Adding Resources to a Target</a>
+<br><a href="#Adding_Source_Files">Adding Source Files</a>
+<br><a href="#Auto_Refresh">Auto Refresh</a>
+<dt><br>- C -
+<dd><a href="#Closing_a_Project">Closing a Project</a>
+<br><a href="#Configuring_the_Integrated_Development_Environment">Configuring the Integrated Development Environment</a>
+<dt><br>- D -
+<dd><a href="#DOS_M_16Mbit_Targets">DOS - 16-bit Targets</a>
+<br><a href="#DOS_M_32Mbit_Targets">DOS - 32-bit Targets</a>
+<dt><br>- E -
+<dd><a href="#Editing_the_Source_File">Editing the Source File</a>
+<br><a href="#Executing_Special_Commands">Executing Special Commands</a>
+<dt><br>- F -
+<dd><a href="#The_Files_the_Integrated_Development_Environment_Uses">The Files the Integrated Development Environment Uses</a>
+<dt><br>- G -
+<dd><a href="#Getting_Help">Getting Help</a>
+<br><a href="#Getting_Started_with_a_Short_Tutorial">Getting Started with a Short Tutorial</a>
+<dt><br>- H -
+<dd><a href="#How_the_Environment_Operates">How the Environment Operates</a>
+<br><a href="#How_the_Integrated_Development_Environment_Looks">How the Integrated Development Environment Looks</a>
+<dt><br>- I -
+<dd><a href="#The_IDE_Menu_Bar">The IDE Menu Bar</a>
+<br><a href="#The_IDE_Status_Bar">The IDE Status Bar</a>
+<br><a href="#The_IDE_Switches">The IDE Switches</a>
+<br><a href="#The_IDE_Toolbar">The IDE Toolbar</a>
+<br><a href="#Including_Libraries_in_a_Target">Including Libraries in a Target</a>
+<br><a href="#Invoking_DOS_Applications_from_the_IDE_under_OSD2">Invoking DOS Applications from the IDE under OS/2</a>
+<br><a href="#Invoking_Other_Applications_from_the_IDE">Invoking Other Applications from the IDE</a>
+<dt><br>- L -
+<dd><a href="#Linux_Targets">Linux Targets</a>
+<dt><br>- M -
+<dd><a href="#Making_Source_Files">Making Source Files</a>
+<br><a href="#Making_Targets">Making Targets</a>
+<br><a href="#Marking_a_Source_File_for_Remake">Marking a Source File for Remake</a>
+<br><a href="#Marking_a_Target_for_Remake">Marking a Target for Remake</a>
+<br><a href="#Minimizing_a_Target">Minimizing a Target</a>
+<dt><br>- O -
+<dd><a href="#The_Open_Watcom_IDE_Project_Window">The Open Watcom IDE Project Window</a>
+<br><a href="#Open_Watcom_Integrated_Development_Environment">Open Watcom Integrated Development Environment</a>
+<br><a href="#Opening_a_Project">Opening a Project</a>
+<br><a href="#OSD2_M_16Mbit_Targets">OS/2 - 16-bit Targets</a>
+<br><a href="#OSD2_M_32Mbit_Targets">OS/2 - 32-bit Targets</a>
+<br><a href="#Other_Run_Functions">Other Run Functions</a>
+<dt><br>- Q -
+<dd><a href="#Quitting_the_Open_Watcom_Integrated_Development_Environment">Quitting the Open Watcom Integrated Development Environment</a>
+<dt><br>- R -
+<dd><a href="#Removing_a_Source_File">Removing a Source File</a>
+<br><a href="#Removing_a_Target">Removing a Target</a>
+<br><a href="#Renaming_a_Source_File">Renaming a Source File</a>
+<br><a href="#Renaming_a_Target">Renaming a Target</a>
+<br><a href="#Review_of_What_Happened">Review of What Happened</a>
+<br><a href="#Running_a_Target">Running a Target</a>
+<dt><br>- S -
+<dd><a href="#Saving_a_Project">Saving a Project</a>
+<br><a href="#Saving_the_Log">Saving the Log</a>
+<br><a href="#Saving_the_Project_Under_a_New_Name">Saving the Project Under a New Name</a>
+<br><a href="#Selecting_a_Source_Revision_Control_System">Selecting a Source Revision Control System</a>
+<br><a href="#Selecting_Your_Own_Text_Editor">Selecting Your Own Text Editor</a>
+<br><a href="#Setting_Application_Parameters">Setting Application Parameters</a>
+<br><a href="#Setting_Source_File_Switches">Setting Source File Switches</a>
+<br><a href="#Setting_Target_and_Source_File_Switches">Setting Target and Source File Switches</a>
+<br><a href="#Setting_Target_Switches">Setting Target Switches</a>
+<br><a href="#Show_Status_Bar">Show Status Bar</a>
+<br><a href="#Show_Toolbar">Show Toolbar</a>
+<br><a href="#A_Simple_Executable">A Simple Executable</a>
+<br><a href="#Starting_the_Open_Watcom_Integrated_Development_Environment">Starting the Open Watcom Integrated Development Environment</a>
+<br><a href="#Stopping_the_Make_Function">Stopping the Make Function</a>
+<dt><br>- T -
+<dd><a href="#Targets_and_Image_Types_Supported_by_the_IDE">Targets and Image Types Supported by the IDE</a>
+<dt><br>- U -
+<dd><a href="#Updating_the_Project">Updating the Project</a>
+<br><a href="#Using_Release_and_Development_Switches">Using Release and Development Switches</a>
+<br><a href="#Using_the_Autodepend_Switch">Using the Autodepend Switch</a>
+<br><a href="#Using_the_IDE_Log_Window">Using the IDE Log Window</a>
+<br><a href="#Using_the_Information_of_the_IDE_from_outside">Using the Information of the IDE from outside</a>
+<br><a href="#Using_the_Open_Watcom_Integrated_Development_Environment">Using the Open Watcom Integrated Development Environment</a>
+<dt><br>- V -
+<dd><a href="#Viewing_Included_Files">Viewing Included Files</a>
+<br><a href="#Viewing_the_Make_Command_for_a_Source_File">Viewing the Make Command for a Source File</a>
+<br><a href="#Viewing_the_Make_Command_for_a_Target">Viewing the Make Command for a Target</a>
+<dt><br>- W -
+<dd><a href="#Win16_Targets">Win16 Targets</a>
+<br><a href="#Win32_Targets">Win32 Targets</a>
+<br><a href="#Win386_LWatcom_ExtenderR_Targets">Win386 (Watcom Extender) Targets</a>
+<br><a href="#Working_with_Source_Files">Working with Source Files</a>
+<br><a href="#Working_with_Targets">Working with Targets</a>
+</dl>
+<h1 id="Open_Watcom_Integrated_Development_Environment"> Open Watcom Integrated Development Environment </h1>
+<br>Software development normally involves managing a number of different files for each project.&nbsp; A project often includes
+ multiple source files, include files, and libraries.&nbsp; In addition, there are usually several programming tools involved:
+&nbsp; compilers, linkers, preprocessors, debuggers, editors, and so on.&nbsp; But this is likely not new to you.&nbsp; What
+ will be new is the Open Watcom Integrated Development Environment (IDE).
+<br><br>The Open Watcom Integrated Development Environment is a software development tool that manages project files and language
+ tools.&nbsp; Although it is really a tool itself, the common term to describe it (and possibly the best analogy) is<b> Development
+ Environment.</b>&nbsp; By using the Open Watcom Integrated Development Environment, you have direct access to each of the
+ files relating to a project and all of the language tools you require to build your application.
+<br><br><img src="ide_s.bmp" style="vertical-align:middle">
+<h2 id="How_the_Environment_Operates"> How the Environment Operates </h2>
+<br>The Open Watcom Integrated Development Environment has a graphical interface that combines file management and tool management.
+&nbsp; An IDE session deals with a<b> Project.</b>&nbsp; A project can be generally defined as the collection of files and
+ necessary information that relates to the development of project components.&nbsp; However, a project is more than just a
+ graphical representation of a file list-it contains all of the underlying smarts to understand the interrelation of all files
+ associated with the project and to ensure that these files are up-to-date.
+<br><br>Each project component is referred to as a<b> Target.</b>&nbsp; An Integrated Development Environment target is made
+ up of the source files, include files, libraries, and MAKE instructions to create the target file (for example, &quot;.exe&quot;,
+ &quot;.dll&quot;, &quot;.lib&quot;, or &quot;.hlp&quot;).&nbsp; A project often has more than one target.&nbsp; Each target
+ can be set to create the associated target file for a specific destination platform.
+<br><br>Within a target, there are<b> Sources.</b>&nbsp; A source is an individual file (such as a &quot;.c&quot; or &quot;.cpp&quot;
+ file, but it can also be a &quot;.bmp&quot;, &quot;.rc&quot;, or &quot;.lib&quot; file) used to create the target file.&nbsp;
+ A target usually has more than one source.
+<h2 id="How_the_Integrated_Development_Environment_Looks"> How the Integrated Development Environment Looks </h2>
+<br>In the following illustration, the main window is the project window for a project entitled<tt> first.wpj.</tt>&nbsp;
+ The sub-window represents the target for this project,<tt> target1.exe.</tt>&nbsp; The source file for the target is listed
+ within the target window.&nbsp; In this project, there is only a single target with a single source file.
+<br><br><tt><img src="ide1.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 1.</i></b><b><i></i></b><b> The Open Watcom IDE window displays project and target windows.</b>
+<br><br>The language tools are available on the toolbar and the drop-down menus.&nbsp; For example, on the Sources menu, you
+ can work with the source that is selected in the target window.&nbsp; Here you can add a new source, remove or rename an
+ existing source, edit a source, and so on.&nbsp; A similar set of target actions are available in the Targets menu and project
+ actions are located in the File menu.
+<br><br>A single IDE session displays a project.&nbsp; If the project consists of a number of components, such as two executables
+ and one library, these appear as target sub-windows on the project window.&nbsp; Each target window displays the files necessary
+ to construct the target and associates files with a rule describing the construction mechanism based on filename extension.
+&nbsp; For example, a filename with the extension &quot;.exe&quot; may associate with the rule for constructing executables,
+ or a filename with the extension &quot;.lib&quot; may associate with the rule for constructing static libraries.
+<br><br>Different projects can refer to the same target.&nbsp; If they do, either project can manipulate the shared target
+ and any changes to either project affect the shared target.
+<h2 id="The_Files_the_Integrated_Development_Environment_Uses"> The Files the Integrated Development Environment Uses </h2>
+<br>The Open Watcom Integrated Development Environment creates and manages a project, referencing a number of targets.&nbsp;
+ The IDE uses filename extensions to represent projects and targets.&nbsp; The extension &quot;.wpj&quot; represents projects
+ and the extension &quot;.tgt&quot; represents targets.&nbsp; The IDE compiles and links the target in the target directory.
+<br><br>The project file (.wpj) contains the names of all of the target files related to the project, including housekeeping
+ information about the project and the current IDE session.
+<br><br>Each target file (.tgt) describes one target and includes the name and type of the target executable, a reference
+ to a rule describing how to build the target, and a list of relevant switches the rule uses.&nbsp; In addition, target files
+ also contain the names of all of the source files used to construct the target program, references to similar rules for compiling
+ them, and relevant switches.
+<br><br>In constructing targets, the Integrated Development Environment references a list of rules defined in a configuration
+ file, called<tt> ide.cfg.</tt>&nbsp; Each rule defines a command line used to do the construction and a list of actions you
+ can perform on the target program (such as make, run, or debug) or on the files in the item list (such as make or edit).
+&nbsp; Additionally, rules refer to tools.
+<br><br>Tools define which command line switches you can use in the Open Watcom Integrated Development Environment.
+<h2 id="Using_the_Open_Watcom_Integrated_Development_Environment"> Using the Open Watcom Integrated Development Environment </h2>
+<br>This section discusses the following topics:
+<ul>
+<li>Starting the Open Watcom Integrated Development Environment
+<li>Quitting the Open Watcom Integrated Development Environment
+<li>The IDE Menu Bar
+<li>The IDE Status Bar
+<li>The IDE Toolbar
+</ul>
+<h3 id="Starting_the_Open_Watcom_Integrated_Development_Environment"> Starting the Open Watcom Integrated Development Environment </h3>
+<br>To start the Integrated Development Environment, double-click on the IDE icon.&nbsp; This opens the Open Watcom IDE Project
+ window.
+<h3 id="Quitting_the_Open_Watcom_Integrated_Development_Environment"> Quitting the Open Watcom Integrated Development Environment </h3>
+<br>To exit the Integrated Development Environment, choose Exit from the File menu of the Open Watcom IDE Project window or
+ double-click on the system menu box on the same window.
+<h3 id="The_IDE_Menu_Bar"> The IDE Menu Bar </h3>
+<br>The IDE's menu bar consists of the following eight menus:
+<dl>
+<dt>File
+<dd>Open new or existing projects, close and save projects, exit the IDE, and show or hide the toolbar and status bar
+<dt><br>Actions
+<dd>Make all targets, run applications, and invoke other GUI Tools
+<dt><br>Targets
+<dd>Work with targets, including setting switches and creating, removing, and renaming targets
+<dt><br>Sources
+<dd>Work with sources, including setting switches and creating, removing, and renaming sources
+<dt><br>Options
+<dd>Set switches for creating targets and sources
+<dt><br>Log
+<dd>Perform functions relating to the IDE Log window
+<dt><br>Window
+<dd>Refresh the contents of the IDE windows and view the targets currently available on the IDE window
+<dt><br>Help
+<dd>Access on-line help information
+</dl>
+<h3 id="The_IDE_Status_Bar"> The IDE Status Bar </h3>
+<br>The Status Bar appears along the bottom of the Open Watcom IDE Project window.&nbsp; This bar displays hint text for the
+ toolbar button and menu option over which your cursor is positioned.&nbsp; Status messages, such as Saving, Adding, and Executing
+ Log, appear in this bar so you are aware of what action the IDE is performing.&nbsp; A check mark beside the Show Status
+ Bar menu option in the File menu indicates that this feature is enabled.&nbsp; To disable this feature, choose the option
+ again from the File menu and the status bar disappears from the window.
+<br><br><tt><img src="ide2.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 2.</i></b><b><i></i></b><b> The IDE Status Bar can be toggled from the File menu.</b>
+<h3 id="The_IDE_Toolbar"> The IDE Toolbar </h3>
+<br>In the Open Watcom IDE Project window, the toolbar appears below the menu bar when the Show Tool Bar option in the File
+ menu is activated (default).&nbsp; A check mark beside the menu option indicates that it is enabled.&nbsp; To disable this
+ feature, choose the option again from the File menu and the toolbar disappears.
+<br><br><tt><img src="ide3.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 3.</i></b><b><i></i></b><b> You can access thirteen IDE functions from the toolbar.</b>
+<br><br>The following explains the function each icon performs, as well as the equivalent function on the menu bar.
+<dl>
+<dt>Create
+<dd><img src="newproj.bmp"> Create a new project.&nbsp; This is equivalent to the option New Project in the File menu.
+<dt><br>Open
+<dd><img src="openproj.bmp"> Open an existing project.&nbsp; This is equivalent to the option Open Project in the File menu.
+<dt><br>Save
+<dd><img src="saveproj.bmp"> Save the current project.&nbsp; This is equivalent to the option Save Project in the File menu.
+<dt><br>Edit
+<dd><img src="edititem.bmp"> Edit the selected source file.&nbsp; This is equivalent to the option Edit Text in the Sources menu.
+<dt><br>Make Source
+<dd><img src="makeitem.bmp"> Make the selected source file.&nbsp; This is equivalent to the option Make in the Sources menu.
+<dt><br>Make Target
+<dd><img src="maketarg.bmp"> Make the current target.&nbsp; This is equivalent to the option Make in the Targets menu.
+<dt><br>Run
+<dd><img src="runtarg.bmp"> Run the current target.&nbsp; This is equivalent to the option Run in the Targets menu.
+<dt><br>Debug
+<dd><img src="debgtarg.bmp"> Debug the current target.&nbsp; This is equivalent to the option Debug in the Targets menu.
+<dt><br>Remote Debug
+<dd><img src="rdbgtarg.bmp"> Debug the current target on a remote machine.&nbsp; This is equivalent to the option Remote Debug
+ in the Targets menu.
+<dt><br>Browse
+<dd><img src="browtarg.bmp"> Browse the current target.&nbsp; This is equivalent to the option Browse in the Targets menu.&nbsp;
+ Currently, browsing is supported by the Open Watcom C/C++ compilers only (Open Watcom FORTRAN 77 does not support browsing).
+<dt><br>Sample
+<dd><img src="samptarg.bmp"> Run and sample the current target.&nbsp; This is equivalent to the option Sample in the Targets menu.
+<dt><br>Profile
+<dd><img src="proftarg.bmp"> Profile the current target.&nbsp; This is equivalent to the option Profile in the Targets menu.
+<dt><br>Make All
+<dd><img src="makeproj.bmp"> Make all targets in the project.&nbsp; This is equivalent to the option Make All in the Actions menu.
+</dl>
+<h2 id="Getting_Started_with_a_Short_Tutorial"> Getting Started with a Short Tutorial </h2>
+<br>Perhaps the easiest way to understand how the Open Watcom Integrated Development Environment manages an entire project's
+ files and tools, is to work through a brief example.&nbsp; In this walk-through, you create and execute a simple C program
+ using the IDE.&nbsp; FORTRAN developers can follow along substituting FORTRAN code and file names where appropriate.&nbsp;
+ The session will help you understand the basic concepts of the IDE and the steps involved in project development.
+<br><br>The illustrations shown in this section are taken from the Windows environment.&nbsp; The OS/2 environment is very
+ similar with some minor differences.&nbsp; For example, in the OS/2 environment the IDE uses the OS/2 Editor rather than
+ Open Watcom's Windows Editor.&nbsp; Although this tutorial builds a Win32 executable, you can choose to build a Win16 or
+ OS/2 PM executable.&nbsp; The procedures to follow are not that much different.&nbsp; When the time comes to select the type
+ of target, simply choose an environment that you can run on your machine so that you can run your application to make sure
+ it works.
+<h3 id="A_Simple_Executable"> A Simple Executable </h3>
+<dl>
+<dt>(1)
+<dd><b> Double-click on the IDE icon</b> in the Open Watcom Tools window.
+<br>The Open Watcom IDE Project window appears.&nbsp; 
+<dt><br>(2)
+<dd><b> Choose New Project</b> from the File menu.
+<br>The Enter Project Filename dialog appears.&nbsp; The default project name is<tt> noname.wpj.</tt>
+<dt><br>(3)
+<dd><b> Enter the filename</b><tt> \project\first</tt> in the File Name field and click on OK.
+<br><tt><img src="ide4.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 4.</i></b><b><i></i></b><b> Enter the filename in the Enter Project Filename dialog.</b>
+<br><br>This is the name of the project you are creating.&nbsp; If you enter a directory that doesn't exist (in this case,<tt>
+ \project</tt>), the IDE reveals a message box asking if you want to create the specified directory.&nbsp; Click on OK to
+ create the specified directory and project file.
+<dl>
+<dt>Note:
+<dd>The IDE looks for existing projects with the new name.&nbsp; If a project with the specified name already exists, the IDE
+ will prompt you rather than simply overwriting the existing project.
+</dl>
+<br>The project name appears in the title bar of the Open Watcom IDE Project window.&nbsp; Note that the IDE added the extension
+ &quot;.wpj&quot; to the project name.&nbsp; The New Target dialog appears on the screen where you define a target for the
+ new project.
+<dt><br>(4)
+<dd><b> Enter the desired target name</b> in the Target Name field (we suggest<tt> target1</tt>).&nbsp; Next, select the appropriate
+ Target Environment (we suggest &quot;Win32&quot;) and Image Type (we suggest &quot;Character-mode Executable&quot;).&nbsp;
+ Click on OK when completed.
+<br><tt><img src="ide5.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 5.</i></b><b><i></i></b><b> Select target name, target environment and image type</b>
+<br><br>The New Target dialog closes and the IDE creates a target window entitled<tt> target1.exe</tt> for the new target.
+&nbsp; Note that the IDE appends the appropriate extension to the target name for you once you click on OK.&nbsp; You can
+ now add sources to the target.
+<dt><br>(5)
+<dd><b> Choose New Source</b> from the Sources menu.
+<br>The Add File(s) dialog appears where you specify the sources you want to add to the target.&nbsp; Source names must be
+ filenames with extensions; pathnames are not required.
+<br><br>For the OS/2 IDE, you can add multiple source files to the target at one time by inserting a space between each filename
+ you enter.&nbsp; You can also use the file browser to add files by clicking on the Browse...&nbsp; button.
+<br><br>For all other systems, you can enter the names of the source files (with extensions) in the File Name field or you
+ can use the file browser to select files.&nbsp; The type of files displayed in file list window can be controlled by modifying
+ the List Files of Type field.&nbsp; Once you have typed a name in the File Name field or selected a name from the file list,
+ you can add it to the list of source files to be included by clicking the Add button.&nbsp; All files in the file list can
+ be added by clicking the Add All button.&nbsp; Individual names can be removed from the &quot;add&quot; list by selecting
+ them and clicking the Remove button.
+<br><br><tt><img src="ide6.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 6.</i></b><b><i></i></b><b> Select source file names in the Add File(s) dialog</b>
+<dt><br>(6)
+<dd><b> Enter the following source file names.</b>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; source1.c&nbsp;&nbsp; (or source1.for)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; source2.c&nbsp;&nbsp; (or source2.for)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; source3.rc</tt>
+<br><br>For the OS/2 IDE, enter all the names into the field separating each name by a space.&nbsp; Click on OK when done.
+<br><br>For all other systems, enter one name at a time into the File Name field, pressing Enter or clicking on Add after
+ each one has been entered.&nbsp; Click on Close when done.
+<br><br><tt><img src="ide7.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 7.</i></b><b><i></i></b><b> Enter one or several source files in the Add File(s) dialog.</b>
+<br><br>The IDE adds the new source files to the target window, followed by the characters &#91;n/a&#93;.&nbsp; This indicates
+ that the source files are not available, meaning that the files do not yet exist.&nbsp; The indicators are:
+<dl>
+<dt>&#91;n/a&#93;
+<dd>This code appears if the file does not exist.
+<dt><br>&#91;r/o&#93;
+<dd>This code appears if the file is Read Only.
+<dt><br>&#91;sw&#93;
+<dd>This code appears if the user has set switches for the specified source file.
+</dl>
+<br>The Integrated Development Environment organizes the source files in the target window under headers according to the
+ filename extension.&nbsp; You can expand and collapse the file groups by clicking on the folder icon.
+<br><br>For this tutorial, we only need one source file, so now we will delete the extra files from the target.
+<dt><br>(7)
+<dd><b> Click on the file</b><tt> source2.c</tt> (or<tt> source2.for</tt>) to select it then choose Remove Source from the Sources
+ menu.
+<br>A message box appears asking if you want to remove the selected source.&nbsp; Click on the Yes button to continue.&nbsp;
+ The IDE removes the selected source file from the target window.&nbsp; Now we can remove<tt> source3.rc.</tt>&nbsp; To do
+ this we will perform the function of removing all source files with a common extension.
+<dt><br>(8)
+<dd><b> Click on the (.rc) header</b> on the target window then choose Remove Source from the Sources menu.
+<br>A message box appears on the screen asking if you want to remove all of the &quot;.rc&quot; files.&nbsp; Click on the
+ Yes button to continue.&nbsp; The message box closes and the IDE removes the<tt> source3.rc</tt> file from the target window.
+&nbsp; Now you can edit the remaining source file.
+<dt><br>(9)
+<dd><b> Highlight the line</b><tt> source1.c</tt> (or<tt> source1.for</tt>) and choose Edit Text from the Sources menu to edit
+ the selected source file.
+<br>The Open Watcom Editor appears.&nbsp; The name of the selected source file,<tt> source1.c</tt> (or<tt> source1.for</tt>),
+ appears in the window.&nbsp; Here you can enter the source code.
+<br><br><b><i>Hint:</i></b>&nbsp; You can also invoke the Open Watcom Editor by double-clicking on the source file that you
+ want to edit.
+<br><br>In this case, the Open Watcom Editor appears because the selected source file has a &quot;.c&quot; or &quot;.for&quot;
+ extension.&nbsp; Performing an edit can open different editors, depending on the extension of the selected source file.
+<dt><br>(10)
+<dd><b> Enter the following lines of source code.</b>
+<dl>
+<dt>Important:
+<dd>For the purpose of this session, we ask you to enter<b> ii</b> instead of<b> i</b> in the &quot;print&quot; line.&nbsp; This
+ will allow you to see how the Integrated Development Environment reacts to errors.&nbsp; You will then be able to correct
+ the error.
+</dl>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; #include &lt;stdio.h&gt;</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; void main()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (i=0; i&lt;10; i++)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf( &quot;Value is %d\n&quot;, ii );</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;Press Enter...\n&quot;);</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getchar();</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><br>FORTRAN programmers can enter the following lines of code.
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; program main</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; implicit none</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer i</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do i = 0, 9</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print *, 'Value is ', ii</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; enddo</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print *, 'Press Enter...'</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read *</tt>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end</tt>
+<br><br>You can now save your work and close the Editor in one of the following two ways:&nbsp; close down the entire editor
+ or close down only the source file window.&nbsp; For this exercise, close only the source file window as follows.
+<dt><br>(11)
+<dd><b> Choose Close</b> from the File menu to close down the current source file window.
+<br>In both cases, if changes have been made to the file and not saved, a message prompts you to save the changes before exiting.
+&nbsp; The advantage of closing only the Editor window is that the Editor continues to run.&nbsp; If you need to access it
+ again, you will not need to wait for it to go through the start-up procedures again.
+<dl>
+<dt>Important:
+<dd>You must save the file.&nbsp; The Open Watcom compilers do not access the source lines in the Editor's buffers.
+</dl>
+<dt><br>(12)
+<dd><b> Minimize the Editor window.</b>
+<br>or
+<dt><br>
+<dd><b> Click on the Open Watcom IDE Project window</b> to bring it to the foreground.
+<dt><br>(13)
+<dd><b> Choose Refresh</b> from the Window menu.
+<br>This action forces the IDE to update the display with the state of all files.&nbsp; It is not necessary to use this function
+ if you have selected Auto Refresh in the File menu.&nbsp; If Auto Refresh is disabled then it may be necessary to alert the
+ IDE of the presence of the file on disk.&nbsp; 
+<dt><br>(14)
+<dd><b> Choose Save Project</b> from the File menu to save your project up to this point.
+<br>You are now ready to make and run the target.&nbsp; Making a target is the act of constructing a target file.&nbsp; In
+ this case, it involves compiling the source file<tt> source1.c</tt> (or<tt> source1.for</tt>) using the appropriate Open
+ Watcom compiler and linking the target executable using the Open Watcom Linker.
+<dt><br>(15)
+<dd><b> Highlight the line</b><tt> source1.c</tt> and choose C Compiler Switches...&nbsp; from the Source Options item located
+ under the Sources menu to set compile options.
+<br><b>FORTRAN programmers:</b>&nbsp; Highlight the line<tt> source1.for</tt> and choose Fortran Compiler Switches...&nbsp;
+ from the Source Options item located under the Sources menu to set compile options.
+<br><br>The C Compiler Switches dialog appears.&nbsp; If you are using FORTRAN, the Fortran Compiler Switches dialog appears.
+<dt><br>(16)
+<dd><b> Click on the &quot;&gt;&gt;&quot; button</b> until the<tt> 7.&nbsp; CodeGen Strategy Switches</tt> dialog appears.&nbsp;
+ Click on the &quot;Multithreaded application &#91;-bm&#93;&quot; checkbox button to select this option.
+<br><b>FORTRAN programmers:</b>&nbsp; Click on the &quot;&gt;&gt;&quot; button until the<tt> 9.&nbsp; Application Type Switches</tt>
+ dialog appears.&nbsp; Click on the &quot;Multithreaded application &#91;-bm&#93;&quot; checkbox to select this option.
+<br><br>A check-mark appears in the checkbox.
+<br><br>Note:&nbsp; Selecting this option is for demonstration purposes only, it is not required for this simple application.
+<br><br>Click OK to close the dialog.
+<dt><br>(17)
+<dd><b> Choose Make</b> from the Targets menu.
+<br>The IDE constructs a makefile based on its knowledge of the target and construction rules and then invokes the Open Watcom
+ Make utility to create<tt> target1.exe.</tt>&nbsp; The IDE Log window appears at the bottom of the Open Watcom IDE Project
+ window.&nbsp; Use this window to monitor the procedure.&nbsp; Since you entered<b> ii</b> instead of<b> i,</b> the MAKE fails.
+<br><br><tt><img src="ide8.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 8.</i></b><b><i></i></b><b> Use the IDE Log window to monitor the make procedure.</b>
+<dt><br>(18)
+<dd><b> Highlight the error message</b> in the IDE Log window and choose Help on Message from the Log menu.
+<br>Help information regarding the error message appears on the screen.
+<br><br><tt><img src="ide9.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 9.</i></b><b><i></i></b><b> Help for error messages is available</b>
+<br><br>Close the Help window and edit the source file as follows.
+<dt><br>(19)
+<dd><b> Highlight the error message</b> in the IDE Log window and choose Edit File from the Log menu.
+<br>or
+<dt><br>
+<dd><b> Double-click on the error message</b> in the IDE Log window.
+<br>The Open Watcom Editor opens and the cursor appears at the position of the error.&nbsp; Edit and correct the error and
+ then save the file again.&nbsp; Minimize the Editor window and bring the IDE window to the foreground.
+<dt><br>(20)
+<dd><b> Choose Make</b> from the Targets menu again.
+<br>This time, the procedure creates the executable file<tt> target1.exe.</tt>
+<dt><br>(21)
+<dd><b> Choose Run</b> from the Targets menu.
+<br>The IDE executes the program<tt> target1.exe.</tt>
+<br><br><tt><img src="ide10.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 10.</i></b><b><i></i></b><b> Run from the Targets menu runs the target.</b>
+<br><br>The program you wrote is a character mode application and its output appears in a separate console window.&nbsp; You
+ are now ready to debug your target program.&nbsp; You probably do not need to debug this simple program with the Open Watcom
+ Debugger but go through the steps so that you know what to do for more complex programs.
+<br><br>The IDE has several debugging information options which it uses as defaults when it is started.&nbsp; The first thing
+ to do is check to make sure that your application compiled with the default debugging information activated.
+<dt><br>(22)
+<dd><b> Choose Target Options</b> from the Targets menu to activate the Target Options menu.
+<br>The option Use Development Switches should appear in grey text with a check mark next to it.&nbsp; Development Switches
+ automatically include debugging information in the target.&nbsp; If you were to select Use Release Switches, the IDE would
+ select options useful for a production version of your program.&nbsp; Selecting this option turns the text grey and places
+ a check mark beside it.&nbsp; The IDE uses the development switches by default.
+<dl>
+<dt>Note:
+<dd>For the purpose of this session, you should make the target with the development switches on.&nbsp; If this is not the option
+ selected, select it and remake the target before debugging.
+</dl>
+<dt><br>(23)
+<dd><b> Choose Debug</b> from the Targets menu.
+<br>The IDE starts the Open Watcom Debugger.
+<dt><br>(24)
+<dd><b> Choose Step Over</b> from the Run menu of the Open Watcom Debugger to step through the code.&nbsp; Choose<b> Go</b> from
+ the Run menu of the Open Watcom Debugger to continue execution to the end of the code.&nbsp; For more information on using
+ the Open Watcom Debugger, refer to the<b><i> Open Watcom Debugger User's Guide.</i></b><b>&nbsp; The task has completed running</b>
+ appears when the program has completed execution.
+<dt><br>(25)
+<dd><b> Choose Exit</b> from the File menu to terminate the debugging session.
+<br>The Open Watcom Debugger closes and you return to the Open Watcom IDE Project window.&nbsp; You can now exit the IDE.
+<dt><br>(26)
+<dd><b> Choose Exit</b> from the File menu to exit the IDE.
+<br>The IDE prompts you to save the current project if you have not saved it since the last change.
+</dl>
+<h3 id="Review_of_What_Happened"> Review of What Happened </h3>
+<br>In this session, you created a project called<tt> first.wpj.</tt>&nbsp; This project had one target called<tt> target1.exe,</tt>
+ a 32-bit Windows executable (unless you specified another target type).&nbsp; Using the Open Watcom Editor, you entered and
+ edited the source text in a file called<tt> source1.c</tt> or<tt> source1.for</tt> (if you tried the FORTRAN example).&nbsp;
+ You compiled and linked it into an executable program using the Open Watcom Make utility, a Open Watcom compiler, and the
+ Open Watcom Linker.&nbsp; You ran it directly and under the control of the Open Watcom Debugger.
+<br><br>When you saved the project, the Open Watcom Integrated Development Environment created the following permanent files:
+<dl>
+<dt>first.wpj
+<dd>Describes the screen layout and refers to a file called<tt> target1.tgt</tt>
+<dt><br>target1.tgt
+<dd>Describes the target executable<tt> target1.exe</tt> and all switches required to link it.&nbsp; It also describes<tt> source1.c</tt>
+ (or<tt> source1.for</tt>) and the switches required to compile it.
+</dl>
+<h2 id="The_Open_Watcom_IDE_Project_Window"> The Open Watcom IDE Project Window </h2>
+<br>When you first start the Open Watcom Integrated Development Environment, an empty Open Watcom IDE Project window opens.
+&nbsp; This window represents the project that is currently open in the IDE.&nbsp; The name of the current project appears
+ in the title bar of this window.
+<br><br>The first thing you need to do is open a project for the Open Watcom IDE Project window.&nbsp; This can be a new project
+ you create or an existing project you open.
+<dl>
+<dt>Important:
+<dd>You can have only one project open at a time in the IDE.&nbsp; If you attempt to open or create a project while one already
+ exists in the IDE window, a message box appears informing you that the IDE is closing the current project and asks if you
+ want to save any changes made to that project.&nbsp; Choose Yes, No, or Cancel in this box to continue.
+</dl>
+<h3 id="Opening_a_Project"> Opening a Project </h3>
+<dl>
+<dt>To create a new project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Project</b> from the File menu.
+<br>The Enter Project Filename dialog appears on the screen where you enter the name of the project you are creating.
+<dt><br>(2)
+<dd><b> Enter the desired name</b> in the File Name field and choose the desired directory.
+<br>All projects must have the extension &quot;.wpj&quot;.
+<br><br><tt><img src="ide11.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 11.</i></b><b><i></i></b><b> Use the Enter Project Filename dialog to create a new project.</b>
+<dt><br>(3)
+<dd><b> Click on OK</b> when completed.
+<br>The Enter Project Filename dialog closes and the new project name appears in the title bar of the Open Watcom IDE Project
+ window.&nbsp; A New Target dialog opens on the screen where you add a target to the new project.&nbsp; Refer to the section
+ Adding a Target for more information.
+</dl>
+<dl>
+<dt>To open an existing project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Open Project</b> from the File menu.
+<br>The Open dialog appears on the screen where you select the project you want to open.
+<br><br><tt><img src="ide12.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 12.</i></b><b><i></i></b><b> Use the Open dialog to open an existing project.</b>
+<dt><br>(2)
+<dd><b> Choose the desired project.</b>
+<br>All projects have the extension &quot;.wpj&quot;.
+<dt><br>(3)
+<dd><b> Click on OK</b> when the desired project appears in the File Name field.
+<br>The Open dialog closes and the name of the selected project appears in the title bar of the Open Watcom IDE Project window.
+&nbsp; If targets exist for the selected project, windows representing the targets appear in the main window.
+</dl>
+<h3 id="Closing_a_Project"> Closing a Project </h3>
+<dl>
+<dt>To close the current project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Close Project</b> from the File menu.
+<br>The IDE removes all target windows for the current project from the Open Watcom IDE Project window.&nbsp; The project
+ name disappears from the title bar and the window is empty.
+</dl>
+<h3 id="Saving_a_Project"> Saving a Project </h3>
+<br>There are two ways of saving your current project.&nbsp; You can perform a simple save where the project is updated with
+ any changes made since the last save or you can save the project under a different project name using the Save Project As
+ function.
+<h4 id="Updating_the_Project"> Updating the Project </h4>
+<dl>
+<dt>To perform a simple save on your project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Save Project</b> from the File menu.
+<br>The IDE updates the project specified in the title bar.&nbsp; The status bar along the bottom of the window indicates
+ that the save function is being executed.
+</dl>
+<h4 id="Saving_the_Project_Under_a_New_Name"> Saving the Project Under a New Name </h4>
+<dl>
+<dt>To save the current project using a different name:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Save Project As</b> from the File menu.
+<br>The Save As dialog appears on the screen where you specify the file name by which you want to save the current project.
+<dt><br>(2)
+<dd><b> Enter the desired project name</b> in the File Name field.
+<br>This is the new name by which you want to save the current project.&nbsp; This can be the name of a new project or an
+ existing project.
+<dl>
+<dt>Important:
+<dd>Entering the name of an existing project overwrites the contents of that project with the contents of the current project.
+</dl>
+<dt><br>(3)
+<dd><b> Choose the desired directory</b> for the project using the Directories list on the Save As dialog.
+<dt><br>(4)
+<dd><b> Click on OK</b> when completed.
+<br>The Save As dialog closes and the new project name appears in the title bar of the Open Watcom IDE Project window.
+</dl>
+<h2 id="Working_with_Targets"> Working with Targets </h2>
+<br>Once you have created a project, it is a simple matter to add additional targets.&nbsp; You can also change the name of
+ a target, remove targets, change the target environment, and change the image type.&nbsp; This section discusses the following
+ topics:
+<ul>
+<li>Adding a Target
+<li>Minimizing a Target
+<li>Removing a Target
+<li>Renaming a Target
+<li>Marking a Target for Remake
+<li>Making Targets
+<li>Running a Target
+</ul>
+<h3 id="Adding_a_Target"> Adding a Target </h3>
+<br>You add targets to the current project using the New Target dialog.&nbsp; When you create a new project, this dialog appears
+ automatically.&nbsp; You have two options when adding targets to a project:&nbsp; you can either enter the name of a new
+ target or you can choose an existing target, previously created in another project.&nbsp; This section describes both methods
+ for adding a target.
+<dl>
+<dt>To add a new target to the current project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Target</b> from the Targets menu.
+<br>The New Target dialog appears on the screen where you enter the details of the target you are adding.
+<br><br><tt><img src="ide13.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 13.</i></b><b><i></i></b><b> Enter the new target details in the New Target dialog.</b>
+<dt><br>(2)
+<dd><b> Enter the target name</b> in the Target Name field.
+<br>Enter the entire pathname to ensure the directory is created where you want.&nbsp; Depending on the nature of the target,
+ it may or may not be able to share the same directory as other pre-existing targets.&nbsp; Generally, if the target shares
+ one or more of the same source files as other targets in the project, then it must be placed in its own subdirectory.&nbsp;
+ The object files that are produced for the target may have different attributes than a pre-existing target's object files
+ (e.g., 16-bit vs 32-bit).&nbsp; This is why the target should be placed in a separate subdirectory.
+<dt><br>(3)
+<dd><b> Select the desired Target Environment and Image Type</b> as desired.
+<dt><br>(4)
+<dd><b> Click on OK</b> when the Target Name, Target Environment and Image Type fields are correct.
+<br>If you specify a new directory in the target pathname, a message box appears asking if you want to create the specified
+ directory.&nbsp; Choose Yes or No to continue.&nbsp; A window representing the new target appears on the Open Watcom IDE
+ Project window.&nbsp; The target name appears in the title bar.
+<br><br>The first line in this window describes the target.&nbsp; It specifies the current mode, the target type.&nbsp; The
+ current mode is represented by either the letter D or R which appears in parentheses in front of the target type.&nbsp; The
+ letter D indicates that the target is placed in Development mode.&nbsp; The letter R indicates that the target is placed
+ in Release mode.&nbsp; The rest of the window displays the source files for the target.
+</dl>
+<br><tt><img src="ide14.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 14.</i></b><b><i></i></b><b> A project may have multiple targets.</b>
+<dl>
+<dt>To add an existing target to a current project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Target</b> from the Targets menu.
+<br>The New Target dialog appears on the screen.
+<dt><br>(2)
+<dd><b> Click on the Browse button.</b>
+<br>The Enter Target Filename dialog appears on the screen.&nbsp; This dialog allows you to browse the directories and files
+ and select the &quot;.tgt&quot; file for the target you want to add.
+<br><br><tt><img src="ide15.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 15.</i></b><b><i></i></b><b> Choose an existing target from the Pick Target Filename dialog for the current
+ project.</b>
+<dt><br>(3)
+<dd><b> Click on the desired target</b> to select it.
+<br>The selected target appears in the File Name field.
+<dt><br>(4)
+<dd><b> Click on OK</b> to process the target selection.
+<br>The Enter Target Filename dialog closes.
+<dt><br>(5)
+<dd><b> Click on OK</b> to close the New Target dialog.
+<br>A window representing the new target appears on the Open Watcom IDE Project window.&nbsp; The target name appears in the
+ title bar.
+<br><br>The first line in this window describes the target.&nbsp; It specifies the current mode and the target type.&nbsp;
+ The current mode is represented by either the letter D or R which appears in parentheses in front of the target type.&nbsp;
+ The letter D indicates that the target is placed in development mode.&nbsp; The letter R indicates that the target is placed
+ in Release mode.&nbsp; The rest of the window displays the source files for the target.
+</dl>
+<h3 id="Minimizing_a_Target"> Minimizing a Target </h3>
+<br>If you are working with a project that has multiple targets, the Open Watcom IDE Project window can become cluttered.
+&nbsp; You can tidy your window by minimizing the target windows that you are not currently using.
+<dl>
+<dt>To minimize a target window:
+<dd>
+<dt><br>(1)
+<dd><b> Click on the system box</b> in the upper left-hand corner of the target window you want to close.
+<br>A menu appears listing the functions you can perform on the selected window.
+<dt><br>(2)
+<dd><b> Choose Minimize</b> from the menu.
+<br>The selected target window closes and an icon appears along the bottom of the screen representing that window.&nbsp; The
+ name of the target appears on or under the icon.
+<dt><br>(3)
+<dd><b> Double-click on the icon</b> to open the target window again.
+</dl>
+<br><tt><img src="ide16.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 16.</i></b><b><i></i></b><b> Minimize targets to reduce clutter in the project window.</b>
+<h3 id="Removing_a_Target"> Removing a Target </h3>
+<br>The procedure for removing a target from a project is simple.&nbsp; If your project has multiple targets, it is important
+ to ensure that the target you want to remove is the one selected.&nbsp; Removing a target does not permanently delete the
+ target, it simply removes it from the current project.&nbsp; If the target is attached to multiple projects, those projects
+ will not be affected by the removal of the selected target from the current project.
+<dl>
+<dt>To remove a target from the current project:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> you want to remove from the project.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Remove Target</b> from the Targets menu.
+<br>A message box appears on the screen asking if you really want to remove the selected target.
+<dt><br>(3)
+<dd><b> Choose OK</b> to continue.
+<br>The message box closes and the selected target window disappears from the Open Watcom IDE Project window.
+</dl>
+<h3 id="Renaming_a_Target"> Renaming a Target </h3>
+<br>When renaming a target, you can either give it a new name or you can give it the name of an existing target.&nbsp; Choosing
+ an existing target name overwrites the contents of the existing target with the contents of the current target.
+<dl>
+<dt>To rename a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> you want to rename.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Rename Target</b> from the Targets menu.
+<br>The Rename Target dialog appears.&nbsp; The Target Name, Target Environment, and Image Type of the selected target appear
+ in the appropriate fields.
+<br><br><tt><img src="ide17.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 17.</i></b><b><i></i></b><b> Change a target's name using the Rename Target dialog.</b>
+<dt><br>(3)
+<dd><b> Enter the new target name</b> in the Target Name field.
+<br>or
+<dt><br>
+<dd><b> Click on the Browse button</b> and select an existing target name; click on OK when completed.
+<br>The selected or entered target name appears in the Target Name field.
+<dt><br>(4)
+<dd><b> Verify that the Target Environment and Image Type are correct.</b>
+<dt><br>(5)
+<dd><b> Click on OK</b> on the Rename Target window.
+<br>The Rename Target dialog closes.&nbsp; The title bar of the selected target window now displays the new target name.
+</dl>
+<h3 id="Marking_a_Target_for_Remake"> Marking a Target for Remake </h3>
+<br>Marking a target for remake ensures that the IDE will perform the link the next time you make that target or make all
+ targets.&nbsp; This function is necessary if you are not using the Autodepend function in the Setup Target submenu under
+ the Targets menu.&nbsp; By marking a target for remake, you control when and which targets need to be remade.
+<dl>
+<dt>To mark a target for remake:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> you want to mark.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Mark Target for Remake</b> from the Targets menu.
+<br>A message box appears asking if you want to also mark all of the source files of the selected target.
+<dt><br>(3)
+<dd><b> Choose Yes or No</b> to continue.
+<br>Choosing Yes marks all of the source files for the selected target as well as the target itself.&nbsp; This means that
+ the next time you do a make, the source files for the selected target will be compiled.&nbsp; Choosing No marks only the
+ selected target for remake.&nbsp; In both cases, the message box closes and you return to the Open Watcom IDE Project window.
+</dl>
+<h3 id="Making_Targets"> Making Targets </h3>
+<br>The Make function in the Targets menu creates an executable for the selected target.&nbsp; When you perform this function,
+ the IDE compiles the source files for the selected target into object files.&nbsp; The object files are then linked together
+ to create the target file.
+<br><br>There are two make functions available to you for targets:&nbsp; Make and Make All.&nbsp; The Make All function in
+ the Actions menu tells the IDE to compile and link all of the targets for the current project.&nbsp; This can be a lengthy
+ process, depending upon the number of targets in your project, so you may choose to only make targets to which changes have
+ been made.&nbsp; This enables you to see if they can be made successfully.
+<br><br>Performing the Make function opens the IDE Log window which allows you to monitor the progress of the make.
+<dl>
+<dt>To make a single target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> you want to make to select it.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Make</b> from the Targets menu.
+<br>The IDE Log window opens along the bottom of the Open Watcom IDE Project window.&nbsp; In the log window you can monitor
+ the make procedure.<b>&nbsp; Execution Complete</b> appears in the IDE Log window when the make is completed on the selected
+ target.&nbsp; If the make is successful an executable file for the selected target can be found in the directory associated
+ with the target window.
+<br><br><tt><img src="ide18.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 18.</i></b><b><i></i></b><b> Use the IDE Log window to monitor the make procedure.</b>
+</dl>
+<dl>
+<dt>To make all targets for the current project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Make All</b> from the Actions Menu.
+<br>The IDE Log window opens along the bottom of the Open Watcom IDE Project window.&nbsp; In the log window you can monitor
+ the make procedure.<b>&nbsp; Execution Complete</b> appears in the IDE Log window when the make is completed on the targets.
+&nbsp; If the make is successful an executable file for each target in the project can be found in the directory associated
+ with the target window.
+</dl>
+<h4 id="Viewing_the_Make_Command_for_a_Target"> Viewing the Make Command for a Target </h4>
+<br>With the IDE you can use the Show Make Command function to display the makefile commands for the selected target.&nbsp;
+ These are the commands that will be used to compile the selected target when you choose the function Make from the Targets
+ menu or Make All from the Actions menu.
+<dl>
+<dt>To view the make commands for targets:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> whose makefile commands you want to view.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Target Options</b> from the Targets menu.
+<br>A submenu appears on the screen from the Target Options menu.
+<dt><br>(3)
+<dd><b> Choose Show Make Command</b> from the Target Options submenu.
+<br>The Target Command dialog appears on the screen.&nbsp; This dialog displays the makefile commands for the selected target.
+<br><br><tt><img src="ide19.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 19.</i></b><b><i></i></b><b> The Target Command dialog displays the makefile commands for the selected target.</b>
+<dt><br>(4)
+<dd><b> Click on OK</b> to close the dialog.
+</dl>
+<h3 id="Running_a_Target"> Running a Target </h3>
+<br>Once you have compiled and linked your target using the Make function, you can run the target to execute the program.
+<dl>
+<dt>To run a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> you want to run.
+<br>The title bar of the selected target window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Run</b> from the Targets menu.
+<br>The IDE executes the target program.
+<br><br><tt><img src="ide20.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 20.</i></b><b><i></i></b><b> Run from the Targets menu runs the target.</b>
+</dl>
+<h4 id="Other_Run_Functions"> Other Run Functions </h4>
+<br>In the Open Watcom Integrated Development Environment you can run programs other than the targets in your current project
+ window.&nbsp; Use the run functions in the Actions menu to specify the program you want to run.&nbsp; The Run item runs the
+ specified program under your host environment.&nbsp; The Run Batch item runs the specified program in the IDE Log window.
+<dl>
+<dt>To run other programs in the IDE:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Run</b> from the Actions menu.
+<br>or
+<dt><br>
+<dd><b> Choose Run Batch</b> from the Actions menu.
+<br>A Run or Run Batch dialog appears on the screen.&nbsp; These dialogs are identical.
+<br><br><tt><img src="ide21.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 21.</i></b><b><i></i></b><b> Use the Run (or Run Batch) dialog to run other programs in the IDE.</b>
+<dt><br>(2)
+<dd><b> Enter the name of the program</b> you want to run in the Command field.
+<dt><br>(3)
+<dd><b> Click on OK</b> to run the specified program.
+<br>The dialog closes and the specified program runs, either under the host environment or in the IDE Log window.
+</dl>
+<h3 id="Setting_Application_Parameters"> Setting Application Parameters </h3>
+<br>The Targets and Sources menus and their submenus are divided into sections.&nbsp; Horizontal lines separate each section.
+&nbsp; The menu items in the bottom sections of the Targets and Sources menus are actions that you can perform on the selected
+ target or source file in the current project.&nbsp; If there are switches that can be set for these actions, there are corresponding
+ menu item entries in the bottom sections of the submenus.&nbsp; Choose Target Options and Source Options from their respective
+ menus to display the submenus.
+<h2 id="Working_with_Source_Files"> Working with Source Files </h2>
+<br>Once your project has a target you need to add source files to the target.&nbsp; The procedure for adding a source file
+ to a target is simple.&nbsp; Once you have source files that make up your target, you can also change the name of a source
+ file and remove source files.&nbsp; This section discusses the following topics:
+<ul>
+<li>Adding Source Files
+<li>Removing Source Files
+<li>Renaming a Source File
+<li>Marking a Source File for Remake
+<li>Making Source Files
+<li>Viewing Included Files
+</ul>
+<h3 id="Adding_Source_Files"> Adding Source Files </h3>
+<br>You add source files to the selected target (the target whose title bar is currently highlighted) using the Add File(s)
+ dialog.&nbsp; The current project must have a target in order to use the New Source function.&nbsp; You have two options
+ when adding source files to a target:&nbsp; you can either enter the name of a new source file or you can choose an existing
+ source file.&nbsp; When adding existing source files you can use the file browser, type sources one at a time into the Add
+ File(s) dialog, or use wild cards in the Add File(s) dialog.&nbsp; This section describes all methods for adding source files.
+<br><br>The extension you use with the source file name determines the compiler that the IDE uses to create the target.&nbsp;
+ For example, the &quot;.c&quot; extension, invokes the Open Watcom C compiler to make the target.&nbsp; You can specify several
+ different compilers:
+<dl>
+<dt>xxx.asm
+<dd>The &quot;.asm&quot; extension invokes the Open Watcom Assembler.
+<dt><br>xxx.c
+<dd>The &quot;.c&quot; extension invokes the Open Watcom C compiler.
+<dt><br>xxx.cpp
+<dd>The &quot;.cpp&quot; extension invokes the Open Watcom C++ compiler.
+<dt><br>xxx.for
+<dd>The &quot;.for&quot; extension invokes the Open Watcom FORTRAN 77 compiler.
+<dt><br>xxx.hlp
+<dd>The &quot;.hlp&quot; extension invokes either the Win16, OS/2, or Win32 compiler.
+<dt><br>xxx.rc
+<dd>The &quot;.rc&quot; extension invokes the Open Watcom resource compiler.
+<dt><br>xxx.res
+<dd>The &quot;.res&quot; extension invokes the Open Watcom Resource Editor.
+<dt><br>xxx.sqc
+<dd>The &quot;.sqc&quot; extension invokes the embedded SQL preprocessor and the Open Watcom C compiler.
+<dt><br>xxx.sqp
+<dd>The &quot;.sqp&quot; extension invokes the embedded SQL preprocessor and the Open Watcom C++ compiler.
+</dl>
+<dl>
+<dt>To add new source files to the selected target:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Source</b> from the Sources menu.
+<br>The Add File(s) dialog appears where you specify the name(s) of the source file(s) you are adding.&nbsp; Source names
+ must be filenames with extensions; pathnames are not required.
+<br><br>For the OS/2 IDE, you can add multiple source files to the target at one time by inserting a space between each filename
+ you enter into the filenames field.
+<br><br>For all other systems, you can enter the names of the source files (with extensions) in the File Name field, one at
+ a time.&nbsp; Once you have typed a name in the File Name field, you can add it to the list of source files to be included
+ by clicking the Add button.&nbsp; Individual names can be removed from the &quot;add&quot; list by selecting them and clicking
+ the Remove button.
+<br><br><tt><img src="ide22.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 22.</i></b><b><i></i></b><b> Add one or several source files to a target using the Add File(s) dialog.</b>
+<dt><br>(2)
+<dd><b> Enter the source file name(s).</b>
+<br>For the OS/2 IDE, enter all the names into the field separating each name by a space.&nbsp; Click on OK when done.
+<br><br>For all other systems, enter one name at a time into the File Name field, pressing Enter or clicking on Add after
+ each one has been entered.&nbsp; Click on Close when done.
+<br><br>The Add File(s) dialog closes and the selected source file(s) appear in the selected target window on the Open Watcom
+ IDE Project window.
+<br><br>The source files are grouped by their file extensions and appear in alphabetical order.&nbsp; You can expand and collapse
+ the list of source files by clicking on the folder icon to the left of the header.
+</dl>
+<dl>
+<dt>To add existing source files to the selected target using the file browser:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Source</b> from the Sources menu.
+<br>The Add File(s) dialog appears on the screen.
+<br><br>For the OS/2 IDE, click on the Browse button and the Pick Filename dialog appears on the screen.&nbsp; This dialog
+ allows you to browse the directories and files and select the source file(s) you want to add to the current target.&nbsp;
+ Click on the desired source file to select it.&nbsp; The selected source file(s) appear highlighted in the Pick Filename
+ dialog.&nbsp; When done browsing files, click on OPEN to add the selected files.&nbsp; The Pick Filename dialog closes.&nbsp;
+ When done selecting files, click on OK.
+<br><br>For all other systems, you can use the file browser to select files.&nbsp; The type of files displayed in file list
+ window can be controlled by modifying the List Files of Type field.&nbsp; Once you have selected a name from the file list,
+ you can add it to the list of source files to be included by clicking the Add button.&nbsp; All files in the file list can
+ be added by clicking the Add All button.&nbsp; Individual names can be removed from the &quot;add&quot; list by selecting
+ them and clicking the Remove button.&nbsp; When done, click on Close to add the selected files.
+<br><br>The Add File(s) dialog closes and the selected source file(s) appear in the selected target window on the Open Watcom
+ IDE Project window.
+<br><br>The source files are grouped by their file extensions and appear in alphabetical order.&nbsp; You can expand and collapse
+ the list of source files by clicking on the folder icon to the left of the header.
+</dl>
+<dl>
+<dt>To add existing source files to the selected target using wild cards:
+<dd>
+<dt><br>(1)
+<dd><b> Choose New Source</b> from the Sources menu.
+<br>The Add File(s) dialog appears on the screen.
+<br><br>For the OS/2 IDE, enter the source file name pattern in the filename(s) field using wild cards.&nbsp; For example,
+ enter<tt> sou*.c</tt> to add all source files whose name begins &quot;sou&quot; and have a &quot;.c&quot; extension to the
+ current target.&nbsp; When done, click on OK to add the selected files.
+<br><br><b><i>Hint:</i></b>&nbsp; Even when entering wild cards, you can add multiple source file groups by separating each
+ entry with one space (e.g., sou*.c sou*.cpp).
+<br><br>For all other systems, enter the source file name pattern in the File Name field using wild cards.&nbsp; For example,
+ enter<tt> sou*.c</tt> to select all source files whose name begins &quot;sou&quot; and have a &quot;.c&quot; extension.&nbsp;
+ Click on the Add All button to add all the names that match the wild card pattern.&nbsp; Individual names can be removed
+ from the &quot;add&quot; list by selecting them and clicking the Remove button.&nbsp; When done, click on Close to add the
+ selected files.
+<br><br>The Add File(s) dialog closes and the selected source file(s) appear in the selected target window on the Open Watcom
+ IDE Project window.
+<br><br>The source files are grouped by their file extensions and appear in alphabetical order.&nbsp; You can expand and collapse
+ the list of source files by clicking on the folder icon to the left of the header.
+</dl>
+<h3 id="Removing_a_Source_File"> Removing a Source File </h3>
+<br>The procedure for removing a source file from a project is simple.&nbsp; You can remove one source at a time or you can
+ remove all source files with a common file extension from the target.&nbsp; Removing a source file does not permanently delete
+ the it.&nbsp; The IDE simply removes it from the current target.&nbsp; If the removed source file is common to multiple targets,
+ the other targets will not be affected by the removal of the selected source file.
+<dl>
+<dt>To remove one source file from a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> you want to remove from the target.
+<br>The selected source file appears highlighted in the target window.
+<dt><br>(2)
+<dd><b> Choose Remove Source</b> from the Sources menu.
+<br>A message box appears asking if you are sure you want to remove the selected source file.
+<dt><br>(3)
+<dd><b> Click on the Yes button.</b>
+<br>The message box closes and the IDE removes the selected source file from the target window.
+</dl>
+<dl>
+<dt>To remove a group of source files from a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the header</b> to the right of the folder icon of the source files group you want to remove from the target.
+<br>The selected header appears highlighted in the target window.
+<br><br><tt><img src="ide23.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 23.</i></b><b><i></i></b><b> Click on the header to remove all source files with a common file extension.</b>
+<dt><br>(2)
+<dd><b> Choose Remove Source</b> from the Sources menu.
+<br>A message window appears asking if you want to remove all source files with the selected file extension.
+<dt><br>(3)
+<dd><b> Choose OK</b> to continue.
+<br>The message box closes and the IDE removes the selected group of source files from the target.
+</dl>
+<h3 id="Renaming_a_Source_File"> Renaming a Source File </h3>
+<br>When renaming a source file, you can either give it a new name or you can give it the name of an existing source file.
+&nbsp; Choosing an existing source file name overwrites the contents of that source file with the contents of the current
+ source file.
+<dl>
+<dt>To rename a source file:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> you want to rename.
+<br>The selected source file appears highlighted in the target window.
+<dt><br>(2)
+<dd><b> Choose Rename Source</b> from the Sources menu.
+<br>The Rename File dialog appears where you enter the new name of the selected source file.
+<br><br><tt><img src="ide24.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 24.</i></b><b><i></i></b><b> Use the Rename File dialog to rename the selected source file.</b>
+<dt><br>(3)
+<dd><b> Enter the new source file name</b> in the field.
+<br>or
+<dt><br>
+<dd><b> Click on the Browse button</b> and select an existing source file name; click on OK when completed.
+<br>The selected or entered source file name appears in the Rename File dialog.
+<dt><br>(4)
+<dd><b> Click on OK</b> on the Rename File dialog.
+<br>The Rename File dialog closes.&nbsp; The target window displays the updated source file.
+</dl>
+<h3 id="Marking_a_Source_File_for_Remake"> Marking a Source File for Remake </h3>
+<br>The Mark Source for Remake function in the Sources menu enables you to mark a source file to ensure that the IDE will
+ recompile it the next time you make the target.&nbsp; This function is useful because although changes may not have been
+ made to the selected source file, changes may have been made to a source file on which the selected source file depends.
+&nbsp; This function is necessary if you are not using the Autodepend function in the Target Options submenu under the Targets
+ menu.&nbsp; Marking source files for remake gives you control over when and which source files need to be remade.
+<br><br>With the Mark function you can mark an individual source file or a group of source files with a common file extension.
+<dl>
+<dt>To mark a source file or a group of source files for remake:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> you want to mark.
+<br>or
+<dt><br>
+<dd><b> Click once on the header</b> of the group of source files you want to mark.
+<br>The selection is highlighted in the target window.
+<dt><br>(2)
+<dd><b> Choose Mark Source for Remake</b> from the Sources menu.
+<br>If you selected a group of source files to mark, a message box appears asking if you want to also mark all of the source
+ files of the specified extension.
+<dt><br>(3)
+<dd><b> Choose Yes</b> to continue.
+<br>The message box disappears and the IDE marks all of the source files in the selected group to be recompiled.
+</dl>
+<h3 id="Making_Source_Files"> Making Source Files </h3>
+<br>The Make function in the Sources menu enables you to compile a selected source file into an object file.&nbsp; You can
+ also perform the Make function on a group of source files with a common file extension.
+<br><br>Performing the Make function opens the IDE Log window which allows you to monitor the progress of the make.
+<dl>
+<dt>To make source files:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> you want to make.
+<br>or
+<dt><br>
+<dd><b> Click once on the header</b> of the group of source files you want to make.
+<br>The selected source files are highlighted in the target window.
+<dt><br>(2)
+<dd><b> Choose Make</b> from the Sources menu.
+<br>The IDE Log window opens along the bottom of the Open Watcom IDE Project window.&nbsp; In the log window you can monitor
+ the make procedure.<b>&nbsp; Execution Complete</b> appears in the IDE Log window when the make is completed on the selected
+ source files.
+</dl>
+<dl>
+<dt>To make all targets for the current project:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Make All</b> from the Actions Menu.
+<br>The IDE Log window opens along the bottom of the Open Watcom IDE Project window.&nbsp; In the log window you can monitor
+ the make procedure.<b>&nbsp; Execution Complete</b> appears in the IDE Log window when the make is completed on the targets.
+&nbsp; If the make is successful an executable file for each target in the project can be found in the directory associated
+ with the target window.
+</dl>
+<h4 id="Viewing_the_Make_Command_for_a_Source_File"> Viewing the Make Command for a Source File </h4>
+<br>With the IDE you can use the Show Make Command function to display the makefile commands for the selected source file.
+&nbsp; These are the commands that will be used to compile the selected source file when you choose the function Make from
+ the Sources menu.
+<dl>
+<dt>To view the make commands for source files:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> whose makefile commands you want to view.
+<br>or
+<dt><br>
+<dd><b> Click once on the header</b> of the group of source files whose makefile commands you want to view.
+<br>The selected source file or group header is highlighted.
+<dt><br>(2)
+<dd><b> Choose Source Options</b> from the Sources menu.
+<br>A submenu appears on the screen from the Source Options menu.
+<dt><br>(3)
+<dd><b> Choose Show Make Command</b> from the Source Options submenu.
+<br>The Source Command dialog appears on the screen.&nbsp; This dialog displays the makefile commands for the selected source
+ file or source file header.
+<br><br><tt><img src="ide25.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 25.</i></b><b><i></i></b><b> The IDE Source Command dialog displays the makefile commands for the selected
+ source file(s).</b>
+<dt><br>(4)
+<dd><b> Click on OK</b> to close the dialog.
+</dl>
+<h3 id="Viewing_Included_Files"> Viewing Included Files </h3>
+<br>The Included Files function in the Sources menu enables you to select a source file and view a list of all of the files
+ included by that source file.&nbsp; This is a list of all files on which the selected source file depends.&nbsp; From this
+ list you can select included files and edit them.
+<br><br>Because the selected source file depends on the files in this list, it is necessary to remake it if changes are made
+ to any of the included files.&nbsp; If you are using the Autodepend function, the IDE automatically remakes the source file
+ if any of the included files are modified.
+<dl>
+<dt>To view the list of included files:
+<dd>
+<dt><br>(1)
+<dd><b> Click on the source file</b> whose list of included files you want to view.
+<br>The selected source file is highlighted in the target window.
+<dt><br>(2)
+<dd><b> Choose Included Files</b> from the Sources menu.
+<br>The Files Included dialog appears on the screen.&nbsp; This dialog lists all source files on which the selected source
+ files depends.
+</dl>
+<dl>
+<dt>To edit a source file from the File Included dialog:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> in the included files list that you want to edit.
+<br>The selected source file is highlighted in the File Included dialog.
+<dt><br>(2)
+<dd><b> Click on OK.</b>
+<br>or
+<dt><br>
+<dd><b> Double-click</b> on the selected source file.
+<br>The Files Included dialog closes and the IDE invokes the appropriate editor for the selected included file.&nbsp; The
+ editor appears and you can edit the file.&nbsp; Close the editor when you are finished making the desired changes to return
+ to the Open Watcom IDE Project window.
+</dl>
+<h2 id="Using_the_IDE_Log_Window"> Using the IDE Log Window </h2>
+<br>When you compile a target or source file, the IDE Log window appears along the bottom of the screen.&nbsp; Once this window
+ is open it remains on your screen until you close the project.&nbsp; However, to maximize your project window space you can
+ minimize the IDE Log window when it is not being used.
+<br><br>The Log menu contains three functions that you use in relation to the IDE Log window.&nbsp; This section discusses
+ the following functions:
+<ul>
+<li>Stopping the Make Function
+<li>Getting Help
+<li>Editing the Source File
+<li>Saving the Log
+</ul>
+<h3 id="Stopping_the_Make_Function"> Stopping the Make Function </h3>
+<br>Choosing to make a source file, target, or all targets can be a lengthy process.&nbsp; The Stop function in the Log menu
+ gives you the opportunity to cancel the make function once it has started.&nbsp; This is a useful function in case you decide
+ that you do not want to continue with the make.
+<dl>
+<dt>To stop the make function:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Stop</b> from the Log menu.
+<br>A message box appears asking if it is okay to interrupt the executing process.
+<dt><br>(2)
+<dd><b> Click on OK</b> to continue.
+<br>The message box closes and the IDE stops the make function.&nbsp; The IDE Log window displays the message<b> Stop Invoked</b>
+ followed by the message<b> Execution Complete.</b>
+</dl>
+<h3 id="Getting_Help"> Getting Help </h3>
+<br>The Help on Message function in the Log menu gives you access to on-line help information for the selected error message
+ in the IDE Log window.
+<dl>
+<dt>To reveal help for an error message:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the error message</b> in the IDE Log window on which you want information.
+<br>The selected error message is highlighted in the IDE Log window.
+<dt><br>(2)
+<dd><b> Choose Help on Message</b> from the Log menu.
+<br>This opens the Help window.&nbsp; Information on the selected error message appears in this window.
+<dt><br>(3)
+<dd><b> Choose Close</b> from the system menu on the Help window to cancel the Help facility.
+<br>The Help window closes and you return to the IDE Log window.
+</dl>
+<h3 id="Editing_the_Source_File"> Editing the Source File </h3>
+<br>The Edit File function in the Log menu allows you to select an error message in the IDE Log window and edit the corresponding
+ source file.&nbsp; This function invokes the appropriate editor for the source file and positions your cursor in the source
+ code where the error occurred (if the error message contained line and column information).
+<dl>
+<dt>To edit a source file:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the error message</b> in the IDE Log window that you want to edit.
+<br>The selected error message is highlighted in the IDE Log window.
+<dt><br>(2)
+<dd><b> Choose Edit File</b> from the Log menu.
+<br>or
+<dt><br>
+<dd><b> Double-click</b> on the selected error message.
+<br>Both of these actions open the appropriate editor.&nbsp; If the Open Watcom Editor appears and the error message contained
+ column and line details, your cursor will be positioned at the error in the source code.
+<dt><br>(3)
+<dd><b> Make the required changes</b> to the source file and exit the Editor.
+</dl>
+<h3 id="Saving_the_Log"> Saving the Log </h3>
+<br>The Save Log As function in the Log menu allows you to save the contents of the Log window into a file.
+<dl>
+<dt>To save the log:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Save Log As</b> from the Log menu.
+<br>The Save Log As dialog appears where you specify the filename by which you want to save the contents of the Log window.
+<dt><br>(2)
+<dd><b> Enter the desired log name</b> in the File Name field.
+<dt><br>(3)
+<dd><b> Specify the directory</b> to which you want to save the log.
+<dt><br>(4)
+<dd><b> Click on the OK button.</b>
+<br>The IDE closes the Save Log As dialog and saves the current log as specified
+</dl>
+<h2 id="The_IDE_Switches"> The IDE Switches </h2>
+<br>There are a number of different switches you can set in the Open Watcom Integrated Development Environment.&nbsp; Switches
+ enables you to change the way the various tools, such as compilers and linkers, perform their jobs.&nbsp; The switches discussed
+ in this section are:
+<ul>
+<li>Release and Development Switches
+<li>Target and Source File Switches
+<li>The Autodepend Switch
+</ul>
+<br>This section discusses the different switches available in the IDE and how you can use them.
+<h3 id="Using_Release_and_Development_Switches"> Using Release and Development Switches </h3>
+<br>There are two sets of switches the IDE can use during the make process:&nbsp; Development and Release switches.&nbsp;
+ You are able to specify different switches in each set for each target in your project.&nbsp; The letters D and R in the
+ target window to the left of the target type indicate which set of switches is being used.&nbsp; You choose the switches
+ you want the IDE to use from the Target Options submenu under the Targets menu.&nbsp; The selected set of switches has a
+ check mark beside it and appears in grey text.
+<dl>
+<dt>To change the selected set of switches for a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target</b> whose switches you want to change.
+<br>The title bar of the selected target is highlighted.
+<dt><br>(2)
+<dd><b> Choose Target Options</b> from the Targets menu.
+<br>A submenu appears from the Target Options menu.
+<dt><br>(3)
+<dd><b> Choose Use Development Switches or Use Release Switches</b> (whichever is not currently selected) from the submenu, as
+ desired.
+<br>A message box appears asking if you want to mark the selected target and its source files for remake.
+<dt><br>(4)
+<dd><b> Choose Yes or No,</b> as desired, to continue.
+<br>The message box closes and you return to the Open Watcom IDE window.&nbsp; The next time you perform a make, the IDE will
+ use the selected set of switches.
+</dl>
+<h3 id="Setting_Target_and_Source_File_Switches"> Setting Target and Source File Switches </h3>
+<br>You can set a variety of command-line compiler and linker options in the Open Watcom Integrated Development Environment.
+&nbsp; This section shows you how to use the Switches dialogs to choose your options.
+<br><br>You can set the Integrated Development Environment to work in one of two switch modes:&nbsp; Use Development Switches
+ or Use Release Switches.&nbsp; Either of these two options uses a default set of switch settings, unless you specify otherwise.
+&nbsp; You can set switches for an individual target, specific source file type, or individual source file.
+<h4 id="Setting_Target_Switches"> Setting Target Switches </h4>
+<dl>
+<dt>To set switches for a target:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> for which you want to set switches.
+<br>The title bar of the selected window is highlighted.
+<dt><br>(2)
+<dd><b> Choose Windows Linking Switches</b> from the Options menu.
+<br>or
+<dt><br>
+<dd><b> Choose Target Options</b> from the Targets menu and then choose Windows Linking Switches from the Target Options submenu.
+<br>The Windows Linking Switches dialog appears on the screen.&nbsp; The switches you access from this dialog affect only
+ the currently selected target.&nbsp; There are four Switches dialogs, each one allowing you to set the following types of
+ switches:
+<ul>
+<li>Basic
+<li>Import, Export and Library
+<li>Advanced
+<li>Special
+<li>Resource
+</ul>
+<br>You can use the forward (&gt;&gt;) and backward (&lt;&lt;) buttons or the drop-down list to choose the set of switches
+ you want to set.
+<br><br><tt><img src="ide26.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 26.</i></b><b><i></i></b><b> Use the Windows Linking Switches dialog to set command-line compiler and linker
+ options.</b>
+<br><br>The first dialog allows you to choose the debugging information you want to see.&nbsp; Remember, if the option Use
+ Development Switches is enabled in the Target Options submenu of the Targets menu, the Integrated Development Environment
+ automatically sets switches to include all debugging information.&nbsp; You can change this setting by selecting Use Release
+ Switches from the Target Options submenu under the Targets menu or choosing specific switches in the Switches dialogs.
+<br><br>Select the<b> CopyRel</b> button in the Switches dialog to copy the set of Release switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Development switches are
+ selected in the Setup Target submenu under the Targets menu.
+<br><br>Select the<b> CopyDev</b> button in the Switches dialog to copy the set of Development switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Release switches are selected
+ in the Target Options submenu under the Targets menu.
+<br><br>Select the Reset button to reset the switches to the default Release or Development switches, as selected in the Target
+ Options submenu under the Targets menu.
+<dt><br>(3)
+<dd><b> Click on OK</b> when you are finished setting switches for the selected target.
+<br>The Switches dialog closes and you return to the Open Watcom IDE Project window.
+</dl>
+<h4 id="Setting_Source_File_Switches"> Setting Source File Switches </h4>
+<br>The Switches function in the Source Options submenu of the Sources menu enables you to set switches for the compiler that
+ is associated with the selected source file or source file group.
+<dl>
+<dt>To set switches for a source file group:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target window</b> that contains the relevant source files.
+<dt><br>(2)
+<dd><b> Choose the appropriate item</b> from the Options menu.
+<br>For example, to set switches for all &quot;.c&quot; files in the selected target, choose C Compiler Switches from the
+ Options menu.
+<br><br>The Compiler Switches dialog appears on the screen.&nbsp; The switches you access from this dialog affect only the
+ currently selected source file or source file group.&nbsp; There are eleven Switches dialogs for Open Watcom C/C++, each
+ one allowing you to set the following types of switches:
+<ul>
+<li>File Option Switches
+<li>Diagnostics Switches
+<li>Source Switches
+<li>Miscellaneous Switches
+<li>Optimization Switches
+<li>Debugging Switches
+<li>CodeGen Strategy Switches
+<li>Register Usage Switches
+<li>CodeGen Option Switches
+<li>Memory Model and Processor Switches
+<li>C or C++ Compiler Switches
+</ul>
+<br>There are ten Switches dialogs for Open Watcom FORTRAN 77.
+<ul>
+<li>File Option Switches
+<li>Compile-time Diagnostic Switches
+<li>Run-time Diagnostic Switches
+<li>Debugging Switches
+<li>Code Generation Strategy Switches
+<li>Code Generation Option Switches
+<li>Register Usage Switches
+<li>Optimization Switches
+<li>Application Type Switches
+<li>Miscellaneous Switches
+</ul>
+<br>You can use the forward (&gt;&gt;) and backward (&lt;&lt;) buttons or the drop-down list to choose the set of switches
+ you want to set.
+<br><br><tt><img src="ide27.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 27.</i></b><b><i></i></b><b> Use the C Compiler Switches dialog to set switches for the compiler associated
+ with the selected source file(s).</b>
+<br><br>The first of several compiler switch dialogs appears.&nbsp; Of note is the sixth screen, Debugging Switches, which
+ allows you to choose the debugging information you want to see.&nbsp; Remember, if the option Use Development Switches is
+ enabled in the Target Options submenu of the Targets menu, the Integrated Development Environment automatically sets switches
+ to include all debugging information.&nbsp; You can change this setting by selecting Use Release Switches from the Target
+ Options submenu under the Targets menu or choosing specific switches in the Switches dialogs.
+<br><br>Select the<b> CopyRel</b> button in the Switches dialog to copy the set of Release switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Development switches are
+ selected in the Target Options submenu under the Targets menu.
+<br><br>Select the<b> CopyDev</b> button in the Switches dialog to copy the set of Development switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Release switches are selected
+ in the Target Options submenu under the Targets menu.
+<br><br>Select the Reset button to reset the switches to the default Release or Development switches, as selected in the Target
+ Options submenu under the Targets menu.
+<dt><br>(3)
+<dd><b> Click on OK</b> when you are finished setting switches for the selected source file or group of source files.
+<br>The Switches dialog closes and you return to the Open Watcom IDE Project window.
+</dl>
+<dl>
+<dt>To set switches for a specific source file:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the source file</b> for which you want to set switches.
+<br>The selected source file is highlighted.
+<dt><br>(2)
+<dd><b> Choose Source Options</b> from the Sources menu.
+<br>A submenu for the Source Options menu appears on the screen.
+<dt><br>(3)
+<dd><b> Choose the appropriate item</b> from the Source Options submenu.
+<br>For example, if the selected source file has a &quot;.c&quot; extension, choose C Compiler Switches from the Options menu.
+<br><br>The Compiler Switches dialog appears on the screen.&nbsp; The switches you access from this dialog affect only the
+ currently selected source file.&nbsp; There are eleven Switches dialogs for Open Watcom C/C++, each one allowing you to set
+ the following types of switches:
+<ul>
+<li>File Option Switches
+<li>Diagnostics Switches
+<li>Source Switches
+<li>Miscellaneous Switches
+<li>Optimization Switches
+<li>Debugging Switches
+<li>CodeGen Strategy Switches
+<li>Register Usage Switches
+<li>CodeGen Option Switches
+<li>Memory Model and Processor Switches
+<li>C or C++ Compiler Switches
+</ul>
+<br>There are ten Switches dialogs for Open Watcom FORTRAN 77.
+<ul>
+<li>File Option Switches
+<li>Compile-time Diagnostic Switches
+<li>Run-time Diagnostic Switches
+<li>Debugging Switches
+<li>Code Generation Strategy Switches
+<li>Code Generation Option Switches
+<li>Register Usage Switches
+<li>Optimization Switches
+<li>Application Type Switches
+<li>Miscellaneous Switches
+</ul>
+<br>You can use the forward (&gt;&gt;) and backward (&lt;&lt;) buttons or the drop-down list to choose the set of switches
+ you want to set.
+<br><br><tt><img src="ide28.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 28.</i></b><b><i></i></b><b> Use the C Compiler Switches dialog to set switches for the compiler associated
+ with the selected source file(s).</b>
+<br><br>The first of several compiler switch dialogs appears.&nbsp; Of note is the sixth screen, Debugging Switches, which
+ allows you to choose the debugging information you want to see.&nbsp; Remember, if the option Use Development Switches is
+ enabled in the Target Options submenu of the Targets menu, the Integrated Development Environment automatically sets switches
+ to include all debugging information.&nbsp; You can change this setting by selecting Use Release Switches from the Target
+ Options submenu under the Targets menu or choosing specific switches in the Switches dialogs.
+<br><br>Select the<b> CopyRel</b> button in the Switches dialog to copy the set of Release switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Development switches are
+ selected in the Target Options submenu under the Targets menu.
+<br><br>Select the<b> CopyDev</b> button in the Switches dialog to copy the set of Development switches to the current dialog.
+&nbsp; You can then make further changes, as required.&nbsp; This button is available only if the Release switches are selected
+ in the Target Options submenu under the Targets menu.
+<br><br>Select the Reset button to reset the switches to the default Release or Development switches, as selected in the Target
+ Options submenu under the Targets menu.
+<dt><br>(4)
+<dd><b> Click on OK</b> when you are finished setting switches for the selected source file or group of source files.
+<br>The Switches dialog closes and you return to the Open Watcom IDE Project window.
+</dl>
+<h3 id="Using_the_Autodepend_Switch"> Using the Autodepend Switch </h3>
+<br>The Use Autodepend switch in the Target Options submenu of the Targets menu keeps track of updated source files.&nbsp;
+ Once a source is modified, the IDE remembers that it needs to be recompiled the next time you do a make.&nbsp; By using the
+ Use Autodepend switch, the IDE also keeps track of changes made to source files on which other source files depend.
+<br><br>For example, let's say that your current project has a source file,<tt> source.cpp,</tt> that depends on a header
+ file,<tt> source.hpp.</tt>&nbsp; If the Use Autodepend feature is not enabled and changes are made to<tt> source.hpp</tt>
+ after<tt> source.cpp</tt> in your current project has been compiled, the IDE does not recognize that your current source
+ file is now out of date.&nbsp; This means that the next time you do a make, the IDE will not compile<tt> source.cpp.</tt>
+&nbsp; The Use Autodepend feature tells the IDE to compare the date and time stamps on all of the dependent source files in
+ addition to the source files in the current project and their corresponding object files, so the IDE recognizes when your
+ current source file needs to be recompiled.
+<dl>
+<dt>To set the Use Autodepend switch:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Target Options</b> from the Targets menu.
+<br>A submenu appears from the Target Options menu.&nbsp; A check mark beside the menu option indicates that it is enabled.
+<dt><br>(2)
+<dd><b> Select the Use Autodepend option</b> from the Target Options submenu.
+<br>If the option was enabled when you selected it, you have disabled the Use Autodepend feature.&nbsp; If the option had
+ no check mark when you selected it, you have enabled the Use Autodepend feature.
+</dl>
+<h2 id="Configuring_the_Integrated_Development_Environment"> Configuring the Integrated Development Environment </h2>
+<br>The Integrated Development Environment can be reconfigured to some extent.&nbsp; You can customize the following features.
+<ul>
+<li>Show or hide the Toolbar
+<li>Show or hide the Status Bar
+<li>Enable or disable automatic updates of file status in the target windows
+<li>Select your own text editor
+<li>Select a source revision control system
+</ul>
+<br>The next few sections describe these features.
+<h3 id="Show_Toolbar"> Show Toolbar </h3>
+<br>The Integrated Development Environment Toolbar that appears under the Menu Bar can be removed from or added to the IDE
+ window.
+<dl>
+<dt>To add or remove the toolbar:
+<dd>
+<dt><br>(1)
+<dd><b> Choose File</b> from the menu bar.
+<br>A checkmark beside Show Tool Bar indicates that the toolbar is present on the screen.
+<dt><br>(2)
+<dd><b> Select Show Tool Bar.</b>
+<br>The Show Tool Bar state will be toggled.&nbsp; If the toolbar was on the screen, it will disappear.&nbsp; If the toolbar
+ was not on the screen, it will reappear.
+</dl>
+<h3 id="Show_Status_Bar"> Show Status Bar </h3>
+<br>The Integrated Development Environment Status Bar that appears at the bottom of the IDE window can be removed from or
+ added to the screen.
+<dl>
+<dt>To add or remove the status bar:
+<dd>
+<dt><br>(1)
+<dd><b> Choose File</b> from the menu bar.
+<br>A checkmark beside Show Status Bar indicates that the status bar is present on the screen.
+<dt><br>(2)
+<dd><b> Select Show Status Bar.</b>
+<br>The Show Status Bar state will be toggled.&nbsp; If the status bar was on the screen, it will disappear.&nbsp; If the
+ status bar was not on the screen, it will reappear.
+</dl>
+<h3 id="Auto_Refresh"> Auto Refresh </h3>
+<br>The IDE will automatically update the target windows with the state of all files when this option is enabled.
+<dl>
+<dt>To enable or disable auto refresh:
+<dd>
+<dt><br>(1)
+<dd><b> Choose File</b> from the menu bar.
+<br>A checkmark beside Auto Refresh indicates that auto refresh is enabled.
+<dt><br>(2)
+<dd><b> Select Auto Refresh.</b>
+<br>The Auto Refresh state will be toggled.&nbsp; When Auto Refresh is disabled, it may be necessary to select Refresh from
+ the Window menu whenever the target window status becomes out of date.
+</dl>
+<h3 id="Selecting_Your_Own_Text_Editor"> Selecting Your Own Text Editor </h3>
+<br>You can use your own favourite text editor from within the Integrated Development Environment.
+<dl>
+<dt>To select your own text editor:
+<dd>
+<dt><br>(1)
+<dd><b> Choose Set Text Editor</b> from the File menu.
+<br>The Set Text Editor dialog appears.&nbsp; You can enter the name of the text editor in the first field.&nbsp; You must
+ also indicate whether the text editor is an executable file or a Dynamic Link Library (DLL).&nbsp; If the editor is an executable
+ file (rather than a DLL), then you can enter an argument line in the second field.&nbsp; The argument line will be supplied
+ to the editor whenever it is started by the IDE.&nbsp; The argument line can include any of three different macros which
+ will be filled in by the IDE.&nbsp; The macros are:
+<dl>
+<dt>%f
+<dd>The name of the file to be edited.
+<dt><br>%r
+<dd>The row in the file at which to position the cursor.&nbsp; If the editor is invoked from a diagnostic message which contains
+ a line number then the row value is extracted from the message; otherwise the row value is 1.
+<dt><br>%c
+<dd>The column in the file at which to position the cursor.&nbsp; If the editor is invoked from a diagnostic message which contains
+ a column number then the column value is extracted from the message; otherwise the column value is 1.
+</dl>
+<br>For example, if the editor argument line that you specified was:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file='%f' row='%r' col='%c'</tt>
+<br><br>and you double click on an error message in the Log window that names the file<tt> foobar.c</tt> with an error at
+ line 215 and column 31, then the argument line that is passed to your editor is:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; file='foobar.c' row='215' col='31'</tt>
+<br><br>This flexibility allows you to specify the name of the file to edit and the row and/or column at which to position
+ the text cursor.&nbsp; If no row or column is available, then the IDE will supply the value of 1 as a default.
+<dt><br>(2)
+<dd><b> Select OK</b> when you wish to confirm the selection of a new editor.
+<br>or
+<dt><br>
+<dd><b> Select Cancel</b> when you wish to cancel the selection of a new editor.
+<br>or
+<dt><br>
+<dd><b> Select Default</b> when you wish to restore the default editor selection and then select OK or Cancel.
+</dl>
+<h3 id="Selecting_a_Source_Revision_Control_System"> Selecting a Source Revision Control System </h3>
+<br>You can use a source code Revision Control System (RCS) in conjunction with the Integrated Development Environment.
+<dl>
+<dt>To select a revision control system
+<dd>
+<dt><br>(1)
+<dd><b> Choose Set Source Control</b> from the File menu.
+<br>A number of options are presented:
+<dl>
+<dt>MKS RCS
+<dd>Mortice Kern Systems Revision Control System
+<dt><br>MKS SI
+<dd>Mortice Kern Systems Source Integrity
+<dt><br>PVCS
+<dd>Intersolv Project Version Control System
+<dt><br>Other
+<dd>Any other flavour of revision control system (default)
+<dt><br>None
+<dd>No revision control system
+<dt><br>Object Cycle
+<dd>Powersoft's Object Cycle
+<dt><br>Perforce
+<dd>Perforce
+</dl>
+</dl>
+<br>When you select a source revision control system, the Checkout Source and Checkin Source items in the Sources menu are
+ enabled.&nbsp; The Checkout Source and Checkin Source items spawn batch/command files or dialogs corresponding to your selection
+ of revision control system.&nbsp; The batch/command files are located in the \WATCOM\BINW and \WATCOM\BINP directories.&nbsp;
+ These files can be modified to suit your environment.
+<dl>
+<dt>MKS RCS
+<dd>
+<dl>
+<dt>MKS_CO
+<dd>for checking out/locking files with MKS RCS
+<dt><br>MKS_CI
+<dd>for checking in/unlocking files with MKS RCS
+</dl>
+<dt><br>MKS SI
+<dd>
+<dl>
+<dt>Checkout Dialog
+<dd>a check out dialog will appear on the screen when using MKS SI
+<dt><br>Checkin Dialog
+<dd>a check in dialog will appear on the screen when using MKS SI
+</dl>
+<dt><br>PVCS
+<dd>
+<dl>
+<dt>PVCS_CO
+<dd>for checking out/locking files with Intersolv PVCS
+<dt><br>PVCS_CI
+<dd>for checking in/unlocking files with Intersolv PVCS
+</dl>
+<dt><br>Other
+<dd>
+<dl>
+<dt>GEN_CO
+<dd>a file which you can edit to provide check out (and lock) functionality to any generic revision control system
+<dt><br>GEN_CI
+<dd>a file which you can edit to provide check in (and unlock) functionality to any generic revision control system
+</dl>
+<dt><br>None
+<dd>When selected, Checkout Source and Checkin Source are disabled.
+</dl>
+<br>When one of the batch files is spawned, a number of arguments are passed to the batch file.
+<br><br>For checking out files, the following arguments are passed:
+<ol>
+<li>&quot;pause&quot; or &quot;nopause&quot; to enable optional screen pause after completion of action
+<li>full source file path specification
+<li>full project file path specification (.wpj file)
+<li>full target file path specification (.tgt file)
+</ol>
+<br>For checking in files, the following arguments are passed:
+<ol>
+<li>full source file path specification
+<li>full message file path specification (this file contains the textual message that you enter when checking in a file)
+<li>full project file path specification (.wpj file)
+<li>full target file path specification (.tgt file)
+</ol>
+<h2 id="Executing_Special_Commands"> Executing Special Commands </h2>
+<br>Sometimes you may find it necessary to execute commands before and/or after performing a make.&nbsp; The Open Watcom Integrated
+ Development Environment provides Before and After commands in the File and Targets menus.&nbsp; These commands enable you
+ to perform actions immediately before or after making either the selected target or all targets for the current project.
+<dl>
+<dt>To set Before or After directives:
+<dd>
+<dt><br>(1)
+<dd><b> Click once on the target</b> for which you want to set a before or after directive.
+<br>The title bar of the selected target is highlighted.
+<dt><br>(2)
+<dd><b> Choose Target Options</b> from the Targets menu.
+<br>A submenu appears from the Target Options menu.
+<dt><br>(3)
+<dd><b> Choose Execute Before or Execute After</b> from the Target Options submenu.
+<br>A Target Before or Target After dialog appears on your screen.
+<dl>
+<dt>Note:
+<dd>If you want to set before or after directives to be executed when you make all targets, select the before and after commands
+ from the File menu.
+</dl>
+<dt><br>(4)
+<dd><b> Enter the command</b> you want to execute before or after the selected target is made.
+<br><tt><img src="ide29.bmp" style="vertical-align:middle"></tt>
+<br><b><i>Figure 29.</i></b><b><i></i></b><b> Enter execute commands in the Target Before or Target After dialogs.</b>
+<dt><br>(5)
+<dd><b> Click on OK</b> to continue.
+<br>The IDE stores the information you entered and closes the dialog.&nbsp; When you next perform a make on the selected target,
+ the IDE will execute the before or after directive you entered.
+</dl>
+<h2 id="Adding_Resources_to_a_Target"> Adding Resources to a Target </h2>
+<br>You may want to include resources in your target executable.&nbsp; There are two ways of doing this in the IDE:&nbsp;
+ indirectly and directly.&nbsp; The act of adding resources to a target can only be done for targets that support resources,
+ such as Windows or OS/2 PM.
+<dl>
+<dt>To add a resource to a target using the indirect method:
+<dd>
+<dt><br>(1)
+<dd><b> Create a new source file</b> with the extension &quot;.rc&quot;.
+<dt><br>(2)
+<dd><b> Click once on the new source file</b> to select it.
+<dt><br>(3)
+<dd><b> Choose Edit Text</b> from the Sources menu to invoke the Open Watcom Editor.
+<br>The editor opens on your screen with an empty window.&nbsp; You can now add the resource file text.
+<dt><br>(4)
+<dd><b> Enter the resource statements</b> in the editor.
+<dt><br>(5)
+<dd><b> Save your work and close the editor</b> when you are finished.
+<br>You return to the Open Watcom IDE Project window.&nbsp; You can now compile the new source file.
+<dt><br>(6)
+<dd><b> Click once on the new source file</b> to select it.
+<br>The selected source file is highlighted in the target window.
+<dt><br>(7)
+<dd><b> Choose Make</b> from the Sources menu to compile the new source file.
+<br>The IDE compiles the selected source file.&nbsp; To do this, the IDE invokes the Resource Compiler which creates a &quot;.res&quot;
+ file.&nbsp; The &quot;.res&quot; file will be automatically included in the target when it is linked.
+</dl>
+<br>When you create the resource file directly, the source file contains the same information but it is stored in a different
+ format.
+<dl>
+<dt>To add a resource to a target using the direct method:
+<dd>
+<dt><br>(1)
+<dd><b> Create a new source file</b> with the extension &quot;.res&quot;.
+<dt><br>(2)
+<dd><b> Click once on the new source file</b> to select it.
+<dt><br>(3)
+<dd><b> Choose Edit Resources</b> from the Sources menu to invoke the Open Watcom Resource Editor.
+<br>The editor opens on your screen with an empty window.&nbsp; You can now create the resources.
+<dt><br>(4)
+<dd><b> Create the resources.</b>
+<dt><br>(5)
+<dd><b> Save your work and close the editor</b> when you are finished.
+<br>You return to the Open Watcom IDE Project window.&nbsp; You can now compile the new source file.
+<dt><br>(6)
+<dd><b> Click once on the new source file</b> to select it.
+<br>The selected source file is highlighted in the target window.
+<dt><br>(7)
+<dd><b> Choose Make</b> from the Sources menu to compile the new source file.
+<br>The IDE compiles the selected source file.&nbsp; The IDE does not need to invoke the Resource Compiler to create a &quot;.res&quot;
+ file because you created the &quot;.res&quot; file directly using the Resource Editor.&nbsp; The &quot;.res&quot; file will
+ be automatically included in the target when it is linked.
+</dl>
+<h2 id="Including_Libraries_in_a_Target"> Including Libraries in a Target </h2>
+<br>You use the same procedure to include static and DLL libraries in your target as you use to add any source file to a target.
+&nbsp; The IDE includes the libraries when the target is linked.
+<dl>
+<dt>To create static and DLL libraries:
+<dd>
+<dt><br>(1)
+<dd><b> Create a new target</b> entering the library name in the Target Name field and choosing the appropriate image type.
+<br>Clicking on OK on the New Target dialog closes the dialog and creates a new target with the specified name in the title
+ bar.
+<dt><br>(2)
+<dd><b> Add the desired source files,</b> new or existing, to the library you have created.
+<dl>
+<dt>Note:
+<dd>If you want one of your other targets to use that library, you must enter the library as a source file for that target.&nbsp;
+ When you enter the library as a source file you must give it the extension &quot;.lib&quot;, regardless of whether the library
+ is a static or DLL library.&nbsp; For example, if your library is entitled Target A and you want your existing Target B to
+ use that library, add Target A as a source file on Target B with the extension &quot;.lib&quot;.
+</dl>
+</dl>
+<h2 id="Targets_and_Image_Types_Supported_by_the_IDE"> Targets and Image Types Supported by the IDE </h2>
+<br>The IDE supports the creation of a wide variety of targets.&nbsp; The following sections summarize the choices available.
+<h3 id="Win32_Targets"> Win32 Targets </h3>
+<dl>
+<dt>Character-mode Executable &#91;.exe&#93;
+<dd>
+<br>The target is a non-GUI Win32 application.
+<dt><br>Windowed Executable &#91;.exe&#93;
+<dd>
+<br>The target is a GUI Win32 application.
+<dt><br>Dynamic Link Library &#91;.dll&#93;
+<dd>
+<br>The target is a Win32 DLL.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a Win32 library.
+<dt><br>Help File &#91;.hlp&#93;
+<dd>
+<br>The target is a help file.
+</dl>
+<h3 id="Win16_Targets"> Win16 Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 16-bit Windows application.
+<dt><br>Dynamic Link Library &#91;.dll&#93;
+<dd>
+<br>The target is a 16-bit Windows DLL.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 16-bit Windows library.
+<dt><br>Help File &#91;.hlp&#93;
+<dd>
+<br>The target is a help file.
+</dl>
+<h3 id="Win386_LWatcom_ExtenderR_Targets"> Win386 (Watcom Extender) Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit Open Watcom Windows extender application.
+<dt><br>Dynamic Link Library &#91;.dll&#93;
+<dd>
+<br>The target is a 32-bit Open Watcom Windows extender DLL.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 32-bit Open Watcom Windows extender library.
+<dt><br>Help File &#91;.hlp&#93;
+<dd>
+<br>The target is a help file.
+</dl>
+<h3 id="DOS_M_16Mbit_Targets"> DOS - 16-bit Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 16-bit DOS .exe file.
+<dt><br>.COM Executable &#91;.com&#93;
+<dd>
+<br>The target is a 16-bit DOS .com file.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 16-bit DOS .lib file.
+</dl>
+<h3 id="DOS_M_32Mbit_Targets"> DOS - 32-bit Targets </h3>
+<dl>
+<dt>CauseWay Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit CauseWay .exe file.
+<dt><br>CauseWay DLL (register based) &#91;.dll&#93;
+<dd>
+<br>The target is a 32-bit CauseWay dll using register-based calling conventions.
+<dt><br>CauseWay DLL (stack based) &#91;.dll&#93;
+<dd>
+<br>The target is a 32-bit CauseWay dll using stack-based calling conventions.
+<dt><br>DOS4GW Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit DOS/4GW .exe file.
+<dt><br>PMODW/W Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit PMODE/W .exe file.
+<dt><br>DOS32/A Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit DOS32/A .exe file.
+<dt><br>Pharlap Executable &#91;.exp&#93;
+<dd>
+<br>The target is a 32-bit PharLap &quot;RUN386&quot; .exe file.
+<dt><br>Pharlap TNT Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit PharLap TNT .exe file.
+<dt><br>Flashtek Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit FlashTek .exe file using register-based calling conventions.
+<dt><br>Flashtek -- Stack based &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit FlashTek .exe file using stack-based calling conventions.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 32-bit DOS .lib file.
+</dl>
+<h3 id="OSD2_M_16Mbit_Targets"> OS/2 - 16-bit Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 16-bit OS/2 console application.
+<dt><br>PM Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 16-bit OS/2 Presentation Manager application.
+<dt><br>Fullscreen Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 16-bit OS/2 Fullscreen application.
+<dt><br>Dynamic Link Library &#91;.dll&#93;
+<dd>
+<br>The target is a 16-bit OS/2 DLL.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 16-bit OS/2 library file.
+<dt><br>Help File &#91;.hlp&#93;
+<dd>
+<br>The target is an OS/2 help file (HLP format).
+<dt><br>INF File &#91;.inf&#93;
+<dd>
+<br>The target is an OS/2 help file (INF format).
+</dl>
+<h3 id="OSD2_M_32Mbit_Targets"> OS/2 - 32-bit Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit OS/2 console application.
+<dt><br>PM Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit OS/2 Presentation Manager application.
+<dt><br>Fullscreen Executable &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit OS/2 Fullscreen application.
+<dt><br>Virtual Device &#91;.exe&#93;
+<dd>
+<br>The target is a 32-bit OS/2 Virtual Device Driver application.
+<dt><br>Dynamic Link Library &#91;.dll&#93;
+<dd>
+<br>The target is a 32-bit OS/2 DLL.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a 32-bit OS/2 library file.
+<dt><br>Help File &#91;.hlp&#93;
+<dd>
+<br>The target is an OS/2 help file (HLP format).
+<dt><br>INF File &#91;.inf&#93;
+<dd>
+<br>The target is an OS/2 help file (INF format).
+</dl>
+<h3 id="Linux_Targets"> Linux Targets </h3>
+<dl>
+<dt>Executable &#91;.exe&#93;
+<dd>
+<br>The target is a Linux application.
+<dt><br>Shared Library &#91;.dll&#93;
+<dd>
+<br>Shared libraries are not yet supported.
+<dt><br>Library &#91;.lib&#93;
+<dd>
+<br>The target is a Linux static library file.
+</dl>
+<h2 id="Invoking_Other_Applications_from_the_IDE"> Invoking Other Applications from the IDE </h2>
+<br>When using the Open Watcom Integrated Development Environment, there are several other applications you may want to use.
+&nbsp; To save you the frustration of having to constantly exit the IDE and start up a new application, we have made it possible
+ to invoke other applications from within the Integrated Development Environment.&nbsp; Following are the applications you
+ can invoke from the IDE:
+<ul>
+<li>Browser
+<li>Open Watcom Debugger
+<li>Open Watcom Execution Sampler
+<li>Open Watcom Execution Profiler
+<li>Open Watcom Disassembler
+<li>Open Watcom Editor (text editor)
+<li>Open Watcom Resource Editor
+<li>Open Watcom Zoom
+<li>Open Watcom Heap Walker
+<li>Spy
+<li>DDE Spy
+</ul>
+<br>You invoke these applications by making a selection from the toolbar or various menus in the IDE.&nbsp; The Actions menu
+ contains some of the applications.&nbsp; You can find others in the Targets and Sources menus.&nbsp; The menu options that
+ appear vary, depending on the contents of the current project.&nbsp; The applications are available in the menu items only
+ when appropriate.&nbsp; For example, if the currently selected target has no source files, no applications appear in the
+ Sources menu.
+<br><br><b><i>Hint:</i></b>&nbsp; An alternate way to view the contents of the Targets and Sources menu is to click the right
+ mouse button while your cursor is positioned in the project window.&nbsp; If your cursor is positioned over a target, the
+ Targets menu appears.&nbsp; If your cursor is positioned over a source file, the Sources menu appears.
+<br><br>Refer to the appropriate sections in this manual for detailed information on using the various applications.
+<h2 id="Invoking_DOS_Applications_from_the_IDE_under_OSD2"> Invoking DOS Applications from the IDE under OS/2 </h2>
+<br>There are occasions where you may wish to change the default DOS or WIN-OS/2 settings when running a DOS/Windows application
+ from the IDE.&nbsp; The mechanism which we provide is through the use of a special<b> IDE_DOS_SETTINGS</b> environment variable.
+&nbsp; For example, to set the DPMI memory limit to 16 and to enable DOS BREAK, you can set the environment variable as follows:
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; set ide_dos_settings=dpmi_memory_limit#16;dos_break#1</tt>
+<br><br>Due to the command processor limitations, the &quot;#&quot; character is used in place of the &quot;=&quot;.&nbsp;
+ The above command is equivalent to configuring a DOS session with DOS settings as follows:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Value</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; DPMI_MEMORY_LIMIT&nbsp;&nbsp; 16</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; DOS_BREAK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ON</tt>
+<h2 id="Using_the_Information_of_the_IDE_from_outside"> Using the Information of the IDE from outside </h2>
+<br>The batch utility IDE2MAKE generates .mk and .mk1 makefiles for use with Open Watcom Make from the IDE .wpj and .tgt files.
+&nbsp; See IDE2MAKE in Open Watcom Tools User's Guide.
+</body>

@@ -1,0 +1,456 @@
+<head>
+<title> Open Watcom 1.9 Resource Compiler Diagnostic Messages </title>
+</head>
+<body>
+<h1 id="Index_of_Topics"> Index of Topics </h1>
+<dl>
+<dt>- 1 -
+<dd><a href="#10__XfileY__is_not_a_valid_bitmap_file_">10 &quot;&lt;file&gt;&quot; is not a valid bitmap file.</a>
+<br><a href="#100_Trying_to_add_a_Win16_or_Win32_RES_file__XfileY__to_an_OSD2_executable__XfileY__">100 Trying to add a Win16 or Win32 RES file &quot;&lt;file&gt;&quot; to an OS/2 executable &quot;&lt;file&gt;&quot;.</a>
+<br><a href="#101_XvalueY_is_not_a_valid_resource_type_">101 &lt;value&gt; is not a valid resource type.</a>
+<br><a href="#102_Symbol_XvalueY_is_not_defined_">102 Symbol &lt;value&gt; is not defined.</a>
+<br><a href="#11_Trying_to_add_a_Win16_or_OSD2_RES_file__XfileY__to_a_Win32_executable__XfileY__">11 Trying to add a Win16 or OS/2 RES file &quot;&lt;file&gt;&quot; to a Win32 executable &quot;&lt;file&gt;&quot;.</a>
+<br><a href="#12_Trying_to_add_a_Win32_or_OSD2_RES_file__XfileY__to_a_Win16_executable__XfileY__">12 Trying to add a Win32 or OS/2 RES file &quot;&lt;file&gt;&quot; to a Win16 executable &quot;&lt;file&gt;&quot;.</a>
+<br><a href="#13_Object_alignment_increase_required__Relink_with_larger_object_alignment_">13 Object alignment increase required.&nbsp; Relink with larger object alignment.</a>
+<br><a href="#14_EXE_contained_old_resources_that_could_not_be_removed_">14 EXE contained old resources that could not be removed.</a>
+<br><a href="#15_Error_reading_EXE_file__XfileY___XreasonY_">15 Error reading EXE file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#16_Error_reading_file__XfileY___Unexpected_end_of_file_">16 Error reading file &quot;&lt;file&gt;&quot;:&nbsp; Unexpected end of file.</a>
+<br><a href="#17_Error_writing_to__XfileY___XreasonY_">17 Error writing to &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#18_Error_reading_icon_file__XfileY___XreasonY_">18 Error reading icon file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#19_Error_reading_cursor_file__XfileY___XreasonY_">19 Error reading cursor file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<dt><br>- 2 -
+<dd><a href="#20_Error_reading_bitmap_file__XfileY___XreasonY_">20 Error reading bitmap file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#21_Error_reading_font_file__XfileY___XreasonY_">21 Error reading font file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#22_Error_reading_data_file__XfileY___XreasonY_">22 Error reading data file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#23_Error_reading_RES_file__XfileY___XreasonY_">23 Error reading RES file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#24_Error_reading_temporary_file__XfileY___XreasonY_">24 Error reading temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#25_Error_writing_to_temporary_file__XfileY___XreasonY_">25 Error writing to temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#26_Unable_to_open_temporary_file__XfileY___XreasonY_">26 Unable to open temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#27_Error_reading_from_file__XfileY___XreasonY_">27 Error reading from file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#28_Unable_to_read_RES_file__XfileY___wrong_version_">28 Unable to read RES file &quot;&lt;file&gt;&quot;:&nbsp; wrong version.</a>
+<br><a href="#29__XfileY__is_not_a_valid_RES_file_">29 &quot;&lt;file&gt;&quot; is not a valid RES file.</a>
+<dt><br>- 3 -
+<dd><a href="#30_Internal_compiler_error_Xinternal_error_numY_">30 Internal compiler error &lt;internal_error_num&gt;.</a>
+<br><a href="#31_Error_writing_resources_to_temporary_file__XfileY___XresourceY_">31 Error writing resources to temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;resource&gt;.</a>
+<br><a href="#32_Error_while_closing_file__XfileY__or_flushing_buffers_to_it__XreasonY_">32 Error while closing file &quot;&lt;file&gt;&quot; or flushing buffers to it:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#33_Error_while_closing_temporary_file__XfileY__or_flushing_buffers_to_it__XreasonY_">33 Error while closing temporary file &quot;&lt;file&gt;&quot; or flushing buffers to it:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#35_RCINCLUDE_keyword_not_currently_supported__Use__include_">35 RCINCLUDE keyword not currently supported.&nbsp; Use #include.</a>
+<br><a href="#36__Xsrc_charY__is_not_valid_at_this_point_">36 '&lt;src_char&gt;' is not valid at this point.</a>
+<br><a href="#37_String_may_not_cross_newline_boundary_">37 String may not cross newline boundary.</a>
+<br><a href="#38_Expecting__Xexpected_strY__but_found__Xsrc_charY_">38 Expecting '&lt;expected_str&gt;' but found '&lt;src_char&gt;'</a>
+<br><a href="#39_Too_many_arguments__Xextra_nameY">39 Too many arguments:&nbsp; &lt;extra_name&gt;</a>
+<dt><br>- 4 -
+<dd><a href="#40_Filename_required_on_command_line_">40 Filename required on command line.</a>
+<br><a href="#41_Unknown_option__XoptionY_">41 Unknown option '&lt;option&gt;'</a>
+<br><a href="#42_No_options_specified_after_options_character_">42 No options specified after options character.</a>
+<br><a href="#43_Out_of_memory">43 Out of memory</a>
+<br><a href="#44_No_type_given_for_accelerator_Xsource_numY">44 No type given for accelerator &lt;source_num&gt;</a>
+<br><a href="#45_Keyword_Xaccel_typeY_ignored_for_type_ASCII_accelerator_Xsource_numY">45 Keyword &lt;accel_type&gt; ignored for type ASCII accelerator &lt;source_num&gt;</a>
+<br><a href="#46_Duplicate_resource__Xresource_nameY">46 Duplicate resource:&nbsp; &lt;resource_name&gt;</a>
+<br><a href="#47_Internal_parser_error_">47 Internal parser error.</a>
+<br><a href="#49_Syntax_error_near__Xsrc_strY_">49 Syntax error near &quot;&lt;src_str&gt;&quot;</a>
+<dt><br>- 5 -
+<dd><a href="#50_Xsource_numY_is_a_duplicate_string_identifier_">50 &lt;source_num&gt; is a duplicate string identifier.</a>
+<br><a href="#51_Raw_data_item_Xsource_numY_is_too_big__Max_Xmax_numY">51 Raw data item &lt;source_num&gt; is too big.&nbsp; Max &lt;max_num&gt;</a>
+<br><a href="#52_Raw_data_item_Xsource_numY_is_too_small__Min_Xmax_numY">52 Raw data item &lt;source_num&gt; is too small.&nbsp; Min &lt;max_num&gt;</a>
+<br><a href="#53_Font_name_must_be_a_number_">53 Font name must be a number.</a>
+<br><a href="#54_Can_t__include_more_than_Xmax_numY_levels_">54 Can't #include more than &lt;max_num&gt; levels.</a>
+<br><a href="#55_Unknown_preprocessor_directive">55 Unknown preprocessor directive</a>
+<br><a href="#56_Invalid__line_directive">56 Invalid #line directive</a>
+<br><a href="#57_Unknown_option__XoptionY_">57 Unknown option '&lt;option&gt;'</a>
+<br><a href="#58__XfileY__is_not_a_valid_EXE_file_">58 &quot;&lt;file&gt;&quot; is not a valid EXE file.</a>
+<br><a href="#59_Unable_to_produce_fastload_section_">59 Unable to produce fastload section.</a>
+<dt><br>- 6 -
+<dd><a href="#6_Unable_to_open_file__XfileY___XreasonY_">6 Unable to open file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#60_Can_t_find_file__XfileY__">60 Can't find file &quot;&lt;file&gt;&quot;.</a>
+<br><a href="#61_Unknown_target_OS___XosY_">61 Unknown target OS:&nbsp; '&lt;os&gt;'</a>
+<br><a href="#62_Xpreproc_msgY">62 &lt;preproc_msg&gt;</a>
+<br><a href="#63_Keyword__XkeywordY__is_only_valid_for_Win32_">63 Keyword &quot;&lt;keyword&gt;&quot; is only valid for Win32.</a>
+<br><a href="#64_Keyword__XkeywordY__not_currently_being_supported_">64 Keyword &quot;&lt;keyword&gt;&quot; not currently being supported.</a>
+<br><a href="#65_Resource_strings_not_found_">65 Resource strings not found.</a>
+<br><a href="#66_Error_can_t_find_character_translation_file__XfileY__">66 Error can't find character translation file &quot;&lt;file&gt;&quot;.</a>
+<br><a href="#67_Error_opening_character_translation_file__XfileY___XreasonY_">67 Error opening character translation file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#68_Error_reading_character_translation_file__XfileY___XreasonY_">68 Error reading character translation file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;.</a>
+<br><a href="#69__XfileY__is_not_a_valid_character_translation_file_">69 &quot;&lt;file&gt;&quot; is not a valid character translation file.</a>
+<dt><br>- 7 -
+<dd><a href="#7_Error_renaming_temporary_file__XfileY__to__XfileY___XreasonY">7 Error renaming temporary file &quot;&lt;file&gt;&quot; to &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;</a>
+<br><a href="#70_Unable_to_read_character_translation_file__XfileY___wrong_version_">70 Unable to read character translation file &quot;&lt;file&gt;&quot;:&nbsp; wrong version.</a>
+<br><a href="#71_Option__XoptionY__not_valid_for_a_Win32__RES_file_">71 Option '&lt;option&gt;' not valid for a Win32 .RES file.</a>
+<br><a href="#72_L______construct_is_not_valid_for_Win16_">72 L&quot;...&quot; construct is not valid for Win16.</a>
+<br><a href="#73_Options__XoptionY__and__XoptionY__may_not_be_specified_together_">73 Options '&lt;option&gt;' and '&lt;option&gt;' may not be specified together.</a>
+<br><a href="#74_Environment_variable__XvarY__is_not_set_">74 Environment variable '&lt;var&gt;' is not set.</a>
+<br><a href="#76_MENUITEM_must_have_ID_value_">76 MENUITEM must have ID value.</a>
+<br><a href="#77_IdDTypeDStateDHelpId_not_allowed_for_MENU_POPUP_controls_">77 Id/Type/State/HelpId not allowed for MENU POPUP controls.</a>
+<br><a href="#78_MENUITEM_options_are_not_allowed_for_MENUEX_POPUP_controls_">78 MENUITEM options are not allowed for MENUEX POPUP controls.</a>
+<br><a href="#79_TypeDState_not_valid_for_MENU_MENUITEM_controls_">79 Type/State not valid for MENU MENUITEM controls.</a>
+<dt><br>- 8 -
+<dd><a href="#8__XfileY__is_not_a_valid_icon_file_">8 &quot;&lt;file&gt;&quot; is not a valid icon file.</a>
+<br><a href="#80_MENUITEM_options_not_valid_for_MENUEX_MENUITEM_controls_">80 MENUITEM options not valid for MENUEX MENUITEM controls.</a>
+<br><a href="#81_HELPID_not_valid_for_DIALOG_">81 HELPID not valid for DIALOG.</a>
+<br><a href="#82_Font_Italic_setting_not_allowed_for_DIALOG_">82 Font Italic setting not allowed for DIALOG.</a>
+<br><a href="#83_Font_Weight_setting_not_allowed_for_DIALOG_">83 Font Weight setting not allowed for DIALOG.</a>
+<br><a href="#84_HELPID_not_valid_for_DIALOG_controls_">84 HELPID not valid for DIALOG controls.</a>
+<br><a href="#85_Data_Elements_not_valid_for_DIALOG_controls_">85 Data Elements not valid for DIALOG controls.</a>
+<br><a href="#86_XvalueY_is_not_a_valid_resource_id_">86 &lt;value&gt; is not a valid resource id.</a>
+<br><a href="#87_User_interrupt_detected_">87 User interrupt detected.</a>
+<br><a href="#88_Resource_type_for_resource__XresourceY__is_greater_than_32767_">88 Resource type for resource &quot;&lt;resource&gt;&quot; is greater than 32767.</a>
+<br><a href="#89_Resource_ID__XidY__is_greater_than_32767_">89 Resource ID &quot;&lt;id&gt;&quot; is greater than 32767.</a>
+<dt><br>- 9 -
+<dd><a href="#9__XfileY__is_not_a_valid_cursor_file_">9 &quot;&lt;file&gt;&quot; is not a valid cursor file.</a>
+<br><a href="#90_Unmatched_quotation_mark_on_command_line_">90 Unmatched quotation mark on command line.</a>
+<dt><br>- O -
+<dd><a href="#Open_Watcom_Resource_Compiler_Diagnostic_Messages">Open Watcom Resource Compiler Diagnostic Messages</a>
+</dl>
+<h1 id="Open_Watcom_Resource_Compiler_Diagnostic_Messages"> Open Watcom Resource Compiler Diagnostic Messages </h1>
+<br>This section describes the various warning and error messages that may be issued by the Open Watcom Resource Compiler.
+<dl>
+<dt>Read Errors
+<dd>Messages concerning &quot;read errors&quot; indicate than an error occurred while the Open Watcom Resource Compiler was reading
+ the specified file.&nbsp; The reason, if present, indicates the type of error.&nbsp; The message may indicate the type of
+ file that was being read, such as a bitmap or icon.&nbsp; If the message says 'temporary file' then the file is one created
+ by the Open Watcom Resource Compiler for use while it is running.&nbsp; This is not a file specified by the user.
+</dl>
+<dl>
+<dt>Write Errors
+<dd>Messages concerning &quot;write errors&quot; indicate than an error occurred while the Open Watcom Resource Compiler was writing
+ to the specified file.&nbsp; The reason, if present, indicates the type of error.&nbsp; The message may indicate the type
+ of file that was being written, such as a bitmap or icon.&nbsp; If the message says &quot;temporary file&quot; then the file
+ is one created by the Open Watcom Resource Compiler for use while it is running.&nbsp; This is not a file specified by the
+ user.
+</dl>
+<h2 id="6_Unable_to_open_file__XfileY___XreasonY_"> 6 Unable to open file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>The Open Watcom Resource Compiler was unable to open the specified file for the specified reason.
+<h2 id="7_Error_renaming_temporary_file__XfileY__to__XfileY___XreasonY"> 7 Error renaming temporary file &quot;&lt;file&gt;&quot; to &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt; </h2>
+<br>When creating an executable or resource file the Open Watcom Resource Compiler first writes the information to a temporary
+ file then renames that file.&nbsp; This messages indicates that an error occurred while renaming the specified temporary
+ file.
+<h2 id="8__XfileY__is_not_a_valid_icon_file_"> 8 &quot;&lt;file&gt;&quot; is not a valid icon file. </h2>
+<br>The file specified in an ICON statement is either not a valid icon file or is corrupted.&nbsp; You can do two things:
+<ul>
+<li>Try recreating the file
+<li>Make sure the correct file is specified
+</ul>
+<h2 id="9__XfileY__is_not_a_valid_cursor_file_"> 9 &quot;&lt;file&gt;&quot; is not a valid cursor file. </h2>
+<br>The file specified in a CURSOR statement is either not a valid cursor file or is corrupted.&nbsp; You can do two things:
+<ul>
+<li>Try recreating the file
+<li>Make sure the correct file is specified
+</ul>
+<h2 id="10__XfileY__is_not_a_valid_bitmap_file_"> 10 &quot;&lt;file&gt;&quot; is not a valid bitmap file. </h2>
+<br>The file specified in a BITMAP statement is either not a valid bitmap file or is a corrupted.&nbsp; You can do two things:
+<ul>
+<li>Try recreating the file
+<li>Make sure the correct file is specified
+</ul>
+<h2 id="11_Trying_to_add_a_Win16_or_OSD2_RES_file__XfileY__to_a_Win32_executable__XfileY__"> 11 Trying to add a Win16 or OS/2 RES file &quot;&lt;file&gt;&quot; to a Win32 executable &quot;&lt;file&gt;&quot;. </h2>
+<br>This error occurs when you attempt to run pass two of the Open Watcom Resource Compiler with a Win16 or OS/2<tt> .RES</tt>
+ file and a Win32 executable file.&nbsp; You can do two things:
+<ul>
+<li>Recreate the<tt> .RES</tt> file using the -bt=nt switch
+<li>Make sure the correct file is specified.
+</ul>
+<h2 id="12_Trying_to_add_a_Win32_or_OSD2_RES_file__XfileY__to_a_Win16_executable__XfileY__"> 12 Trying to add a Win32 or OS/2 RES file &quot;&lt;file&gt;&quot; to a Win16 executable &quot;&lt;file&gt;&quot;. </h2>
+<br>This error occurs when you attempt to run pass two of the Open Watcom Resource Compiler with a Win32 or OS/2<tt> .RES</tt>
+ file and a Win16 executable file.&nbsp; You can do two things:
+<ul>
+<li>Recreate the<tt> .RES</tt> file using the -bt=windows switch
+<li>Make sure the correct file is specified.
+</ul>
+<h2 id="13_Object_alignment_increase_required__Relink_with_larger_object_alignment_"> 13 Object alignment increase required.&nbsp; Relink with larger object alignment. </h2>
+<br>Each Win32 executable file contains an object alignment value that determines the maximum size of the file.&nbsp; This
+ error indicates that in adding resources to a Win32 executable, the size of the executable increased enough that its object
+ alignment must be increased.&nbsp; The solution is to re-link the executable file with a larger object alignment.&nbsp; (Refer
+ to the Open Watcom Linker OBJALIGN option) then run the Open Watcom Resource Compiler again.
+<h2 id="14_EXE_contained_old_resources_that_could_not_be_removed_"> 14 EXE contained old resources that could not be removed. </h2>
+<br>The Win32 executable that the Open Watcom Resource Compiler is operating on already contains resources that the compiler
+ cannot remove.&nbsp; As a result, the produced executable will be larger than it needs to be but it will still work.&nbsp;
+ The recommended solution is to relink the EXE and run the Open Watcom Resource Compiler again.&nbsp; This is a warning only.
+<h2 id="15_Error_reading_EXE_file__XfileY___XreasonY_"> 15 Error reading EXE file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="16_Error_reading_file__XfileY___Unexpected_end_of_file_"> 16 Error reading file &quot;&lt;file&gt;&quot;:&nbsp; Unexpected end of file. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<br><br>This message probably indicates that the given file is corrupt.&nbsp; Try regenerating the file.
+<h2 id="17_Error_writing_to__XfileY___XreasonY_"> 17 Error writing to &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Write Errors at the start of this section.
+<h2 id="18_Error_reading_icon_file__XfileY___XreasonY_"> 18 Error reading icon file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="19_Error_reading_cursor_file__XfileY___XreasonY_"> 19 Error reading cursor file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="20_Error_reading_bitmap_file__XfileY___XreasonY_"> 20 Error reading bitmap file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="21_Error_reading_font_file__XfileY___XreasonY_"> 21 Error reading font file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="22_Error_reading_data_file__XfileY___XreasonY_"> 22 Error reading data file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="23_Error_reading_RES_file__XfileY___XreasonY_"> 23 Error reading RES file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="24_Error_reading_temporary_file__XfileY___XreasonY_"> 24 Error reading temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="25_Error_writing_to_temporary_file__XfileY___XreasonY_"> 25 Error writing to temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Write Errors at the start of this section.
+<h2 id="26_Unable_to_open_temporary_file__XfileY___XreasonY_"> 26 Unable to open temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>The Open Watcom Resource Compiler is unable to create a temporary file that is needed to perform the specified task.&nbsp;
+ The reason gives an explanation of why the operation failed.
+<h2 id="27_Error_reading_from_file__XfileY___XreasonY_"> 27 Error reading from file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="28_Unable_to_read_RES_file__XfileY___wrong_version_"> 28 Unable to read RES file &quot;&lt;file&gt;&quot;:&nbsp; wrong version. </h2>
+<br>The Open Watcom Resource Compiler is unable to read the specified<tt> .RES</tt> file because its version is incompatible
+ with this version of the compiler.&nbsp; The solution is to recreate the<tt> .RES</tt> file using this version of the Open
+ Watcom Resource Compiler
+<h2 id="29__XfileY__is_not_a_valid_RES_file_"> 29 &quot;&lt;file&gt;&quot; is not a valid RES file. </h2>
+<br>This error occurs if the specified file is not a valid RES file.&nbsp; You can do two things:
+<ul>
+<li>Regenerate the<tt> .RES</tt> file.
+<li>Make sure the correct file is specified.
+</ul>
+<h2 id="30_Internal_compiler_error_Xinternal_error_numY_"> 30 Internal compiler error &lt;internal_error_num&gt;. </h2>
+<br>This message indicates that an unexpected error occurred within the Open Watcom Resource Compiler .&nbsp; Report any occurrence
+ of this message to Open Watcom Technical Support.
+<h2 id="31_Error_writing_resources_to_temporary_file__XfileY___XresourceY_"> 31 Error writing resources to temporary file &quot;&lt;file&gt;&quot;:&nbsp; &lt;resource&gt;. </h2>
+<br>Refer to the notes on Write Errors at the start of this section.
+<h2 id="32_Error_while_closing_file__XfileY__or_flushing_buffers_to_it__XreasonY_"> 32 Error while closing file &quot;&lt;file&gt;&quot; or flushing buffers to it:&nbsp; &lt;reason&gt;. </h2>
+<br>This indicates an error occurred while closing or writing to the given file.
+<h2 id="33_Error_while_closing_temporary_file__XfileY__or_flushing_buffers_to_it__XreasonY_"> 33 Error while closing temporary file &quot;&lt;file&gt;&quot; or flushing buffers to it:&nbsp; &lt;reason&gt;. </h2>
+<br>This indicates an error occurred while closing or writing to the given file.&nbsp; The given file was a temporary file
+ created by the Open Watcom Resource Compiler for its use while it is running.
+<h2 id="35_RCINCLUDE_keyword_not_currently_supported__Use__include_"> 35 RCINCLUDE keyword not currently supported.&nbsp; Use #include. </h2>
+<br>This message indicates the rcinclude keyword was used and it is not supported.&nbsp; The solution is to convert rcinclude
+ statements to #include statements in the following manner:&nbsp; convert<tt> RCINCLUDE foo.h</tt> to<tt> #include &quot;foo.h&quot;</tt>
+<h2 id="36__Xsrc_charY__is_not_valid_at_this_point_"> 36 '&lt;src_char&gt;' is not valid at this point. </h2>
+<br>This message indicates that a syntactic error occurred while parsing a resource script file.
+<h2 id="37_String_may_not_cross_newline_boundary_"> 37 String may not cross newline boundary. </h2>
+<br>While compiling a<tt> .RC</tt> file a string literal was encountered that did not have a closing quotation before the
+ end of the line it was on.&nbsp; For example,
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &quot;this string</tt>
+<br><br>would cause the error, while
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; &quot;this one would not&quot;</tt>
+<h2 id="38_Expecting__Xexpected_strY__but_found__Xsrc_charY_"> 38 Expecting '&lt;expected_str&gt;' but found '&lt;src_char&gt;' </h2>
+<br>This message indicates that a syntactic error occurred while parsing a resource script file.
+<h2 id="39_Too_many_arguments__Xextra_nameY"> 39 Too many arguments:&nbsp; &lt;extra_name&gt; </h2>
+<br>This error occurs when more than two filenames are specified on the command line.
+<h2 id="40_Filename_required_on_command_line_"> 40 Filename required on command line. </h2>
+<br>This message indicates that no filename was specified on the command line.
+<h2 id="41_Unknown_option__XoptionY_"> 41 Unknown option '&lt;option&gt;' </h2>
+<br>This error occurs when the stated option is specified on the command line but is not a valid Open Watcom Resource Compiler
+ option.
+<h2 id="42_No_options_specified_after_options_character_"> 42 No options specified after options character. </h2>
+<br>This error occurs when the character / or - is specified on the command line with no option specified after it.
+<h2 id="43_Out_of_memory"> 43 Out of memory </h2>
+<br>The Open Watcom Resource Compiler does not have enough memory to complete the requested operation.
+<h2 id="44_No_type_given_for_accelerator_Xsource_numY"> 44 No type given for accelerator &lt;source_num&gt; </h2>
+<br>This error is reported when the Open Watcom Resource Compiler encounters a definition for a character or virtual-key accelerator
+ that lacks a type.
+<h2 id="45_Keyword_Xaccel_typeY_ignored_for_type_ASCII_accelerator_Xsource_numY"> 45 Keyword &lt;accel_type&gt; ignored for type ASCII accelerator &lt;source_num&gt; </h2>
+<br>This error occurs when the keyword specified by &lt;accel_type&gt; is specified for an ASCII accelerator.&nbsp; This keyword
+ is not valid for ASCII accelerators and will be ignored.
+<h2 id="46_Duplicate_resource__Xresource_nameY"> 46 Duplicate resource:&nbsp; &lt;resource_name&gt; </h2>
+<br>This error occurs when more than one resource with the same name, type, and language is encountered in a<tt> .RC</tt>
+ file.&nbsp; Only the first resource encountered is properly included in the<tt> .RES</tt> file.&nbsp; This is a warning only.
+<h2 id="47_Internal_parser_error_"> 47 Internal parser error. </h2>
+<br>This indicates that a syntactic error occurred while parsing a resource script file.
+<h2 id="49_Syntax_error_near__Xsrc_strY_"> 49 Syntax error near &quot;&lt;src_str&gt;&quot; </h2>
+<br>This indicates that a syntactic error occurred while parsing a resource script file.
+<h2 id="50_Xsource_numY_is_a_duplicate_string_identifier_"> 50 &lt;source_num&gt; is a duplicate string identifier. </h2>
+<br>This message indicates that more than one string table string is defined with the given numeric identifier.&nbsp; Numeric
+ identifiers for strings in string tables must be unique.
+<h2 id="51_Raw_data_item_Xsource_numY_is_too_big__Max_Xmax_numY"> 51 Raw data item &lt;source_num&gt; is too big.&nbsp; Max &lt;max_num&gt; </h2>
+<br>This message indicates that the given value is specified as an element of an RCDATA resource and is greater than the largest
+ allowable value for an RCDATA resource element.
+<h2 id="52_Raw_data_item_Xsource_numY_is_too_small__Min_Xmax_numY"> 52 Raw data item &lt;source_num&gt; is too small.&nbsp; Min &lt;max_num&gt; </h2>
+<br>This message indicates that the given value is specified as an element of an RCDATA resource and is less than the least
+ allowable value for an RCDATA resource element.
+<h2 id="53_Font_name_must_be_a_number_"> 53 Font name must be a number. </h2>
+<br>This error occurs when an ASCII string is used as a name for a FONT resource.&nbsp; Font resource names must be numeric.
+<h2 id="54_Can_t__include_more_than_Xmax_numY_levels_"> 54 Can't #include more than &lt;max_num&gt; levels. </h2>
+<br>There is a limit on the number of levels deep you can nest #include statements.&nbsp; &lt;max_num&gt; specifies the maximum
+ number of levels of nesting allowed.&nbsp; This message occurs when a file contains more levels of nesting than are allowed.
+<h2 id="55_Unknown_preprocessor_directive"> 55 Unknown preprocessor directive </h2>
+<br>This error occurs when a command that is not a valid preprocessor directive is prefixed by a #.
+<h2 id="56_Invalid__line_directive"> 56 Invalid #line directive </h2>
+<br>This error is reported when a #line directive is encountered in a resource script file but the parameters after it are
+ not valid.
+<h2 id="57_Unknown_option__XoptionY_"> 57 Unknown option '&lt;option&gt;' </h2>
+<br>This error is reported when a command line option is specified that the Open Watcom Resource Compiler does not understand.
+<h2 id="58__XfileY__is_not_a_valid_EXE_file_"> 58 &quot;&lt;file&gt;&quot; is not a valid EXE file. </h2>
+<br>This error occurs when the Open Watcom Resource Compiler expects the given file to be an EXE file but it is either not
+ an EXE file or it is a corrupted EXE file.&nbsp; You can do two things:
+<ul>
+<li>Make sure the correct file is specified.
+<li>Regenerate the EXE file by relinking.
+</ul>
+<h2 id="59_Unable_to_produce_fastload_section_"> 59 Unable to produce fastload section. </h2>
+<br>This error occurs when the Open Watcom Resource Compiler is unable to create a fastload section in the given EXE because
+ one of the segments in the EXE is larger than 64K.&nbsp; This message is only a warning; a working executable including resources
+ is still produced.&nbsp; This message does not appear if the -k option is used.
+<h2 id="60_Can_t_find_file__XfileY__"> 60 Can't find file &quot;&lt;file&gt;&quot;. </h2>
+<br>This message indicates that the Open Watcom Resource Compiler is unable to locate an input file needed to complete the
+ operation.&nbsp; This file may be one of the files specified on the command line or one included in the<tt> .RC</tt> file
+ by a statement such as ICON, BITMAP, RCDATA, or CURSOR.&nbsp; You can do two things:
+<ul>
+<li>For files specified on the command line, make sure the file was specified correctly and that it exists in the current
+ directory or in the specified directory if a path for it is given on the command line.
+<li>For files included by a<tt> .RC</tt> file statement, make sure the file is specified correctly and exists in the current
+ directory or a directory specified by the INCLUDE environment variable.
+</ul>
+<h2 id="61_Unknown_target_OS___XosY_"> 61 Unknown target OS:&nbsp; '&lt;os&gt;' </h2>
+<br>This message indicates that on the Open Watcom Resource Compiler command line the -bt=&lt;os&gt; option is specified and
+ the compiler does not recognize the specified &lt;os&gt;.&nbsp; The valid values for &lt;os&gt; are windows, nt and os2.
+<h2 id="62_Xpreproc_msgY"> 62 &lt;preproc_msg&gt; </h2>
+<br>This indicates an error occurred while preprocessing a<tt> .RC</tt> file.&nbsp; The text of the message contains information
+ about the error.
+<h2 id="63_Keyword__XkeywordY__is_only_valid_for_Win32_"> 63 Keyword &quot;&lt;keyword&gt;&quot; is only valid for Win32. </h2>
+<br>While creating a non-Win32<tt> .RES</tt> file, the Open Watcom Resource Compiler encountered a keyword that is only valid
+ for Win32.
+<h2 id="64_Keyword__XkeywordY__not_currently_being_supported_"> 64 Keyword &quot;&lt;keyword&gt;&quot; not currently being supported. </h2>
+<br>A keyword was used in a<tt> .RC</tt> file that is not supported by the Open Watcom Resource Compiler
+<h2 id="65_Resource_strings_not_found_"> 65 Resource strings not found. </h2>
+<br>This message indicates that your copy of the Open Watcom Resource Compiler has been corrupted.&nbsp; Try reinstalling
+ the compiler from your original installation disks.&nbsp; If this fails, report the problem to Open Watcom Technical Support.
+<h2 id="66_Error_can_t_find_character_translation_file__XfileY__"> 66 Error can't find character translation file &quot;&lt;file&gt;&quot;. </h2>
+<br>Character translation files are data files that the Open Watcom Resource Compiler uses when creating a Win32<tt> .RES</tt>
+ file to convert text into UNICODE.&nbsp; This message indicates that the Open Watcom Resource Compiler cannot locate the
+ given translation file that it requires.&nbsp; The solution is to find the file and make sure it is in your path.
+<h2 id="67_Error_opening_character_translation_file__XfileY___XreasonY_"> 67 Error opening character translation file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Character translation files are data files that the Open Watcom Resource Compiler uses when creating a Win32<tt> .RES</tt>
+ file to convert text into UNICODE.&nbsp; This message indicates that the Open Watcom Resource Compiler found the character
+ translation file but was unable to access it for the given reason.
+<h2 id="68_Error_reading_character_translation_file__XfileY___XreasonY_"> 68 Error reading character translation file &quot;&lt;file&gt;&quot;:&nbsp; &lt;reason&gt;. </h2>
+<br>Refer to the notes on Read Errors at the start of this section.
+<h2 id="69__XfileY__is_not_a_valid_character_translation_file_"> 69 &quot;&lt;file&gt;&quot; is not a valid character translation file. </h2>
+<br>Character translation files are data files that the Open Watcom Resource Compiler uses when creating a Win32<tt> .RES</tt>
+ file to convert text into UNICODE.&nbsp; This error occurs when the Open Watcom Resource Compiler finds a file with the same
+ name as the expected character translation file but this file is either not a character translation file or is a corrupted
+ character translation file.&nbsp; You can do two things:
+<ul>
+<li>Find the correct character translation file (the one that came with this version of the Open Watcom Resource Compiler)
+ and put it in a directory that appears in your path before any other directory that contains a file of that name.
+<li>Try reinstalling the file from your original distribution disks.
+</ul>
+<h2 id="70_Unable_to_read_character_translation_file__XfileY___wrong_version_"> 70 Unable to read character translation file &quot;&lt;file&gt;&quot;:&nbsp; wrong version. </h2>
+<br>Character translation files are data files that the Open Watcom Resource Compiler uses when creating a Win32<tt> .RES</tt>
+ file to convert text into UNICODE.&nbsp; This error occurs when the Open Watcom Resource Compiler finds a file with the same
+ name as the expected character translation file but is unable to read it because its version is incompatible with this version
+ of the compiler.&nbsp; You can do two things:
+<ul>
+<li>Find the correct character translation file (the one that came with this version of the Open Watcom Resource Compiler)
+ and put it in a directory that appears in your path before any other directory that contains a file of that name.
+<li>Try reinstalling the file from your original distribution disks.
+</ul>
+<h2 id="71_Option__XoptionY__not_valid_for_a_Win32__RES_file_"> 71 Option '&lt;option&gt;' not valid for a Win32 .RES file. </h2>
+<br>This indicates that while producing a Win32<tt> .RES</tt> file, a command line parameter was specified that is not valid
+ for Win32<tt> .RES</tt> files.
+<h2 id="72_L______construct_is_not_valid_for_Win16_"> 72 L&quot;...&quot; construct is not valid for Win16. </h2>
+<br>This error occurs when the user enters a string prefixed by the letter (i.e.&nbsp; L&quot;Bob&quot;) in an<tt> .RC</tt>
+ file being turned into a Win16<tt> .RES</tt> file.&nbsp; The L specifier is meaningless for Win16 and will be ignored.&nbsp;
+ This is a warning only.
+<h2 id="73_Options__XoptionY__and__XoptionY__may_not_be_specified_together_"> 73 Options '&lt;option&gt;' and '&lt;option&gt;' may not be specified together. </h2>
+<br>This error occurs when two options specified on the command line are not compatible with one another.&nbsp; You should
+ remove one of the specified options.
+<h2 id="74_Environment_variable__XvarY__is_not_set_"> 74 Environment variable '&lt;var&gt;' is not set. </h2>
+<br>An environment variable specified on the command line using the @ option had no value set for it.
+<h2 id="76_MENUITEM_must_have_ID_value_"> 76 MENUITEM must have ID value. </h2>
+<br>A MENUITEM in a MENU resource must contain a menu id.&nbsp; This message is issued when a MENUITEM in a menu resource
+ does not have a menu id specified for it.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; mymenu MENU</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; BEGIN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MENUITEM &quot;my item&quot;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; END</tt>
+<br><br>Menu items in menuex resources do not need a menu id.
+<h2 id="77_IdDTypeDStateDHelpId_not_allowed_for_MENU_POPUP_controls_"> 77 Id/Type/State/HelpId not allowed for MENU POPUP controls. </h2>
+<br>A POPUP statement in a MENU resource may not be followed by any modifiers (such as an ID).&nbsp; This message is issued
+ when a POPUP statement in a MENU resource is followed by one or more modifiers.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; mymenu MENU</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; BEGIN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POPUP &quot;my popup&quot;, MY_ID</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; END</tt>
+<br><br>POPUP statements in menuex resources may be followed by modifiers.
+<h2 id="78_MENUITEM_options_are_not_allowed_for_MENUEX_POPUP_controls_"> 78 MENUITEM options are not allowed for MENUEX POPUP controls. </h2>
+<br>A POPUP statement in a MENUEX resource may not use optional modifiers such as CHECKED or GREYED.&nbsp; This message is
+ issued when a POPUP statement in a MENUEX resource contains one of these optional modifiers.&nbsp; In a MENUEX resource these
+ modifiers are replaced by MFT_* and MFS_* flags.
+<h2 id="79_TypeDState_not_valid_for_MENU_MENUITEM_controls_"> 79 Type/State not valid for MENU MENUITEM controls. </h2>
+<br>A MENUITEM statement in MENU resource must not specify state and type information using the MFT_* or MFS_* flags.&nbsp;
+ This message is issued when type or state information is specified for a MENUITEM in a MENU resource.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; mymenu MENU</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; BEGIN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MENUITEM &quot;item&quot;, MY_ID, MFT_STRING, MFS_GREYED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; END</tt>
+<br><br>In a MENU resource this information is specified using option modifiers such as GREYED or CHECKED.
+<h2 id="80_MENUITEM_options_not_valid_for_MENUEX_MENUITEM_controls_"> 80 MENUITEM options not valid for MENUEX MENUITEM controls. </h2>
+<br>A MENUITEM statement in a MENUEX resource may not use optional modifiers such as CHECKED or GREYED.&nbsp; This message
+ is issued when a MENUITEM statement in a MENUEX resource contains one of these optional modifiers.&nbsp; In a MENUEX resource
+ these modifiers are replaced by MFT_* and MFS_* flags.
+<h2 id="81_HELPID_not_valid_for_DIALOG_"> 81 HELPID not valid for DIALOG. </h2>
+<br>You may not specify a help id for a DIALOG resource.&nbsp; This message is issued when a help id is found with a DIALOG
+ resource.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; my_dlg DIALOG 0, 0, 100, 100, MY_HELPID</tt>
+<br><br>A help id may be specified for a DIALOGEX resource.
+<h2 id="82_Font_Italic_setting_not_allowed_for_DIALOG_"> 82 Font Italic setting not allowed for DIALOG. </h2>
+<br>You may not specify an italic font for a DIALOG resource.&nbsp; This message is issued when the italic flag has been specified
+ in a FONT statement in a DIALOG resource.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; my_dlg DIALOG 0, 0, 100, 100</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; FONT &quot;helvetica&quot;, 8,&nbsp; FW_BOLD, 1</tt>
+<br><br>The italic flag may be specified for DIALOGEX resources.
+<h2 id="83_Font_Weight_setting_not_allowed_for_DIALOG_"> 83 Font Weight setting not allowed for DIALOG. </h2>
+<br>You may not specify a font weight for a DIALOG resource.&nbsp; This message is issued when a font weight has been specified
+ in a FONT statement in a DIALOG resource.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; my_dlg DIALOG 0, 0, 100, 100</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; FONT &quot;helvetica&quot;, 8,&nbsp; FW_BOLD</tt>
+<br><br>A font weight may be specified for DIALOGEX resources.
+<h2 id="84_HELPID_not_valid_for_DIALOG_controls_"> 84 HELPID not valid for DIALOG controls. </h2>
+<br>You may not specify a help id for a control in a DIALOG resource.&nbsp; This message is issued when a help id is specified
+ for a control in a DIALOG resource.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; my_dlg DIALOG 0, 0, 100, 100</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; BEGIN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONTROL &quot;None&quot;,&nbsp; MY_ID, &quot;BUTTON&quot;,</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BS_AUTORADIOBUTTON
+ | WS_CHILD | WS_VISIBLE</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12, 40, 30, 10,&nbsp;
+ 0, MY_HELPID</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; END</tt>
+<br><br>A help id may be specified for a control in DIALOGEX resource.
+<h2 id="85_Data_Elements_not_valid_for_DIALOG_controls_"> 85 Data Elements not valid for DIALOG controls. </h2>
+<br>This indicates that a list of data values has been found following a control in a DIALOG resource.&nbsp; Data can only
+ follow control statements in a DIALOGEX resource.
+<h2 id="86_XvalueY_is_not_a_valid_resource_id_"> 86 &lt;value&gt; is not a valid resource id. </h2>
+<br>This message is issued when a numeric identifier has been specified for a resource but the value is outside the allowable
+ range.
+<h2 id="87_User_interrupt_detected_"> 87 User interrupt detected. </h2>
+<br>Processing was stopped to allow another user action to occur.
+<h2 id="88_Resource_type_for_resource__XresourceY__is_greater_than_32767_"> 88 Resource type for resource &quot;&lt;resource&gt;&quot; is greater than 32767. </h2>
+<br>When a number is used to identify the type of a resource the number must be between 0 and 32767.&nbsp; This message is
+ issued when a number has been specified as a resource type that is outside the allowable range.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; MYRES 0xF000 { 0 }</tt>
+<h2 id="89_Resource_ID__XidY__is_greater_than_32767_"> 89 Resource ID &quot;&lt;id&gt;&quot; is greater than 32767. </h2>
+<br>When a number is used to identify a resource the number must be between 0 and 32767.&nbsp; This message is issued when
+ a number has been specified as a resource identifier that is outside the allowable range.
+<br><br><b>Example:</b>
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 0xF000 ICON &quot;t.ico&quot;</tt>
+<h2 id="90_Unmatched_quotation_mark_on_command_line_"> 90 Unmatched quotation mark on command line. </h2>
+<br>Quotations marks may be used on the WRC command line to delimit file or path names.&nbsp; This message indicates that
+ a quotation mark was found on the command line but no matching quotation mark could be found.
+<h2 id="100_Trying_to_add_a_Win16_or_Win32_RES_file__XfileY__to_an_OSD2_executable__XfileY__"> 100 Trying to add a Win16 or Win32 RES file &quot;&lt;file&gt;&quot; to an OS/2 executable &quot;&lt;file&gt;&quot;. </h2>
+<br>This error occurs when you attempt to run pass two of the Open Watcom Resource Compiler with a Win16 or Win32<tt> .RES</tt>
+ file and an OS/2 executable file.&nbsp; You can do two things:
+<ul>
+<li>Recreate the<tt> .RES</tt> file using the -bt=os2 switch
+<li>Make sure the correct file is specified.
+</ul>
+<h2 id="101_XvalueY_is_not_a_valid_resource_type_"> 101 &lt;value&gt; is not a valid resource type. </h2>
+<br>This message is issued when a numeric type has been specified for a resource but the value is outside the allowable range.
+<h2 id="102_Symbol_XvalueY_is_not_defined_"> 102 Symbol &lt;value&gt; is not defined. </h2>
+<br>This message is issued when a numeric resource id is expected but the symbol representing the resource id has not been
+ defined.
+<br><br>This error occurs only for OS/2 resource files.&nbsp; Other platforms support symbolic and string constant resource
+ ids.
+</body>
