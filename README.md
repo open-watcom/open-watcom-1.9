@@ -1,3 +1,3 @@
 # [Open Watcom 1.9 Wiki](https://github.com/open-watcom/open-watcom-1.9/wiki)
-# [Open Watcom 1.0-1.9 Download](https://github.com/open-watcom/open-watcom-1.9/releases)
+# [Open Watcom 1.0-1.9 download](https://github.com/open-watcom/open-watcom-1.9/releases)
 # [Open Watcom 1.9 git repository](https://github.com/open-watcom/owp4v1copy)
